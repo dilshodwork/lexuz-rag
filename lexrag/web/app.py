@@ -4,8 +4,11 @@ Ishga tushirish (loyiha papkasidan):
     .venv/bin/python -m uvicorn lexrag.web.app:app --port 8000
 
 API:
-    POST /api/ask      SSE oqim: sources -> delta ... -> quota -> done (yoki error); server kaliti, bepul limit
-    POST /api/context  manbalar + tayyor LLM so'rovi (system/user): brauzer o'z kaliti bilan LLM'ni o'zi chaqiradi
+    POST /api/ask      SSE oqim: step ... -> sources -> delta ... -> followups -> quota -> done (yoki error);
+                       server kaliti, bepul limit
+    POST /api/context  bosqichlar + manbalar + tayyor LLM so'rovi (system/user) + javobni qayta ishlash qoidasi:
+                       brauzer o'z kaliti bilan LLM'ni o'zi chaqiradi
+    POST /api/verify   javob ishonchliligi (har da'vo manbada asosi bormi), LLM'siz
     GET  /api/quota    bugungi bepul savollar (qancha qoldi)
     GET  /api/search   faqat qidiruv (LLM'siz)
     GET  /api/health   server, indeks va LLM holati (kalitning o'zi qaytarilmaydi)
@@ -23,7 +26,7 @@ import time
 from contextlib import asynccontextmanager
 from functools import lru_cache
 from pathlib import Path
-from typing import AsyncIterator
+from typing import AsyncIterator, Literal
 
 import httpx
 from fastapi import FastAPI, Query, Request
@@ -32,8 +35,9 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.concurrency import iterate_in_threadpool, run_in_threadpool
 
-from .. import config, llm, rag
+from .. import config, llm, rag, trust
 from . import quota
+from ..lang import MARKER
 from ..retrieval import MODEL, _bm25, prepare_query
 from ..indexer import embed_query, get_collection
 
@@ -82,6 +86,20 @@ class AskBody(BaseModel):
     question: str = Field(min_length=1, max_length=1000)
     filters: Filters = Field(default_factory=Filters)
     k: int = Field(default=rag.K_CONTEXT, ge=1, le=12)
+    # "simple" - sodda tilda qayta javob: chunk_ids (o'sha manbalar, o'sha tartib) bilan, qayta qidiruvsiz
+    mode: Literal["legal", "simple"] = "legal"
+    chunk_ids: list[str] | None = Field(default=None, max_length=12)
+    base_answer: str | None = Field(default=None, max_length=12000)
+    # javob tili: auto - savol tilidan (lang.detect_lang)
+    lang: Literal["auto", "uz", "uz_cyr", "ru"] = "auto"
+    # LLM bilan savolni bo'lish (.env da LLM_PLAN=1 ham kerak); standart - LLM'siz evristika
+    llm_plan: bool = False
+
+
+class VerifyBody(BaseModel):
+    text: str = Field(min_length=1, max_length=20000)
+    chunk_ids: list[str] = Field(min_length=1, max_length=12)
+    lang: Literal["uz", "uz_cyr", "ru"] = "uz"
 
 
 def _search_kw(f: Filters) -> dict:
@@ -128,10 +146,6 @@ def _sse(event: str, data) -> str:
     return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
 
 
-# LLM manbalarda javob topmasa shu iborani yozadi (rag.SYSTEM, 4-qoida)
-NOT_FOUND_RE = re.compile(r"^\W*Bazadagi hujjatlarda bu savolga[^.]*topilmadi", re.I)
-
-
 def _who(request: Request) -> list[tuple[str, int]]:
     return quota.identity(request.client.host if request.client else None, request.headers)[1]
 
@@ -150,11 +164,32 @@ def _limit_message(st: dict) -> str:
             "Gemini kaliti bepul, 2 daqiqada olinadi. Manbalar yuqorida koʻrsatilgan.")
 
 
+def _steps_gen(body: AskBody):
+    """rag.prepare_steps: har qadam qidiruv qulfi ostida (ONNX va ChromaDB bir vaqtda bitta so'rov)."""
+    gen = rag.prepare_steps(body.question, k=body.k, lang_pref=None if body.lang == "auto" else body.lang,
+                            mode=body.mode, chunk_ids=body.chunk_ids, base_answer=body.base_answer,
+                            llm_plan=body.llm_plan, **_search_kw(body.filters))
+    while True:
+        with _search_lock:
+            try:
+                item = next(gen)
+            except StopIteration:
+                return
+        yield item
+
+
 async def _prepare(body: AskBody) -> dict:
     def _prep():
-        with _search_lock:
-            return rag.prepare(body.question.strip(), k=body.k, **_search_kw(body.filters))
+        for ev, data in _steps_gen(body):
+            if ev == "result":
+                return data
+        raise RuntimeError("prepare_steps natija qaytarmadi")
     return await run_in_threadpool(_prep)
+
+
+def _post(lang: str) -> dict:
+    """Brauzer LLM javobini qanday qayta ishlaydi (serverdagi rag.AnswerStream bilan bir xil)."""
+    return {"marker": MARKER, "translit": "lat2cyr" if lang == "uz_cyr" else None}
 
 
 # ---------------------------------------------------------------- API
@@ -174,7 +209,27 @@ async def context(body: AskBody):
         return JSONResponse({"code": code, "message": text}, status_code=500)
     return {"sources": p["sources"], "no_answer": p["no_answer"], "query_latin": prepare_query(body.question),
             "search_ms": int((time.time() - t0) * 1000), "no_answer_text": rag.NO_ANSWER_TEXT,
-            "prompt": None if p["no_answer"] else {"system": rag.SYSTEM, "user": p["user"]}}
+            "steps": p["steps"], "lang": p["lang"], "parts": p["parts"], "mode": body.mode,
+            "post": _post(p["lang"]), "prompt": p["prompt"]}
+
+
+@app.post("/api/verify")
+async def verify(body: VerifyBody):
+    """Javobdagi har da'vo iqtibos qilingan moddada asosi bormi (raqamlar, leksik va ma'no o'xshashligi).
+    LLM chaqirilmaydi; server va o'z kaliti yo'llari uchun bir xil."""
+    if not STATE["ready"]:
+        return JSONResponse({"code": "index", "message": "Qidiruv indeksi yuklanmagan."}, status_code=503)
+    t0 = time.time()
+
+    def _run():
+        with _search_lock:
+            return trust.check(body.text, body.chunk_ids, body.lang)
+    try:
+        r = await run_in_threadpool(_run)
+    except Exception:  # noqa: BLE001
+        log.exception("verify xatosi")
+        return JSONResponse({"code": "server", "message": "Tekshiruvda xato."}, status_code=500)
+    return {**r, "ms": int((time.time() - t0) * 1000)}
 
 
 OPENAI_CHAT = "https://api.openai.com/v1/chat/completions"
@@ -228,15 +283,20 @@ async def ask(body: AskBody, request: Request):
         if not STATE["ready"]:
             yield _sse("error", {"code": "index", "message": "Qidiruv indeksi yuklanmagan. Server logini tekshiring."})
             return
+        p = None
         try:
-            p = await _prepare(body)
+            async for ev, data in iterate_in_threadpool(_steps_gen(body)):
+                if ev == "step":
+                    yield _sse("step", data)
+                else:
+                    p = data
         except Exception as e:  # noqa: BLE001
             log.exception("qidiruv xatosi")
             code, text = _human_error(e)
             yield _sse("error", {"code": code, "message": text})
             return
-        yield _sse("sources", {"sources": p["sources"], "no_answer": p["no_answer"],
-                               "query_latin": prepare_query(question),
+        yield _sse("sources", {"sources": p["sources"], "no_answer": p["no_answer"], "lang": p["lang"],
+                               "parts": p["parts"], "mode": body.mode, "query_latin": prepare_query(question),
                                "search_ms": int((time.time() - t0) * 1000)})
         if p["no_answer"]:
             yield _sse("delta", {"text": rag.NO_ANSWER_TEXT})
@@ -249,24 +309,30 @@ async def ask(body: AskBody, request: Request):
             yield _sse("quota", st)
             yield _sse("error", {"code": "free_limit", "message": _limit_message(st), "reason": st["reason"]})
             return
-        parts: list[str] = []
+        # LLM oqimi: <<<KEYINGI>>> qismi foydalanuvchiga ko'rsatilmaydi, kirill javob o'giriladi
+        out = rag.AnswerStream(p["lang"])
+        started = False
         try:
-            async for piece in iterate_in_threadpool(llm.stream(rag.SYSTEM, p["user"])):
-                parts.append(piece)
-                yield _sse("delta", {"text": piece})
+            async for piece in iterate_in_threadpool(llm.stream(p["prompt"]["system"], p["prompt"]["user"])):
+                started = True
+                if text := out.feed(piece):
+                    yield _sse("delta", {"text": text})
         except asyncio.CancelledError:  # foydalanuvchi to'xtatdi / sahifani yopdi
             raise
         except Exception as e:  # noqa: BLE001
             log.warning("LLM xatosi: %s", str(e)[:300])
-            if counted and not parts:  # javob umuman chiqmadi - savol hisobga olinmaydi
+            if counted and not started:  # javob umuman chiqmadi - savol hisobga olinmaydi
                 q.refund(keys)
             code, text = _human_error(e)
             yield _sse("quota", _quota_info(keys))
-            yield _sse("error", {"code": code, "message": text, "partial": bool(parts)})
+            yield _sse("error", {"code": code, "message": text, "partial": started})
             return
+        if text := out.flush():
+            yield _sse("delta", {"text": text})
+        if f := out.followups():
+            yield _sse("followups", {"items": f})
         yield _sse("quota", _quota_info(keys))
-        text = "".join(parts)
-        yield _sse("done", {"no_answer": bool(NOT_FOUND_RE.search(text)), "model": llm.LAST_MODEL or _llm_info()["model"],
+        yield _sse("done", {"no_answer": out.not_found(), "model": llm.LAST_MODEL or _llm_info()["model"],
                             "ms": int((time.time() - t0) * 1000)})
 
     return StreamingResponse(events(), media_type="text/event-stream",

@@ -132,31 +132,63 @@ def dense_search(query: str, n: int, only_active: bool, no_amending: bool,
 
 
 # ---------------------------------------------------------------- gibrid
-def hybrid_search(query: str, k: int = 8, only_active: bool = True, no_amending: bool = True,
-                  n_each: int = 40, mode: str = "hybrid", doc_types: list[str] | None = None) -> list[dict]:
-    """mode: hybrid | dense | bm25. doc_types: faqat shu turdagi hujjatlar (None - hammasi).
-    Natija: [{chunk_id, score, rank_dense, rank_bm25, text, ...meta}]"""
+def query_texts(query: str, lang: str | None = None) -> tuple[str, str, float]:
+    """(dense uchun matn, BM25 uchun matn, BM25 og'irligi).
+
+    Ruscha savol: bge-m3 ko'p tilli, shuning uchun dense asl ruscha matn bilan qidiradi. BM25 o'zbekcha
+    matnda ruscha so'zlarni topmaydi: unga kichik lug'atdagi o'zbekcha atamalar + lotinlashtirilgan savol
+    (kodeks, konstitutsiya, pensiya kabi umumiy so'zlar) beriladi va og'irligi kamaytiriladi."""
+    if lang == "ru":
+        from .lang import ru_bm25_terms
+        terms = ru_bm25_terms(query)
+        return normalize_text(query), f"{terms} {prepare_query(query)}".strip(), (0.45 if terms else 0.15)
     q = prepare_query(query)
+    return q, q, W_BM25
+
+
+def hybrid_search(query: str, k: int = 8, only_active: bool = True, no_amending: bool = True,
+                  n_each: int = 40, mode: str = "hybrid", doc_types: list[str] | None = None,
+                  lang: str | None = None) -> list[dict]:
+    """mode: hybrid | dense | bm25. doc_types: faqat shu turdagi hujjatlar (None - hammasi).
+    lang="ru": ruscha savol (query_texts). Natija: [{chunk_id, score, rank_dense, rank_bm25, text, ...meta}]"""
+    q_dense, q_bm25, w_bm25 = query_texts(query, lang)
     t0 = time.time()
-    dense, cos = dense_search(q, n_each, only_active, no_amending, doc_types) \
+    dense, cos = dense_search(q_dense, n_each, only_active, no_amending, doc_types) \
         if mode in ("hybrid", "dense") else ([], {})
-    lex = bm25_search(q, n_each, only_active, no_amending, doc_types) if mode in ("hybrid", "bm25") else []
+    lex = bm25_search(q_bm25, n_each, only_active, no_amending, doc_types) if mode in ("hybrid", "bm25") else []
     fused: dict[str, float] = {}
-    for lst, w in ((dense, W_DENSE), (lex, W_BM25)):
+    for lst, w in ((dense, W_DENSE), (lex, w_bm25)):
         for r, cid in enumerate(lst):
             fused[cid] = fused.get(cid, 0.0) + w / (RRF_K + r + 1)
     top = sorted(fused, key=fused.get, reverse=True)[:k]
     if not top:
         return []
-    col = get_collection(MODEL, create=False)
-    got = col.get(ids=top, include=["documents", "metadatas"])
-    by_id = {i: (d, m) for i, d, m in zip(got["ids"], got["documents"], got["metadatas"])}
-    out = []
-    for cid in top:
-        doc, meta = by_id[cid]
-        out.append({"chunk_id": cid, "score": round(fused[cid], 5), "cosine": cos.get(cid),
-                    "rank_dense": dense.index(cid) + 1 if cid in dense else None,
-                    "rank_bm25": lex.index(cid) + 1 if cid in lex else None,
-                    "text": doc, **meta})
+    out = get_chunks(top)
+    for h in out:
+        cid = h["chunk_id"]
+        h.update({"score": round(fused[cid], 5), "cosine": cos.get(cid),
+                  "rank_dense": dense.index(cid) + 1 if cid in dense else None,
+                  "rank_bm25": lex.index(cid) + 1 if cid in lex else None})
     log.debug("hybrid_search %.2fs", time.time() - t0)
+    return out
+
+
+def get_chunks(ids: list[str], embeddings: bool = False) -> list[dict]:
+    """Chunklarni id bo'yicha (berilgan tartibda). Yo'q id'lar tashlab ketiladi."""
+    if not ids:
+        return []
+    col = get_collection(MODEL, create=False)
+    got = col.get(ids=list(ids), include=["documents", "metadatas"] + (["embeddings"] if embeddings else []))
+    embs = got.get("embeddings") if embeddings else None
+    by_id = {i: (got["documents"][j], got["metadatas"][j], None if embs is None else embs[j])
+             for j, i in enumerate(got["ids"])}
+    out = []
+    for cid in ids:
+        if cid not in by_id:
+            continue
+        doc, meta, emb = by_id[cid]
+        h = {"chunk_id": cid, "score": None, "cosine": None, "rank_dense": None, "rank_bm25": None, "text": doc, **meta}
+        if embeddings:
+            h["embedding"] = emb
+        out.append(h)
     return out
