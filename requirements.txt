@@ -1,0 +1,12 @@
+httpx>=0.27
+beautifulsoup4>=4.12
+lxml>=5.0
+selectolax>=0.3.21
+tqdm>=4.66
+tokenizers>=0.19
+huggingface_hub>=0.23
+# embedding (ONNX Runtime, PyTorch shart emas), vektor baza, BM25
+fastembed>=0.5
+chromadb>=0.5
+bm25s>=0.2
+numpy>=1.26
