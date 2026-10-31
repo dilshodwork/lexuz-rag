@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#F6F4F2">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Dalil — Oʻzbekiston qonunchiligi boʻyicha savol-javob. Har javob lex.uz dagi aniq moddaga bogʻlanadi.">
+<title>Dalil · Qonunchilik boʻyicha savol-javob</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Telegram Mini App SDK: oddiy brauzerda hech narsa qilmaydi -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+  /* Tema birinchi chizishdan oldin (oq "chaqnash" bo'lmasin) */
+  try {
+    var t = JSON.parse(localStorage.getItem("dalil.theme") || "null");
+    var tg = window.Telegram && Telegram.WebApp && Telegram.WebApp.initData ? Telegram.WebApp.colorScheme : null;
+    document.documentElement.dataset.theme = t || tg || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  } catch (e) {}
+</script>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
