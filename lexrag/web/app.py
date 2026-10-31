@@ -4,7 +4,9 @@ Ishga tushirish (loyiha papkasidan):
     .venv/bin/python -m uvicorn lexrag.web.app:app --port 8000
 
 API:
-    POST /api/ask      SSE oqim: sources -> delta ... -> done (yoki error)
+    POST /api/ask      SSE oqim: sources -> delta ... -> quota -> done (yoki error); server kaliti, bepul limit
+    POST /api/context  manbalar + tayyor LLM so'rovi (system/user): brauzer o'z kaliti bilan LLM'ni o'zi chaqiradi
+    GET  /api/quota    bugungi bepul savollar (qancha qoldi)
     GET  /api/search   faqat qidiruv (LLM'siz)
     GET  /api/health   server, indeks va LLM holati (kalitning o'zi qaytarilmaydi)
     GET  /api/stats    baza statistikasi (report.md va indeksdan)
@@ -14,26 +16,30 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import os
 import re
 import threading
 import time
 from contextlib import asynccontextmanager
 from functools import lru_cache
+from pathlib import Path
 from typing import AsyncIterator
 
 import httpx
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Request
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.concurrency import iterate_in_threadpool, run_in_threadpool
 
 from .. import config, llm, rag
+from . import quota
 from ..retrieval import MODEL, _bm25, prepare_query
 from ..indexer import embed_query, get_collection
 
 log = logging.getLogger("lexrag.web")
-DIST = config.ROOT / "web" / "dist"
+# DALIL_DIST: boshqa papkadagi frontend yig'masi (masalan, sinov serveri uchun)
+DIST = Path(os.environ.get("DALIL_DIST") or config.ROOT / "web" / "dist")
 DOC_TYPES = ["Qonun", "Kodeks", "Konstitutsiya"]
 STATE: dict = {"ready": False, "error": None, "count": None}
 # ONNX va ChromaDB bir vaqtda bitta qidiruvni bajaradi (CPU baribir band)
@@ -57,6 +63,7 @@ def _warmup():
 async def lifespan(_app: FastAPI):
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     logging.getLogger("httpx").setLevel(logging.WARNING)
+    STATE["quota"] = quota.Quota()
     await run_in_threadpool(_warmup)
     yield
 
@@ -95,9 +102,9 @@ def _human_error(e: BaseException) -> tuple[str, str]:
     """(kod, foydalanuvchiga ko'rinadigan matn). Asl xato faqat server logiga yoziladi."""
     msg = str(e)
     if isinstance(e, RuntimeError) and ("sozlanmagan" in msg or ".env da yo'q" in msg):
-        return "no_key", ("LLM uchun API kalit sozlanmagan. Loyiha papkasidagi .env fayliga "
-                          "GEMINI_API_KEY=... qatorini yozing va serverni qayta ishga tushiring. "
-                          "Manbalar qidiruvi kalitsiz ham ishlaydi.")
+        return "no_key", ("Serverda bepul AI sozlanmagan. Javob olish uchun oʻz AI kalitingizni ulang "
+                          "(“AI ulash”, Gemini kaliti bepul). Server egasi boʻlsangiz: .env ga GEMINI_API_KEY=... "
+                          "yozib, serverni qayta ishga tushiring. Manbalar qidiruvi kalitsiz ham ishlaydi.")
     if isinstance(e, httpx.TimeoutException):
         return "timeout", "LLM javob berishga ulgurmadi (vaqt tugadi). Birozdan keyin qayta urinib koʻring."
     if isinstance(e, httpx.TransportError):
@@ -125,10 +132,61 @@ def _sse(event: str, data) -> str:
 NOT_FOUND_RE = re.compile(r"^\W*Bazadagi hujjatlarda bu savolga[^.]*topilmadi", re.I)
 
 
+def _who(request: Request) -> list[tuple[str, int]]:
+    return quota.identity(request.client.host if request.client else None, request.headers)[1]
+
+
+def _quota_info(keys: list[tuple[str, int]]) -> dict:
+    st = STATE["quota"].status(keys)
+    return {**st, "free": _llm_info()["configured"] and quota.global_limit() > 0}
+
+
+def _limit_message(st: dict) -> str:
+    if st["reason"] == "global":
+        return ("Bugungi umumiy bepul limit tugadi: server kaliti hammaga birgalikda kuniga "
+                f"{quota.global_limit()} ta savolga yetadi. Oʻz AI kalitingizni ulang — Gemini kaliti bepul, "
+                "2 daqiqada olinadi. Manbalar yuqorida koʻrsatilgan.")
+    return (f"Bugungi {st['limit']} ta bepul savol tugadi. Davom etish uchun oʻz AI kalitingizni ulang — "
+            "Gemini kaliti bepul, 2 daqiqada olinadi. Manbalar yuqorida koʻrsatilgan.")
+
+
+async def _prepare(body: AskBody) -> dict:
+    def _prep():
+        with _search_lock:
+            return rag.prepare(body.question.strip(), k=body.k, **_search_kw(body.filters))
+    return await run_in_threadpool(_prep)
+
+
 # ---------------------------------------------------------------- API
+@app.post("/api/context")
+async def context(body: AskBody):
+    """Qidiruv + LLM uchun tayyor so'rov. Foydalanuvchi o'z kaliti bilan LLM'ni brauzerdan o'zi chaqiradi,
+    shuning uchun kalit bu serverga umuman kelmaydi. no_answer=True bo'lsa LLM chaqirilmaydi."""
+    t0 = time.time()
+    if not STATE["ready"]:
+        return JSONResponse({"code": "index", "message": "Qidiruv indeksi yuklanmagan. Server logini tekshiring."},
+                            status_code=503)
+    try:
+        p = await _prepare(body)
+    except Exception as e:  # noqa: BLE001
+        log.exception("qidiruv xatosi")
+        code, text = _human_error(e)
+        return JSONResponse({"code": code, "message": text}, status_code=500)
+    return {"sources": p["sources"], "no_answer": p["no_answer"], "query_latin": prepare_query(body.question),
+            "search_ms": int((time.time() - t0) * 1000), "no_answer_text": rag.NO_ANSWER_TEXT,
+            "prompt": None if p["no_answer"] else {"system": rag.SYSTEM, "user": p["user"]}}
+
+
+@app.get("/api/quota")
+async def get_quota(request: Request):
+    return _quota_info(_who(request))
+
+
 @app.post("/api/ask")
-async def ask(body: AskBody):
+async def ask(body: AskBody, request: Request):
     question = body.question.strip()
+    keys = _who(request)
+    q: quota.Quota = STATE["quota"]
 
     async def events() -> AsyncIterator[str]:
         t0 = time.time()
@@ -136,10 +194,7 @@ async def ask(body: AskBody):
             yield _sse("error", {"code": "index", "message": "Qidiruv indeksi yuklanmagan. Server logini tekshiring."})
             return
         try:
-            def _prep():
-                with _search_lock:
-                    return rag.prepare(question, k=body.k, **_search_kw(body.filters))
-            p = await run_in_threadpool(_prep)
+            p = await _prepare(body)
         except Exception as e:  # noqa: BLE001
             log.exception("qidiruv xatosi")
             code, text = _human_error(e)
@@ -152,6 +207,13 @@ async def ask(body: AskBody):
             yield _sse("delta", {"text": rag.NO_ANSWER_TEXT})
             yield _sse("done", {"no_answer": True, "model": None, "ms": int((time.time() - t0) * 1000)})
             return
+        # bepul limit faqat server kaliti haqiqatan ishlatiladigan savolda sarflanadi
+        counted = _llm_info()["configured"]
+        if counted and not q.reserve(keys):
+            st = _quota_info(keys)
+            yield _sse("quota", st)
+            yield _sse("error", {"code": "free_limit", "message": _limit_message(st), "reason": st["reason"]})
+            return
         parts: list[str] = []
         try:
             async for piece in iterate_in_threadpool(llm.stream(rag.SYSTEM, p["user"])):
@@ -161,9 +223,13 @@ async def ask(body: AskBody):
             raise
         except Exception as e:  # noqa: BLE001
             log.warning("LLM xatosi: %s", str(e)[:300])
+            if counted and not parts:  # javob umuman chiqmadi - savol hisobga olinmaydi
+                q.refund(keys)
             code, text = _human_error(e)
+            yield _sse("quota", _quota_info(keys))
             yield _sse("error", {"code": code, "message": text, "partial": bool(parts)})
             return
+        yield _sse("quota", _quota_info(keys))
         text = "".join(parts)
         yield _sse("done", {"no_answer": bool(NOT_FOUND_RE.search(text)), "model": llm.LAST_MODEL or _llm_info()["model"],
                             "ms": int((time.time() - t0) * 1000)})
@@ -197,7 +263,9 @@ async def search(q: str = Query(min_length=1, max_length=1000), k: int = Query(8
 @app.get("/api/health")
 async def health():
     return {"ok": STATE["ready"], "index_ready": STATE["ready"], "index_error": STATE["error"],
-            "chunks": STATE["count"], "embedding_model": MODEL, "llm": _llm_info()}
+            "chunks": STATE["count"], "embedding_model": MODEL, "llm": _llm_info(),
+            "free_daily_limit": quota.free_limit(), "global_daily_limit": quota.global_limit(),
+            "telegram_auth": bool(os.environ.get("TELEGRAM_BOT_TOKEN"))}
 
 
 @lru_cache(maxsize=1)

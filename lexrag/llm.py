@@ -21,8 +21,9 @@ from . import config
 log = logging.getLogger(__name__)
 
 DEFAULT_MODELS = {
-    # 2.5-flash yangi kalitlarga berilmaydi (404); 3.8-flash 31.10.2026 da tez-tez 503 yoki osilib qoladi
-    "gemini": "gemini-3.5-flash",
+    # 2.5-flash yangi kalitlarga berilmaydi (404); 3.8-flash 31.10.2026 da tez-tez 503 yoki osilib qoladi;
+    # 3.5-flash bepul tarifda kuniga ~20 so'rov - server kaliti (bepul sinov rejimi) uchun flash-lite
+    "gemini": "gemini-3.1-flash-lite",
     "openai": "gpt-4.1-mini",
     "anthropic": "claude-sonnet-4-5",
 }
@@ -103,8 +104,9 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8
     raise (first if isinstance(first, LLMQuota) else last) or RuntimeError("LLM javob bermadi")
 
 
-# 31.10.2026 sinovi: 3.5-flash barqaror (~10-20 s), 3.8-flash tez-tez 503, flash-latest osilib qoladi
-GEMINI_FALLBACKS = ["gemini-3.8-flash", "gemini-3.1-flash-lite", "gemini-flash-latest"]
+# 31.10.2026 sinovi: 3.5-flash barqaror (~10-20 s), 3.8-flash tez-tez 503, flash-latest osilib qoladi.
+# Har modelning kunlik kvotasi alohida, shuning uchun 3.5-flash ham zaxirada.
+GEMINI_FALLBACKS = ["gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.1-flash-lite", "gemini-flash-latest"]
 LAST_MODEL: str | None = None  # oxirgi javobni yozgan model (UI/log uchun)
 
 
