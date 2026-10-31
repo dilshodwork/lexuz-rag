@@ -103,7 +103,8 @@ export function TurnView(props: {
       <span className="ic"><Icon name={t.error.code === "no_key" || t.error.code === "bad_key" ? "key" : "alert"} /></span>
       <div>
         <h4>{t.error.code === "no_key" ? "API kalit sozlanmagan" : t.error.code === "bad_key" ? "API kalit notoʻgʻri"
-          : t.error.code === "network" ? "Aloqa yoʻq" : t.error.code === "timeout" ? "Vaqt tugadi" : "Xato yuz berdi"}</h4>
+          : t.error.code === "network" ? "Aloqa yoʻq" : t.error.code === "timeout" ? "Vaqt tugadi"
+          : t.error.code === "quota" ? "Kunlik limit tugadi" : t.error.code === "busy" ? "LLM band" : "Xato yuz berdi"}</h4>
         <p>{t.error.message}</p>
         {props.isLast && !props.busy && (
           <button className="retry press" onClick={props.onRetry}><Icon name="redo" />Qayta urinish</button>
@@ -113,7 +114,9 @@ export function TurnView(props: {
   ) : null;
 
   // LLM o'zi "topilmadi" deb yozgan bo'lsa, uning izohi (qayerdan qidirish mumkin) ham ko'rsatiladi
-  const showText = !!t.text && !t.noLLM;
+  const proseTurn = t.status === "notfound"
+    ? { ...t, text: t.text.replace(/^\W*Bazadagi hujjatlarda[^.]*topilmadi\.?\s*/i, "") } : t;
+  const showText = !!proseTurn.text.trim() && !t.noLLM;
   const done = !pending && !(props.live && t.status === "notfound");
   return (
     <div className="turn">
@@ -122,7 +125,7 @@ export function TurnView(props: {
         <div className={`a-head${pending ? " thinking" : ""}`}><span className="mk" /><span>{head}</span></div>
         {t.status === "notfound" && notice}
         {showText ? (
-          <Prose turn={t} live={props.live} activeN={props.activeN} onCite={props.onCite} onTick={props.onTick} />
+          <Prose turn={proseTurn} live={props.live} activeN={props.activeN} onCite={props.onCite} onTick={props.onTick} />
         ) : pending ? <Skeleton /> : null}
         {t.status === "stopped" && !t.text && <p className="stopped-note">Javob toʻxtatildi.</p>}
         {t.status === "error" && notice}

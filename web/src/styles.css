@@ -354,9 +354,8 @@ body.sheet-open .scrim { opacity: 1; pointer-events: auto; }
   .desk-src:hover, .desk-src.on { background: var(--fill); color: var(--ink); }
 
   /* Filtr popover */
-  .pop { display: block; position: fixed; top: 70px; right: 24px; z-index: 60; width: 380px; border-radius: 22px; padding: 18px 16px 16px;
+  .pop { display: block; position: fixed; top: 70px; right: 24px; z-index: 60; width: 380px; max-height: calc(100vh - 90px); overflow-y: auto; border-radius: 22px; padding: 18px 16px 16px;
     opacity: 0; transform: translateY(-8px) scale(.96); transform-origin: 90% 0; pointer-events: none; transition: opacity .2s, transform .5s var(--spring); }
-  body:not(.v-chat) .pop { right: auto; left: 50%; margin-left: -44px; top: 50%; transform-origin: 50% 0; }
   body.pop-open .pop { opacity: 1; transform: none; pointer-events: auto; }
   body.v-chat.pop-open .pop { right: 456px; }
   .pop h3 { margin: 0 0 4px; font: 700 18px/1.2 var(--display); letter-spacing: -0.02em; }

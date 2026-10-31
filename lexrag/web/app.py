@@ -102,6 +102,10 @@ def _human_error(e: BaseException) -> tuple[str, str]:
         return "timeout", "LLM javob berishga ulgurmadi (vaqt tugadi). Birozdan keyin qayta urinib koʻring."
     if isinstance(e, httpx.TransportError):
         return "network", "LLM serveriga ulanib boʻlmadi. Internet aloqasini tekshirib, qayta urinib koʻring."
+    if isinstance(e, llm.LLMQuota):
+        return "quota", ("LLM'ning kunlik bepul limiti tugagan (Gemini bepul tarifi: har model uchun kuniga "
+                         "20 ta soʻrov). Ertaga qayta urinib koʻring yoki .env ga boshqa API kalit yozing. "
+                         "Manbalar yuqorida koʻrsatilgan.")
     if isinstance(e, llm.LLMBusy):
         return "busy", "LLM hozir band (soʻrovlar koʻp). Bir daqiqadan keyin qayta urinib koʻring."
     if "API_KEY_INVALID" in msg or "xatosi 401" in msg or "xatosi 403" in msg:

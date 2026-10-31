@@ -95,6 +95,58 @@ python -m lexrag import-vectors data/colab/vectors.npz
 Import oldidan 24 ta tasodifiy chunk shu Mac'da ONNX bilan qayta hisoblanib, Colab vektorlari bilan
 solishtiriladi; cosine 0.999 dan past bo'lsa import qilinmaydi.
 
+## Veb-ilova "Dalil"
+
+FastAPI backend (`lexrag/web/app.py`) + Vite/React/TypeScript frontend (`web/`). Frontend yig'ilgach
+(`web/dist`) uni FastAPI o'zi beradi, shuning uchun ilova bitta buyruq bilan ishlaydi. Oddiy brauzerda
+(desktop: 3 ustun, telefon: iOS uslubidagi varaqlar) va Telegram Mini App ichida ochiladi.
+
+Bir marta o'rnatish (Node.js 20+ kerak):
+
+```bash
+cd "/Users/dilshodsbook/Documents/SecondBrain/General tasks/lexuz-rag"
+.venv/bin/pip install -r requirements.txt     # fastapi, uvicorn qo'shildi
+cd web && npm install && npm run build && cd ..   # -> web/dist
+```
+
+Ishga tushirish (loyiha papkasidan):
+
+```bash
+.venv/bin/python -m uvicorn lexrag.web.app:app --port 8000
+```
+
+Keyin brauzerda http://127.0.0.1:8000 oching. Birinchi ishga tushishda bge-m3 modeli va BM25 indeksi
+xotiraga yuklanadi (~7 s), so'ng har savolga javob ~10-30 s (asosan LLM). To'xtatish: terminalda `Ctrl+C`.
+
+Frontend ustida ishlash (o'zgarishlar darhol ko'rinadi): bir terminalda yuqoridagi uvicorn buyrug'i,
+ikkinchisida `cd web && npm run dev` va http://localhost:5173 (`/api` 8000-portga yo'naltiriladi).
+
+API:
+
+| Yo'l | Nima qiladi |
+|---|---|
+| `POST /api/ask` | `{"question": "...", "filters": {"only_active": true, "include_amending": false, "doc_types": ["Qonun","Kodeks","Konstitutsiya"]}}` -> SSE oqim: `sources`, keyin `delta` bo'laklari, oxirida `done` (yoki `error`: `no_key`, `bad_key`, `timeout`, `busy`, `network`, `llm`) |
+| `GET /api/search?q=...&k=8&only_active=true&include_amending=false&types=Kodeks` | faqat qidiruv, LLM'siz |
+| `GET /api/health` | indeks va LLM holati (kalitning o'zi qaytarilmaydi) |
+| `GET /api/stats` | hujjatlar, chunklar soni, baza sanasi (report.md va indeksdan) |
+| `GET /api/docs` | Swagger |
+
+LLM: `.env` dagi `LLM_PROVIDER` va kalit. Gemini standart modeli `gemini-3.5-flash`; 503/429, 404 yoki
+timeout bo'lsa `gemini-3.8-flash`, `gemini-3.1-flash-lite`, `gemini-flash-latest` zaxiralariga o'tadi.
+`.env` da kalit bo'lmasa ilova ishlayveradi: manbalar topiladi, javob o'rnida "API kalit sozlanmagan" xabari chiqadi.
+
+Sinov va skrinshotlar (server ishlab turganda):
+
+```bash
+.venv/bin/python scripts/web_smoke.py                 # 5 ta savol oxirigacha (SSE), natija terminalda
+.venv/bin/pip install playwright && .venv/bin/python -m playwright install chromium
+.venv/bin/python scripts/shots.py --out design/shots/app   # desktop 1440px va telefon 390px
+```
+
+Telegram Mini App: BotFather'da botga Web App URL sifatida ilovaning HTTPS manzilini bering (masalan,
+`cloudflared tunnel --url http://127.0.0.1:8000` bergan manzil). Ilova `telegram-web-app.js` orqali
+Telegram temasi, safe-area, viewport balandligi va "orqaga" tugmasini o'zi hisobga oladi.
+
 ## Tuzilma
 
 ```
@@ -114,6 +166,9 @@ lexrag/
   llm.py        Gemini / OpenAI / Claude (HTTP, streaming)
   rag.py        manbali javob: [n] iqtiboslar, "topilmadi" himoyasi
   colab.py      embeddingni Colab GPU'da hisoblash: eksport/import + sifat tekshiruvi
+  web/app.py    FastAPI: /api/ask (SSE), /api/search, /api/health, /api/stats + web/dist
+web/            React frontend (src/App.tsx, components/, styles.css - design/maket-v2.html A·Anor)
+scripts/        web_smoke.py (savollar bilan sinov), shots.py (Playwright skrinshotlari)
 data/
   raw/list/       ro'yxat sahifalari HTML
   raw/docs/       hujjat HTML (<lex_id>.html)

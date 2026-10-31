@@ -51,6 +51,13 @@ def main():
     ap.add_argument("--base", default="http://127.0.0.1:8000")
     ap.add_argument("--json", help="natijalarni shu faylga yozish")
     a = ap.parse_args()
+    for _ in range(90):  # server modelni yuklaguncha kutish
+        try:
+            if httpx.get(f"{a.base}/api/health", timeout=3).json().get("ok"):
+                break
+        except httpx.HTTPError:
+            pass
+        time.sleep(1)
     results = []
     for q in a.questions or DEFAULT_QS:
         r = ask(a.base, q)

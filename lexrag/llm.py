@@ -62,7 +62,8 @@ def _client():
     return httpx.Client(timeout=httpx.Timeout(60, connect=20))
 
 
-def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 2048) -> Iterator[str]:
+# Gemini 3.x da "thinking" tokenlari ham maxOutputTokens ichiga kiradi: 2048 da javob o'rtada uzilardi
+def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8192) -> Iterator[str]:
     """Javobni bo'laklab qaytaradi (UI'da so'zma-so'z chiqishi uchun).
 
     Gemini 503/429 (yuklama), 404 (model yo'q) yoki timeout bo'lsa, birinchi bo'lak chiqmaguncha
@@ -75,6 +76,7 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 2
     import time
     chain = [model] + [m for m in GEMINI_FALLBACKS if m != model]
     last: Exception | None = None
+    first: Exception | None = None
     for m in chain:
         for attempt in range(2):
             started = False
@@ -93,10 +95,12 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 2
                 log.warning("LLM %s: %s (%.1fs) - %s", m, type(e).__name__, time.time() - t0,
                             "qayta urinish" if isinstance(e, LLMBusy) and attempt == 0 else "keyingi model")
                 last = e
-                if not isinstance(e, LLMBusy):
-                    break  # 404 / osilib qolish: shu modelni qayta urinmasdan keyingisiga
+                first = first or e
+                if not isinstance(e, LLMBusy) or isinstance(e, LLMQuota):
+                    break  # 404 / osilib qolish / kunlik limit: shu modelni qayta urinmasdan keyingisiga
                 time.sleep(1.5 * (attempt + 1))
-    raise last or RuntimeError("LLM javob bermadi")
+    # asosiy modelning kunlik limiti tugagan bo'lsa, foydalanuvchiga aynan shu sabab aytiladi
+    raise (first if isinstance(first, LLMQuota) else last) or RuntimeError("LLM javob bermadi")
 
 
 # 31.10.2026 sinovi: 3.5-flash barqaror (~10-20 s), 3.8-flash tez-tez 503, flash-latest osilib qoladi
@@ -106,6 +110,10 @@ LAST_MODEL: str | None = None  # oxirgi javobni yozgan model (UI/log uchun)
 
 class LLMBusy(RuntimeError):
     """Provayder vaqtincha band (503/429)."""
+
+
+class LLMQuota(LLMBusy):
+    """Kunlik kvota tugagan (429, ...PerDay...): qayta urinish befoyda, boshqa modelning kvotasi alohida."""
 
 
 class LLMNoModel(RuntimeError):
@@ -121,13 +129,18 @@ def _stream_once(provider, model, key, system, user, temperature, max_tokens) ->
                     "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens}}
             with c.stream("POST", url, json=body, headers={"x-goog-api-key": key}) as r:
                 _raise(r)
+                finish, usage = None, {}
                 for line in r.iter_lines():
                     if line.startswith("data:"):
                         d = json.loads(line[5:])
+                        usage = d.get("usageMetadata") or usage
                         for cand in d.get("candidates", []):
+                            finish = cand.get("finishReason") or finish
                             for part in cand.get("content", {}).get("parts", []):
-                                if part.get("text"):
+                                if part.get("text") and not part.get("thought"):
                                     yield part["text"]
+                if finish and finish != "STOP":
+                    log.warning("Gemini %s javobi to'liq emas: finishReason=%s, tokenlar=%s", model, finish, usage)
         elif provider == "openai":
             body = {"model": model, "temperature": temperature, "max_tokens": max_tokens, "stream": True,
                     "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
@@ -163,6 +176,8 @@ def _raise(r: httpx.Response):
     if r.status_code >= 400:
         r.read()
         msg = r.text[:400]
+        if r.status_code == 429 and "PerDay" in r.text:
+            raise LLMQuota(f"LLM API xatosi 429 (kunlik limit): {msg}")
         if r.status_code in (429, 503):
             raise LLMBusy(f"LLM API xatosi {r.status_code}: {msg}")
         if r.status_code == 404:

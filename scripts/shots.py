@@ -34,7 +34,13 @@ def ask(page: Page, q: str, timeout=240):
     page.keyboard.press("Enter")
     page.wait_for_selector(".turn")
     page.wait_for_function("!document.body.classList.contains('busy')", timeout=timeout * 1000)
-    page.wait_for_timeout(1800)  # oqim animatsiyasi tugashi uchun
+    settle(page)
+
+
+def settle(page: Page):
+    """Matn to'liq ochilib, so'zlar animatsiyasi tugaguncha kutish"""
+    page.wait_for_function("!document.querySelector('.prose .w, .prose .cite.w')", timeout=60000)
+    page.wait_for_timeout(500)
 
 
 def fresh(page: Page, base: str, theme="light"):
@@ -77,7 +83,7 @@ def main():
                 pg.wait_for_timeout(900)
                 shot(pg, f"{kind}-light-2-yuklanmoqda")
                 pg.wait_for_function("!document.body.classList.contains('busy')", timeout=240000)
-                pg.wait_for_timeout(1800)
+                settle(pg)
                 print(f"   javob {time.time() - t0:.0f}s")
                 if kind == "mobile":
                     pg.evaluate("document.querySelector('.scroll').scrollTop = 0")
