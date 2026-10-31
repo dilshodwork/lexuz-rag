@@ -18,7 +18,7 @@ import httpx
 from . import config
 
 DEFAULT_MODELS = {
-    "gemini": "gemini-2.5-flash",
+    "gemini": "gemini-3.8-flash",  # 2.5-flash yangi kalitlarga berilmaydi (API 404 qaytaradi)
     "openai": "gpt-4.1-mini",
     "anthropic": "claude-sonnet-4-5",
 }
@@ -58,8 +58,46 @@ def _client():
 
 
 def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 2048) -> Iterator[str]:
-    """Javobni bo'laklab qaytaradi (UI'da so'zma-so'z chiqishi uchun)."""
+    """Javobni bo'laklab qaytaradi (UI'da so'zma-so'z chiqishi uchun).
+
+    Gemini 503/429 (yuklama) qaytarsa, birinchi bo'lak chiqmaguncha qayta urinadi va
+    GEMINI_FALLBACKS dagi zaxira modellarga o'tadi.
+    """
     provider, model, key = settings()
+    if provider != "gemini":
+        yield from _stream_once(provider, model, key, system, user, temperature, max_tokens)
+        return
+    import time
+    chain = [model] + [m for m in GEMINI_FALLBACKS if m != model]
+    last: Exception | None = None
+    for i, m in enumerate(chain):
+        for attempt in range(2):
+            started = False
+            try:
+                for piece in _stream_once(provider, m, key, system, user, temperature, max_tokens):
+                    if not started:
+                        global LAST_MODEL
+                        LAST_MODEL = m
+                    started = True
+                    yield piece
+                return
+            except LLMBusy as e:
+                if started:
+                    raise
+                last = e
+                time.sleep(1.5 * (attempt + 1))
+    raise last or RuntimeError("LLM javob bermadi")
+
+
+GEMINI_FALLBACKS = ["gemini-flash-latest", "gemini-3.5-flash", "gemini-3.1-flash-lite"]
+LAST_MODEL: str | None = None  # oxirgi javobni yozgan model (UI/log uchun)
+
+
+class LLMBusy(RuntimeError):
+    """Provayder vaqtincha band (503/429)."""
+
+
+def _stream_once(provider, model, key, system, user, temperature, max_tokens) -> Iterator[str]:
     with _client() as c:
         if provider == "gemini":
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse"
@@ -110,4 +148,6 @@ def _raise(r: httpx.Response):
     if r.status_code >= 400:
         r.read()
         msg = r.text[:400]
+        if r.status_code in (429, 503):
+            raise LLMBusy(f"LLM API xatosi {r.status_code}: {msg}")
         raise RuntimeError(f"LLM API xatosi {r.status_code}: {msg}")
