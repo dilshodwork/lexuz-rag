@@ -183,5 +183,8 @@ def build_report() -> str:
             extra.append(f"| Mahalliy ONNX vs Colab, {c['checked']} tasodifiy chunk | cosine min {c['cos_min']:.6f}, "
                          f"o'rtacha {c['cos_mean']:.6f} |")
         text += "\n".join(extra) + "\n"
+    from .evaluate import report_section  # 6. Baholash (eval/results.json bo'lsa)
+    if sec := report_section():
+        text += "\n" + sec
     config.REPORT.write_text(text, encoding="utf-8")
     return text

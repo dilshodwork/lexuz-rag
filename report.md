@@ -109,3 +109,30 @@ Recall - saytdagi so'zlarning bizdagi ulushi (matn + izohlar + rekvizitlar). Pre
 | Indeksdagi chunklar | 39961 (chunks.jsonl: 39961) |
 | Hisoblangan joyi | Google Colab T4 GPU (embedding), qidiruv shu kompyuterda ONNX bilan |
 | Mahalliy ONNX vs Colab, 24 tasodifiy chunk | cosine min 1.000000, o'rtacha 1.000000 |
+
+## 6. Baholash (qidiruv sifati)
+
+To'plam: `eval/questions.jsonl`, 50 savol — 46 tasi gold modda bilan, 4 tasi bazada yo'q; lotin 34, kirill 9, rus 7. Savollar modda matnini o'qib, oddiy odam tilida parafraza qilib yozilgan; gold modda bazada borligi har safar tekshiriladi. LLM'siz. Commit `afc2096`, 2026-11-01 01:43. Metodika: `eval/README.md`.
+
+| Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | vaqt |
+|---|---|---|---|---|---|---|---|
+| Dense (bge-m3) | 57.2% | 74.3% | 81.5% | 88.0% | 0.733 | 0.750 | 489 ms |
+| BM25 | 14.1% | 18.1% | 22.5% | 27.9% | 0.200 | 0.207 | 1 ms |
+| Gibrid (RRF) | 55.1% | 69.9% | 83.7% | 88.0% | 0.716 | 0.738 | 490 ms |
+| Gibrid + bo'lish | 54.4% | 69.2% | 83.0% | 88.0% | 0.702 | 0.730 | 564 ms |
+
+"Bazada yo'q" savollarni rad etish (NO_ANSWER_COS = 0.48): 3/4 to'g'ri rad, javobi bor savollardan 0/46 xato rad, aniqlik 98.0%.
+
+Standartlar sweep bo'yicha o'zgardi:
+
+| | oldin (W_BM25 0.6, NO_ANSWER_COS 0.45) | keyin |
+|---|---|---|
+| Gibrid recall@5 | 61.2% | 83.7% |
+| Gibrid recall@1 | 35.5% | 55.1% |
+| Gibrid MRR@10 | 0.509 | 0.716 |
+
+W_BM25 = 0.05: BM25 parafrazali savollarda umumiy so'zlar bo'yicha shovqin beradi va RRF'da dense topgan moddani pastga suradi (BM25 yolg'iz recall@5 22.5%). Sof dense (W_BM25 = 0) MRR'da biroz yaxshiroq (0.733), lekin recall@5 pastroq (81.5%). NO_ANSWER_COS: javobi bor savollarda eng yaqin cosine ≥ 0.5545, "yo'q" savollarda 0.4315, 0.4439, 0.4481, 0.6102 — 0.46–0.54 oralig'i bir xil natija beradi, 0.48 tanlandi.
+
+Javob sifati (ixtiyoriy, 5 savol, gemini-3.1-flash-lite, 5 ta LLM so'rovi): faithfulness (ishonch tekshiruvi tasdiqlagan da'volar ulushi) 90.0%, gold modda iqtibos qilingan 5/5, [n] lar to'g'ri 5/5. Ruscha javobda tekshiruv ma'no o'xshashligini past baholaydi (manba o'zbekcha) — r01 javobi to'g'ri, lekin "past" chiqdi.
+
+Xulosa: asosiy ishni dense (bge-m3) qiladi; BM25 bu to'plamda yordamchi xolos. Eng ko'p xato: savol kundalik so'z bilan, modda esa rasmiy atama bilan yozilgan holatlar ("o'g'irlik" o'rniga "yashirincha olib qo'yish", "QQS" o'rniga "налог на добавленную стоимость"). Kirill savollarda recall pastroq. To'liq jadvallar: `eval/results.md`, veb-ilovada `/baholash`.

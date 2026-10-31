@@ -56,7 +56,8 @@ python -m lexrag report
 # 4. Vektor baza va qidiruv
 python -m lexrag index                                  # BAAI/bge-m3 (standart)
 python -m lexrag index --model intfloat/multilingual-e5-large
-python -m lexrag search "Mikromoliya tashkiloti bankka aylanishi mumkinmi?" -k 5   # gibrid: bge-m3 + BM25
+python -m lexrag search "Mikromoliya tashkiloti bankka aylanishi mumkinmi?" -k 5   # gibrid: bge-m3 + BM25 (RRF)
+python -m lexrag eval                                   # qidiruv sifati: eval/questions.jsonl -> eval/results.md
 python -m lexrag search "..." --mode dense              # faqat ma'no bo'yicha (taqqoslash uchun)
 
 # 5. RAG javob (LLM). Avval: cp .env.example .env  va .env ga API kalitni o'zingiz yozing
@@ -239,6 +240,53 @@ cd web && npx vite build --outDir /tmp/dalil-s2-dist --emptyOutDir && cd ..
 Yangi frontend backend o'zgarishlarisiz ishlamaydi (`step`, `/api/verify`): `web/dist` qayta yig'ilganda uvicorn ham
 qayta ishga tushirilsin.
 
+### 3-bosqich: X-ray (RAG ichi) va baholash
+
+**X-ray.** Har javob ostida "Ichini koʻrish" tugmasi: desktopda o'ng panelda "Manbalar | Ichini koʻrish" tabi, telefonda
+pastdan varaq. Ko'rsatiladi: savol tili/yozuvi, lotinga o'girilgan matn, bo'laklar; har qidiruv uchun dense (bge-m3,
+cosine) va BM25 (ball) top-10, RRF birlashmasi (har manba qaysi usuldan: D / B / D+B, dense'ga nisbatan o'rin
+o'zgarishi), `W_DENSE`, `W_BM25`, filtrlar, `NO_ANSWER_COS` va eng yaqin cosine; LLM'ga ketgan system va user prompt
+(nusxalanadi, taxminiy token soni), model va provayder (server kaliti / o'z kaliti); vaqtlar waterfall'i (embedding,
+dense, BM25, RRF, LLM birinchi token, oqim, umumiy); ishonch tekshiruvining har gapi (qaysi manba, ma'no o'xshashligi,
+so'zlar mosligi). Ma'lumot qo'shimcha LLM so'rovisiz yig'iladi:
+
+* `/api/ask` va `/api/context` body'sida `"xray": true` -> SSE'da alohida `xray` hodisasi (`done` da LLM vaqtlari
+  `xray_llm`), o'z kaliti yo'lida `/api/context` javobida `xray` (LLM vaqtini brauzer o'lchaydi). `xray` yo'q bo'lsa
+  hech narsa ortiqcha hisoblanmaydi (`retrieval.hybrid_search(trace=None)`).
+* Sozlamalar / filtrlar oynasida "X-ray rejimi" — yoqilsa har savolda yig'iladi va panel o'zi ochiladi. O'chiq bo'lsa ham
+  tugma ishlaydi: qidiruv LLM'siz qayta bajariladi (bu ekranda aytiladi).
+
+**Baholash.** `eval/questions.jsonl` — 50 savol (46 tasi gold modda bilan, 4 tasi bazada yo'q; 34 lotin, 9 kirill,
+7 rus), metodika `eval/README.md` da.
+
+```bash
+.venv/bin/python -m lexrag eval                             # dense, bm25, hybrid, hybrid_plan + sweep (~40 s, LLM'siz)
+.venv/bin/python -m lexrag eval --modes dense,hybrid --k 10 --no-sweep
+.venv/bin/python scripts/eval_answers.py                    # ixtiyoriy: 5 savol javob sifati (5 ta LLM so'rovi)
+```
+
+Natija: `eval/results.json` (har savol tafsiloti bilan), `eval/results.md` (jadvallar), `eval/sweep.json`
+(`W_BM25` va `NO_ANSWER_COS`). Veb-ilovada `/baholash` sahifasi (yon panelda "Baholash", telefonda menyu -> Sozlamalar):
+KPI, rejimlar taqqoslash, recall@k egri chizig'i, kategoriya/til/qiyinlik kesimlari, sweep grafiklari, har savol jadvali
+("faqat xatolar" filtri, qator bosilsa — gold modda qaysi rejimda nechanchi o'rinda). "Qayta hisoblash" —
+`POST /api/eval/run` (fon vazifa, bir vaqtda bitta, progress `GET /api/eval/status`; `.env` da `EVAL_TOKEN=...`
+bo'lsa `X-Eval-Token` sarlavhasi talab qilinadi).
+
+Sweep natijasida standartlar o'zgardi: `W_BM25` 0.6 -> 0.05 (gibrid recall@5 61.2% -> 83.7%), `NO_ANSWER_COS`
+0.45 -> 0.48. Sababi va raqamlar `eval/README.md` va `report.md` da.
+
+Sinov (alohida 8010-port serveri, `web/dist` ga tegmaydi):
+
+```bash
+cd web && npx vite build --outDir /tmp/dalil-s3-dist --emptyOutDir && cd ..
+.venv/bin/python scripts/test_server.py --port 8010 --free-limit 30 --dist /tmp/dalil-s3-dist \
+    --quota-db /tmp/dalil-s3-quota.sqlite --llm-once        # --llm-once: savolga aynan 1 ta LLM so'rovi
+.venv/bin/python scripts/stage3_e2e.py --only api,mock,reshoot,eval   # LLM'siz
+.venv/bin/python scripts/stage3_e2e.py --only real                    # 2 ta haqiqiy LLM so'rovi + skrinshotlar
+```
+
+Skrinshotlar: `design/shots/app/s3-*.png`.
+
 Telegram Mini App: BotFather'da botga Web App URL sifatida ilovaning HTTPS manzilini bering (masalan,
 `cloudflared tunnel --url http://127.0.0.1:8000` bergan manzil). Ilova `telegram-web-app.js` orqali
 Telegram temasi, safe-area, viewport balandligi va "orqaga" tugmasini o'zi hisobga oladi.
@@ -263,13 +311,17 @@ lexrag/
   plan.py       murakkab savolni 2-3 qidiruvga bo'lish (evristika; LLM_PLAN=1 bilan LLM)
   trust.py      ishonch tekshiruvi: javob da'volari vs iqtibos qilingan moddalar (LLM'siz)
   llm.py        Gemini / OpenAI / Claude (HTTP, streaming)
-  rag.py        bosqichlar, promptlar (yuridik / sodda, til), manbali javob: [n] iqtiboslar, "topilmadi" himoyasi
+  rag.py        bosqichlar, promptlar (yuridik / sodda, til), manbali javob: [n] iqtiboslar, "topilmadi" himoyasi, X-ray
+  evaluate.py   qidiruv sifatini baholash (eval/), recall@k, MRR, nDCG, rad etish, sweep
   colab.py      embeddingni Colab GPU'da hisoblash: eksport/import + sifat tekshiruvi
-  web/app.py    FastAPI: /api/ask (SSE), /api/context, /api/verify, /api/quota, /api/search, /api/health, /api/stats + web/dist
+  web/app.py    FastAPI: /api/ask (SSE), /api/context, /api/verify, /api/quota, /api/search, /api/health, /api/stats,
+                /api/eval (+ /run, /status) + web/dist
   web/quota.py  bepul limit: foydalanuvchini aniqlash (Telegram HMAC / qurilma + IP), SQLite hisoblagich
 web/            React frontend (src/App.tsx, ai.ts - o'z kaliti bilan LLM, textproc.ts - javob oqimi parseri va translit,
                 share.ts - ulashish va rasm-kartochka, components/, styles.css - A·Anor)
-scripts/        web_smoke.py, shots.py, test_quota.py, byok_e2e.py, test_server.py (sinov serveri), test_stage2.py, stage2_e2e.py
+scripts/        web_smoke.py, shots.py, test_quota.py, byok_e2e.py, test_server.py (sinov serveri), test_stage2.py, stage2_e2e.py,
+                stage3_e2e.py, eval_answers.py
+eval/           questions.jsonl (baholash to'plami), README.md (metodika), results.json/.md, sweep.json, baseline_w06.json, answers.json
 data/
   raw/list/       ro'yxat sahifalari HTML
   raw/docs/       hujjat HTML (<lex_id>.html)

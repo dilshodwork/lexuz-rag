@@ -33,7 +33,8 @@ Umumiy chatbot emas: javob faqat bazadagi moddalardan yoziladi, mos modda topilm
 
 - Interfeys tili: o'zbek lotin (ʻ va ʼ belgilari to'g'ri).
 - Telegram Mini App: safe-area, Telegram tema ranglari, viewport balandligi hisobga olinadi.
-- Keyingi bosqichlar (arxitekturada joy qoldiriladi): baholash to'plami (recall@5), reranker, internetga chiqarish.
+- Shaffoflik (3-bosqich): har javobda "Ichini koʻrish" (X-ray) va `/baholash` sahifasi (50 savollik to'plam, recall@k, MRR).
+- Keyingi bosqichlar (arxitekturada joy qoldiriladi): reranker, internetga chiqarish.
 - Hech qachon commit qilinmaydi: data/, .env.
 
 ## Brand Commitments

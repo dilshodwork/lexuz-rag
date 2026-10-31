@@ -1,0 +1,367 @@
+{
+ "w_bm25": {
+  "current": 0.05,
+  "grid": [
+   {
+    "w_bm25": 0.0,
+    "recall@1": 0.5725,
+    "recall@5": 0.8152,
+    "recall@10": 0.8804,
+    "mrr@10": 0.7329,
+    "ndcg@10": 0.7502
+   },
+   {
+    "w_bm25": 0.05,
+    "recall@1": 0.5507,
+    "recall@5": 0.837,
+    "recall@10": 0.8804,
+    "mrr@10": 0.716,
+    "ndcg@10": 0.738
+   },
+   {
+    "w_bm25": 0.1,
+    "recall@1": 0.4855,
+    "recall@5": 0.7717,
+    "recall@10": 0.8804,
+    "mrr@10": 0.6711,
+    "ndcg@10": 0.7041
+   },
+   {
+    "w_bm25": 0.2,
+    "recall@1": 0.3659,
+    "recall@5": 0.75,
+    "recall@10": 0.8804,
+    "mrr@10": 0.5742,
+    "ndcg@10": 0.6307
+   },
+   {
+    "w_bm25": 0.3,
+    "recall@1": 0.3768,
+    "recall@5": 0.6449,
+    "recall@10": 0.9022,
+    "mrr@10": 0.5631,
+    "ndcg@10": 0.6253
+   },
+   {
+    "w_bm25": 0.4,
+    "recall@1": 0.3551,
+    "recall@5": 0.6123,
+    "recall@10": 0.8587,
+    "mrr@10": 0.5308,
+    "ndcg@10": 0.5894
+   },
+   {
+    "w_bm25": 0.6,
+    "recall@1": 0.3551,
+    "recall@5": 0.6123,
+    "recall@10": 0.7935,
+    "mrr@10": 0.5095,
+    "ndcg@10": 0.5589
+   },
+   {
+    "w_bm25": 0.8,
+    "recall@1": 0.3333,
+    "recall@5": 0.6123,
+    "recall@10": 0.7717,
+    "mrr@10": 0.4899,
+    "ndcg@10": 0.5393
+   },
+   {
+    "w_bm25": 1.0,
+    "recall@1": 0.3333,
+    "recall@5": 0.5688,
+    "recall@10": 0.75,
+    "mrr@10": 0.4826,
+    "ndcg@10": 0.5282
+   },
+   {
+    "w_bm25": 1.5,
+    "recall@1": 0.3007,
+    "recall@5": 0.4529,
+    "recall@10": 0.587,
+    "mrr@10": 0.419,
+    "ndcg@10": 0.441
+   },
+   {
+    "w_bm25": 2.0,
+    "recall@1": 0.2572,
+    "recall@5": 0.4312,
+    "recall@10": 0.587,
+    "mrr@10": 0.388,
+    "ndcg@10": 0.4169
+   }
+  ],
+  "best": {
+   "w_bm25": 0.05,
+   "recall@1": 0.5507,
+   "recall@5": 0.837,
+   "recall@10": 0.8804,
+   "mrr@10": 0.716,
+   "ndcg@10": 0.738
+  },
+  "note": "Ruscha savollarda BM25 og'irligi W_BM25 × 0.75 (lug'at atamasi bor) yoki × 0.25."
+ },
+ "no_answer_cos": {
+  "current": 0.48,
+  "grid": [
+   {
+    "threshold": 0.3,
+    "n_none": 4,
+    "correct_reject": 0,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.0,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.92,
+    "balanced_accuracy": 0.5
+   },
+   {
+    "threshold": 0.32,
+    "n_none": 4,
+    "correct_reject": 0,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.0,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.92,
+    "balanced_accuracy": 0.5
+   },
+   {
+    "threshold": 0.34,
+    "n_none": 4,
+    "correct_reject": 0,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.0,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.92,
+    "balanced_accuracy": 0.5
+   },
+   {
+    "threshold": 0.36,
+    "n_none": 4,
+    "correct_reject": 0,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.0,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.92,
+    "balanced_accuracy": 0.5
+   },
+   {
+    "threshold": 0.38,
+    "n_none": 4,
+    "correct_reject": 0,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.0,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.92,
+    "balanced_accuracy": 0.5
+   },
+   {
+    "threshold": 0.4,
+    "n_none": 4,
+    "correct_reject": 0,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.0,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.92,
+    "balanced_accuracy": 0.5
+   },
+   {
+    "threshold": 0.42,
+    "n_none": 4,
+    "correct_reject": 0,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.0,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.92,
+    "balanced_accuracy": 0.5
+   },
+   {
+    "threshold": 0.44,
+    "n_none": 4,
+    "correct_reject": 1,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.25,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.94,
+    "balanced_accuracy": 0.625
+   },
+   {
+    "threshold": 0.46,
+    "n_none": 4,
+    "correct_reject": 3,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.75,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.98,
+    "balanced_accuracy": 0.875
+   },
+   {
+    "threshold": 0.48,
+    "n_none": 4,
+    "correct_reject": 3,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.75,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.98,
+    "balanced_accuracy": 0.875
+   },
+   {
+    "threshold": 0.5,
+    "n_none": 4,
+    "correct_reject": 3,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.75,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.98,
+    "balanced_accuracy": 0.875
+   },
+   {
+    "threshold": 0.52,
+    "n_none": 4,
+    "correct_reject": 3,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.75,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.98,
+    "balanced_accuracy": 0.875
+   },
+   {
+    "threshold": 0.54,
+    "n_none": 4,
+    "correct_reject": 3,
+    "n_answerable": 46,
+    "false_reject": 0,
+    "reject_rate": 0.75,
+    "false_reject_rate": 0.0,
+    "accuracy": 0.98,
+    "balanced_accuracy": 0.875
+   },
+   {
+    "threshold": 0.56,
+    "n_none": 4,
+    "correct_reject": 3,
+    "n_answerable": 46,
+    "false_reject": 2,
+    "reject_rate": 0.75,
+    "false_reject_rate": 0.0435,
+    "accuracy": 0.94,
+    "balanced_accuracy": 0.8533
+   },
+   {
+    "threshold": 0.58,
+    "n_none": 4,
+    "correct_reject": 3,
+    "n_answerable": 46,
+    "false_reject": 6,
+    "reject_rate": 0.75,
+    "false_reject_rate": 0.1304,
+    "accuracy": 0.86,
+    "balanced_accuracy": 0.8098
+   },
+   {
+    "threshold": 0.6,
+    "n_none": 4,
+    "correct_reject": 3,
+    "n_answerable": 46,
+    "false_reject": 10,
+    "reject_rate": 0.75,
+    "false_reject_rate": 0.2174,
+    "accuracy": 0.78,
+    "balanced_accuracy": 0.7663
+   },
+   {
+    "threshold": 0.62,
+    "n_none": 4,
+    "correct_reject": 4,
+    "n_answerable": 46,
+    "false_reject": 14,
+    "reject_rate": 1.0,
+    "false_reject_rate": 0.3043,
+    "accuracy": 0.72,
+    "balanced_accuracy": 0.8478
+   },
+   {
+    "threshold": 0.64,
+    "n_none": 4,
+    "correct_reject": 4,
+    "n_answerable": 46,
+    "false_reject": 18,
+    "reject_rate": 1.0,
+    "false_reject_rate": 0.3913,
+    "accuracy": 0.64,
+    "balanced_accuracy": 0.8043
+   },
+   {
+    "threshold": 0.66,
+    "n_none": 4,
+    "correct_reject": 4,
+    "n_answerable": 46,
+    "false_reject": 27,
+    "reject_rate": 1.0,
+    "false_reject_rate": 0.587,
+    "accuracy": 0.46,
+    "balanced_accuracy": 0.7065
+   },
+   {
+    "threshold": 0.68,
+    "n_none": 4,
+    "correct_reject": 4,
+    "n_answerable": 46,
+    "false_reject": 33,
+    "reject_rate": 1.0,
+    "false_reject_rate": 0.7174,
+    "accuracy": 0.34,
+    "balanced_accuracy": 0.6413
+   },
+   {
+    "threshold": 0.7,
+    "n_none": 4,
+    "correct_reject": 4,
+    "n_answerable": 46,
+    "false_reject": 40,
+    "reject_rate": 1.0,
+    "false_reject_rate": 0.8696,
+    "accuracy": 0.2,
+    "balanced_accuracy": 0.5652
+   }
+  ],
+  "best": {
+   "threshold": 0.48,
+   "n_none": 4,
+   "correct_reject": 3,
+   "n_answerable": 46,
+   "false_reject": 0,
+   "reject_rate": 0.75,
+   "false_reject_rate": 0.0,
+   "accuracy": 0.98,
+   "balanced_accuracy": 0.875
+  },
+  "answerable_cos": {
+   "min": 0.5545,
+   "p10": 0.6,
+   "median": 0.65535
+  },
+  "none_cos": [
+   0.4315,
+   0.4439,
+   0.4481,
+   0.6102
+  ],
+  "separable": false
+ },
+ "meta": {
+  "created": "2026-11-01T01:43:26+05:00",
+  "commit": "afc2096"
+ }
+}

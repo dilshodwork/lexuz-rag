@@ -410,6 +410,57 @@ def markdown(r: dict, sw: dict | None) -> str:
     return "\n".join(L) + "\n"
 
 
+def report_section() -> str:
+    """report.md uchun "6. Baholash" bo'limi (eval/results.json, sweep.json, baseline_w06.json, answers.json dan)."""
+    def load(p):
+        try:
+            return json.loads(p.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return None
+    r, sw = load(RESULTS), load(SWEEP)
+    base, ans = load(EVAL_DIR / "baseline_w06.json"), load(EVAL_DIR / "answers.json")
+    if not r:
+        return ""
+    m, S, p = r["meta"], r["summary"], r["meta"]["params"]
+    L = ["## 6. Baholash (qidiruv sifati)", "",
+         f"To'plam: `eval/questions.jsonl`, {m['n_questions']} savol — {m['n_answerable']} tasi gold modda bilan, {m['n_none']} tasi "
+         "bazada yo'q; " + ", ".join(f"{LANG_NAMES.get(k, k)} {v}" for k, v in m["counts"]["lang"].items()) + ". "
+         "Savollar modda matnini o'qib, oddiy odam tilida parafraza qilib yozilgan; gold modda bazada borligi har safar "
+         f"tekshiriladi. LLM'siz. Commit `{m['commit']}`, {m['created'][:16].replace('T', ' ')}. Metodika: `eval/README.md`.", "",
+         "| Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | vaqt |", "|---|---|---|---|---|---|---|---|"]
+    for mo in m["modes"]:
+        s = S[mo]
+        L.append(f"| {MODE_NAMES[mo]} | {_p(s['recall@1'])} | {_p(s['recall@3'])} | {_p(s['recall@5'])} | {_p(s['recall@10'])} "
+                 f"| {s['mrr@10']:.3f} | {s['ndcg@10']:.3f} | {s['avg_ms']:.0f} ms |")
+    rej = r["rejection"].get("hybrid")
+    if rej:
+        L += ["", f"\"Bazada yo'q\" savollarni rad etish (NO_ANSWER_COS = {p['NO_ANSWER_COS']}): {rej['correct_reject']}/{rej['n_none']} "
+                  f"to'g'ri rad, javobi bor savollardan {rej['false_reject']}/{rej['n_answerable']} xato rad, aniqlik {_p(rej['accuracy'])}."]
+    if base and sw:
+        b = base["summary"]["hybrid"]
+        L += ["", "Standartlar sweep bo'yicha o'zgardi:", "",
+              "| | oldin (W_BM25 0.6, NO_ANSWER_COS 0.45) | keyin |", "|---|---|---|",
+              f"| Gibrid recall@5 | {_p(b['recall@5'])} | {_p(S['hybrid']['recall@5'])} |",
+              f"| Gibrid recall@1 | {_p(b['recall@1'])} | {_p(S['hybrid']['recall@1'])} |",
+              f"| Gibrid MRR@10 | {b['mrr@10']:.3f} | {S['hybrid']['mrr@10']:.3f} |", ""]
+        L.append(f"W_BM25 = {p['W_BM25']}: BM25 parafrazali savollarda umumiy so'zlar bo'yicha shovqin beradi va RRF'da dense topgan "
+                 f"moddani pastga suradi (BM25 yolg'iz recall@5 {_p(S['bm25']['recall@5'])}). Sof dense (W_BM25 = 0) MRR'da biroz "
+                 f"yaxshiroq ({S['dense']['mrr@10']:.3f}), lekin recall@5 pastroq ({_p(S['dense']['recall@5'])}). NO_ANSWER_COS: javobi bor "
+                 f"savollarda eng yaqin cosine ≥ {sw['no_answer_cos']['answerable_cos']['min']}, \"yo'q\" savollarda "
+                 f"{', '.join(str(x) for x in sw['no_answer_cos']['none_cos'])} — 0.46–0.54 oralig'i bir xil natija beradi, 0.48 tanlandi.")
+    if ans:
+        a = ans["summary"]
+        L += ["", f"Javob sifati (ixtiyoriy, {a['answered']} savol, {ans['meta']['model']}, {ans['meta']['llm_requests']} ta LLM so'rovi): "
+                  f"faithfulness (ishonch tekshiruvi tasdiqlagan da'volar ulushi) {_p(a['faithfulness'])}, gold modda iqtibos qilingan "
+                  f"{a['gold_cited']}/{a['answered']}, [n] lar to'g'ri {a['cites_valid']}/{a['answered']}. Ruscha javobda tekshiruv "
+                  "ma'no o'xshashligini past baholaydi (manba o'zbekcha) — r01 javobi to'g'ri, lekin \"past\" chiqdi."]
+    L += ["", "Xulosa: asosiy ishni dense (bge-m3) qiladi; BM25 bu to'plamda yordamchi xolos. Eng ko'p xato: savol kundalik so'z "
+              "bilan, modda esa rasmiy atama bilan yozilgan holatlar (\"o'g'irlik\" o'rniga \"yashirincha olib qo'yish\", \"QQS\" "
+              "o'rniga \"налог на добавленную стоимость\"). Kirill savollarda recall pastroq. To'liq jadvallar: `eval/results.md`, "
+              "veb-ilovada `/baholash`.", ""]
+    return "\n".join(L)
+
+
 def cli(modes: str | None = None, k: int = 10, do_sweep: bool = True):
     ms = tuple(x.strip() for x in (modes or ",".join(MODES)).split(",") if x.strip())
     bad = [x for x in ms if x not in MODES]
