@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="UTF-8"><title>Yo'nalishlar</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body { margin: 0; background: #E9E7E4; font: 15px/1.4 Onest, sans-serif; color: #1c1517; padding: 36px 40px; }
+h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
+p.sub { margin: 0 0 22px; color: #5d5558; }
+.row { display: flex; gap: 22px; }
+figure { margin: 0; }
+figcaption { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #44383b; }
+iframe { width: 390px; height: 844px; border: 0; border-radius: 34px; background: #fff; box-shadow: 0 0 0 9px #111, 0 30px 60px -20px rgba(0,0,0,.4); margin: 9px; }
+</style></head>
+<body>
+<h1 id="t"></h1><p class="sub" id="s"></p>
+<div class="row" id="row"></div>
+<script>
+const d = new URLSearchParams(location.search).get('d') || 'a';
+const meta = {
+  a: ['A · “Anor”', 'Dribbble uslubiga eng yaqin: pastel tong foni, oq havodor kartochkalar, Onest shrifti, anor-qizil aksent va rangli orb tugma.'],
+  b: ['B · “Firuza”', 'Oʻsha kompozitsiya, boshqa xarakter: iliq qogʻoz foni, firuza aksent (Samarqand koshinlari), sarlavhalarda Literata serif.'],
+}[d];
+t.textContent = meta[0]; s.textContent = meta[1];
+const views = [['Bosh sahifa',''],['Javob oqimi','&view=chat'],['[2] bosilganda: manbalar','&view=cite'],['Qorongʻi rejim','&view=chat&theme=dark'],['Filtrlar','&view=filters']];
+row.innerHTML = views.map(([c,q]) => `<figure><figcaption>${c}</figcaption><iframe src="maket.html?d=${d}${q}"></iframe></figure>`).join('');
+</script>
+</body></html>

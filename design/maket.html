@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maket</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+<script src="data/mock.js"></script>
+<style>
+/* ---------- Yo'nalish A: Anor (Dribbble'ga eng yaqin, pastel tong + anor aksent) ---------- */
+:root[data-dir="a"] {
+  --font-head: "Onest", system-ui, sans-serif;
+  --font-body: "Onest", system-ui, sans-serif;
+  --head-weight: 600; --head-track: -0.025em;
+  --bg: #F7F5F3;
+  --wash-1: #FFEFC9; --wash-2: #FFDCDC; --wash-3: #D8F1E6; --wash-4: #DCEBFA;
+  --ink: #1C1517; --ink-2: #44383B; --muted: #6E6266; --line: rgba(28,21,23,.08);
+  --surface: rgba(255,255,255,.8); --surface-solid: #fff; --surface-edge: rgba(255,255,255,.95);
+  --accent: #B3233D; --accent-ink: #fff; --accent-soft: #FBE4E7; --accent-line: rgba(179,35,61,.26);
+  --user: #FBE4E7; --user-ink: #5A1020;
+  --orb: radial-gradient(circle at 32% 28%, rgba(255,255,255,.95) 0 9%, rgba(255,255,255,0) 34%),
+         conic-gradient(from 200deg, #E2405A, #FF9E8A, #FFD59A, #F7B6C2, #C9283F, #E2405A);
+  --radius-card: 20px; --radius-sm: 12px;
+  --shadow: 0 1px 2px rgba(40,30,90,.05), 0 10px 30px -8px rgba(60,40,130,.12);
+}
+:root[data-dir="a"][data-theme="dark"] {
+  --bg: #141012; --wash-1: #2E2416; --wash-2: #34151C; --wash-3: #0F2A22; --wash-4: #15233A;
+  --ink: #F6EFF0; --ink-2: #D9CCCF; --muted: #A4979A; --line: rgba(246,239,240,.09);
+  --surface: rgba(34,26,29,.76); --surface-solid: #211A1C; --surface-edge: rgba(255,255,255,.06);
+  --accent: #FF7D90; --accent-ink: #2A0710; --accent-soft: rgba(255,125,144,.13); --accent-line: rgba(255,125,144,.35);
+  --user: #3A1C23; --user-ink: #FFDDE2;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -10px rgba(0,0,0,.5);
+}
+/* ---------- Yo'nalish B: Firuza (Samarqand koshinlari rangi, iliq qog'oz) ---------- */
+:root[data-dir="b"] {
+  --font-head: "Literata", Georgia, serif;
+  --font-body: "Onest", system-ui, sans-serif;
+  --head-weight: 600; --head-track: -0.015em;
+  --bg: #F4F1E9;
+  --wash-1: #F4E2BF; --wash-2: #CBEDE5; --wash-3: #DCE5F4; --wash-4: #EAF3E6;
+  --ink: #102127; --ink-2: #33464C; --muted: #5F6E72; --line: rgba(16,33,39,.09);
+  --surface: rgba(255,253,248,.8); --surface-solid: #FFFDF8; --surface-edge: rgba(255,255,255,.9);
+  --accent: #0A6F6A; --accent-ink: #fff; --accent-soft: #DCF0EC; --accent-line: rgba(10,111,106,.3);
+  --user: #DDEDE8; --user-ink: #0B3A37;
+  --orb: radial-gradient(circle at 32% 28%, rgba(255,255,255,.9) 0 8%, rgba(255,255,255,0) 32%),
+         radial-gradient(circle at 70% 78%, #1C4C93 0 22%, rgba(28,76,147,0) 60%),
+         conic-gradient(from 160deg, #2FB3A7, #7FDCCD, #E8D3A0, #2FB3A7 70%, #157C86);
+  --radius-card: 14px; --radius-sm: 10px;
+  --shadow: 0 1px 2px rgba(16,33,39,.05), 0 10px 28px -10px rgba(16,33,39,.14);
+}
+:root[data-dir="b"][data-theme="dark"] {
+  --bg: #0C1517; --wash-1: #2A2414; --wash-2: #0E2E2B; --wash-3: #12203A; --wash-4: #0F1E1A;
+  --ink: #EAF2EF; --ink-2: #C5D3D0; --muted: #8FA2A2; --line: rgba(234,242,239,.09);
+  --surface: rgba(20,32,35,.78); --surface-solid: #142023; --surface-edge: rgba(255,255,255,.05);
+  --accent: #5ED3C6; --accent-ink: #062321; --accent-soft: rgba(94,211,198,.13); --accent-line: rgba(94,211,198,.35);
+  --user: #173A37; --user-ink: #D7F3EE;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -10px rgba(0,0,0,.55);
+}
+:root {
+  --ok: #1E7F48; --ok-bg: #E2F4E9; --lost: #B42318; --lost-bg: #FDE7E4; --off: #8A5A00; --off-bg: #FBEFD2;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+:root[data-theme="dark"] { --ok: #6FD49B; --ok-bg: rgba(111,212,155,.12); --lost: #FF8A7A; --lost-bg: rgba(255,138,122,.12); --off: #F2C66B; --off-bg: rgba(242,198,107,.12); }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font: 400 15px/1.55 var(--font-body); color: var(--ink); background: var(--bg);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+body::before { /* yumshoq pastel fon (referensdagi "tong" yuvilishi) */
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 0% 0%, var(--wash-1), transparent 70%),
+    radial-gradient(55% 45% at 100% 8%, var(--wash-2), transparent 70%),
+    radial-gradient(70% 50% at 10% 100%, var(--wash-3), transparent 70%),
+    radial-gradient(50% 40% at 100% 95%, var(--wash-4), transparent 70%);
+}
+::selection { background: var(--accent-soft); color: var(--ink); }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Shell ---------- */
+.app { min-height: 100dvh; display: grid; grid-template-columns: minmax(0,1fr); }
+.rail { display: none; }
+.main { display: flex; flex-direction: column; min-height: 100dvh; min-width: 0; }
+.topbar {
+  position: sticky; top: 0; z-index: 5; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center;
+  padding: calc(8px + env(safe-area-inset-top)) 14px 8px; 
+}
+.roundbtn {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--surface-edge); background: var(--surface);
+  display: grid; place-items: center; box-shadow: var(--shadow); color: var(--ink-2);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  transition: transform .2s var(--ease);
+}
+.roundbtn:active { transform: scale(.94); }
+.brand { justify-self: center; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); }
+.brand b { font: 700 19px/1 var(--font-head); letter-spacing: -0.02em; }
+.brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--orb); box-shadow: inset 0 0 0 1px rgba(255,255,255,.5); }
+
+/* ---------- Home ---------- */
+.home { flex: 1; display: flex; flex-direction: column; padding: 4px 16px 0; max-width: 760px; width: 100%; margin: 0 auto; }
+.greet { text-align: center; margin: clamp(28px, 7vh, 72px) 0 26px; }
+.greet p { margin: 0 0 6px; color: var(--ink-2); font-size: 16px; }
+.greet h1 { margin: 0 auto; font: var(--head-weight) clamp(26px, 6.6vw, 40px)/1.15 var(--font-head); letter-spacing: var(--head-track); max-width: 15ch; text-wrap: balance; }
+.sugs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sug {
+  text-align: left; border: 1px solid var(--surface-edge); background: var(--surface); border-radius: var(--radius-card);
+  padding: 14px 14px 13px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; min-height: 112px;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); transition: transform .25s var(--ease), border-color .2s;
+}
+.sug:hover { border-color: var(--accent-line); transform: translateY(-1px); }
+.sug.tall { grid-row: span 2; }
+.sug .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--muted); }
+.sug .tag i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+.sug .tag i svg { width: 15px; height: 15px; }
+.sug q { quotes: none; font-weight: 600; font-size: 14.5px; line-height: 1.35; color: var(--ink); }
+.sug .go { margin-top: auto; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; color: var(--accent); }
+.basebar { margin: 22px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); font-size: 12px; color: var(--muted); text-align: center; }
+.basebar span { display: flex; flex-direction: column; gap: 2px; padding: 0 6px; }
+.basebar span + span { border-left: 1px solid var(--line); }
+.basebar b { color: var(--ink); font-weight: 650; font-size: 16px; letter-spacing: -0.01em; }
+
+/* ---------- Composer ---------- */
+.composer-wrap { position: sticky; bottom: 0; z-index: 6; padding: 12px 14px calc(8px + env(safe-area-inset-bottom)); margin-top: auto;
+  background: linear-gradient(to top, var(--bg) 55%, transparent); }
+.composer { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 8px; }
+.field {
+  flex: 1; display: flex; align-items: center; gap: 4px; min-height: 52px; padding: 4px 6px 4px 6px; border-radius: 999px;
+  background: var(--surface-solid); border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.field input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: 15px; color: var(--ink); padding: 0 4px; }
+.field input::placeholder { color: var(--muted); }
+.iconbtn { width: 40px; height: 40px; border: 0; background: transparent; border-radius: 50%; display: grid; place-items: center; color: var(--muted); position: relative; }
+.iconbtn:hover { background: var(--accent-soft); color: var(--accent); }
+.iconbtn .badge { position: absolute; top: 7px; right: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.orb {
+  width: 52px; height: 52px; border-radius: 50%; border: 0; background: var(--orb); flex: none; position: relative;
+  display: grid; place-items: center; color: #fff; box-shadow: 0 8px 20px -6px rgba(170,30,60,.4), inset 0 0 0 1px rgba(255,255,255,.4);
+  transition: transform .3s var(--ease);
+}
+:root[data-dir="b"] .orb { box-shadow: 0 8px 20px -6px rgba(10,90,100,.45), inset 0 0 0 1px rgba(255,255,255,.35); }
+.orb svg { width: 22px; height: 22px; stroke-width: 2.2; filter: drop-shadow(0 1px 1px rgba(0,0,0,.25)); }
+.orb:active { transform: scale(.94); }
+.orb.busy { animation: spin 3.2s linear infinite; }
+.orb.busy svg { animation: spin 3.2s linear infinite reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.disclaimer { max-width: 760px; margin: 8px auto 0; text-align: center; font-size: 11.5px; color: var(--muted); }
+.disclaimer a { color: inherit; }
+
+/* ---------- Chat ---------- */
+.chat { flex: 1; display: none; flex-direction: column; gap: 18px; padding: 8px 16px 8px; max-width: 760px; width: 100%; margin: 0 auto; }
+body.v-chat .chat { display: flex; } body.v-chat .home { display: none; }
+.msg-user { align-self: flex-end; max-width: 82%; background: var(--user); color: var(--user-ink); padding: 11px 15px; border-radius: 20px 20px 6px 20px; font-weight: 500; }
+.answer { background: var(--surface); border: 1px solid var(--surface-edge); border-radius: var(--radius-card); padding: 16px 16px 10px; box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.answer .meta { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+.answer .meta .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--orb); }
+.prose { font-size: 15.5px; line-height: 1.62; color: var(--ink); max-width: 68ch; }
+.prose p { margin: 0 0 10px; }
+.prose ul { margin: 0 0 10px; padding-left: 20px; }
+.prose li { margin: 3px 0; }
+.prose li::marker { color: var(--accent); }
+.prose strong { font-weight: 650; }
+.cite {
+  display: inline-grid; place-items: center; min-width: 21px; height: 21px; padding: 0 5px; margin: 0 1px; vertical-align: 2px;
+  border-radius: 7px; border: 1px solid var(--accent-line); background: var(--accent-soft); color: var(--accent);
+  font: 600 11.5px/1 var(--font-body); font-variant-numeric: tabular-nums; transition: background .15s, color .15s;
+}
+.cite:hover, .cite.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.caret { display: inline-block; width: 8px; height: 1.05em; vertical-align: -2px; background: var(--accent); border-radius: 2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.actions { display: flex; align-items: center; gap: 2px; margin-top: 4px; border-top: 1px solid var(--line); padding-top: 6px; }
+.actions .iconbtn { width: 36px; height: 36px; }
+.srcbtn { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px 0 8px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-solid); font-size: 13px; font-weight: 600; }
+.srcbtn .stack { display: flex; }
+.srcbtn .stack span { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 10.5px; font-weight: 700; background: var(--accent-soft); color: var(--accent); border: 2px solid var(--surface-solid); margin-left: -6px; }
+.srcbtn .stack span:first-child { margin-left: 0; }
+.followups { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.followups button { flex: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 13px; color: var(--ink-2); }
+
+/* skeleton */
+.sk { border-radius: 8px; height: 12px; margin: 9px 0; background: linear-gradient(90deg, var(--line) 25%, var(--accent-soft) 45%, var(--line) 65%); background-size: 300% 100%; animation: sh 1.4s var(--ease) infinite; }
+@keyframes sh { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+/* ---------- Sources (mobil: pastki varaq; desktop: o'ng panel) ---------- */
+.sources { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; max-height: 78dvh; display: flex; flex-direction: column;
+  background: var(--bg); border-radius: 24px 24px 0 0; box-shadow: 0 -20px 50px -20px rgba(0,0,0,.25);
+  transform: translateY(105%); transition: transform .45s var(--ease); }
+.sources::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1;
+  background: radial-gradient(70% 40% at 100% 0%, var(--wash-2), transparent 70%), radial-gradient(60% 40% at 0% 0%, var(--wash-1), transparent 70%); opacity: .55; }
+body.sheet .sources { transform: none; }
+.scrim { position: fixed; inset: 0; z-index: 19; background: rgba(10,10,20,.28); opacity: 0; pointer-events: none; transition: opacity .3s; }
+body.sheet .scrim { opacity: 1; pointer-events: auto; }
+.src-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px 8px; }
+.src-head::before { content: ""; position: absolute; left: 50%; top: 7px; width: 38px; height: 4px; margin-left: -19px; border-radius: 4px; background: var(--line); }
+.src-head h2 { margin: 12px 0 0; font: var(--head-weight) 19px/1.2 var(--font-head); letter-spacing: var(--head-track); }
+.src-head h2 small { font: 500 13px var(--font-body); color: var(--muted); margin-left: 6px; }
+.src-list { overflow-y: auto; padding: 4px 14px calc(18px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.card { position: relative; background: var(--surface-solid); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 14px 14px 12px; transition: box-shadow .35s var(--ease), border-color .35s; scroll-margin: 12px; }
+.card.hl { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft), var(--shadow); }
+.card .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.card .n { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 12px; }
+.card.hl .n { background: var(--accent); color: var(--accent-ink); }
+.status { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 8px; border-radius: 999px; font-weight: 600; font-size: 11.5px; }
+.status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.st-amalda { color: var(--ok); background: var(--ok-bg); }
+.st-lost { color: var(--lost); background: var(--lost-bg); }
+.st-off { color: var(--off); background: var(--off-bg); }
+.card .date { margin-left: auto; }
+.card h3 { margin: 10px 0 2px; font: var(--head-weight) 17px/1.3 var(--font-head); letter-spacing: var(--head-track); }
+.card h3 .art { color: var(--accent); }
+.card .doc { margin: 0; font-size: 13.5px; font-weight: 500; color: var(--ink-2); }
+.card .chap { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }
+.card .excerpt { margin: 10px 0 0; font-size: 14px; line-height: 1.55; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.card.open .excerpt { -webkit-line-clamp: unset; }
+.card .foot { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+.linkbtn { border: 0; background: none; padding: 8px 0; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.lexbtn { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 600; text-decoration: none; }
+.lexbtn svg { width: 15px; height: 15px; }
+
+/* ---------- Filter sheet ---------- */
+.filters { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--surface-solid); border-radius: 24px 24px 0 0; padding: 22px 18px calc(18px + env(safe-area-inset-bottom));
+  transform: translateY(105%); transition: transform .45s var(--ease); box-shadow: 0 -20px 50px -20px rgba(0,0,0,.25); }
+body.filt .filters { transform: none; } body.filt .scrim { opacity: 1; pointer-events: auto; }
+.filters h2 { margin: 0 0 14px; font: var(--head-weight) 19px/1.2 var(--font-head); }
+.fgroup { margin-bottom: 18px; } .fgroup > span { display: block; font-size: 12.5px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; background: var(--bg); border-radius: 12px; padding: 4px; }
+.seg button { height: 40px; border: 0; border-radius: 9px; background: transparent; font-weight: 600; font-size: 14px; color: var(--muted); }
+.seg button.on { background: var(--surface-solid); color: var(--ink); box-shadow: var(--shadow); }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+.chip.on { background: var(--accent-soft); border-color: var(--accent-line); color: var(--accent); }
+.toggle { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; }
+.toggle small { display: block; color: var(--muted); font-size: 12.5px; }
+.sw { width: 46px; height: 28px; border-radius: 999px; background: var(--line); position: relative; flex: none; border: 0; }
+.sw::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: transform .25s var(--ease); }
+.sw.on { background: var(--accent); } .sw.on::after { transform: translateX(18px); }
+.applybtn { width: 100%; height: 50px; border: 0; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 15px; margin-top: 6px; }
+
+/* ---------- Desktop ---------- */
+@media (min-width: 1024px) {
+  .app { grid-template-columns: 264px minmax(0,1fr); }
+  body.v-chat .app { grid-template-columns: 264px minmax(0,1fr) 400px; }
+  .rail { display: flex; flex-direction: column; gap: 4px; padding: 18px 12px; border-right: 1px solid var(--line); height: 100dvh; position: sticky; top: 0; }
+  .rail .brand { justify-self: start; padding: 6px 10px 18px; }
+  .newbtn { display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-solid); font-weight: 600; font-size: 14px; margin-bottom: 14px; box-shadow: var(--shadow); }
+  .rail h4 { margin: 8px 10px 6px; font-size: 12px; font-weight: 600; color: var(--muted); }
+  .hist { text-align: left; border: 0; background: none; padding: 9px 10px; border-radius: 10px; font-size: 13.5px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hist:hover, .hist.on { background: var(--surface); color: var(--ink); }
+  .rail .bottom { margin-top: auto; display: flex; gap: 8px; }
+  .topbar { grid-template-columns: 44px 1fr 44px; }
+  .topbar .brand, .topbar .menu { visibility: hidden; }
+  .sources { position: sticky; top: 0; transform: none; height: 100dvh; max-height: none; border-radius: 0; box-shadow: none; border-left: 1px solid var(--line); background: transparent; display: none; }
+  body.v-chat .sources { display: flex; }
+  .sources::before { display: none; }
+  .src-head::before { display: none; }
+  .src-head .close { display: none; }
+  .src-head { padding: 22px 18px 6px; }
+  .src-head h2 { margin: 0; }
+  .src-list { padding: 8px 18px 24px; }
+  .scrim { display: none; }
+  .filters { left: auto; right: 440px; bottom: 96px; width: 380px; border-radius: 20px; transform: translateY(12px); opacity: 0; visibility: hidden; transition: opacity .25s, transform .35s var(--ease), visibility .25s; }
+  body.filt .filters { opacity: 1; visibility: visible; transform: none; }
+  body:not(.v-chat) .filters { right: 50%; margin-right: -322px; }
+  .greet { margin-top: 12vh; }
+  .sugs { grid-template-columns: repeat(3, 1fr); }
+  .sug.tall { grid-row: span 2; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="rail" aria-label="Suhbatlar tarixi">
+    <a class="brand" href="#" data-go="home"><span class="dot"></span><b class="bname">Dalil</b></a>
+    <button class="newbtn" data-go="home"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Yangi suhbat</button>
+    <h4>Bugun</h4>
+    <button class="hist on">Prezident qancha muddatga saylanadi?</button>
+    <button class="hist">Yillik mehnat taʼtili necha kun?</button>
+    <h4>Kecha</h4>
+    <button class="hist">Ijara shartnomasi qanday shaklda tuziladi?</button>
+    <button class="hist">Ажралиш учун қандай ҳужжатлар керак?</button>
+    <div class="bottom"><button class="roundbtn themebtn" aria-label="Rejimni almashtirish"><svg class="i" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="roundbtn menu" aria-label="Suhbatlar tarixi"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+      <a class="brand" href="#" data-go="home"><span class="dot"></span><b class="bname">Dalil</b></a>
+      <button class="roundbtn rightbtn" aria-label="Yangi suhbat" data-go="home"><svg class="i" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button>
+    </header>
+
+    <section class="home" aria-label="Bosh sahifa">
+      <div class="greet">
+        <p class="tagline">Qonun moddasiga tayangan javoblar</p>
+        <h1>Qonunchilik boʻyicha nima soʻramoqchisiz?</h1>
+      </div>
+      <div class="sugs" id="sugs"></div>
+      <div class="basebar num"><span><b>1 618</b>hujjat</span><span><b>39 961</b>modda boʻlagi</span><span><b>31.10.2026</b>holat sanasi</span></div>
+    </section>
+
+    <section class="chat" id="chat" aria-live="polite"></section>
+
+    <div class="composer-wrap">
+      <form class="composer" onsubmit="return false">
+        <div class="field">
+          <button type="button" class="iconbtn" id="filtbtn" aria-label="Filtrlar"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></button>
+          <input id="q" placeholder="Savol yozing: lotin yoki кирилл" aria-label="Savol">
+        </div>
+        <button class="orb" id="send" aria-label="Yuborish"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+      </form>
+      <p class="disclaimer">Bu yuridik maslahat emas. Rasmiy matn: <a href="https://lex.uz" target="_blank" rel="noopener">lex.uz</a></p>
+    </div>
+  </main>
+
+  <div class="scrim" id="scrim"></div>
+  <aside class="sources" id="sources" aria-label="Manbalar">
+    <div class="src-head"><h2>Manbalar <small class="num" id="srccount"></small></h2>
+      <button class="roundbtn close" id="closesheet" aria-label="Yopish"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="src-list" id="srclist"></div>
+  </aside>
+
+  <div class="filters" id="filters" role="dialog" aria-label="Filtrlar">
+    <h2>Qidiruv filtrlari</h2>
+    <div class="fgroup"><span>Hujjat holati</span><div class="seg"><button class="on">Faqat amaldagi</button><button>Barchasi</button></div></div>
+    <div class="fgroup"><span>Hujjat turi</span><div class="chips"><button class="chip on">Qonun</button><button class="chip on">Kodeks</button><button class="chip on">Konstitutsiya</button></div></div>
+    <div class="fgroup"><div class="toggle"><div>Oʻzgartirish kirituvchi qonunlar<small>Boshqa qonunga tuzatish kiritgan hujjatlar ham qidirilsin</small></div><button class="sw" aria-pressed="false"></button></div></div>
+    <button class="applybtn" id="applyf">Qoʻllash</button>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const DIR = params.get('d') || 'a';
+const root = document.documentElement;
+root.dataset.dir = DIR; root.dataset.theme = params.get('theme') || 'light';
+const NAMES = { a: 'Dalil', b: 'Mezon' };
+document.querySelectorAll('.bname').forEach(e => e.textContent = NAMES[DIR]);
+document.title = NAMES[DIR] + ' · maket ' + DIR.toUpperCase();
+
+const ic = {
+  scale: '<path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0Zm14 0-3 7a3 3 0 0 0 6 0Z"/>',
+  brief: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/>',
+  home: '<path d="M4 11 12 4l8 7v9H4Z"/><path d="M10 20v-5h4v5"/>',
+  users: '<circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M16 4.5a3 3 0 0 1 0 6M21 20a5 5 0 0 0-3.5-4.8"/>',
+  car: '<path d="M5 16h14v-4l-2-5H7l-2 5Z"/><circle cx="8" cy="16.5" r="1.6"/><circle cx="16" cy="16.5" r="1.6"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+};
+const SUGS = [
+  { q: 'Prezident qancha muddatga saylanadi?', tag: 'Konstitutsiya', icon: 'scale', tall: true },
+  { q: 'Yillik mehnat taʼtili necha kun?', tag: 'Mehnat', icon: 'brief' },
+  { q: 'Ijara shartnomasi qanday shaklda tuziladi?', tag: 'Fuqarolik', icon: 'home' },
+  { q: 'Ажралиш учун қандай ҳужжатлар керак?', tag: 'Oila · kirillcha', icon: 'users' },
+  { q: 'Haydovchilik guvohnomasi necha yilga beriladi?', tag: 'Yoʻl harakati', icon: 'car' },
+];
+document.getElementById('sugs').innerHTML = SUGS.map((s, i) => `
+  <button class="sug ${s.tall ? 'tall' : ''}" data-q="${s.q}">
+    <span class="tag"><i><svg class="i" viewBox="0 0 24 24">${ic[s.icon]}</svg></i>${s.tag}</span>
+    <q>${s.q}</q>
+    ${s.tall ? `<span class="go">Soʻrash<svg class="i" viewBox="0 0 24 24">${ic.arrow}</svg></span>` : ''}
+  </button>`).join('');
+
+// Maket uchun javob: LLM emas, manbalar matnidan qo'lda yozilgan.
+const ANSWERS = {
+  'Prezident qancha muddatga saylanadi?':
+`Oʻzbekiston Respublikasi Prezidenti **yetti yil** muddatga saylanadi [2][3]. Ayni bir shaxs surunkasiga ikki muddatdan ortiq Prezident boʻlishi mumkin emas [1][2].
+
+Saylov umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan oʻtadi [3]. Konstitutsiyaning 106-moddasi va Saylov kodeksining 61-moddasiga koʻra nomzod:
+- oʻttiz besh yoshdan kichik boʻlmasligi [1];
+- davlat tilini yaxshi bilishi [1][2];
+- saylovgacha kamida oʻn yil Oʻzbekiston hududida muqim yashagan boʻlishi kerak [2].`,
+};
+const statusCls = s => s === 'amalda' ? 'st-amalda' : (s && s.includes('kuchini')) ? 'st-lost' : 'st-off';
+const fmtDate = d => d ? d.split('-').reverse().join('.') : '';
+const niceTitle = t => { const L = t.replace(/[^A-Za-z]/g,''); const up = L.replace(/[^A-Z]/g,'').length; if (up / Math.max(L.length,1) < .7) return t; const s = t.toLowerCase().replace(/oʻzbekiston respublikasi/g,'Oʻzbekiston Respublikasi').replace(/oʻzbekiston/g,'Oʻzbekiston'); return s.charAt(0).toUpperCase() + s.slice(1); };
+function md(s) {
+  const esc = x => x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  const inl = x => esc(x).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\[(\d+)\]/g,'<button class="cite" data-n="$1" aria-label="$1-manba">$1</button>');
+  const out = []; let list = null;
+  for (const line of s.split('\n')) {
+    if (/^- /.test(line)) { if (!list) { list = []; } list.push('<li>' + inl(line.slice(2)) + '</li>'); continue; }
+    if (list) { out.push('<ul>' + list.join('') + '</ul>'); list = null; }
+    if (line.trim()) out.push('<p>' + inl(line) + '</p>');
+  }
+  if (list) out.push('<ul>' + list.join('') + '</ul>');
+  return out.join('');
+}
+function renderSources(src) {
+  document.getElementById('srccount').textContent = src.length;
+  document.getElementById('srclist').innerHTML = src.map(c => `
+    <article class="card" id="src-${c.n}">
+      <div class="row"><span class="n">${c.n}</span><span class="status ${statusCls(c.status)}">${c.status}</span><span>${c.doc_type}</span><span class="date num">tahrir ${fmtDate(c.last_edition_date)}</span></div>
+      <h3><span class="art">${c.article_number}-modda</span>${c.article_title ? '. ' + c.article_title : ''}</h3>
+      <p class="doc">${niceTitle(c.doc_title)}${c.doc_number ? ' · ' + c.doc_number : ''}</p>
+      ${c.chapter ? `<p class="chap">${c.chapter}</p>` : ''}
+      <p class="excerpt">${c.text.replace(/</g,'&lt;')}</p>
+      <div class="foot"><button class="linkbtn" data-toggle>Toʻliq oʻqish</button>
+        <a class="lexbtn" href="${c.source_url}" target="_blank" rel="noopener">lex.uz’da ochish<svg class="i" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a></div>
+    </article>`).join('');
+}
+const isDesk = () => matchMedia('(min-width:1024px)').matches;
+function focusSource(n) {
+  if (!isDesk()) document.body.classList.add('sheet');
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('hl', c.id === 'src-' + n));
+  document.querySelectorAll('.cite').forEach(c => c.classList.toggle('on', c.dataset.n == n));
+  const el = document.getElementById('src-' + n);
+  const list = document.getElementById('srclist');
+  setTimeout(() => list.scrollTo({ top: el.offsetTop - list.offsetTop - 8, behavior: 'smooth' }), isDesk() ? 0 : 250);
+}
+function ask(q, { instant = false } = {}) {
+  document.body.classList.add('v-chat');
+  const src = (window.MOCK_SOURCES[q] || window.MOCK_SOURCES['Prezident qancha muddatga saylanadi?']);
+  const text = ANSWERS[q] || ANSWERS['Prezident qancha muddatga saylanadi?'];
+  const chat = document.getElementById('chat');
+  chat.innerHTML = `<div class="msg-user">${q}</div>
+    <div class="answer"><div class="meta"><span class="dot"></span><span>${src.length} ta modda asosida</span></div>
+      <div class="prose" id="prose"><div class="sk" style="width:92%"></div><div class="sk" style="width:78%"></div><div class="sk" style="width:85%"></div></div>
+      <div class="actions"><button class="iconbtn" id="copybtn" aria-label="Nusxalash"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/></svg></button>
+        <button class="iconbtn" aria-label="Qayta yozish"><svg class="i" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg></button>
+        <button class="srcbtn" id="srcbtn"><span class="stack">${src.slice(0,3).map(s=>`<span>${s.n}</span>`).join('')}</span>Manbalar · ${src.length}</button></div>
+    </div>
+    <div class="followups"><button>Nomzodga yana qanday talablar bor?</button><button>Muddatidan oldin saylov qachon boʻladi?</button></div>`;
+  renderSources(src);
+  const prose = document.getElementById('prose'), orb = document.getElementById('send');
+  if (instant) { prose.innerHTML = md(text); return; }
+  orb.classList.add('busy');
+  setTimeout(() => {
+    const words = text.split(/(\s+)/); let i = 0;
+    const t = setInterval(() => {
+      i += 2; prose.innerHTML = md(words.slice(0, i).join('')) ;
+      prose.lastElementChild && prose.lastElementChild.insertAdjacentHTML('beforeend', '<span class="caret"></span>');
+      if (i >= words.length) { clearInterval(t); prose.innerHTML = md(text); orb.classList.remove('busy'); }
+    }, 35);
+  }, 900);
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('button, a');
+  if (!t) return;
+  if (t.dataset.q) ask(t.dataset.q);
+  if (t.classList.contains('cite')) focusSource(t.dataset.n);
+  if (t.id === 'srcbtn') { document.body.classList.add('sheet'); }
+  if (t.id === 'closesheet') document.body.classList.remove('sheet');
+  if (t.dataset.go === 'home') { e.preventDefault(); document.body.className = ''; }
+  if (t.hasAttribute('data-toggle')) { const c = t.closest('.card'); c.classList.toggle('open'); t.textContent = c.classList.contains('open') ? 'Yigʻish' : 'Toʻliq oʻqish'; }
+  if (t.id === 'filtbtn') document.body.classList.add('filt');
+  if (t.id === 'applyf') document.body.classList.remove('filt');
+  if (t.classList.contains('themebtn')) root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  if (t.classList.contains('chip') || t.classList.contains('sw')) t.classList.toggle('on');
+  if (t.parentElement && t.parentElement.classList.contains('seg')) { [...t.parentElement.children].forEach(b => b.classList.toggle('on', b === t)); }
+});
+document.getElementById('scrim').onclick = () => document.body.classList.remove('sheet', 'filt');
+// Skrinshot uchun holatlar: ?view=chat | sheet | filters
+const v = params.get('view');
+if (v === 'chat' || v === 'sheet' || v === 'cite') { ask('Prezident qancha muddatga saylanadi?', { instant: true }); }
+if (v === 'sheet') document.body.classList.add('sheet');
+if (v === 'cite') setTimeout(() => focusSource(2), 50);
+if (v === 'filters') document.body.classList.add('filt');
+if (v === 'loading') { ask('Prezident qancha muddatga saylanadi?'); }
+</script>
+</body>
+</html>
