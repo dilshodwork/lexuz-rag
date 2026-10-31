@@ -125,8 +125,9 @@ API:
 
 | Yo'l | Nima qiladi |
 |---|---|
-| `POST /api/ask` | Server kaliti bilan (bepul limit). `{"question": "...", "filters": {"only_active": true, "include_amending": false, "doc_types": ["Qonun","Kodeks","Konstitutsiya"]}}` -> SSE oqim: `sources`, keyin `delta` bo'laklari, `quota`, oxirida `done` (yoki `error`: `free_limit`, `no_key`, `bad_key`, `quota`, `timeout`, `busy`, `network`, `llm`) |
-| `POST /api/context` | O'z kaliti uchun: o'sha body -> `{sources, no_answer, prompt: {system, user}}`. LLM'ni brauzer foydalanuvchi kaliti bilan o'zi chaqiradi |
+| `POST /api/ask` | Server kaliti bilan (bepul limit). `{"question": "...", "filters": {"only_active": true, "include_amending": false, "doc_types": ["Qonun","Kodeks","Konstitutsiya"]}, "lang": "auto", "mode": "legal"}` -> SSE oqim: `step` (bosqichlar), `sources`, `delta` bo'laklari, `followups`, `quota`, oxirida `done` (yoki `error`: `free_limit`, `no_key`, `bad_key`, `quota`, `timeout`, `busy`, `network`, `llm`). Sodda rejim: `"mode": "simple", "chunk_ids": [...], "base_answer": "..."` |
+| `POST /api/context` | O'z kaliti uchun: o'sha body -> `{steps, sources, no_answer, lang, parts, post: {marker, translit}, prompt: {system, user}}`. LLM'ni brauzer foydalanuvchi kaliti bilan o'zi chaqiradi, javobni `post` qoidasi bo'yicha qayta ishlaydi |
+| `POST /api/verify` | Ishonch tekshiruvi, LLM'siz: `{"text": "...", "chunk_ids": [...], "lang": "uz", "mode": "legal"}` -> `{level: high/medium/low, checked, supported, claims: [{start, end, ok, reasons}]}` |
 | `GET /api/quota` | Bugungi bepul savollar: `{free, limit, used, left, reason}` |
 | `POST /api/proxy/openai/chat/completions` | Faqat OpenAI uchun o'tkazgich (pastda sababi). Kalit `Authorization` sarlavhasida keladi, saqlanmaydi |
 | `GET /api/search?q=...&k=8&only_active=true&include_amending=false&types=Kodeks` | faqat qidiruv, LLM'siz |
@@ -191,6 +192,53 @@ cd web && npx vite build --outDir /tmp/dalil-byok-dist --emptyOutDir && cd ..
 .venv/bin/python scripts/byok_e2e.py --only api,keys,byok,mock,tg   # LLM sarflamasdan
 ```
 
+### 2-bosqich: bosqichli qidiruv, javob tili, sodda rejim, ulashish, ishonch
+
+Har funksiya ikkala yo'lda ishlaydi: server kaliti (`/api/ask` SSE) va o'z kaliti (`/api/context` + brauzerdan LLM).
+Promptlar bitta joyda - `lexrag/rag.py` (`system_prompt(lang, mode)`); frontend faqat parametr yuboradi.
+
+* **Bosqichlar.** `rag.prepare_steps` - generator: "Savol tahlil qilinmoqda -> Qidirilmoqda -> N ta modda topildi ->
+  Tekshirilmoqda", brauzer "Javob yozilmoqda"ni qo'shadi. Ekranda bittadan ochiladi, tugagach "5 bosqich · 2,5 s"
+  satriga yig'iladi (bosilsa ochiladi). Murakkab savol LLM'siz evristika bilan (`lexrag/plan.py`: bir nechta "?",
+  "va" / "hamda" bilan bog'langan ikki savol qismi) 2-3 qidiruvga bo'linadi, to'liq savol ham qidiriladi, natijalar RRF
+  bilan birlashadi, takrorlar olib tashlanadi. LLM bilan bo'lish faqat `.env` da `LLM_PLAN=1` va so'rovda
+  `"llm_plan": true` bo'lsa (standart o'chiq: bepul tarif kuniga ~20 so'rov).
+* **Javob tili** (`lexrag/lang.py`). Savoldan avtomatik: lotin -> lotin; kirill (ў қ ғ ҳ yoki o'zbekcha so'zlar) ->
+  LLM lotinda yozadi, `translit.lat_to_cyr` kirillga o'giradi ([n], raqam, havola, rim raqamlari o'zgarmaydi; oqimda
+  faqat to'liq so'zlar o'giriladi); rus -> LLM'ga ruscha javob ko'rsatmasi, manba kartochkalari asl o'zbekcha.
+  Ruscha savolda dense qidiruv asl ruscha matn bilan (bge-m3 ko'p tilli: "развод" endi Oila kodeksini topadi),
+  BM25 ga kichik lug'atdan o'zbekcha atamalar beriladi, og'irligi kamaytiriladi. Filtrlar oynasida
+  "Javob tili: Avto / Oʻzbekcha / Ўзбекча / Русский"; interfeys tili o'zgarmaydi.
+* **Keyingi savollar** qo'shimcha LLM so'rovisiz: LLM javob oxirida `<<<KEYINGI>>>` dan keyin 3 ta savol yozadi.
+  Ajratgich va undan keyingi qism oqimda ko'rinmaydi (bo'laklar orasida uzilsa ham). Parser serverda
+  (`lang.FollowupSplitter`) va brauzerda (`web/src/textproc.ts`) bir xil; `scripts/test_stage2.py` ikkalasini node
+  bilan bir xil misollarda solishtiradi. Chip bosilsa - shu suhbatda yangi savol.
+* **Sodda qilib tushuntir.** O'sha savol + o'sha manbalar (`chunk_ids`, tartib saqlanadi - [n] o'zgarmaydi), qayta
+  qidiruvsiz, kundalik misol bilan. Javob tepasida "Yuridik / Sodda" almashtirgich - ikkalasi saqlanadi, qayta so'rov yo'q.
+* **Ulashish.** Telefonda `navigator.share` (matn + 1080x1350 PNG rasm-kartochka, Web Share Level 2 bo'lsa). Kompyuterda,
+  tizim oynasi bo'lmasa va Telegram Mini App ichida - menyu: Telegram (`t.me/share/url`, Mini App'da
+  `Telegram.WebApp.openTelegramLink`), WhatsApp (`wa.me`), matnni nusxalash, rasmni yuklab olish. Rasm canvas'da
+  chiziladi (`web/src/share.ts`): savol, javobning boshi, 1-3 manba (hujjat + modda), "lex.uz manbasi asosida · Bu
+  yuridik maslahat emas". Matn: savol + javob + manba havolalari + sayt.
+* **Ishonch** (`lexrag/trust.py`, `POST /api/verify`), LLM'siz. Javob gaplarga bo'linadi; har da'vo iqtibos qilingan
+  modda bilan solishtiriladi: raqam va muddatlar manbada bormi (so'z bilan yozilganlari ham: "yigirma bir" = 21),
+  so'zlar mosligi va bge-m3 o'xshashligi. Natija: "Ishonch: Yuqori / O'rta / Past", bosilsa izoh (nechta da'vo
+  tekshirildi, qaysi gap asossiz ko'rindi va nega); o'sha gap matnda nuqtali chiziq bilan belgilanadi. Chegaralar
+  qo'lda yozilgan to'g'ri va ataylab buzilgan javoblarda tanlangan. Sodda javobdagi misol va maslahatlar tekshirilmaydi.
+
+Sinov (LLM'siz qismlar istalgancha, real bosqich har ishga tushishda ~7 ta LLM so'rovi sarflaydi):
+
+```bash
+.venv/bin/python scripts/test_stage2.py              # translit, til, ajratgich, bo'lish, brauzer=server, trust
+cd web && npx vite build --outDir /tmp/dalil-s2-dist --emptyOutDir && cd ..
+.venv/bin/python scripts/test_server.py --port 8010 --free-limit 30 --dist /tmp/dalil-s2-dist --quota-db /tmp/dalil-s2-quota.sqlite
+.venv/bin/python scripts/stage2_e2e.py --only api,mock          # LLM'siz (mock - brauzerda soxta provayder)
+.venv/bin/python scripts/stage2_e2e.py --only real,reshoot,mobile   # haqiqiy LLM + skrinshotlar (design/shots/app/s2-*)
+```
+
+Yangi frontend backend o'zgarishlarisiz ishlamaydi (`step`, `/api/verify`): `web/dist` qayta yig'ilganda uvicorn ham
+qayta ishga tushirilsin.
+
 Telegram Mini App: BotFather'da botga Web App URL sifatida ilovaning HTTPS manzilini bering (masalan,
 `cloudflared tunnel --url http://127.0.0.1:8000` bergan manzil). Ilova `telegram-web-app.js` orqali
 Telegram temasi, safe-area, viewport balandligi va "orqaga" tugmasini o'zi hisobga oladi.
@@ -210,14 +258,18 @@ lexrag/
   indexer.py    fastembed + ChromaDB
   search.py     savol -> top-k chunk manbasi bilan
   retrieval.py  gibrid qidiruv: bge-m3 (dense) + BM25, Reciprocal Rank Fusion
-  translit.py   kirillcha savolni lotinga o'girish
+  translit.py   kirill <-> lotin (savol lotinga, kirill savolga javob kirillga)
+  lang.py       til aniqlash, <<<KEYINGI>>> keyingi savollar parseri, ruscha BM25 lug'ati
+  plan.py       murakkab savolni 2-3 qidiruvga bo'lish (evristika; LLM_PLAN=1 bilan LLM)
+  trust.py      ishonch tekshiruvi: javob da'volari vs iqtibos qilingan moddalar (LLM'siz)
   llm.py        Gemini / OpenAI / Claude (HTTP, streaming)
-  rag.py        manbali javob: [n] iqtiboslar, "topilmadi" himoyasi
+  rag.py        bosqichlar, promptlar (yuridik / sodda, til), manbali javob: [n] iqtiboslar, "topilmadi" himoyasi
   colab.py      embeddingni Colab GPU'da hisoblash: eksport/import + sifat tekshiruvi
-  web/app.py    FastAPI: /api/ask (SSE), /api/context, /api/quota, /api/search, /api/health, /api/stats + web/dist
+  web/app.py    FastAPI: /api/ask (SSE), /api/context, /api/verify, /api/quota, /api/search, /api/health, /api/stats + web/dist
   web/quota.py  bepul limit: foydalanuvchini aniqlash (Telegram HMAC / qurilma + IP), SQLite hisoblagich
-web/            React frontend (src/App.tsx, ai.ts - o'z kaliti bilan LLM, components/, styles.css - A·Anor)
-scripts/        web_smoke.py, shots.py, test_quota.py, byok_e2e.py, test_server.py (sinov serveri)
+web/            React frontend (src/App.tsx, ai.ts - o'z kaliti bilan LLM, textproc.ts - javob oqimi parseri va translit,
+                share.ts - ulashish va rasm-kartochka, components/, styles.css - A·Anor)
+scripts/        web_smoke.py, shots.py, test_quota.py, byok_e2e.py, test_server.py (sinov serveri), test_stage2.py, stage2_e2e.py
 data/
   raw/list/       ro'yxat sahifalari HTML
   raw/docs/       hujjat HTML (<lex_id>.html)
