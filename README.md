@@ -125,15 +125,53 @@ API:
 
 | Yo'l | Nima qiladi |
 |---|---|
-| `POST /api/ask` | `{"question": "...", "filters": {"only_active": true, "include_amending": false, "doc_types": ["Qonun","Kodeks","Konstitutsiya"]}}` -> SSE oqim: `sources`, keyin `delta` bo'laklari, oxirida `done` (yoki `error`: `no_key`, `bad_key`, `timeout`, `busy`, `network`, `llm`) |
+| `POST /api/ask` | Server kaliti bilan (bepul limit). `{"question": "...", "filters": {"only_active": true, "include_amending": false, "doc_types": ["Qonun","Kodeks","Konstitutsiya"]}}` -> SSE oqim: `sources`, keyin `delta` bo'laklari, `quota`, oxirida `done` (yoki `error`: `free_limit`, `no_key`, `bad_key`, `quota`, `timeout`, `busy`, `network`, `llm`) |
+| `POST /api/context` | O'z kaliti uchun: o'sha body -> `{sources, no_answer, prompt: {system, user}}`. LLM'ni brauzer foydalanuvchi kaliti bilan o'zi chaqiradi |
+| `GET /api/quota` | Bugungi bepul savollar: `{free, limit, used, left, reason}` |
+| `POST /api/proxy/openai/chat/completions` | Faqat OpenAI uchun o'tkazgich (pastda sababi). Kalit `Authorization` sarlavhasida keladi, saqlanmaydi |
 | `GET /api/search?q=...&k=8&only_active=true&include_amending=false&types=Kodeks` | faqat qidiruv, LLM'siz |
 | `GET /api/health` | indeks va LLM holati (kalitning o'zi qaytarilmaydi) |
 | `GET /api/stats` | hujjatlar, chunklar soni, baza sanasi (report.md va indeksdan) |
 | `GET /api/docs` | Swagger |
 
-LLM: `.env` dagi `LLM_PROVIDER` va kalit. Gemini standart modeli `gemini-3.5-flash`; 503/429, 404 yoki
-timeout bo'lsa `gemini-3.8-flash`, `gemini-3.1-flash-lite`, `gemini-flash-latest` zaxiralariga o'tadi.
-`.env` da kalit bo'lmasa ilova ishlayveradi: manbalar topiladi, javob o'rnida "API kalit sozlanmagan" xabari chiqadi.
+LLM (server kaliti): `.env` dagi `LLM_PROVIDER` va kalit. Gemini standart modeli `gemini-3.1-flash-lite`
+(bepul tarifda limiti kattaroq); 503/429, 404 yoki timeout bo'lsa `gemini-3.5-flash`, `gemini-3.8-flash`,
+`gemini-flash-latest` zaxiralariga o'tadi. `.env` da kalit bo'lmasa ilova ishlayveradi: manbalar topiladi,
+javob uchun foydalanuvchiga o'z kalitini ulash taklif qilinadi.
+
+### AI ulash: o'z kaliti va bepul sinov
+
+Har foydalanuvchi o'z AI hisobidan foydalanadi, server kaliti esa faqat qisqa bepul sinov uchun.
+
+* **Bepul sinov.** Kaliti yo'q foydalanuvchi kuniga `FREE_DAILY_LIMIT` ta savol beradi (server kaliti bilan).
+  Hammaga birgalikda kuniga `GLOBAL_DAILY_LIMIT` ta (Gemini bepul tarifi har model uchun kuniga ~20 so'rov).
+  Foydalanuvchi: Telegram Mini App'da `initData` dagi `user.id` (`TELEGRAM_BOT_TOKEN` bo'lsa imzo HMAC bilan
+  tekshiriladi), aks holda brauzerdagi qurilma ID + IP (IP'ga 4 barobar limit: localStorage'ni tozalab cheksiz
+  savol olib bo'lmaydi). Hisoblagich `data/state/quota.sqlite` da, ID va IP xeshlangan, kun Toshkent vaqti bilan.
+  Faqat LLM haqiqatan chaqirilgan savol hisoblanadi; "topilmadi" (LLM'siz) va LLM xatosi hisoblanmaydi.
+* **O'z kaliti (BYOK).** Sozlamalar -> "AI ulash": Gemini, OpenAI yoki Claude, kalit, model, "Tekshirish"
+  (bir necha tokenlik sinov so'rovi). Kalit faqat foydalanuvchi qurilmasida: localStorage, Telegram ichida
+  `Telegram.WebApp.CloudStorage` ham. Server faqat manbalar va tayyor so'rovni beradi (`/api/context`),
+  LLM'ni brauzer o'zi chaqiradi:
+  * Gemini (`streamGenerateContent?alt=sse`, kalit `x-goog-api-key` sarlavhasida) va Claude
+    (`anthropic-dangerous-direct-browser-access: true`) - to'g'ridan-to'g'ri, kalit serverga umuman kelmaydi.
+  * OpenAI - `/api/proxy/openai` orqali: OpenAI xato javoblarida (401/429) CORS sarlavhasi yo'q, brauzer
+    "noto'g'ri kalit"ni "internet yo'q"dan ajrata olmaydi. Kalit faqat so'rov sarlavhasida o'tadi: faylga,
+    logga yozilmaydi (`scripts/byok_e2e.py` server logini ham tekshiradi).
+
+`.env` sozlamalari (`.env.example` da):
+
+```bash
+FREE_DAILY_LIMIT=5           # bitta foydalanuvchiga kuniga savol
+GLOBAL_DAILY_LIMIT=100       # hammaga birgalikda kuniga savol (0 = bepul rejim o'chiq)
+TELEGRAM_BOT_TOKEN=          # ixtiyoriy: Mini App foydalanuvchisi initData imzosi bilan aniqlanadi
+```
+
+**HTTPS shart.** Internetga chiqarilganda ilova faqat HTTPS orqali berilsin (cloudflared, nginx + Let's Encrypt):
+oddiy HTTP'da OpenAI kaliti (proksi sarlavhasi) va savollar tarmoqda ochiq ketadi, Telegram Mini App esa
+faqat HTTPS manzilni qabul qiladi. Server cloudflared/nginx ortida (127.0.0.1 dan) bo'lsa, foydalanuvchi
+IP'si `CF-Connecting-IP` / `X-Forwarded-For` dan olinadi; tashqaridan to'g'ridan kelgan so'rovda bu sarlavhalarga
+ishonilmaydi.
 
 Sinov va skrinshotlar (server ishlab turganda):
 
@@ -141,6 +179,16 @@ Sinov va skrinshotlar (server ishlab turganda):
 .venv/bin/python scripts/web_smoke.py                 # 5 ta savol oxirigacha (SSE), natija terminalda
 .venv/bin/pip install playwright && .venv/bin/python -m playwright install chromium
 .venv/bin/python scripts/shots.py --out design/shots/app   # desktop 1440px va telefon 390px
+```
+
+"AI ulash" va bepul limit sinovi (alohida 8010-portdagi serverni o'zi ishga tushiradi va to'xtatadi; frontend
+`web/dist` emas, vaqtinchalik papkaga yig'iladi, shuning uchun ishlab turgan asosiy serverga tegmaydi):
+
+```bash
+.venv/bin/python scripts/test_quota.py                     # limit va Telegram HMAC, LLM'siz
+cd web && npx vite build --outDir /tmp/dalil-byok-dist --emptyOutDir && cd ..
+.venv/bin/python scripts/byok_e2e.py --fresh-quota         # limit=2; server kaliti bilan 2 ta haqiqiy savol
+.venv/bin/python scripts/byok_e2e.py --only api,keys,byok,mock,tg   # LLM sarflamasdan
 ```
 
 Telegram Mini App: BotFather'da botga Web App URL sifatida ilovaning HTTPS manzilini bering (masalan,
@@ -166,9 +214,10 @@ lexrag/
   llm.py        Gemini / OpenAI / Claude (HTTP, streaming)
   rag.py        manbali javob: [n] iqtiboslar, "topilmadi" himoyasi
   colab.py      embeddingni Colab GPU'da hisoblash: eksport/import + sifat tekshiruvi
-  web/app.py    FastAPI: /api/ask (SSE), /api/search, /api/health, /api/stats + web/dist
-web/            React frontend (src/App.tsx, components/, styles.css - design/maket-v2.html A·Anor)
-scripts/        web_smoke.py (savollar bilan sinov), shots.py (Playwright skrinshotlari)
+  web/app.py    FastAPI: /api/ask (SSE), /api/context, /api/quota, /api/search, /api/health, /api/stats + web/dist
+  web/quota.py  bepul limit: foydalanuvchini aniqlash (Telegram HMAC / qurilma + IP), SQLite hisoblagich
+web/            React frontend (src/App.tsx, ai.ts - o'z kaliti bilan LLM, components/, styles.css - A·Anor)
+scripts/        web_smoke.py, shots.py, test_quota.py, byok_e2e.py, test_server.py (sinov serveri)
 data/
   raw/list/       ro'yxat sahifalari HTML
   raw/docs/       hujjat HTML (<lex_id>.html)
@@ -177,7 +226,7 @@ data/
   chunks.jsonl    barcha chunklar
   metadata.csv    hujjatlar ro'yxati
   missing.csv     chiqmagan hujjatlar va sababi
-  state/          list_index.jsonl, failures.jsonl, sample_ids.json, verify.json
+  state/          list_index.jsonl, failures.jsonl, sample_ids.json, verify.json, quota.sqlite (bepul limit)
   index/chroma/   vektor baza
 report.md
 ```

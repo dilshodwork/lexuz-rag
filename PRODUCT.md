@@ -26,7 +26,7 @@ Umumiy chatbot emas: javob faqat bazadagi moddalardan yoziladi, mos modda topilm
 
 - Baza: 1618 hujjat (1588 qonun, 28 kodeks, 2 Konstitutsiya), 39 961 modda bo'lagi, holat sanasi 31.10.2026.
 - Qidiruv: bge-m3 + BM25 gibrid, RRF. Kirillcha savolni backend lotinga o'giradi.
-- LLM: Gemini (standart gemini-3.5-flash, zaxira modellar bilan), OpenAI yoki Claude, .env orqali.
+- LLM: foydalanuvchining o'z kaliti ("AI ulash": Gemini, OpenAI yoki Claude, kalit faqat qurilmada) yoki server kaliti bilan kuniga bir necha bepul savol (standart gemini-3.1-flash-lite, zaxira modellar bilan).
 - Standart filtr: faqat amaldagi hujjatlar, o'zgartirish kirituvchi qonunlarsiz.
 
 ## Capabilities and Constraints
