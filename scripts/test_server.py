@@ -23,12 +23,23 @@ def main():
     ap.add_argument("--dist", default=str(ROOT / "web" / "dist"))
     ap.add_argument("--quota-db", default="/tmp/dalil-test-quota.sqlite")
     ap.add_argument("--telegram-token", default="", help="sinov uchun soxta bot tokeni (initData HMAC tekshiruvi)")
+    ap.add_argument("--llm-once", action="store_true",
+                    help="har savolga aynan bitta LLM HTTP so'rovi (qayta urinish va zaxira modelsiz) - limitni aniq sanash uchun")
     a = ap.parse_args()
     os.environ.update(FREE_DAILY_LIMIT=str(a.free_limit), GLOBAL_DAILY_LIMIT=str(a.global_limit),
                       DALIL_DIST=a.dist, DALIL_QUOTA_DB=a.quota_db)
     if a.telegram_token:
         os.environ["TELEGRAM_BOT_TOKEN"] = a.telegram_token
     sys.path.insert(0, str(ROOT))
+    if a.llm_once:
+        from lexrag import llm
+
+        def once(system, user, temperature=0.1, max_tokens=8192):
+            provider, model, key = llm.settings()
+            print(f"[llm-once] {provider}/{model}: 1 ta so'rov", flush=True)
+            llm.LAST_MODEL = model
+            yield from llm._stream_once(provider, model, key, system, user, temperature, max_tokens)
+        llm.stream = once
     import uvicorn
     uvicorn.run("lexrag.web.app:app", host="127.0.0.1", port=a.port)
 

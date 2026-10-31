@@ -3,8 +3,9 @@ import { LANG_PREFS } from "../store";
 import { DOC_TYPES, type Filters, type LangPref } from "../types";
 
 /* Mobil varaq va desktop popover uchun bitta filtr shakli (o'zgarish darhol qo'llanadi) */
-export function FilterForm({ f, onChange, onClose, lang, onLang }: {
+export function FilterForm({ f, onChange, onClose, lang, onLang, xray, onXray }: {
   f: Filters; onChange: (f: Filters) => void; onClose: () => void; lang: LangPref; onLang: (l: LangPref) => void;
+  xray: boolean; onXray: (v: boolean) => void;
 }) {
   const li = LANG_PREFS.findIndex((x) => x.v === lang);
   const toggleType = (t: string) => {
@@ -46,6 +47,14 @@ export function FilterForm({ f, onChange, onClose, lang, onLang }: {
         ))}
       </div>
       <p className="f-hint">{lang === "auto" ? "Javob savol yozilgan tilda: lotin, kirill yoki rus. Manbalar asl oʻzbekcha qoladi." : "Javob har doim shu tilda. Manbalar asl oʻzbekcha qoladi."}</p>
+      <div className="grp-label">Shaffoflik</div>
+      <div className="grp">
+        <div className="row">
+          <div className="txt">X-ray rejimi<small>Har javobda RAG ichi: dense / BM25 / RRF, prompt, vaqtlar</small></div>
+          <button className={`sw${xray ? " on" : ""}`} role="switch" aria-checked={xray} aria-label="X-ray rejimi" onClick={() => onXray(!xray)} />
+        </div>
+      </div>
+      <p className="f-hint">Qoʻshimcha AI soʻrovi yuborilmaydi. Oʻchiq boʻlsa ham har javobdagi “Ichini koʻrish” ishlaydi.</p>
       <button className="primary press" onClick={onClose}>Qoʻllash</button>
     </>
   );

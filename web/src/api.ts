@@ -2,16 +2,17 @@ import { AiError, streamAi, type AiConfig } from "./ai";
 import { uid } from "./store";
 import { telegramInitData } from "./telegram";
 import { AnswerStream, type PostRules } from "./textproc";
-import type { AnswerLang, Filters, LangPref, Mode, Quota, Source, Stats, Step, Trust } from "./types";
+import type { AnswerLang, EvalData, EvalRun, Filters, LangPref, Mode, Quota, Source, Stats, Step, Trust, XRay, XrLLM } from "./types";
 
 export type AskHandlers = {
   onStep: (s: Step) => void;
   onSources: (d: { sources: Source[]; no_answer: boolean; lang?: AnswerLang; parts?: string[] }) => void;
   onDelta: (text: string) => void;
   onFollowups: (items: string[]) => void;
-  onDone: (d: { no_answer: boolean; model: string | null; ms: number }) => void;
+  onDone: (d: { no_answer: boolean; model: string | null; ms: number; xray_llm?: Partial<XrLLM> }) => void;
   onError: (d: { code: string; message: string }) => void;
   onQuota?: (q: Quota) => void;
+  onXray?: (x: XRay) => void;     // xray=true bo'lsa: qidiruv ichi (LLM'dan oldin)
 };
 
 /** Savol parametrlari. Promptni server yig'adi, brauzer faqat shularni yuboradi. */
@@ -22,6 +23,7 @@ export type AskParams = {
   mode?: Mode;
   chunk_ids?: string[];   // sodda rejim: o'sha manbalar, qayta qidiruvsiz
   base_answer?: string;   // sodda rejim: yuridik javob matni
+  xray?: boolean;         // RAG ichini ham qaytarish (LLM so'rovi qo'shilmaydi)
 };
 
 /** Bepul limit uchun foydalanuvchi: qurilma ID (shu brauzerda doimiy) va Telegram initData */
@@ -54,8 +56,23 @@ const body = (p: AskParams) => JSON.stringify({ ...p, mode: p.mode || "legal" })
 
 type Ctx = {
   sources: Source[]; no_answer: boolean; no_answer_text: string; lang: AnswerLang; parts: string[];
-  steps: Step[]; post: PostRules; prompt: { system: string; user: string } | null;
+  steps: Step[]; post: PostRules; prompt: { system: string; user: string } | null; xray?: XRay;
 };
+
+/** X-ray o'chiq paytda berilgan savol uchun: qidiruv qayta bajariladi (LLM'siz), RAG ichi qaytadi */
+export async function fetchXray(p: AskParams): Promise<XRay | null> {
+  try {
+    const r = await fetch("/api/context", { method: "POST", headers: { "Content-Type": "application/json" }, body: body({ ...p, xray: true }) });
+    if (!r.ok) return null;
+    const d: Ctx = await r.json();
+    if (!d.xray) return null;
+    const x = d.xray;
+    if (x.prompt && d.prompt) x.prompt = { ...x.prompt, ...d.prompt };
+    return { ...x, refetched: true };
+  } catch {
+    return null;
+  }
+}
 
 /** O'z kaliti bilan: server bosqichlar, manbalar va tayyor so'rovni beradi (/api/context), LLM brauzerdan chaqiriladi.
     Hodisalar /api/ask bilan bir xil, shuning uchun interfeys qaysi yo'l ishlatilganini bilmaydi. */
@@ -78,6 +95,13 @@ export async function askDirect(ai: AiConfig, p: AskParams, signal: AbortSignal,
   for (const s of ctx.steps || []) h.onStep(s);
   h.onSources(ctx);
   const ms = () => Math.round(performance.now() - t0);
+  // X-ray: LLM brauzerdan chaqiriladi, shuning uchun uning vaqtlari shu yerda o'lchanadi (savol yuborilgan paytdan)
+  const rel = () => Math.round((performance.now() - t0) * 10) / 10;
+  if (ctx.xray) {
+    const x = ctx.xray;
+    if (x.prompt && ctx.prompt) x.prompt = { ...x.prompt, ...ctx.prompt };
+    h.onXray?.({ ...x, llm: { via: "own", provider: ai.provider, model: ai.model } });
+  }
   if (ctx.no_answer || !ctx.prompt) {
     h.onDelta(ctx.no_answer_text);
     h.onDone({ no_answer: true, model: null, ms: ms() });
@@ -85,13 +109,19 @@ export async function askDirect(ai: AiConfig, p: AskParams, signal: AbortSignal,
   }
   // serverdagi rag.AnswerStream bilan bir xil: <<<KEYINGI>>> qismi ajratiladi, kerak bo'lsa kirillga o'giriladi
   const out = new AnswerStream(ctx.post);
+  const llmStart = rel();
+  let first: number | null = null;
   try {
-    const model = await streamAi(ai, ctx.prompt.system, ctx.prompt.user, signal, (t) => { const x = out.feed(t); if (x) h.onDelta(x); });
+    const model = await streamAi(ai, ctx.prompt.system, ctx.prompt.user, signal, (t) => {
+      if (first === null) first = rel();
+      const x = out.feed(t); if (x) h.onDelta(x);
+    });
     const rest = out.flush();
     if (rest) h.onDelta(rest);
     const f = out.followups();
     if (f.length) h.onFollowups(f);
-    h.onDone({ no_answer: out.notFound(), model, ms: ms() });
+    h.onDone({ no_answer: out.notFound(), model, ms: ms(),
+      ...(ctx.xray ? { xray_llm: { start: llmStart, first_token: first, end: rel(), model } } : {}) });
   } catch (e) {
     if (signal.aborted) return;
     if (e instanceof AiError) h.onError({ code: e.code, message: e.message });
@@ -137,6 +167,7 @@ export async function askStream(p: AskParams, signal: AbortSignal, h: AskHandler
     else if (ev === "delta") h.onDelta(d.text);
     else if (ev === "followups") h.onFollowups(d.items || []);
     else if (ev === "quota") h.onQuota?.(d);
+    else if (ev === "xray") h.onXray?.(d);
     else if (ev === "done") { finished = true; h.onDone(d); }
     else if (ev === "error") { finished = true; h.onError(d); }
   };
@@ -169,6 +200,37 @@ export async function verifyAnswer(text: string, chunkIds: string[], lang: Answe
     return r.ok ? await r.json() : null;
   } catch {
     return null;
+  }
+}
+
+// ---------------------------------------------------------------- baholash
+export async function getEval(): Promise<EvalData | null> {
+  try {
+    const r = await fetch("/api/eval");
+    return r.ok ? await r.json() : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function getEvalStatus(): Promise<EvalRun | null> {
+  try {
+    const r = await fetch("/api/eval/status");
+    return r.ok ? await r.json() : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Qayta hisoblashni boshlash. token - serverda EVAL_TOKEN o'rnatilgan bo'lsa */
+export async function runEval(token?: string): Promise<{ ok: boolean; run?: EvalRun; message?: string }> {
+  try {
+    const r = await fetch("/api/eval/run", { method: "POST", headers: token ? { "X-Eval-Token": token } : {} });
+    const d = await r.json().catch(() => ({}));
+    if (r.ok || r.status === 409) return { ok: true, run: d };
+    return { ok: false, message: d.message || `Server xato qaytardi (${r.status})` };
+  } catch {
+    return { ok: false, message: "Server bilan aloqa yoʻq." };
   }
 }
 

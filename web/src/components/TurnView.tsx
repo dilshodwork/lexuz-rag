@@ -91,6 +91,8 @@ export function TurnView(props: {
   onTick: () => void;
   onConnect: () => void;
   onHud: (m: string) => void;
+  onXray: () => void;
+  xrayOn: boolean;   // desktop o'ng panelda shu javobning X-ray'i ochiq
 }) {
   const t = props.turn;
   const simpleView = t.view === "simple" && !!t.simple;
@@ -195,6 +197,11 @@ export function TurnView(props: {
             )}
             {canExplain && !props.busy && (
               <button className="explain press" onClick={props.onExplain}><Icon name="bulb" /><span>Sodda<span className="lg"> qilib tushuntir</span></span></button>
+            )}
+            {!simpleView && (t.status === "done" || t.status === "notfound") && (
+              <button className={`xr-btn press${props.xrayOn ? " on" : ""}${t.xray ? " has" : ""}`} onClick={props.onXray} aria-label="Ichini koʻrish" title="RAG ichini koʻrish: qidiruv, prompt, vaqtlar">
+                <Icon name="xray" /><span className="lg">Ichini koʻrish</span>
+              </button>
             )}
             {n > 0 && (
               <>

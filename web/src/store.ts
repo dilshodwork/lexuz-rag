@@ -1,6 +1,6 @@
 import { DEFAULT_FILTERS, DOC_TYPES, type Conv, type Filters, type LangPref } from "./types";
 
-const K = { convs: "dalil.convs.v1", filters: "dalil.filters.v1", theme: "dalil.theme", lang: "dalil.lang" };
+const K = { convs: "dalil.convs.v1", filters: "dalil.filters.v1", theme: "dalil.theme", lang: "dalil.lang", xray: "dalil.xray" };
 const MAX_CONVS = 60;
 
 function read<T>(key: string, fallback: T): T {
@@ -35,8 +35,14 @@ export function loadConvs(): Conv[] {
   return list;
 }
 
+/** X-ray'dagi prompt matni (~10-15 KB) faqat shu sessiyada qoladi: tarixda token soni saqlanadi */
+const slim = (list: Conv[]): Conv[] => list.map((c) => ({
+  ...c,
+  turns: c.turns.map((t) => (t.xray?.prompt?.user ? { ...t, xray: { ...t.xray, prompt: { tokens: t.xray.prompt.tokens, chars: t.xray.prompt.chars } } } : t)),
+}));
+
 export function saveConvs(list: Conv[]) {
-  let l = list.slice(0, MAX_CONVS);
+  let l = slim(list.slice(0, MAX_CONVS));
   write(K.convs, l);
   // sig'masa eskilarini tashlab yana urinish
   while (l.length > 1 && localStorage.getItem(K.convs) === null) {
@@ -61,6 +67,9 @@ export const loadLang = (): LangPref => {
   return LANG_PREFS.some((x) => x.v === v) ? v : "auto";
 };
 export const saveLang = (v: LangPref) => write(K.lang, v);
+
+export const loadXrayPref = () => read<boolean>(K.xray, false) === true;
+export const saveXrayPref = (v: boolean) => write(K.xray, v);
 
 export const loadTheme = () => read<"light" | "dark" | null>(K.theme, null);
 export const saveTheme = (t: "light" | "dark") => write(K.theme, t);

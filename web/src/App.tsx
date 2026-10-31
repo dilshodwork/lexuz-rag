@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { loadAi, loadAiCloud, PROVIDERS, saveAi, type AiConfig } from "./ai";
-import { askDirect, askStream, getQuota, getStats, verifyAnswer, type AskHandlers, type AskParams } from "./api";
+import { askDirect, askStream, fetchXray, getQuota, getStats, verifyAnswer, type AskHandlers, type AskParams } from "./api";
 import { AiConnect, LimitPanel } from "./components/AiConnect";
+import { EvalDrill, EvalPage } from "./components/EvalPage";
 import { FilterForm } from "./components/FilterForm";
+import { XRayPanel } from "./components/XRayPanel";
 import { Modal } from "./components/Modal";
 import { Sheet, type SheetPos } from "./components/Sheet";
 import { SkeletonCards, SourceCard } from "./components/SourceCard";
@@ -11,10 +13,14 @@ import { TurnView } from "./components/TurnView";
 import { Icon, type IconName } from "./icons";
 import { plainAnswer } from "./render";
 import {
-  dayGroup, filtersLabel, isDefaultFilters, loadConvs, loadFilters, loadLang, loadTheme, saveConvs, saveFilters, saveLang, saveTheme, timeLabel, uid,
+  dayGroup, filtersLabel, isDefaultFilters, loadConvs, loadFilters, loadLang, loadTheme, loadXrayPref, saveConvs, saveFilters, saveLang, saveTheme,
+  saveXrayPref, timeLabel, uid,
 } from "./store";
 import { haptic, initTelegram, setBackButton, setTelegramChrome, telegramScheme } from "./telegram";
-import type { Conv, Filters, LangPref, Mode, Quota, Stats, Step, Turn, Variant } from "./types";
+import type { Conv, EvalQ, EvalResults, Filters, LangPref, Mode, Quota, Stats, Step, Turn, Variant } from "./types";
+
+type Route = "chat" | "eval";
+const routeOf = (p: string): Route => (p.replace(/\/+$/, "") === "/baholash" ? "eval" : "chat");
 
 const SUGS: { q: string; tag: string; icon: IconName; tall?: boolean }[] = [
   { q: "Prezident qancha muddatga saylanadi?", tag: "Konstitutsiya", icon: "scale", tall: true },
@@ -60,8 +66,13 @@ export default function App() {
   const [langPref, setLangPref] = useState<LangPref>(loadLang);
   const [panelTurn, setPanelTurn] = useState<string | null>(null); // manbalar paneli qaysi javobniki
   const [hl, setHl] = useState<{ turn: string; n: number } | null>(null);
-  const [sheet, setSheet] = useState<{ name: "sources" | "filters" | "history" | "ai" | "limit"; pos: SheetPos } | null>(null);
+  const [sheet, setSheet] = useState<{ name: "sources" | "filters" | "history" | "ai" | "limit" | "xray" | "drill"; pos: SheetPos } | null>(null);
   const [dlg, setDlg] = useState<"ai" | "limit" | null>(null); // desktop dialoglari (mobilda - varaq)
+  const [route, setRoute] = useState<Route>(() => routeOf(location.pathname));
+  const [xrayOn, setXrayOn] = useState<boolean>(loadXrayPref);   // X-ray rejimi: har savolda RAG ichi yig'iladi
+  const [inspTab, setInspTab] = useState<"src" | "xray">("src");  // desktop o'ng panel
+  const [xrLoading, setXrLoading] = useState(false);
+  const [drill, setDrill] = useState<{ q: EvalQ; r: EvalResults } | null>(null);
   const [dlgSeq, setDlgSeq] = useState(0); // har ochilishda "AI ulash" shakli qaytadan boshlanadi
   const [ai, setAi] = useState<AiConfig | null>(loadAi);
   const [quota, setQuota] = useState<Quota | null>(null);
@@ -77,7 +88,8 @@ export default function App() {
   const stick = useRef(true); // foydalanuvchi pastda bo'lsa oqim bilan birga pastga suriladi
 
   const conv = convs.find((c) => c.id === activeId) || null;
-  const chat = !!conv;
+  const evalView = route === "eval";
+  const chat = !!conv && !evalView;
   const busy = !!liveId;
   const panel = conv ? conv.turns.find((t) => t.id === panelTurn) || conv.turns[conv.turns.length - 1] : null;
 
@@ -99,17 +111,26 @@ export default function App() {
   }, [theme]);
   useEffect(() => { saveFilters(filters); }, [filters]);
   useEffect(() => { saveLang(langPref); }, [langPref]);
+  useEffect(() => { saveXrayPref(xrayOn); }, [xrayOn]);
+  useEffect(() => {
+    const f = () => setRoute(routeOf(location.pathname));
+    addEventListener("popstate", f);
+    return () => removeEventListener("popstate", f);
+  }, []);
   useEffect(() => { if (!busy) saveConvs(convs); }, [convs, busy]);
   useEffect(() => {
     const b = document.body.classList;
     b.toggle("v-chat", chat);
+    b.toggle("v-eval", evalView);
     b.toggle("busy", busy);
     b.toggle("sheet-open", !!sheet && sheet.pos !== "closed");
     b.toggle("card-mode", !!sheet && sheet.pos === "large");
     b.toggle("pop-open", pop && desk);
-  }, [chat, busy, sheet, pop, desk]);
+  }, [chat, evalView, busy, sheet, pop, desk]);
   useEffect(() => { if (desk && sheet) setSheet(null); }, [desk]); // eslint-disable-line react-hooks/exhaustive-deps
-  useEffect(() => { document.title = conv ? `${conv.title} · Dalil` : "Dalil · Qonunchilik boʻyicha savol-javob"; }, [conv]);
+  useEffect(() => {
+    document.title = evalView ? "Baholash · Dalil" : conv ? `${conv.title} · Dalil` : "Dalil · Qonunchilik boʻyicha savol-javob";
+  }, [conv, evalView]);
 
   // ---------------------------------------------------------- yordamchilar
   const patchTurn = useCallback((cid: string, tid: string, p: Partial<Turn> | ((t: Turn) => Partial<Turn>)) => {
@@ -146,10 +167,39 @@ export default function App() {
     if (s) s.scrollTo({ top: s.scrollHeight, behavior: smooth ? "smooth" : "auto" });
   };
 
+  const navigate = (r: Route) => {
+    const path = r === "eval" ? "/baholash" : "/";
+    if (location.pathname !== path) history.pushState(null, "", path);
+    setRoute(r);
+  };
+
   const goHome = () => {
     abort.current?.abort();
-    vt(() => { setActiveId(null); setLive(null); setHl(null); setPanelTurn(null); setPop(false); setSheet(null); });
+    vt(() => { navigate("chat"); setActiveId(null); setLive(null); setHl(null); setPanelTurn(null); setPop(false); setSheet(null); });
     requestAnimationFrame(() => scrollRef.current?.scrollTo({ top: 0 }));
+  };
+
+  const openEval = () => {
+    vt(() => { navigate("eval"); setPop(false); setSheet(null); });
+    requestAnimationFrame(() => scrollRef.current?.scrollTo({ top: 0 }));
+  };
+
+  /** X-ray o'chiq paytda berilgan javob: qidiruv qayta bajariladi (LLM'siz) */
+  const loadXray = (t: Turn) => {
+    if (!conv || xrLoading) return;
+    const cid = conv.id;
+    setXrLoading(true);
+    fetchXray({ question: t.q, filters, lang: t.lang || langPref }).then((x) => {
+      setXrLoading(false);
+      if (x) patchTurn(cid, t.id, { xray: x }); else showHud("X-ray’ni hisoblab boʻlmadi");
+    });
+  };
+
+  const openXray = (t: Turn) => {
+    setPanelTurn(t.id);
+    haptic();
+    if (desk) setInspTab("xray"); else setSheet({ name: "xray", pos: "large" });
+    if (!t.xray && t.status !== "searching") loadXray(t);
   };
 
   const run = (cid: string, turn: Turn, mode: Mode = "legal") => {
@@ -174,9 +224,11 @@ export default function App() {
     // o'z kaliti ulangan bo'lsa LLM brauzerdan chaqiriladi, aks holda server kaliti (bepul limit)
     const own = ai;
     const ids = turn.sources.map((s) => s.chunk_id);
+    const wantXray = xrayOn && mode === "legal";
     const params: AskParams = mode === "simple"
       ? { question: turn.q, filters, lang: turn.lang || langPref, mode, chunk_ids: ids, base_answer: turn.text }
-      : { question: turn.q, filters, lang: langPref };
+      : { question: turn.q, filters, lang: langPref, ...(wantXray ? { xray: true } : {}) };
+    if (wantXray && desk) setInspTab("xray");
     let lang = turn.lang || "uz";
     let srcIds = ids;
     const handlers: AskHandlers = {
@@ -195,8 +247,16 @@ export default function App() {
       },
       onDelta: (x) => { text += x; pv((v) => (v.noLLM ? {} : { text: v.text + x, status: "writing" })); },
       onFollowups: (items) => pv({ followups: items }),
+      onXray: (x) => patchTurn(cid, turn.id, { xray: x }),
       onDone: (d) => {
         const ms = d.ms || Math.round(performance.now() - t0);
+        if (d.xray_llm) {
+          const xl = d.xray_llm;
+          patchTurn(cid, turn.id, (t) => (t.xray ? { xray: { ...t.xray, llm: {
+            via: t.xray.llm?.via || "server", provider: t.xray.llm?.provider ?? null, model: xl.model ?? t.xray.llm?.model ?? null,
+            start: xl.start ?? null, first_token: xl.first_token ?? null, end: xl.end ?? null,
+          } } } : {}));
+        }
         if (wroteAt) upsertStep({ key: "write", label: writeLabel, state: "done", detail: d.model || "", ms: Math.round(performance.now() - wroteAt) });
         pv({ status: d.no_answer ? "notfound" : "done", model: d.model, ms });
         if (own && d.model) markAi(own, "ok");
@@ -249,7 +309,7 @@ export default function App() {
     if (!conv || busy) return;
     if (!ai && quota?.free && quota.left <= 0) { openDlg("limit"); return; }
     const fresh: Partial<Turn> = { text: "", sources: [], status: "searching", error: undefined, model: null, noLLM: false,
-      steps: [], followups: [], trust: undefined, simple: undefined, view: "legal" };
+      steps: [], followups: [], trust: undefined, simple: undefined, view: "legal", xray: undefined };
     patchTurn(conv.id, t.id, fresh);
     run(conv.id, { ...t, ...fresh });
   };
@@ -300,7 +360,7 @@ export default function App() {
 
   const openConv = (id: string) => {
     abort.current?.abort();
-    const go = () => { setActiveId(id); setPanelTurn(null); setHl(null); setSheet(null); };
+    const go = () => { navigate("chat"); setActiveId(id); setPanelTurn(null); setHl(null); setSheet(null); };
     if (chat) go(); else vt(go);
     requestAnimationFrame(() => toBottom());
   };
@@ -314,7 +374,7 @@ export default function App() {
   };
 
   // Telegram "orqaga" tugmasi
-  useEffect(() => { setBackButton(chat ? goHome : null); }, [chat]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { setBackButton(chat || evalView ? goHome : null); }, [chat, evalView]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Desktop popover tashqariga bosilganda yopiladi, Esc hammasini yopadi
   useEffect(() => {
@@ -430,6 +490,9 @@ export default function App() {
           <aside className="side glass" aria-label="Suhbatlar">
             <a className="brand" href="/" onClick={(e) => { e.preventDefault(); goHome(); }}><span className="mk" />Dalil</a>
             <button className="newchat press" onClick={goHome}><Icon name="plus" />Yangi suhbat</button>
+            <button className={`navrow press${evalView ? " on" : ""}`} onClick={openEval} aria-current={evalView ? "page" : undefined}>
+              <span className="nv-ic"><Icon name="chart" /></span><span className="txt">Baholash<small>RAG sifati: recall, MRR</small></span>
+            </button>
             <label className="search"><Icon name="search" />
               <input value={histQ} onChange={(e) => setHistQ(e.target.value)} placeholder="Suhbatlardan qidirish" aria-label="Suhbatlardan qidirish" />
             </label>
@@ -454,10 +517,10 @@ export default function App() {
               <button className="cbtn glass press" onClick={() => setSheet({ name: "history", pos: "large" })} aria-label="Suhbatlar tarixi"><Icon name="menu" /></button>
               <div className="nav-title">
                 <a className="brand" href="/" onClick={(e) => { e.preventDefault(); goHome(); }}><span className="mk" />Dalil</a>
-                <div className="nav-q">{conv?.title}</div>
+                <div className="nav-q">{evalView ? "Baholash" : conv?.title}</div>
               </div>
               <div className="nav-right">
-                <button className="scopechip glass press" data-filters onClick={toggleFilters}><Icon name="filter" /><span>{filtersLabel(filters, langPref)}</span></button>
+                {!evalView && <button className="scopechip glass press" data-filters onClick={toggleFilters}><Icon name="filter" /><span>{filtersLabel(filters, langPref)}{xrayOn ? " · X-ray" : ""}</span></button>}
                 <button className="cbtn glass press mob-only" onClick={goHome} aria-label="Yangi suhbat"><Icon name="edit" /></button>
               </div>
             </header>
@@ -467,7 +530,9 @@ export default function App() {
               setScrolled(s.scrollTop > 8);
               stick.current = s.scrollHeight - s.scrollTop - s.clientHeight < 140;
             }}>
-              {!chat ? (
+              {evalView ? (
+                <EvalPage onHud={showHud} onDrill={(q, r) => { setDrill({ q, r }); haptic(); if (!desk) setSheet({ name: "drill", pos: "large" }); }} />
+              ) : !chat ? (
                 <section className="home col">
                   <div className="hero">
                     <div className="orb-big" aria-hidden="true" />
@@ -496,23 +561,36 @@ export default function App() {
                       activeN={hl?.turn === t.id ? hl.n : null} panelOn={panel?.id === t.id}
                       onCite={(n) => focusSource(t, n)} onCopy={() => copy(t)} onRetry={() => retry(t)}
                       onExplain={() => explain(t)} onView={(m) => setView(t, m)} onFollowup={ask} onHud={showHud}
-                      onSources={() => { setPanelTurn(t.id); if (!desk) setSheet({ name: "sources", pos: "medium" }); }}
+                      onSources={() => { setPanelTurn(t.id); setInspTab("src"); if (!desk) setSheet({ name: "sources", pos: "medium" }); }}
+                      onXray={() => openXray(t)} xrayOn={desk && inspTab === "xray" && panel?.id === t.id}
                       onTick={() => { if (stick.current && t.id === liveId) toBottom(); }} onConnect={() => openDlg("ai")} />
                   ))}
                 </section>
               )}
             </div>
 
-            <div className="dock">
-              {(!desk || chat) && <><div className="chiprow">{aiChip}</div>{composer}</>}
-              {legal}
-            </div>
+            {!evalView && (
+              <div className="dock">
+                {(!desk || chat) && <><div className="chiprow">{aiChip}</div>{composer}</>}
+                {legal}
+              </div>
+            )}
           </main>
 
-          {/* Desktop: manbalar inspektori */}
-          <aside className="inspector" aria-label="Manbalar">
-            <div className="grab"><div className="sh-head"><h2>{panelTitle}</h2></div>{panelSub}</div>
-            <div className="sh-body" ref={deskBody}><div className="cards">{desk && cards("d")}</div></div>
+          {/* Desktop: manbalar inspektori (va X-ray) */}
+          <aside className="inspector" aria-label={inspTab === "xray" ? "Ichini koʻrish" : "Manbalar"}>
+            <div className="grab">
+              <div className="seg insp-seg" data-v={inspTab === "xray" ? 1 : 0} role="tablist" aria-label="Oʻng panel">
+                <span className="thumb" />
+                <button role="tab" aria-selected={inspTab === "src"} onClick={() => setInspTab("src")}>Manbalar <small className="num">{panel?.sources.length || ""}</small></button>
+                <button role="tab" aria-selected={inspTab === "xray"} onClick={() => { setInspTab("xray"); if (panel && !panel.xray && panel.status !== "searching") loadXray(panel); }}><Icon name="xray" />Ichini koʻrish</button>
+              </div>
+              {inspTab === "src" ? panelSub : panel && conv && conv.turns.length > 1 ? <p className="sh-sub">“{panel.q.length > 60 ? panel.q.slice(0, 58) + "…" : panel.q}”</p> : null}
+            </div>
+            <div className="sh-body" ref={deskBody}>
+              {inspTab === "src" ? <div className="cards">{desk && cards("d")}</div>
+                : desk && <XRayPanel turn={panel} loading={xrLoading} onLoad={() => panel && loadXray(panel)} onHud={showHud} />}
+            </div>
           </aside>
         </div>
       </div>
@@ -524,9 +602,18 @@ export default function App() {
         pos={sheet?.name === "sources" ? sheet.pos : "closed"} onPos={setSheetPos} bodyRef={mobBody}>
         <div className="cards">{!desk && cards("m")}</div>
       </Sheet>
+      <Sheet id="sh-xray" className="xray-sheet" label="Ichini koʻrish" title={<><Icon name="xray" className="i ttl-ic" />Ichini koʻrish</>}
+        sub={panel && conv && conv.turns.length > 1 ? <p className="sh-sub">“{panel.q.length > 60 ? panel.q.slice(0, 58) + "…" : panel.q}”</p> : null}
+        pos={sheet?.name === "xray" ? sheet.pos : "closed"} onPos={setSheetPos}>
+        {!desk && sheet?.name === "xray" && <XRayPanel turn={panel} loading={xrLoading} onLoad={() => panel && loadXray(panel)} onHud={showHud} />}
+      </Sheet>
+      <Sheet id="sh-drill" label="Savol tafsiloti" title={drill ? <>Savol <span className="num">{drill.q.id}</span></> : "Savol"}
+        pos={sheet?.name === "drill" ? sheet.pos : "closed"} onPos={setSheetPos}>
+        {!desk && drill && <EvalDrill q={drill.q} r={drill.r} />}
+      </Sheet>
       <Sheet id="sh-filters" label="Filtrlar" title="Qidiruv filtrlari"
         pos={sheet?.name === "filters" ? sheet.pos : "closed"} onPos={setSheetPos}>
-        <FilterForm f={filters} onChange={setFilters} onClose={closeAll} lang={langPref} onLang={setLangPref} />
+        <FilterForm f={filters} onChange={setFilters} onClose={closeAll} lang={langPref} onLang={setLangPref} xray={xrayOn} onXray={setXrayOn} />
       </Sheet>
       <Sheet id="sh-history" label="Suhbatlar" title="Suhbatlar"
         pos={sheet?.name === "history" ? sheet.pos : "closed"} onPos={setSheetPos}>
@@ -540,6 +627,16 @@ export default function App() {
             <span className="ai-ic"><Icon name="spark" /></span>
             <span className="txt">AI ulash<small>{ai ? `${PROVIDERS[ai.provider].short} · ${ai.model}` : quota?.free ? `Bepul rejim: bugun ${quota.left}/${quota.limit} savol qoldi` : "Oʻz kalitingiz ulanmagan"}</small></span>
             <span className="dot" />
+          </button>
+          <div className="row">
+            <span className="nv-ic"><Icon name="xray" /></span>
+            <div className="txt">X-ray rejimi<small>Har javobda RAG ichi: qidiruv, prompt, vaqtlar</small></div>
+            <button className={`sw${xrayOn ? " on" : ""}`} role="switch" aria-checked={xrayOn} aria-label="X-ray rejimi" onClick={() => setXrayOn((v) => !v)} />
+          </div>
+          <button className="row" onClick={openEval}>
+            <span className="nv-ic"><Icon name="chart" /></span>
+            <span className="txt">Baholash<small>Qidiruv sifati: recall@5, MRR, rad etish</small></span>
+            <Icon name="arrow" className="i chev-r" />
           </button>
         </div>
         <button className="primary press" onClick={() => { const t = theme === "dark" ? "light" : "dark"; setTheme(t); saveTheme(t); }}>
@@ -561,13 +658,16 @@ export default function App() {
         <>
           <Modal open={dlg === "ai"} title="AI ulash" label="AI ulash" onClose={closeAll}>{aiPanel}</Modal>
           <Modal open={dlg === "limit"} title="Bepul limit" label="Bepul savollar tugadi" onClose={closeAll}>{limitPanel}</Modal>
+          <Modal open={!!drill && evalView} title={drill ? <>Savol <span className="num">{drill.q.id}</span></> : "Savol"} label="Savol tafsiloti" onClose={() => setDrill(null)}>
+            {drill && <EvalDrill q={drill.q} r={drill.r} />}
+          </Modal>
         </>
       )}
 
       {/* Desktop filtr popover */}
       <div className="pop glass" id="pop" role="dialog" aria-label="Filtrlar">
         <h3>Qidiruv filtrlari</h3>
-        <FilterForm f={filters} onChange={setFilters} onClose={() => setPop(false)} lang={langPref} onLang={setLangPref} />
+        <FilterForm f={filters} onChange={setFilters} onClose={() => setPop(false)} lang={langPref} onLang={setLangPref} xray={xrayOn} onXray={setXrayOn} />
       </div>
 
       <div className={`hud glass${hud ? " show" : ""}`} role="status"><Icon name="check" /><span>{hud}</span></div>
