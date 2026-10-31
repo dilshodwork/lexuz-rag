@@ -13,11 +13,30 @@ export type RenderOpts = {
   activeN?: number | null;
   times?: number[];      // so'z indeksi -> paydo bo'lgan vaqt (live oqim uchun)
   now?: number;
+  marks?: { start: number; end: number; i: number }[]; // asossiz ko'ringan gaplar (ishonch tekshiruvi)
 };
 
-export function renderAnswer(text: string, o: RenderOpts): string {
+// gap belgisi: ochuvchi belgi U+E100+i (i - da'vo raqami), yopuvchi U+E001
+const MARK_OPEN = 0xe100, MARK_CLOSE = "";
+const SENT = /([-])/;
+
+/** Belgilarni matnga joylash (oxiridan boshlab, o'rinlar siljimasin) */
+function withMarks(text: string, marks: RenderOpts["marks"]) {
+  if (!marks?.length) return text;
+  let t = text;
+  for (const m of [...marks].sort((a, b) => b.start - a.start)) {
+    if (m.end > t.length || m.start >= m.end) continue;
+    t = t.slice(0, m.start) + String.fromCharCode(MARK_OPEN + m.i) + t.slice(m.start, m.end) + MARK_CLOSE + t.slice(m.end);
+  }
+  return t;
+}
+
+export function renderAnswer(src: string, o: RenderOpts): string {
+  const text = withMarks(src, o.marks);
   let idx = 0;
+  let mark = -1; // hozir belgilangan gap ichidami
   const now = o.now ?? 0;
+  const wrapMark = (html: string) => (mark >= 0 ? `<span class="wk" data-c="${mark}">${html}</span>` : html);
   const anim = (): string => {
     if (!o.times) return "";
     const k = idx++;
@@ -31,20 +50,30 @@ export function renderAnswer(text: string, o: RenderOpts): string {
     const on = o.activeN === +n ? " on" : "";
     return `<button class="cite${a ? " w" : ""}${on}" data-n="${n}" aria-label="${n}-manba"${a}>${n}</button>`;
   };
+  const token = (t: string) => {
+    const parts: string[] = [];
+    let last = 0;
+    for (const m of t.matchAll(CITE)) {
+      const nums = m[1].split(/\s*[,;]\s*/);
+      if (!nums.every((n) => +n >= 1 && +n <= o.maxN)) continue;
+      if (m.index! > last) parts.push(word(t.slice(last, m.index)));
+      nums.forEach((n) => parts.push(cite(n)));
+      last = m.index! + m[0].length;
+    }
+    if (last < t.length) parts.push(word(t.slice(last)));
+    return parts.join("");
+  };
+  // "[2, 7]" ichidagi bo'sh joyda bo'linmaydi (aks holda iqtibos tugmaga aylanmaydi)
   const words = (x: string) =>
-    x.split(/(\s+)/).map((t) => {
-      if (!t || /^\s+$/.test(t)) return t;
-      const parts: string[] = [];
-      let last = 0;
-      for (const m of t.matchAll(CITE)) {
-        const nums = m[1].split(/\s*[,;]\s*/);
-        if (!nums.every((n) => +n >= 1 && +n <= o.maxN)) continue;
-        if (m.index! > last) parts.push(word(t.slice(last, m.index)));
-        nums.forEach((n) => parts.push(cite(n)));
-        last = m.index! + m[0].length;
-      }
-      if (last < t.length) parts.push(word(t.slice(last)));
-      return parts.join("");
+    x.split(/(?<!\[[\d\s,;]*[,;])(\s+)/).map((t) => {
+      if (!t) return t;
+      if (/^\s+$/.test(t)) return wrapMark(t);
+      // gap belgilari so'z ichida kelishi mumkin ("muddat.")
+      return t.split(SENT).map((p) => {
+        if (p === MARK_CLOSE) { mark = -1; return ""; }
+        if (p.length === 1 && p.charCodeAt(0) >= MARK_OPEN && p.charCodeAt(0) <= MARK_OPEN + 0xff) { mark = p.charCodeAt(0) - MARK_OPEN; return ""; }
+        return p ? wrapMark(token(p)) : "";
+      }).join("");
     }).join("");
   const word = (w: string) => {
     const a = anim();
@@ -84,7 +113,7 @@ export function renderAnswer(text: string, o: RenderOpts): string {
 /** Nusxalash uchun toza matn: markdown belgilarisiz + manbalar ro'yxati */
 export function plainAnswer(text: string, sources: { n: number; doc_title: string; article_number: string | null; source_url: string }[]) {
   const body = text.replace(/\*\*/g, "").replace(/^#{1,6}\s+/gm, "").replace(/^\s*[*•]\s+/gm, "• ").trim();
-  const used = new Set([...text.matchAll(/\[(\d+)\]/g)].map((m) => +m[1]));
+  const used = new Set([...text.matchAll(CITE)].flatMap((m) => m[1].split(/\s*[,;]\s*/).map(Number)));
   const list = sources.filter((s) => used.has(s.n))
     .map((s) => `[${s.n}] ${niceTitle(s.doc_title)}${s.article_number ? `, ${s.article_number}-modda` : ""} — ${s.source_url}`);
   return body + (list.length ? `\n\nManbalar:\n${list.join("\n")}` : "") + "\n\nBu yuridik maslahat emas. Rasmiy matn: lex.uz";

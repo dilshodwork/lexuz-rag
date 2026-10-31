@@ -1,18 +1,28 @@
 import { AiError, streamAi, type AiConfig } from "./ai";
 import { uid } from "./store";
 import { telegramInitData } from "./telegram";
-import type { Filters, Quota, Source, Stats } from "./types";
+import { AnswerStream, type PostRules } from "./textproc";
+import type { AnswerLang, Filters, LangPref, Mode, Quota, Source, Stats, Step, Trust } from "./types";
 
 export type AskHandlers = {
-  onSources: (d: { sources: Source[]; no_answer: boolean }) => void;
+  onStep: (s: Step) => void;
+  onSources: (d: { sources: Source[]; no_answer: boolean; lang?: AnswerLang; parts?: string[] }) => void;
   onDelta: (text: string) => void;
+  onFollowups: (items: string[]) => void;
   onDone: (d: { no_answer: boolean; model: string | null; ms: number }) => void;
   onError: (d: { code: string; message: string }) => void;
   onQuota?: (q: Quota) => void;
 };
 
-// LLM manbalarda javob topmasa shu iborani yozadi (rag.SYSTEM, 4-qoida; serverdagi NOT_FOUND_RE bilan bir xil)
-const NOT_FOUND = /^\W*Bazadagi hujjatlarda bu savolga[^.]*topilmadi/i;
+/** Savol parametrlari. Promptni server yig'adi, brauzer faqat shularni yuboradi. */
+export type AskParams = {
+  question: string;
+  filters: Filters;
+  lang: LangPref;
+  mode?: Mode;
+  chunk_ids?: string[];   // sodda rejim: o'sha manbalar, qayta qidiruvsiz
+  base_answer?: string;   // sodda rejim: yuridik javob matni
+};
 
 /** Bepul limit uchun foydalanuvchi: qurilma ID (shu brauzerda doimiy) va Telegram initData */
 function who(): Record<string, string> {
@@ -40,15 +50,20 @@ export async function getQuota(): Promise<Quota | null> {
   }
 }
 
-/** O'z kaliti bilan: server manbalar va tayyor so'rovni beradi (/api/context), LLM brauzerdan chaqiriladi.
+const body = (p: AskParams) => JSON.stringify({ ...p, mode: p.mode || "legal" });
+
+type Ctx = {
+  sources: Source[]; no_answer: boolean; no_answer_text: string; lang: AnswerLang; parts: string[];
+  steps: Step[]; post: PostRules; prompt: { system: string; user: string } | null;
+};
+
+/** O'z kaliti bilan: server bosqichlar, manbalar va tayyor so'rovni beradi (/api/context), LLM brauzerdan chaqiriladi.
     Hodisalar /api/ask bilan bir xil, shuning uchun interfeys qaysi yo'l ishlatilganini bilmaydi. */
-export async function askDirect(ai: AiConfig, question: string, filters: Filters, signal: AbortSignal, h: AskHandlers) {
+export async function askDirect(ai: AiConfig, p: AskParams, signal: AbortSignal, h: AskHandlers) {
   const t0 = performance.now();
-  let ctx: { sources: Source[]; no_answer: boolean; no_answer_text: string; prompt: { system: string; user: string } | null };
+  let ctx: Ctx;
   try {
-    const r = await fetch("/api/context", {
-      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, filters }), signal,
-    });
+    const r = await fetch("/api/context", { method: "POST", headers: { "Content-Type": "application/json" }, body: body(p), signal });
     const d = await r.json().catch(() => null);
     if (!r.ok || !d) {
       h.onError(d?.message ? d : { code: "server", message: `Server xato qaytardi (${r.status}). Qayta urinib koʻring.` });
@@ -60,6 +75,7 @@ export async function askDirect(ai: AiConfig, question: string, filters: Filters
     h.onError({ code: "network", message: "Server bilan aloqa yoʻq. Server ishga tushganini tekshirib, qayta urinib koʻring." });
     return;
   }
+  for (const s of ctx.steps || []) h.onStep(s);
   h.onSources(ctx);
   const ms = () => Math.round(performance.now() - t0);
   if (ctx.no_answer || !ctx.prompt) {
@@ -67,10 +83,15 @@ export async function askDirect(ai: AiConfig, question: string, filters: Filters
     h.onDone({ no_answer: true, model: null, ms: ms() });
     return;
   }
-  let text = "";
+  // serverdagi rag.AnswerStream bilan bir xil: <<<KEYINGI>>> qismi ajratiladi, kerak bo'lsa kirillga o'giriladi
+  const out = new AnswerStream(ctx.post);
   try {
-    const model = await streamAi(ai, ctx.prompt.system, ctx.prompt.user, signal, (t) => { text += t; h.onDelta(t); });
-    h.onDone({ no_answer: NOT_FOUND.test(text), model, ms: ms() });
+    const model = await streamAi(ai, ctx.prompt.system, ctx.prompt.user, signal, (t) => { const x = out.feed(t); if (x) h.onDelta(x); });
+    const rest = out.flush();
+    if (rest) h.onDelta(rest);
+    const f = out.followups();
+    if (f.length) h.onFollowups(f);
+    h.onDone({ no_answer: out.notFound(), model, ms: ms() });
   } catch (e) {
     if (signal.aborted) return;
     if (e instanceof AiError) h.onError({ code: e.code, message: e.message });
@@ -78,14 +99,15 @@ export async function askDirect(ai: AiConfig, question: string, filters: Filters
   }
 }
 
-/** POST /api/ask ni SSE oqim sifatida o'qiydi (server kaliti, bepul limit): sources -> delta... -> quota -> done | error */
-export async function askStream(question: string, filters: Filters, signal: AbortSignal, h: AskHandlers) {
+/** POST /api/ask ni SSE oqim sifatida o'qiydi (server kaliti, bepul limit):
+    step... -> sources -> delta... -> followups -> quota -> done | error */
+export async function askStream(p: AskParams, signal: AbortSignal, h: AskHandlers) {
   let res: Response;
   try {
     res = await fetch("/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "text/event-stream", ...who() },
-      body: JSON.stringify({ question, filters }),
+      body: body(p),
       signal,
     });
   } catch (e) {
@@ -110,8 +132,10 @@ export async function askStream(question: string, filters: Filters, signal: Abor
     }
     if (!data.length) return;
     const d = JSON.parse(data.join("\n"));
-    if (ev === "sources") h.onSources(d);
+    if (ev === "step") h.onStep(d);
+    else if (ev === "sources") h.onSources(d);
     else if (ev === "delta") h.onDelta(d.text);
+    else if (ev === "followups") h.onFollowups(d.items || []);
     else if (ev === "quota") h.onQuota?.(d);
     else if (ev === "done") { finished = true; h.onDone(d); }
     else if (ev === "error") { finished = true; h.onError(d); }
@@ -133,6 +157,19 @@ export async function askStream(question: string, filters: Filters, signal: Abor
     return;
   }
   if (!finished && !signal.aborted) h.onError({ code: "server", message: "Javob oxirigacha kelmadi. Qayta urinib koʻring." });
+}
+
+/** Ishonch tekshiruvi (serverda, LLM'siz): har da'vo iqtibos qilingan moddada asosi bormi */
+export async function verifyAnswer(text: string, chunkIds: string[], lang: AnswerLang, mode: Mode): Promise<Trust | null> {
+  try {
+    const r = await fetch("/api/verify", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, chunk_ids: chunkIds.slice(0, 12), lang, mode }),
+    });
+    return r.ok ? await r.json() : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function getStats(): Promise<Stats | null> {

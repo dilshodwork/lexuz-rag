@@ -1,21 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "../icons";
 import { renderAnswer } from "../render";
-import type { Turn } from "../types";
+import { NOT_FOUND_LEAD } from "../textproc";
+import type { Mode, Step, Turn, Variant } from "../types";
+import { ShareButton } from "./ShareButton";
+import { Steps } from "./Steps";
+import { TrustBadge, TrustPanel } from "./TrustBadge";
+
+type Mark = { start: number; end: number; i: number };
 
 /* Javob matni so'zma-so'z chiqadi: serverdan kelgan bo'laklar buferga tushadi,
    ekranda esa bir tekis tezlikda ochiladi (bufer kattalashsa tezlashadi). */
-function Prose({ turn, live, activeN, onCite, onTick }: {
-  turn: Turn; live: boolean; activeN: number | null; onCite: (n: number) => void; onTick: () => void;
+function Prose({ text, maxN, live, activeN, marks, onCite, onTick, boxRef }: {
+  text: string; maxN: number; live: boolean; activeN: number | null; marks?: Mark[];
+  onCite: (n: number) => void; onTick: () => void; boxRef?: React.RefObject<HTMLDivElement | null>;
 }) {
-  const full = turn.text;
+  const full = text;
   const [shown, setShown] = useState(() => (live ? 0 : full.length));
   const pos = useRef(shown);
   const times = useRef<number[] | undefined>(live ? [] : undefined);
   const [now, setNow] = useState(0);
 
   useEffect(() => {
-    if (pos.current >= full.length) return;
+    if (pos.current >= full.length) { pos.current = full.length; setShown(full.length); return; }
     let raf = 0, last = performance.now();
     const tick = (t: number) => {
       const dt = Math.min(64, t - last);
@@ -35,13 +42,15 @@ function Prose({ turn, live, activeN, onCite, onTick }: {
 
   // yarim so'z ko'rinmasin: oxirgi bo'sh joygacha kesiladi
   let visible = full.slice(0, shown);
-  if (shown < full.length) {
+  const complete = shown >= full.length;
+  if (!complete) {
     const cut = visible.search(/\s\S*$/);
     visible = cut > 0 ? visible.slice(0, cut) : "";
   }
-  const html = renderAnswer(visible, { maxN: turn.sources.length, activeN, times: times.current, now });
+  // asossiz gaplar faqat matn to'liq ochilgach belgilanadi (o'rinlar to'liq matnga nisbatan)
+  const html = renderAnswer(visible, { maxN, activeN, times: times.current, now, marks: complete ? marks : undefined });
   return (
-    <div className="prose" onClick={(e) => {
+    <div className="prose" ref={boxRef} onClick={(e) => {
       const b = (e.target as HTMLElement).closest(".cite") as HTMLElement | null;
       if (b) onCite(+b.dataset.n!);
     }} dangerouslySetInnerHTML={{ __html: html }} />
@@ -57,17 +66,6 @@ function Skeleton() {
   );
 }
 
-function Waiting({ status }: { status: Turn["status"] }) {
-  const [sec, setSec] = useState(0);
-  useEffect(() => {
-    const t0 = Date.now();
-    const id = setInterval(() => setSec(Math.floor((Date.now() - t0) / 1000)), 1000);
-    return () => clearInterval(id);
-  }, [status]);
-  if (status === "searching") return <>Moddalar qidirilmoqda…</>;
-  return <>{sec >= 12 ? `Javob yozilmoqda… ${sec} s (model band boʻlsa biroz choʻziladi)` : "Javob yozilmoqda…"}</>;
-}
-
 const TITLES: Record<string, string> = {
   no_key: "API kalit sozlanmagan", bad_key: "API kalit notoʻgʻri", network: "Aloqa yoʻq", timeout: "Vaqt tugadi",
   quota: "Kunlik limit tugadi", busy: "LLM band", free_limit: "Bugungi bepul savollar tugadi", no_model: "Model topilmadi",
@@ -78,7 +76,7 @@ const KEY_CODES = ["no_key", "bad_key", "quota", "free_limit", "no_model", "regi
 
 export function TurnView(props: {
   turn: Turn;
-  live: boolean;
+  live: Mode | null;   // shu savolning qaysi varianti hozir yozilmoqda
   isLast: boolean;
   busy: boolean;
   activeN: number | null;
@@ -86,22 +84,32 @@ export function TurnView(props: {
   onCite: (n: number) => void;
   onCopy: () => void;
   onRetry: () => void;
+  onExplain: () => void;
+  onView: (m: Mode) => void;
+  onFollowup: (q: string) => void;
   onSources: () => void;
   onTick: () => void;
   onConnect: () => void;
+  onHud: (m: string) => void;
 }) {
   const t = props.turn;
-  const pending = t.status === "searching" || t.status === "writing";
+  const simpleView = t.view === "simple" && !!t.simple;
+  const mode: Mode = simpleView ? "simple" : "legal";
+  const v: Variant = simpleView ? t.simple! : t;
+  const live = props.live === mode;
+  const pending = v.status === "searching" || v.status === "writing";
   const n = t.sources.length;
-  const head = pending ? <Waiting status={t.status} />
-    : t.status === "notfound" ? <>Mos modda topilmadi</>
-    : t.status === "error" ? <>{t.error?.code === "no_key" ? "LLM ulanmagan" : t.error?.code === "free_limit" ? "Bepul savollar tugadi" : "Javob yozilmadi"}</>
-    : t.status === "stopped" ? <>Toʻxtatildi</>
-    : <>{n} ta modda asosida{t.model ? ` · ${t.model}` : ""}</>;
+  const [trustOpen, setTrustOpen] = useState(false);
+  const proseRef = useRef<HTMLDivElement>(null);
+  useEffect(() => setTrustOpen(false), [mode]);
 
-  const code = t.error?.code || "";
+  // bosqichlar: server birinchisini yuborguncha - o'rinbosar
+  const steps: Step[] = v.steps?.length ? v.steps
+    : pending ? [{ key: "start", label: mode === "simple" ? "Manbalar tayyorlanmoqda" : "Savol tahlil qilinmoqda", state: "run" }] : [];
+
+  const code = v.error?.code || "";
   const keyish = KEY_CODES.includes(code);
-  const notice = t.status === "notfound" ? (
+  const notice = v.status === "notfound" ? (
     <div className="notice" role="status">
       <span className="ic"><Icon name="docq" /></span>
       <div>
@@ -109,16 +117,16 @@ export function TurnView(props: {
         <p>Savolga javob beradigan qonun normasi topilmadi, shuning uchun taxmin qilinmadi. Savolni aniqroq yozib koʻring yoki filtrlarni kengaytiring (masalan, “Barchasi”).</p>
       </div>
     </div>
-  ) : t.status === "error" && t.error ? (
+  ) : v.status === "error" && v.error ? (
     <div className={`notice ${keyish ? "key" : "err"}`} role="alert">
       <span className="ic"><Icon name={keyish ? "key" : "alert"} /></span>
       <div>
         <h4>{TITLES[code] || "Xato yuz berdi"}</h4>
-        <p>{t.error.message}</p>
+        <p>{v.error.message}</p>
         {props.isLast && !props.busy && (
           <div className="n-actions">
             {keyish && <button className="retry press" onClick={props.onConnect}><Icon name="key" />{code === "free_limit" || code === "no_key" ? "Kalitni ulash" : "AI sozlamalari"}</button>}
-            {code !== "free_limit" && <button className={`retry press${keyish ? " ghost" : ""}`} onClick={props.onRetry}><Icon name="redo" />Qayta urinish</button>}
+            {code !== "free_limit" && <button className={`retry press${keyish ? " ghost" : ""}`} onClick={simpleView ? props.onExplain : props.onRetry}><Icon name="redo" />Qayta urinish</button>}
           </div>
         )}
       </div>
@@ -126,34 +134,73 @@ export function TurnView(props: {
   ) : null;
 
   // LLM o'zi "topilmadi" deb yozgan bo'lsa, uning izohi (qayerdan qidirish mumkin) ham ko'rsatiladi
-  const proseTurn = t.status === "notfound"
-    ? { ...t, text: t.text.replace(/^\W*Bazadagi hujjatlarda[^.]*topilmadi\.?\s*/i, "") } : t;
-  const showText = !!proseTurn.text.trim() && !t.noLLM;
-  const done = !pending && !(props.live && t.status === "notfound");
+  const text = v.status === "notfound" ? v.text.replace(NOT_FOUND_LEAD, "") : v.text;
+  const showText = !!text.trim() && !v.noLLM;
+  const done = !pending && !(live && v.status === "notfound");
+  const trust = typeof v.trust === "object" ? v.trust : null;
+  const marks: Mark[] | undefined = trust && !live ? trust.claims.map((c, i) => ({ ...c, i })).filter((c) => !c.ok) : undefined;
+  const focusClaim = (i: number) => {
+    const els = proseRef.current?.querySelectorAll<HTMLElement>(`.wk[data-c="${i}"]`);
+    if (!els?.length) return;
+    els[0].scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    els.forEach((e) => { e.classList.remove("flash"); void e.offsetWidth; e.classList.add("flash"); });
+  };
+  const canExplain = t.status === "done" && !!t.text && !t.noLLM && (!t.simple || ["error", "stopped"].includes(t.simple.status));
+  const followups = done && props.isLast && !props.busy && (v.status === "done" || v.status === "notfound") ? v.followups || [] : [];
+
   return (
     <div className="turn">
       <div className="u-msg">{t.q}</div>
-      <div className="a-msg">
-        <div className={`a-head${pending ? " thinking" : ""}`}><span className="mk" /><span>{head}</span></div>
-        {t.status === "notfound" && notice}
+      <div className={`a-msg${trustOpen ? " trust-open" : ""}`}>
+        {t.simple && (
+          <div className="seg mode-seg" data-v={simpleView ? 1 : 0} role="tablist" aria-label="Javob koʻrinishi">
+            <span className="thumb" />
+            <button role="tab" aria-selected={!simpleView} onClick={() => props.onView("legal")}>Yuridik</button>
+            <button role="tab" aria-selected={simpleView} onClick={() => props.onView("simple")}>Sodda</button>
+          </div>
+        )}
+        {steps.length ? (
+          <div className="a-top">
+            <Steps key={mode} steps={steps} live={pending || live} totalMs={v.ms} />
+            {done && <TrustBadge trust={v.trust} open={trustOpen} onToggle={() => setTrustOpen((o) => !o)} />}
+          </div>
+        ) : (
+          // 1-bosqichdan qolgan suhbatlar (bosqichlar saqlanmagan)
+          <div className="a-head"><span className="mk" /><span>{v.status === "notfound" ? "Mos modda topilmadi" : v.status === "error" ? "Javob yozilmadi" : v.status === "stopped" ? "Toʻxtatildi" : `${n} ta modda asosida${v.model ? ` · ${v.model}` : ""}`}</span></div>
+        )}
+        {trustOpen && trust && <TrustPanel trust={trust} text={v.text} simple={simpleView} onFocus={focusClaim} />}
+        {v.status === "notfound" && notice}
         {showText ? (
-          <Prose turn={proseTurn} live={props.live} activeN={props.activeN} onCite={props.onCite} onTick={props.onTick} />
+          <Prose key={mode} text={text} maxN={n} live={live} activeN={props.activeN} marks={marks} onCite={props.onCite} onTick={props.onTick} boxRef={proseRef} />
         ) : pending ? <Skeleton /> : null}
-        {t.status === "stopped" && !t.text && <p className="stopped-note">Javob toʻxtatildi.</p>}
-        {t.status === "error" && notice}
+        {v.status === "stopped" && !v.text && <p className="stopped-note">Javob toʻxtatildi.</p>}
+        {v.status === "error" && notice}
+        {followups.length > 0 && (
+          <div className="fups" aria-label="Keyingi savollar">
+            {followups.map((q) => (
+              <button key={q} className="fup press" onClick={() => props.onFollowup(q)}><span>{q}</span><Icon name="arrow" /></button>
+            ))}
+          </div>
+        )}
         {done && (
           <div className="a-actions">
-            {t.text && t.status !== "notfound" && (
+            {v.text && v.status !== "notfound" && (
               <button className="cbtn press" onClick={props.onCopy} aria-label="Nusxalash" title="Nusxalash"><Icon name="copy" /></button>
             )}
-            {props.isLast && !props.busy && t.status !== "error" && (
+            {props.isLast && !props.busy && t.status !== "error" && !simpleView && (
               <button className="cbtn press" onClick={props.onRetry} aria-label="Qayta yozish" title="Qayta yozish"><Icon name="redo" /></button>
+            )}
+            {v.text && v.status === "done" && (
+              <ShareButton item={{ q: t.q, text: v.text, sources: t.sources }} onHud={props.onHud} />
+            )}
+            {canExplain && !props.busy && (
+              <button className="explain press" onClick={props.onExplain}><Icon name="bulb" /><span>Sodda<span className="lg"> qilib tushuntir</span></span></button>
             )}
             {n > 0 && (
               <>
                 <button className="src-pill press mob-src" onClick={props.onSources}>
                   <span className="stk">{t.sources.slice(0, 3).map((s) => <span key={s.n}>{s.n}</span>)}</span>
-                  {t.status === "notfound" ? `Eng yaqin ${n} ta modda` : `${n} ta manba`}
+                  {v.status === "notfound" ? `Eng yaqin ${n} ta` : `${n} ta manba`}
                 </button>
                 {!props.isLast && (
                   <button className={`desk-src press${props.panelOn ? " on" : ""}`} onClick={props.onSources}>Manbalar ({n})</button>

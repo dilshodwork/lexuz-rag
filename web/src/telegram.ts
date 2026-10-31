@@ -19,6 +19,7 @@ type TgWebApp = {
   BackButton?: { show(): void; hide(): void; onClick(cb: () => void): void; offClick(cb: () => void): void };
   HapticFeedback?: { impactOccurred(s: "light" | "medium" | "soft"): void; selectionChanged(): void };
   openLink?: (url: string) => void;
+  openTelegramLink?: (url: string) => void;
   CloudStorage?: {
     setItem(k: string, v: string, cb?: (err: string | null, ok?: boolean) => void): void;
     getItem(k: string, cb: (err: string | null, v?: string) => void): void;
@@ -95,6 +96,16 @@ export function cloudStorage() {
     set: (k: string, v: string) => { try { cs.setItem(k, v); } catch { /* eski Telegram */ } },
     remove: (k: string) => { try { cs.removeItem(k); } catch { /* eski Telegram */ } },
   };
+}
+
+/** Ulashish havolalari: t.me - Telegram ichida openTelegramLink (Mini App yopilmaydi), boshqasi - tizim brauzerida */
+export function openShareLink(url: string) {
+  if (inTelegram && tg) {
+    if (url.startsWith("https://t.me/") && tg.openTelegramLink) tg.openTelegramLink(url);
+    else if (tg.openLink) tg.openLink(url);
+    return;
+  }
+  window.open(url, "_blank", "noopener,noreferrer");
 }
 
 /** Tashqi havola: Telegram ichida tizim brauzerida ochiladi (oddiy brauzerda <a target=_blank>) */

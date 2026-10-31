@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { loadAi, loadAiCloud, PROVIDERS, saveAi, type AiConfig } from "./ai";
-import { askDirect, askStream, getQuota, getStats } from "./api";
+import { askDirect, askStream, getQuota, getStats, verifyAnswer, type AskHandlers, type AskParams } from "./api";
 import { AiConnect, LimitPanel } from "./components/AiConnect";
 import { FilterForm } from "./components/FilterForm";
 import { Modal } from "./components/Modal";
@@ -11,10 +11,10 @@ import { TurnView } from "./components/TurnView";
 import { Icon, type IconName } from "./icons";
 import { plainAnswer } from "./render";
 import {
-  dayGroup, filtersLabel, isDefaultFilters, loadConvs, loadFilters, loadTheme, saveConvs, saveFilters, saveTheme, timeLabel, uid,
+  dayGroup, filtersLabel, isDefaultFilters, loadConvs, loadFilters, loadLang, loadTheme, saveConvs, saveFilters, saveLang, saveTheme, timeLabel, uid,
 } from "./store";
 import { haptic, initTelegram, setBackButton, setTelegramChrome, telegramScheme } from "./telegram";
-import type { Conv, Filters, Quota, Stats, Turn } from "./types";
+import type { Conv, Filters, LangPref, Mode, Quota, Stats, Step, Turn, Variant } from "./types";
 
 const SUGS: { q: string; tag: string; icon: IconName; tall?: boolean }[] = [
   { q: "Prezident qancha muddatga saylanadi?", tag: "Konstitutsiya", icon: "scale", tall: true },
@@ -55,7 +55,9 @@ export default function App() {
     loadTheme() || telegramScheme() || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
   const [stats, setStats] = useState<Stats | null>(null);
   const [q, setQ] = useState("");
-  const [liveId, setLiveId] = useState<string | null>(null); // hozir oqayotgan javob
+  const [live, setLive] = useState<{ id: string; mode: Mode } | null>(null); // hozir oqayotgan javob
+  const liveId = live?.id ?? null;
+  const [langPref, setLangPref] = useState<LangPref>(loadLang);
   const [panelTurn, setPanelTurn] = useState<string | null>(null); // manbalar paneli qaysi javobniki
   const [hl, setHl] = useState<{ turn: string; n: number } | null>(null);
   const [sheet, setSheet] = useState<{ name: "sources" | "filters" | "history" | "ai" | "limit"; pos: SheetPos } | null>(null);
@@ -96,6 +98,7 @@ export default function App() {
     setTelegramChrome(BG[theme]);
   }, [theme]);
   useEffect(() => { saveFilters(filters); }, [filters]);
+  useEffect(() => { saveLang(langPref); }, [langPref]);
   useEffect(() => { if (!busy) saveConvs(convs); }, [convs, busy]);
   useEffect(() => {
     const b = document.body.classList;
@@ -115,6 +118,15 @@ export default function App() {
       turns: c.turns.map((t) => (t.id !== tid ? t : { ...t, ...(typeof p === "function" ? p(t) : p) })),
     }));
   }, []);
+
+  /** Javob variantini yangilash: "legal" - savolning o'zi, "simple" - turn.simple */
+  const patchVar = useCallback((cid: string, tid: string, mode: Mode, p: Partial<Variant> | ((v: Variant) => Partial<Variant>)) => {
+    patchTurn(cid, tid, (t) => {
+      if (mode === "legal") return typeof p === "function" ? p(t) : p;
+      const cur: Variant = t.simple || { text: "", status: "searching" };
+      return { simple: { ...cur, ...(typeof p === "function" ? p(cur) : p) } };
+    });
+  }, [patchTurn]);
 
   const showHud = (m: string) => { setHud(m); haptic(); setTimeout(() => setHud(null), 1700); };
   const closeAll = () => { setSheet((s) => (s ? { ...s, pos: "closed" } : s)); setPop(false); setDlg(null); };
@@ -136,40 +148,76 @@ export default function App() {
 
   const goHome = () => {
     abort.current?.abort();
-    vt(() => { setActiveId(null); setLiveId(null); setHl(null); setPanelTurn(null); setPop(false); setSheet(null); });
+    vt(() => { setActiveId(null); setLive(null); setHl(null); setPanelTurn(null); setPop(false); setSheet(null); });
     requestAnimationFrame(() => scrollRef.current?.scrollTo({ top: 0 }));
   };
 
-  const run = (cid: string, turn: Turn) => {
+  const run = (cid: string, turn: Turn, mode: Mode = "legal") => {
     abort.current?.abort();
     const ac = new AbortController();
     abort.current = ac;
-    setLiveId(turn.id);
+    setLive({ id: turn.id, mode });
     setPanelTurn(turn.id);
     setHl(null);
     stick.current = true;
-    const end = () => { if (abort.current === ac) { abort.current = null; setLiveId(null); } };
+    const end = () => { if (abort.current === ac) { abort.current = null; setLive(null); } };
+    const pv = (p: Partial<Variant> | ((v: Variant) => Partial<Variant>)) => patchVar(cid, turn.id, mode, p);
+    const t0 = performance.now();
+    let wroteAt = 0;
+    let text = "";
+    const upsertStep = (s: Step) => pv((v) => {
+      const list = (v.steps || []).filter((x) => x.key !== "start");
+      const i = list.findIndex((x) => x.key === s.key);
+      return { steps: i < 0 ? [...list, s] : list.map((x, j) => (j === i ? s : x)) };
+    });
+    const writeLabel = mode === "simple" ? "Sodda tilda yozilmoqda" : "Javob yozilmoqda";
     // o'z kaliti ulangan bo'lsa LLM brauzerdan chaqiriladi, aks holda server kaliti (bepul limit)
     const own = ai;
-    const handlers = {
+    const ids = turn.sources.map((s) => s.chunk_id);
+    const params: AskParams = mode === "simple"
+      ? { question: turn.q, filters, lang: turn.lang || langPref, mode, chunk_ids: ids, base_answer: turn.text }
+      : { question: turn.q, filters, lang: langPref };
+    let lang = turn.lang || "uz";
+    let srcIds = ids;
+    const handlers: AskHandlers = {
+      onStep: upsertStep,
       // no_answer: eng yaqin modda ham juda uzoq, LLM chaqirilmaydi -> darhol "topilmadi"
-      onSources: (d: { sources: Turn["sources"]; no_answer: boolean }) => patchTurn(cid, turn.id, d.no_answer ? { sources: d.sources, status: "notfound", noLLM: true } : { sources: d.sources, status: "writing" }),
-      onDelta: (text: string) => patchTurn(cid, turn.id, (t) => (t.noLLM ? {} : { text: t.text + text, status: "writing" })),
-      onDone: (d: { no_answer: boolean; model: string | null; ms: number }) => {
-        patchTurn(cid, turn.id, { status: d.no_answer ? "notfound" : "done", model: d.model, ms: d.ms });
+      onSources: (d) => {
+        if (d.lang) lang = d.lang;
+        if (mode === "legal") {
+          srcIds = d.sources.map((s) => s.chunk_id);
+          patchTurn(cid, turn.id, { sources: d.sources, lang: d.lang, parts: d.parts });
+        }
+        if (d.no_answer) { pv({ status: "notfound", noLLM: true }); return; }
+        pv({ status: "writing" });
+        wroteAt = performance.now();
+        upsertStep({ key: "write", label: writeLabel, state: "run" });
+      },
+      onDelta: (x) => { text += x; pv((v) => (v.noLLM ? {} : { text: v.text + x, status: "writing" })); },
+      onFollowups: (items) => pv({ followups: items }),
+      onDone: (d) => {
+        const ms = d.ms || Math.round(performance.now() - t0);
+        if (wroteAt) upsertStep({ key: "write", label: writeLabel, state: "done", detail: d.model || "", ms: Math.round(performance.now() - wroteAt) });
+        pv({ status: d.no_answer ? "notfound" : "done", model: d.model, ms });
         if (own && d.model) markAi(own, "ok");
         end();
+        // ishonch tekshiruvi (serverda, LLM'siz) - ikkala yo'l uchun bir xil
+        if (!d.no_answer && text.trim() && srcIds.length) {
+          pv({ trust: "pending" });
+          verifyAnswer(text, srcIds, lang, mode).then((r) => pv({ trust: r || "error" }));
+        }
       },
-      onError: (e: { code: string; message: string }) => {
-        patchTurn(cid, turn.id, { status: "error", error: e });
+      onError: (e) => {
+        if (wroteAt) upsertStep({ key: "write", label: writeLabel, state: "done", detail: "xato", ms: Math.round(performance.now() - wroteAt) });
+        pv({ status: "error", error: e });
         if (own && (e.code === "bad_key" || e.code === "quota")) markAi(own, e.code);
         if (e.code === "free_limit") openDlg("limit");
         end();
       },
       onQuota: setQuota,
     };
-    (own ? askDirect(own, turn.q, filters, ac.signal, handlers) : askStream(turn.q, filters, ac.signal, handlers)).finally(() => {
-      if (ac.signal.aborted) patchTurn(cid, turn.id, (t) => (t.status === "searching" || t.status === "writing" ? { status: "stopped" } : {}));
+    (own ? askDirect(own, params, ac.signal, handlers) : askStream(params, ac.signal, handlers)).finally(() => {
+      if (ac.signal.aborted) pv((v) => (v.status === "searching" || v.status === "writing" ? { status: "stopped" } : {}));
       end();
     });
   };
@@ -200,14 +248,29 @@ export default function App() {
   const retry = (t: Turn) => {
     if (!conv || busy) return;
     if (!ai && quota?.free && quota.left <= 0) { openDlg("limit"); return; }
-    patchTurn(conv.id, t.id, { text: "", sources: [], status: "searching", error: undefined, model: null, noLLM: false });
-    run(conv.id, { ...t, text: "", sources: [] });
+    const fresh: Partial<Turn> = { text: "", sources: [], status: "searching", error: undefined, model: null, noLLM: false,
+      steps: [], followups: [], trust: undefined, simple: undefined, view: "legal" };
+    patchTurn(conv.id, t.id, fresh);
+    run(conv.id, { ...t, ...fresh });
+  };
+
+  const setView = (t: Turn, m: Mode) => { if (conv) { haptic(); patchTurn(conv.id, t.id, { view: m }); } };
+  /** "Sodda qilib tushuntir": o'sha savol + o'sha manbalar, qayta qidiruvsiz. Bor bo'lsa - faqat ko'rinish almashadi. */
+  const explain = (t: Turn) => {
+    if (!conv) return;
+    if (t.simple && !["error", "stopped"].includes(t.simple.status)) { setView(t, t.view === "simple" ? "legal" : "simple"); return; }
+    if (busy) return;
+    if (!ai && quota?.free && quota.left <= 0) { openDlg("limit"); return; }
+    haptic();
+    patchTurn(conv.id, t.id, { simple: { text: "", status: "searching", steps: [] }, view: "simple" });
+    run(conv.id, t, "simple");
   };
 
   const stop = () => abort.current?.abort();
 
   const copy = async (t: Turn) => {
-    const txt = plainAnswer(t.text, t.sources);
+    const v = t.view === "simple" && t.simple ? t.simple : t;
+    const txt = plainAnswer(v.text, t.sources);
     try {
       await navigator.clipboard.writeText(txt);
     } catch {
@@ -280,7 +343,7 @@ export default function App() {
 
   const toggleFilters = () => { if (desk) setPop((p) => !p); else setSheet({ name: "filters", pos: "medium" }); };
   const setSheetPos = (p: SheetPos) => setSheet((s) => (s ? { ...s, pos: p } : s));
-  const fDirty = !isDefaultFilters(filters);
+  const fDirty = !isDefaultFilters(filters) || langPref !== "auto";
 
   // ---------------------------------------------------------- qismlar
   const composer = (
@@ -394,7 +457,7 @@ export default function App() {
                 <div className="nav-q">{conv?.title}</div>
               </div>
               <div className="nav-right">
-                <button className="scopechip glass press" data-filters onClick={toggleFilters}><Icon name="filter" /><span>{filtersLabel(filters)}</span></button>
+                <button className="scopechip glass press" data-filters onClick={toggleFilters}><Icon name="filter" /><span>{filtersLabel(filters, langPref)}</span></button>
                 <button className="cbtn glass press mob-only" onClick={goHome} aria-label="Yangi suhbat"><Icon name="edit" /></button>
               </div>
             </header>
@@ -429,9 +492,10 @@ export default function App() {
               ) : (
                 <section className="chat col" aria-live="polite">
                   {conv!.turns.map((t, i) => (
-                    <TurnView key={t.id} turn={t} live={t.id === liveId} isLast={i === conv!.turns.length - 1} busy={busy}
+                    <TurnView key={t.id} turn={t} live={live?.id === t.id ? live.mode : null} isLast={i === conv!.turns.length - 1} busy={busy}
                       activeN={hl?.turn === t.id ? hl.n : null} panelOn={panel?.id === t.id}
                       onCite={(n) => focusSource(t, n)} onCopy={() => copy(t)} onRetry={() => retry(t)}
+                      onExplain={() => explain(t)} onView={(m) => setView(t, m)} onFollowup={ask} onHud={showHud}
                       onSources={() => { setPanelTurn(t.id); if (!desk) setSheet({ name: "sources", pos: "medium" }); }}
                       onTick={() => { if (stick.current && t.id === liveId) toBottom(); }} onConnect={() => openDlg("ai")} />
                   ))}
@@ -462,7 +526,7 @@ export default function App() {
       </Sheet>
       <Sheet id="sh-filters" label="Filtrlar" title="Qidiruv filtrlari"
         pos={sheet?.name === "filters" ? sheet.pos : "closed"} onPos={setSheetPos}>
-        <FilterForm f={filters} onChange={setFilters} onClose={closeAll} />
+        <FilterForm f={filters} onChange={setFilters} onClose={closeAll} lang={langPref} onLang={setLangPref} />
       </Sheet>
       <Sheet id="sh-history" label="Suhbatlar" title="Suhbatlar"
         pos={sheet?.name === "history" ? sheet.pos : "closed"} onPos={setSheetPos}>
@@ -503,7 +567,7 @@ export default function App() {
       {/* Desktop filtr popover */}
       <div className="pop glass" id="pop" role="dialog" aria-label="Filtrlar">
         <h3>Qidiruv filtrlari</h3>
-        <FilterForm f={filters} onChange={setFilters} onClose={() => setPop(false)} />
+        <FilterForm f={filters} onChange={setFilters} onClose={() => setPop(false)} lang={langPref} onLang={setLangPref} />
       </div>
 
       <div className={`hud glass${hud ? " show" : ""}`} role="status"><Icon name="check" /><span>{hud}</span></div>

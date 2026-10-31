@@ -1,8 +1,12 @@
 import { Icon } from "../icons";
-import { DOC_TYPES, type Filters } from "../types";
+import { LANG_PREFS } from "../store";
+import { DOC_TYPES, type Filters, type LangPref } from "../types";
 
 /* Mobil varaq va desktop popover uchun bitta filtr shakli (o'zgarish darhol qo'llanadi) */
-export function FilterForm({ f, onChange, onClose }: { f: Filters; onChange: (f: Filters) => void; onClose: () => void }) {
+export function FilterForm({ f, onChange, onClose, lang, onLang }: {
+  f: Filters; onChange: (f: Filters) => void; onClose: () => void; lang: LangPref; onLang: (l: LangPref) => void;
+}) {
+  const li = LANG_PREFS.findIndex((x) => x.v === lang);
   const toggleType = (t: string) => {
     const has = f.doc_types.includes(t);
     if (has && f.doc_types.length === 1) return; // kamida bitta tur qolsin
@@ -34,6 +38,14 @@ export function FilterForm({ f, onChange, onClose }: { f: Filters; onChange: (f:
         </div>
       </div>
       {!f.only_active && <p className="f-hint">Kuchini yoʻqotgan va amalda boʻlmagan hujjatlar ham qidiriladi.</p>}
+      <div className="grp-label">Javob tili</div>
+      <div className="seg seg4" data-v={li} role="radiogroup" aria-label="Javob tili">
+        <span className="thumb" />
+        {LANG_PREFS.map((x) => (
+          <button key={x.v} role="radio" aria-checked={lang === x.v} onClick={() => onLang(x.v)}>{x.label}</button>
+        ))}
+      </div>
+      <p className="f-hint">{lang === "auto" ? "Javob savol yozilgan tilda: lotin, kirill yoki rus. Manbalar asl oʻzbekcha qoladi." : "Javob har doim shu tilda. Manbalar asl oʻzbekcha qoladi."}</p>
       <button className="primary press" onClick={onClose}>Qoʻllash</button>
     </>
   );

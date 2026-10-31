@@ -110,6 +110,8 @@ def parse_followups(tail: str) -> list[str]:
     for x in items:
         x = re.sub(r"^\s*(?:[-*•–]|\d+[.)])\s*", "", x).strip().strip('"«»“”*').strip()
         x = re.sub(r"\[\d+\]", "", x).strip()
+        if x and x[-1] not in "?.!":
+            x += "?"
         if 6 <= len(x) <= 160 and x not in out:
             out.append(x)
     return out[:3]

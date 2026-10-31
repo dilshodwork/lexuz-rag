@@ -61,6 +61,7 @@ export function parseFollowups(tail: string): string[] {
     x = x.replace(/^\s*(?:[-*•–]|\d+[.)])\s*/, "").trim();
     x = stripChars(x, "\"«»“”*").trim();
     x = x.replace(/\[\d+\]/g, "").trim();
+    if (x && !"?.!".includes(x[x.length - 1])) x += "?";
     if (x.length >= 6 && x.length <= 160 && !out.includes(x)) out.push(x);
   }
   return out.slice(0, 3);

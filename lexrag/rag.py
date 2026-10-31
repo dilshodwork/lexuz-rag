@@ -199,7 +199,7 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
             d = short_doc(h.get("doc_title", ""))
             if d not in docs:
                 docs.append(d)
-        yield done(_step(f"search{i}", label, "done", " · ".join(docs[:2]) + ("…" if len(docs) > 2 else ""),
+        yield done(_step(f"search{i}", label, "done", " · ".join(docs[:2]) + (f" · +{len(docs) - 2}" if len(docs) > 2 else ""),
                          int((time.time() - t) * 1000)))
 
     # 3. birlashtirish

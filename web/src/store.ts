@@ -1,6 +1,6 @@
-import { DEFAULT_FILTERS, DOC_TYPES, type Conv, type Filters } from "./types";
+import { DEFAULT_FILTERS, DOC_TYPES, type Conv, type Filters, type LangPref } from "./types";
 
-const K = { convs: "dalil.convs.v1", filters: "dalil.filters.v1", theme: "dalil.theme" };
+const K = { convs: "dalil.convs.v1", filters: "dalil.filters.v1", theme: "dalil.theme", lang: "dalil.lang" };
 const MAX_CONVS = 60;
 
 function read<T>(key: string, fallback: T): T {
@@ -23,7 +23,15 @@ function write(key: string, v: unknown) {
 export function loadConvs(): Conv[] {
   const list = read<Conv[]>(K.convs, []);
   // sahifa oqim o'rtasida yopilgan bo'lsa - "to'xtatildi"
-  for (const c of list) for (const t of c.turns) if (t.status === "searching" || t.status === "writing") t.status = "stopped";
+  const live = (s: string) => s === "searching" || s === "writing";
+  for (const c of list) {
+    for (const t of c.turns) {
+      if (live(t.status)) t.status = "stopped";
+      if (t.simple && live(t.simple.status)) t.simple.status = "stopped";
+      if (t.trust === "pending") t.trust = undefined;
+      if (t.simple?.trust === "pending") t.simple.trust = undefined;
+    }
+  }
   return list;
 }
 
@@ -43,6 +51,16 @@ export function loadFilters(): Filters {
   return { only_active: f.only_active !== false, include_amending: !!f.include_amending, doc_types: types.length ? types : [...DOC_TYPES] };
 }
 export const saveFilters = (f: Filters) => write(K.filters, f);
+
+export const LANG_PREFS: { v: LangPref; label: string; short: string }[] = [
+  { v: "auto", label: "Avto", short: "" }, { v: "uz", label: "Oʻzbekcha", short: "Oʻzb" },
+  { v: "uz_cyr", label: "Ўзбекча", short: "Ўзб" }, { v: "ru", label: "Русский", short: "Рус" },
+];
+export const loadLang = (): LangPref => {
+  const v = read<LangPref>(K.lang, "auto");
+  return LANG_PREFS.some((x) => x.v === v) ? v : "auto";
+};
+export const saveLang = (v: LangPref) => write(K.lang, v);
 
 export const loadTheme = () => read<"light" | "dark" | null>(K.theme, null);
 export const saveTheme = (t: "light" | "dark") => write(K.theme, t);
@@ -67,8 +85,9 @@ export function timeLabel(ts: number): string {
   return `${String(d.getDate()).padStart(2, "0")}.${String(d.getMonth() + 1).padStart(2, "0")}`;
 }
 
-export function filtersLabel(f: Filters) {
-  return `${f.only_active ? "Amaldagi" : "Barchasi"} · ${f.doc_types.length} tur${f.include_amending ? " · +oʻzg." : ""}`;
+export function filtersLabel(f: Filters, lang: LangPref = "auto") {
+  const l = LANG_PREFS.find((x) => x.v === lang)?.short;
+  return `${f.only_active ? "Amaldagi" : "Barchasi"} · ${f.doc_types.length} tur${f.include_amending ? " · +oʻzg." : ""}${l ? ` · ${l}` : ""}`;
 }
 
 export const isDefaultFilters = (f: Filters) =>

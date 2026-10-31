@@ -100,6 +100,7 @@ class VerifyBody(BaseModel):
     text: str = Field(min_length=1, max_length=20000)
     chunk_ids: list[str] = Field(min_length=1, max_length=12)
     lang: Literal["uz", "uz_cyr", "ru"] = "uz"
+    mode: Literal["legal", "simple"] = "legal"  # sodda javobdagi misol va maslahatlar tekshirilmaydi
 
 
 def _search_kw(f: Filters) -> dict:
@@ -223,7 +224,7 @@ async def verify(body: VerifyBody):
 
     def _run():
         with _search_lock:
-            return trust.check(body.text, body.chunk_ids, body.lang)
+            return trust.check(body.text, body.chunk_ids, body.lang, body.mode)
     try:
         r = await run_in_threadpool(_run)
     except Exception:  # noqa: BLE001

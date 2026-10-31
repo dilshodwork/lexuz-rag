@@ -24,8 +24,13 @@ from .translit import cyr_to_lat
 MAX_CLAIMS = 14
 STEM = 5
 # chegaralar: scripts/test_stage2.py dagi to'g'ri / buzilgan da'volar bilan tanlangan
-LEX_OK, COS_OK, COS_OK_RU = 0.5, 0.66, 0.64
-COS_WEAK = 0.62  # bundan past - leksik moslik bo'lsa ham shubhali
+COS_OK, COS_OK_RU = 0.66, 0.64
+# leksik moslik qancha yuqori bo'lsa, ma'no o'xshashligiga talab shuncha past: qisqa ro'yxat bandi uzun moddaga
+# embedding bo'yicha uzoq chiqadi (0.55), lekin so'zlari to'liq moddada bor
+LEX_TIERS = ((0.85, 0.5), (0.7, 0.58), (0.5, 0.62))
+# sodda rejim: misol va maslahatlar qonun da'vosi emas - tekshirilmaydi
+_EXAMPLE = re.compile(r"^\W*(masalan|например|масалан)\b", re.I)
+_ADVICE = re.compile(r"(ing|ng|инг|нг|йте|ите)\W*$", re.I)
 
 _CITE = re.compile(r"\[(\d+(?:\s*[,;]\s*\d+)*)\]")
 _WORD = re.compile(r"[a-zʻʼа-яёўқғҳ0-9]+", re.I)
@@ -115,7 +120,7 @@ def _cos(a, b) -> float:
     return float(a @ b / (np.linalg.norm(a) * np.linalg.norm(b) + 1e-9))
 
 
-def check(text: str, chunk_ids: list[str], lang: str = "uz") -> dict:
+def check(text: str, chunk_ids: list[str], lang: str = "uz", mode: str = "legal") -> dict:
     """text - foydalanuvchi ko'rgan javob; chunk_ids - manbalar tartibida ([n] = chunk_ids[n-1])."""
     hits = get_chunks(chunk_ids, embeddings=True)
     by_n = {i + 1: h for i, h in enumerate(hits)}
@@ -128,6 +133,10 @@ def check(text: str, chunk_ids: list[str], lang: str = "uz") -> dict:
         body = _clean(raw)
         if NOT_FOUND_RE.search(body) or len(_WORD.findall(body)) < 4 or (body.endswith(":") and not _NUM.search(body)):
             continue
+        if mode == "simple":
+            line = _clean(text[text.rfind("\n", 0, a) + 1:])
+            if _EXAMPLE.match(line) or _ADVICE.search(_CITE.sub("", body).rstrip(" .!")):
+                continue
         cites = sorted({int(x) for m in _CITE.finditer(raw) for x in re.split(r"\s*[,;]\s*", m.group(1))} & set(by_n))
         claims.append({"start": a, "end": b, "body": body, "cites": cites})
     claims = claims[:MAX_CLAIMS]
@@ -154,7 +163,7 @@ def check(text: str, chunk_ids: list[str], lang: str = "uz") -> dict:
         emb = embed_query(MODEL, lat)
         cos = max((_cos(emb, by_n[n]["embedding"]) for n in refs), default=0.0)
         cos_ok = COS_OK_RU if lang == "ru" else COS_OK
-        supported = (lex is not None and lex >= LEX_OK and cos >= COS_WEAK) or cos >= cos_ok
+        supported = cos >= cos_ok or (lex is not None and any(lex >= lx and cos >= cx for lx, cx in LEX_TIERS))
         if not supported:
             reasons.append("iqtibos qilingan moddada oʻxshash mazmun topilmadi" if c["cites"]
                            else "iqtibossiz va manbalarda oʻxshashi topilmadi")
