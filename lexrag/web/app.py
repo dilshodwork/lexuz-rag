@@ -13,6 +13,8 @@ API:
     GET  /api/search   faqat qidiruv (LLM'siz)
     GET  /api/health   server, indeks va LLM holati (kalitning o'zi qaytarilmaydi)
     GET  /api/stats    baza statistikasi (report.md va indeksdan)
+    GET  /api/eval     baholash natijalari (eval/results.json, sweep.json); POST /api/eval/run - fonda qayta hisoblash,
+                       GET /api/eval/status - jarayon (EVAL_TOKEN bo'lsa X-Eval-Token sarlavhasi kerak)
 """
 from __future__ import annotations
 
@@ -94,6 +96,8 @@ class AskBody(BaseModel):
     lang: Literal["auto", "uz", "uz_cyr", "ru"] = "auto"
     # LLM bilan savolni bo'lish (.env da LLM_PLAN=1 ham kerak); standart - LLM'siz evristika
     llm_plan: bool = False
+    # X-ray: qidiruv ichi (dense/BM25/RRF ro'yxatlari, vaqtlar, prompt). Qo'shimcha LLM so'rovisiz; false - hisoblanmaydi
+    xray: bool = False
 
 
 class VerifyBody(BaseModel):
@@ -169,7 +173,7 @@ def _steps_gen(body: AskBody):
     """rag.prepare_steps: har qadam qidiruv qulfi ostida (ONNX va ChromaDB bir vaqtda bitta so'rov)."""
     gen = rag.prepare_steps(body.question, k=body.k, lang_pref=None if body.lang == "auto" else body.lang,
                             mode=body.mode, chunk_ids=body.chunk_ids, base_answer=body.base_answer,
-                            llm_plan=body.llm_plan, **_search_kw(body.filters))
+                            llm_plan=body.llm_plan, xray=body.xray, **_search_kw(body.filters))
     while True:
         with _search_lock:
             try:
@@ -208,10 +212,21 @@ async def context(body: AskBody):
         log.exception("qidiruv xatosi")
         code, text = _human_error(e)
         return JSONResponse({"code": code, "message": text}, status_code=500)
-    return {"sources": p["sources"], "no_answer": p["no_answer"], "query_latin": prepare_query(body.question),
-            "search_ms": int((time.time() - t0) * 1000), "no_answer_text": rag.NO_ANSWER_TEXT,
-            "steps": p["steps"], "lang": p["lang"], "parts": p["parts"], "mode": body.mode,
-            "post": _post(p["lang"]), "prompt": p["prompt"]}
+    out = {"sources": p["sources"], "no_answer": p["no_answer"], "query_latin": prepare_query(body.question),
+           "search_ms": int((time.time() - t0) * 1000), "no_answer_text": rag.NO_ANSWER_TEXT,
+           "steps": p["steps"], "lang": p["lang"], "parts": p["parts"], "mode": body.mode,
+           "post": _post(p["lang"]), "prompt": p["prompt"]}
+    if p.get("xray"):
+        # prompt matni javobning o'zida bor (prompt), X-ray'da faqat token soni qoladi
+        out["xray"] = _xray_public(p["xray"], keep_prompt=False)
+    return out
+
+
+def _xray_public(x: dict, keep_prompt: bool = True) -> dict:
+    x = {k: v for k, v in x.items() if not k.startswith("_")}
+    if x.get("prompt") and not keep_prompt:
+        x["prompt"] = {k: v for k, v in x["prompt"].items() if k not in ("system", "user")}
+    return x
 
 
 @app.post("/api/verify")
@@ -299,6 +314,13 @@ async def ask(body: AskBody, request: Request):
         yield _sse("sources", {"sources": p["sources"], "no_answer": p["no_answer"], "lang": p["lang"],
                                "parts": p["parts"], "mode": body.mode, "query_latin": prepare_query(question),
                                "search_ms": int((time.time() - t0) * 1000)})
+        xr = p.get("xray")
+        xt0 = xr["_t0"] if xr else None
+        rel = (lambda: round((time.perf_counter() - xt0) * 1000, 1)) if xr else (lambda: None)
+        if xr:
+            info = _llm_info()
+            yield _sse("xray", {**_xray_public(xr), "llm": {"via": "server", "provider": info["provider"],
+                                                           "model": info["model"]}})
         if p["no_answer"]:
             yield _sse("delta", {"text": rag.NO_ANSWER_TEXT})
             yield _sse("done", {"no_answer": True, "model": None, "ms": int((time.time() - t0) * 1000)})
@@ -313,8 +335,11 @@ async def ask(body: AskBody, request: Request):
         # LLM oqimi: <<<KEYINGI>>> qismi foydalanuvchiga ko'rsatilmaydi, kirill javob o'giriladi
         out = rag.AnswerStream(p["lang"])
         started = False
+        llm_start, first_token = rel(), None
         try:
             async for piece in iterate_in_threadpool(llm.stream(p["prompt"]["system"], p["prompt"]["user"])):
+                if not started:
+                    first_token = rel()
                 started = True
                 if text := out.feed(piece):
                     yield _sse("delta", {"text": text})
@@ -333,8 +358,11 @@ async def ask(body: AskBody, request: Request):
         if f := out.followups():
             yield _sse("followups", {"items": f})
         yield _sse("quota", _quota_info(keys))
-        yield _sse("done", {"no_answer": out.not_found(), "model": llm.LAST_MODEL or _llm_info()["model"],
-                            "ms": int((time.time() - t0) * 1000)})
+        done = {"no_answer": out.not_found(), "model": llm.LAST_MODEL or _llm_info()["model"],
+                "ms": int((time.time() - t0) * 1000)}
+        if xr:  # LLM vaqtlari X-ray vaqt chizig'iga (qidiruv boshlanishidan hisoblanadi)
+            done["xray_llm"] = {"start": llm_start, "first_token": first_token, "end": rel(), "model": done["model"]}
+        yield _sse("done", done)
 
     return StreamingResponse(events(), media_type="text/event-stream",
                              headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
@@ -398,6 +426,66 @@ async def stats():
     return {"documents": r["documents"], "chunks": STATE["count"] or r["chunks"], "by_type": r["by_type"],
             "by_status": r["by_status"], "base_date": r["report_date"], "source": "lex.uz",
             "embedding_model": MODEL}
+
+
+# ---------------------------------------------------------------- baholash (/baholash sahifasi)
+EVAL_RUN: dict = {"running": False, "done": 0, "total": 0, "current": "", "error": None, "started": None,
+                  "finished": None}
+_eval_lock = threading.Lock()
+
+
+def _read_json(p: Path):
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+
+
+@app.get("/api/eval")
+async def get_eval():
+    """eval/results.json + sweep.json + baseline (standart o'zgarishidan oldingi natija) + savollar (gold bilan)."""
+    from .. import evaluate
+    base = config.ROOT / "eval"
+    return {"results": _read_json(evaluate.RESULTS), "sweep": _read_json(evaluate.SWEEP),
+            "baseline": _read_json(base / "baseline_w06.json"), "answers": _read_json(base / "answers.json"),
+            "run": EVAL_RUN, "protected": bool(os.environ.get("EVAL_TOKEN"))}
+
+
+@app.get("/api/eval/status")
+async def eval_status():
+    return EVAL_RUN
+
+
+@app.post("/api/eval/run")
+async def eval_run(request: Request):
+    """Baholashni fonda qayta hisoblash (faqat qidiruv, LLM'siz). Bir vaqtda bitta. .env da EVAL_TOKEN bo'lsa,
+    X-Eval-Token sarlavhasi shu qiymatga teng bo'lishi kerak. Holat: GET /api/eval/status (polling)."""
+    token = os.environ.get("EVAL_TOKEN", "")
+    if token and request.headers.get("x-eval-token", "") != token:
+        return JSONResponse({"code": "forbidden", "message": "Qayta hisoblash uchun ruxsat kaliti kerak (EVAL_TOKEN)."},
+                            status_code=403)
+    if not STATE["ready"]:
+        return JSONResponse({"code": "index", "message": "Qidiruv indeksi yuklanmagan."}, status_code=503)
+    if not _eval_lock.acquire(blocking=False):
+        return JSONResponse({"code": "busy", "message": "Baholash allaqachon ishlayapti.", **EVAL_RUN}, status_code=409)
+    EVAL_RUN.update(running=True, done=0, total=0, current="", error=None, started=time.time(), finished=None)
+
+    def progress(i, n, q):
+        EVAL_RUN.update(done=i, total=n, current=q[:120])
+
+    def job():
+        from .. import evaluate
+        try:
+            # har savol qidiruvi _search_lock ostida: chat savollari baholash orasida navbat bilan bajariladi
+            evaluate.run(progress=progress, lock=_search_lock)
+        except Exception as e:  # noqa: BLE001
+            log.exception("baholash xatosi")
+            EVAL_RUN["error"] = str(e)[:300]
+        finally:
+            EVAL_RUN.update(running=False, finished=time.time())
+            _eval_lock.release()
+    threading.Thread(target=job, daemon=True, name="eval").start()
+    return EVAL_RUN
 
 
 @app.get("/api/{rest:path}", include_in_schema=False)

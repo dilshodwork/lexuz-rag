@@ -29,8 +29,15 @@ BM25_DIR = config.INDEX_DIR / "bm25"
 WORD = re.compile(r"[a-zʻʼ0-9¹²³⁴⁵⁶⁷⁸⁹⁰]+")
 STEM = 7
 RRF_K = 60
-# dense ko'proq ishonchli (sinovlarda BM25 umumiy so'zlar bo'yicha shovqin beradi); eval bilan sozlanadi
-W_DENSE, W_BM25 = 1.0, 0.6
+# Og'irliklar eval/ to'plamida sozlangan (python -m lexrag eval, eval/sweep.json). W_BM25 0.6 edi: BM25 parafrazali
+# savollarda umumiy so'zlar ("uchun", "qanday", "kerak") bo'yicha shovqin beradi va RRF'da dense topgan moddani
+# pastga suradi (W_BM25=0.6 da gibrid recall@5 61% < dense 82%). 0.05 da BM25 faqat dense'ning yaqin o'rinlarini
+# qayta tartiblaydi:
+# gibrid recall@5 61.2% -> 83.7%, MRR@10 0.509 -> 0.716 (eval/README.md). W_BM25=0 (sof dense) MRR'da biroz
+# yaxshiroq (0.733), lekin recall@5 pastroq (81.5%).
+W_DENSE, W_BM25 = 1.0, 0.05
+# ruscha savol: BM25 og'irligi W_BM25 ga nisbatan (lug'atdan o'zbekcha atama topilsa / topilmasa)
+RU_W = (0.75, 0.25)
 
 
 def tokenize(text: str) -> list[str]:
@@ -84,7 +91,8 @@ def _doc_types() -> dict[str, str]:
 
 
 def bm25_search(query: str, n: int, only_active: bool, no_amending: bool,
-                doc_types: list[str] | None = None) -> list[str]:
+                doc_types: list[str] | None = None, scores_out: dict | None = None) -> list[str]:
+    """scores_out berilsa (X-ray, baholash) - {chunk_id: BM25 ball} bilan to'ldiriladi."""
     retr, ids, metas = _bm25()
     toks = tokenize(query)
     if not toks:
@@ -104,6 +112,8 @@ def bm25_search(query: str, n: int, only_active: bool, no_amending: bool,
         if types is not None and types.get(ids[i].split("_", 1)[0]) not in doc_types:
             continue
         out.append(ids[i])
+        if scores_out is not None:
+            scores_out[ids[i]] = round(float(scores[i]), 3)
         if len(out) >= n:
             break
     return out
@@ -122,55 +132,117 @@ def _where(only_active: bool, no_amending: bool, doc_types: list[str] | None = N
 
 
 def dense_search(query: str, n: int, only_active: bool, no_amending: bool,
-                 doc_types: list[str] | None = None) -> tuple[list[str], dict]:
-    """(id lar, {id: cosine})"""
+                 doc_types: list[str] | None = None, timing: dict | None = None) -> tuple[list[str], dict]:
+    """(id lar, {id: cosine}). timing berilsa - {"embed": ms, "dense": ms} (savol embeddingi va ChromaDB alohida)."""
     col = get_collection(MODEL, create=False)
-    res = col.query(query_embeddings=[embed_query(MODEL, query)], n_results=n,
+    t0 = time.perf_counter()
+    emb = embed_query(MODEL, query)
+    t1 = time.perf_counter()
+    res = col.query(query_embeddings=[emb], n_results=n,
                     where=_where(only_active, no_amending, doc_types), include=["distances"])
+    if timing is not None:
+        timing.update(embed=_ms(t1 - t0), dense=_ms(time.perf_counter() - t1), _t_embed=t0, _t_dense=t1)
     ids = res["ids"][0]
     return ids, {i: round(1 - d, 4) for i, d in zip(ids, res["distances"][0])}
 
 
+def _ms(sec: float) -> float:
+    return round(sec * 1000, 1)
+
+
+def rrf(lists: list[tuple[list[str], float]], rrf_k: int = RRF_K) -> dict[str, float]:
+    """Reciprocal Rank Fusion: har ro'yxat (id lar, og'irlik) -> {id: sum(w / (rrf_k + rank))}.
+    hybrid_search va baholash (lexrag/evaluate.py, sweep) aynan shu funksiyani ishlatadi."""
+    fused: dict[str, float] = {}
+    for lst, w in lists:
+        for r, cid in enumerate(lst):
+            fused[cid] = fused.get(cid, 0.0) + w / (rrf_k + r + 1)
+    return fused
+
+
 # ---------------------------------------------------------------- gibrid
-def query_texts(query: str, lang: str | None = None) -> tuple[str, str, float]:
-    """(dense uchun matn, BM25 uchun matn, BM25 og'irligi).
+def query_texts(query: str, lang: str | None = None, w_bm25: float | None = None) -> tuple[str, str, float]:
+    """(dense uchun matn, BM25 uchun matn, BM25 og'irligi). w_bm25 - asosiy og'irlik (standart W_BM25; sweep uchun).
 
     Ruscha savol: bge-m3 ko'p tilli, shuning uchun dense asl ruscha matn bilan qidiradi. BM25 o'zbekcha
     matnda ruscha so'zlarni topmaydi: unga kichik lug'atdagi o'zbekcha atamalar + lotinlashtirilgan savol
-    (kodeks, konstitutsiya, pensiya kabi umumiy so'zlar) beriladi va og'irligi kamaytiriladi."""
+    (kodeks, konstitutsiya, pensiya kabi umumiy so'zlar) beriladi va og'irligi kamaytiriladi (RU_W)."""
+    base = W_BM25 if w_bm25 is None else w_bm25
     if lang == "ru":
         from .lang import ru_bm25_terms
         terms = ru_bm25_terms(query)
-        return normalize_text(query), f"{terms} {prepare_query(query)}".strip(), (0.45 if terms else 0.15)
+        return normalize_text(query), f"{terms} {prepare_query(query)}".strip(), base * (RU_W[0] if terms else RU_W[1])
     q = prepare_query(query)
-    return q, q, W_BM25
+    return q, q, base
+
+
+TRACE_TOP = 10  # X-ray: har usulning nechta eng yaxshi natijasi ko'rsatiladi
 
 
 def hybrid_search(query: str, k: int = 8, only_active: bool = True, no_amending: bool = True,
                   n_each: int = 40, mode: str = "hybrid", doc_types: list[str] | None = None,
-                  lang: str | None = None) -> list[dict]:
+                  lang: str | None = None, trace: dict | None = None) -> list[dict]:
     """mode: hybrid | dense | bm25. doc_types: faqat shu turdagi hujjatlar (None - hammasi).
-    lang="ru": ruscha savol (query_texts). Natija: [{chunk_id, score, rank_dense, rank_bm25, text, ...meta}]"""
+    lang="ru": ruscha savol (query_texts). Natija: [{chunk_id, score, rank_dense, rank_bm25, text, ...meta}]
+
+    trace (X-ray): dict berilsa, qidiruv ichi yoziladi - so'rov matnlari, og'irliklar, dense va BM25 ro'yxatlari
+    (ball bilan), RRF natijasi va har bosqich vaqti. trace=None bo'lsa ortiqcha hech narsa hisoblanmaydi."""
     q_dense, q_bm25, w_bm25 = query_texts(query, lang)
-    t0 = time.time()
-    dense, cos = dense_search(q_dense, n_each, only_active, no_amending, doc_types) \
+    t0 = time.perf_counter()
+    tm: dict | None = {} if trace is not None else None
+    bm_scores: dict | None = {} if trace is not None else None
+    dense, cos = dense_search(q_dense, n_each, only_active, no_amending, doc_types, timing=tm) \
         if mode in ("hybrid", "dense") else ([], {})
-    lex = bm25_search(q_bm25, n_each, only_active, no_amending, doc_types) if mode in ("hybrid", "bm25") else []
-    fused: dict[str, float] = {}
-    for lst, w in ((dense, W_DENSE), (lex, w_bm25)):
-        for r, cid in enumerate(lst):
-            fused[cid] = fused.get(cid, 0.0) + w / (RRF_K + r + 1)
+    t_bm = time.perf_counter()
+    lex = bm25_search(q_bm25, n_each, only_active, no_amending, doc_types, scores_out=bm_scores) \
+        if mode in ("hybrid", "bm25") else []
+    t_rrf = time.perf_counter()
+    fused = rrf([(dense, W_DENSE), (lex, w_bm25)])
     top = sorted(fused, key=fused.get, reverse=True)[:k]
-    if not top:
-        return []
-    out = get_chunks(top)
+    t_fetch = time.perf_counter()
+    out = get_chunks(top) if top else []
     for h in out:
         cid = h["chunk_id"]
         h.update({"score": round(fused[cid], 5), "cosine": cos.get(cid),
                   "rank_dense": dense.index(cid) + 1 if cid in dense else None,
                   "rank_bm25": lex.index(cid) + 1 if cid in lex else None})
-    log.debug("hybrid_search %.2fs", time.time() - t0)
+    t_end = time.perf_counter()
+    if trace is not None:
+        spans = []
+        if tm:
+            spans += [{"key": "embed", "start": tm["_t_embed"], "ms": tm["embed"]},
+                      {"key": "dense", "start": tm["_t_dense"], "ms": tm["dense"]}]
+        if mode in ("hybrid", "bm25"):
+            spans.append({"key": "bm25", "start": t_bm, "ms": _ms(t_rrf - t_bm)})
+        spans += [{"key": "rrf", "start": t_rrf, "ms": _ms(t_fetch - t_rrf)},
+                  {"key": "fetch", "start": t_fetch, "ms": _ms(t_end - t_fetch)}]
+        trace.update({
+            "query": query, "q_dense": q_dense, "q_bm25": q_bm25, "bm25_tokens": tokenize(q_bm25)[:40],
+            "mode": mode, "lang": lang,
+            "params": {"w_dense": W_DENSE, "w_bm25": w_bm25, "w_bm25_default": W_BM25, "rrf_k": RRF_K,
+                       "n_each": n_each, "k": k},
+            "filters": {"only_active": only_active, "no_amending": no_amending, "doc_types": doc_types},
+            "counts": {"dense": len(dense), "bm25": len(lex), "fused": len(fused)},
+            "dense": [{"chunk_id": c, "rank": i + 1, "cosine": cos.get(c)} for i, c in enumerate(dense[:TRACE_TOP])],
+            "bm25": [{"chunk_id": c, "rank": i + 1, "score": bm_scores.get(c)} for i, c in enumerate(lex[:TRACE_TOP])],
+            "fused": [{"chunk_id": h["chunk_id"], "rank": i + 1, "score": h["score"], "cosine": h["cosine"],
+                       "rank_dense": h["rank_dense"], "rank_bm25": h["rank_bm25"],
+                       "via": "both" if h["rank_dense"] and h["rank_bm25"] else "dense" if h["rank_dense"] else "bm25"}
+                      for i, h in enumerate(out)],
+            "spans": spans, "ms": _ms(t_end - t0),
+        })
+    log.debug("hybrid_search %.2fs", time.perf_counter() - t0)
     return out
+
+
+def chunk_meta(ids: list[str]) -> dict[str, dict]:
+    """Faqat metadata (matnsiz): {chunk_id: {doc_id, doc_title, article_number, article_title, status, ...}}.
+    X-ray yorliqlari va baholash (gold moddani aniqlash) uchun."""
+    ids = list(dict.fromkeys(ids))
+    if not ids:
+        return {}
+    got = get_collection(MODEL, create=False).get(ids=ids, include=["metadatas"])
+    return dict(zip(got["ids"], got["metadatas"]))
 
 
 def get_chunks(ids: list[str], embeddings: bool = False) -> list[dict]:

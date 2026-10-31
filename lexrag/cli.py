@@ -12,6 +12,8 @@
   ask "savol"             - RAG: LLM manbali javob yozadi (.env da API kalit kerak)
   export-colab            - chunklarni Colab GPU uchun eksport (data/colab/embed_input.jsonl.gz)
   import-vectors [fayl]   - Colab'dan kelgan vectors.npz ni tekshirib ChromaDB ga yozish
+  eval [--modes ...] [--k 10] [--no-sweep]
+                          - qidiruv sifatini baholash (eval/questions.jsonl, LLM'siz) -> eval/results.*
 """
 from __future__ import annotations
 
@@ -43,12 +45,14 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="lexrag", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("cmd", choices=["list", "fetch", "parse", "chunk", "report", "verify",
-                                    "all", "index", "search", "ask", "export-colab", "import-vectors"])
+                                    "all", "index", "search", "ask", "export-colab", "import-vectors", "eval"])
     ap.add_argument("query", nargs="?")
     ap.add_argument("--limit", type=int, help="faqat N ta hujjat (ro'yxat bo'ylab teng taqsimlangan namuna)")
     ap.add_argument("--ids", nargs="*", help="aniq lex_id lar")
     ap.add_argument("--n", type=int, default=4)
-    ap.add_argument("-k", type=int, default=5)
+    ap.add_argument("-k", "--k", type=int, default=None, help="search: 5, ask: 8, eval: 10")
+    ap.add_argument("--modes", default=None, help="eval: dense,bm25,hybrid,hybrid_plan (standart: hammasi)")
+    ap.add_argument("--no-sweep", action="store_true", help="eval: W_BM25 va NO_ANSWER_COS sweep'siz")
     ap.add_argument("--model", default="BAAI/bge-m3")
     ap.add_argument("--batch-size", type=int, default=1)
     ap.add_argument("--merge-short", action="store_true",
@@ -95,11 +99,14 @@ def main(argv=None):
         import_vectors(a.query or str(config.DATA / "colab" / "vectors.npz"))
     if a.cmd == "ask":
         from .rag import cli_ask
-        cli_ask(a.query or input("Savol: "), k=a.k if a.k != 5 else 8)
+        cli_ask(a.query or input("Savol: "), k=a.k or 8)
     if a.cmd == "search":
         from .search import main as search_main
-        search_main(a.query, k=a.k, model_name=a.model, only_active=not a.all_status, no_amending=not a.include_amending,
+        search_main(a.query, k=a.k or 5, model_name=a.model, only_active=not a.all_status, no_amending=not a.include_amending,
                     mode=a.mode)
+    if a.cmd == "eval":
+        from .evaluate import cli as eval_cli
+        eval_cli(a.modes, k=a.k or 10, do_sweep=not a.no_sweep)
 
 
 if __name__ == "__main__":

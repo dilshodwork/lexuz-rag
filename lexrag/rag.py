@@ -16,13 +16,15 @@ import time
 from typing import Iterator
 
 from . import llm, plan
-from .lang import LANG_NAMES, MARKER, NOT_FOUND_RE, FollowupSplitter, resolve_lang
-from .retrieval import get_chunks, hybrid_search, prepare_query
+from .lang import LANG_NAMES, MARKER, NOT_FOUND_RE, FollowupSplitter, detect_lang, resolve_lang, script_of
+from .retrieval import chunk_meta, get_chunks, hybrid_search, prepare_query
 from .translit import LatToCyrStream, cyr_to_lat
 
 K_CONTEXT = 8
 K_SPLIT = 10          # savol bo'linganda manbalar soni
-NO_ANSWER_COS = 0.45  # eval natijasiga qarab sozlanadi
+# eval/sweep.json: javobi bor 46 savolda eng yaqin cosine >= 0.55, bazada yo'q savollarda 0.43-0.45 (+ bitta 0.61).
+# 0.45 ham xuddi shu natijani berardi (3/4 rad, 0/46 xato), lekin bitta "yo'q" savol 0.448 da - chegara juda yaqin edi.
+NO_ANSWER_COS = 0.48
 RRF_K = 60
 
 _LANG_RULE = {
@@ -114,6 +116,76 @@ def short_doc(title: str) -> str:
     return t if len(t) <= 42 else t[:40].rstrip() + "…"
 
 
+# ---------------------------------------------------------------- X-ray (RAG ichi, faqat so'ralganda)
+SPAN_LABELS = {"analyze": "Savol tahlili", "embed": "Embedding (bge-m3)", "dense": "Dense qidiruv (ChromaDB)",
+               "bm25": "BM25", "rrf": "RRF birlashtirish", "fetch": "Modda matnlarini olish",
+               "fuse": "Qismlarni birlashtirish", "check": "Tekshiruv", "reuse": "Manbalarni olish"}
+
+
+def _tokens(text: str) -> tuple[int, str]:
+    """Taxminiy token soni: bge-m3 (XLM-R) tokenizatori; yuklanmasa belgi/4. LLM tokenizatori boshqacha bo'lishi mumkin."""
+    try:
+        from .chunker import ntok
+        return ntok(text), "bge-m3 tokenizatori"
+    except Exception:  # noqa: BLE001 - tokenizator tarmoqsiz yuklanmasa
+        return max(1, len(text) // 4), "belgilar / 4"
+
+
+class XRay:
+    """prepare_steps ichida qidiruv tafsilotlarini yig'adi. Faqat xray=True bo'lganda yaratiladi."""
+
+    def __init__(self, question: str, lang: str, lang_pref: str | None, mode: str):
+        self.t0 = time.perf_counter()
+        self.searches: list[dict] = []
+        self.spans: list[dict] = []
+        self.d: dict = {
+            "question": question, "mode": mode,
+            "analysis": {"lang": lang, "lang_name": LANG_NAMES[lang], "detected": detect_lang(question),
+                         "forced": lang_pref in ("uz", "uz_cyr", "ru"), "script": script_of(question),
+                         "latin": prepare_query(question), "parts": [], "planner": None},
+        }
+
+    def span(self, key: str, start: float, end: float | None = None, **extra):
+        end = time.perf_counter() if end is None else end
+        self.spans.append({"key": key, "label": SPAN_LABELS.get(key, key), "start": round((start - self.t0) * 1000, 1),
+                           "ms": round((end - start) * 1000, 1), **extra})
+
+    def add_search(self, i: int, trace: dict):
+        for s in trace.pop("spans", []):
+            self.spans.append({"key": s["key"], "label": SPAN_LABELS.get(s["key"], s["key"]), "search": i,
+                               "start": round((s["start"] - self.t0) * 1000, 1), "ms": s["ms"]})
+        self.searches.append(trace)
+
+    def finish(self, hits: list[dict], best: float | None, no_answer: bool, prompt: dict | None,
+               fusion: dict | None = None) -> dict:
+        ids = [h["chunk_id"] for h in hits]
+        for s in self.searches:
+            ids += [x["chunk_id"] for x in s["dense"] + s["bm25"] + s["fused"]]
+        labels = {}
+        for cid, m in chunk_meta(ids).items():
+            labels[cid] = {"doc": short_doc(m.get("doc_title", "")), "art": m.get("article_number") or "",
+                           "title": (m.get("article_title") or "")[:90], "status": m.get("status"),
+                           "type": m.get("doc_type")}
+        d = self.d
+        d["searches"] = self.searches
+        d["fusion"] = fusion
+        d["labels"] = labels
+        d["final"] = [{"n": i, "chunk_id": h["chunk_id"], "score": h.get("score"), "cosine": h.get("cosine"),
+                       "rank_dense": h.get("rank_dense"), "rank_bm25": h.get("rank_bm25")} for i, h in enumerate(hits, 1)]
+        d["threshold"] = {"no_answer_cos": NO_ANSWER_COS, "best_cos": best, "no_answer": no_answer}
+        if prompt:
+            ts, tok = _tokens(prompt["system"])
+            tu, _ = _tokens(prompt["user"])
+            d["prompt"] = {**prompt, "tokens": {"system": ts, "user": tu, "total": ts + tu, "method": tok},
+                           "chars": len(prompt["system"]) + len(prompt["user"])}
+        else:
+            d["prompt"] = None
+        d["timeline"] = sorted(self.spans, key=lambda s: s["start"])
+        d["total_ms"] = round((time.perf_counter() - self.t0) * 1000, 1)
+        d["_t0"] = self.t0  # app.py LLM vaqtlarini shu nuqtaga nisbatan hisoblaydi (javobga chiqmaydi)
+        return d
+
+
 def _fuse(lists: list[list[dict]], k: int) -> list[dict]:
     """Bir nechta qidiruv natijasi -> RRF bilan bitta ro'yxat, takrorlarsiz. Har qismning eng yaxshi 2 tasi
     albatta kiradi (aks holda bitta qism boshqasini siqib chiqarishi mumkin)."""
@@ -149,13 +221,15 @@ def _step(key: str, label: str, state: str, detail: str = "", ms: int | None = N
 
 def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = None, mode: str = "legal",
                   chunk_ids: list[str] | None = None, base_answer: str | None = None,
-                  llm_plan: bool = False, **kw) -> Iterator[tuple[str, dict]]:
-    """Bosqichlar + natija. chunk_ids berilsa (sodda rejim) qayta qidirilmaydi: o'sha manbalar, o'sha [n]."""
+                  llm_plan: bool = False, xray: bool = False, **kw) -> Iterator[tuple[str, dict]]:
+    """Bosqichlar + natija. chunk_ids berilsa (sodda rejim) qayta qidirilmaydi: o'sha manbalar, o'sha [n].
+    xray=True: natijada "xray" - qidiruv ichi (XRay); qo'shimcha LLM so'rovisiz, faqat so'ralganda hisoblanadi."""
     question = question.strip()
     lang = resolve_lang(question, lang_pref)
     # LLM'ga beriladigan savol: o'zbekcha kirill -> lotin (lotinda javob yozishi uchun), ruscha - asl holida
     q_llm = question if lang == "ru" else prepare_query(question)
     steps: list[dict] = []
+    xr = XRay(question, lang, lang_pref, mode) if xray else None
 
     def done(ev):
         steps.append(ev[1])
@@ -163,26 +237,36 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
 
     if chunk_ids:
         t = time.time()
+        tp = time.perf_counter()
         yield _step("reuse", "Manbalar qayta ishlatilmoqda", "run")
         hits = get_chunks(chunk_ids)
+        if xr:
+            xr.span("reuse", tp)
+            xr.d["analysis"]["reuse"] = True
         yield done(_step("reuse", "Manbalar qayta ishlatilmoqda", "done",
                          f"qayta qidiruvsiz · {len(hits)} ta modda", int((time.time() - t) * 1000)))
         user = f"MANBALAR:\n\n{format_context(hits)}\n\n===\n\nSAVOL: {q_llm}"
         if base_answer:
             base = cyr_to_lat(base_answer) if re.search(r"[ЎўҚқҒғҲҳ]", base_answer) else base_answer
             user += f"\n\nYURIDIK JAVOB (shuni soddaroq tushuntir, [n] lar yuqoridagi manbalarga tegishli):\n{base[:6000]}"
+        prompt = {"system": system_prompt(lang, mode), "user": user} if hits else None
         yield "result", {"sources": source_cards(hits), "no_answer": not hits, "best_cosine": None, "lang": lang,
-                         "parts": [], "steps": steps,
-                         "prompt": {"system": system_prompt(lang, mode), "user": user} if hits else None}
+                         "parts": [], "steps": steps, "prompt": prompt,
+                         **({"xray": xr.finish(hits, None, not hits, prompt)} if xr else {})}
         return
 
     # 1. tahlil
     t = time.time()
+    tp = time.perf_counter()
     yield _step("analyze", "Savol tahlil qilinmoqda", "run")
-    parts = plan.llm_split(question) if (llm_plan and plan.llm_enabled()) else plan.split_question(question)
+    use_llm_plan = llm_plan and plan.llm_enabled()
+    parts = plan.llm_split(question) if use_llm_plan else plan.split_question(question)
     detail = f"Javob tili: {LANG_NAMES[lang]}"
     if parts:
         detail += f" · {len(parts)} qismga boʻlindi"
+    if xr:
+        xr.span("analyze", tp)
+        xr.d["analysis"].update(parts=parts, planner="llm" if use_llm_plan else "evristika")
     yield done(_step("analyze", "Savol tahlil qilinmoqda", "done", detail, int((time.time() - t) * 1000)))
 
     # 2. qidiruv (to'liq savol + har qism alohida)
@@ -192,7 +276,10 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
         t = time.time()
         label = "Qidirilmoqda" if i == 0 else f"Qidirilmoqda: «{q if len(q) <= 46 else q[:44].rstrip() + '…'}»"
         yield _step(f"search{i}", label, "run")
-        res = hybrid_search(q, k=k, lang=lang, **kw)
+        trace: dict | None = {} if xr else None
+        res = hybrid_search(q, k=k, lang=lang, trace=trace, **kw)
+        if xr:
+            xr.add_search(i, trace)
         lists.append(res)
         docs = []
         for h in res:
@@ -204,10 +291,18 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
 
     # 3. birlashtirish
     t = time.time()
+    tp = time.perf_counter()
+    fusion = None
     if parts:
         before = sum(len(x) for x in lists)
         hits = _fuse(lists, max(k, K_SPLIT))
         found_detail = f"{len(queries)} qidiruv birlashtirildi, {before - len(hits)} ta takror olib tashlandi"
+        if xr:
+            xr.span("fuse", tp)
+            fusion = {"method": "RRF (har qidiruv og'irligi 1, har qismning eng yaxshi 2 tasi albatta kiradi)",
+                      "rrf_k": RRF_K, "before": before, "after": len(hits),
+                      "from": {h["chunk_id"]: [i for i, lst in enumerate(lists) if any(x["chunk_id"] == h["chunk_id"] for x in lst)]
+                               for h in hits}}
     else:
         hits = lists[0]
         n_docs = len({h.get("doc_id") or h.get("doc_title") for h in hits})
@@ -216,6 +311,7 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
 
     # 4. tekshiruv: eng yaqin moddaning o'xshashligi, holati
     t = time.time()
+    tp = time.perf_counter()
     yield _step("check", "Tekshirilmoqda", "run")
     best = max((h.get("cosine") or 0) for h in hits) if hits else 0
     no_answer = not hits or best < NO_ANSWER_COS
@@ -225,18 +321,23 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
     else:
         check_detail = (f"eng yaqin moslik {round(best * 100)}% · "
                         + ("hammasi amaldagi tahrir" if active == len(hits) else f"{active} tasi amalda"))
+    if xr:
+        xr.span("check", tp)
     yield done(_step("check", "Tekshirilmoqda", "done", check_detail, int((time.time() - t) * 1000)))
 
     if no_answer:
         yield "result", {"sources": source_cards(hits[:3]), "no_answer": True, "best_cosine": best, "lang": lang,
-                         "parts": parts, "steps": steps, "prompt": None}
+                         "parts": parts, "steps": steps, "prompt": None,
+                         **({"xray": xr.finish(hits, best, True, None, fusion)} if xr else {})}
         return
     user = f"MANBALAR:\n\n{format_context(hits)}\n\n===\n\nSAVOL: {q_llm}"
     if parts:
         user += "\n\nSavol bir necha qismdan iborat, har biriga alohida javob ber:\n" + \
                 "\n".join(f"{i}) {p if lang == 'ru' else prepare_query(p)}" for i, p in enumerate(parts, 1))
+    prompt = {"system": system_prompt(lang, mode), "user": user}
     yield "result", {"sources": source_cards(hits), "no_answer": False, "best_cosine": best, "lang": lang,
-                     "parts": parts, "steps": steps, "prompt": {"system": system_prompt(lang, mode), "user": user}}
+                     "parts": parts, "steps": steps, "prompt": prompt,
+                     **({"xray": xr.finish(hits, best, False, prompt, fusion)} if xr else {})}
 
 
 def prepare(question: str, k: int = K_CONTEXT, **kw) -> dict:

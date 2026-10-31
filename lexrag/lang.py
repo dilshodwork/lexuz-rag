@@ -46,6 +46,11 @@ def detect_lang(q: str) -> str:
     return "ru" if ru > uz else "uz_cyr"
 
 
+def script_of(q: str) -> str:
+    """Savol yozuvi (X-ray uchun): kirill | lotin."""
+    return "kirill" if len(_CYR.findall(q)) > len(_LAT.findall(q)) else "lotin"
+
+
 def resolve_lang(question: str, pref: str | None) -> str:
     """Foydalanuvchi sozlamasi (auto | uz | uz_cyr | ru) -> javob tili."""
     return pref if pref in LANGS else detect_lang(question)
