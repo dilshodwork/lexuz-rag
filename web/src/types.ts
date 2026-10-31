@@ -37,7 +37,10 @@ export type Conv = { id: string; title: string; created: number; updated: number
 
 export type Filters = { only_active: boolean; include_amending: boolean; doc_types: string[] };
 
-export type Stats = { documents: number | null; chunks: number | null; base_date: string | null };
+/** Bepul sinov (server kaliti): free=false bo'lsa serverda bepul AI yo'q */
+export type Quota = { free: boolean; limit: number; used: number; left: number; reason: "user" | "global" | null };
+
+export type Stats ={ documents: number | null; chunks: number | null; base_date: string | null };
 
 export const DOC_TYPES = ["Qonun", "Kodeks", "Konstitutsiya"] as const;
 export const DEFAULT_FILTERS: Filters = { only_active: true, include_amending: false, doc_types: [...DOC_TYPES] };

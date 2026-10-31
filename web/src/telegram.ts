@@ -18,6 +18,12 @@ type TgWebApp = {
   onEvent(e: string, cb: () => void): void;
   BackButton?: { show(): void; hide(): void; onClick(cb: () => void): void; offClick(cb: () => void): void };
   HapticFeedback?: { impactOccurred(s: "light" | "medium" | "soft"): void; selectionChanged(): void };
+  openLink?: (url: string) => void;
+  CloudStorage?: {
+    setItem(k: string, v: string, cb?: (err: string | null, ok?: boolean) => void): void;
+    getItem(k: string, cb: (err: string | null, v?: string) => void): void;
+    removeItem(k: string, cb?: (err: string | null, ok?: boolean) => void): void;
+  };
 };
 
 const tg: TgWebApp | undefined = (window as unknown as { Telegram?: { WebApp?: TgWebApp } }).Telegram?.WebApp;
@@ -73,4 +79,28 @@ export function setBackButton(cb: (() => void) | null) {
 
 export function haptic() {
   if (inTelegram) tg?.HapticFeedback?.impactOccurred("light");
+}
+
+/** Server Mini App foydalanuvchisini aniqlashi uchun (imzoni server TELEGRAM_BOT_TOKEN bilan tekshiradi) */
+export const telegramInitData = () => (inTelegram ? tg!.initData : "");
+
+/** Telegram bulutli xotirasi (foydalanuvchi + bot bo'yicha, Bot API 6.9+). Oddiy brauzerda null. */
+export function cloudStorage() {
+  if (!inTelegram || !tg?.CloudStorage || !tg.isVersionAtLeast?.("6.9")) return null;
+  const cs = tg.CloudStorage;
+  return {
+    get: (k: string) => new Promise<string | null>((res) => {
+      try { cs.getItem(k, (err, v) => res(err ? null : v || "")); } catch { res(null); }
+    }),
+    set: (k: string, v: string) => { try { cs.setItem(k, v); } catch { /* eski Telegram */ } },
+    remove: (k: string) => { try { cs.removeItem(k); } catch { /* eski Telegram */ } },
+  };
+}
+
+/** Tashqi havola: Telegram ichida tizim brauzerida ochiladi (oddiy brauzerda <a target=_blank>) */
+export function openExternal(url: string, e?: { preventDefault(): void }) {
+  if (inTelegram && tg?.openLink) {
+    e?.preventDefault();
+    tg.openLink(url);
+  }
 }

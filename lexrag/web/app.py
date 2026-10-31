@@ -177,6 +177,41 @@ async def context(body: AskBody):
             "prompt": None if p["no_answer"] else {"system": rag.SYSTEM, "user": p["user"]}}
 
 
+OPENAI_CHAT = "https://api.openai.com/v1/chat/completions"
+
+
+@app.post("/api/proxy/openai/chat/completions", include_in_schema=False)
+async def proxy_openai(request: Request):
+    """OpenAI xato javoblarida (401, 429) CORS sarlavhasi yo'q: brauzer "noto'g'ri kalit"ni "tarmoq yo'q"dan
+    ajrata olmaydi. Shuning uchun OpenAI so'rovi shu yerdan o'tadi (Gemini va Claude - to'g'ridan-to'g'ri).
+    Kalit faqat shu so'rovning Authorization sarlavhasida keladi: hech qayerga yozilmaydi va logga tushmaydi."""
+    auth = request.headers.get("authorization", "")
+    if not auth.startswith("Bearer ") or len(auth) > 400:
+        return JSONResponse({"error": {"message": "Authorization sarlavhasi yoʻq", "code": "invalid_api_key"}}, status_code=401)
+    body = await request.body()
+    if len(body) > 256_000:
+        return JSONResponse({"error": {"message": "Soʻrov juda katta"}}, status_code=413)
+    client = httpx.AsyncClient(timeout=httpx.Timeout(60, connect=20))
+    try:
+        r = await client.send(client.build_request("POST", OPENAI_CHAT, content=body,
+                                                   headers={"Authorization": auth, "Content-Type": "application/json"}),
+                              stream=True)
+    except httpx.HTTPError as e:
+        await client.aclose()
+        log.warning("OpenAI proksi: %s", type(e).__name__)  # faqat xato turi: so'rov va sarlavhalar yozilmaydi
+        return JSONResponse({"error": {"message": "OpenAI serveriga ulanib boʻlmadi", "code": "dalil_network"}}, status_code=502)
+
+    async def relay() -> AsyncIterator[bytes]:
+        try:
+            async for chunk in r.aiter_bytes():
+                yield chunk
+        finally:
+            await r.aclose()
+            await client.aclose()
+    return StreamingResponse(relay(), status_code=r.status_code, media_type=r.headers.get("content-type", "application/json"),
+                             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+
 @app.get("/api/quota")
 async def get_quota(request: Request):
     return _quota_info(_who(request))

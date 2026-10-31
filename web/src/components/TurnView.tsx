@@ -68,6 +68,14 @@ function Waiting({ status }: { status: Turn["status"] }) {
   return <>{sec >= 12 ? `Javob yozilmoqda… ${sec} s (model band boʻlsa biroz choʻziladi)` : "Javob yozilmoqda…"}</>;
 }
 
+const TITLES: Record<string, string> = {
+  no_key: "API kalit sozlanmagan", bad_key: "API kalit notoʻgʻri", network: "Aloqa yoʻq", timeout: "Vaqt tugadi",
+  quota: "Kunlik limit tugadi", busy: "LLM band", free_limit: "Bugungi bepul savollar tugadi", no_model: "Model topilmadi",
+  region: "Provayder ishlamadi",
+};
+// bu xatolarda "AI ulash" oynasi yordam beradi
+const KEY_CODES = ["no_key", "bad_key", "quota", "free_limit", "no_model", "region"];
+
 export function TurnView(props: {
   turn: Turn;
   live: boolean;
@@ -80,16 +88,19 @@ export function TurnView(props: {
   onRetry: () => void;
   onSources: () => void;
   onTick: () => void;
+  onConnect: () => void;
 }) {
   const t = props.turn;
   const pending = t.status === "searching" || t.status === "writing";
   const n = t.sources.length;
   const head = pending ? <Waiting status={t.status} />
     : t.status === "notfound" ? <>Mos modda topilmadi</>
-    : t.status === "error" ? <>{t.error?.code === "no_key" ? "LLM ulanmagan" : "Javob yozilmadi"}</>
+    : t.status === "error" ? <>{t.error?.code === "no_key" ? "LLM ulanmagan" : t.error?.code === "free_limit" ? "Bepul savollar tugadi" : "Javob yozilmadi"}</>
     : t.status === "stopped" ? <>Toʻxtatildi</>
     : <>{n} ta modda asosida{t.model ? ` · ${t.model}` : ""}</>;
 
+  const code = t.error?.code || "";
+  const keyish = KEY_CODES.includes(code);
   const notice = t.status === "notfound" ? (
     <div className="notice" role="status">
       <span className="ic"><Icon name="docq" /></span>
@@ -99,15 +110,16 @@ export function TurnView(props: {
       </div>
     </div>
   ) : t.status === "error" && t.error ? (
-    <div className={`notice ${t.error.code === "no_key" || t.error.code === "bad_key" ? "key" : "err"}`} role="alert">
-      <span className="ic"><Icon name={t.error.code === "no_key" || t.error.code === "bad_key" ? "key" : "alert"} /></span>
+    <div className={`notice ${keyish ? "key" : "err"}`} role="alert">
+      <span className="ic"><Icon name={keyish ? "key" : "alert"} /></span>
       <div>
-        <h4>{t.error.code === "no_key" ? "API kalit sozlanmagan" : t.error.code === "bad_key" ? "API kalit notoʻgʻri"
-          : t.error.code === "network" ? "Aloqa yoʻq" : t.error.code === "timeout" ? "Vaqt tugadi"
-          : t.error.code === "quota" ? "Kunlik limit tugadi" : t.error.code === "busy" ? "LLM band" : "Xato yuz berdi"}</h4>
+        <h4>{TITLES[code] || "Xato yuz berdi"}</h4>
         <p>{t.error.message}</p>
         {props.isLast && !props.busy && (
-          <button className="retry press" onClick={props.onRetry}><Icon name="redo" />Qayta urinish</button>
+          <div className="n-actions">
+            {keyish && <button className="retry press" onClick={props.onConnect}><Icon name="key" />{code === "free_limit" || code === "no_key" ? "Kalitni ulash" : "AI sozlamalari"}</button>}
+            {code !== "free_limit" && <button className={`retry press${keyish ? " ghost" : ""}`} onClick={props.onRetry}><Icon name="redo" />Qayta urinish</button>}
+          </div>
         )}
       </div>
     </div>

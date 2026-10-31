@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import { askStream, getStats } from "./api";
+import { loadAi, loadAiCloud, PROVIDERS, saveAi, type AiConfig } from "./ai";
+import { askDirect, askStream, getQuota, getStats } from "./api";
+import { AiConnect, LimitPanel } from "./components/AiConnect";
 import { FilterForm } from "./components/FilterForm";
+import { Modal } from "./components/Modal";
 import { Sheet, type SheetPos } from "./components/Sheet";
 import { SkeletonCards, SourceCard } from "./components/SourceCard";
 import { TurnView } from "./components/TurnView";
@@ -11,7 +14,7 @@ import {
   dayGroup, filtersLabel, isDefaultFilters, loadConvs, loadFilters, loadTheme, saveConvs, saveFilters, saveTheme, timeLabel, uid,
 } from "./store";
 import { haptic, initTelegram, setBackButton, setTelegramChrome, telegramScheme } from "./telegram";
-import type { Conv, Filters, Stats, Turn } from "./types";
+import type { Conv, Filters, Quota, Stats, Turn } from "./types";
 
 const SUGS: { q: string; tag: string; icon: IconName; tall?: boolean }[] = [
   { q: "Prezident qancha muddatga saylanadi?", tag: "Konstitutsiya", icon: "scale", tall: true },
@@ -55,7 +58,11 @@ export default function App() {
   const [liveId, setLiveId] = useState<string | null>(null); // hozir oqayotgan javob
   const [panelTurn, setPanelTurn] = useState<string | null>(null); // manbalar paneli qaysi javobniki
   const [hl, setHl] = useState<{ turn: string; n: number } | null>(null);
-  const [sheet, setSheet] = useState<{ name: "sources" | "filters" | "history"; pos: SheetPos } | null>(null);
+  const [sheet, setSheet] = useState<{ name: "sources" | "filters" | "history" | "ai" | "limit"; pos: SheetPos } | null>(null);
+  const [dlg, setDlg] = useState<"ai" | "limit" | null>(null); // desktop dialoglari (mobilda - varaq)
+  const [dlgSeq, setDlgSeq] = useState(0); // har ochilishda "AI ulash" shakli qaytadan boshlanadi
+  const [ai, setAi] = useState<AiConfig | null>(loadAi);
+  const [quota, setQuota] = useState<Quota | null>(null);
   const [pop, setPop] = useState(false);
   const [hud, setHud] = useState<string | null>(null);
   const [histQ, setHistQ] = useState("");
@@ -73,7 +80,15 @@ export default function App() {
   const panel = conv ? conv.turns.find((t) => t.id === panelTurn) || conv.turns[conv.turns.length - 1] : null;
 
   // ---------------------------------------------------------- tashqi muhit
-  useEffect(() => { getStats().then(setStats); }, []);
+  useEffect(() => { getStats().then(setStats); getQuota().then(setQuota); }, []);
+  // Telegram'da kalit bulutda ham saqlanadi: boshqa qurilmada ochilsa ham ulangan bo'ladi
+  useEffect(() => {
+    loadAiCloud().then((c) => {
+      if (c === undefined || JSON.stringify(c) === JSON.stringify(loadAi())) return;
+      setAi(c);
+      saveAi(c);
+    });
+  }, []);
   useEffect(() => { initTelegram((s) => { if (!loadTheme()) setTheme(s); }); }, []);
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -102,7 +117,18 @@ export default function App() {
   }, []);
 
   const showHud = (m: string) => { setHud(m); haptic(); setTimeout(() => setHud(null), 1700); };
-  const closeAll = () => { setSheet((s) => (s ? { ...s, pos: "closed" } : s)); setPop(false); };
+  const closeAll = () => { setSheet((s) => (s ? { ...s, pos: "closed" } : s)); setPop(false); setDlg(null); };
+  const updateAi = (c: AiConfig | null) => { setAi(c); saveAi(c); };
+  /** Oqim natijasiga ko'ra kalit holati (shu orada kalit almashtirilmagan bo'lsa) */
+  const markAi = (own: AiConfig, status: AiConfig["status"]) => {
+    if (own.status !== status && loadAi()?.key === own.key) updateAi({ ...own, status, at: Date.now() });
+  };
+  const openDlg = (name: "ai" | "limit") => {
+    setPop(false);
+    setDlgSeq((n) => n + 1);
+    getQuota().then((x) => x && setQuota(x));
+    if (desk) setDlg(name); else setSheet({ name, pos: name === "ai" ? "large" : "medium" });
+  };
   const toBottom = (smooth = false) => {
     const s = scrollRef.current;
     if (s) s.scrollTo({ top: s.scrollHeight, behavior: smooth ? "smooth" : "auto" });
@@ -123,13 +149,26 @@ export default function App() {
     setHl(null);
     stick.current = true;
     const end = () => { if (abort.current === ac) { abort.current = null; setLiveId(null); } };
-    askStream(turn.q, filters, ac.signal, {
+    // o'z kaliti ulangan bo'lsa LLM brauzerdan chaqiriladi, aks holda server kaliti (bepul limit)
+    const own = ai;
+    const handlers = {
       // no_answer: eng yaqin modda ham juda uzoq, LLM chaqirilmaydi -> darhol "topilmadi"
-      onSources: (d) => patchTurn(cid, turn.id, d.no_answer ? { sources: d.sources, status: "notfound", noLLM: true } : { sources: d.sources, status: "writing" }),
-      onDelta: (text) => patchTurn(cid, turn.id, (t) => (t.noLLM ? {} : { text: t.text + text, status: "writing" })),
-      onDone: (d) => { patchTurn(cid, turn.id, { status: d.no_answer ? "notfound" : "done", model: d.model, ms: d.ms }); end(); },
-      onError: (e) => { patchTurn(cid, turn.id, { status: "error", error: e }); end(); },
-    }).finally(() => {
+      onSources: (d: { sources: Turn["sources"]; no_answer: boolean }) => patchTurn(cid, turn.id, d.no_answer ? { sources: d.sources, status: "notfound", noLLM: true } : { sources: d.sources, status: "writing" }),
+      onDelta: (text: string) => patchTurn(cid, turn.id, (t) => (t.noLLM ? {} : { text: t.text + text, status: "writing" })),
+      onDone: (d: { no_answer: boolean; model: string | null; ms: number }) => {
+        patchTurn(cid, turn.id, { status: d.no_answer ? "notfound" : "done", model: d.model, ms: d.ms });
+        if (own && d.model) markAi(own, "ok");
+        end();
+      },
+      onError: (e: { code: string; message: string }) => {
+        patchTurn(cid, turn.id, { status: "error", error: e });
+        if (own && (e.code === "bad_key" || e.code === "quota")) markAi(own, e.code);
+        if (e.code === "free_limit") openDlg("limit");
+        end();
+      },
+      onQuota: setQuota,
+    };
+    (own ? askDirect(own, turn.q, filters, ac.signal, handlers) : askStream(turn.q, filters, ac.signal, handlers)).finally(() => {
       if (ac.signal.aborted) patchTurn(cid, turn.id, (t) => (t.status === "searching" || t.status === "writing" ? { status: "stopped" } : {}));
       end();
     });
@@ -138,6 +177,8 @@ export default function App() {
   const ask = (text: string) => {
     const question = text.trim();
     if (!question || busy) return;
+    // bepul savollar tugagan: savol matni kompozerda qoladi, kalit ulangach yuboriladi
+    if (!ai && quota?.free && quota.left <= 0) { setQ(question); openDlg("limit"); return; }
     setQ("");
     closeAll();
     haptic();
@@ -158,6 +199,7 @@ export default function App() {
 
   const retry = (t: Turn) => {
     if (!conv || busy) return;
+    if (!ai && quota?.free && quota.left <= 0) { openDlg("limit"); return; }
     patchTurn(conv.id, t.id, { text: "", sources: [], status: "searching", error: undefined, model: null, noLLM: false });
     run(conv.id, { ...t, text: "", sources: [] });
   };
@@ -254,6 +296,26 @@ export default function App() {
       </button>
     </form>
   );
+  // AI holati: o'z kaliti yoki bugungi bepul savollar
+  const aiTone = ai ? (ai.status === "bad_key" ? "err" : ai.status === "quota" ? "warn" : "on")
+    : quota?.free && quota.left > 0 ? "free" : "warn";
+  const aiLabel = ai
+    ? <>{PROVIDERS[ai.provider].short} · {ai.model}{ai.status === "bad_key" ? " · kalit xato" : ai.status === "quota" ? " · limit tugagan" : ""}</>
+    : quota?.free
+      ? <>Bugun <b className="num">{quota.left}/{quota.limit}</b> bepul savol qoldi<span className="sep">·</span><u>Kalit ulash</u></>
+      : quota ? <>AI ulanmagan<span className="sep">·</span><u>Kalit ulash</u></> : <>AI ulash</>;
+  const aiChip = (
+    <button className={`aichip press tone-${aiTone}`} onClick={() => openDlg("ai")} aria-label="AI ulash">
+      <span className="dot" /><span className="lbl">{aiLabel}</span>
+    </button>
+  );
+  const aiPanel = <AiConnect key={dlgSeq} ai={ai} quota={quota} onSave={(c) => {
+    updateAi(c);
+    if (c?.status === "ok") showHud("AI ulandi");
+    if (!c) { showHud("Kalit oʻchirildi"); getQuota().then(setQuota); }
+  }} />;
+  const limitPanel = <LimitPanel quota={quota} onConnect={() => openDlg("ai")} onLater={closeAll} />;
+
   const legal = <p className="legal">Bu yuridik maslahat emas. Rasmiy matn: <a href="https://lex.uz" target="_blank" rel="noopener noreferrer">lex.uz</a></p>;
   const nDocs = fmtNum(stats?.documents, "1 618"), nChunks = fmtNum(stats?.chunks, "39 961"), bDate = stats?.base_date || "31.10.2026";
 
@@ -310,6 +372,11 @@ export default function App() {
             </label>
             <div className="side-list">{histRows(false)}</div>
             <div className="side-foot">
+              <button className={`airow press tone-${aiTone}`} onClick={() => openDlg("ai")}>
+                <span className="ai-ic"><Icon name="spark" /></span>
+                <span className="txt">AI ulash<small>{ai ? `${PROVIDERS[ai.provider].short} · oʻz kalitingiz` : quota?.free ? `Bepul: bugun ${quota.left}/${quota.limit}` : "Kalit ulanmagan"}</small></span>
+                <span className="dot" />
+              </button>
               <div className="basebox num"><b>{nDocs}</b> hujjat · <b>{nChunks}</b> modda boʻlagi<br />Baza holati <b>{bDate}</b>, manba lex.uz</div>
               <div className="seg theme-seg" data-v={theme === "dark" ? 1 : 0}>
                 <span className="thumb" />
@@ -343,7 +410,7 @@ export default function App() {
                     <div className="orb-big" aria-hidden="true" />
                     <p className="hi">Assalomu alaykum</p>
                     <h1>Qonunchilik boʻyicha nima soʻramoqchisiz?</h1>
-                    <div className="hero-composer">{desk && composer}</div>
+                    <div className="hero-composer">{desk && <>{composer}<div className="chiprow">{aiChip}</div></>}</div>
                   </div>
                   <div className="sugs">
                     {SUGS.map((s) => (
@@ -366,14 +433,14 @@ export default function App() {
                       activeN={hl?.turn === t.id ? hl.n : null} panelOn={panel?.id === t.id}
                       onCite={(n) => focusSource(t, n)} onCopy={() => copy(t)} onRetry={() => retry(t)}
                       onSources={() => { setPanelTurn(t.id); if (!desk) setSheet({ name: "sources", pos: "medium" }); }}
-                      onTick={() => { if (stick.current && t.id === liveId) toBottom(); }} />
+                      onTick={() => { if (stick.current && t.id === liveId) toBottom(); }} onConnect={() => openDlg("ai")} />
                   ))}
                 </section>
               )}
             </div>
 
             <div className="dock">
-              {(!desk || chat) && composer}
+              {(!desk || chat) && <><div className="chiprow">{aiChip}</div>{composer}</>}
               {legal}
             </div>
           </main>
@@ -403,12 +470,35 @@ export default function App() {
           <input value={histQ} onChange={(e) => setHistQ(e.target.value)} placeholder="Qidirish" aria-label="Suhbatlardan qidirish" />
         </label>
         {histRows(true)}
+        <div className="grp-label">Sozlamalar</div>
+        <div className="grp">
+          <button className={`row airow-m tone-${aiTone}`} onClick={() => openDlg("ai")}>
+            <span className="ai-ic"><Icon name="spark" /></span>
+            <span className="txt">AI ulash<small>{ai ? `${PROVIDERS[ai.provider].short} · ${ai.model}` : quota?.free ? `Bepul rejim: bugun ${quota.left}/${quota.limit} savol qoldi` : "Oʻz kalitingiz ulanmagan"}</small></span>
+            <span className="dot" />
+          </button>
+        </div>
         <button className="primary press" onClick={() => { const t = theme === "dark" ? "light" : "dark"; setTheme(t); saveTheme(t); }}>
           {theme === "dark" ? "Yorugʻ rejimga oʻtish" : "Qorongʻi rejimga oʻtish"}
         </button>
         {convs.length > 0 && <button className="linkbtn" onClick={clearHistory}>Tarixni tozalash</button>}
         <p className="legal" style={{ marginTop: 18 }}>{nDocs} hujjat · {nChunks} modda boʻlagi · baza holati {bDate}</p>
       </Sheet>
+
+      <Sheet id="sh-ai" label="AI ulash" title="AI ulash"
+        pos={sheet?.name === "ai" ? sheet.pos : "closed"} onPos={setSheetPos}>
+        {!desk && aiPanel}
+      </Sheet>
+      <Sheet id="sh-limit" label="Bepul savollar tugadi" title="Bepul limit"
+        pos={sheet?.name === "limit" ? sheet.pos : "closed"} onPos={setSheetPos}>
+        {!desk && limitPanel}
+      </Sheet>
+      {desk && (
+        <>
+          <Modal open={dlg === "ai"} title="AI ulash" label="AI ulash" onClose={closeAll}>{aiPanel}</Modal>
+          <Modal open={dlg === "limit"} title="Bepul limit" label="Bepul savollar tugadi" onClose={closeAll}>{limitPanel}</Modal>
+        </>
+      )}
 
       {/* Desktop filtr popover */}
       <div className="pop glass" id="pop" role="dialog" aria-label="Filtrlar">
