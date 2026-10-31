@@ -10,12 +10,15 @@ Sozlash loyiha papkasidagi .env faylida (git'ga tushmaydi):
 from __future__ import annotations
 
 import json
+import logging
 import os
 from typing import Iterator
 
 import httpx
 
 from . import config
+
+log = logging.getLogger(__name__)
 
 DEFAULT_MODELS = {
     "gemini": "gemini-3.8-flash",  # 2.5-flash yangi kalitlarga berilmaydi (API 404 qaytaradi)
@@ -54,14 +57,15 @@ def settings() -> tuple[str, str, str]:
 
 
 def _client():
-    return httpx.Client(timeout=httpx.Timeout(120, connect=20))
+    # read=60: bo'laklar orasidagi eng uzoq kutish; osilib qolgan model zaxirasiga tezroq o'tiladi
+    return httpx.Client(timeout=httpx.Timeout(60, connect=20))
 
 
 def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 2048) -> Iterator[str]:
     """Javobni bo'laklab qaytaradi (UI'da so'zma-so'z chiqishi uchun).
 
-    Gemini 503/429 (yuklama) qaytarsa, birinchi bo'lak chiqmaguncha qayta urinadi va
-    GEMINI_FALLBACKS dagi zaxira modellarga o'tadi.
+    Gemini 503/429 (yuklama), 404 (model yo'q) yoki timeout bo'lsa, birinchi bo'lak chiqmaguncha
+    qayta urinadi va GEMINI_FALLBACKS dagi zaxira modellarga o'tadi.
     """
     provider, model, key = settings()
     if provider != "gemini":
@@ -70,9 +74,10 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 2
     import time
     chain = [model] + [m for m in GEMINI_FALLBACKS if m != model]
     last: Exception | None = None
-    for i, m in enumerate(chain):
+    for m in chain:
         for attempt in range(2):
             started = False
+            t0 = time.time()
             try:
                 for piece in _stream_once(provider, m, key, system, user, temperature, max_tokens):
                     if not started:
@@ -81,20 +86,29 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 2
                     started = True
                     yield piece
                 return
-            except LLMBusy as e:
+            except (LLMBusy, LLMNoModel, httpx.TimeoutException) as e:
                 if started:
                     raise
+                log.warning("LLM %s: %s (%.1fs) - %s", m, type(e).__name__, time.time() - t0,
+                            "qayta urinish" if isinstance(e, LLMBusy) and attempt == 0 else "keyingi model")
                 last = e
+                if not isinstance(e, LLMBusy):
+                    break  # 404 / osilib qolish: shu modelni qayta urinmasdan keyingisiga
                 time.sleep(1.5 * (attempt + 1))
     raise last or RuntimeError("LLM javob bermadi")
 
 
-GEMINI_FALLBACKS = ["gemini-flash-latest", "gemini-3.5-flash", "gemini-3.1-flash-lite"]
+# 31.10.2026 sinovi: 3.8-flash tez-tez 503, flash-latest osilib qoladi, 3.5-flash barqaror
+GEMINI_FALLBACKS = ["gemini-3.5-flash", "gemini-flash-latest", "gemini-3.1-flash-lite"]
 LAST_MODEL: str | None = None  # oxirgi javobni yozgan model (UI/log uchun)
 
 
 class LLMBusy(RuntimeError):
     """Provayder vaqtincha band (503/429)."""
+
+
+class LLMNoModel(RuntimeError):
+    """Bunday model yo'q yoki bu kalitga berilmaydi (404)."""
 
 
 def _stream_once(provider, model, key, system, user, temperature, max_tokens) -> Iterator[str]:
@@ -150,4 +164,6 @@ def _raise(r: httpx.Response):
         msg = r.text[:400]
         if r.status_code in (429, 503):
             raise LLMBusy(f"LLM API xatosi {r.status_code}: {msg}")
+        if r.status_code == 404:
+            raise LLMNoModel(f"LLM API xatosi {r.status_code}: {msg}")
         raise RuntimeError(f"LLM API xatosi {r.status_code}: {msg}")

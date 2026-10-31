@@ -75,13 +75,23 @@ def _bm25():
     return retr, d["ids"], d["metas"]
 
 
-def bm25_search(query: str, n: int, only_active: bool, no_amending: bool) -> list[str]:
+@lru_cache(maxsize=1)
+def _doc_types() -> dict[str, str]:
+    """doc_id -> doc_type (Qonun / Kodeks / Konstitutsiya), metadata.csv dan. chunk_id = <doc_id>_..."""
+    import csv
+    with open(config.METADATA_CSV, encoding="utf-8-sig") as f:
+        return {r["id"]: r["doc_type"] for r in csv.DictReader(f)}
+
+
+def bm25_search(query: str, n: int, only_active: bool, no_amending: bool,
+                doc_types: list[str] | None = None) -> list[str]:
     retr, ids, metas = _bm25()
     toks = tokenize(query)
     if not toks:
         return []
     scores = retr.get_scores(toks)
     order = np.argsort(-scores)
+    types = _doc_types() if doc_types else None
     out = []
     for i in order[: n * 20]:
         if scores[i] <= 0:
@@ -91,6 +101,8 @@ def bm25_search(query: str, n: int, only_active: bool, no_amending: bool) -> lis
             continue
         if no_amending and m["amend"]:
             continue
+        if types is not None and types.get(ids[i].split("_", 1)[0]) not in doc_types:
+            continue
         out.append(ids[i])
         if len(out) >= n:
             break
@@ -98,32 +110,37 @@ def bm25_search(query: str, n: int, only_active: bool, no_amending: bool) -> lis
 
 
 # ---------------------------------------------------------------- dense
-def _where(only_active: bool, no_amending: bool):
+def _where(only_active: bool, no_amending: bool, doc_types: list[str] | None = None):
     conds = []
     if only_active:
         conds.append({"status": "amalda"})
     if no_amending:
         conds.append({"is_amending_law": False})
+    if doc_types:
+        conds.append({"doc_type": {"$in": list(doc_types)}})
     return None if not conds else conds[0] if len(conds) == 1 else {"$and": conds}
 
 
-def dense_search(query: str, n: int, only_active: bool, no_amending: bool) -> tuple[list[str], dict]:
+def dense_search(query: str, n: int, only_active: bool, no_amending: bool,
+                 doc_types: list[str] | None = None) -> tuple[list[str], dict]:
     """(id lar, {id: cosine})"""
     col = get_collection(MODEL, create=False)
     res = col.query(query_embeddings=[embed_query(MODEL, query)], n_results=n,
-                    where=_where(only_active, no_amending), include=["distances"])
+                    where=_where(only_active, no_amending, doc_types), include=["distances"])
     ids = res["ids"][0]
     return ids, {i: round(1 - d, 4) for i, d in zip(ids, res["distances"][0])}
 
 
 # ---------------------------------------------------------------- gibrid
 def hybrid_search(query: str, k: int = 8, only_active: bool = True, no_amending: bool = True,
-                  n_each: int = 40, mode: str = "hybrid") -> list[dict]:
-    """mode: hybrid | dense | bm25. Natija: [{chunk_id, score, rank_dense, rank_bm25, text, ...meta}]"""
+                  n_each: int = 40, mode: str = "hybrid", doc_types: list[str] | None = None) -> list[dict]:
+    """mode: hybrid | dense | bm25. doc_types: faqat shu turdagi hujjatlar (None - hammasi).
+    Natija: [{chunk_id, score, rank_dense, rank_bm25, text, ...meta}]"""
     q = prepare_query(query)
     t0 = time.time()
-    dense, cos = dense_search(q, n_each, only_active, no_amending) if mode in ("hybrid", "dense") else ([], {})
-    lex = bm25_search(q, n_each, only_active, no_amending) if mode in ("hybrid", "bm25") else []
+    dense, cos = dense_search(q, n_each, only_active, no_amending, doc_types) \
+        if mode in ("hybrid", "dense") else ([], {})
+    lex = bm25_search(q, n_each, only_active, no_amending, doc_types) if mode in ("hybrid", "bm25") else []
     fused: dict[str, float] = {}
     for lst, w in ((dense, W_DENSE), (lex, W_BM25)):
         for r, cid in enumerate(lst):

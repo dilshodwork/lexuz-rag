@@ -54,17 +54,26 @@ def retrieve(question: str, k: int = K_CONTEXT, **kw) -> list[dict]:
     return hybrid_search(question, k=k, **kw)
 
 
-def answer_stream(question: str, k: int = K_CONTEXT, **kw) -> tuple[list[dict], Iterator[str]]:
+NO_ANSWER_TEXT = ("Bazadagi hujjatlarda bu savolga mos qonun normasi topilmadi. "
+                  "Savolni aniqroq yozib koʻring (masalan, qaysi soha yoki hujjat haqida).")
+
+
+def prepare(question: str, k: int = K_CONTEXT, **kw) -> dict:
+    """Qidiruv + LLM uchun prompt. no_answer=True bo'lsa LLM chaqirilmaydi (eng yaqin manba juda uzoq)."""
     hits = retrieve(question, k=k, **kw)
     best = max((h["cosine"] or 0) for h in hits) if hits else 0
     if not hits or best < NO_ANSWER_COS:
-        def _none():
-            yield ("Bazadagi hujjatlarda bu savolga mos qonun normasi topilmadi. "
-                   "Savolni aniqroq yozib koʻring (masalan, qaysi soha yoki hujjat haqida).")
-        return source_cards(hits[:3]), _none()
+        return {"sources": source_cards(hits[:3]), "no_answer": True, "best_cosine": best, "user": None}
     q = prepare_query(question)
     user = f"MANBALAR:\n\n{format_context(hits)}\n\n===\n\nSAVOL: {q}"
-    return source_cards(hits), llm.stream(SYSTEM, user)
+    return {"sources": source_cards(hits), "no_answer": False, "best_cosine": best, "user": user}
+
+
+def answer_stream(question: str, k: int = K_CONTEXT, **kw) -> tuple[list[dict], Iterator[str]]:
+    p = prepare(question, k=k, **kw)
+    if p["no_answer"]:
+        return p["sources"], iter([NO_ANSWER_TEXT])
+    return p["sources"], llm.stream(SYSTEM, p["user"])
 
 
 def answer(question: str, **kw) -> dict:

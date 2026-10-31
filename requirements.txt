@@ -10,3 +10,6 @@ fastembed>=0.5
 chromadb>=0.5
 bm25s>=0.2
 numpy>=1.26
+# veb-ilova (lexrag/web)
+fastapi>=0.110
+uvicorn>=0.29
