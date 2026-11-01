@@ -112,15 +112,34 @@ def phase_index():
        str(R._bm25_cfg()))
 
 
+def phase_trust_ru():
+    """Haqiqiy ruscha LLM javoblari (eval/answers_ru.json, qo'lda tekshirilgan - to'g'ri) va o'zgartirilgan sonlar."""
+    import json
+    from collections import Counter
+    from lexrag import trust
+    d = json.loads((ROOT / "eval" / "answers_ru.json").read_text(encoding="utf-8"))
+    items = [i for i in d["items"] if i["status"] == "ok"]
+    lv = Counter(trust.check(i["answer"], i["chunk_ids"], "ru")["level"] for i in items)
+    ok(lv.get("low", 0) == 0, f"trust ru: {len(items)} ta toʻgʻri ruscha javobda 'Past' yoʻq", str(dict(lv)))
+    a04 = next(i for i in items if i["id"] == "a04")
+    bad = "Работодатель вправе удерживать до девяноста процентов зарплаты при каждой выплате [1]."
+    r = trust.check(bad, a04["chunk_ids"], "ru")
+    ok(r["level"] == "low" and any("90 raqami" in x for x in r["claims"][0]["reasons"]),
+       "trust ru: soʻz bilan yozilgan notoʻgʻri son (девяноста = 90) aniqlandi", str(r["claims"][0]["reasons"]))
+    good = "Общая сумма удержаний не может превышать пятидесяти процентов начисленной заработной платы [1]."
+    ok(trust.check(good, a04["chunk_ids"], "ru")["level"] == "high", "trust ru: toʻgʻri son (пятидесяти = 50) -> Yuqori")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--index", action="store_true")
+    ap.add_argument("--index", action="store_true", help="BM25 indeksi va ishonch tekshiruvi (bge-m3 yuklanadi)")
     a = ap.parse_args()
     phase_stem()
     phase_translit()
     phase_ru_numbers()
     if a.index:
         phase_index()
+        phase_trust_ru()
     bad = [n for c, n in results if not c]
     print(f"\n{len(results) - len(bad)}/{len(results)} o'tdi")
     sys.exit(1 if bad else 0)

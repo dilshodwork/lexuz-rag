@@ -1,0 +1,4552 @@
+{
+ "n_items": 64,
+ "n_claims": 132,
+ "old": {
+  "ok": 0.64,
+  "num": 1.0,
+  "ctx": false,
+  "ctx_all": false,
+  "old_nums": true
+ },
+ "best": {
+  "ok": 0.58,
+  "num": 0.52,
+  "ctx": true,
+  "ctx_all": false,
+  "tpr": 0.9459,
+  "fpr": 0.1296,
+  "tp": 35,
+  "fp": 7,
+  "npos": 37,
+  "nneg": 54,
+  "j": 0.8163
+ },
+ "grid": [
+  {
+   "ok": 0.5,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.3148,
+   "tp": 36,
+   "fp": 17,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6582
+  },
+  {
+   "ok": 0.5,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2963,
+   "tp": 36,
+   "fp": 16,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6767
+  },
+  {
+   "ok": 0.5,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2963,
+   "tp": 36,
+   "fp": 16,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6767
+  },
+  {
+   "ok": 0.5,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2778,
+   "tp": 36,
+   "fp": 15,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6952
+  },
+  {
+   "ok": 0.5,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2778,
+   "tp": 36,
+   "fp": 15,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6952
+  },
+  {
+   "ok": 0.52,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2593,
+   "tp": 36,
+   "fp": 14,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7137
+  },
+  {
+   "ok": 0.52,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2407,
+   "tp": 36,
+   "fp": 13,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7322
+  },
+  {
+   "ok": 0.52,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2407,
+   "tp": 36,
+   "fp": 13,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7322
+  },
+  {
+   "ok": 0.52,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2222,
+   "tp": 36,
+   "fp": 12,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7508
+  },
+  {
+   "ok": 0.52,
+   "num": 0.52,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2222,
+   "tp": 36,
+   "fp": 12,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7508
+  },
+  {
+   "ok": 0.52,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2222,
+   "tp": 36,
+   "fp": 12,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7508
+  },
+  {
+   "ok": 0.54,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.2222,
+   "tp": 35,
+   "fp": 12,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7237
+  },
+  {
+   "ok": 0.54,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.2037,
+   "tp": 35,
+   "fp": 11,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7422
+  },
+  {
+   "ok": 0.54,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.2037,
+   "tp": 35,
+   "fp": 11,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7422
+  },
+  {
+   "ok": 0.54,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1852,
+   "tp": 35,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7608
+  },
+  {
+   "ok": 0.54,
+   "num": 0.52,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1852,
+   "tp": 35,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7608
+  },
+  {
+   "ok": 0.54,
+   "num": 0.54,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1852,
+   "tp": 34,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7337
+  },
+  {
+   "ok": 0.54,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1852,
+   "tp": 34,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7337
+  },
+  {
+   "ok": 0.56,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.2037,
+   "tp": 34,
+   "fp": 11,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7152
+  },
+  {
+   "ok": 0.56,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1852,
+   "tp": 34,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7337
+  },
+  {
+   "ok": 0.56,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1852,
+   "tp": 34,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7337
+  },
+  {
+   "ok": 0.56,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1667,
+   "tp": 34,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7523
+  },
+  {
+   "ok": 0.56,
+   "num": 0.52,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1667,
+   "tp": 34,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7523
+  },
+  {
+   "ok": 0.56,
+   "num": 0.54,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1667,
+   "tp": 33,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7252
+  },
+  {
+   "ok": 0.56,
+   "num": 0.56,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1667,
+   "tp": 33,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7252
+  },
+  {
+   "ok": 0.56,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1667,
+   "tp": 33,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7252
+  },
+  {
+   "ok": 0.58,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1667,
+   "tp": 34,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7523
+  },
+  {
+   "ok": 0.58,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1481,
+   "tp": 34,
+   "fp": 8,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7708
+  },
+  {
+   "ok": 0.58,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1481,
+   "tp": 34,
+   "fp": 8,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7708
+  },
+  {
+   "ok": 0.58,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1296,
+   "tp": 34,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7893
+  },
+  {
+   "ok": 0.58,
+   "num": 0.52,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1296,
+   "tp": 34,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7893
+  },
+  {
+   "ok": 0.58,
+   "num": 0.54,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1296,
+   "tp": 33,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7623
+  },
+  {
+   "ok": 0.58,
+   "num": 0.56,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1296,
+   "tp": 33,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7623
+  },
+  {
+   "ok": 0.58,
+   "num": 0.58,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8378,
+   "fpr": 0.0926,
+   "tp": 31,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7452
+  },
+  {
+   "ok": 0.58,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8378,
+   "fpr": 0.0926,
+   "tp": 31,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7452
+  },
+  {
+   "ok": 0.6,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.1481,
+   "tp": 32,
+   "fp": 8,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7167
+  },
+  {
+   "ok": 0.6,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.1296,
+   "tp": 32,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7352
+  },
+  {
+   "ok": 0.6,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.1296,
+   "tp": 32,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7352
+  },
+  {
+   "ok": 0.6,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.1111,
+   "tp": 32,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7538
+  },
+  {
+   "ok": 0.6,
+   "num": 0.52,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.1111,
+   "tp": 32,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7538
+  },
+  {
+   "ok": 0.6,
+   "num": 0.54,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8378,
+   "fpr": 0.1111,
+   "tp": 31,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7267
+  },
+  {
+   "ok": 0.6,
+   "num": 0.56,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.8378,
+   "fpr": 0.1111,
+   "tp": 31,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7267
+  },
+  {
+   "ok": 0.6,
+   "num": 0.58,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.0741,
+   "tp": 29,
+   "fp": 4,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7097
+  },
+  {
+   "ok": 0.6,
+   "num": 0.6,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.0556,
+   "tp": 28,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7012
+  },
+  {
+   "ok": 0.6,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.0556,
+   "tp": 28,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7012
+  },
+  {
+   "ok": 0.62,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.1481,
+   "tp": 28,
+   "fp": 8,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6086
+  },
+  {
+   "ok": 0.62,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.1296,
+   "tp": 28,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6271
+  },
+  {
+   "ok": 0.62,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.1296,
+   "tp": 28,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6271
+  },
+  {
+   "ok": 0.62,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.1111,
+   "tp": 28,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6456
+  },
+  {
+   "ok": 0.62,
+   "num": 0.52,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.1111,
+   "tp": 28,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6456
+  },
+  {
+   "ok": 0.62,
+   "num": 0.54,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.1111,
+   "tp": 27,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6186
+  },
+  {
+   "ok": 0.62,
+   "num": 0.56,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.1111,
+   "tp": 27,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6186
+  },
+  {
+   "ok": 0.62,
+   "num": 0.58,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6757,
+   "fpr": 0.0741,
+   "tp": 25,
+   "fp": 4,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6016
+  },
+  {
+   "ok": 0.62,
+   "num": 0.6,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6486,
+   "fpr": 0.0556,
+   "tp": 24,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.5931
+  },
+  {
+   "ok": 0.62,
+   "num": 0.62,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6216,
+   "fpr": 0.0556,
+   "tp": 23,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.5661
+  },
+  {
+   "ok": 0.62,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6216,
+   "fpr": 0.0556,
+   "tp": 23,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.5661
+  },
+  {
+   "ok": 0.64,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.1296,
+   "tp": 28,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6271
+  },
+  {
+   "ok": 0.64,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.1111,
+   "tp": 28,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6456
+  },
+  {
+   "ok": 0.64,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.1111,
+   "tp": 28,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6456
+  },
+  {
+   "ok": 0.64,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.0926,
+   "tp": 28,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6642
+  },
+  {
+   "ok": 0.64,
+   "num": 0.52,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.0926,
+   "tp": 28,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6642
+  },
+  {
+   "ok": 0.64,
+   "num": 0.54,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.0926,
+   "tp": 27,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6371
+  },
+  {
+   "ok": 0.64,
+   "num": 0.56,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.0926,
+   "tp": 27,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6371
+  },
+  {
+   "ok": 0.64,
+   "num": 0.58,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6757,
+   "fpr": 0.0556,
+   "tp": 25,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6201
+  },
+  {
+   "ok": 0.64,
+   "num": 0.6,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6486,
+   "fpr": 0.037,
+   "tp": 24,
+   "fp": 2,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6116
+  },
+  {
+   "ok": 0.64,
+   "num": 0.62,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6216,
+   "fpr": 0.037,
+   "tp": 23,
+   "fp": 2,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.5846
+  },
+  {
+   "ok": 0.64,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.5676,
+   "fpr": 0.0185,
+   "tp": 21,
+   "fp": 1,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.549
+  },
+  {
+   "ok": 0.66,
+   "num": 0.44,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.1296,
+   "tp": 27,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6001
+  },
+  {
+   "ok": 0.66,
+   "num": 0.46,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.1111,
+   "tp": 27,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6186
+  },
+  {
+   "ok": 0.66,
+   "num": 0.48,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.1111,
+   "tp": 27,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6186
+  },
+  {
+   "ok": 0.66,
+   "num": 0.5,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.0926,
+   "tp": 27,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6371
+  },
+  {
+   "ok": 0.66,
+   "num": 0.52,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.0926,
+   "tp": 27,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6371
+  },
+  {
+   "ok": 0.66,
+   "num": 0.54,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7027,
+   "fpr": 0.0926,
+   "tp": 26,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6101
+  },
+  {
+   "ok": 0.66,
+   "num": 0.56,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.7027,
+   "fpr": 0.0926,
+   "tp": 26,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6101
+  },
+  {
+   "ok": 0.66,
+   "num": 0.58,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6486,
+   "fpr": 0.0556,
+   "tp": 24,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.5931
+  },
+  {
+   "ok": 0.66,
+   "num": 0.6,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.6216,
+   "fpr": 0.037,
+   "tp": 23,
+   "fp": 2,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.5846
+  },
+  {
+   "ok": 0.66,
+   "num": 0.62,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.5946,
+   "fpr": 0.037,
+   "tp": 22,
+   "fp": 2,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.5576
+  },
+  {
+   "ok": 0.66,
+   "num": 1.0,
+   "ctx": false,
+   "ctx_all": false,
+   "tpr": 0.4324,
+   "fpr": 0.0185,
+   "tp": 16,
+   "fp": 1,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.4139
+  },
+  {
+   "ok": 0.5,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.3148,
+   "tp": 36,
+   "fp": 17,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6582
+  },
+  {
+   "ok": 0.5,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2963,
+   "tp": 36,
+   "fp": 16,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6767
+  },
+  {
+   "ok": 0.5,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2963,
+   "tp": 36,
+   "fp": 16,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6767
+  },
+  {
+   "ok": 0.5,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2778,
+   "tp": 36,
+   "fp": 15,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6952
+  },
+  {
+   "ok": 0.5,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2778,
+   "tp": 36,
+   "fp": 15,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6952
+  },
+  {
+   "ok": 0.52,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2593,
+   "tp": 36,
+   "fp": 14,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7137
+  },
+  {
+   "ok": 0.52,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2407,
+   "tp": 36,
+   "fp": 13,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7322
+  },
+  {
+   "ok": 0.52,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2407,
+   "tp": 36,
+   "fp": 13,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7322
+  },
+  {
+   "ok": 0.52,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2222,
+   "tp": 36,
+   "fp": 12,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7508
+  },
+  {
+   "ok": 0.52,
+   "num": 0.52,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2222,
+   "tp": 36,
+   "fp": 12,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7508
+  },
+  {
+   "ok": 0.52,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2222,
+   "tp": 36,
+   "fp": 12,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7508
+  },
+  {
+   "ok": 0.54,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2222,
+   "tp": 36,
+   "fp": 12,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7508
+  },
+  {
+   "ok": 0.54,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2037,
+   "tp": 36,
+   "fp": 11,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7693
+  },
+  {
+   "ok": 0.54,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.2037,
+   "tp": 36,
+   "fp": 11,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7693
+  },
+  {
+   "ok": 0.54,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.1852,
+   "tp": 36,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7878
+  },
+  {
+   "ok": 0.54,
+   "num": 0.52,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.973,
+   "fpr": 0.1852,
+   "tp": 36,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7878
+  },
+  {
+   "ok": 0.54,
+   "num": 0.54,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1852,
+   "tp": 35,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7608
+  },
+  {
+   "ok": 0.54,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1852,
+   "tp": 35,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7608
+  },
+  {
+   "ok": 0.56,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.2037,
+   "tp": 35,
+   "fp": 11,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7422
+  },
+  {
+   "ok": 0.56,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1852,
+   "tp": 35,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7608
+  },
+  {
+   "ok": 0.56,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1852,
+   "tp": 35,
+   "fp": 10,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7608
+  },
+  {
+   "ok": 0.56,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1667,
+   "tp": 35,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7793
+  },
+  {
+   "ok": 0.56,
+   "num": 0.52,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1667,
+   "tp": 35,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7793
+  },
+  {
+   "ok": 0.56,
+   "num": 0.54,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1667,
+   "tp": 34,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7523
+  },
+  {
+   "ok": 0.56,
+   "num": 0.56,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1667,
+   "tp": 34,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7523
+  },
+  {
+   "ok": 0.56,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1667,
+   "tp": 34,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7523
+  },
+  {
+   "ok": 0.58,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1667,
+   "tp": 35,
+   "fp": 9,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7793
+  },
+  {
+   "ok": 0.58,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1481,
+   "tp": 35,
+   "fp": 8,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7978
+  },
+  {
+   "ok": 0.58,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1481,
+   "tp": 35,
+   "fp": 8,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7978
+  },
+  {
+   "ok": 0.58,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1296,
+   "tp": 35,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.8163
+  },
+  {
+   "ok": 0.58,
+   "num": 0.52,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9459,
+   "fpr": 0.1296,
+   "tp": 35,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.8163
+  },
+  {
+   "ok": 0.58,
+   "num": 0.54,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1296,
+   "tp": 34,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7893
+  },
+  {
+   "ok": 0.58,
+   "num": 0.56,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.9189,
+   "fpr": 0.1296,
+   "tp": 34,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7893
+  },
+  {
+   "ok": 0.58,
+   "num": 0.58,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.0926,
+   "tp": 32,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7723
+  },
+  {
+   "ok": 0.58,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.0926,
+   "tp": 32,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7723
+  },
+  {
+   "ok": 0.6,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1481,
+   "tp": 33,
+   "fp": 8,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7437
+  },
+  {
+   "ok": 0.6,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1296,
+   "tp": 33,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7623
+  },
+  {
+   "ok": 0.6,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1296,
+   "tp": 33,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7623
+  },
+  {
+   "ok": 0.6,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1111,
+   "tp": 33,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7808
+  },
+  {
+   "ok": 0.6,
+   "num": 0.52,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8919,
+   "fpr": 0.1111,
+   "tp": 33,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7808
+  },
+  {
+   "ok": 0.6,
+   "num": 0.54,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.1111,
+   "tp": 32,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7538
+  },
+  {
+   "ok": 0.6,
+   "num": 0.56,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8649,
+   "fpr": 0.1111,
+   "tp": 32,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7538
+  },
+  {
+   "ok": 0.6,
+   "num": 0.58,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8108,
+   "fpr": 0.0741,
+   "tp": 30,
+   "fp": 4,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7367
+  },
+  {
+   "ok": 0.6,
+   "num": 0.6,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.0556,
+   "tp": 29,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7282
+  },
+  {
+   "ok": 0.6,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.0556,
+   "tp": 29,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.7282
+  },
+  {
+   "ok": 0.62,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8108,
+   "fpr": 0.1481,
+   "tp": 30,
+   "fp": 8,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6627
+  },
+  {
+   "ok": 0.62,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8108,
+   "fpr": 0.1296,
+   "tp": 30,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6812
+  },
+  {
+   "ok": 0.62,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8108,
+   "fpr": 0.1296,
+   "tp": 30,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6812
+  },
+  {
+   "ok": 0.62,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8108,
+   "fpr": 0.1111,
+   "tp": 30,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6997
+  },
+  {
+   "ok": 0.62,
+   "num": 0.52,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.8108,
+   "fpr": 0.1111,
+   "tp": 30,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6997
+  },
+  {
+   "ok": 0.62,
+   "num": 0.54,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.1111,
+   "tp": 29,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6727
+  },
+  {
+   "ok": 0.62,
+   "num": 0.56,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.1111,
+   "tp": 29,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6727
+  },
+  {
+   "ok": 0.62,
+   "num": 0.58,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7297,
+   "fpr": 0.0741,
+   "tp": 27,
+   "fp": 4,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6557
+  },
+  {
+   "ok": 0.62,
+   "num": 0.6,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7027,
+   "fpr": 0.0556,
+   "tp": 26,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6471
+  },
+  {
+   "ok": 0.62,
+   "num": 0.62,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.6757,
+   "fpr": 0.0556,
+   "tp": 25,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6201
+  },
+  {
+   "ok": 0.62,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.6757,
+   "fpr": 0.0556,
+   "tp": 25,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6201
+  },
+  {
+   "ok": 0.64,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.1296,
+   "tp": 29,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6542
+  },
+  {
+   "ok": 0.64,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.1111,
+   "tp": 29,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6727
+  },
+  {
+   "ok": 0.64,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.1111,
+   "tp": 29,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6727
+  },
+  {
+   "ok": 0.64,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.0926,
+   "tp": 29,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6912
+  },
+  {
+   "ok": 0.64,
+   "num": 0.52,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.0926,
+   "tp": 29,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6912
+  },
+  {
+   "ok": 0.64,
+   "num": 0.54,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.0926,
+   "tp": 28,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6642
+  },
+  {
+   "ok": 0.64,
+   "num": 0.56,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.0926,
+   "tp": 28,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6642
+  },
+  {
+   "ok": 0.64,
+   "num": 0.58,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7027,
+   "fpr": 0.0556,
+   "tp": 26,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6471
+  },
+  {
+   "ok": 0.64,
+   "num": 0.6,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.6757,
+   "fpr": 0.037,
+   "tp": 25,
+   "fp": 2,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6386
+  },
+  {
+   "ok": 0.64,
+   "num": 0.62,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.6486,
+   "fpr": 0.037,
+   "tp": 24,
+   "fp": 2,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6116
+  },
+  {
+   "ok": 0.64,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.5946,
+   "fpr": 0.0185,
+   "tp": 22,
+   "fp": 1,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.5761
+  },
+  {
+   "ok": 0.66,
+   "num": 0.44,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.1296,
+   "tp": 29,
+   "fp": 7,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6542
+  },
+  {
+   "ok": 0.66,
+   "num": 0.46,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.1111,
+   "tp": 29,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6727
+  },
+  {
+   "ok": 0.66,
+   "num": 0.48,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.1111,
+   "tp": 29,
+   "fp": 6,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6727
+  },
+  {
+   "ok": 0.66,
+   "num": 0.5,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.0926,
+   "tp": 29,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6912
+  },
+  {
+   "ok": 0.66,
+   "num": 0.52,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7838,
+   "fpr": 0.0926,
+   "tp": 29,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6912
+  },
+  {
+   "ok": 0.66,
+   "num": 0.54,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.0926,
+   "tp": 28,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6642
+  },
+  {
+   "ok": 0.66,
+   "num": 0.56,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7568,
+   "fpr": 0.0926,
+   "tp": 28,
+   "fp": 5,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6642
+  },
+  {
+   "ok": 0.66,
+   "num": 0.58,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.7027,
+   "fpr": 0.0556,
+   "tp": 26,
+   "fp": 3,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6471
+  },
+  {
+   "ok": 0.66,
+   "num": 0.6,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.6757,
+   "fpr": 0.037,
+   "tp": 25,
+   "fp": 2,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6386
+  },
+  {
+   "ok": 0.66,
+   "num": 0.62,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.6486,
+   "fpr": 0.037,
+   "tp": 24,
+   "fp": 2,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.6116
+  },
+  {
+   "ok": 0.66,
+   "num": 1.0,
+   "ctx": true,
+   "ctx_all": false,
+   "tpr": 0.4865,
+   "fpr": 0.0185,
+   "tp": 18,
+   "fp": 1,
+   "npos": 37,
+   "nneg": 54,
+   "j": 0.468
+  }
+ ],
+ "rows": [
+  {
+   "item": "q02",
+   "kind": "uz_real",
+   "lang": "uz",
+   "correct": true,
+   "claim": "Mehnat kodeksining 130-moddasiga koʻra, dastlabki sinov muddati uch oydan oshmasligi kerak.",
+   "cos": 0.7831,
+   "cos_ctx": 0.7831,
+   "ctx": false,
+   "lex": 1.0,
+   "nums": [
+    "130",
+    "3"
+   ],
+   "missing": [],
+   "nums_old": [
+    "130",
+    "3"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q02",
+   "kind": "uz_real",
+   "lang": "uz",
+   "correct": true,
+   "claim": "Tashkilot rahbarlari, ularning oʻrinbosarlari, bosh buxgalterlar hamda tashkilotlarning alohida boʻlinmalari rahbarlari uchun esa bu muddat olti oydan oshmaslig",
+   "cos": 0.7189,
+   "cos_ctx": 0.7189,
+   "ctx": false,
+   "lex": 0.9230769230769231,
+   "nums": [
+    "6"
+   ],
+   "missing": [],
+   "nums_old": [
+    "6"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q14",
+   "kind": "uz_real",
+   "lang": "uz",
+   "correct": true,
+   "claim": "Oila kodeksining 99-moddasiga koʻra, agar ota-ona oʻrtasida taʼminot boʻyicha kelishuv boʻlmasa, sud tomonidan bitta bola uchun ota-onaning har oydagi ish haqi ",
+   "cos": 0.8474,
+   "cos_ctx": 0.8474,
+   "ctx": false,
+   "lex": 0.9545454545454546,
+   "nums": [
+    "5",
+    "99"
+   ],
+   "missing": [],
+   "nums_old": [
+    "5",
+    "99"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q14",
+   "kind": "uz_real",
+   "lang": "uz",
+   "correct": true,
+   "claim": "Bunda har bir bola uchun undiriladigan aliment miqdori qonunchilik bilan belgilangan mehnatga haq toʻlash eng kam miqdorining 26,5 foizidan kam boʻlmasligi kera",
+   "cos": 0.7674,
+   "cos_ctx": 0.7674,
+   "ctx": false,
+   "lex": 0.9285714285714286,
+   "nums": [
+    "26.5"
+   ],
+   "missing": [],
+   "nums_old": [
+    "26.5"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q28",
+   "kind": "uz_real",
+   "lang": "uz",
+   "correct": true,
+   "claim": "Oʻzbekiston Respublikasi rezidenti boʻlgan jismoniy shaxsning daromadlariga, shu jumladan ish haqiga, Soliq kodeksining 381-moddasiga asosan 12 foizlik soliq st",
+   "cos": 0.8708,
+   "cos_ctx": 0.8708,
+   "ctx": false,
+   "lex": 0.7272727272727273,
+   "nums": [
+    "12",
+    "381"
+   ],
+   "missing": [],
+   "nums_old": [
+    "12",
+    "381"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q28",
+   "kind": "uz_real",
+   "lang": "uz",
+   "correct": true,
+   "claim": "Raqamli texnologiyalar xalqaro markazi ishtirokchilarining xodimlari boʻlgan Oʻzbekiston Respublikasi fuqarolari yoki fuqaroligi boʻlmagan shaxslarning ish haqi",
+   "cos": 0.7905,
+   "cos_ctx": 0.7907,
+   "ctx": true,
+   "lex": 0.9333333333333333,
+   "nums": [
+    "7.5"
+   ],
+   "missing": [],
+   "nums_old": [
+    "7.5"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q28",
+   "kind": "uz_real",
+   "lang": "uz",
+   "correct": true,
+   "claim": "Markaz organlari yoki ishtirokchilarining yuqori malakali xodimlari deb hisoblangan chet el fuqarolari ish haqi tarzidagi daromadlar boʻyicha daromad soligʻini ",
+   "cos": 0.712,
+   "cos_ctx": 0.7155,
+   "ctx": true,
+   "lex": 1.0,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q28",
+   "kind": "uz_real",
+   "lang": "uz",
+   "correct": true,
+   "claim": "Yuqori malakali xodimlar mezonlariga javob bermaydigan chet el fuqarolarining ish haqiga 12 foiz miqdoridagi soliq stavkasi qoʻllanadi [5].",
+   "cos": 0.6996,
+   "cos_ctx": 0.6996,
+   "ctx": true,
+   "lex": 0.9285714285714286,
+   "nums": [
+    "12"
+   ],
+   "missing": [],
+   "nums_old": [
+    "12"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c03",
+   "kind": "uz_real",
+   "lang": "uz_cyr",
+   "correct": true,
+   "claim": "Ўзбекистон Республикаси Президенти етти йил муддатга сайланади [1][3].",
+   "cos": 0.8498,
+   "cos_ctx": 0.8498,
+   "ctx": false,
+   "lex": 1.0,
+   "nums": [
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [
+    "7"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c03",
+   "kind": "uz_real",
+   "lang": "uz_cyr",
+   "correct": true,
+   "claim": "Айни бир шахс сурункасига икки муддатдан ортиқ Ўзбекистон Республикаси Президенти бўлиши мумкин эмас [1][3].",
+   "cos": 0.7573,
+   "cos_ctx": 0.7573,
+   "ctx": false,
+   "lex": 1.0,
+   "nums": [
+    "2"
+   ],
+   "missing": [],
+   "nums_old": [
+    "2"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c03",
+   "kind": "uz_real",
+   "lang": "uz_cyr",
+   "correct": true,
+   "claim": "Президент етти йил муддатга сайланади [1][3][4].",
+   "cos": 0.7715,
+   "cos_ctx": 0.7715,
+   "ctx": false,
+   "lex": 1.0,
+   "nums": [
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [
+    "7"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c03",
+   "kind": "uz_real",
+   "lang": "uz_cyr",
+   "correct": true,
+   "claim": "Айни бир шахс сурункасига икки муддатдан ортиқ Президент бўлиши мумкин эмас [1][3].",
+   "cos": 0.6817,
+   "cos_ctx": 0.6817,
+   "ctx": false,
+   "lex": 1.0,
+   "nums": [
+    "2"
+   ],
+   "missing": [],
+   "nums_old": [
+    "2"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "r01",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Согласно «Трудовому кодексу» Республики Узбекистан, женщине предоставляется отпуск по беременности и родам продолжительностью семьдесят календарных дней до родо",
+   "cos": 0.6754,
+   "cos_ctx": 0.6754,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "2",
+    "56",
+    "70"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "r01",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Данный отпуск исчисляется суммарно и предоставляется женщине полностью, независимо от количества дней, фактически использованных до родов [4].",
+   "cos": 0.6067,
+   "cos_ctx": 0.6067,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "При каждой выплате общая сумма удержаний из заработной платы работника не может превышать пятидесяти процентов от фактически начисленной суммы [1].",
+   "cos": 0.6618,
+   "cos_ctx": 0.6618,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "50"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "при взыскании задолженности по алиментным обязательствам;",
+   "cos": 0.5247,
+   "cos_ctx": 0.6331,
+   "ctx": true,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "при удержании из заработной платы работника, которому назначено наказание в виде исправительных работ [1][3].",
+   "cos": 0.6057,
+   "cos_ctx": 0.6727,
+   "ctx": true,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Данные ограничения не применяются, если работник по своей инициативе подает письменное заявление о перечислении части зарплаты на оплату кредитов, коммунальных ",
+   "cos": 0.6066,
+   "cos_ctx": 0.6066,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Согласно «Кодексу об административной ответственности», административное задержание не может длиться более трех часов [4].",
+   "cos": 0.6534,
+   "cos_ctx": 0.6534,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "3"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "В отдельных случаях, в связи с особой необходимостью, могут быть установлены иные сроки задержания [4].",
+   "cos": 0.5842,
+   "cos_ctx": 0.5842,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Лица, нарушившие пограничный режим или порядок в пунктах пропуска через государственную границу, могут быть задержаны на срок до трех суток для составления прот",
+   "cos": 0.6398,
+   "cos_ctx": 0.6398,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "10",
+    "3"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Лица, совершившие административные правонарушения, предусмотренные рядом статей (например, нарушение карантинных мер, мелкое хулиганство, неповиновение законным",
+   "cos": 0.6411,
+   "cos_ctx": 0.6411,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "24"
+   ],
+   "missing": [],
+   "nums_old": [
+    "24"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c112",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Срок административного задержания исчисляется с момента доставления правонарушителя для составления протокола, а для лиц, находящихся в состоянии опьянения — с ",
+   "cos": 0.5913,
+   "cos_ctx": 0.5913,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c114",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Для владельцев транспортных средств, зарегистрированных в иностранных государствах и временно используемых на территории Республики Узбекистан, договор обязател",
+   "cos": 0.7419,
+   "cos_ctx": 0.7419,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "15"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c114",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Согласно закону «О обязательном страховании гражданской ответственности владельцев транспортных средств», владельцы таких транспортных средств обязаны застрахов",
+   "cos": 0.6807,
+   "cos_ctx": 0.6807,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c123",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "За недекларирование или недостоверное декларирование товаров при их перемещении через таможенную границу Республики Узбекистан предусмотрена административная от",
+   "cos": 0.6609,
+   "cos_ctx": 0.6609,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c123",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "на граждан: от 5 до 10 базовых расчетных величин (БРВ);",
+   "cos": 0.5637,
+   "cos_ctx": 0.5637,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "10",
+    "5"
+   ],
+   "missing": [],
+   "nums_old": [
+    "10",
+    "5"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c123",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "на должностных лиц: от 7 до 15 БРВ.",
+   "cos": 0.5339,
+   "cos_ctx": 0.5339,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "15",
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [
+    "15",
+    "7"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c123",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "**Если недостоверные сведения не повлияли на решение таможенного органа:** Если указание неверных данных не повлияло на принятие решения о перемещении товаров, ",
+   "cos": 0.6415,
+   "cos_ctx": 0.6415,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "3"
+   ],
+   "missing": [],
+   "nums_old": [
+    "3"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c123",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "*Примечание: Данные меры не применяются в случаях, предусмотренных статьями 227⁷, 227¹⁰, 227¹⁹, 227²⁰, 227²¹ и частью первой статьи 227²⁵ «Кодекса об администра",
+   "cos": 0.5881,
+   "cos_ctx": 0.5881,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "227"
+   ],
+   "missing": [],
+   "nums_old": [
+    "227"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "d19",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Согласно «Закону о лицензировании, разрешительных и уведомительных процедурах», лицензии на осуществление лицензируемых видов деятельности выдаются без ограниче",
+   "cos": 0.7751,
+   "cos_ctx": 0.7751,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "d19",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Для видов деятельности, требующих получения лицензии с ограниченным сроком (например, медицинская, фармацевтическая деятельность, деятельность в сфере оборота н",
+   "cos": 0.7764,
+   "cos_ctx": 0.7764,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "16",
+    "5"
+   ],
+   "missing": [],
+   "nums_old": [
+    "16"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "b11",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Да, ваш 15-летний сын имеет право самостоятельно распоряжаться своей заработной платой и открывать вклады в банке без вашего согласия.",
+   "cos": 0.577,
+   "cos_ctx": 0.577,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "15"
+   ],
+   "missing": [],
+   "nums_old": [
+    "15"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "b11",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Согласно «Гражданскому кодексу» (статья 27), несовершеннолетние в возрасте от четырнадцати до восемнадцати лет вправе самостоятельно, без согласия родителей, ус",
+   "cos": 0.6951,
+   "cos_ctx": 0.6951,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "14",
+    "18",
+    "27"
+   ],
+   "missing": [],
+   "nums_old": [
+    "27"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "b11",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "распоряжаться своим заработком, стипендией и иными доходами [1];",
+   "cos": 0.5403,
+   "cos_ctx": 0.5403,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "b11",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "вносить вклады в кредитные учреждения и распоряжаться ими в соответствии с законом [1].",
+   "cos": 0.4928,
+   "cos_ctx": 0.4928,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "b11",
+   "kind": "ru_real",
+   "lang": "ru",
+   "correct": true,
+   "claim": "При этом важно учитывать, что суд может ограничить или лишить несовершеннолетнего права самостоятельно распоряжаться своим заработком или иными доходами при нал",
+   "cos": 0.6071,
+   "cos_ctx": 0.6071,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q02",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Согласно статье 130 Трудового кодекса, срок предварительного испытания не должен превышать трёх месяцев.",
+   "cos": 0.7101,
+   "cos_ctx": 0.7101,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "130",
+    "3"
+   ],
+   "missing": [],
+   "nums_old": [
+    "130"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q02",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Для руководителей организаций, их заместителей, главных бухгалтеров, а также руководителей обособленных подразделений организаций этот срок не должен превышать ",
+   "cos": 0.6926,
+   "cos_ctx": 0.6926,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "6"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q14",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Согласно статье 99 Семейного кодекса, при отсутствии соглашения между родителями о содержании суд взыскивает алименты на одного ребёнка в размере одной четверти",
+   "cos": 0.6928,
+   "cos_ctx": 0.6928,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "99"
+   ],
+   "missing": [],
+   "nums_old": [
+    "99"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q14",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "При этом размер алиментов, взыскиваемых на каждого ребёнка, не должен быть меньше 26,5 процента минимального размера оплаты труда, установленного законодательст",
+   "cos": 0.7074,
+   "cos_ctx": 0.7074,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "26.5"
+   ],
+   "missing": [],
+   "nums_old": [
+    "26.5"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q28",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Доходы физического лица — резидента Республики Узбекистан, в том числе заработная плата, облагаются налогом по ставке 12 процентов на основании статьи 381 Налог",
+   "cos": 0.7027,
+   "cos_ctx": 0.7027,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "12",
+    "381"
+   ],
+   "missing": [],
+   "nums_old": [
+    "12",
+    "381"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q28",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "К заработной плате граждан Республики Узбекистан и лиц без гражданства, являющихся работниками участников Международного центра цифровых технологий, применяется",
+   "cos": 0.6858,
+   "cos_ctx": 0.6966,
+   "ctx": true,
+   "lex": null,
+   "nums": [
+    "7.5"
+   ],
+   "missing": [],
+   "nums_old": [
+    "7.5"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q28",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Иностранные граждане, признанные высококвалифицированными работниками органов или участников Центра, освобождаются от уплаты налога на доходы в виде заработной ",
+   "cos": 0.6471,
+   "cos_ctx": 0.6913,
+   "ctx": true,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q28",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "К заработной плате иностранных граждан, не отвечающих критериям высококвалифицированных работников, применяется ставка налога 12 процентов [5].",
+   "cos": 0.6493,
+   "cos_ctx": 0.6594,
+   "ctx": true,
+   "lex": null,
+   "nums": [
+    "12"
+   ],
+   "missing": [],
+   "nums_old": [
+    "12"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c03",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Президент Республики Узбекистан избирается сроком на семь лет [1][3].",
+   "cos": 0.716,
+   "cos_ctx": 0.716,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Одно и то же лицо не может быть Президентом Республики Узбекистан более двух сроков подряд [1][3].",
+   "cos": 0.6232,
+   "cos_ctx": 0.6232,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "2"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Президент избирается сроком на семь лет [1][3][4].",
+   "cos": 0.7343,
+   "cos_ctx": 0.7343,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03",
+   "kind": "ru_trans",
+   "lang": "ru",
+   "correct": true,
+   "claim": "Одно и то же лицо не может быть Президентом более двух сроков подряд [1][3].",
+   "cos": 0.6169,
+   "cos_ctx": 0.6169,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "2"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q02-f0",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Испытательный срок обязателен для всех работников, и отказаться от него нельзя ни в каком случае [1].",
+   "cos": 0.5774,
+   "cos_ctx": 0.5774,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q02-f1",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Во время испытательного срока работнику не выплачивается заработная плата [1].",
+   "cos": 0.5332,
+   "cos_ctx": 0.5332,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q14-f2",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Алименты на одного ребёнка составляют половину всех доходов отца [1].",
+   "cos": 0.6371,
+   "cos_ctx": 0.6371,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q14-f3",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Суд не вправе взыскивать алименты, если родители ребёнка не состояли в браке [1].",
+   "cos": 0.5037,
+   "cos_ctx": 0.5037,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q28-f4",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Пенсии и стипендии облагаются налогом на доходы по ставке 20 процентов [2].",
+   "cos": 0.5603,
+   "cos_ctx": 0.5603,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "20"
+   ],
+   "missing": [
+    "20"
+   ],
+   "nums_old": [
+    "20"
+   ],
+   "missing_old": [
+    "20"
+   ]
+  },
+  {
+   "item": "q28-f5",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Работники Международного центра цифровых технологий полностью освобождены от всех налогов [5].",
+   "cos": 0.4975,
+   "cos_ctx": 0.4975,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03-f6",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Президент Узбекистана избирается парламентом сроком на пять лет [1].",
+   "cos": 0.6672,
+   "cos_ctx": 0.6672,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "5"
+   ],
+   "missing": [
+    "5"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03-f7",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Президентом может стать гражданин, проживший в Узбекистане не менее одного года [1].",
+   "cos": 0.7046,
+   "cos_ctx": 0.7046,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04-f8",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Работодатель вправе удерживать до девяноста процентов зарплаты при каждой выплате [1].",
+   "cos": 0.6078,
+   "cos_ctx": 0.6078,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "90"
+   ],
+   "missing": [
+    "90"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04-f9",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Любые удержания из зарплаты допускаются только с письменного разрешения профсоюза [1].",
+   "cos": 0.5316,
+   "cos_ctx": 0.5316,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112-f10",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Административное задержание может длиться до семидесяти двух часов без уведомления прокурора [4].",
+   "cos": 0.6022,
+   "cos_ctx": 0.6022,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "72"
+   ],
+   "missing": [
+    "72"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112-f11",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Задержанного за мелкое хулиганство обязаны немедленно отпустить по требованию родственников [4].",
+   "cos": 0.4767,
+   "cos_ctx": 0.4767,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c114-f12",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Иностранные автомобили освобождены от обязательного страхования, если находятся в стране менее месяца [1].",
+   "cos": 0.5732,
+   "cos_ctx": 0.5732,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c123-f13",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "За недекларирование товара на таможне предусмотрено лишение свободы на срок до десяти лет [1].",
+   "cos": 0.5824,
+   "cos_ctx": 0.5824,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "10"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "d19-f14",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Любая лицензия выдаётся сроком на пять лет и подлежит ежегодному продлению [2].",
+   "cos": 0.6352,
+   "cos_ctx": 0.6352,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "5"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "b11-f15",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Несовершеннолетний может открыть вклад в банке только с письменного согласия органов опеки [1].",
+   "cos": 0.5809,
+   "cos_ctx": 0.5809,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "b11-f16",
+   "kind": "false_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Подросток с четырнадцати лет может самостоятельно продать квартиру без согласия родителей [1].",
+   "cos": 0.5697,
+   "cos_ctx": 0.5697,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "14"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q02-fu0",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Sinov muddati barcha xodimlar uchun majburiy va undan hech qanday holatda voz kechib boʻlmaydi [1].",
+   "cos": 0.6228,
+   "cos_ctx": 0.6228,
+   "ctx": false,
+   "lex": 0.3333333333333333,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q02-fu1",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Sinov muddati davomida xodimga ish haqi toʻlanmaydi [1].",
+   "cos": 0.5989,
+   "cos_ctx": 0.5989,
+   "ctx": false,
+   "lex": 0.42857142857142855,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q14-fu2",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Bitta bola uchun aliment otaning barcha daromadining yarmini tashkil etadi [1].",
+   "cos": 0.7253,
+   "cos_ctx": 0.7253,
+   "ctx": false,
+   "lex": 0.4444444444444444,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q14-fu3",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Agar ota-ona nikohda boʻlmagan boʻlsa, sud aliment undirishga haqli emas [1].",
+   "cos": 0.6004,
+   "cos_ctx": 0.6004,
+   "ctx": false,
+   "lex": 0.75,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q28-fu4",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Pensiya va stipendiyalarga 20 foizlik stavkada daromad soligʻi solinadi [2].",
+   "cos": 0.6483,
+   "cos_ctx": 0.6483,
+   "ctx": false,
+   "lex": 0.7142857142857143,
+   "nums": [
+    "20"
+   ],
+   "missing": [
+    "20"
+   ],
+   "nums_old": [
+    "20"
+   ],
+   "missing_old": [
+    "20"
+   ]
+  },
+  {
+   "item": "q28-fu5",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Raqamli texnologiyalar xalqaro markazi xodimlari barcha soliqlardan toʻliq ozod qilingan [5].",
+   "cos": 0.5671,
+   "cos_ctx": 0.5671,
+   "ctx": false,
+   "lex": 0.7,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03-fu6",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Oʻzbekiston Prezidenti parlament tomonidan besh yil muddatga saylanadi [1].",
+   "cos": 0.7823,
+   "cos_ctx": 0.7823,
+   "ctx": false,
+   "lex": 0.7142857142857143,
+   "nums": [
+    "5"
+   ],
+   "missing": [
+    "5"
+   ],
+   "nums_old": [
+    "5"
+   ],
+   "missing_old": [
+    "5"
+   ]
+  },
+  {
+   "item": "c03-fu7",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Oʻzbekistonda kamida bir yil yashagan fuqaro Prezident boʻlishi mumkin [1].",
+   "cos": 0.7402,
+   "cos_ctx": 0.7402,
+   "ctx": false,
+   "lex": 0.8571428571428571,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04-fu8",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Ish beruvchi har bir toʻlovda ish haqining toʻqson foizigacha ushlab qolishga haqli [1].",
+   "cos": 0.6978,
+   "cos_ctx": 0.6978,
+   "ctx": false,
+   "lex": 0.6666666666666666,
+   "nums": [
+    "90"
+   ],
+   "missing": [
+    "90"
+   ],
+   "nums_old": [
+    "90"
+   ],
+   "missing_old": [
+    "90"
+   ]
+  },
+  {
+   "item": "a04-fu9",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Ish haqidan har qanday ushlab qolish faqat kasaba uyushmasining yozma ruxsati bilan amalga oshiriladi [1].",
+   "cos": 0.5655,
+   "cos_ctx": 0.5655,
+   "ctx": false,
+   "lex": 0.3333333333333333,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112-fu10",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Maʼmuriy yoʻl bilan ushlab turish prokurorga xabar bermasdan yetmish ikki soatgacha davom etishi mumkin [4].",
+   "cos": 0.7323,
+   "cos_ctx": 0.7323,
+   "ctx": false,
+   "lex": 0.6666666666666666,
+   "nums": [
+    "72"
+   ],
+   "missing": [
+    "72"
+   ],
+   "nums_old": [
+    "72"
+   ],
+   "missing_old": [
+    "72"
+   ]
+  },
+  {
+   "item": "c112-fu11",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Mayda bezorilik uchun ushlangan shaxs qarindoshlari talabi bilan darhol ozod qilinishi shart [4].",
+   "cos": 0.4924,
+   "cos_ctx": 0.4924,
+   "ctx": false,
+   "lex": 0.2,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c114-fu12",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Chet el avtomobillari mamlakatda bir oydan kam boʻlsa, majburiy sugʻurtadan ozod qilinadi [1].",
+   "cos": 0.6258,
+   "cos_ctx": 0.6258,
+   "ctx": false,
+   "lex": 0.3333333333333333,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c123-fu13",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Tovarni deklaratsiyalamaganlik uchun oʻn yilgacha ozodlikdan mahrum qilish nazarda tutilgan [1].",
+   "cos": 0.5957,
+   "cos_ctx": 0.5957,
+   "ctx": false,
+   "lex": 0.42857142857142855,
+   "nums": [
+    "10"
+   ],
+   "missing": [],
+   "nums_old": [
+    "10"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "d19-fu14",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Har qanday litsenziya besh yil muddatga beriladi va har yili uzaytirilishi kerak [2].",
+   "cos": 0.6482,
+   "cos_ctx": 0.6482,
+   "ctx": false,
+   "lex": 0.625,
+   "nums": [
+    "5"
+   ],
+   "missing": [],
+   "nums_old": [
+    "5"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "b11-fu15",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Voyaga yetmagan shaxs bankda omonat ochishi uchun vasiylik organining yozma roziligi kerak [1].",
+   "cos": 0.5803,
+   "cos_ctx": 0.5803,
+   "ctx": false,
+   "lex": 0.8,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "b11-fu16",
+   "kind": "false_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Oʻsmir oʻn toʻrt yoshdan boshlab ota-onasining roziligisiz kvartirani sota oladi [1].",
+   "cos": 0.6291,
+   "cos_ctx": 0.6291,
+   "ctx": false,
+   "lex": 0.5454545454545454,
+   "nums": [
+    "14"
+   ],
+   "missing": [],
+   "nums_old": [
+    "14"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "q02>r01",
+   "kind": "cross_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Mehnat kodeksining 130-moddasiga koʻra, dastlabki sinov muddati uch oydan oshmasligi kerak.",
+   "cos": 0.548,
+   "cos_ctx": 0.548,
+   "ctx": false,
+   "lex": 0.42857142857142855,
+   "nums": [
+    "130",
+    "3"
+   ],
+   "missing": [
+    "130"
+   ],
+   "nums_old": [
+    "130",
+    "3"
+   ],
+   "missing_old": [
+    "130"
+   ]
+  },
+  {
+   "item": "q02>r01",
+   "kind": "cross_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Tashkilot rahbarlari, ularning oʻrinbosarlari, bosh buxgalterlar hamda tashkilotlarning alohida boʻlinmalari rahbarlari uchun esa bu muddat olti oydan oshmaslig",
+   "cos": 0.6086,
+   "cos_ctx": 0.6086,
+   "ctx": false,
+   "lex": 0.23076923076923078,
+   "nums": [
+    "6"
+   ],
+   "missing": [
+    "6"
+   ],
+   "nums_old": [
+    "6"
+   ],
+   "missing_old": [
+    "6"
+   ]
+  },
+  {
+   "item": "q14>a04",
+   "kind": "cross_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Oila kodeksining 99-moddasiga koʻra, agar ota-ona oʻrtasida taʼminot boʻyicha kelishuv boʻlmasa, sud tomonidan bitta bola uchun ota-onaning har oydagi ish haqi ",
+   "cos": 0.6055,
+   "cos_ctx": 0.6055,
+   "ctx": false,
+   "lex": 0.18181818181818182,
+   "nums": [
+    "5",
+    "99"
+   ],
+   "missing": [
+    "5",
+    "99"
+   ],
+   "nums_old": [
+    "5",
+    "99"
+   ],
+   "missing_old": [
+    "5",
+    "99"
+   ]
+  },
+  {
+   "item": "q14>a04",
+   "kind": "cross_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Bunda har bir bola uchun undiriladigan aliment miqdori qonunchilik bilan belgilangan mehnatga haq toʻlash eng kam miqdorining 26,5 foizidan kam boʻlmasligi kera",
+   "cos": 0.6483,
+   "cos_ctx": 0.6483,
+   "ctx": false,
+   "lex": 0.5714285714285714,
+   "nums": [
+    "26.5"
+   ],
+   "missing": [
+    "26.5"
+   ],
+   "nums_old": [
+    "26.5"
+   ],
+   "missing_old": [
+    "26.5"
+   ]
+  },
+  {
+   "item": "q28>b11",
+   "kind": "cross_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Oʻzbekiston Respublikasi rezidenti boʻlgan jismoniy shaxsning daromadlariga, shu jumladan ish haqiga, Soliq kodeksining 381-moddasiga asosan 12 foizlik soliq st",
+   "cos": 0.4269,
+   "cos_ctx": 0.4269,
+   "ctx": false,
+   "lex": 0.2727272727272727,
+   "nums": [
+    "12",
+    "381"
+   ],
+   "missing": [
+    "12",
+    "381"
+   ],
+   "nums_old": [
+    "12",
+    "381"
+   ],
+   "missing_old": [
+    "12",
+    "381"
+   ]
+  },
+  {
+   "item": "q28>b11",
+   "kind": "cross_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Raqamli texnologiyalar xalqaro markazi ishtirokchilarining xodimlari boʻlgan Oʻzbekiston Respublikasi fuqarolari yoki fuqaroligi boʻlmagan shaxslarning ish haqi",
+   "cos": 0.4242,
+   "cos_ctx": 0.4606,
+   "ctx": true,
+   "lex": 0.06666666666666667,
+   "nums": [
+    "7.5"
+   ],
+   "missing": [
+    "7.5"
+   ],
+   "nums_old": [
+    "7.5"
+   ],
+   "missing_old": [
+    "7.5"
+   ]
+  },
+  {
+   "item": "q28>b11",
+   "kind": "cross_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Markaz organlari yoki ishtirokchilarining yuqori malakali xodimlari deb hisoblangan chet el fuqarolari ish haqi tarzidagi daromadlar boʻyicha daromad soligʻini ",
+   "cos": 0.4628,
+   "cos_ctx": 0.4952,
+   "ctx": true,
+   "lex": 0.11764705882352941,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q28>b11",
+   "kind": "cross_uz",
+   "lang": "uz",
+   "correct": false,
+   "claim": "Yuqori malakali xodimlar mezonlariga javob bermaydigan chet el fuqarolarining ish haqiga 12 foiz miqdoridagi soliq stavkasi qoʻllanadi [5].",
+   "cos": 0.4437,
+   "cos_ctx": 0.4647,
+   "ctx": true,
+   "lex": 0.07142857142857142,
+   "nums": [
+    "12"
+   ],
+   "missing": [
+    "12"
+   ],
+   "nums_old": [
+    "12"
+   ],
+   "missing_old": [
+    "12"
+   ]
+  },
+  {
+   "item": "c03>c123",
+   "kind": "cross_uz",
+   "lang": "uz_cyr",
+   "correct": false,
+   "claim": "Ўзбекистон Республикаси Президенти етти йил муддатга сайланади [1][3].",
+   "cos": 0.4453,
+   "cos_ctx": 0.4453,
+   "ctx": false,
+   "lex": 0.2,
+   "nums": [
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [
+    "7"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c03>c123",
+   "kind": "cross_uz",
+   "lang": "uz_cyr",
+   "correct": false,
+   "claim": "Айни бир шахс сурункасига икки муддатдан ортиқ Ўзбекистон Республикаси Президенти бўлиши мумкин эмас [1][3].",
+   "cos": 0.4338,
+   "cos_ctx": 0.4338,
+   "ctx": false,
+   "lex": 0.25,
+   "nums": [
+    "2"
+   ],
+   "missing": [
+    "2"
+   ],
+   "nums_old": [
+    "2"
+   ],
+   "missing_old": [
+    "2"
+   ]
+  },
+  {
+   "item": "c03>c123",
+   "kind": "cross_uz",
+   "lang": "uz_cyr",
+   "correct": false,
+   "claim": "Президент етти йил муддатга сайланади [1][3][4].",
+   "cos": 0.4215,
+   "cos_ctx": 0.4215,
+   "ctx": false,
+   "lex": 0.4,
+   "nums": [
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [
+    "7"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c03>c123",
+   "kind": "cross_uz",
+   "lang": "uz_cyr",
+   "correct": false,
+   "claim": "Айни бир шахс сурункасига икки муддатдан ортиқ Президент бўлиши мумкин эмас [1][3].",
+   "cos": 0.4031,
+   "cos_ctx": 0.4031,
+   "ctx": false,
+   "lex": 0.25,
+   "nums": [
+    "2"
+   ],
+   "missing": [
+    "2"
+   ],
+   "nums_old": [
+    "2"
+   ],
+   "missing_old": [
+    "2"
+   ]
+  },
+  {
+   "item": "r01>c03",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Согласно «Трудовому кодексу» Республики Узбекистан, женщине предоставляется отпуск по беременности и родам продолжительностью семьдесят календарных дней до родо",
+   "cos": 0.5103,
+   "cos_ctx": 0.5103,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "2",
+    "56",
+    "70"
+   ],
+   "missing": [
+    "2",
+    "56",
+    "70"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "r01>c03",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Данный отпуск исчисляется суммарно и предоставляется женщине полностью, независимо от количества дней, фактически использованных до родов [4].",
+   "cos": 0.4473,
+   "cos_ctx": 0.4473,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04>c112",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "При каждой выплате общая сумма удержаний из заработной платы работника не может превышать пятидесяти процентов от фактически начисленной суммы [1].",
+   "cos": 0.4866,
+   "cos_ctx": 0.4866,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "50"
+   ],
+   "missing": [
+    "50"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04>c112",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "при взыскании задолженности по алиментным обязательствам;",
+   "cos": 0.45,
+   "cos_ctx": 0.485,
+   "ctx": true,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04>c112",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "при удержании из заработной платы работника, которому назначено наказание в виде исправительных работ [1][3].",
+   "cos": 0.5544,
+   "cos_ctx": 0.5544,
+   "ctx": true,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "a04>c112",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Данные ограничения не применяются, если работник по своей инициативе подает письменное заявление о перечислении части зарплаты на оплату кредитов, коммунальных ",
+   "cos": 0.4384,
+   "cos_ctx": 0.4384,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112>d19",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Согласно «Кодексу об административной ответственности», административное задержание не может длиться более трех часов [4].",
+   "cos": 0.4986,
+   "cos_ctx": 0.4986,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "3"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112>d19",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "В отдельных случаях, в связи с особой необходимостью, могут быть установлены иные сроки задержания [4].",
+   "cos": 0.5095,
+   "cos_ctx": 0.5095,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112>d19",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Лица, нарушившие пограничный режим или порядок в пунктах пропуска через государственную границу, могут быть задержаны на срок до трех суток для составления прот",
+   "cos": 0.5623,
+   "cos_ctx": 0.5623,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "10",
+    "3"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c112>d19",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Лица, совершившие административные правонарушения, предусмотренные рядом статей (например, нарушение карантинных мер, мелкое хулиганство, неповиновение законным",
+   "cos": 0.5642,
+   "cos_ctx": 0.5642,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "24"
+   ],
+   "missing": [
+    "24"
+   ],
+   "nums_old": [
+    "24"
+   ],
+   "missing_old": [
+    "24"
+   ]
+  },
+  {
+   "item": "c112>d19",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Срок административного задержания исчисляется с момента доставления правонарушителя для составления протокола, а для лиц, находящихся в состоянии опьянения — с ",
+   "cos": 0.5046,
+   "cos_ctx": 0.5046,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c114>q02",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Для владельцев транспортных средств, зарегистрированных в иностранных государствах и временно используемых на территории Республики Узбекистан, договор обязател",
+   "cos": 0.5095,
+   "cos_ctx": 0.5095,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "15"
+   ],
+   "missing": [
+    "15"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c114>q02",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Согласно закону «О обязательном страховании гражданской ответственности владельцев транспортных средств», владельцы таких транспортных средств обязаны застрахов",
+   "cos": 0.3803,
+   "cos_ctx": 0.3803,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c123>q14",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "За недекларирование или недостоверное декларирование товаров при их перемещении через таможенную границу Республики Узбекистан предусмотрена административная от",
+   "cos": 0.4352,
+   "cos_ctx": 0.4352,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c123>q14",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "на граждан: от 5 до 10 базовых расчетных величин (БРВ);",
+   "cos": 0.5149,
+   "cos_ctx": 0.5149,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "10",
+    "5"
+   ],
+   "missing": [
+    "10"
+   ],
+   "nums_old": [
+    "10",
+    "5"
+   ],
+   "missing_old": [
+    "10"
+   ]
+  },
+  {
+   "item": "c123>q14",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "на должностных лиц: от 7 до 15 БРВ.",
+   "cos": 0.5096,
+   "cos_ctx": 0.5096,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "15",
+    "7"
+   ],
+   "missing": [
+    "7"
+   ],
+   "nums_old": [
+    "15",
+    "7"
+   ],
+   "missing_old": [
+    "7"
+   ]
+  },
+  {
+   "item": "c123>q14",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "**Если недостоверные сведения не повлияли на решение таможенного органа:** Если указание неверных данных не повлияло на принятие решения о перемещении товаров, ",
+   "cos": 0.453,
+   "cos_ctx": 0.453,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "3"
+   ],
+   "missing": [],
+   "nums_old": [
+    "3"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "c123>q14",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "*Примечание: Данные меры не применяются в случаях, предусмотренных статьями 227⁷, 227¹⁰, 227¹⁹, 227²⁰, 227²¹ и частью первой статьи 227²⁵ «Кодекса об администра",
+   "cos": 0.4799,
+   "cos_ctx": 0.4799,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "227"
+   ],
+   "missing": [
+    "227"
+   ],
+   "nums_old": [
+    "227"
+   ],
+   "missing_old": [
+    "227"
+   ]
+  },
+  {
+   "item": "d19>q28",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Согласно «Закону о лицензировании, разрешительных и уведомительных процедурах», лицензии на осуществление лицензируемых видов деятельности выдаются без ограниче",
+   "cos": 0.4498,
+   "cos_ctx": 0.4498,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "d19>q28",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Для видов деятельности, требующих получения лицензии с ограниченным сроком (например, медицинская, фармацевтическая деятельность, деятельность в сфере оборота н",
+   "cos": 0.476,
+   "cos_ctx": 0.476,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "16",
+    "5"
+   ],
+   "missing": [
+    "16"
+   ],
+   "nums_old": [
+    "16"
+   ],
+   "missing_old": [
+    "16"
+   ]
+  },
+  {
+   "item": "b11>c114",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Да, ваш 15-летний сын имеет право самостоятельно распоряжаться своей заработной платой и открывать вклады в банке без вашего согласия.",
+   "cos": 0.3824,
+   "cos_ctx": 0.3824,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "15"
+   ],
+   "missing": [],
+   "nums_old": [
+    "15"
+   ],
+   "missing_old": []
+  },
+  {
+   "item": "b11>c114",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Согласно «Гражданскому кодексу» (статья 27), несовершеннолетние в возрасте от четырнадцати до восемнадцати лет вправе самостоятельно, без согласия родителей, ус",
+   "cos": 0.4841,
+   "cos_ctx": 0.4841,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "14",
+    "18",
+    "27"
+   ],
+   "missing": [
+    "14",
+    "18",
+    "27"
+   ],
+   "nums_old": [
+    "27"
+   ],
+   "missing_old": [
+    "27"
+   ]
+  },
+  {
+   "item": "b11>c114",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "распоряжаться своим заработком, стипендией и иными доходами [1];",
+   "cos": 0.3772,
+   "cos_ctx": 0.3772,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "b11>c114",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "вносить вклады в кредитные учреждения и распоряжаться ими в соответствии с законом [1].",
+   "cos": 0.4169,
+   "cos_ctx": 0.4169,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "b11>c114",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "При этом важно учитывать, что суд может ограничить или лишить несовершеннолетнего права самостоятельно распоряжаться своим заработком или иными доходами при нал",
+   "cos": 0.3978,
+   "cos_ctx": 0.3978,
+   "ctx": false,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q02>r01",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Согласно статье 130 Трудового кодекса, срок предварительного испытания не должен превышать трёх месяцев.",
+   "cos": 0.5344,
+   "cos_ctx": 0.5344,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "130",
+    "3"
+   ],
+   "missing": [
+    "130"
+   ],
+   "nums_old": [
+    "130"
+   ],
+   "missing_old": [
+    "130"
+   ]
+  },
+  {
+   "item": "q02>r01",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Для руководителей организаций, их заместителей, главных бухгалтеров, а также руководителей обособленных подразделений организаций этот срок не должен превышать ",
+   "cos": 0.5555,
+   "cos_ctx": 0.5555,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "6"
+   ],
+   "missing": [
+    "6"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q14>a04",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Согласно статье 99 Семейного кодекса, при отсутствии соглашения между родителями о содержании суд взыскивает алименты на одного ребёнка в размере одной четверти",
+   "cos": 0.5176,
+   "cos_ctx": 0.5176,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "99"
+   ],
+   "missing": [
+    "99"
+   ],
+   "nums_old": [
+    "99"
+   ],
+   "missing_old": [
+    "99"
+   ]
+  },
+  {
+   "item": "q14>a04",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "При этом размер алиментов, взыскиваемых на каждого ребёнка, не должен быть меньше 26,5 процента минимального размера оплаты труда, установленного законодательст",
+   "cos": 0.5667,
+   "cos_ctx": 0.5667,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "26.5"
+   ],
+   "missing": [
+    "26.5"
+   ],
+   "nums_old": [
+    "26.5"
+   ],
+   "missing_old": [
+    "26.5"
+   ]
+  },
+  {
+   "item": "q28>b11",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Доходы физического лица — резидента Республики Узбекистан, в том числе заработная плата, облагаются налогом по ставке 12 процентов на основании статьи 381 Налог",
+   "cos": 0.3662,
+   "cos_ctx": 0.3662,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "12",
+    "381"
+   ],
+   "missing": [
+    "12",
+    "381"
+   ],
+   "nums_old": [
+    "12",
+    "381"
+   ],
+   "missing_old": [
+    "12",
+    "381"
+   ]
+  },
+  {
+   "item": "q28>b11",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "К заработной плате граждан Республики Узбекистан и лиц без гражданства, являющихся работниками участников Международного центра цифровых технологий, применяется",
+   "cos": 0.4258,
+   "cos_ctx": 0.4515,
+   "ctx": true,
+   "lex": null,
+   "nums": [
+    "7.5"
+   ],
+   "missing": [
+    "7.5"
+   ],
+   "nums_old": [
+    "7.5"
+   ],
+   "missing_old": [
+    "7.5"
+   ]
+  },
+  {
+   "item": "q28>b11",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Иностранные граждане, признанные высококвалифицированными работниками органов или участников Центра, освобождаются от уплаты налога на доходы в виде заработной ",
+   "cos": 0.4092,
+   "cos_ctx": 0.4843,
+   "ctx": true,
+   "lex": null,
+   "nums": [],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "q28>b11",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "К заработной плате иностранных граждан, не отвечающих критериям высококвалифицированных работников, применяется ставка налога 12 процентов [5].",
+   "cos": 0.4084,
+   "cos_ctx": 0.4607,
+   "ctx": true,
+   "lex": null,
+   "nums": [
+    "12"
+   ],
+   "missing": [
+    "12"
+   ],
+   "nums_old": [
+    "12"
+   ],
+   "missing_old": [
+    "12"
+   ]
+  },
+  {
+   "item": "c03>c123",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Президент Республики Узбекистан избирается сроком на семь лет [1][3].",
+   "cos": 0.3755,
+   "cos_ctx": 0.3755,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03>c123",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Одно и то же лицо не может быть Президентом Республики Узбекистан более двух сроков подряд [1][3].",
+   "cos": 0.3699,
+   "cos_ctx": 0.3699,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "2"
+   ],
+   "missing": [
+    "2"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03>c123",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Президент избирается сроком на семь лет [1][3][4].",
+   "cos": 0.3854,
+   "cos_ctx": 0.3854,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "7"
+   ],
+   "missing": [],
+   "nums_old": [],
+   "missing_old": []
+  },
+  {
+   "item": "c03>c123",
+   "kind": "cross_ru",
+   "lang": "ru",
+   "correct": false,
+   "claim": "Одно и то же лицо не может быть Президентом более двух сроков подряд [1][3].",
+   "cos": 0.3799,
+   "cos_ctx": 0.3799,
+   "ctx": false,
+   "lex": null,
+   "nums": [
+    "2"
+   ],
+   "missing": [
+    "2"
+   ],
+   "nums_old": [],
+   "missing_old": []
+  }
+ ],
+ "levels": {
+  "uz_real:q02": {
+   "before": "high",
+   "after": "high"
+  },
+  "uz_real:q14": {
+   "before": "high",
+   "after": "high"
+  },
+  "uz_real:q28": {
+   "before": "high",
+   "after": "high"
+  },
+  "uz_real:c03": {
+   "before": "high",
+   "after": "high"
+  },
+  "ru_real:r01": {
+   "before": "low",
+   "after": "high"
+  },
+  "ru_real:a04": {
+   "before": "low",
+   "after": "high"
+  },
+  "ru_real:c112": {
+   "before": "low",
+   "after": "high"
+  },
+  "ru_real:c114": {
+   "before": "high",
+   "after": "high"
+  },
+  "ru_real:c123": {
+   "before": "low",
+   "after": "high"
+  },
+  "ru_real:d19": {
+   "before": "high",
+   "after": "high"
+  },
+  "ru_real:b11": {
+   "before": "low",
+   "after": "medium"
+  },
+  "ru_trans:q02": {
+   "before": "high",
+   "after": "high"
+  },
+  "ru_trans:q14": {
+   "before": "high",
+   "after": "high"
+  },
+  "ru_trans:q28": {
+   "before": "high",
+   "after": "high"
+  },
+  "ru_trans:c03": {
+   "before": "low",
+   "after": "high"
+  }
+ }
+}

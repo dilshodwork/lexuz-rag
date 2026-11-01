@@ -6,8 +6,9 @@ LLM javobini u iqtibos qilgan moddalar bilan solishtiradi. Har da'vo uchun:
     Manbada so'z bilan yozilgan raqamlar ham hisobga olinadi ("yigirma bir" = 21);
   * leksik moslik: da'vodagi so'zlarning (qisqartirilgan o'zak) qancha qismi moddada bor;
   * ma'no o'xshashligi: bge-m3 embedding (da'vo vs modda; modda vektori indeksdan olinadi).
-Ruscha javobda leksik moslik ishlamaydi (manba o'zbekcha) - faqat raqamlar va embedding.
-Kirill javob avval lotinga o'giriladi.
+Ruscha javobda leksik moslik ishlamaydi (manba o'zbekcha) - raqamlar (ruscha son so'zlari ham: "пятнадцать" = 15)
+va embedding; tillararo o'xshashlik pastroq, shuning uchun alohida chegaralar (COS_OK_RU, COS_NUM_RU) va ro'yxat
+bandi kirish qatori bilan solishtiriladi. Kirill javob avval lotinga o'giriladi.
 """
 from __future__ import annotations
 
@@ -23,11 +24,24 @@ from .translit import cyr_to_lat
 
 MAX_CLAIMS = 14
 STEM = 5
-# chegaralar: scripts/test_stage2.py dagi to'g'ri / buzilgan da'volar bilan tanlangan
-COS_OK, COS_OK_RU = 0.66, 0.64
+# chegaralar: o'zbekcha - scripts/test_stage2.py dagi to'g'ri / buzilgan da'volar bilan tanlangan (2-bosqich)
+COS_OK = 0.66
 # leksik moslik qancha yuqori bo'lsa, ma'no o'xshashligiga talab shuncha past: qisqa ro'yxat bandi uzun moddaga
 # embedding bo'yicha uzoq chiqadi (0.55), lekin so'zlari to'liq moddada bor
 LEX_TIERS = ((0.85, 0.5), (0.7, 0.58), (0.5, 0.62))
+# Ruscha javob, o'zbekcha manba (cross-lingual). bge-m3 da tillararo o'xshashlik bir tildagidan past: to'g'ri ruscha
+# da'volarda 0.49-0.78 (o'zbekchada 0.6-0.9). Leksik moslik yo'q, shuning uchun:
+#   * COS_OK_RU - yolg'iz embedding uchun chegara;
+#   * raqamli da'vo (kamida bitta son, hammasi manbada bor) - COS_NUM_RU yetarli: son mosligi leksik moslik o'rnida;
+#   * ro'yxat bandi - oldingi ":" bilan tugagan qator bilan birga ham solishtiriladi (CONTEXT_ITEMS).
+# Qiymatlar eval/trust_calibration.json da (scripts/calibrate_trust.py): haqiqiy ruscha LLM javoblari (7 ta),
+# o'zbekcha javoblarning qo'lda qilingan ruscha tarjimasi va ataylab noto'g'ri juftliklar bo'yicha (Youden J).
+# Oldin (0.64, son va kontekstsiz): to'g'ri ruscha da'volar 21/37 tasdiqlanardi, yolg'onlar 2/17. Keyin: 35/37 va
+# 6/17 - o'zbekcha qoidalar o'sha yolg'on da'volarning o'zbekcha variantidan ham 6/17 tasini o'tkazadi (teng qattiqlik).
+COS_OK_RU = 0.58
+COS_NUM_RU = 0.52
+CONTEXT_ITEMS = True
+CONTEXT_LANGS = ("ru",)        # o'zbekchada leksik moslik bor, u yerda o'zgartirilmadi
 # sodda rejim: misol va maslahatlar qonun da'vosi emas - tekshirilmaydi
 _EXAMPLE = re.compile(r"^\W*(masalan|например|масалан)\b", re.I)
 _ADVICE = re.compile(r"(ing|ng|инг|нг|йте|ите)\W*$", re.I)
@@ -64,6 +78,57 @@ def _num_words(text: str, claim: bool = False) -> set[str]:
             elif w == "yuz":
                 cur = (cur or 1) * 100
             elif w == "ming":
+                val += (cur or 1) * 1000
+                cur = 0
+            else:
+                break
+            used += 1
+        if used and not (claim and used == 1 and val + cur == 1):
+            out.add(str(val + cur))
+            i += used
+        else:
+            i += 1
+    return out
+
+
+# ruscha son so'zlari (javob ruscha, manba o'zbekcha: "пятнадцать дней" va "oʻn besh kun" ikkalasi -> 15)
+_RU_UNITS = {**dict.fromkeys(("один", "одна", "одно", "одного", "одной", "одну", "одном"), 1),
+             **dict.fromkeys(("два", "две", "двух", "двум", "двумя"), 2),
+             **dict.fromkeys(("три", "трех", "трёх", "трем", "трём", "тремя"), 3),
+             **dict.fromkeys(("четыре", "четырех", "четырёх", "четырем", "четырьмя"), 4),
+             **dict.fromkeys(("пять", "пяти", "пятью"), 5), **dict.fromkeys(("шесть", "шести"), 6),
+             **dict.fromkeys(("семь", "семи"), 7), **dict.fromkeys(("восемь", "восьми"), 8),
+             **dict.fromkeys(("девять", "девяти"), 9)}
+_RU_TEENS = {"десять": 10, "десяти": 10, "одиннадцать": 11, "одиннадцати": 11, "двенадцать": 12, "двенадцати": 12,
+             "тринадцать": 13, "тринадцати": 13, "четырнадцать": 14, "четырнадцати": 14, "пятнадцать": 15,
+             "пятнадцати": 15, "шестнадцать": 16, "шестнадцати": 16, "семнадцать": 17, "семнадцати": 17,
+             "восемнадцать": 18, "восемнадцати": 18, "девятнадцать": 19, "девятнадцати": 19}
+_RU_TENS = {"двадцать": 20, "двадцати": 20, "тридцать": 30, "тридцати": 30, "сорок": 40, "сорока": 40,
+            "пятьдесят": 50, "пятидесяти": 50, "шестьдесят": 60, "шестидесяти": 60, "семьдесят": 70,
+            "семидесяти": 70, "восемьдесят": 80, "восьмидесяти": 80, "девяносто": 90, "девяноста": 90}
+_RU_HUND = {"сто": 100, "ста": 100, "двести": 200, "двухсот": 200, "триста": 300, "трехсот": 300, "трёхсот": 300,
+            "четыреста": 400, "пятьсот": 500, "пятисот": 500}
+_RU_THOUS = {"тысяча", "тысячи", "тысяч", "тысячу"}
+
+
+def _ru_num_words(text: str, claim: bool = False) -> set[str]:
+    """'пятнадцать дней' -> {'15'}; 'двадцать пять' -> {'25'}; claim=True: yolg'iz "один/одно" raqam emas."""
+    out: set[str] = set()
+    toks = re.findall(r"[а-яё]+", text.lower())
+    i = 0
+    while i < len(toks):
+        val, cur, used = 0, 0, 0
+        while i + used < len(toks):
+            w = toks[i + used]
+            if w in _RU_HUND:
+                cur += _RU_HUND[w]
+            elif w in _RU_TENS:
+                cur += _RU_TENS[w]
+            elif w in _RU_TEENS:
+                cur += _RU_TEENS[w]
+            elif w in _RU_UNITS:
+                cur += _RU_UNITS[w]
+            elif w in _RU_THOUS and (used or cur):
                 val += (cur or 1) * 1000
                 cur = 0
             else:
@@ -120,8 +185,36 @@ def _cos(a, b) -> float:
     return float(a @ b / (np.linalg.norm(a) * np.linalg.norm(b) + 1e-9))
 
 
-def check(text: str, chunk_ids: list[str], lang: str = "uz", mode: str = "legal") -> dict:
-    """text - foydalanuvchi ko'rgan javob; chunk_ids - manbalar tartibida ([n] = chunk_ids[n-1])."""
+def decide(cos: float, lex: float | None, num_ok: bool, lang: str) -> bool:
+    """Da'vo manbada asosi bormi. num_ok - da'voda son bor va hammasi iqtibos qilingan manbada bor."""
+    if lang == "ru":
+        return cos >= COS_OK_RU or (num_ok and cos >= COS_NUM_RU)
+    return cos >= COS_OK or (lex is not None and any(lex >= lx and cos >= cx for lx, cx in LEX_TIERS))
+
+
+_LIST_LINE = re.compile(r"^\s*(?:[-*•–]|\d+[.)])\s+")
+
+
+def _context(text: str, start: int) -> str | None:
+    """Ro'yxat bandi uchun kirish qatori: da'vo qatori ro'yxat bandi (yoki kichik harf bilan boshlangan) bo'lsa,
+    undan oldingi ro'yxat bo'lmagan qator ":" bilan tugasa - o'sha qator ("... quyidagi hollarda:")."""
+    ls = text.rfind("\n", 0, start) + 1
+    line = text[ls: text.find("\n", start) if text.find("\n", start) >= 0 else len(text)]
+    body = _LIST_LINE.sub("", line).lstrip("*_ ")
+    if start - ls > 3 or not (_LIST_LINE.match(line) or body[:1].islower()):
+        return None
+    prev = text[:ls].rstrip("\n").split("\n")
+    for p in reversed(prev):
+        if not p.strip() or _LIST_LINE.match(p):
+            continue
+        p = _clean(p)
+        return p if p.rstrip("*_ ").endswith(":") else None
+    return None
+
+
+def check(text: str, chunk_ids: list[str], lang: str = "uz", mode: str = "legal", features: bool = False) -> dict:
+    """text - foydalanuvchi ko'rgan javob; chunk_ids - manbalar tartibida ([n] = chunk_ids[n-1]).
+    features=True (kalibrlash): har da'voning belgilari ham qaytariladi."""
     hits = get_chunks(chunk_ids, embeddings=True)
     by_n = {i + 1: h for i, h in enumerate(hits)}
     src_num = {n: _numbers(h["text"]) | _num_words(h["text"]) for n, h in by_n.items()}
@@ -146,7 +239,7 @@ def check(text: str, chunk_ids: list[str], lang: str = "uz", mode: str = "legal"
         refs = c["cites"] or list(by_n)
         reasons = []
         # raqamlar (iqtibos raqamlari allaqachon olib tashlangan)
-        nums = _numbers(lat) | (_num_words(lat, claim=True) if lang != "ru" else set())
+        nums = _numbers(lat) | (_num_words(lat, claim=True) if lang != "ru" else _ru_num_words(lat, claim=True))
         ref_num = set().union(*(src_num[n] for n in refs)) if refs else set()
         missing = sorted(n for n in nums if n not in ref_num)
         if missing:
@@ -159,11 +252,16 @@ def check(text: str, chunk_ids: list[str], lang: str = "uz", mode: str = "legal"
         lex = None
         if lang != "ru" and st:
             lex = max(len(st & src_stem[n]) / len(st) for n in refs) if refs else 0.0
-        # ma'no o'xshashligi
+        # ma'no o'xshashligi; ro'yxat bandi - kontekst qatori bilan ham (kattasi olinadi)
         emb = embed_query(MODEL, lat)
         cos = max((_cos(emb, by_n[n]["embedding"]) for n in refs), default=0.0)
-        cos_ok = COS_OK_RU if lang == "ru" else COS_OK
-        supported = cos >= cos_ok or (lex is not None and any(lex >= lx and cos >= cx for lx, cx in LEX_TIERS))
+        ctx = _context(text, c["start"]) if CONTEXT_ITEMS and lang in CONTEXT_LANGS else None
+        if ctx:
+            ctx_lat = cyr_to_lat(ctx) if lang == "uz_cyr" else ctx
+            emb2 = embed_query(MODEL, f"{ctx_lat} {lat}")
+            cos = max(cos, max((_cos(emb2, by_n[n]["embedding"]) for n in refs), default=0.0))
+        c["feat"] = {"cos": cos, "lex": lex, "nums": sorted(nums), "missing": missing, "ctx": bool(ctx)}
+        supported = decide(cos, lex, bool(nums) and not missing, lang)
         if not supported:
             reasons.append("iqtibos qilingan moddada oʻxshash mazmun topilmadi" if c["cites"]
                            else "iqtibossiz va manbalarda oʻxshashi topilmadi")
@@ -182,4 +280,5 @@ def check(text: str, chunk_ids: list[str], lang: str = "uz", mode: str = "legal"
         level = "high" if ratio >= 0.85 and not bad_num else "medium" if ratio >= 0.6 and bad_num <= 1 else "low"
     return {"level": level, "checked": checked, "supported": good,
             "claims": [{"start": c["start"], "end": c["end"], "ok": c["ok"], "cites": c["cites"], "lex": c["lex"],
-                        "cos": c["cos"], "reasons": c["reasons"]} for c in claims]}
+                        "cos": c["cos"], "reasons": c["reasons"], **({"feat": c["feat"]} if features else {})}
+                       for c in claims]}

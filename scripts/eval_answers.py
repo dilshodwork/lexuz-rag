@@ -33,6 +33,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--ids", default=DEFAULT_IDS)
     ap.add_argument("--max-requests", type=int, default=5)
+    ap.add_argument("--out", default=str(OUT), help="natija fayli (4-bosqich: eval/answers_ru.json)")
     a = ap.parse_args()
     ids = a.ids.split(",")
     qs = {q["id"]: q for q in load_questions()}
@@ -44,7 +45,8 @@ def main():
         gold = {(g["doc_id"], g["article"]) for g in q["gold"]}
         src_keys = [(s["chunk_id"].split("_", 1)[0], s["article_number"]) for s in p["sources"]]
         item = {"id": qid, "question": q["question"], "lang": p["lang"], "gold": q["gold"],
-                "gold_in_sources": [i + 1 for i, k in enumerate(src_keys) if k in gold]}
+                "gold_in_sources": [i + 1 for i, k in enumerate(src_keys) if k in gold],
+                "chunk_ids": [s["chunk_id"] for s in p["sources"]]}
         if p["no_answer"]:
             item.update(status="no_answer", note="qidiruv 'topilmadi' dedi, LLM chaqirilmadi")
             items.append(item)
@@ -92,7 +94,9 @@ def main():
                        "cites_valid": sum(i["cites_valid"] for i in ok),
                        "gold_cited": sum(i["gold_cited"] for i in ok)},
            "items": items}
-    OUT.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    for it in items:                  # kalibrlash uchun: manbalar tartibi ([n] = chunk_ids[n-1])
+        it.setdefault("chunk_ids", None)
+    Path(a.out).write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(res["summary"], ensure_ascii=False), f"LLM so'rovlari: {requests}")
 
 
