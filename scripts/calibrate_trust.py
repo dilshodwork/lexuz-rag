@@ -95,7 +95,8 @@ FALSE_UZ = [
 def stage3_sources(question: str) -> list[str]:
     """3-bosqich qidiruvi (eski BM25 indeksi, so'z tiklashsiz, ruscha BM25 lug'at+translit) - answers.json manbalari."""
     saved = (R.BM25_DIR, R.REPAIR, R.RU_BM25)
-    R.use_bm25_dir(config.INDEX_DIR / "bm25")
+    old = config.INDEX_DIR / "bm25_old"            # almashtirilgandan keyin eski (7 harfli) indeks shu yerda
+    R.use_bm25_dir(old if old.exists() else config.INDEX_DIR / "bm25")
     R.REPAIR, R.RU_BM25 = "off", "glossary+translit"
     try:
         return [s["chunk_id"] for s in rag.prepare(question)["sources"]]

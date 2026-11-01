@@ -27,7 +27,10 @@ sys.path.insert(0, str(ROOT))
 from lexrag import config, retrieval as R  # noqa: E402
 from lexrag import evaluate as E  # noqa: E402
 
-IDX = {"old": config.INDEX_DIR / "bm25", "stem": config.INDEX_DIR / "bm25_new",
+# indekslar almashtirilgandan keyin: eski -> bm25_old, yangi -> bm25 (sozlash paytida bm25 va bm25_new edi)
+_SWAPPED = (config.INDEX_DIR / "bm25_old").exists()
+IDX = {"old": config.INDEX_DIR / ("bm25_old" if _SWAPPED else "bm25"),
+       "stem": config.INDEX_DIR / ("bm25" if _SWAPPED else "bm25_new"),
        "stem_deriv": Path("/tmp/dalil_bm25/stem_deriv")}
 CFG = {"stem": {"kind": "stem", "deriv": False, "trunc": None},
        "stem_deriv": {"kind": "stem", "deriv": True, "trunc": None}}

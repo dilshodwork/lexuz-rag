@@ -98,18 +98,24 @@ def phase_ru_numbers():
 def phase_index():
     import json
     from lexrag import config, retrieval as R
-    d = config.INDEX_DIR / "bm25_new"
+    # almashtirilgandan keyin: yangi - data/index/bm25, eski - bm25_old (oldin: bm25_new va bm25)
+    swapped = (config.INDEX_DIR / "bm25_old").exists()
+    d = config.INDEX_DIR / ("bm25" if swapped else "bm25_new")
+    old = config.INDEX_DIR / ("bm25_old" if swapped else "bm25")
     ids = json.loads((d / "ids.json").read_text(encoding="utf-8"))
-    ok(ids.get("tokenizer", {}).get("kind") == "stem", "bm25_new: tokenizator stem", str(ids.get("tokenizer")))
-    ok((d / "vocab.json").exists(), "bm25_new: vocab.json bor")
+    ok(ids.get("tokenizer", {}).get("kind") == "stem", f"{d.name}: tokenizator stem", str(ids.get("tokenizer")))
+    ok((d / "vocab.json").exists(), f"{d.name}: vocab.json bor")
     R.use_bm25_dir(d)
     ok(R.tokenize("Taʼtilni necha kun?") == ["tatil", "kun"], "retrieval.tokenize: indeks sozlamasi + stopword",
        str(R.tokenize("Taʼtilni necha kun?")))
     hits = R.bm25_search("yillik mehnat taʼtili", 5, True, True)
     ok(len(hits) == 5, "bm25_search: natija bor")
-    R.use_bm25_dir(config.INDEX_DIR / "bm25")
-    ok(R._bm25_cfg().get("kind") in ("trunc7", "stem"), "eski indeks: tokenizator aniqlandi (7 harf)",
+    R.use_bm25_dir(old)
+    ok(R._bm25_cfg().get("kind") == "trunc7", f"eski indeks ({old.name}): tokenizator 7 harf deb aniqlandi",
        str(R._bm25_cfg()))
+    ok(R.tokenize("Taʼtilni necha kun?") == ["taʼtiln", "necha", "kun"], "eski indeks: so'rov ham eski usulda (7 harf) tokenlanadi",
+       str(R.tokenize("Taʼtilni necha kun?")))
+    R.use_bm25_dir(d)
 
 
 def phase_trust_ru():
