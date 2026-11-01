@@ -49,13 +49,18 @@ LANG_NAMES = {"uz": "lotin", "uz_cyr": "kirill", "ru": "rus"}
 
 # ---------------------------------------------------------------- savollar
 def load_questions(path: Path = QUESTIONS) -> list[dict]:
+    """q["lang"] - savolning haqiqiy tili (to'plamdagi yorliq: kesimlar shu bo'yicha), q["lang_detected"] - ilova
+    aniqlagan til (qidiruv shu bilan ishlaydi, xuddi ilovadagidek). Ular farq qilsa - til aniqlash xatosi.
+    q["split"] - dev (sozlash) yoki test (yakuniy raqamlar)."""
     qs = []
     for line in path.read_text(encoding="utf-8").splitlines():
         if line.strip():
             q = json.loads(line)
-            q["lang"] = detect_lang(q["question"])
+            q["lang_detected"] = detect_lang(q["question"])
+            q["lang"] = q.get("lang") or q["lang_detected"]
             q["script"] = script_of(q["question"])
             q["answerable"] = bool(q["gold"])
+            q["split"] = q.get("split") or "dev"
             qs.append(q)
     return qs
 
@@ -192,12 +197,13 @@ def eval_question(q: dict, modes: tuple[str, ...], k_max: int, lock=None) -> tup
     lock = lock or contextlib.nullcontext()
     gold = {(g["doc_id"], g["article"]) for g in q["gold"]}
     with lock:
-        raw = _raw(q["question"], q["lang"])
+        raw = _raw(q["question"], q["lang_detected"])
         parts = plan.split_question(q["question"]) if "hybrid_plan" in modes else []
-        sub = [(p, _raw(p, q["lang"])) for p in parts]
+        sub = [(p, _raw(p, q["lang_detected"])) for p in parts]
         ids = raw["dense"] + raw["lex"] + [c for _, r in sub for c in r["dense"] + r["lex"]]
         meta = chunk_meta(ids)
-    res = {k: q[k] for k in ("id", "question", "category", "difficulty", "lang", "script", "answerable")}
+    res = {k: q[k] for k in ("id", "question", "category", "difficulty", "lang", "lang_detected", "script",
+                             "answerable", "split")}
     res["gold"] = q["gold"]
     res["parts"] = parts
     res["gold_rank_dense"] = _first_gold(raw["dense"], meta, gold) if gold else None
@@ -237,8 +243,8 @@ def eval_question(q: dict, modes: tuple[str, ...], k_max: int, lock=None) -> tup
 
 
 # ---------------------------------------------------------------- sweep
-def sweep(per_q: list[dict], raws: list[dict], k_max: int = 10) -> dict:
-    w_rows = []
+def _w_grid(per_q: list[dict], raws: list[dict], k_max: int) -> list[dict]:
+    rows = []
     for w in W_GRID:
         ms = []
         for q, r in zip(per_q, raws):
@@ -246,23 +252,45 @@ def sweep(per_q: list[dict], raws: list[dict], k_max: int = 10) -> dict:
                 continue
             ranking, _, _ = _hybrid(r["raw"], w)
             ms.append(rank_metrics(ranking, r["meta"], r["gold"], k_max))
-        w_rows.append({"w_bm25": w, "recall@1": _mean(m["recall@1"] for m in ms),
-                       "recall@5": _mean(m["recall@5"] for m in ms), "recall@10": _mean(m["recall@10"] for m in ms),
-                       "mrr@10": _mean(m["mrr@10"] for m in ms), "ndcg@10": _mean(m["ndcg@10"] for m in ms)})
-    # asosiy metrika - recall@5 (LLM'ga boradigan manbalar orasida to'g'ri modda bormi), teng bo'lsa MRR@10
-    best_w = max(w_rows, key=lambda r: (r["recall@5"], r["mrr@10"], -abs(r["w_bm25"] - W_BM25)))
-    cos_rows = [rejection(per_q, "hybrid", t) for t in COS_GRID]
-    best_c = max(cos_rows, key=lambda r: (r["balanced_accuracy"], -r["false_reject"], -abs(r["threshold"] - rag.NO_ANSWER_COS)))
+        rows.append({"w_bm25": w, "recall@1": _mean(m["recall@1"] for m in ms),
+                     "recall@5": _mean(m["recall@5"] for m in ms), "recall@10": _mean(m["recall@10"] for m in ms),
+                     "mrr@10": _mean(m["mrr@10"] for m in ms), "ndcg@10": _mean(m["ndcg@10"] for m in ms)})
+    return rows
+
+
+def _cos_info(per_q: list[dict]) -> dict:
     pos = sorted(q["modes"]["hybrid"]["best_cos"] for q in per_q if q["answerable"])
     neg = sorted(q["modes"]["hybrid"]["best_cos"] for q in per_q if not q["answerable"])
+    return {"answerable_cos": {"min": pos[0] if pos else None, "p10": _pct(pos, .1) if pos else None,
+                               "median": statistics.median(pos) if pos else None},
+            "none_cos": neg, "separable": bool(pos and neg and max(neg) < pos[0])}
+
+
+SELECT_SPLIT = "dev"   # sozlash (eng yaxshi qiymatni tanlash) faqat shu qismda; test - faqat hisobot uchun
+
+
+def sweep(per_q: list[dict], raws: list[dict], k_max: int = 10) -> dict:
+    """W_BM25 va NO_ANSWER_COS sweep. Har qism (dev, test, hammasi) uchun jadval hisoblanadi, lekin "best" faqat
+    DEV bo'yicha tanlanadi (test'ga moslab sozlanmasin). "grid" - dev jadvali (veb-sahifa uni chizadi)."""
+    groups = {"all": list(range(len(per_q)))}
+    for i, q in enumerate(per_q):
+        groups.setdefault(q.get("split") or "dev", []).append(i)
+    sel = SELECT_SPLIT if SELECT_SPLIT in groups else "all"
+    w_by, c_by, info_by = {}, {}, {}
+    for g, idx in groups.items():
+        pq, rw = [per_q[i] for i in idx], [raws[i] for i in idx]
+        w_by[g] = _w_grid(pq, rw, k_max)
+        c_by[g] = [rejection(pq, "hybrid", t) for t in COS_GRID]
+        info_by[g] = _cos_info(pq)
+    # asosiy metrika - recall@5 (LLM'ga boradigan manbalar orasida to'g'ri modda bormi), teng bo'lsa MRR@10
+    best_w = max(w_by[sel], key=lambda r: (r["recall@5"], r["mrr@10"], -abs(r["w_bm25"] - W_BM25)))
+    best_c = max(c_by[sel], key=lambda r: (r["balanced_accuracy"], -r["false_reject"], -abs(r["threshold"] - rag.NO_ANSWER_COS)))
     return {
-        "w_bm25": {"current": W_BM25, "grid": w_rows, "best": best_w,
+        "selected_on": sel,
+        "w_bm25": {"current": W_BM25, "grid": w_by[sel], "grid_by_split": w_by, "best": best_w,
                    "note": "Ruscha savollarda BM25 og'irligi W_BM25 × 0.75 (lug'at atamasi bor) yoki × 0.25."},
-        "no_answer_cos": {"current": rag.NO_ANSWER_COS, "grid": cos_rows, "best": best_c,
-                          "answerable_cos": {"min": pos[0] if pos else None, "p10": _pct(pos, .1) if pos else None,
-                                             "median": statistics.median(pos) if pos else None},
-                          "none_cos": neg,
-                          "separable": bool(pos and neg and max(neg) < pos[0])},
+        "no_answer_cos": {"current": rag.NO_ANSWER_COS, "grid": c_by[sel], "grid_by_split": c_by, "best": best_c,
+                          **info_by[sel], "by_split": info_by},
     }
 
 
@@ -308,6 +336,17 @@ def run(modes: tuple[str, ...] = MODES, k_max: int = 10, do_sweep: bool = True, 
         progress(len(qs), len(qs), "")
     summary = {m: summarize(per_q, m, k_max) for m in modes}
     rej = {m: rejection(per_q, m, rag.NO_ANSWER_COS) for m in modes}
+    by_split = {}
+    for s in sorted({q["split"] for q in per_q}):
+        pq = [q for q in per_q if q["split"] == s]
+        by_split[s] = {"n_questions": len(pq), "n_answerable": sum(q["answerable"] for q in pq),
+                       "n_none": sum(not q["answerable"] for q in pq),
+                       "counts": {f: _count(pq, f) for f in ("lang", "category", "difficulty")},
+                       "summary": {m: summarize(pq, m, k_max) for m in modes},
+                       "rejection": {m: rejection(pq, m, rag.NO_ANSWER_COS) for m in modes},
+                       "slices": {f: _slices(pq, modes, f) for f in ("category", "lang", "difficulty")}}
+    lang_err = [{"id": q["id"], "lang": q["lang"], "detected": q["lang_detected"]} for q in per_q
+                if q["lang"] != q["lang_detected"]]
     results = {
         "meta": {"created": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"), **_git(),
                  "n_questions": len(qs), "n_answerable": sum(q["answerable"] for q in qs),
@@ -317,11 +356,13 @@ def run(modes: tuple[str, ...] = MODES, k_max: int = 10, do_sweep: bool = True, 
                             "NO_ANSWER_COS": rag.NO_ANSWER_COS, "K_CONTEXT": rag.K_CONTEXT, "K_SPLIT": rag.K_SPLIT,
                             "filters": FILTERS},
                  "counts": {"lang": _count(qs, "lang"), "category": _count(qs, "category"),
-                            "difficulty": _count(qs, "difficulty")},
+                            "difficulty": _count(qs, "difficulty"), "split": _count(qs, "split")},
+                 "lang_detect_errors": lang_err,
                  "elapsed_s": None},
         "summary": summary,
         "rejection": rej,
         "slices": {f: _slices(per_q, modes, f) for f in ("category", "lang", "difficulty")},
+        "by_split": by_split,
         "questions": per_q,
     }
     sw = sweep(per_q, raws, k_max) if do_sweep and "hybrid" in modes else None
