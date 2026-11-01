@@ -15,6 +15,8 @@ type TgWebApp = {
   setBackgroundColor?: (c: string) => void;
   setBottomBarColor?: (c: string) => void;
   isVersionAtLeast?: (v: string) => boolean;
+  enableClosingConfirmation?: () => void;
+  disableClosingConfirmation?: () => void;
   onEvent(e: string, cb: () => void): void;
   BackButton?: { show(): void; hide(): void; onClick(cb: () => void): void; offClick(cb: () => void): void };
   HapticFeedback?: { impactOccurred(s: "light" | "medium" | "soft"): void; selectionChanged(): void };
@@ -76,6 +78,14 @@ export function setBackButton(cb: (() => void) | null) {
   if (backCb) b.offClick(backCb);
   backCb = cb;
   if (cb) { b.onClick(cb); b.show(); } else b.hide();
+}
+
+/** Javob yozilayotganda Mini App'ni tasodifan yopib yubormaslik uchun Telegram "yopilsinmi?" deb so'raydi (6.2+) */
+export function setClosingConfirm(on: boolean) {
+  if (!inTelegram || !tg?.isVersionAtLeast?.("6.2")) return;
+  try {
+    if (on) tg.enableClosingConfirmation?.(); else tg.disableClosingConfirmation?.();
+  } catch { /* eski Telegram */ }
 }
 
 export function haptic() {

@@ -1,8 +1,15 @@
-"""Umumiy sozlamalar va papkalar."""
+"""Umumiy sozlamalar va papkalar.
+
+DALIL_DATA_DIR: ma'lumotlar papkasi (standart <loyiha>/data). Docker / Hugging Face Spaces'da indeks shu yerga
+yuklanadi (deploy/hf-space/start.sh: /data yoziladigan bo'lsa /data/dalil, aks holda /tmp/dalil).
+DALIL_MODELS_DIR: embedding modeli keshi (standart <loyiha>/.models).
+"""
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+DATA = Path(os.environ.get("DALIL_DATA_DIR") or ROOT / "data")
+MODELS_DIR = Path(os.environ.get("DALIL_MODELS_DIR") or ROOT / ".models")
 RAW = DATA / "raw"
 RAW_LIST = RAW / "list"      # ro'yxat sahifalari (page_001.html ...)
 RAW_DOCS = RAW / "docs"      # hujjat matni HTML (<lex_id>.html)
@@ -49,4 +56,7 @@ CHUNK_TARGET_MIN = 300
 CHUNK_OVERLAP_TOKENS = 80
 
 for p in (RAW_LIST, RAW_DOCS, RAW_CARDS, CLEAN, STATE, INDEX_DIR):
-    p.mkdir(parents=True, exist_ok=True)
+    try:
+        p.mkdir(parents=True, exist_ok=True)
+    except OSError:  # faqat o'qiladigan muhit (konteyner): veb-ilova bu papkalarsiz ham ishlaydi
+        pass

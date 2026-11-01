@@ -144,8 +144,9 @@ def build_vocab(words: Counter, min_count: int = 2) -> dict:
 @lru_cache(maxsize=1)
 def _bm25():
     import bm25s
-    if not (BM25_DIR / "ids.json").exists() or \
-            (BM25_DIR / "ids.json").stat().st_mtime < config.CHUNKS.stat().st_mtime:
+    # chunks.jsonl (167 MB) faqat indeks qurishda kerak: konteynerda u yo'q, tayyor indeks ishlatiladi
+    if not (BM25_DIR / "ids.json").exists() or (config.CHUNKS.exists() and
+                                                (BM25_DIR / "ids.json").stat().st_mtime < config.CHUNKS.stat().st_mtime):
         build_bm25()
     retr = bm25s.BM25.load(str(BM25_DIR))
     d = json.loads((BM25_DIR / "ids.json").read_text(encoding="utf-8"))

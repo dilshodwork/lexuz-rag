@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Icon } from "../icons";
-import { niceTitle } from "../render";
+import { niceTitle, safeLexUrl } from "../render";
 import type { Source } from "../types";
 
 const stCls = (s: string) => (s === "amalda" ? "st-on" : (s || "").includes("kuchini") ? "st-lost" : "st-off");
@@ -28,7 +28,7 @@ export function SourceCard({ s, id, hl }: { s: Source; id: string; hl: boolean }
         <button className="more" onClick={() => setOpen(!open)} aria-expanded={open}>
           <span>{open ? "Yigʻish" : "Toʻliq oʻqish"}</span><Icon name="down" />
         </button>
-        <a className="lex press" href={s.source_url} target="_blank" rel="noopener noreferrer">
+        <a className="lex press" href={safeLexUrl(s.source_url)} target="_blank" rel="noopener noreferrer">
           lex.uz’da ochish<Icon name="ext" />
         </a>
       </div>

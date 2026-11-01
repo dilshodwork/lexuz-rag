@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { loadAi, loadAiCloud, PROVIDERS, saveAi, type AiConfig } from "./ai";
-import { askDirect, askStream, fetchXray, getQuota, getStats, verifyAnswer, type AskHandlers, type AskParams } from "./api";
+import { askDirect, askStream, fetchXray, getHealth, getQuota, getStats, verifyAnswer, type AskHandlers, type AskParams, type Health } from "./api";
 import { AiConnect, LimitPanel } from "./components/AiConnect";
 import { EvalDrill, EvalPage } from "./components/EvalPage";
 import { FilterForm } from "./components/FilterForm";
@@ -16,7 +16,7 @@ import {
   dayGroup, filtersLabel, isDefaultFilters, loadConvs, loadFilters, loadLang, loadTheme, loadXrayPref, saveConvs, saveFilters, saveLang, saveTheme,
   saveXrayPref, timeLabel, uid,
 } from "./store";
-import { haptic, initTelegram, setBackButton, setTelegramChrome, telegramScheme } from "./telegram";
+import { haptic, initTelegram, setBackButton, setClosingConfirm, setTelegramChrome, telegramScheme } from "./telegram";
 import type { Conv, EvalQ, EvalResults, Filters, LangPref, Mode, Quota, Stats, Step, Turn, Variant } from "./types";
 
 type Route = "chat" | "eval";
@@ -80,6 +80,9 @@ export default function App() {
   const [hud, setHud] = useState<string | null>(null);
   const [histQ, setHistQ] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const [health, setHealth] = useState<Health | null>(null);
+  const booting = health?.status === "loading";
+  const pending = useRef<string | null>(null); // server tayyor bo'lgach yuboriladigan savol
   const abort = useRef<AbortController | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const deskBody = useRef<HTMLDivElement>(null);
@@ -95,6 +98,19 @@ export default function App() {
 
   // ---------------------------------------------------------- tashqi muhit
   useEffect(() => { getStats().then(setStats); getQuota().then(setQuota); }, []);
+  // Server uyg'onayotgan bo'lsa (HF Spaces: indeks va model 1-2 daqiqa yuklanadi) - tayyor bo'lguncha so'rab turiladi
+  useEffect(() => {
+    let stopped = false, timer = 0, misses = 0;
+    const tick = async () => {
+      const h = await getHealth();
+      if (stopped) return;
+      if (h) { misses = 0; setHealth(h); } else misses++;
+      if (h?.status === "loading" || (!h && misses < 30)) timer = window.setTimeout(tick, h ? 2500 : 5000);
+      else if (h?.status === "ready") getStats().then((s) => s && setStats(s));
+    };
+    tick();
+    return () => { stopped = true; clearTimeout(timer); };
+  }, []);
   // Telegram'da kalit bulutda ham saqlanadi: boshqa qurilmada ochilsa ham ulangan bo'ladi
   useEffect(() => {
     loadAiCloud().then((c) => {
@@ -118,6 +134,7 @@ export default function App() {
     return () => removeEventListener("popstate", f);
   }, []);
   useEffect(() => { if (!busy) saveConvs(convs); }, [convs, busy]);
+  useEffect(() => { setClosingConfirm(busy); }, [busy]);
   useEffect(() => {
     const b = document.body.classList;
     b.toggle("v-chat", chat);
@@ -285,6 +302,7 @@ export default function App() {
   const ask = (text: string) => {
     const question = text.trim();
     if (!question || busy) return;
+    if (booting) { pending.current = question; setQ(question); showHud("Server tayyor boʻlishi bilan yuboriladi"); return; }
     // bepul savollar tugagan: savol matni kompozerda qoladi, kalit ulangach yuboriladi
     if (!ai && quota?.free && quota.left <= 0) { setQ(question); openDlg("limit"); return; }
     setQ("");
@@ -373,6 +391,14 @@ export default function App() {
     setSheet(null);
   };
 
+  // server tayyor bo'ldi - kutib turgan savol yuboriladi
+  useEffect(() => {
+    if (booting || !pending.current) return;
+    const p = pending.current;
+    pending.current = null;
+    if (q.trim() === p) ask(p);
+  }, [booting]); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Telegram "orqaga" tugmasi
   useEffect(() => { setBackButton(chat || evalView ? goHome : null); }, [chat, evalView]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -427,7 +453,12 @@ export default function App() {
     : quota?.free
       ? <>Bugun <b className="num">{quota.left}/{quota.limit}</b> bepul savol qoldi<span className="sep">·</span><u>Kalit ulash</u></>
       : quota ? <>AI ulanmagan<span className="sep">·</span><u>Kalit ulash</u></> : <>AI ulash</>;
-  const aiChip = (
+  const aiChip = booting ? (
+    <div className="aichip bootchip tone-wait" role="status" aria-live="polite">
+      <span className="bar" aria-hidden="true" />
+      <span className="lbl">Tayyorlanmoqda… <span className="dim">{health?.phase_detail || "server uygʻonmoqda"}<span className="eta"> · 1–2 daqiqa</span></span></span>
+    </div>
+  ) : (
     <button className={`aichip press tone-${aiTone}`} onClick={() => openDlg("ai")} aria-label="AI ulash">
       <span className="dot" /><span className="lbl">{aiLabel}</span>
     </button>

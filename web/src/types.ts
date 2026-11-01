@@ -137,7 +137,7 @@ export type EvalAnswers = {
 };
 export type EvalRun = { running: boolean; done: number; total: number; current: string; error: string | null; started: number | null; finished: number | null };
 export type EvalData = { results: EvalResults | null; sweep: EvalSweep | null; baseline: Pick<EvalResults, "meta" | "summary" | "rejection"> | null; answers: EvalAnswers | null;
-  baseline_v2?: EvalBaselineV2 | null; trust_cal?: EvalTrustCal | null; run: EvalRun; protected: boolean };
+  baseline_v2?: EvalBaselineV2 | null; trust_cal?: EvalTrustCal | null; run: EvalRun; protected: boolean; run_disabled?: boolean };
 
 export type Conv = { id: string; title: string; created: number; updated: number; turns: Turn[] };
 

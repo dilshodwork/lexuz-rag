@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import ipaddress
 import json
 import os
 import re
@@ -90,12 +91,31 @@ def telegram_user_id(init_data: str, bot_token: str, now: float | None = None) -
         return None
 
 
+def _public_ip(s: str) -> bool:
+    try:
+        a = ipaddress.ip_address(s)
+    except ValueError:
+        return False
+    return not (a.is_private or a.is_loopback or a.is_link_local or a.is_reserved or a.is_unspecified)
+
+
 def client_ip(host: str | None, headers) -> str:
-    """Server cloudflared / nginx ortida (so'rov 127.0.0.1 dan) bo'lsa, haqiqiy IP proksi sarlavhasida.
-    Tashqaridan to'g'ridan-to'g'ri kelgan so'rovda sarlavhalarga ishonilmaydi (soxtalashtirish mumkin)."""
+    """Foydalanuvchi IP'si (bepul limit va rate limit uchun).
+
+    * Server cloudflared / nginx ortida (so'rov 127.0.0.1 dan) bo'lsa - CF-Connecting-IP yoki X-Forwarded-For.
+    * TRUST_PROXY=1 (Hugging Face Spaces: so'rov HF proksisi orqali, ichki tarmoq manzilidan keladi) -
+      X-Forwarded-For dagi O'NGDAN birinchi ochiq (public) IP. Chap tomonini foydalanuvchi o'zi yozishi mumkin
+      ("X-Forwarded-For: 1.2.3.4" yuborib boshqa odamdek ko'rinish), o'ng tomonini esa proksi qo'shadi.
+    * Aks holda sarlavhalarga ishonilmaydi (soxtalashtirish mumkin)."""
     host = host or "?"
+    xff = [p.strip() for p in (headers.get("x-forwarded-for") or "").split(",") if p.strip()]
+    if os.environ.get("TRUST_PROXY") == "1" and xff:
+        for p in reversed(xff):
+            if _public_ip(p):
+                return p
+        return xff[-1]
     if host in ("127.0.0.1", "::1", "localhost"):
-        fwd = headers.get("cf-connecting-ip") or (headers.get("x-forwarded-for") or "").split(",")[0].strip()
+        fwd = headers.get("cf-connecting-ip") or (xff[0] if xff else "")
         if fwd:
             return fwd
     return host

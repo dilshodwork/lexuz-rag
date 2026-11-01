@@ -100,7 +100,8 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
   if (err && !data) return <div className="ev"><div className="ev-empty">Baholash natijasini yuklab boʻlmadi. Server ishlayotganini tekshiring.</div></div>;
   if (!data) return <div className="ev"><div className="ev-head"><div className="sk" style={{ width: 240, height: 34 }} /></div><div className="ev-kpis">{[0, 1, 2, 3].map((i) => <div key={i} className="kpi sk-card"><div className="sk" /><div className="sk" style={{ width: "60%" }} /></div>)}</div></div>;
   const run = data.run;
-  const runBox = (
+  // internetdagi serverda (ENV=production, EVAL_TOKEN yo'q) qayta hisoblash o'chiq - tugma ko'rsatilmaydi
+  const runBox = data.run_disabled ? null : (
     <button className={`ev-run press${run.running ? " on" : ""}`} onClick={rerun} disabled={run.running} aria-live="polite">
       {run.running ? (
         <>

@@ -11,10 +11,9 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import os
 import time
 from functools import lru_cache
-
-from tqdm import tqdm
 
 from . import config
 
@@ -44,7 +43,10 @@ def get_model(model_name: str):
                 sources=ModelSource(hf="BAAI/bge-m3"), dim=1024,
                 model_file="onnx/model.onnx", additional_files=["onnx/model.onnx_data"],
             )
-    return TextEmbedding(model_name=model_name, cache_dir=str(config.ROOT / ".models"))
+    # DALIL_MODEL_OFFLINE=1 (Docker): model image ichida, tarmoqqa chiqilmaydi
+    offline = os.environ.get("DALIL_MODEL_OFFLINE") == "1"
+    return TextEmbedding(model_name=model_name, cache_dir=str(config.MODELS_DIR),
+                         **({"local_files_only": True} if offline else {}))
 
 
 def embed_passages(model_name: str, texts: list[str], batch_size: int = 1):
@@ -121,6 +123,7 @@ def build_index(model_name: str = "BAAI/bge-m3", batch_size: int = 1):
     t0 = time.time()
     step = 32  # shuncha chunkdan keyin bazaga yoziladi (checkpoint)
     todo.sort(key=lambda c: c["n_tokens"])  # o'xshash uzunliklar bir batchda - padding kam
+    from tqdm import tqdm  # faqat indeks qurishda (veb-server uchun shart emas)
     for i in tqdm(range(0, len(todo), step), desc="embedding"):
         batch = todo[i:i + step]
         vecs = embed_passages(model_name, [c["text"] for c in batch], batch_size=batch_size)

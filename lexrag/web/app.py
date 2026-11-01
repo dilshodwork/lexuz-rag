@@ -15,10 +15,18 @@ API:
     GET  /api/stats    baza statistikasi (report.md va indeksdan)
     GET  /api/eval     baholash natijalari (eval/results.json, sweep.json); POST /api/eval/run - fonda qayta hisoblash,
                        GET /api/eval/status - jarayon (EVAL_TOKEN bo'lsa X-Eval-Token sarlavhasi kerak)
+
+Internetga ochiq server (ENV=production, Hugging Face Spaces - deploy/hf-space/):
+    * port darhol ochiladi, indeks va model fonda yuklanadi: /api/health "status": "loading" -> "ready";
+      tayyor bo'lguncha qidiruv endpointlari 503 {"code": "loading"} qaytaradi, frontend "Tayyorlanmoqda…" ko'rsatadi;
+    * xavfsizlik sarlavhalari (CSP, nosniff, Referrer-Policy, Permissions-Policy, HSTS), rate limit (ratelimit.py),
+      begona saytdan POST taqiqlanadi (Origin tekshiruvi), /api/docs va /api/openapi.json o'chiq,
+      /api/eval/run faqat EVAL_TOKEN bilan, xatolarda stack trace ko'rsatilmaydi.
 """
 from __future__ import annotations
 
 import asyncio
+import hmac
 import json
 import logging
 import os
@@ -29,6 +37,7 @@ from contextlib import asynccontextmanager
 from functools import lru_cache
 from pathlib import Path
 from typing import AsyncIterator, Literal
+from urllib.parse import urlsplit
 
 import httpx
 from fastapi import FastAPI, Query, Request
@@ -38,31 +47,45 @@ from pydantic import BaseModel, Field
 from starlette.concurrency import iterate_in_threadpool, run_in_threadpool
 
 from .. import config, llm, rag, trust
-from . import quota
+from . import bootstrap, quota, ratelimit
 from ..lang import MARKER
 from ..retrieval import MODEL, _bm25, prepare_query, vocab
 from ..indexer import embed_query, get_collection
 
 log = logging.getLogger("lexrag.web")
+llm.load_env()
+PRODUCTION = os.environ.get("ENV", "").strip().lower() == "production"
 # DALIL_DIST: boshqa papkadagi frontend yig'masi (masalan, sinov serveri uchun)
 DIST = Path(os.environ.get("DALIL_DIST") or config.ROOT / "web" / "dist")
 DOC_TYPES = ["Qonun", "Kodeks", "Konstitutsiya"]
-STATE: dict = {"ready": False, "error": None, "count": None}
+# phase: start -> download (indeks yuklanmoqda) -> model (bge-m3) -> index (BM25, ChromaDB) -> ready | error
+STATE: dict = {"ready": False, "error": None, "count": None, "phase": "start", "phase_detail": "", "started": time.time(),
+               "ready_s": None}
 # ONNX va ChromaDB bir vaqtda bitta qidiruvni bajaradi (CPU baribir band)
 _search_lock = threading.Lock()
+
+
+def _phase(name: str, detail: str = ""):
+    STATE["phase"], STATE["phase_detail"] = name, detail
 
 
 def _warmup():
     t0 = time.time()
     try:
+        bootstrap.ensure_data(_phase)      # konteynerda: HF dataset'dan indeks (bor bo'lsa - hech narsa)
+        _phase("model", "Til modeli yuklanmoqda")
         embed_query(MODEL, "salom")      # bge-m3 ONNX modeli xotiraga
+        _phase("index", "Qidiruv indeksi ochilmoqda")
         _bm25()                          # BM25 indeksi
         vocab()                          # so'z tiklash lug'ati (4-bosqich indeksida bor)
         STATE["count"] = get_collection(MODEL, create=False).count()
         STATE["ready"] = True
+        STATE["ready_s"] = round(time.time() - STATE["started"], 1)
+        _phase("ready")
         log.info("Model va indeks yuklandi: %.1fs, %s chunk", time.time() - t0, STATE["count"])
     except Exception as e:  # noqa: BLE001 - server ishlayveradi, /api/health xatoni ko'rsatadi
         STATE["error"] = str(e)
+        _phase("error", "Qidiruv indeksini yuklab boʻlmadi")
         log.exception("Indeksni yuklab bo'lmadi")
 
 
@@ -70,12 +93,123 @@ def _warmup():
 async def lifespan(_app: FastAPI):
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     logging.getLogger("httpx").setLevel(logging.WARNING)
+    logging.getLogger("huggingface_hub").setLevel(logging.WARNING)
     STATE["quota"] = quota.Quota()
-    await run_in_threadpool(_warmup)
+    STATE["rate"] = ratelimit.RateLimiter()
+    # port darhol ochiladi (HF Spaces "uyg'onish"i 1-2 daqiqa): indeks va model fonda yuklanadi
+    threading.Thread(target=_warmup, daemon=True, name="warmup").start()
     yield
 
 
-app = FastAPI(title="Dalil", lifespan=lifespan, docs_url="/api/docs", openapi_url="/api/openapi.json")
+app = FastAPI(title="Dalil", lifespan=lifespan,
+              docs_url=None if PRODUCTION else "/api/docs", redoc_url=None,
+              openapi_url=None if PRODUCTION else "/api/openapi.json")
+
+
+# ---------------------------------------------------------------- xavfsizlik (sarlavhalar, rate limit, Origin)
+def _csp() -> str:
+    """Content-Security-Policy. Telegram Web (web.telegram.org) Mini App'ni iframe'da ochadi, Hugging Face esa
+    Space sahifasini huggingface.co ichida iframe'da ko'rsatadi: shuning uchun X-Frame-Options qo'yilmaydi,
+    ruxsat frame-ancestors bilan beriladi. FRAME_ANCESTORS_EXTRA - qo'shimcha manzillar (bo'sh joy bilan)."""
+    frames = "'self' https://web.telegram.org https://*.telegram.org https://huggingface.co https://*.hf.space"
+    if extra := os.environ.get("FRAME_ANCESTORS_EXTRA", "").strip():
+        frames += " " + extra
+    return "; ".join([
+        "default-src 'self'",
+        "script-src 'self' https://telegram.org",
+        # style="animation-delay:..." (render.ts) va React inline uslublari
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+        "font-src 'self' https://fonts.gstatic.com data:",
+        "img-src 'self' data: blob:",
+        # o'z kaliti: Gemini va Claude brauzerdan to'g'ridan-to'g'ri, OpenAI - /api/proxy/openai orqali
+        "connect-src 'self' https://generativelanguage.googleapis.com https://api.anthropic.com",
+        "media-src 'self' blob:",
+        "worker-src 'self' blob:",
+        "object-src 'none'",
+        "base-uri 'self'",
+        "form-action 'self'",
+        f"frame-ancestors {frames}",
+    ])
+
+
+CSP = _csp()
+SEC_HEADERS = [
+    (b"content-security-policy", CSP.encode()),
+    (b"x-content-type-options", b"nosniff"),
+    (b"referrer-policy", b"strict-origin-when-cross-origin"),
+    # mikrofon keyinroq (ovozli savol) kerak bo'ladi - faqat o'z sahifamizga
+    (b"permissions-policy", b"microphone=(self), camera=(), geolocation=(), payment=(), usb=(), interest-cohort=()"),
+] + ([(b"strict-transport-security", b"max-age=31536000")] if PRODUCTION else [])
+
+
+def _allowed_origin(origin: str, headers) -> bool:
+    """POST so'rovi faqat o'z sahifamizdan (yoki ALLOWED_ORIGINS dan): begona sayt foydalanuvchi brauzeri orqali
+    bepul limitni sarflay olmasin. Origin sarlavhasi yo'q (curl, server) - rate limit baribir ishlaydi."""
+    if not origin:
+        return True
+    net = urlsplit(origin).netloc.lower()
+    hosts = {(headers.get("host") or "").lower(), (headers.get("x-forwarded-host") or "").lower()} - {""}
+    extra = {o.strip().rstrip("/").lower() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()}
+    return net in hosts or origin.rstrip("/").lower() in extra
+
+
+class SecurityMiddleware:
+    """Toza ASGI middleware (SSE oqimini buferlamaydi): sarlavhalar, Origin tekshiruvi, rate limit."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            return await self.app(scope, receive, send)
+        path, method = scope.get("path", ""), scope.get("method", "GET")
+        headers = {k.decode("latin-1").lower(): v.decode("latin-1") for k, v in scope.get("headers") or []}
+        host = (scope.get("client") or (None,))[0]
+
+        async def deny(status: int, body: dict, extra: list | None = None):
+            await JSONResponse(body, status_code=status, headers=dict(extra or []))(scope, receive, wrapped)
+
+        async def wrapped(msg):
+            if msg["type"] == "http.response.start":
+                h = list(msg.get("headers") or [])
+                h += SEC_HEADERS
+                if path.startswith("/assets/") and msg.get("status") == 200:  # Vite: fayl nomida xesh bor
+                    h.append((b"cache-control", b"public, max-age=31536000, immutable"))
+                msg = {**msg, "headers": h}
+            await send(msg)
+
+        if path.startswith("/api/") and method not in ("GET", "HEAD", "OPTIONS") \
+                and not _allowed_origin(headers.get("origin", ""), headers):
+            return await deny(403, {"code": "origin", "message": "Bu manzildan soʻrov qabul qilinmaydi."})
+        if ratelimit.limited(path) and method != "OPTIONS" and "rate" in STATE:
+            ok, retry, why = STATE["rate"].check(ratelimit.keys_for(host, headers))
+            if not ok:
+                msg = ("Juda koʻp soʻrov: bir daqiqa kutib, qayta urinib koʻring." if why == "min" else
+                       "Bugungi soʻrovlar limiti tugadi. Ertaga qayta urinib koʻring.")
+                return await deny(429, {"code": "rate_limit", "message": msg, "retry_after": retry},
+                                  [("Retry-After", str(retry))])
+        return await self.app(scope, receive, wrapped)
+
+
+app.add_middleware(SecurityMiddleware)
+
+
+@app.exception_handler(Exception)
+async def _unhandled(_request: Request, exc: Exception):
+    """Kutilmagan xato: foydalanuvchiga stack trace emas, umumiy xabar (tafsilot faqat server logida)."""
+    log.error("Kutilmagan xato: %s", type(exc).__name__, exc_info=exc)
+    return JSONResponse({"code": "server", "message": "Serverda kutilmagan xato yuz berdi."}, status_code=500)
+
+
+def _loading_body() -> dict:
+    if STATE["phase"] == "error":
+        return {"code": "index", "message": "Qidiruv indeksi yuklanmadi. Server egasi logni tekshirsin."}
+    return {"code": "loading", "message": "Server tayyorlanmoqda (qidiruv indeksi va til modeli yuklanmoqda). "
+                                          "Bir daqiqadan keyin qayta urinib koʻring.", "phase": STATE["phase"]}
+
+
+def _not_ready() -> JSONResponse:
+    return JSONResponse(_loading_body(), status_code=503, headers={"Retry-After": "10"})
 
 
 # ---------------------------------------------------------------- yordamchilar
@@ -205,8 +339,7 @@ async def context(body: AskBody):
     shuning uchun kalit bu serverga umuman kelmaydi. no_answer=True bo'lsa LLM chaqirilmaydi."""
     t0 = time.time()
     if not STATE["ready"]:
-        return JSONResponse({"code": "index", "message": "Qidiruv indeksi yuklanmagan. Server logini tekshiring."},
-                            status_code=503)
+        return _not_ready()
     try:
         p = await _prepare(body)
     except Exception as e:  # noqa: BLE001
@@ -235,7 +368,7 @@ async def verify(body: VerifyBody):
     """Javobdagi har da'vo iqtibos qilingan moddada asosi bormi (raqamlar, leksik va ma'no o'xshashligi).
     LLM chaqirilmaydi; server va o'z kaliti yo'llari uchun bir xil."""
     if not STATE["ready"]:
-        return JSONResponse({"code": "index", "message": "Qidiruv indeksi yuklanmagan."}, status_code=503)
+        return _not_ready()
     t0 = time.time()
 
     def _run():
@@ -249,23 +382,77 @@ async def verify(body: VerifyBody):
     return {**r, "ms": int((time.time() - t0) * 1000)}
 
 
-OPENAI_CHAT = "https://api.openai.com/v1/chat/completions"
+OPENAI_CHAT = "https://api.openai.com/v1/chat/completions"  # yagona manzil: boshqa URL'ga o'tkazilmaydi
+# frontenddagi ro'yxat (web/src/ai.ts) + yaqin modellar; OPENAI_MODELS (vergul bilan) bilan almashtiriladi
+OPENAI_MODELS_DEFAULT = "gpt-4.1-mini,gpt-4.1-nano,gpt-4.1,gpt-5-mini,gpt-5-nano,gpt-4o-mini"
+OPENAI_MAX_BODY = 200_000       # bayt: prompt (8 ta modda + sodda rejimda yuridik javob) ~60 KB
+OPENAI_MAX_TOKENS = 8192
+OPENAI_TOTAL_S = 180            # bitta javob oqimining eng uzoq davomiyligi
+_BEARER = re.compile(r"^Bearer [A-Za-z0-9_\-.]{20,300}$")
+
+
+def _openai_models() -> set[str]:
+    return {m.strip() for m in (os.environ.get("OPENAI_MODELS") or OPENAI_MODELS_DEFAULT).split(",") if m.strip()}
+
+
+def _openai_body(raw: bytes) -> dict | str:
+    """Brauzer so'rovini tekshirib, faqat ruxsat etilgan maydonlar bilan qayta yig'adi. Xato bo'lsa - matn."""
+    try:
+        d = json.loads(raw)
+    except ValueError:
+        return "Soʻrov JSON emas"
+    if not isinstance(d, dict):
+        return "Soʻrov JSON obyekt emas"
+    model = d.get("model")
+    if model not in _openai_models():
+        return "Bu model proksi orqali ruxsat etilmagan"
+    msgs = d.get("messages")
+    if not isinstance(msgs, list) or not 1 <= len(msgs) <= 4 or not all(
+            isinstance(m, dict) and m.get("role") in ("system", "user") and isinstance(m.get("content"), str)
+            for m in msgs):
+        return "messages notoʻgʻri"
+    out: dict = {"model": model, "messages": [{"role": m["role"], "content": m["content"]} for m in msgs],
+                 "stream": bool(d.get("stream", False))}
+    for k in ("max_completion_tokens", "max_tokens"):
+        if k in d:
+            if not isinstance(d[k], int) or isinstance(d[k], bool) or d[k] < 1:
+                return f"{k} notoʻgʻri"
+            out[k] = min(d[k], OPENAI_MAX_TOKENS)
+    if "max_completion_tokens" not in out and "max_tokens" not in out:
+        out["max_completion_tokens"] = OPENAI_MAX_TOKENS
+    if "temperature" in d:
+        t = d["temperature"]
+        if not isinstance(t, (int, float)) or isinstance(t, bool) or not 0 <= t <= 2:
+            return "temperature notoʻgʻri"
+        out["temperature"] = t
+    return out
 
 
 @app.post("/api/proxy/openai/chat/completions", include_in_schema=False)
 async def proxy_openai(request: Request):
     """OpenAI xato javoblarida (401, 429) CORS sarlavhasi yo'q: brauzer "noto'g'ri kalit"ni "tarmoq yo'q"dan
     ajrata olmaydi. Shuning uchun OpenAI so'rovi shu yerdan o'tadi (Gemini va Claude - to'g'ridan-to'g'ri).
-    Kalit faqat shu so'rovning Authorization sarlavhasida keladi: hech qayerga yozilmaydi va logga tushmaydi."""
+    Kalit faqat shu so'rovning Authorization sarlavhasida keladi: hech qayerga yozilmaydi va logga tushmaydi.
+
+    Ochiq "relay" bo'lib qolmasligi uchun: faqat api.openai.com/v1/chat/completions, model ro'yxati (OPENAI_MODELS),
+    body qayta yig'iladi (faqat model, messages, stream, max_*tokens, temperature), hajm va vaqt cheklovi, rate limit."""
     auth = request.headers.get("authorization", "")
-    if not auth.startswith("Bearer ") or len(auth) > 400:
-        return JSONResponse({"error": {"message": "Authorization sarlavhasi yoʻq", "code": "invalid_api_key"}}, status_code=401)
-    body = await request.body()
-    if len(body) > 256_000:
+    if not _BEARER.match(auth):
+        return JSONResponse({"error": {"message": "Authorization sarlavhasi yoʻq yoki notoʻgʻri", "code": "invalid_api_key"}},
+                            status_code=401)
+    if int(request.headers.get("content-length") or 0) > OPENAI_MAX_BODY:
         return JSONResponse({"error": {"message": "Soʻrov juda katta"}}, status_code=413)
-    client = httpx.AsyncClient(timeout=httpx.Timeout(60, connect=20))
+    raw = b""
+    async for part in request.stream():
+        raw += part
+        if len(raw) > OPENAI_MAX_BODY:
+            return JSONResponse({"error": {"message": "Soʻrov juda katta"}}, status_code=413)
+    body = _openai_body(raw)
+    if isinstance(body, str):
+        return JSONResponse({"error": {"message": body, "code": "dalil_bad_request"}}, status_code=400)
+    client = httpx.AsyncClient(timeout=httpx.Timeout(60, connect=20), follow_redirects=False)
     try:
-        r = await client.send(client.build_request("POST", OPENAI_CHAT, content=body,
+        r = await client.send(client.build_request("POST", OPENAI_CHAT, json=body,
                                                    headers={"Authorization": auth, "Content-Type": "application/json"}),
                               stream=True)
     except httpx.HTTPError as e:
@@ -274,9 +461,15 @@ async def proxy_openai(request: Request):
         return JSONResponse({"error": {"message": "OpenAI serveriga ulanib boʻlmadi", "code": "dalil_network"}}, status_code=502)
 
     async def relay() -> AsyncIterator[bytes]:
+        deadline = time.monotonic() + OPENAI_TOTAL_S
         try:
             async for chunk in r.aiter_bytes():
                 yield chunk
+                if time.monotonic() > deadline:
+                    log.warning("OpenAI proksi: %ss dan oshdi, oqim uzildi", OPENAI_TOTAL_S)
+                    break
+        except httpx.HTTPError as e:
+            log.warning("OpenAI proksi oqimi: %s", type(e).__name__)
         finally:
             await r.aclose()
             await client.aclose()
@@ -298,7 +491,7 @@ async def ask(body: AskBody, request: Request):
     async def events() -> AsyncIterator[str]:
         t0 = time.time()
         if not STATE["ready"]:
-            yield _sse("error", {"code": "index", "message": "Qidiruv indeksi yuklanmagan. Server logini tekshiring."})
+            yield _sse("error", _loading_body())
             return
         p = None
         try:
@@ -374,7 +567,8 @@ async def search(q: str = Query(min_length=1, max_length=1000), k: int = Query(8
                  only_active: bool = True, include_amending: bool = False,
                  types: str = Query("", description="vergul bilan: Qonun,Kodeks,Konstitutsiya")):
     if not STATE["ready"]:
-        return JSONResponse({"error": "Qidiruv indeksi yuklanmagan."}, status_code=503)
+        b = _loading_body()
+        return JSONResponse({**b, "error": b["message"]}, status_code=503, headers={"Retry-After": "10"})
     f = Filters(only_active=only_active, include_amending=include_amending,
                 doc_types=[t.strip() for t in types.split(",") if t.strip()] or list(DOC_TYPES))
     t0 = time.time()
@@ -393,7 +587,12 @@ async def search(q: str = Query(min_length=1, max_length=1000), k: int = Query(8
 
 @app.get("/api/health")
 async def health():
-    return {"ok": STATE["ready"], "index_ready": STATE["ready"], "index_error": STATE["error"],
+    """status: loading (indeks/model yuklanmoqda) | ready | error. Production'da xato tafsiloti ko'rsatilmaydi."""
+    status = "ready" if STATE["ready"] else "error" if STATE["phase"] == "error" else "loading"
+    err = STATE["error"]
+    return {"ok": STATE["ready"], "status": status, "phase": STATE["phase"], "phase_detail": STATE["phase_detail"],
+            "uptime_s": round(time.time() - STATE["started"], 1), "ready_s": STATE["ready_s"],
+            "index_ready": STATE["ready"], "index_error": ("indeks yuklanmadi" if PRODUCTION else err) if err else None,
             "chunks": STATE["count"], "embedding_model": MODEL, "llm": _llm_info(),
             "free_daily_limit": quota.free_limit(), "global_daily_limit": quota.global_limit(),
             "telegram_auth": bool(os.environ.get("TELEGRAM_BOT_TOKEN"))}
@@ -451,7 +650,8 @@ async def get_eval():
     return {"results": _read_json(evaluate.RESULTS), "sweep": _read_json(evaluate.SWEEP),
             "baseline": _read_json(base / "baseline_w06.json"), "answers": _read_json(base / "answers.json"),
             **web_extras(),   # baseline_v2 (4-bosqichdan oldin, shu to'plamda), trust_cal (ruscha ishonch kalibrlash)
-            "run": EVAL_RUN, "protected": bool(os.environ.get("EVAL_TOKEN"))}
+            "run": EVAL_RUN, "protected": bool(os.environ.get("EVAL_TOKEN")),
+            "run_disabled": PRODUCTION and not os.environ.get("EVAL_TOKEN")}
 
 
 @app.get("/api/eval/status")
@@ -464,11 +664,13 @@ async def eval_run(request: Request):
     """Baholashni fonda qayta hisoblash (faqat qidiruv, LLM'siz). Bir vaqtda bitta. .env da EVAL_TOKEN bo'lsa,
     X-Eval-Token sarlavhasi shu qiymatga teng bo'lishi kerak. Holat: GET /api/eval/status (polling)."""
     token = os.environ.get("EVAL_TOKEN", "")
-    if token and request.headers.get("x-eval-token", "") != token:
+    if PRODUCTION and not token:  # internetda tokensiz qayta hisoblash o'chiq (170 savol CPU'ni ~1 daqiqa band qiladi)
+        return JSONResponse({"code": "disabled", "message": "Bu serverda qayta hisoblash oʻchirilgan."}, status_code=403)
+    if token and not hmac.compare_digest(request.headers.get("x-eval-token", "").encode(), token.encode()):
         return JSONResponse({"code": "forbidden", "message": "Qayta hisoblash uchun ruxsat kaliti kerak (EVAL_TOKEN)."},
                             status_code=403)
     if not STATE["ready"]:
-        return JSONResponse({"code": "index", "message": "Qidiruv indeksi yuklanmagan."}, status_code=503)
+        return _not_ready()
     if not _eval_lock.acquire(blocking=False):
         return JSONResponse({"code": "busy", "message": "Baholash allaqachon ishlayapti.", **EVAL_RUN}, status_code=409)
     EVAL_RUN.update(running=True, done=0, total=0, current="", error=None, started=time.time(), finished=None)
@@ -483,7 +685,7 @@ async def eval_run(request: Request):
             evaluate.run(progress=progress, lock=_search_lock)
         except Exception as e:  # noqa: BLE001
             log.exception("baholash xatosi")
-            EVAL_RUN["error"] = str(e)[:300]
+            EVAL_RUN["error"] = "Baholashda xato (tafsilot server logida)." if PRODUCTION else str(e)[:300]
         finally:
             EVAL_RUN.update(running=False, finished=time.time())
             _eval_lock.release()

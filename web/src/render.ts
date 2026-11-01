@@ -4,7 +4,16 @@
    * Har so'z indekslanadi: yangi chiqqan so'zlar .w (xiralikdan chiqish) animatsiyasini oladi.
      Animatsiya davom etayotgan so'z qayta chizilganda manfiy animation-delay bilan uzilmasdan davom etadi. */
 
-const esc = (x: string) => x.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+/* XSS: LLM va manba matni HTML sifatida talqin qilinmaydi - har so'z esc() dan o'tadi, HTML'ni faqat shu fayl
+   yasaydi va faqat shu teglar: p, ul, ol, li, strong, span (.w, .wk), button.cite. Atribut qiymatlari - faqat
+   raqamlar (data-n, data-c, animation-delay). scripts/test_render.mjs buni tekshiradi. */
+export const esc = (x: string) =>
+  x.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+
+/** Manba havolasi: faqat https://lex.uz/... (indeksdagi qiymat buzilgan bo'lsa ham javascript: va h.k. o'tmaydi) */
+export function safeLexUrl(u: string | null | undefined): string {
+  return typeof u === "string" && /^https:\/\/(www\.)?lex\.uz\//i.test(u) ? u : "https://lex.uz/";
+}
 const ANIM_MS = 520;
 const CITE = /\[(\d+(?:\s*[,;]\s*\d+)*)\]/g;
 

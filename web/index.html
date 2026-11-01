@@ -13,14 +13,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Telegram Mini App SDK: oddiy brauzerda hech narsa qilmaydi -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
-  /* Tema birinchi chizishdan oldin (oq "chaqnash" bo'lmasin) */
-  try {
-    var t = JSON.parse(localStorage.getItem("dalil.theme") || "null");
-    var tg = window.Telegram && Telegram.WebApp && Telegram.WebApp.initData ? Telegram.WebApp.colorScheme : null;
-    document.documentElement.dataset.theme = t || tg || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  } catch (e) {}
-</script>
+<!-- Tema birinchi chizishdan oldin; alohida fayl, chunki CSP inline skriptga ruxsat bermaydi -->
+<script src="/boot.js"></script>
 </head>
 <body>
 <div id="root"></div>

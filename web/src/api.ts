@@ -146,7 +146,7 @@ export async function askStream(p: AskParams, signal: AbortSignal, h: AskHandler
     return;
   }
   if (!res.ok || !res.body) {
-    h.onError({ code: "server", message: `Server xato qaytardi (${res.status}). Qayta urinib koʻring.` });
+    h.onError((!res.ok && await errBody(res)) || { code: "server", message: `Server xato qaytardi (${res.status}). Qayta urinib koʻring.` });
     return;
   }
   const reader = res.body.getReader();
@@ -231,6 +231,31 @@ export async function runEval(token?: string): Promise<{ ok: boolean; run?: Eval
     return { ok: false, message: d.message || `Server xato qaytardi (${r.status})` };
   } catch {
     return { ok: false, message: "Server bilan aloqa yoʻq." };
+  }
+}
+
+/** Server holati: loading - indeks va model hali yuklanmoqda (HF Spaces uyg'onishi 1-2 daqiqa) */
+export type Health = { status: "loading" | "ready" | "error"; phase: string; phase_detail: string; uptime_s?: number };
+
+export async function getHealth(): Promise<Health | null> {
+  try {
+    const r = await fetch("/api/health", { cache: "no-store" });
+    if (!r.ok) return null;
+    const d = await r.json();
+    // eski server (status maydoni yo'q): index_ready bo'yicha
+    return { status: d.status || (d.index_ready ? "ready" : "error"), phase: d.phase || "", phase_detail: d.phase_detail || "", uptime_s: d.uptime_s };
+  } catch {
+    return null;
+  }
+}
+
+/** Xato javob tanasidan {code, message} (server JSON qaytargan bo'lsa: rate_limit, loading, origin...) */
+async function errBody(r: Response): Promise<{ code: string; message: string } | null> {
+  try {
+    const d = await r.json();
+    return d && typeof d.message === "string" ? { code: String(d.code || "server"), message: d.message } : null;
+  } catch {
+    return null;
   }
 }
 

@@ -69,7 +69,7 @@ function Skeleton() {
 const TITLES: Record<string, string> = {
   no_key: "API kalit sozlanmagan", bad_key: "API kalit notoʻgʻri", network: "Aloqa yoʻq", timeout: "Vaqt tugadi",
   quota: "Kunlik limit tugadi", busy: "LLM band", free_limit: "Bugungi bepul savollar tugadi", no_model: "Model topilmadi",
-  region: "Provayder ishlamadi",
+  region: "Provayder ishlamadi", rate_limit: "Soʻrovlar juda koʻp", loading: "Server tayyorlanmoqda", origin: "Soʻrov rad etildi",
 };
 // bu xatolarda "AI ulash" oynasi yordam beradi
 const KEY_CODES = ["no_key", "bad_key", "quota", "free_limit", "no_model", "region"];
