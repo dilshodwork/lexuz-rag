@@ -38,7 +38,7 @@ def ensure_data(phase=lambda name, detail="": None) -> str:
     seed = os.environ.get("DALIL_SEED_DIR", "").strip()
     t0 = time.time()
     if repo:
-        phase("download", "Qidiruv indeksi yuklanmoqda")
+        phase("download", "indeks yuklanmoqda")
         from huggingface_hub import snapshot_download
         log.info("Indeks yuklanmoqda: dataset %s -> %s", repo, config.DATA)
         snapshot_download(repo_id=repo, repo_type="dataset", local_dir=str(config.DATA),
@@ -47,7 +47,7 @@ def ensure_data(phase=lambda name, detail="": None) -> str:
                           max_workers=8)
         src = "dataset"
     elif seed:
-        phase("download", "Qidiruv indeksi nusxalanmoqda")
+        phase("download", "indeks nusxalanmoqda")
         log.info("Indeks nusxalanmoqda: %s -> %s", seed, config.DATA)
         for rel in ("index/chroma", "index/bm25"):
             shutil.copytree(Path(seed) / rel, config.DATA / rel, dirs_exist_ok=True,

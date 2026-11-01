@@ -33,7 +33,8 @@ ENV HOME=/home/user \
 WORKDIR /home/user/app
 
 COPY requirements-prod.txt .
-RUN pip install -r requirements-prod.txt
+# sekin/uziladigan tarmoqda PyPI indeksi bo'sh qaytsa ("from versions: none") qayta urinadi
+RUN pip install --retries 10 --timeout 120 -r requirements-prod.txt
 
 # bge-m3 (fastembed / ONNX) - kod o'zgarsa ham qayta yuklanmasligi uchun alohida qatlam:
 # faqat model yuklovchi fayllar ko'chiriladi (indexer.get_model - indeks qurishdagi aynan o'sha sozlama)

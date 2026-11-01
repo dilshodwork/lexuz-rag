@@ -409,11 +409,15 @@ Sinov (LLM'siz; `scripts/test_render.mjs` — javob matnidagi HTML/skript ishlam
 .venv/bin/python scripts/hf_deploy.py --dry-run --stage /tmp/dalil-space --stage-data /tmp/dalil-seed
 docker build --platform linux/amd64 -t dalil-hf:local /tmp/dalil-space
 # HF_DATASET o'rniga lokal nusxa (bootstrap.py uni dataset kabi DALIL_DATA_DIR ga ko'chiradi); .env faqat o'qish uchun ulanadi
-docker run -d --name dalil-test -p 7861:7860 -v /tmp/dalil-seed:/seed:ro -e DALIL_SEED_DIR=/seed \
-    -v "$PWD/.env:/home/user/app/.env:ro" dalil-hf:local
-.venv/bin/python scripts/deploy_e2e.py --url http://127.0.0.1:7861 --container dalil-test --ask api
-docker rm -f dalil-test
+# konteynerni o'zi ishga tushiradi (seed -> /seed, .env faqat o'qish uchun), start vaqtini o'lchaydi, oxirida o'chiradi
+.venv/bin/python scripts/deploy_e2e.py --url http://127.0.0.1:7861 --docker-run dalil-hf:local --ask api
 ```
+
+Natija (01.11.2026, Intel Mac, Docker Desktop 7.75 GB RAM, `--ask api`): 23/23. Image **4.56 GB** (shundan bge-m3
+~2.2 GB); port **7.8 s** da ochildi, **55 s** da tayyor (indeks nusxasi 10 s, model + indeks 48 s); xotira **~1.78 GB**;
+birinchi qidiruv 17 s (sovuq kesh), savol 5.3 s; rate limit 21-so'rovda 429; konsolda CSP xatosi yo'q.
+Model ONNX sessiyasi yaratilayotganda onnxruntime GIL'ni ushlaydi — shu ~30 s ichida server (health ham) javobni
+kechiktiradi; frontend kutib turadi, keyin "Tayyorlanmoqda…" o'z-o'zidan yo'qoladi.
 
 Docker'siz (konteynerdagi `start.sh`, `ENV=production`, bo'sh data papkasi + seed, 7861-port):
 `cd web && npx vite build --outDir /tmp/dalil-deploy-dist --emptyOutDir && cd .. && .venv/bin/python scripts/deploy_e2e.py --spawn --ask ui`.

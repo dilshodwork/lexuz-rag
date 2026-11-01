@@ -238,6 +238,8 @@ def main():
     ap.add_argument("--url", default="http://127.0.0.1:7861")
     ap.add_argument("--spawn", action="store_true", help="serverni o'zi ishga tushiradi (Docker'siz, start.sh bilan)")
     ap.add_argument("--container", help="Docker konteyner nomi (docker stats uchun)")
+    ap.add_argument("--docker-run", metavar="IMAGE", help="konteynerni o'zi ishga tushiradi (--container nomi bilan, "
+                    "seed /seed ga, .env faqat o'qish uchun) va start vaqtini o'lchaydi; oxirida o'chiradi")
     ap.add_argument("--ask", choices=["api", "ui", "none"], default="none", help="1 ta haqiqiy LLM so'rovi qayerdan")
     ap.add_argument("--data-dir", default="/tmp/dalil-run")
     ap.add_argument("--seed", default="/tmp/dalil-seed")
@@ -254,11 +256,21 @@ def main():
         import shutil
         shutil.rmtree(a.data_dir, ignore_errors=True)  # har safar "yangi konteyner": indeks seed'dan qayta olinadi
         proc = spawn(port, a.data_dir, a.seed, a.dist)
+    if a.docker_run:
+        a.container = a.container or "dalil-test"
+        subprocess.run(["docker", "rm", "-f", a.container], capture_output=True)
+        t0 = time.time()
+        r = subprocess.run(["docker", "run", "-d", "--name", a.container, "--platform", "linux/amd64",
+                            "-p", f"127.0.0.1:{port}:7860", "-v", f"{a.seed}:/seed:ro", "-e", "DALIL_SEED_DIR=/seed",
+                            "-v", f"{ROOT / '.env'}:/home/user/app/.env:ro", a.docker_run], capture_output=True, text=True)
+        ok(r.returncode == 0, "docker run", r.stderr[-300:])
     from playwright.sync_api import sync_playwright
     try:
         with sync_playwright() as p:
             b = p.chromium.launch()
-            h = phase_boot(base, t0, b, proc) if a.spawn else httpx.get(base + "/api/health").json()
+            h = phase_boot(base, t0, b, proc) if (a.spawn or a.docker_run) else httpx.get(base + "/api/health").json()
+            if a.docker_run:
+                REPORT["docker_stats_ready"] = docker_mem(a.container)
             if h.get("status") == "ready":
                 REPORT["chunks"] = h.get("chunks")
                 if proc:
@@ -272,6 +284,11 @@ def main():
                 phase_rate(base)
             b.close()
     finally:
+        if a.docker_run:
+            logs = subprocess.run(["docker", "logs", a.container], capture_output=True, text=True)
+            Path("/tmp/dalil-deploy-e2e.log").write_text(logs.stdout + logs.stderr)
+            subprocess.run(["docker", "rm", "-f", a.container], capture_output=True)
+            print(f"Konteyner o'chirildi ({a.container}), log: /tmp/dalil-deploy-e2e.log")
         if proc and proc.poll() is None:
             try:
                 os.killpg(proc.pid, signal.SIGTERM)

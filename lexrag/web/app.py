@@ -73,9 +73,9 @@ def _warmup():
     t0 = time.time()
     try:
         bootstrap.ensure_data(_phase)      # konteynerda: HF dataset'dan indeks (bor bo'lsa - hech narsa)
-        _phase("model", "Til modeli yuklanmoqda")
+        _phase("model", "model yuklanmoqda")  # qisqa: telefondagi chipga sig'sin
         embed_query(MODEL, "salom")      # bge-m3 ONNX modeli xotiraga
-        _phase("index", "Qidiruv indeksi ochilmoqda")
+        _phase("index", "indeks ochilmoqda")
         _bm25()                          # BM25 indeksi
         vocab()                          # so'z tiklash lug'ati (4-bosqich indeksida bor)
         STATE["count"] = get_collection(MODEL, create=False).count()
