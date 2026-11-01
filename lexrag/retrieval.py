@@ -4,30 +4,55 @@ Nega gibrid: dense qidiruv ma'noni yaxshi ushlaydi, lekin yaqin yozilishdagi so'
 ("oʻgʻirlik" va "odam oʻgʻirlash"). BM25 aniq atamalarni (modda nomi, "oʻgʻrilik", "taʼtil") ushlaydi.
 Ikkala ro'yxat RRF bilan birlashtiriladi: score = sum(1 / (60 + rank)).
 
-O'zbek tili qo'shimchali til ("taʼtil", "taʼtilni", "taʼtilining"), shuning uchun BM25 uchun so'zlar
-birinchi 7 harfgacha qisqartiriladi (oddiy "stem").
+O'zbek tili qo'shimchali til ("taʼtil", "taʼtilni", "taʼtilining"): BM25 tokenlari lexrag/stem.py dagi qoidaga
+asoslangan o'zak ajratuvchi bilan olinadi (avval so'z 7 harfgacha kesilardi). Tokenizator sozlamasi indeks bilan
+birga saqlanadi (ids.json "tokenizer"); so'rov ham aynan shu sozlama bilan tokenlanadi, shuning uchun eski indeks
+(7 harf) ham yangi kod bilan to'g'ri ishlaydi.
 """
 from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 import time
+from collections import Counter
 from functools import lru_cache
+from pathlib import Path
 
 import numpy as np
 
 from . import config
+from . import stem as uzstem
 from .indexer import embed_query, get_collection
 from .normalize import normalize_text
-from .translit import cyr_to_lat
+from .translit import cyr_to_lat, repair_latin
 
 log = logging.getLogger(__name__)
 
 MODEL = "BAAI/bge-m3"
-BM25_DIR = config.INDEX_DIR / "bm25"
+# LEXRAG_BM25_DIR: boshqa indeks bilan ishlash (yangi indeksni ishlab turgan serverga tegmasdan sinash uchun)
+BM25_DIR = Path(os.environ.get("LEXRAG_BM25_DIR") or config.INDEX_DIR / "bm25")
 WORD = re.compile(r"[a-zʻʼ0-9¹²³⁴⁵⁶⁷⁸⁹⁰]+")
-STEM = 7
+STEM = 7                  # eski tokenizator ("trunc7"): so'zning birinchi 7 harfi
+# yangi indeks tokenizatori (stem.tokenize): deriv - so'z yasovchi qo'shimchalar ham olinadimi, trunc - o'zakni kesish
+INDEX_TOKENIZER = {"kind": "stem", "deriv": False, "trunc": None}
+# Quyidagi standartlar eval/ DEV qismida tanlangan (scripts/tune_stage4.py -> eval/tuning_stage4.json):
+# so'rovdagi stopwordlar (faqat "stem" indeksida): none | basic | legal. Indeksda stopword olib tashlanmaydi -
+# shuning uchun ro'yxatni indeksni qayta qurmasdan sozlash mumkin. DEV: BM25 R@5 none 0.405, basic 0.436,
+# legal 0.436 ("modda", "qonun" ni tashlash ta'sir qilmadi)
+QUERY_STOP = "basic"
+# kirill / apostrofsiz savolni korpus lug'ati bo'yicha tiklash (translit.repair_latin): "bm25" - faqat BM25 so'rovi
+# tiklanadi (dense asl lotinlashtirilgan matnni oladi), "all" - dense ham, "off" - tiklanmaydi.
+# DEV: "all" kirill dense R@5 ni 0.856 -> 0.789 ga tushirdi (d08), "bm25" - dense o'zgarmaydi, kirill BM25 0.511 -> 0.578
+REPAIR = "bm25"
+# kirill savol uchun dense: "lat" - lotinga o'girilgan matn, "both" - lotin + asl kirill, RRF bilan.
+# DEV: "both" kirill gibrid R@5 0.856 -> 0.722 (bge-m3 asl kirillda yomonroq topadi)
+CYR_DENSE = "lat"
+# ruscha savol uchun BM25: "off" - BM25 ishlatilmaydi (baza o'zbekcha), "glossary" - faqat lug'atdagi o'zbekcha
+# atamalar, "glossary+translit" - atamalar + lotinga o'girilgan ruscha matn (3-bosqichdagi usul).
+# DEV: gibrid R@5 uchalasida 0.796, MRR off 0.689 >= glossary 0.688 = glossary+translit 0.688
+RU_BM25 = "off"
 RRF_K = 60
 # Og'irliklar eval/ to'plamida sozlangan (python -m lexrag eval, eval/sweep.json). W_BM25 0.6 edi: BM25 parafrazali
 # savollarda umumiy so'zlar ("uchun", "qanday", "kerak") bo'yicha shovqin beradi va RRF'da dense topgan moddani
@@ -35,40 +60,85 @@ RRF_K = 60
 # qayta tartiblaydi:
 # gibrid recall@5 61.2% -> 83.7%, MRR@10 0.509 -> 0.716 (eval/README.md). W_BM25=0 (sof dense) MRR'da biroz
 # yaxshiroq (0.733), lekin recall@5 pastroq (81.5%).
+# 4-bosqich (170 savol, stemmer bilan, DEV sweep): eng yaxshisi yana 0.05 (R@5 0.796, MRR 0.688); stemmer bilan
+# katta og'irlik kamroq zarar qiladi (W=0.6: R@5 0.677 -> 0.749), lekin optimum siljimadi.
 W_DENSE, W_BM25 = 1.0, 0.05
 # ruscha savol: BM25 og'irligi W_BM25 ga nisbatan (lug'atdan o'zbekcha atama topilsa / topilmasa)
 RU_W = (0.75, 0.25)
 
 
+TRUNC7 = {"kind": "trunc7"}
+
+
+def tokenize_with(text: str, cfg: dict, stop: str = "none") -> list[str]:
+    if cfg.get("kind") != "stem":
+        t = normalize_text(text).lower()
+        return [w[:STEM] for w in WORD.findall(t) if len(w) > 1 or w.isdigit()]
+    return uzstem.tokenize(text, stop=stop, deriv=bool(cfg.get("deriv")), trunc=cfg.get("trunc"))
+
+
 def tokenize(text: str) -> list[str]:
-    t = normalize_text(text).lower()
-    return [w[:STEM] for w in WORD.findall(t) if len(w) > 1 or w.isdigit()]
+    """So'rov tokenlari: yuklangan BM25 indeksining tokenizatori + QUERY_STOP."""
+    return tokenize_with(text, _bm25_cfg(), QUERY_STOP)
 
 
-def prepare_query(q: str) -> str:
-    """Kirillcha savolni lotinga o'giradi va normallashtiradi."""
+def prepare_query(q: str, repair: bool | None = None) -> str:
+    """Kirillcha savolni lotinga o'giradi va normallashtiradi. repair (standart: REPAIR == "all"): korpusda yo'q
+    so'zlar lug'at bo'yicha tiklanadi - kirillda rus klaviaturasi (у/к/х/г o'rniga ў/қ/ҳ/ғ) va apostrofsiz lotin."""
     q = q.strip()
-    if re.search(r"[А-Яа-яЎўҚқҒғҲҳЁё]", q):
+    cyr = bool(re.search(r"[А-Яа-яЎўҚқҒғҲҳЁё]", q))
+    if cyr:
         q = cyr_to_lat(q)
-    return normalize_text(q)
+    q = normalize_text(q)
+    if (REPAIR == "all") if repair is None else repair:
+        voc = vocab()
+        if voc:
+            q = repair_latin(q, voc, letters=cyr)
+    return q
 
 
 # ---------------------------------------------------------------- BM25
-def build_bm25():
+def build_bm25(out_dir: Path | None = None, cfg: dict | None = None) -> Path:
+    """BM25 indeksini quradi. out_dir (standart BM25_DIR) - ishlab turgan server indeksiga tegmaslik uchun boshqa
+    papkaga qurib, keyin almashtirish mumkin (python -m lexrag bm25 --out data/index/bm25_new)."""
     import bm25s
+    out_dir = Path(out_dir or BM25_DIR)
+    cfg = dict(cfg or INDEX_TOKENIZER)
     ids, metas, corpus = [], [], []
+    words: Counter = Counter()
     with open(config.CHUNKS, encoding="utf-8") as f:
         for line in f:
             c = json.loads(line)
             ids.append(c["chunk_id"])
             metas.append({"status": c.get("status"), "amend": bool(c.get("is_amending_law"))})
-            corpus.append(tokenize(c["text"]))
+            corpus.append(tokenize_with(c["text"], cfg))
+            words.update(WORD.findall(normalize_text(c["text"]).lower()))
     retr = bm25s.BM25()
     retr.index(corpus, show_progress=False)
-    BM25_DIR.mkdir(parents=True, exist_ok=True)
-    retr.save(str(BM25_DIR))
-    (BM25_DIR / "ids.json").write_text(json.dumps({"ids": ids, "metas": metas}), encoding="utf-8")
-    log.info("BM25 indeks: %d chunk", len(ids))
+    out_dir.mkdir(parents=True, exist_ok=True)
+    retr.save(str(out_dir))
+    (out_dir / "ids.json").write_text(json.dumps({"ids": ids, "metas": metas, "tokenizer": cfg}), encoding="utf-8")
+    (out_dir / "vocab.json").write_text(json.dumps(build_vocab(words), ensure_ascii=False), encoding="utf-8")
+    log.info("BM25 indeks: %d chunk, %s -> %s", len(ids), cfg, out_dir)
+    return out_dir
+
+
+def build_vocab(words: Counter, min_count: int = 2) -> dict:
+    """Korpus lug'ati so'z tiklash uchun: {skelet: [eng ko'p uchragan shakl, skelet soni, shakl soni]}.
+    Skelet - kichik harf, apostroflarsiz ("oʻgʻirlik" -> "ogirlik")."""
+    best: dict = {}
+    for w, n in words.items():
+        if n < min_count or len(w) < 2:
+            continue
+        sk = uzstem.fold(w)
+        b = best.get(sk)
+        if b is None:
+            best[sk] = [w, n, n]
+        else:
+            b[1] += n
+            if n > b[2]:
+                b[0], b[2] = w, n
+    return best
 
 
 @lru_cache(maxsize=1)
@@ -79,7 +149,29 @@ def _bm25():
         build_bm25()
     retr = bm25s.BM25.load(str(BM25_DIR))
     d = json.loads((BM25_DIR / "ids.json").read_text(encoding="utf-8"))
-    return retr, d["ids"], d["metas"]
+    # tokenizer yo'q - 4-bosqichdan oldingi indeks (7 harf)
+    return retr, d["ids"], d["metas"], d.get("tokenizer") or TRUNC7
+
+
+def _bm25_cfg() -> dict:
+    return _bm25()[3]
+
+
+@lru_cache(maxsize=1)
+def vocab() -> dict:
+    p = BM25_DIR / "vocab.json"
+    if not p.exists():
+        return {}
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def use_bm25_dir(path: Path) -> None:
+    """Boshqa BM25 indeksiga o'tish (baholash / sozlash uchun): keshlar tozalanadi."""
+    global BM25_DIR
+    BM25_DIR = Path(path)
+    _bm25.cache_clear()
+    if hasattr(vocab, "cache_clear"):
+        vocab.cache_clear()
 
 
 @lru_cache(maxsize=1)
@@ -93,7 +185,7 @@ def _doc_types() -> dict[str, str]:
 def bm25_search(query: str, n: int, only_active: bool, no_amending: bool,
                 doc_types: list[str] | None = None, scores_out: dict | None = None) -> list[str]:
     """scores_out berilsa (X-ray, baholash) - {chunk_id: BM25 ball} bilan to'ldiriladi."""
-    retr, ids, metas = _bm25()
+    retr, ids, metas, _ = _bm25()
     toks = tokenize(query)
     if not toks:
         return []
@@ -166,14 +258,48 @@ def query_texts(query: str, lang: str | None = None, w_bm25: float | None = None
 
     Ruscha savol: bge-m3 ko'p tilli, shuning uchun dense asl ruscha matn bilan qidiradi. BM25 o'zbekcha
     matnda ruscha so'zlarni topmaydi: unga kichik lug'atdagi o'zbekcha atamalar + lotinlashtirilgan savol
-    (kodeks, konstitutsiya, pensiya kabi umumiy so'zlar) beriladi va og'irligi kamaytiriladi (RU_W)."""
+    (kodeks, konstitutsiya, pensiya kabi umumiy so'zlar) beriladi va og'irligi kamaytiriladi (RU_W).
+    RU_BM25: "glossary" - faqat lug'at atamalari (atama topilmasa BM25 ishlatilmaydi), "off" - BM25 yo'q,
+    "glossary+translit" - 3-bosqichdagi usul (lotinlashtirilgan ruscha so'zlar BM25'da shovqin beradi)."""
     base = W_BM25 if w_bm25 is None else w_bm25
     if lang == "ru":
         from .lang import ru_bm25_terms
         terms = ru_bm25_terms(query)
-        return normalize_text(query), f"{terms} {prepare_query(query)}".strip(), base * (RU_W[0] if terms else RU_W[1])
+        if RU_BM25 == "off" or (RU_BM25 == "glossary" and not terms):
+            return normalize_text(query), "", 0.0
+        q_bm = terms if RU_BM25 == "glossary" else f"{terms} {prepare_query(query, repair=False)}".strip()
+        return normalize_text(query), q_bm, base * (RU_W[0] if terms else RU_W[1])
     q = prepare_query(query)
-    return q, q, base
+    q_bm = prepare_query(query, repair=True) if REPAIR == "bm25" else q
+    return q, q_bm, base
+
+
+def candidates(query: str, lang: str | None, n_each: int, only_active: bool = True, no_amending: bool = True,
+               doc_types: list[str] | None = None, mode: str = "hybrid", timing: dict | None = None,
+               bm_scores: dict | None = None) -> dict:
+    """Ikkala usulning nomzodlari (RRF dan oldin). hybrid_search va baholash (evaluate._raw) shuni chaqiradi.
+    -> {dense: [id], cos: {id: cosine}, lex: [id], w_bm25, w_factor, q_dense, q_bm25, q_dense_alt}
+
+    Kirill savol (CYR_DENSE="both"): dense ikki marta - lotinga o'girilgan va asl kirill matn bilan, ro'yxatlar RRF
+    bilan birlashadi, cosine - ikkalasining kattasi."""
+    q_dense, q_bm25, w_bm25 = query_texts(query, lang)
+    factor = query_texts(query, lang, 1.0)[2]
+    alt = query.strip() if (CYR_DENSE == "both" and lang == "uz_cyr" and re.search(r"[А-Яа-яЎўҚқҒғҲҳ]", query)) else None
+    dense, cos = [], {}
+    if mode in ("hybrid", "dense"):
+        dense, cos = dense_search(q_dense, n_each, only_active, no_amending, doc_types, timing=timing)
+        if alt:
+            d2, c2 = dense_search(alt, n_each, only_active, no_amending, doc_types)
+            f = rrf([(dense, 1.0), (d2, 1.0)])
+            dense = sorted(f, key=f.get, reverse=True)[:n_each]
+            cos = {c: max(cos.get(c) or 0, c2.get(c) or 0) for c in dense}
+    t_bm = time.perf_counter()
+    lex = bm25_search(q_bm25, n_each, only_active, no_amending, doc_types, scores_out=bm_scores) \
+        if mode in ("hybrid", "bm25") and q_bm25 else []
+    if timing is not None:
+        timing["_t_bm25"], timing["bm25"] = t_bm, _ms(time.perf_counter() - t_bm)
+    return {"dense": dense, "cos": cos, "lex": lex, "w_bm25": w_bm25, "w_factor": factor,
+            "q_dense": q_dense, "q_bm25": q_bm25, "q_dense_alt": alt}
 
 
 TRACE_TOP = 10  # X-ray: har usulning nechta eng yaxshi natijasi ko'rsatiladi
@@ -187,15 +313,12 @@ def hybrid_search(query: str, k: int = 8, only_active: bool = True, no_amending:
 
     trace (X-ray): dict berilsa, qidiruv ichi yoziladi - so'rov matnlari, og'irliklar, dense va BM25 ro'yxatlari
     (ball bilan), RRF natijasi va har bosqich vaqti. trace=None bo'lsa ortiqcha hech narsa hisoblanmaydi."""
-    q_dense, q_bm25, w_bm25 = query_texts(query, lang)
     t0 = time.perf_counter()
     tm: dict | None = {} if trace is not None else None
     bm_scores: dict | None = {} if trace is not None else None
-    dense, cos = dense_search(q_dense, n_each, only_active, no_amending, doc_types, timing=tm) \
-        if mode in ("hybrid", "dense") else ([], {})
-    t_bm = time.perf_counter()
-    lex = bm25_search(q_bm25, n_each, only_active, no_amending, doc_types, scores_out=bm_scores) \
-        if mode in ("hybrid", "bm25") else []
+    c = candidates(query, lang, n_each, only_active, no_amending, doc_types, mode, timing=tm, bm_scores=bm_scores)
+    dense, cos, lex, w_bm25 = c["dense"], c["cos"], c["lex"], c["w_bm25"]
+    q_dense, q_bm25 = c["q_dense"], c["q_bm25"]
     t_rrf = time.perf_counter()
     fused = rrf([(dense, W_DENSE), (lex, w_bm25)])
     top = sorted(fused, key=fused.get, reverse=True)[:k]
@@ -209,18 +332,19 @@ def hybrid_search(query: str, k: int = 8, only_active: bool = True, no_amending:
     t_end = time.perf_counter()
     if trace is not None:
         spans = []
-        if tm:
+        if tm and "_t_embed" in tm:
             spans += [{"key": "embed", "start": tm["_t_embed"], "ms": tm["embed"]},
                       {"key": "dense", "start": tm["_t_dense"], "ms": tm["dense"]}]
-        if mode in ("hybrid", "bm25"):
-            spans.append({"key": "bm25", "start": t_bm, "ms": _ms(t_rrf - t_bm)})
+        if mode in ("hybrid", "bm25") and tm and "_t_bm25" in tm:
+            spans.append({"key": "bm25", "start": tm["_t_bm25"], "ms": tm["bm25"]})
         spans += [{"key": "rrf", "start": t_rrf, "ms": _ms(t_fetch - t_rrf)},
                   {"key": "fetch", "start": t_fetch, "ms": _ms(t_end - t_fetch)}]
         trace.update({
             "query": query, "q_dense": q_dense, "q_bm25": q_bm25, "bm25_tokens": tokenize(q_bm25)[:40],
-            "mode": mode, "lang": lang,
+            "q_dense_alt": c["q_dense_alt"], "mode": mode, "lang": lang,
             "params": {"w_dense": W_DENSE, "w_bm25": w_bm25, "w_bm25_default": W_BM25, "rrf_k": RRF_K,
-                       "n_each": n_each, "k": k},
+                       "n_each": n_each, "k": k, "query_stop": QUERY_STOP, "ru_bm25": RU_BM25,
+                       "tokenizer": _bm25_cfg()},
             "filters": {"only_active": only_active, "no_amending": no_amending, "doc_types": doc_types},
             "counts": {"dense": len(dense), "bm25": len(lex), "fused": len(fused)},
             "dense": [{"chunk_id": c, "rank": i + 1, "cosine": cos.get(c)} for i, c in enumerate(dense[:TRACE_TOP])],

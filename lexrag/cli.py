@@ -14,6 +14,8 @@
   import-vectors [fayl]   - Colab'dan kelgan vectors.npz ni tekshirib ChromaDB ga yozish
   eval [--modes ...] [--k 10] [--no-sweep]
                           - qidiruv sifatini baholash (eval/questions.jsonl, LLM'siz) -> eval/results.*
+  bm25 [--out PAPKA]      - BM25 indeksini o'zbek stemmeri bilan qurish (standart: data/index/bm25_new;
+                            ishlab turgan server indeksiga tegmaydi, keyin almashtiriladi - README)
 """
 from __future__ import annotations
 
@@ -45,7 +47,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="lexrag", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("cmd", choices=["list", "fetch", "parse", "chunk", "report", "verify",
-                                    "all", "index", "search", "ask", "export-colab", "import-vectors", "eval"])
+                                    "all", "index", "search", "ask", "export-colab", "import-vectors", "eval", "bm25"])
+    ap.add_argument("--out", default=None, help="bm25: indeks papkasi (standart data/index/bm25_new)")
     ap.add_argument("query", nargs="?")
     ap.add_argument("--limit", type=int, help="faqat N ta hujjat (ro'yxat bo'ylab teng taqsimlangan namuna)")
     ap.add_argument("--ids", nargs="*", help="aniq lex_id lar")
@@ -104,6 +107,9 @@ def main(argv=None):
         from .search import main as search_main
         search_main(a.query, k=a.k or 5, model_name=a.model, only_active=not a.all_status, no_amending=not a.include_amending,
                     mode=a.mode)
+    if a.cmd == "bm25":
+        from .retrieval import build_bm25
+        print(build_bm25(a.out or config.INDEX_DIR / "bm25_new"))
     if a.cmd == "eval":
         from .evaluate import cli as eval_cli
         eval_cli(a.modes, k=a.k or 10, do_sweep=not a.no_sweep)

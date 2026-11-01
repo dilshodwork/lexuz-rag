@@ -40,6 +40,63 @@ def cyr_to_lat(text: str) -> str:
     return re.sub(r"\s+", " ", "".join(out))
 
 
+# ---------------------------------------------------------------- so'zni korpus lug'ati bo'yicha tiklash
+# Real savollarda ikki xil "buzilish" uchraydi:
+#  * kirill rus klaviaturasida: у/к/х/г o'rniga ў/қ/ҳ/ғ ("тулик туланадими" -> "tulik tulanadimi", aslida
+#    "toʻliq toʻlanadimi"); ъ tushib qoladi ("мамурий");
+#  * lotin apostrofsiz: "boladimi", "ogirlik", "mamuriy".
+# Bunday so'z korpusda yo'q: BM25 uni topmaydi, dense esa noto'g'ri so'z sifatida ko'radi. repair_latin har so'zni
+# korpus lug'ati (retrieval.build_vocab: skelet -> eng ko'p uchragan shakl) bo'yicha tekshiradi.
+_REPAIR_SWAP = {"u": "oʻ", "k": "q", "x": "h", "g": "gʻ"}
+_APOS = "ʻʼ'`‘’´"
+_RWORD = re.compile(r"[A-Za-zʻʼ'`‘’´]+")
+MAX_SWAP_POS = 6          # shuncha o'rindan ko'p bo'lsa variantlar sanab o'tilmaydi (2^6 = 64 variant)
+MIN_FIX_COUNT = 3         # tiklangan shakl korpusda kamida shuncha marta uchrashi kerak
+
+
+def _skel(w: str) -> str:
+    return re.sub(f"[{_APOS}]", "", w.lower())
+
+
+def _swaps(w: str):
+    """Rus klaviaturasi variantlari: har u/k/x/g o'rnida asl harf yoki oʻ/q/h/gʻ."""
+    pos = [i for i, ch in enumerate(w) if ch in _REPAIR_SWAP][:MAX_SWAP_POS]
+    for mask in range(1, 1 << len(pos)):
+        chars = list(w)
+        for b, i in enumerate(pos):
+            if mask >> b & 1:
+                chars[i] = _REPAIR_SWAP[chars[i]]
+        yield "".join(chars)
+
+
+def repair_word(w: str, vocab: dict, letters: bool = False) -> str:
+    """vocab: {skelet: [shakl, skelet soni, shakl soni]}. letters=True (kirilldan kelgan matn): harf almashinuvi
+    ham tekshiriladi; aks holda faqat apostrof tiklanadi. Korpusda bor so'z o'zgartirilmaydi."""
+    low = w.lower()
+    sk = _skel(low)
+    hit = vocab.get(sk)
+    if hit and (hit[0] == low or not any(c in _APOS for c in hit[0])):
+        return w                                    # so'z korpusda shu shaklda bor
+    if hit and not any(c in _APOS for c in low) and hit[2] >= MIN_FIX_COUNT:
+        best = hit[0]                               # apostrof tushib qolgan: "boladimi" -> "boʻladimi"
+    elif hit:
+        return w
+    else:
+        best, cnt = None, MIN_FIX_COUNT - 1
+        if letters:
+            for v in _swaps(sk):
+                h = vocab.get(_skel(v))
+                if h and h[1] > cnt:
+                    best, cnt = h[0], h[1]
+        if best is None:
+            return w
+    return best[:1].upper() + best[1:] if w[:1].isupper() else best
+
+
+def repair_latin(text: str, vocab: dict, letters: bool = False) -> str:
+    return _RWORD.sub(lambda m: repair_word(m.group(0), vocab, letters), text)
+
+
 # ---------------------------------------------------------------- lotin -> kirill
 _L2C = {
     "a": "а", "b": "б", "d": "д", "e": "е", "f": "ф", "g": "г", "h": "ҳ", "i": "и", "j": "ж", "k": "к",

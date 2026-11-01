@@ -29,8 +29,9 @@ from typing import Callable
 
 from . import config, plan, rag
 from .lang import detect_lang, script_of
-from .retrieval import (MODEL, RRF_K, W_BM25, W_DENSE, bm25_search, chunk_meta, dense_search, get_collection,
-                        query_texts, rrf)
+from . import retrieval
+from .retrieval import (MODEL, RRF_K, W_DENSE, bm25_search, candidates, chunk_meta, dense_search,
+                        get_collection, rrf)
 
 EVAL_DIR = config.ROOT / "eval"
 QUESTIONS = EVAL_DIR / "questions.jsonl"
@@ -154,16 +155,14 @@ def rejection(per_q: list[dict], mode: str, thr: float) -> dict | None:
 
 # ---------------------------------------------------------------- qidiruv
 def _raw(question: str, lang: str) -> dict:
-    """Bitta so'rov: dense va BM25 ro'yxatlari (N_EACH ta) + vaqtlar."""
-    q_dense, q_bm25, w_bm25 = query_texts(question, lang)
-    factor = query_texts(question, lang, 1.0)[2]        # ruscha savolda RU_W, aks holda 1
+    """Bitta so'rov: dense va BM25 ro'yxatlari (N_EACH ta) + vaqtlar. Ilovadagi retrieval.candidates aynan shu."""
     t0 = time.perf_counter()
-    dense, cos = dense_search(q_dense, N_EACH, **FILTERS)
-    t1 = time.perf_counter()
-    lex = bm25_search(q_bm25, N_EACH, **FILTERS)
-    t2 = time.perf_counter()
-    return {"dense": dense, "cos": cos, "lex": lex, "w_bm25": w_bm25, "w_factor": factor,
-            "ms_dense": (t1 - t0) * 1000, "ms_bm25": (t2 - t1) * 1000}
+    tm: dict = {}
+    c = candidates(question, lang, N_EACH, **FILTERS, timing=tm)
+    total = (time.perf_counter() - t0) * 1000
+    ms_bm25 = tm.get("bm25", 0.0)
+    return {"dense": c["dense"], "cos": c["cos"], "lex": c["lex"], "w_bm25": c["w_bm25"], "w_factor": c["w_factor"],
+            "ms_dense": total - ms_bm25, "ms_bm25": ms_bm25}
 
 
 def _hybrid(raw: dict, w_bm25: float | None = None) -> tuple[list[str], dict, float]:
@@ -283,12 +282,13 @@ def sweep(per_q: list[dict], raws: list[dict], k_max: int = 10) -> dict:
         c_by[g] = [rejection(pq, "hybrid", t) for t in COS_GRID]
         info_by[g] = _cos_info(pq)
     # asosiy metrika - recall@5 (LLM'ga boradigan manbalar orasida to'g'ri modda bormi), teng bo'lsa MRR@10
-    best_w = max(w_by[sel], key=lambda r: (r["recall@5"], r["mrr@10"], -abs(r["w_bm25"] - W_BM25)))
+    best_w = max(w_by[sel], key=lambda r: (r["recall@5"], r["mrr@10"], -abs(r["w_bm25"] - retrieval.W_BM25)))
     best_c = max(c_by[sel], key=lambda r: (r["balanced_accuracy"], -r["false_reject"], -abs(r["threshold"] - rag.NO_ANSWER_COS)))
     return {
         "selected_on": sel,
-        "w_bm25": {"current": W_BM25, "grid": w_by[sel], "grid_by_split": w_by, "best": best_w,
-                   "note": "Ruscha savollarda BM25 og'irligi W_BM25 × 0.75 (lug'at atamasi bor) yoki × 0.25."},
+        "w_bm25": {"current": retrieval.W_BM25, "grid": w_by[sel], "grid_by_split": w_by, "best": best_w,
+                   "note": ("Ruscha savollarda BM25 ishlatilmaydi (RU_BM25 = off: baza oʻzbekcha)." if retrieval.RU_BM25 == "off"
+                            else "Ruscha savollarda BM25 ogʻirligi W_BM25 × 0.75 (lugʻat atamasi bor) yoki × 0.25.")},
         "no_answer_cos": {"current": rag.NO_ANSWER_COS, "grid": c_by[sel], "grid_by_split": c_by, "best": best_c,
                           **info_by[sel], "by_split": info_by},
     }
@@ -352,7 +352,7 @@ def run(modes: tuple[str, ...] = MODES, k_max: int = 10, do_sweep: bool = True, 
                  "n_questions": len(qs), "n_answerable": sum(q["answerable"] for q in qs),
                  "n_none": sum(not q["answerable"] for q in qs), "k": k_max, "modes": list(modes),
                  "mode_names": {m: MODE_NAMES[m] for m in modes},
-                 "params": {"embedding": MODEL, "W_DENSE": W_DENSE, "W_BM25": W_BM25, "RRF_K": RRF_K, "N_EACH": N_EACH,
+                 "params": {"embedding": MODEL, "W_DENSE": W_DENSE, "W_BM25": retrieval.W_BM25, "RRF_K": RRF_K, "N_EACH": N_EACH,
                             "NO_ANSWER_COS": rag.NO_ANSWER_COS, "K_CONTEXT": rag.K_CONTEXT, "K_SPLIT": rag.K_SPLIT,
                             "filters": FILTERS},
                  "counts": {"lang": _count(qs, "lang"), "category": _count(qs, "category"),
