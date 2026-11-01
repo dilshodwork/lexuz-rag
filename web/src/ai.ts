@@ -101,6 +101,9 @@ async function httpError(p: Provider, model: string, r: Response): Promise<AiErr
   let t = "";
   try { t = await r.text(); } catch { /* bo'sh */ }
   const s = r.status, detail = `${s} ${t.slice(0, 300)}`;
+  // provayderning o'z xabari (foydalanuvchiga aniq sababni ko'rsatish uchun)
+  let pmsg = "";
+  try { const j = JSON.parse(t); pmsg = j?.error?.message || j?.message || (Array.isArray(j) ? j[0]?.error?.message : "") || ""; } catch { /* matn JSON emas */ }
   const has = (re: RegExp) => re.test(t);
   let code: AiErrCode = "llm";
   if (has(/dalil_network/)) code = "network"; // OpenAI proksisi provayderga ulana olmadi
@@ -112,8 +115,11 @@ async function httpError(p: Provider, model: string, r: Response): Promise<AiErr
   else if (s === 429) code = p === "gemini" && has(/PerDay|per day|daily/i) ? "quota" : "busy";
   else if (s === 500 || s === 502 || s === 503 || s === 529 || has(/overloaded_error/)) code = "busy";
   else if (s === 400 && p === "gemini" && has(/API key/i)) code = "bad_key";
-  return human(p, model, code, detail);
+  const e = human(p, model, code, detail);
+  if (pmsg && code !== "bad_key") e.message += ` (${P_SHORT(p)}: “${String(pmsg).slice(0, 160)}”, kod ${s})`;
+  return e;
 }
+const P_SHORT = (p: Provider) => PROVIDERS[p].short;
 
 // ---------------------------------------------------------------- so'rovlar
 type Req = { url: string; init: RequestInit };
@@ -247,7 +253,8 @@ export async function streamAi(c: AiConfig, system: string, user: string, signal
 export async function checkAi(c: AiConfig): Promise<{ status: AiStatus | "error"; message: string }> {
   const ac = new AbortController();
   const t = setTimeout(() => ac.abort(), 25000);
-  const { url, init } = buildReq(c, c.model, "", "Salom", false, c.provider === "anthropic" ? 1 : 16);
+  // Claude 5.x da adaptive thinking bor: max_tokens juda kichik bo'lsa so'rov rad etilishi mumkin
+  const { url, init } = buildReq(c, c.model, "", "Salom", false, c.provider === "anthropic" ? 64 : 16);
   try {
     const r = await fetch(url, { ...init, signal: ac.signal, referrerPolicy: "no-referrer" });
     if (r.ok) return { status: "ok", message: `Ulandi: ${PROVIDERS[c.provider].short} · ${c.model}` };
