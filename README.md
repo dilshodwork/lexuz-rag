@@ -132,9 +132,9 @@ API:
 | `GET /api/quota` | Bugungi bepul savollar: `{free, limit, used, left, reason}` |
 | `POST /api/proxy/openai/chat/completions` | Faqat OpenAI uchun o'tkazgich (pastda sababi). Kalit `Authorization` sarlavhasida keladi, saqlanmaydi |
 | `GET /api/search?q=...&k=8&only_active=true&include_amending=false&types=Kodeks` | faqat qidiruv, LLM'siz |
-| `GET /api/health` | indeks va LLM holati (kalitning o'zi qaytarilmaydi) |
+| `GET /api/health` | `status`: `loading` (indeks/model yuklanmoqda) / `ready` / `error`, indeks va LLM holati (kalitning o'zi qaytarilmaydi) |
 | `GET /api/stats` | hujjatlar, chunklar soni, baza sanasi (report.md va indeksdan) |
-| `GET /api/docs` | Swagger |
+| `GET /api/docs` | Swagger (`ENV=production` da o'chiq) |
 
 LLM (server kaliti): `.env` dagi `LLM_PROVIDER` va kalit. Gemini standart modeli `gemini-3.1-flash-lite`
 (bepul tarifda limiti kattaroq); 503/429, 404 yoki timeout bo'lsa `gemini-3.5-flash`, `gemini-3.8-flash`,
@@ -320,9 +320,104 @@ Sinov:
 .venv/bin/python scripts/report_section6.py          # report.md ning faqat "6. Baholash" bo'limi
 ```
 
-Telegram Mini App: BotFather'da botga Web App URL sifatida ilovaning HTTPS manzilini bering (masalan,
-`cloudflared tunnel --url http://127.0.0.1:8000` bergan manzil). Ilova `telegram-web-app.js` orqali
-Telegram temasi, safe-area, viewport balandligi va "orqaga" tugmasini o'zi hisobga oladi.
+Telegram Mini App: BotFather qadamlari va token qayerga qo'yilishi — [docs/telegram-mini-app.md](docs/telegram-mini-app.md).
+Ilova `telegram-web-app.js` orqali Telegram temasi, safe-area, viewport balandligi va "orqaga" tugmasini o'zi hisobga oladi.
+
+## Internetga chiqarish (Hugging Face Spaces)
+
+Bepul: Docker Space, CPU basic (2 vCPU, 16 GB RAM). Manzil `https://<user>-dalil.hf.space`, HTTPS tayyor.
+Uch qism:
+
+| Qism | Nima | Qayerdan |
+|---|---|---|
+| Space repo `<user>/dalil` | kod, `Dockerfile`, Space `README.md` | `deploy/hf-space/` + `lexrag/`, `web/` (manba), `eval/` — `scripts/hf_deploy.py` yig'adi |
+| Dataset repo `<user>/dalil-index` (public) | `index/chroma`, `index/bm25`, `metadata.csv` (~765 MB) | `data/` — konteyner start'da yuklab oladi (`HF_DATASET`) |
+| Secrets | `GEMINI_API_KEY`, `TELEGRAM_BOT_TOKEN`, `EVAL_TOKEN` | lokal `.env` dan, skript ekranga chiqarmasdan qo'yadi |
+
+Docker: 1-bosqich `node:22-slim` frontendni yig'adi (`web/dist`), 2-bosqich `python:3.13-slim` + `requirements-prod.txt`
+(faqat server paketlari: scraper/parser/Colab/Playwright yo'q), foydalanuvchi 1000, port 7860, `ENV=production`.
+Lokal `web/dist` va `data/` ga tegilmaydi.
+
+**Nega bge-m3 modeli image ichida, indeks esa start'da.** Bepul tarifda disk vaqtinchalik: Space uxlab uyg'onganda
+(48 soat ochilmasa uxlaydi) yoki qayta ishga tushganda yuklangan hamma narsa o'chadi. Model (2.2 GB) start'da
+yuklansa, har uyg'onish 2.2 GB qayta yuklashga ketadi va HF Hub o'sha paytda sekin/ishlamasa server umuman ko'tarilmaydi.
+Image ichida esa model konteyner bilan keladi, start'da faqat xotiraga o'qiladi, versiyasi qotirilgan va tarmoq
+kerak emas (`DALIL_MODEL_OFFLINE=1`). Docker'da model alohida qatlam: faqat `requirements-prod.txt` yoki
+`lexrag/indexer.py` o'zgarsa qayta yuklanadi. Indeks (765 MB) esa ma'lumot — u yangilanganda image qayta qurilmasin
+deb dataset'da turadi va start'da HF ichki tarmog'idan yuklanadi (`lexrag/web/bootstrap.py`). Port darhol ochiladi,
+yuklanguncha `/api/health` `"status": "loading"` qaytaradi, sahifada "Tayyorlanmoqda…" chipi turadi, shu paytda
+yozilgan savol tayyor bo'lishi bilan yuboriladi.
+
+### Dilshod uchun: qadam-baqadam
+
+1. **Hugging Face akkaunti:** https://huggingface.co/join — email bilan ro'yxatdan o'ting, emailni tasdiqlang.
+   Username Space manzilida bo'ladi (`https://<username>-dalil.hf.space`).
+2. **Write token:** https://huggingface.co/settings/tokens → **Create new token** → turi **Write** → nomi `dalil-deploy`
+   → **Create** → nusxalang. Token parol bilan teng: **chatga (shu jumladan AI yordamchiga), GitHub'ga, `.env.example`
+   ga yozmang.**
+3. **Tokenni kompyuterga qo'yish** (bittasini tanlang):
+   * `.venv/bin/hf auth login` — token so'raydi (yozilgani ko'rinmaydi), "Add token as git credential?" — `n`.
+     Tekshirish: `.venv/bin/hf auth whoami` sizning username'ingizni ko'rsatsin. Bu Mac'da allaqachon qandaydir
+     HF token keshi bor (dry-run "bor" dedi) — `whoami` boshqa akkauntni ko'rsatsa, avval `.venv/bin/hf auth logout`.
+   * yoki faqat shu terminal uchun: `export HF_TOKEN=...` (terminal yopilsa o'chadi).
+4. **`.env` ni tekshiring:** `GEMINI_API_KEY` bor (bepul savollar uchun). Ixtiyoriy: `TELEGRAM_BOT_TOKEN` (pastdagi
+   9-qadam), `EVAL_TOKEN` (`/baholash` da "Qayta hisoblash" uchun istalgan uzun parol; bo'lmasa u tugma internetda o'chiq).
+5. **Reja (hech narsa yuklanmaydi):** `.venv/bin/python scripts/hf_deploy.py --dry-run`
+6. **Chiqarish:** `.venv/bin/python scripts/hf_deploy.py` — (a) indeks dataset'ga (~765 MB, internet tezligiga qarab
+   5–20 daqiqa), (b) kod Space'ga, (c) secrets va variables. Nomlarni o'zgartirish: `--space <user>/<nom> --dataset <user>/<nom>`.
+7. **Build'ni kuzating:** `https://huggingface.co/spaces/<user>/dalil` → **Logs**. Birinchi build ~10–15 daqiqa
+   (model yuklanadi), keyingilari tezroq. "Running" bo'lgach ~1 daqiqada indeks yuklanadi.
+8. **Tekshiring:** `https://<user>-dalil.hf.space/api/health` → `"status": "ready"`, `"chunks": 39961`; sahifada savol bering.
+9. **Telegram bot:** [docs/telegram-mini-app.md](docs/telegram-mini-app.md) (BotFather, Menu Button URL, token).
+
+Keyin yangilash: kod o'zgarsa `--only space` (Space o'zi qayta quriladi); indeks yangilansa `--only data`, keyin Space
+**Settings → Restart**; `.env` dagi kalit o'zgarsa `--only secrets`. Skript yuklashdan oldin fayllarda kalitga
+o'xshash satr bo'lsa to'xtaydi.
+
+### Bepul tarif cheklovlari va xavflar
+
+* **Uxlash:** 48 soat hech kim ochmasa Space uxlaydi; keyingi ochilish 1–2 daqiqa (konteyner + indeks + model).
+* **Hisoblagichlar nolga qaytadi:** bepul limit (`quota.sqlite`) `/tmp/dalil/state` da, rate limit xotirada — Space qayta
+  ishga tushganda (uyg'onish, Restart, yangi deploy) ikkalasi ham nolga qaytadi, ya'ni bir kunda bepul savollar
+  `FREE_DAILY_LIMIT` dan ko'p bo'lishi mumkin. Server kalitini `GLOBAL_DAILY_LIMIT` va Gemini'ning o'z kunlik limiti
+  himoyalaydi. Pullik **persistent storage** ulansa (`/data`), `start.sh` o'zi `/data/dalil` ni tanlaydi: indeks qayta
+  yuklanmaydi, hisoblagich saqlanadi.
+* **2 vCPU:** qidiruv bir vaqtda bitta (qulf); ko'p foydalanuvchida navbat. LLM javobi alohida, navbatga kirmaydi.
+* **Ochiqlik:** Space kodi va `Dockerfile` hammaga ko'rinadi (secrets ko'rinmaydi). Indeks dataset'i public — lex.uz ochiq ma'lumoti.
+
+### Production xavfsizligi (`ENV=production`)
+
+| Nima | Qanday |
+|---|---|
+| Rate limit | `/api/ask`, `/api/context`, `/api/search`, `/api/verify`, `/api/proxy/openai`: qurilma (yoki Telegram foydalanuvchisi) bo'yicha `RATE_LIMIT_PER_MIN=20`, `RATE_LIMIT_PER_DAY=400`; IP bo'yicha x`RATE_IP_FACTOR=3`. 429 + `Retry-After` |
+| IP | `TRUST_PROXY=1`: `X-Forwarded-For` ning o'ngdan birinchi ochiq IP'si (chap tomonini foydalanuvchi soxtalashtira oladi) |
+| OpenAI proksisi | faqat `api.openai.com/v1/chat/completions`; model ro'yxati (`OPENAI_MODELS`); body qayta yig'iladi (model, messages, stream, max tokens ≤ 8192, temperature); ≤ 200 KB; javob ≤ 180 s; kalit logga tushmaydi |
+| Sarlavhalar | CSP (`script-src 'self' telegram.org`, `connect-src` Gemini/Anthropic, `frame-ancestors` Telegram Web + huggingface.co), `nosniff`, `Referrer-Policy`, `Permissions-Policy: microphone=(self)`, HSTS. `X-Frame-Options` yo'q — Telegram Web va HF sahifani iframe'da ochadi |
+| CORS / CSRF | CORS sarlavhasi berilmaydi (faqat o'z origin); begona `Origin` dan POST — 403 |
+| O'chirilgan | `/api/docs`, `/api/openapi.json`; `/api/eval/run` `EVAL_TOKEN` siz |
+| Xatolar | foydalanuvchiga umumiy xabar, stack trace va ichki xato matni faqat server logida |
+
+Sinov (LLM'siz; `scripts/test_render.mjs` — javob matnidagi HTML/skript ishlamasligi):
+
+```bash
+.venv/bin/python scripts/test_deploy.py
+```
+
+### Lokal Docker sinovi (Mac Intel = HF bilan bir xil amd64)
+
+```bash
+.venv/bin/python scripts/hf_deploy.py --dry-run --stage /tmp/dalil-space --stage-data /tmp/dalil-seed
+docker build --platform linux/amd64 -t dalil-hf:local /tmp/dalil-space
+# HF_DATASET o'rniga lokal nusxa (bootstrap.py uni dataset kabi DALIL_DATA_DIR ga ko'chiradi); .env faqat o'qish uchun ulanadi
+docker run -d --name dalil-test -p 7861:7860 -v /tmp/dalil-seed:/seed:ro -e DALIL_SEED_DIR=/seed \
+    -v "$PWD/.env:/home/user/app/.env:ro" dalil-hf:local
+.venv/bin/python scripts/deploy_e2e.py --url http://127.0.0.1:7861 --container dalil-test --ask api
+docker rm -f dalil-test
+```
+
+Docker'siz (konteynerdagi `start.sh`, `ENV=production`, bo'sh data papkasi + seed, 7861-port):
+`cd web && npx vite build --outDir /tmp/dalil-deploy-dist --emptyOutDir && cd .. && .venv/bin/python scripts/deploy_e2e.py --spawn --ask ui`.
+Skrinshotlar: `design/shots/app/deploy-*.png`.
 
 ## Tuzilma
 
@@ -352,6 +447,10 @@ lexrag/
   web/app.py    FastAPI: /api/ask (SSE), /api/context, /api/verify, /api/quota, /api/search, /api/health, /api/stats,
                 /api/eval (+ /run, /status) + web/dist
   web/quota.py  bepul limit: foydalanuvchini aniqlash (Telegram HMAC / qurilma + IP), SQLite hisoblagich
+  web/ratelimit.py  so'rovlar tezligi cheklovi (daqiqa / kun, qurilma + IP)
+  web/bootstrap.py  konteyner start'da indeksni HF dataset'dan yuklash
+deploy/hf-space/  Hugging Face Space: Dockerfile, start.sh, Space README (YAML)
+docs/           telegram-mini-app.md (BotFather qadamlari)
 web/            React frontend (src/App.tsx, ai.ts - o'z kaliti bilan LLM, textproc.ts - javob oqimi parseri va translit,
                 share.ts - ulashish va rasm-kartochka, components/, styles.css - A·Anor)
 scripts/        web_smoke.py, shots.py, test_quota.py, byok_e2e.py, test_server.py (sinov serveri), test_stage2.py, stage2_e2e.py,

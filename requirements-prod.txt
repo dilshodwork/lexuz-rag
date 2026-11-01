@@ -1,0 +1,19 @@
+# Faqat veb-server (Docker / Hugging Face Spaces) uchun. Versiyalar lokal .venv da sinalganlari bilan bir xil.
+# To'liq muhit (scraper, parser, Colab, sinovlar): requirements.txt
+httpx==0.28.1
+numpy==2.5.4
+# embedding: bge-m3 ONNX (PyTorch'siz)
+fastembed==0.9.1
+onnxruntime==1.23.2
+tokenizers==0.23.3
+huggingface_hub==1.33.0
+# vektor baza va BM25
+chromadb==1.5.9
+bm25s==0.3.16
+# veb
+fastapi==0.162.0
+starlette==1.10.0
+pydantic==2.14.2
+uvicorn==0.54.0
+# Asia/Tashkent (slim image'da tizim tzdata'si yo'q)
+tzdata==2026.6
