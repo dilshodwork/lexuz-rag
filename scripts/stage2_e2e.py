@@ -55,7 +55,7 @@ def ok(cond, name, info=""):
 def shot(page: Page, name: str):
     p = OUT / f"s2-{name}.png"
     page.screenshot(path=str(p))
-    print("     ", p.relative_to(ROOT), flush=True)
+    print("     ", p.relative_to(ROOT) if p.is_relative_to(ROOT) else p, flush=True)
 
 
 def new_page(b, opts, theme="light", ai=None, convs=None, extra="", perms=None):
@@ -226,7 +226,7 @@ def phase_mock(b):
         pg.click(".share-pop.open >> text=Rasmni yuklab olish")
     card = OUT / "s2-share-card-kirill-mock.png"
     dl.value.save_as(str(card))
-    ok(card.stat().st_size > 50_000, "rasm-kartochka yuklab olindi (mock javob)", str(card.relative_to(ROOT)))
+    ok(card.stat().st_size > 50_000, "rasm-kartochka yuklab olindi (mock javob)", str(card.relative_to(ROOT) if card.is_relative_to(ROOT) else card))
     pg.click(".turn:last-child .share-wrap .cbtn")
     pg.wait_for_timeout(400)
     pg.click(".share-pop.open >> text=Telegram")
@@ -571,8 +571,12 @@ def main():
     global llm_calls
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default="api,mock,real,reshoot,mobile")
+    ap.add_argument("--out", default=None, help="skrinshotlar papkasi (s2-* larni buzmaslik uchun /tmp)")
     a = ap.parse_args()
     only = a.only.split(",")
+    global OUT
+    if a.out:
+        OUT = Path(a.out)
     OUT.mkdir(parents=True, exist_ok=True)
     if not httpx.get(BASE + "/api/health", timeout=5).json().get("index_ready"):
         raise SystemExit("Sinov serveri tayyor emas")

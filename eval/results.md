@@ -1,6 +1,6 @@
 # Qidiruv sifatini baholash
 
-Yaratilgan: 2026-11-01T14:40:21+05:00 · commit `a749e85` · 132.7 s · BM25 indeksi: `data/index/bm25`
+Yaratilgan: 2026-11-01T14:58:08+05:00 · commit `122efa5` · 132.6 s · BM25 indeksi: `data/index/bm25`
 
 Savollar: 170 ta (161 tasining javobi bazada bor, 9 tasi bazada yoʻq). Til: lotin 116, kirill 32, rus 22. Qismlar: DEV 85 (sozlash shu yerda), TEST 85 (yakuniy raqamlar). Sozlamalar: W_DENSE=1.0, W_BM25=0.05, RRF_K=60, har usuldan 40 ta nomzod, NO_ANSWER_COS=0.48, BM25 tokenizatori {'kind': 'stem', 'deriv': False, 'trunc': None}, soʻrov stopwordlari basic, ruscha BM25 off, soʻz tiklash bm25; filtr: faqat amaldagi, oʻzgartirish qonunlarisiz. LLM chaqirilmagan.
 
@@ -8,19 +8,19 @@ Savollar: 170 ta (161 tasining javobi bazada bor, 9 tasi bazada yoʻq). Til: lot
 
 | Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | o'rtacha vaqt |
 |---|---|---|---|---|---|---|---|
-| Dense (bge-m3) | 51.2% | 68.8% | 76.9% | 83.1% | 0.678 | 0.691 | 565 ms |
+| Dense (bge-m3) | 51.2% | 68.8% | 76.9% | 83.1% | 0.678 | 0.691 | 578 ms |
 | BM25 | 23.8% | 36.9% | 42.5% | 51.9% | 0.350 | 0.380 | 1 ms |
-| Gibrid (RRF) | 53.8% | 68.1% | 76.9% | 82.5% | 0.696 | 0.700 | 566 ms |
-| Gibrid + bo'lish | 54.4% | 68.1% | 76.9% | 82.5% | 0.702 | 0.702 | 627 ms |
+| Gibrid (RRF) | 53.8% | 68.1% | 76.9% | 82.5% | 0.696 | 0.700 | 579 ms |
+| Gibrid + bo'lish | 54.4% | 68.1% | 76.9% | 82.5% | 0.702 | 0.702 | 644 ms |
 
 ## Asosiy natija — DEV (81 javobli, 4 yoʻq)
 
 | Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | o'rtacha vaqt |
 |---|---|---|---|---|---|---|---|
-| Dense (bge-m3) | 50.2% | 75.9% | 78.8% | 85.6% | 0.676 | 0.706 | 571 ms |
+| Dense (bge-m3) | 50.2% | 75.9% | 78.8% | 85.6% | 0.676 | 0.706 | 600 ms |
 | BM25 | 18.3% | 35.6% | 43.6% | 51.2% | 0.335 | 0.362 | 1 ms |
-| Gibrid (RRF) | 52.1% | 74.9% | 79.6% | 85.6% | 0.690 | 0.716 | 572 ms |
-| Gibrid + bo'lish | 50.0% | 73.7% | 79.0% | 84.6% | 0.657 | 0.696 | 739 ms |
+| Gibrid (RRF) | 52.1% | 74.9% | 79.6% | 85.6% | 0.690 | 0.716 | 602 ms |
+| Gibrid + bo'lish | 50.0% | 73.7% | 79.0% | 84.6% | 0.657 | 0.696 | 774 ms |
 
 ## Oldin / keyin (baseline_v2 — 3-bosqich kodi shu toʻplamda → hozir)
 
@@ -171,7 +171,7 @@ DEV: javobi bor savollarda eng yaqin cosine min 0.5381, 10-persentil 0.6, median
 | a10 | lotin | Ikki oy oldin ishga kech qolganimni rahbar o'shanda ko'rgan edi, endi esa shu uchun menga hayfsan bermoqchi. Shuncha vaqt o'tgach jazo berishga haqqi bormi? | Mehnat kodeksi 314-m. | >10 | >40 | >40 |
 | b08 | lotin | Ukam vafot etdi, uylanmagan, farzandi yoq edi. Otamiz bir paytlar ota-onalik huquqidan mahrum qilingan, keyin tiklanmagan. Otam ukamdan qolgan mol-mulkka merosxor bola oladimi? | Fuqarolik kodeksi (2-qism) 1119-m. | >10 | >40 | 3 |
 | b09 | lotin | Jiyanimga kvartira sovg'a qilgan edim, u esa meni do'pposlab, sog'lig'imga zarar yetkazdi. Sovg'amni qaytarib olishim mumkinmi? | Fuqarolik kodeksi (2-qism) 507-m. | >10 | >40 | >40 |
-| b17 | rus | Сосед самовольно занял часть моего участка и поставил там забор, говорит, что потратился на благоустройство. Вернут ли мне землю и должен ли я компенсировать ему расходы? | Yer kodeksi 91-m. | >10 | 19 | >40 |
+| b17 | rus | Сосед самовольно занял часть моего участка и поставил там забор, говорит, что потратился на благоустройство. Вернут ли мне землю и должен ли я компенсировать ему расходы? | Yer kodeksi 91-m. | >10 | 20 | >40 |
 | c102 | lotin | Ko'chada bir yigit hammaning ko`z oldida qo'limdagi telefonni yulib olib qochdi. Bunday o`g`rilik uchun qanaqa jazo bor? | Jinoyat kodeksi 166-m. | >10 | >40 | >40 |
 | c104 | lotin | Do'stim ilgari ichib mashina haydagani uchun bir marta jarimaga tortilgan edi, endi yana mast holda rulda ushlandi. Bu safar unga nima bo'ladi, qamalib ketishi mumkinmi? | Jinoyat kodeksi 261¹-m. | 7 | 7 | >40 |
 | c106 | lotin | Akamga qarshi jinoyat ishi ochildi, tergovchi meni guvoh sifatida chaqiryapti. Akam haqida ko'rsatma berishdan bosh tortishga haqqim bormi? | Jinoyat-protsessual kodeksi 116-m.; Jinoyat-protsessual kodeksi 66-m.; Konstitutsiya 28-m. | >10 | 29 | 8 |

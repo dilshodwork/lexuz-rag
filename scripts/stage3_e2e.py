@@ -52,7 +52,7 @@ def ok(cond, name, info=""):
 def shot(page: Page, name: str, full: bool = False):
     p = OUT / f"s3-{name}.png"
     page.screenshot(path=str(p), full_page=full)
-    print("     ", p.relative_to(ROOT), flush=True)
+    print("     ", p.relative_to(ROOT) if p.is_relative_to(ROOT) else p, flush=True)
 
 
 def tall(pg: Page, width: int):
@@ -83,8 +83,9 @@ def phase_api():
     r2 = c.post("/api/context", json={"question": Q_MIX}).json()
     ok("xray" not in r2, "xray=false: X-ray hisoblanmaydi")
     r3 = c.post("/api/context", json={"question": Q_RU, "xray": True}).json()["xray"]["searches"][0]
-    ok(r3["q_dense"] != r3["q_bm25"] and r3["params"]["w_bm25"] in (0.05 * 0.75, 0.05 * 0.25), "ruscha savol: dense asl matn, BM25 lug'at atamalari, kamaytirilgan og'irlik",
-       f"BM25: {r3['q_bm25'][:60]} · w={r3['params']['w_bm25']}")
+    # 4-bosqich: ruscha savol BM25'ga yuborilmaydi (RU_BM25 = "off", DEV'da tanlangan)
+    ok(r3["q_dense"] == Q_RU and r3["q_bm25"] == "" and r3["params"]["w_bm25"] == 0 and not r3["bm25"],
+       "ruscha savol: dense asl matn, BM25 ishlatilmaydi (4-bosqich)", f"BM25: '{r3['q_bm25'][:60]}' · w={r3['params']['w_bm25']}")
     t = c.post("/api/ask", json={"question": Q_NONE, "xray": True}, headers={"X-Device-Id": "s3-api-0001"}).text
     ev = sse_events(t)
     names = [e for e, _ in ev]
@@ -199,10 +200,13 @@ def phase_reshoot(b):
 # ---------------------------------------------------------------- baholash sahifasi
 def phase_eval(b):
     res = httpx.get(BASE + "/api/eval", timeout=30).json()["results"]
-    want = f"{res['summary']['hybrid']['recall@5'] * 100:.1f}".replace(".", ",") + "%"
+    # 4-bosqich: sahifa standart holatda TEST qismini ko'rsatadi (by_split bo'lsa)
+    blk = (res.get("by_split") or {}).get("test") or {"summary": res["summary"], "n_questions": res["meta"]["n_questions"]}
+    qs = [q for q in res["questions"] if q.get("split", "test") == "test"] if res.get("by_split") else res["questions"]
+    want = f"{blk['summary']['hybrid']['recall@5'] * 100:.1f}".replace(".", ",") + "%"
     thr = res["meta"]["params"]["NO_ANSWER_COS"]
     n_miss = 0
-    for q in res["questions"]:
+    for q in qs:
         h = q["modes"]["hybrid"]
         n_miss += ((h["best_cos"] or 1) >= thr) if not q["answerable"] else (not h["metrics"]["rank"] or h["metrics"]["rank"] > 5)
 
@@ -215,7 +219,7 @@ def phase_eval(b):
             kpi = pg.inner_text(".ev-kpis .kpi-v >> nth=0")
             ok(kpi == want, "KPI recall@5 results.json bilan bir xil", f"{kpi} = {want}")
             rows = pg.locator(".ev-tbl:not(.small) tbody tr").count()
-            ok(rows == res["meta"]["n_questions"], "har savol jadvali", f"{rows} qator")
+            ok(rows == len(qs), "har savol jadvali (TEST)", f"{rows} qator")
             ok(pg.locator(".ch svg").count() >= 5 and pg.locator(".hm-c").count() > 10, "grafiklar chizildi (ustun, chiziq, issiqlik xaritasi, sweep, taqsimot)")
             pg.hover(".bar-g >> nth=10")
             pg.wait_for_timeout(300)
@@ -275,8 +279,12 @@ def phase_eval(b):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default="api,mock,real,reshoot,eval")
+    ap.add_argument("--out", default=None, help="skrinshotlar papkasi (standart design/shots/app; s3-* larni buzmaslik uchun /tmp)")
     a = ap.parse_args()
     only = a.only.split(",")
+    global OUT
+    if a.out:
+        OUT = Path(a.out)
     OUT.mkdir(parents=True, exist_ok=True)
     if "api" in only:
         phase_api()
