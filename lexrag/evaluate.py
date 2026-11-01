@@ -266,6 +266,7 @@ def _cos_info(per_q: list[dict]) -> dict:
 
 
 SELECT_SPLIT = "dev"   # sozlash (eng yaxshi qiymatni tanlash) faqat shu qismda; test - faqat hisobot uchun
+MAX_FALSE_REJECT = 0.01
 
 
 def sweep(per_q: list[dict], raws: list[dict], k_max: int = 10) -> dict:
@@ -283,7 +284,11 @@ def sweep(per_q: list[dict], raws: list[dict], k_max: int = 10) -> dict:
         info_by[g] = _cos_info(pq)
     # asosiy metrika - recall@5 (LLM'ga boradigan manbalar orasida to'g'ri modda bormi), teng bo'lsa MRR@10
     best_w = max(w_by[sel], key=lambda r: (r["recall@5"], r["mrr@10"], -abs(r["w_bm25"] - retrieval.W_BM25)))
-    best_c = max(c_by[sel], key=lambda r: (r["balanced_accuracy"], -r["false_reject"], -abs(r["threshold"] - rag.NO_ANSWER_COS)))
+    # NO_ANSWER_COS: xato rad etish (javobi bor savolga "topilmadi") ko'pi bilan MAX_FALSE_REJECT bo'lsin, shu shart
+    # bilan eng ko'p "yo'q" savol rad etilsin. Balanslangan aniqlik bu yerda yaramaydi: DEV'da 4 ta "yo'q" savol
+    # bo'lgani uchun u 0.62 ni tanlaydi - javobi bor savollarning 32% i rad etiladi (4-bosqich, eval/README.md)
+    ok_rows = [r for r in c_by[sel] if r["false_reject_rate"] <= MAX_FALSE_REJECT] or c_by[sel]
+    best_c = max(ok_rows, key=lambda r: (r["correct_reject"], -r["false_reject"], -abs(r["threshold"] - rag.NO_ANSWER_COS)))
     return {
         "selected_on": sel,
         "w_bm25": {"current": retrieval.W_BM25, "grid": w_by[sel], "grid_by_split": w_by, "best": best_w,
@@ -354,7 +359,9 @@ def run(modes: tuple[str, ...] = MODES, k_max: int = 10, do_sweep: bool = True, 
                  "mode_names": {m: MODE_NAMES[m] for m in modes},
                  "params": {"embedding": MODEL, "W_DENSE": W_DENSE, "W_BM25": retrieval.W_BM25, "RRF_K": RRF_K, "N_EACH": N_EACH,
                             "NO_ANSWER_COS": rag.NO_ANSWER_COS, "K_CONTEXT": rag.K_CONTEXT, "K_SPLIT": rag.K_SPLIT,
-                            "filters": FILTERS},
+                            "filters": FILTERS, "tokenizer": retrieval._bm25_cfg(), "query_stop": retrieval.QUERY_STOP,
+                            "ru_bm25": retrieval.RU_BM25, "repair": retrieval.REPAIR, "cyr_dense": retrieval.CYR_DENSE,
+                            "bm25_dir": _rel(retrieval.BM25_DIR)},
                  "counts": {"lang": _count(qs, "lang"), "category": _count(qs, "category"),
                             "difficulty": _count(qs, "difficulty"), "split": _count(qs, "split")},
                  "lang_detect_errors": lang_err,
@@ -379,6 +386,13 @@ def run(modes: tuple[str, ...] = MODES, k_max: int = 10, do_sweep: bool = True, 
     return {"results": results, "sweep": sw}
 
 
+def _rel(p) -> str:
+    try:
+        return str(Path(p).resolve().relative_to(config.ROOT))
+    except ValueError:
+        return str(p)
+
+
 def _count(qs, field) -> dict:
     out: dict = {}
     for q in qs:
@@ -387,119 +401,16 @@ def _count(qs, field) -> dict:
 
 
 # ---------------------------------------------------------------- hisobot
-def _p(x) -> str:
-    return "—" if x is None else f"{x * 100:.1f}%"
-
-
 def markdown(r: dict, sw: dict | None) -> str:
-    m = r["meta"]
-    p = m["params"]
-    modes = m["modes"]
-    L = [f"# Qidiruv sifatini baholash", "",
-         f"Yaratilgan: {m['created']} · commit `{m['commit']}`{' (lexrag/ da commit qilinmagan o‘zgarish bor)' if m['dirty'] else ''}"
-         f" · {m['elapsed_s']} s", "",
-         f"Savollar: {m['n_questions']} ta ({m['n_answerable']} tasining javobi bazada bor, {m['n_none']} tasi bazada yo'q). "
-         f"Til: " + ", ".join(f"{LANG_NAMES.get(k, k)} {v}" for k, v in m["counts"]["lang"].items()) + ". "
-         f"Sozlamalar: W_DENSE={p['W_DENSE']}, W_BM25={p['W_BM25']}, RRF_K={p['RRF_K']}, har usuldan {p['N_EACH']} ta nomzod, "
-         f"NO_ANSWER_COS={p['NO_ANSWER_COS']}, filtr: faqat amaldagi, o'zgartirish qonunlarisiz. LLM chaqirilmagan.", "",
-         "## Asosiy natija", "",
-         "| Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | o'rtacha vaqt |", "|---|---|---|---|---|---|---|---|"]
-    for mo in modes:
-        s = r["summary"][mo]
-        L.append(f"| {MODE_NAMES[mo]} | {_p(s['recall@1'])} | {_p(s['recall@3'])} | {_p(s['recall@5'])} | {_p(s['recall@10'])} "
-                 f"| {s['mrr@10']:.3f} | {s['ndcg@10']:.3f} | {s['avg_ms']:.0f} ms |")
-    L += ["", "## \"Bazada yo'q\" savollarni rad etish", "",
-          f"Chegara NO_ANSWER_COS = {p['NO_ANSWER_COS']} (LLM'ga beriladigan {p['K_CONTEXT']} ta manbaning eng yuqori cosine'i shundan past bo'lsa — \"topilmadi\").", "",
-          "| Rejim | to'g'ri rad etildi | noto'g'ri rad etildi (javobi bor savol) | aniqlik |", "|---|---|---|---|"]
-    for mo in modes:
-        x = r["rejection"][mo]
-        if x:
-            L.append(f"| {MODE_NAMES[mo]} | {x['correct_reject']}/{x['n_none']} | {x['false_reject']}/{x['n_answerable']} | {_p(x['accuracy'])} |")
-        else:
-            L.append(f"| {MODE_NAMES[mo]} | — (cosine yo'q) | — | — |")
-    for f, title in (("category", "Kategoriya"), ("lang", "Til / yozuv"), ("difficulty", "Qiyinlik")):
-        L += ["", f"## {title} bo'yicha recall@5", "", f"| {title} | n | " + " | ".join(MODE_NAMES[mo] for mo in modes) + " |",
-              "|---|---|" + "---|" * len(modes)]
-        for v, row in r["slices"][f].items():
-            n = next(iter(row.values()))["n"]
-            L.append(f"| {LANG_NAMES.get(v, v) if f == 'lang' else v} | {n} | " + " | ".join(_p(row[mo]["recall@5"]) for mo in modes) + " |")
-    if sw:
-        w = sw["w_bm25"]
-        L += ["", "## Sweep: W_BM25 (gibrid)", "", "| W_BM25 | R@1 | R@5 | MRR@10 | nDCG@10 |", "|---|---|---|---|---|"]
-        for row in w["grid"]:
-            mark = " (joriy)" if row["w_bm25"] == w["current"] else ""
-            L.append(f"| {row['w_bm25']}{mark} | {_p(row['recall@1'])} | {_p(row['recall@5'])} | {row['mrr@10']:.3f} | {row['ndcg@10']:.3f} |")
-        L.append(f"\nEng yaxshi (recall@5, teng bo'lsa MRR@10 bo'yicha): W_BM25 = {w['best']['w_bm25']}. {w['note']}")
-        c = sw["no_answer_cos"]
-        L += ["", "## Sweep: NO_ANSWER_COS", "", "| chegara | to'g'ri rad | noto'g'ri rad | balanslangan aniqlik |", "|---|---|---|---|"]
-        for row in c["grid"]:
-            if round(row["threshold"] * 100) % 4 == 2 or abs(row["threshold"] - c["current"]) < 1e-9:
-                mark = " (joriy)" if abs(row["threshold"] - c["current"]) < 1e-9 else ""
-                L.append(f"| {row['threshold']:.2f}{mark} | {row['correct_reject']}/{row['n_none']} | {row['false_reject']}/{row['n_answerable']} | {_p(row['balanced_accuracy'])} |")
-        a = c["answerable_cos"]
-        L.append(f"\nJavobi bor savollarda eng yaqin cosine: min {a['min']}, 10-persentil {a['p10']}, mediana {a['median']}. "
-                 f"Bazada yo'q savollarda: {', '.join(str(x) for x in c['none_cos'])}. "
-                 + ("Ikki guruh to'liq ajraladi." if c["separable"] else "Ikki guruh to'liq ajralmaydi."))
-    L += ["", "## Xatolar (gibrid: gold modda top-5 da yo'q)", "", "| id | savol | gold | gibrid o'rni | dense o'rni | BM25 o'rni |", "|---|---|---|---|---|---|"]
-    for q in r["questions"]:
-        if not q["answerable"] or "hybrid" not in q["modes"]:
-            continue
-        rk = q["modes"]["hybrid"]["metrics"]["rank"]
-        if rk is None or rk > 5:
-            g = "; ".join(f"{x['doc']} {x['article']}-m." for x in q["gold"])
-            L.append(f"| {q['id']} | {q['question']} | {g} | {rk or '>10'} | {q['gold_rank_dense'] or '>40'} | {q['gold_rank_bm25'] or '>40'} |")
-    return "\n".join(L) + "\n"
+    """eval/results.md (lexrag/eval_report.py)."""
+    from .eval_report import markdown as md
+    return md(r, sw)
 
 
 def report_section() -> str:
-    """report.md uchun "6. Baholash" bo'limi (eval/results.json, sweep.json, baseline_w06.json, answers.json dan)."""
-    def load(p):
-        try:
-            return json.loads(p.read_text(encoding="utf-8"))
-        except (OSError, ValueError):
-            return None
-    r, sw = load(RESULTS), load(SWEEP)
-    base, ans = load(EVAL_DIR / "baseline_w06.json"), load(EVAL_DIR / "answers.json")
-    if not r:
-        return ""
-    m, S, p = r["meta"], r["summary"], r["meta"]["params"]
-    L = ["## 6. Baholash (qidiruv sifati)", "",
-         f"To'plam: `eval/questions.jsonl`, {m['n_questions']} savol — {m['n_answerable']} tasi gold modda bilan, {m['n_none']} tasi "
-         "bazada yo'q; " + ", ".join(f"{LANG_NAMES.get(k, k)} {v}" for k, v in m["counts"]["lang"].items()) + ". "
-         "Savollar modda matnini o'qib, oddiy odam tilida parafraza qilib yozilgan; gold modda bazada borligi har safar "
-         f"tekshiriladi. LLM'siz. Commit `{m['commit']}`, {m['created'][:16].replace('T', ' ')}. Metodika: `eval/README.md`.", "",
-         "| Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | vaqt |", "|---|---|---|---|---|---|---|---|"]
-    for mo in m["modes"]:
-        s = S[mo]
-        L.append(f"| {MODE_NAMES[mo]} | {_p(s['recall@1'])} | {_p(s['recall@3'])} | {_p(s['recall@5'])} | {_p(s['recall@10'])} "
-                 f"| {s['mrr@10']:.3f} | {s['ndcg@10']:.3f} | {s['avg_ms']:.0f} ms |")
-    rej = r["rejection"].get("hybrid")
-    if rej:
-        L += ["", f"\"Bazada yo'q\" savollarni rad etish (NO_ANSWER_COS = {p['NO_ANSWER_COS']}): {rej['correct_reject']}/{rej['n_none']} "
-                  f"to'g'ri rad, javobi bor savollardan {rej['false_reject']}/{rej['n_answerable']} xato rad, aniqlik {_p(rej['accuracy'])}."]
-    if base and sw:
-        b = base["summary"]["hybrid"]
-        L += ["", "Standartlar sweep bo'yicha o'zgardi:", "",
-              "| | oldin (W_BM25 0.6, NO_ANSWER_COS 0.45) | keyin |", "|---|---|---|",
-              f"| Gibrid recall@5 | {_p(b['recall@5'])} | {_p(S['hybrid']['recall@5'])} |",
-              f"| Gibrid recall@1 | {_p(b['recall@1'])} | {_p(S['hybrid']['recall@1'])} |",
-              f"| Gibrid MRR@10 | {b['mrr@10']:.3f} | {S['hybrid']['mrr@10']:.3f} |", ""]
-        L.append(f"W_BM25 = {p['W_BM25']}: BM25 parafrazali savollarda umumiy so'zlar bo'yicha shovqin beradi va RRF'da dense topgan "
-                 f"moddani pastga suradi (BM25 yolg'iz recall@5 {_p(S['bm25']['recall@5'])}). Sof dense (W_BM25 = 0) MRR'da biroz "
-                 f"yaxshiroq ({S['dense']['mrr@10']:.3f}), lekin recall@5 pastroq ({_p(S['dense']['recall@5'])}). NO_ANSWER_COS: javobi bor "
-                 f"savollarda eng yaqin cosine ≥ {sw['no_answer_cos']['answerable_cos']['min']}, \"yo'q\" savollarda "
-                 f"{', '.join(str(x) for x in sw['no_answer_cos']['none_cos'])} — 0.46–0.54 oralig'i bir xil natija beradi, 0.48 tanlandi.")
-    if ans:
-        a = ans["summary"]
-        L += ["", f"Javob sifati (ixtiyoriy, {a['answered']} savol, {ans['meta']['model']}, {ans['meta']['llm_requests']} ta LLM so'rovi): "
-                  f"faithfulness (ishonch tekshiruvi tasdiqlagan da'volar ulushi) {_p(a['faithfulness'])}, gold modda iqtibos qilingan "
-                  f"{a['gold_cited']}/{a['answered']}, [n] lar to'g'ri {a['cites_valid']}/{a['answered']}. Ruscha javobda tekshiruv "
-                  "ma'no o'xshashligini past baholaydi (manba o'zbekcha) — r01 javobi to'g'ri, lekin \"past\" chiqdi."]
-    L += ["", "Xulosa: asosiy ishni dense (bge-m3) qiladi; BM25 bu to'plamda yordamchi xolos. Eng ko'p xato: savol kundalik so'z "
-              "bilan, modda esa rasmiy atama bilan yozilgan holatlar (\"o'g'irlik\" o'rniga \"yashirincha olib qo'yish\", \"QQS\" "
-              "o'rniga \"налог на добавленную стоимость\"). Kirill savollarda recall pastroq. To'liq jadvallar: `eval/results.md`, "
-              "veb-ilovada `/baholash`.", ""]
-    return "\n".join(L)
+    """report.md "6. Baholash" bo'limi (lexrag/eval_report.py)."""
+    from .eval_report import report_section as rs
+    return rs()
 
 
 def cli(modes: str | None = None, k: int = 10, do_sweep: bool = True):

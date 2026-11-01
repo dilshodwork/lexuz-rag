@@ -49,6 +49,7 @@ def main(argv=None):
     ap.add_argument("cmd", choices=["list", "fetch", "parse", "chunk", "report", "verify",
                                     "all", "index", "search", "ask", "export-colab", "import-vectors", "eval", "bm25"])
     ap.add_argument("--out", default=None, help="bm25: indeks papkasi (standart data/index/bm25_new)")
+    ap.add_argument("--bm25-dir", default=None, help="eval: boshqa BM25 indeksi bilan (masalan data/index/bm25_new)")
     ap.add_argument("query", nargs="?")
     ap.add_argument("--limit", type=int, help="faqat N ta hujjat (ro'yxat bo'ylab teng taqsimlangan namuna)")
     ap.add_argument("--ids", nargs="*", help="aniq lex_id lar")
@@ -111,6 +112,9 @@ def main(argv=None):
         from .retrieval import build_bm25
         print(build_bm25(a.out or config.INDEX_DIR / "bm25_new"))
     if a.cmd == "eval":
+        if a.bm25_dir:
+            from .retrieval import use_bm25_dir
+            use_bm25_dir(a.bm25_dir)
         from .evaluate import cli as eval_cli
         eval_cli(a.modes, k=a.k or 10, do_sweep=not a.no_sweep)
 

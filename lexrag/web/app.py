@@ -40,7 +40,7 @@ from starlette.concurrency import iterate_in_threadpool, run_in_threadpool
 from .. import config, llm, rag, trust
 from . import quota
 from ..lang import MARKER
-from ..retrieval import MODEL, _bm25, prepare_query
+from ..retrieval import MODEL, _bm25, prepare_query, vocab
 from ..indexer import embed_query, get_collection
 
 log = logging.getLogger("lexrag.web")
@@ -57,6 +57,7 @@ def _warmup():
     try:
         embed_query(MODEL, "salom")      # bge-m3 ONNX modeli xotiraga
         _bm25()                          # BM25 indeksi
+        vocab()                          # so'z tiklash lug'ati (4-bosqich indeksida bor)
         STATE["count"] = get_collection(MODEL, create=False).count()
         STATE["ready"] = True
         log.info("Model va indeks yuklandi: %.1fs, %s chunk", time.time() - t0, STATE["count"])
@@ -445,9 +446,11 @@ def _read_json(p: Path):
 async def get_eval():
     """eval/results.json + sweep.json + baseline (standart o'zgarishidan oldingi natija) + savollar (gold bilan)."""
     from .. import evaluate
+    from ..eval_report import web_extras
     base = config.ROOT / "eval"
     return {"results": _read_json(evaluate.RESULTS), "sweep": _read_json(evaluate.SWEEP),
             "baseline": _read_json(base / "baseline_w06.json"), "answers": _read_json(base / "answers.json"),
+            **web_extras(),   # baseline_v2 (4-bosqichdan oldin, shu to'plamda), trust_cal (ruscha ishonch kalibrlash)
             "run": EVAL_RUN, "protected": bool(os.environ.get("EVAL_TOKEN"))}
 
 

@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getEval, getEvalStatus, runEval } from "../api";
 import { Icon } from "../icons";
-import type { EvalData, EvalMode, EvalQ, EvalResults } from "../types";
+import type { EvalBlock, EvalData, EvalMode, EvalQ, EvalResults, EvalSplit } from "../types";
 import { dec, GroupedBars, Heatmap, Legend, LineChart, pct, StripPlot, type Series } from "./charts";
 
 export const MODE_SERIES: Series[] = [
@@ -56,6 +56,7 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
   const [sliceMetric, setSliceMetric] = useState<"recall@5" | "mrr@10">("recall@5");
   const [onlyMiss, setOnlyMiss] = useState(false);
   const [lang, setLang] = useState<"all" | "uz" | "uz_cyr" | "ru">("all");
+  const [split, setSplit] = useState<EvalSplit | "all">("test");
   const [barTable, setBarTable] = useState(false);
   const poll = useRef<number | null>(null);
 
@@ -91,7 +92,10 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
   const res = data?.results;
   const sw = data?.sweep;
   const thr = (res?.meta.params.NO_ANSWER_COS as number) ?? 0.48;
-  const rows = useMemo(() => (res ? res.questions.filter((q) => (lang === "all" || q.lang === lang) && (!onlyMiss || isMiss(q, thr))) : []), [res, lang, onlyMiss, thr]);
+  const hasSplit = !!res?.by_split?.test;
+  const sp: EvalSplit | "all" = hasSplit ? split : "all";
+  const inSplit = (q: EvalQ) => sp === "all" || (q.split ?? "dev") === sp;
+  const rows = useMemo(() => (res ? res.questions.filter((q) => inSplit(q) && (lang === "all" || q.lang === lang) && (!onlyMiss || isMiss(q, thr))) : []), [res, lang, onlyMiss, thr, sp]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (err && !data) return <div className="ev"><div className="ev-empty">Baholash natijasini yuklab boʻlmadi. Server ishlayotganini tekshiring.</div></div>;
   if (!data) return <div className="ev"><div className="ev-head"><div className="sk" style={{ width: 240, height: 34 }} /></div><div className="ev-kpis">{[0, 1, 2, 3].map((i) => <div key={i} className="kpi sk-card"><div className="sk" /><div className="sk" style={{ width: "60%" }} /></div>)}</div></div>;
@@ -115,14 +119,20 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
     );
   }
 
-  const m = res.meta, S = res.summary;
+  const m = res.meta;
+  const all: EvalBlock = { n_questions: m.n_questions, n_answerable: m.n_answerable, n_none: m.n_none, counts: m.counts, summary: res.summary, rejection: res.rejection, slices: res.slices };
+  const B: EvalBlock = sp !== "all" ? res.by_split![sp]! : all;
+  const S = B.summary;
   const modes = m.modes;
   const series = MODE_SERIES.filter((s) => modes.includes(s.key as EvalMode));
-  const base = data.baseline?.summary?.hybrid;
-  const rej = res.rejection.hybrid;
+  const bv2 = data.baseline_v2;
+  // "oldin": 4-bosqichdan oldingi kod shu to'plamda (baseline_v2); u bo'lmasa - 3-bosqichdagi W_BM25 = 0,6 surati
+  const base = sp !== "all" && bv2 ? bv2.by_split[sp]?.summary?.hybrid : !hasSplit ? data.baseline?.summary?.hybrid : undefined;
+  const baseNote = sp !== "all" && bv2 ? "4-bosqichdan oldin" : "W_BM25 = 0,6";
+  const rej = B.rejection.hybrid;
   const KPI = [
-    { l: "Recall@5 · gibrid", v: pct(S.hybrid["recall@5"]), d: base ? S.hybrid["recall@5"] - base["recall@5"] : null, note: base ? `oldin ${pct(base["recall@5"])} (W_BM25 = 0,6)` : `${m.n_answerable} savol` },
-    { l: "MRR@10 · gibrid", v: dec(S.hybrid["mrr@10"]), d: base ? S.hybrid["mrr@10"] - base["mrr@10"] : null, dFmt: (x: number) => (x >= 0 ? "+" : "") + dec(x), note: `dense ${dec(S.dense?.["mrr@10"])}` },
+    { l: "Recall@5 · gibrid", v: pct(S.hybrid["recall@5"]), d: base ? S.hybrid["recall@5"] - base["recall@5"] : null, note: base ? `oldin ${pct(base["recall@5"])} (${baseNote})` : `${B.n_answerable} savol` },
+    { l: "MRR@10 · gibrid", v: dec(S.hybrid["mrr@10"]), d: base ? S.hybrid["mrr@10"] - base["mrr@10"] : null, dFmt: (x: number) => (x >= 0 ? "+" : "") + dec(x), note: base ? `oldin ${dec(base["mrr@10"])}` : `dense ${dec(S.dense?.["mrr@10"])}` },
     { l: "Rad etish aniqligi", v: rej ? pct(rej.accuracy, 0) : "—", note: rej ? `${rej.correct_reject}/${rej.n_none} “yoʻq” rad · ${rej.false_reject}/${rej.n_answerable} xato rad` : "" },
     { l: "Oʻrtacha qidiruv", v: ms(S.hybrid.avg_ms), note: `p95 ${ms(S.hybrid.p95_ms)} · CPU, LLM’siz` },
   ];
@@ -130,11 +140,22 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
     { label: "R@1", k: "recall@1" }, { label: "R@3", k: "recall@3" }, { label: "R@5", k: "recall@5" }, { label: "R@10", k: "recall@10" },
     { label: "MRR", k: "mrr@10", fmt: (v: number) => dec(v) }, { label: "nDCG", k: "ndcg@10", fmt: (v: number) => dec(v) },
   ].map((g) => ({ label: g.label, fmt: g.fmt, values: Object.fromEntries(modes.map((md) => [md, S[md][g.k]])) }));
-  const sl = res.slices[slice];
+  const sl = B.slices[slice];
   const sliceRows = Object.entries(sl).map(([k, v]) => ({ key: k, label: slice === "lang" ? LANG_L[k] || k : k, n: Object.values(v)[0].n }));
-  const wGrid = sw?.w_bm25.grid || [];
-  const cGrid = sw?.no_answer_cos.grid || [];
+  // sweep: tanlash har doim DEV'da; tanlangan qism jadvali ko'rsatiladi (test - faqat ma'lumot uchun)
+  const gKey = sp === "all" ? "all" : sp;
+  const wGrid = sw?.w_bm25.grid_by_split?.[gKey] || sw?.w_bm25.grid || [];
+  const cGrid = sw?.no_answer_cos.grid_by_split?.[gKey] || sw?.no_answer_cos.grid || [];
+  const selOn = (sw?.selected_on || "").toUpperCase();
   const ans = data.answers;
+  const tc = data.trust_cal;
+  const SPLIT_L: Record<string, string> = { test: "TEST", dev: "DEV", all: "Hammasi" };
+  const langCounts = (() => {
+    const c: Record<string, number> = {};
+    let none = 0;
+    for (const q of res.questions) { if (q.answerable) c[q.lang] = (c[q.lang] || 0) + 1; else none++; }
+    return `${Object.entries(c).map(([k, v]) => `${LANG_L[k] || k} ${v}`).join(", ")}, bazada yoʻq ${none}`;
+  })();
 
   return (
     <div className="ev">
@@ -142,10 +163,18 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
         <div>
           <p className="ev-eyebrow">RAG sifati · qidiruv, LLM’siz</p>
           <h1>Baholash</h1>
-          <p className="ev-meta num">{m.n_questions} savol ({m.n_answerable} tasi gold modda bilan, {m.n_none} tasi bazada yoʻq) · {dt(m.created)} · commit <code>{m.commit || "—"}</code>{m.dirty ? " +" : ""} · {m.elapsed_s ?? "—"} s</p>
+          <p className="ev-meta num"><b className="ev-size">{m.n_questions} savol</b> ({langCounts}){hasSplit && <> · DEV {res.by_split!.dev?.n_questions} / TEST {res.by_split!.test?.n_questions}</>} · {dt(m.created)} · commit <code>{m.commit || "—"}</code>{m.dirty ? " +" : ""} · {m.elapsed_s ?? "—"} s</p>
         </div>
         <div className="ev-actions">{runBox}<a className="ev-link press" href="#metodika"><Icon name="docq" />Metodika</a></div>
       </div>
+      {hasSplit && (
+        <div className="ev-split">
+          <Seg label="Qism" value={split} onChange={setSplit} opts={[{ v: "test", l: "Test" }, { v: "dev", l: "Dev" }, { v: "all", l: "Hammasi" }]} />
+          <p className="num">{sp === "test" ? <><b>TEST</b> — {B.n_questions} savol, sozlashda ishlatilmagan: yakuniy raqamlar shu yerda.</>
+            : sp === "dev" ? <><b>DEV</b> — {B.n_questions} savol: sweep, chegaralar va stemmer shu qismda tanlangan.</>
+              : <><b>Hammasi</b> — {B.n_questions} savol (DEV + TEST).</>}</p>
+        </div>
+      )}
       {run.running && <div className="ev-prog" role="progressbar" aria-valuemin={0} aria-valuemax={run.total} aria-valuenow={run.done}><i style={{ width: `${run.total ? (run.done / run.total) * 100 : 3}%` }} /><span>{run.current}</span></div>}
       {run.error && <p className="ev-err">Oxirgi qayta hisoblash xatosi: {run.error}</p>}
 
@@ -160,6 +189,8 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
       </div>
 
       <div className="ev-grid">
+        {bv2 && hasSplit && <BeforeAfter now={res} bv2={bv2} split={sp === "dev" ? "dev" : "test"} tc={tc} />}
+
         <Card title="Rejimlar taqqoslash" sub="Gold moddaning birinchi k natijada boʻlishi (recall@k), oʻrni (MRR) va tartib sifati (nDCG)"
           actions={<button className={`ev-tg press${barTable ? " on" : ""}`} onClick={() => setBarTable((t) => !t)} aria-pressed={barTable}><Icon name="table" />Jadval</button>}>
           <Legend series={series} />
@@ -184,17 +215,17 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
         </Card>
 
         {sw && (
-          <Card title="Sweep: BM25 ogʻirligi" sub={`Gibrid: W_BM25 oʻzgarganda sifat (joriy ${dec(sw.w_bm25.current, 2)}, eng yaxshisi ${dec(sw.w_bm25.best.w_bm25, 2)})`}>
+          <Card title="Sweep: BM25 ogʻirligi" sub={`Gibrid, ${SPLIT_L[gKey]}: W_BM25 oʻzgarganda sifat (joriy ${dec(sw.w_bm25.current, 2)}, eng yaxshisi ${dec(sw.w_bm25.best.w_bm25, 2)}${selOn ? ` — ${selOn} boʻyicha tanlangan` : ""})`}>
             <Legend series={[{ key: "m1", label: "Recall@5" }, { key: "m2", label: "MRR@10", dashed: true }]} />
             <LineChart ariaLabel="W_BM25 sweep" x={wGrid.map((_, i) => i)} xFmt={(i) => dec(wGrid[i]?.w_bm25, 2)}
               series={[{ key: "m1", label: "Recall@5" }, { key: "m2", label: "MRR@10", dashed: true }]}
               values={{ m1: wGrid.map((r) => r["recall@5"]), m2: wGrid.map((r) => r["mrr@10"]) }}
               yFmt={(v) => dec(v, 2)} vline={{ x: wGrid.findIndex((r) => r.w_bm25 === sw.w_bm25.current), label: "joriy" }} />
-            <p className="ev-foot">Oldin W_BM25 = 0,6 edi: BM25 umumiy soʻzlar boʻyicha shovqin berib, dense topgan moddani pastga surardi.</p>
+            <p className="ev-foot">3-bosqichda W_BM25 = 0,6 → 0,05. 4-bosqichda (oʻzbek stemmeri bilan) DEV sweep yana 0,05 ni tanladi; endi katta ogʻirlik kamroq zarar qiladi.</p>
           </Card>
         )}
         {sw && (
-          <Card title="Sweep: “topilmadi” chegarasi" sub={`NO_ANSWER_COS: rad etilgan “yoʻq” savollar va xato rad etilgan savollar ulushi (joriy ${dec(sw.no_answer_cos.current, 2)})`}>
+          <Card title="Sweep: “topilmadi” chegarasi" sub={`NO_ANSWER_COS, ${SPLIT_L[gKey]}: rad etilgan “yoʻq” savollar va xato rad etilgan savollar ulushi (joriy ${dec(sw.no_answer_cos.current, 2)}; DEV’da xato rad ≤ 1% sharti bilan tanlanadi)`}>
             <Legend series={[{ key: "m1", label: "Toʻgʻri rad (yoʻq savollar)" }, { key: "m2", label: "Xato rad (javobi bor)", dashed: true }]} />
             <LineChart ariaLabel="NO_ANSWER_COS sweep" x={cGrid.map((r) => r.threshold)} xFmt={(v) => dec(v, 2)} labels={false}
               series={[{ key: "m1", label: "Toʻgʻri rad" }, { key: "m2", label: "Xato rad", dashed: true }]}
@@ -202,8 +233,8 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
               vline={{ x: sw.no_answer_cos.current, label: "joriy" }} height={190} />
             <h4 className="ev-h4">Har savolning eng yaqin cosine’i</h4>
             <StripPlot thr={sw.no_answer_cos.current}
-              pos={res.questions.filter((q) => q.answerable && q.modes.hybrid?.best_cos != null).map((q) => ({ id: q.id, v: q.modes.hybrid.best_cos!, q: q.question }))}
-              neg={res.questions.filter((q) => !q.answerable && q.modes.hybrid?.best_cos != null).map((q) => ({ id: q.id, v: q.modes.hybrid.best_cos!, q: q.question }))} />
+              pos={res.questions.filter((q) => inSplit(q) && q.answerable && q.modes.hybrid?.best_cos != null).map((q) => ({ id: q.id, v: q.modes.hybrid.best_cos!, q: q.question }))}
+              neg={res.questions.filter((q) => inSplit(q) && !q.answerable && q.modes.hybrid?.best_cos != null).map((q) => ({ id: q.id, v: q.modes.hybrid.best_cos!, q: q.question }))} />
             <div className="ch-legend"><span><i className="sp-k pos" />javobi bazada bor</span><span><i className="sp-k neg" />bazada yoʻq</span></div>
           </Card>
         )}
@@ -220,7 +251,9 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
                 ))}
               </ul>
             </div>
-            <p className="ev-foot">Ishonch tekshiruvi ruscha javobda maʼno oʻxshashligini pastroq baholaydi (manba oʻzbekcha): r01 javobi toʻgʻri, lekin bitta gap “asossiz” chiqqan.</p>
+            <p className="ev-foot">{tc
+              ? `Bu 5 ta javob 3-bosqichdagi ishonch tekshiruvi bilan baholangan. 4-bosqichda ruscha javob → oʻzbekcha manba uchun alohida chegaralar kalibrlandi (yuqoridagi “Oldin / keyin” blokida): 7 ta haqiqiy ruscha javobda “Past” ${tc.levels.ru_real.before.low} → ${tc.levels.ru_real.after.low}.`
+              : "Ishonch tekshiruvi ruscha javobda maʼno oʻxshashligini pastroq baholaydi (manba oʻzbekcha): r01 javobi toʻgʻri, lekin bitta gap “asossiz” chiqqan."}</p>
           </Card>
         )}
 
@@ -236,7 +269,7 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
                 {rows.map((q) => (
                   <tr key={q.id} className={isMiss(q, thr) ? "miss" : ""} tabIndex={0} onClick={() => onDrill(q, res)} onKeyDown={(e) => { if (e.key === "Enter") onDrill(q, res); }}>
                     <td className="num id">{q.id}</td>
-                    <td className="q"><span>{q.question}</span><small>{LANG_L[q.lang]} · {q.category} · {q.difficulty}</small></td>
+                    <td className="q"><span>{q.question}</span><small>{LANG_L[q.lang]} · {q.category} · {q.difficulty}{sp === "all" && q.split ? ` · ${q.split.toUpperCase()}` : ""}</small></td>
                     <td className="hide-m g">{q.gold.length ? q.gold.map((g) => `${g.doc.replace(/ \(.*\)/, "")} ${g.article}`).join("; ") : <em>bazada yoʻq</em>}</td>
                     <td className="hide-m">{q.category}</td>
                     {series.map((s) => {
@@ -260,7 +293,7 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
           <div className="ev-method">
             <div>
               <h4>Toʻplam</h4>
-              <p>{m.n_questions} ta savol: {Object.entries(m.counts.lang).map(([k, v]) => `${LANG_L[k] || k} ${v}`).join(", ")}; {m.n_none} tasi ataylab bazada yoʻq. Avval modda tanlanib, matni oʻqildi, keyin savol oddiy odam tilida <b>parafraza</b> qilindi (modda matnidan koʻchirilmagan — aks holda BM25 sunʼiy yutadi). Gold — hujjat ID + modda raqami, har ishga tushishda bazada borligi tekshiriladi. Moddani tanlashda qidiruv tizimi ishlatilmagan.</p>
+              <p>{m.n_questions} ta savol: {langCounts}; {Object.keys(m.counts.category || {}).length} kategoriya. Avval modda tanlanib, matni oʻqildi, keyin savol oddiy odam tilida <b>parafraza</b> qilindi (modda matnidan koʻchirilmagan — aks holda BM25 sunʼiy yutadi); kirillning bir qismi rus klaviaturasida, lotinning bir qismi apostrofsiz. Gold — hujjat ID + modda raqami, har ishga tushishda bazada borligi tekshiriladi. Moddani tanlashda qidiruv tizimi ishlatilmagan.{hasSplit && <> <b>DEV / TEST</b>: tasodifiy, kategoriya va til boʻyicha muvozanatli; barcha sozlash faqat DEV’da, yakuniy raqamlar — TEST.</>}</p>
             </div>
             <div>
               <h4>Metrikalar</h4>
@@ -268,16 +301,94 @@ export function EvalPage({ onDrill, onHud }: { onDrill: (q: EvalQ, r: EvalResult
             </div>
             <div>
               <h4>Rejimlar</h4>
-              <p><b>Dense</b> — bge-m3 + ChromaDB. <b>BM25</b> — soʻz mosligi (7 harfli oʻzak). <b>Gibrid</b> — RRF: W<sub>dense</sub>/(60+oʻrin) + W<sub>BM25</sub>/(60+oʻrin), W<sub>BM25</sub> = {dec(m.params.W_BM25, 2)}. <b>Gibrid + boʻlish</b> — murakkab savol 2–3 qismga boʻlinib, natijalar birlashtiriladi. Ilovadagi funksiyalarning oʻzi chaqiriladi.</p>
+              <p><b>Dense</b> — bge-m3 + ChromaDB. <b>BM25</b> — soʻz mosligi ({(m.params.tokenizer as { kind?: string } | undefined)?.kind === "stem" ? "oʻzbek stemmeri + stopwordlar; ruscha savol BM25’ga yuborilmaydi" : "7 harfli oʻzak"}). <b>Gibrid</b> — RRF: W<sub>dense</sub>/(60+oʻrin) + W<sub>BM25</sub>/(60+oʻrin), W<sub>BM25</sub> = {dec(m.params.W_BM25, 2)}. <b>Gibrid + boʻlish</b> — murakkab savol 2–3 qismga boʻlinib, natijalar birlashtiriladi. Ilovadagi funksiyalarning oʻzi chaqiriladi.</p>
             </div>
             <div>
               <h4>Cheklovlar</h4>
-              <p>Savollarni bir kishi yozgan; 1 savol ≈ 2,2 foiz punkt, shuning uchun 2–3 punktlik farq shovqin ichida. “Yoʻq” savollar 4 ta. Vaqt — Intel i7 CPU, model xotirada. Batafsil: <code>eval/README.md</code>.</p>
+              <p>{hasSplit
+                ? <>Yangi savollarni bitta model oilasi (Claude) yozgan — uslub bir xil boʻlishi mumkin. TEST’da {res.by_split!.test?.n_answerable} javobli savol: 1 savol ≈ {dec(100 / (res.by_split!.test?.n_answerable || 1), 2)} foiz punkt, ~3 punktdan kichik farq shovqin ichida. “Yoʻq” savollar {m.n_none} ta; chet el qonunlari haqidagi savollarni cosine bilan ajratib boʻlmaydi.</>
+                : <>Savollarni bir kishi yozgan; 1 savol ≈ 2,2 foiz punkt, shuning uchun 2–3 punktlik farq shovqin ichida. “Yoʻq” savollar {m.n_none} ta.</>} Vaqt — Intel i7 CPU, model xotirada. Batafsil: <code>eval/README.md</code>.</p>
             </div>
           </div>
         </Card>
       </div>
     </div>
+  );
+}
+
+type BARow = { g?: string; l: string; get: (b: EvalBlock) => number | undefined; mrr?: boolean };
+const lgR5 = (lang: string, mode: EvalMode) => (b: EvalBlock) => b.slices.lang?.[lang]?.[mode]?.["recall@5"];
+const BA_ROWS: BARow[] = [
+  { g: "Gibrid (asosiy rejim)", l: "Recall@5", get: (b) => b.summary.hybrid?.["recall@5"] },
+  { l: "Recall@1", get: (b) => b.summary.hybrid?.["recall@1"] },
+  { l: "MRR@10", get: (b) => b.summary.hybrid?.["mrr@10"], mrr: true },
+  { g: "BM25 yolgʻiz (stemmer)", l: "Recall@5", get: (b) => b.summary.bm25?.["recall@5"] },
+  { l: "MRR@10", get: (b) => b.summary.bm25?.["mrr@10"], mrr: true },
+  { g: "Kirill savollar", l: "Gibrid R@5", get: lgR5("uz_cyr", "hybrid") },
+  { l: "BM25 R@5", get: lgR5("uz_cyr", "bm25") },
+  { g: "Lotin savollar", l: "Gibrid R@5", get: lgR5("uz", "hybrid") },
+  { g: "Rus savollar", l: "Gibrid R@5", get: lgR5("ru", "hybrid") },
+];
+const fmtV = (v: number | undefined, mrr?: boolean) => (v == null ? "—" : mrr ? dec(v) : pct(v));
+const fmtD = (d: number, mrr?: boolean) => (Math.abs(d) < 1e-9 ? "0" : (d > 0 ? "+" : "−") + (mrr ? dec(Math.abs(d)) : `${(Math.abs(d) * 100).toFixed(1).replace(".", ",")} p.p.`));
+
+function LvBar({ c, label }: { c: { high: number; medium: number; low: number }; label: string }) {
+  const n = c.high + c.medium + c.low || 1;
+  return (
+    <div className="ba-lv" role="img" aria-label={`${label}: Yuqori ${c.high}, Oʻrta ${c.medium}, Past ${c.low}`}>
+      <span className="ba-lv-l">{label}</span>
+      <span className="ba-lv-bar">{(["high", "medium", "low"] as const).map((k) => c[k] > 0 && <i key={k} className={`lv-${k}`} style={{ flexGrow: c[k] / n }} title={`${k === "high" ? "Yuqori" : k === "medium" ? "Oʻrta" : "Past"}: ${c[k]}`} />)}</span>
+      <span className="ba-lv-t num">Yuqori {c.high} · Oʻrta {c.medium} · Past {c.low}</span>
+    </div>
+  );
+}
+
+/** "Oldin / keyin": 4-bosqichdan oldingi kod (baseline_v2) va hozirgi kod - bir xil savollarda. Asosiy qism (TEST yoki
+ *  tanlangan DEV) katta, ikkinchisi kichik yozuvda. Shkala 0-100% (MRR 0-1) - farqlar kichik bo'lsa nuqtalar yaqin. */
+function BeforeAfter({ now, bv2, split, tc }: { now: EvalResults; bv2: NonNullable<EvalData["baseline_v2"]>; split: EvalSplit; tc?: EvalData["trust_cal"] }) {
+  const other: EvalSplit = split === "test" ? "dev" : "test";
+  const A = now.by_split?.[split], Bf = bv2.by_split[split], Ao = now.by_split?.[other], Bo = bv2.by_split[other];
+  if (!A || !Bf) return null;
+  const ra = A.rejection.hybrid, rb = Bf.rejection.hybrid;
+  return (
+    <Card title="Oldin / keyin" wide id="oldin-keyin"
+      sub={`4-bosqich: kirill, BM25 (oʻzbek stemmeri) va ruscha ishonch belgisi. Oldin — 3-bosqich kodi aynan shu ${now.meta.n_questions} savolda; asosiy raqamlar ${split.toUpperCase()} (${A.n_answerable} javobli savol), ${other.toUpperCase()} — kichik yozuvda.`}>
+      <div className="ch-legend"><span><i className="ba-k before" />oldin</span><span><i className="ba-k after" />keyin</span></div>
+      <div className="ba" role="table" aria-label="Oldin va keyin">
+        {BA_ROWS.map((r, i) => {
+          const b = r.get(Bf), a = r.get(A), bo = Bo && r.get(Bo), ao = Ao && r.get(Ao);
+          if (a == null || b == null) return null;
+          const d = a - b;
+          const lo = Math.min(a, b), hi = Math.max(a, b);
+          return (
+            <div className={`ba-row${r.g ? " first" : ""}`} role="row" key={i} title={`${r.g || ""} ${r.l}: ${fmtV(b, r.mrr)} → ${fmtV(a, r.mrr)}`}>
+              <div className="ba-l" role="rowheader">{r.g && <b>{r.g}</b>}<span>{r.l}</span></div>
+              <div className="ba-track" aria-hidden="true">
+                <span className="ba-seg" style={{ left: `${lo * 100}%`, width: `${(hi - lo) * 100}%` }} />
+                <span className="ba-dot before" style={{ left: `${b * 100}%` }} />
+                <span className="ba-dot after" style={{ left: `${a * 100}%` }} />
+              </div>
+              <div className="ba-v num" role="cell">
+                <span>{fmtV(b, r.mrr)} → <b>{fmtV(a, r.mrr)}</b></span>
+                <em className={Math.abs(d) < 1e-9 ? "eq" : d > 0 ? "up" : "down"}>{fmtD(d, r.mrr)}</em>
+                {bo != null && ao != null && <small>{other.toUpperCase()}: {fmtV(bo, r.mrr)} → {fmtV(ao, r.mrr)}</small>}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="ba-foot">
+        {ra && rb && <p className="num"><b>“Bazada yoʻq” savollar:</b> toʻgʻri rad {rb.correct_reject}/{rb.n_none} → {ra.correct_reject}/{ra.n_none}, xato rad {rb.false_reject}/{rb.n_answerable} → {ra.false_reject}/{ra.n_answerable} (NO_ANSWER_COS {dec(now.meta.params.NO_ANSWER_COS, 2)} — DEV’da qayta tekshirildi, oʻzgarmadi).</p>}
+        {tc && (
+          <div className="ba-trust">
+            <h4 className="ev-h4">Ishonch belgisi: ruscha javob → oʻzbekcha manba (7 ta haqiqiy LLM javobi, qoʻlda tekshirilgan — hammasi toʻgʻri)</h4>
+            <LvBar c={tc.levels.ru_real.before} label="Oldin" />
+            <LvBar c={tc.levels.ru_real.after} label="Keyin" />
+            <p className="ev-foot num">Toʻgʻri ruscha daʼvolar tasdiqlandi {tc.ru_true.before[0]}/{tc.ru_true.before[1]} → <b>{tc.ru_true.after[0]}/{tc.ru_true.after[1]}</b>; ataylab yozilgan yolgʻon daʼvolar oʻtib ketdi {tc.ru_false.before[0]}/{tc.ru_false.before[1]} → {tc.ru_false.after[0]}/{tc.ru_false.after[1]} (oʻzbekcha tekshiruv ularning oʻzbekcha variantidan {tc.uz_false[0]}/{tc.uz_false[1]} oʻtkazadi — endi teng qatʼiylik). Chegara {dec(tc.params.old.ok, 2)} → {dec(tc.params.new.ok, 2)}, sonli daʼvo {dec(tc.params.new.num, 2)}. Oʻzbekcha javoblar: oʻzgarmadi.</p>
+          </div>
+        )}
+      </div>
+    </Card>
   );
 }
 

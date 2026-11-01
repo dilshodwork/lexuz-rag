@@ -93,6 +93,7 @@ export type EvalReject = { threshold: number; n_none: number; correct_reject: nu
 export type EvalTop = { rank: number; chunk_id: string; doc: string; art: string; title: string; gold: boolean; cos: number | null; rank_dense: number | null; rank_bm25: number | null };
 export type EvalQ = {
   id: string; question: string; category: string; difficulty: string; lang: AnswerLang; script: string; answerable: boolean;
+  split?: EvalSplit; lang_detected?: AnswerLang;
   gold: { doc_id: string; article: string; doc: string }[]; parts: string[];
   gold_rank_dense: number | null; gold_rank_bm25: number | null;
   modes: Record<EvalMode, { ms: number; best_cos: number | null; top: EvalTop[]; metrics?: Record<string, number> & { rank: number | null } }>;
@@ -105,12 +106,29 @@ export type EvalResults = {
   summary: Record<EvalMode, EvalSummary>;
   rejection: Record<EvalMode, EvalReject | null>;
   slices: Record<"category" | "lang" | "difficulty", EvalSlice>;
+  by_split?: Partial<Record<EvalSplit, EvalBlock>>;
   questions: EvalQ[];
 };
+export type EvalSplit = "dev" | "test";
+/** Bitta qism (dev / test) yoki butun to'plam bo'yicha jamlanma */
+export type EvalBlock = {
+  n_questions: number; n_answerable: number; n_none: number; counts?: Record<string, Record<string, number>>;
+  summary: Record<EvalMode, EvalSummary>; rejection: Record<EvalMode, EvalReject | null>;
+  slices: Record<"category" | "lang" | "difficulty", EvalSlice>;
+};
+type WRow = { w_bm25: number } & Record<string, number>;
 export type EvalSweep = {
-  w_bm25: { current: number; grid: ({ w_bm25: number } & Record<string, number>)[]; best: { w_bm25: number } & Record<string, number>; note: string };
-  no_answer_cos: { current: number; grid: EvalReject[]; best: EvalReject; answerable_cos: { min: number; p10: number; median: number }; none_cos: number[]; separable: boolean };
+  selected_on?: string;
+  w_bm25: { current: number; grid: WRow[]; grid_by_split?: Record<string, WRow[]>; best: WRow; note: string };
+  no_answer_cos: { current: number; grid: EvalReject[]; grid_by_split?: Record<string, EvalReject[]>; best: EvalReject; answerable_cos: { min: number; p10: number; median: number }; none_cos: number[]; separable: boolean };
   meta?: { created: string; commit: string | null };
+};
+export type EvalBaselineV2 = { meta: { created: string; commit: string | null; n_questions: number }; by_split: Record<EvalSplit, EvalBlock>; ranks: Record<string, number | null> };
+type Lv = { high: number; medium: number; low: number };
+export type EvalTrustCal = {
+  params: { old: { ok: number }; new: { ok: number; num: number; ctx: boolean } };
+  ru_true: { before: [number, number]; after: [number, number] }; ru_false: { before: [number, number]; after: [number, number] };
+  uz_false: [number, number]; levels: Record<"ru_real" | "uz_real", { before: Lv; after: Lv }>;
 };
 export type EvalAnswers = {
   meta: { created: string; commit: string; provider: string; model: string; llm_requests: number; stopped: string | null };
@@ -118,7 +136,8 @@ export type EvalAnswers = {
   items: { id: string; question: string; status: string; note?: string; trust?: { level: string; checked: number; supported: number }; faithfulness?: number | null; cited?: number[]; cites_valid?: boolean; gold_cited?: boolean; total_s?: number }[];
 };
 export type EvalRun = { running: boolean; done: number; total: number; current: string; error: string | null; started: number | null; finished: number | null };
-export type EvalData = { results: EvalResults | null; sweep: EvalSweep | null; baseline: Pick<EvalResults, "meta" | "summary" | "rejection"> | null; answers: EvalAnswers | null; run: EvalRun; protected: boolean };
+export type EvalData = { results: EvalResults | null; sweep: EvalSweep | null; baseline: Pick<EvalResults, "meta" | "summary" | "rejection"> | null; answers: EvalAnswers | null;
+  baseline_v2?: EvalBaselineV2 | null; trust_cal?: EvalTrustCal | null; run: EvalRun; protected: boolean };
 
 export type Conv = { id: string; title: string; created: number; updated: number; turns: Turn[] };
 

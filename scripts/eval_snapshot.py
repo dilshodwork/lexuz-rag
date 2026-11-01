@@ -31,8 +31,16 @@ def show(r: dict) -> None:
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("out")
+    ap.add_argument("--bm25-dir", default=None, help="BM25 indeksi (masalan data/index/bm25_new)")
+    a = ap.parse_args()
     logging.disable(logging.WARNING)
-    out = Path(sys.argv[1])
+    if a.bm25_dir:
+        from lexrag import retrieval
+        retrieval.use_bm25_dir(ROOT / a.bm25_dir)
+    out = Path(a.out)
     res = E.run(write=False)
     r = res["results"]
     r["sweep"] = res["sweep"]

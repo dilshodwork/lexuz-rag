@@ -809,6 +809,48 @@ body.v-eval .scroll { padding-bottom: calc(40px + var(--sab)); }
 .ev-method { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
 .ev-method h4 { margin: 0 0 4px; font-size: 14px; font-weight: 650; }
 .ev-method p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--ink-2); }
+/* Dev / Test almashtirgich va "Oldin / keyin" bloki (4-bosqich) */
+.ev-size { color: var(--ink); font-weight: 650; }
+.ev-split { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; animation: fadeUp .5s var(--ease-out) both; }
+.ev-split .ev-seg { width: 270px; max-width: 100%; }
+.ev-split p { margin: 0; font-size: 13px; color: var(--ink-2); line-height: 1.4; flex: 1 1 260px; }
+.ba { display: flex; flex-direction: column; margin-top: 4px; }
+.ba-row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 176px; gap: 6px 14px; align-items: center; padding: 7px 0; }
+.ba-row.first { border-top: .5px solid var(--line); margin-top: 4px; padding-top: 10px; }
+.ba-row:first-child { border-top: 0; margin-top: 0; }
+.ba-l { display: flex; flex-direction: column; font-size: 13px; color: var(--ink-2); line-height: 1.25; min-width: 0; }
+.ba-l b { font-size: 12px; font-weight: 650; color: var(--ink); margin-bottom: 1px; }
+.ba-track { position: relative; height: 22px; border-radius: 4px;
+  background: linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 25% 100%, linear-gradient(var(--fill), var(--fill)) 0 50% / 100% 2px no-repeat; }
+.ba-seg { position: absolute; top: 50%; height: 4px; margin-top: -2px; border-radius: 2px; background: color-mix(in srgb, var(--ink-2) 35%, transparent); }
+.ba-dot { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; }
+.ba-dot.before { background: var(--card); box-shadow: inset 0 0 0 2px var(--muted), 0 0 0 2px var(--card); }
+.ba-dot.after { background: var(--accent); box-shadow: 0 0 0 2px var(--card); }
+.ba-k { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.ba-k.before { box-shadow: inset 0 0 0 2px var(--muted); } .ba-k.after { background: var(--accent); }
+.ba-v { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; font-size: 13px; color: var(--ink-2); }
+.ba-v b { color: var(--ink); font-weight: 650; }
+.ba-v em { font-style: normal; font-size: 12px; font-weight: 650; padding: 1px 7px; border-radius: 999px; }
+.ba-v em.up { color: var(--ok); background: var(--ok-bg); } .ba-v em.down { color: var(--lost); background: var(--lost-bg); }
+.ba-v em.eq { color: var(--muted); background: var(--fill); }
+.ba-v small { flex-basis: 100%; font-size: 11.5px; color: var(--muted); }
+.ba-foot { margin-top: 10px; padding-top: 10px; border-top: .5px solid var(--line); }
+.ba-foot > p { margin: 0; font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+.ba-trust .ev-h4 { margin-top: 12px; }
+.ba-lv { display: grid; grid-template-columns: 52px minmax(0, 1fr) 190px; gap: 10px; align-items: center; padding: 4px 0; font-size: 13px; }
+.ba-lv-l { color: var(--muted); font-weight: 600; font-size: 12.5px; }
+.ba-lv-bar { display: flex; gap: 2px; height: 12px; }
+.ba-lv-bar i { display: block; min-width: 6px; border-radius: 4px; }
+.ba-lv-bar i.lv-high { background: var(--ok); } .ba-lv-bar i.lv-medium { background: var(--off); } .ba-lv-bar i.lv-low { background: var(--lost); }
+.ba-lv-t { color: var(--ink-2); font-size: 12.5px; }
+@media (max-width: 699px) {
+  .ba-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .ba-track { grid-column: 1 / -1; grid-row: 2; }
+  .ba-v { justify-content: flex-end; text-align: right; }
+  .ba-v small { text-align: right; }
+  .ba-lv { grid-template-columns: 46px minmax(0, 1fr); }
+  .ba-lv-t { grid-column: 2; }
+}
 .ev-ans { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .ev-ans-l { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
 .ev-ans-l li { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 13px; padding: 5px 2px; border-bottom: .5px solid var(--line); }
