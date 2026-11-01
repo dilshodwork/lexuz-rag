@@ -256,8 +256,8 @@ so'zlar mosligi). Ma'lumot qo'shimcha LLM so'rovisiz yig'iladi:
 * Sozlamalar / filtrlar oynasida "X-ray rejimi" — yoqilsa har savolda yig'iladi va panel o'zi ochiladi. O'chiq bo'lsa ham
   tugma ishlaydi: qidiruv LLM'siz qayta bajariladi (bu ekranda aytiladi).
 
-**Baholash.** `eval/questions.jsonl` — 50 savol (46 tasi gold modda bilan, 4 tasi bazada yo'q; 34 lotin, 9 kirill,
-7 rus), metodika `eval/README.md` da.
+**Baholash.** `eval/questions.jsonl` — 170 savol (161 tasi gold modda bilan, 9 tasi bazada yo'q; javoblilar: 111 lotin,
+30 kirill, 20 rus), DEV 85 / TEST 85 (4-bosqich), metodika `eval/README.md` da.
 
 ```bash
 .venv/bin/python -m lexrag eval                             # dense, bm25, hybrid, hybrid_plan + sweep (~40 s, LLM'siz)
@@ -287,6 +287,39 @@ cd web && npx vite build --outDir /tmp/dalil-s3-dist --emptyOutDir && cd ..
 
 Skrinshotlar: `design/shots/app/s3-*.png`.
 
+### 4-bosqich: zaif joylarni tuzatish
+
+Har tuzatish oldin/keyin o'lchandi; sozlash faqat DEV'da, yakuniy raqamlar TEST'da (`eval/results.md`, `report.md` 6-bo'lim).
+
+* **To'plam** 50 → 170 savol, DEV/TEST bo'linishi (`scripts/build_eval_set.py`). "Oldin" — 3-bosqich kodi shu to'plamda
+  (`eval/baseline_v2.json`).
+* **BM25: o'zbek stemmeri** (`lexrag/stem.py`) — kelishik, egalik, ko'plik, yuklama, fe'l qo'shimchalari, apostrof
+  normalizatsiyasi, istisnolar va so'rov stopwordlari (avval 7 harfgacha kesish edi). Tokenizator sozlamasi indeksda
+  saqlanadi (`ids.json`), so'rov ham shu bilan tokenlanadi — eski indeks bilan ham to'g'ri ishlaydi.
+* **Kirill / apostrofsiz savol**: korpus lug'ati bo'yicha so'z tiklash (`translit.repair_latin`: rus klaviaturasidagi
+  у/к/х/г → ў/қ/ҳ/ғ, `boladimi` → `boʻladimi`), faqat BM25 so'roviga. Lug'at indeks bilan birga (`vocab.json`).
+* **Ruscha savol** BM25'ga yuborilmaydi (`RU_BM25 = "off"`).
+* **Ishonch (ruscha javob)**: alohida chegaralar, ruscha son so'zlari, ro'yxat bandi konteksti (`scripts/calibrate_trust.py`).
+* `/baholash`: Test / Dev / Hammasi almashtirgich va "Oldin / keyin" bloki. Skrinshotlar: `design/shots/app/s4-*.png`.
+
+BM25 indeksini qayta qurish (ishlab turgan serverga tegmaydi, keyin almashtiriladi):
+
+```bash
+.venv/bin/python -m lexrag bm25                     # -> data/index/bm25_new (+ vocab.json), ~1 daqiqa
+.venv/bin/python -m lexrag eval --bm25-dir data/index/bm25_new
+mv data/index/bm25 data/index/bm25_old && mv data/index/bm25_new data/index/bm25
+# server qayta ishga tushirilgach yangi indeks yuklanadi; qaytarish: bm25_old ni bm25 ga qaytarib nomlang
+```
+
+Sinov:
+
+```bash
+.venv/bin/python scripts/test_stage4.py --index      # stemmer, translit, so'z tiklash, ruscha sonlar va ishonch
+.venv/bin/python scripts/tune_stage4.py              # DEV variantlari -> eval/tuning_stage4.json (~5 daqiqa)
+.venv/bin/python scripts/calibrate_trust.py          # ruscha ishonch chegaralari -> eval/trust_calibration.json
+.venv/bin/python scripts/report_section6.py          # report.md ning faqat "6. Baholash" bo'limi
+```
+
 Telegram Mini App: BotFather'da botga Web App URL sifatida ilovaning HTTPS manzilini bering (masalan,
 `cloudflared tunnel --url http://127.0.0.1:8000` bergan manzil). Ilova `telegram-web-app.js` orqali
 Telegram temasi, safe-area, viewport balandligi va "orqaga" tugmasini o'zi hisobga oladi.
@@ -306,6 +339,8 @@ lexrag/
   indexer.py    fastembed + ChromaDB
   search.py     savol -> top-k chunk manbasi bilan
   retrieval.py  gibrid qidiruv: bge-m3 (dense) + BM25, Reciprocal Rank Fusion
+  stem.py       o'zbek lotin suffix stripper va stopwordlar (BM25 tokenizatori)
+  eval_report.py  eval/results.md va report.md "6. Baholash" (DEV/TEST, oldin/keyin)
   translit.py   kirill <-> lotin (savol lotinga, kirill savolga javob kirillga)
   lang.py       til aniqlash, <<<KEYINGI>>> keyingi savollar parseri, ruscha BM25 lug'ati
   plan.py       murakkab savolni 2-3 qidiruvga bo'lish (evristika; LLM_PLAN=1 bilan LLM)

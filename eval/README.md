@@ -11,20 +11,31 @@ LLM chaqirilmaydi: faqat qidiruv o'lchanadi (bitta to'liq ishga tushirish ~40 s,
 
 ## To'plam qanday tuzilgan
 
-`questions.jsonl` — 50 ta savol: 46 tasining javobi bazada bor, 4 tasi ataylab bazada yo'q
-(palov retsepti, Germaniyadagi ishsizlik nafaqasi, futbol chempionati, Wi-Fi router).
+`questions.jsonl` — **170 ta savol** (4-bosqichda 50 → 170): 161 tasining javobi bazada bor, 9 tasi ataylab bazada
+yo'q — umumiy savollar (palov, futbol, Wi-Fi, smartfon), chet el qonunlari (Germaniya nafaqasi, Rossiya ta'tili, AQSh
+guvohnomasi, Qozog'iston pensiyasi) va qonunda belgilanmaydigan narx (metro yo'l haqi).
 
-| Yozuv / til | savol | shundan "bazada yo'q" |
-|---|---|---|
-| o'zbek lotin | 34 | 2 |
-| o'zbek kirill | 9 | 1 |
-| rus | 7 | 1 |
+| Yozuv / til | javobli | "bazada yo'q" | DEV / TEST |
+|---|---|---|---|
+| o'zbek lotin | 111 | 5 | 58 / 58 |
+| o'zbek kirill | 30 | 2 | 16 / 16 |
+| rus | 20 | 2 | 11 / 11 |
 
-Kategoriyalar: mehnat 12, oila 6, fuqarolik 6, konstitutsiya 5, jinoyat (jinoyat-protsessual bilan) 5, saylov 3,
-ma'muriy 3, soliq 3, iste'molchi, ijtimoiy (pensiya), tadbirkorlik — 1 tadan. Qiyinlik: oson 15, o'rta 20, qiyin 11
-(+ "yo'q" savollar).
+25 kategoriya: mehnat 24, fuqarolik 12, jinoyat 13, oila 11, konstitutsiya 10, soliq 9, ijtimoiy 9, ma'muriy 8, saylov 7,
+tadbirkorlik 7, transport 6, ta'lim 5, sog'liq 5, uy-joy, iste'molchi, bank, bojxona 4 tadan, yer, intellektual mulk,
+migratsiya, harbiy, axborot, boshqa 3 tadan, notariat 1. Qiyinlik: oson 61, o'rta 67, qiyin 42.
 
-Qanday yozildi:
+Har savolda `lang` (haqiqiy til; kesimlar shu bo'yicha, ilova aniqlagan til natijada `lang_detected`), `split` va yangi
+savollarda `evidence` (gold moddadan qisqa iqtibos — yozuvchi moddani o'qiganini tekshirish uchun).
+
+**DEV / TEST.** `split`: 85 / 85, tasodifiy (seed 20261101), (kategoriya, til) qatlamlari bo'yicha muvozanatli
+(`scripts/build_eval_set.py`). Barcha sozlash — W_BM25 va NO_ANSWER_COS sweep, ishonch chegaralari, stemmer va
+stopword variantlari — faqat DEV'da; TEST faqat yakuniy raqamlar uchun (`sweep.json` da TEST jadvali ham bor, lekin
+"best" DEV bo'yicha tanlanadi).
+
+Qanday yozildi (3-bosqich, 50 savol — bir kishi; 4-bosqich, 120 savol — Claude yordamchi agentlari, xuddi shu qoidalar
+bilan; Gemini va qidiruv tizimi ishlatilmadi). Kirillning bir qismi ataylab rus klaviaturasida (у/к/х/г o'rniga
+ў/қ/ҳ/ғ, ъ tushirib), lotinning bir qismi apostrofsiz yoki "g`" bilan — real foydalanuvchilar kabi:
 1. Avval modda tanlandi: kodeks/qonun moddalari sarlavhalari bo'yicha ko'rib chiqildi, matni (`data/chunks.jsonl`)
    to'liq o'qildi. Moddani tanlashda qidiruv tizimining o'zi ishlatilmadi — aks holda to'plam tizimga moslashib qolardi.
 2. Savol modda matnidan ko'chirilmay, oddiy odam so'raydigan tilda yozildi: "dastlabki sinov muddati uch oydan
@@ -37,8 +48,9 @@ Qanday yozildi:
 5. Qiyinlik: oson — savol so'zlari moddaga yaqin; o'rta — sinonimlar bilan; qiyin — hayotiy vaziyat orqali
    ("Xotinim homilador, ajrashish uchun ariza bera olamanmi?") yoki ikki qismli savol (bo'lish rejimini sinash uchun).
 
-Cheklovlar: savollarni bir kishi yozgan, to'plam kichik (46 ta). 1 savol = 2.2 foiz punkt, shuning uchun 2-3 punktlik farq
-shovqin chegarasida. "Bazada yo'q" savollar 4 ta — rad etish chegarasi bo'yicha xulosa taxminiy.
+Cheklovlar: TEST'da 80 ta javobli savol — 1 savol ≈ 1.25 foiz punkt, ~3 punktdan kichik farq shovqin chegarasida.
+Yangi savollarni bitta model oilasi yozgan (uslub bir xilligi). "Bazada yo'q" savollar 9 ta — rad etish bo'yicha xulosa
+taxminiy.
 
 ## Metrikalar
 
@@ -92,6 +104,34 @@ Bunday savolni LLM o'zi "manbalarda javob yo'q" deb aytishi kerak (system prompt
 Hozirgi raqamlar: `results.md`. Fayllar: `results.json` (har savol: gold, har rejimdagi o'rni, top-5, dense/BM25
 ro'yxatidagi o'rni), `sweep.json`, `baseline_w06.json` (o'zgarishdan oldingi qisqa natija), `answers.json`
 (ixtiyoriy javob sifati, pastda).
+
+## 4-bosqich: zaif joylarni tuzatish (oldin/keyin)
+
+Fayllar: `baseline_stage3.json` (3-bosqich natijasi, eski 50 savol), `baseline_v2.json` (3-bosqich kodi yangi 170 savolda —
+"oldin"), `tuning_stage4.json` (DEV'dagi variantlar, `scripts/tune_stage4.py`), `trust_calibration.json` (ruscha ishonch
+kalibrlash, `scripts/calibrate_trust.py`), `answers_ru.json` (6 ta haqiqiy ruscha LLM javobi), `results.*` va `sweep.json` —
+"keyin". Oldin/keyin jadvali, sabablar va cheklovlar: `results.md` va `report.md` (6-bo'lim).
+
+DEV'da tanlangan qarorlar (raqamlar `tuning_stage4.json` da):
+
+| Qaror | Variantlar (DEV) | Tanlangan |
+|---|---|---|
+| Kirill: so'z tiklash | o'chiq / dense+BM25 / faqat BM25 | faqat BM25 (dense'ga berish kirill R@5 85.6% → 78.9%) |
+| Kirill: dense matni | lotin / lotin + asl kirill (RRF) | lotin (asl kirill qo'shilsa 85.6% → 72.2%) |
+| BM25 tokenizatori | 7 harf / stem / stem + so'z yasovchi; stopword: yo'q / asosiy / + huquqiy | stem + asosiy stopwordlar (BM25 R@5 38.1% → 43.6%) |
+| Ruscha BM25 | lug'at + translit / faqat lug'at / o'chiq | o'chiq (gibrid teng, MRR 0.689 ≥ 0.688) |
+| W_BM25 | 0 … 2.0 | 0.05 (o'zgarmadi) |
+| NO_ANSWER_COS | 0.30 … 0.70, mezon: xato rad ≤ 1% bilan eng ko'p to'g'ri rad | 0.48 (o'zgarmadi; 0.46–0.52 teng) |
+| Ishonch, ruscha | COS_OK_RU 0.50 … 0.66, sonli da'vo chegarasi, ro'yxat konteksti; Youden J | 0.58, sonli 0.52, kontekst bilan |
+
+NO_ANSWER_COS mezoni o'zgardi: avval balanslangan aniqlik edi, lekin DEV'da 4 ta "yo'q" savol bilan u 0.62 ni tanlaydi —
+javobi bor savollarning 32% i "topilmadi" bo'lib qoladi. Ilovada bu LLM'ni ortiqcha chaqirishdan ancha qimmat.
+
+Ruscha ishonch kalibrlash ma'lumoti: 7 ta haqiqiy ruscha javob (r01 + 6 ta yangi; har da'vo manba bilan qo'lda
+solishtirildi — hammasi to'g'ri), o'zbekcha javoblarning (q02, q14, q28, c03) qo'lda ruscha tarjimasi, 17 ta ataylab
+noto'g'ri ruscha da'vo (mavzu to'g'ri, mazmun/son noto'g'ri) va ularning o'zbekcha varianti, hamda boshqa savol manbasiga
+bog'langan da'volar. Maqsad — ruscha tekshiruv o'zbekcha bilan teng qattiqlikda bo'lsin: o'zbekcha qoidalar 17 ta yolg'on
+da'voning 6 tasini o'tkazadi, yangi ruscha chegaralar ham 6 tasini.
 
 ## Javob sifati (ixtiyoriy, LLM bilan)
 

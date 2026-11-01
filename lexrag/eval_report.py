@@ -237,7 +237,8 @@ def report_section() -> str:
         "\"taʼtil\" mos kelmaydi, qisqa so'zlar umuman qisqarmaydi; \"uchun\", \"qanday\", \"kerak\" kabi so'zlar ball oladi | "
         "`lexrag/stem.py`: qoidaga asoslangan suffix stripper (kelishik, egalik, ko'plik, yuklama, fe'l -adi/-gan/-ish + majhul "
         "nisbat), apostrof normalizatsiyasi, minimal o'zak, istisnolar (xodim, taʼlim, qonun|i — korpusdan); so'rov "
-        "stopwordlari. \"modda/qonun\"ni tashlash DEV'da ta'sir qilmadi — kiritilmadi. Indeks `data/index/bm25_new` | "
+        "stopwordlari. \"modda/qonun\"ni tashlash DEV'da ta'sir qilmadi — kiritilmadi. Indeks qayta qurildi "
+        "(`python -m lexrag bm25` → `bm25_new`, so'ng `data/index/bm25` ga almashtirildi; eskisi `bm25_old`) | "
         "BM25 R@5: " + _ba(base, r, "bm25", "recall@5") + "; BM25 MRR: " + _ba(base, r, "bm25", "mrr@10", pct=False) + " |")
     L.append(
         "| Gibrid (asosiy rejim) | BM25 shovqini RRF'da to'g'ri moddani pastga surardi | Yangi BM25 + W_BM25 DEV'da qayta sweep "
@@ -274,7 +275,8 @@ def report_section() -> str:
             "0.49–0.78), leksik moslik yo'q; chegara (0.64) o'zbekchadagidek edi; ruscha son so'zlari tanilmasdi | "
             f"Alohida chegaralar (COS_OK_RU {old['ok']} → {best['ok']}; sonli da'vo, sonlar manbada bo'lsa {best['num']}), ro'yxat bandi "
             "kirish qatori bilan solishtiriladi, ruscha son so'zlari (\"пятнадцать\" = 15) raqam tekshiruviga qo'shildi. "
-            "Kalibrlash: 7 ta haqiqiy ruscha LLM javobi + 4 ta qo'lda tarjima + ataylab noto'g'ri da'volar | "
+            "Kalibrlash: 7 ta haqiqiy ruscha LLM javobi (r01 + 4-bosqichda 6 ta yangi so'rov, gemini-3.1-flash-lite, "
+            "`eval/answers_ru.json`; har da'vo manba bilan qo'lda tekshirildi) + 4 ta qo'lda tarjima + ataylab noto'g'ri da'volar | "
             f"Haqiqiy ruscha javoblar (7): {dist('ru_real', 'before')} → **{dist('ru_real', 'after')}**; to'g'ri ruscha da'volar "
             f"tasdiqlandi {a0}/{n0} → **{a1}/{n0}**; yolg'on ruscha da'volar o'tib ketdi {f0}/{nf} → {f1}/{nf} (o'zbekcha qoidalar "
             f"o'sha da'volarning o'zbekcha variantidan {u0}/{nu} o'tkazadi — endi teng qattiqlik); o'zbekcha: o'zgarmadi "
@@ -295,7 +297,8 @@ def report_section() -> str:
             if b["recall@5"] > a["recall@5"]:
                 up.append(f"{q['id']} ({a['rank'] or '>10'}→{b['rank']})")
             elif b["recall@5"] < a["recall@5"]:
-                dn.append(f"{q['id']} ({a['rank']}→{b['rank'] or '>10'})")
+                dn.append(f"{q['id']} ({a['rank']}→{b['rank'] or '>10'})" if not b["rank"] or b["rank"] > 5
+                          else f"{q['id']} (ikki golddan biri top-5 dan chiqdi)")
             if (b["rank"] or 99) < (a["rank"] or 99):
                 top += 1
         L += ["", f"TEST'da gibrid R@5 bo'yicha {len(up)} ta savol yaxshilandi ({', '.join(up) or '—'}), {len(dn)} tasi yomonlashdi "
@@ -312,6 +315,8 @@ def report_section() -> str:
           f"* \"Bazada yo'q\" savollar {m['n_none']} ta. Chet el qonunlari haqidagi savollar (Rossiya ta'tili, AQSh guvohnomasi, "
           "Qozog'iston pensiyasi) O'zbekiston moddalariga ma'no jihatdan yaqin (cosine 0.61–0.69) — ularni cosine chegarasi bilan "
           "rad etib bo'lmaydi; buni LLM \"manbada yo'q\" deb aytishi kerak (system prompt 4-qoida).",
+          "* Dense qidiruvda juda yaqin cosine'lar tartibi ikki ishga tushirish orasida almashishi mumkin (ONNX/HNSW): "
+          "ayrim rejimlarda ±1 savol farq kuzatildi.",
           "* Ishonch kalibrlashi kichik namunada (37 to'g'ri va 17 yolg'on ruscha da'vo) va o'sha namunada tanlangan; mazmunan "
           "noto'g'ri, lekin mavzusi to'g'ri da'volarni embedding ajrata olmaydi (ikkala tilda ham) — raqam tekshiruvi ushlaydi.",
           "* Yangi BM25 indeksi `data/index/bm25_new` da qurilgan va `data/index/bm25` ga almashtirildi (eski nusxa `bm25_old`); "

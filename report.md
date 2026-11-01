@@ -112,27 +112,41 @@ Recall - saytdagi so'zlarning bizdagi ulushi (matn + izohlar + rekvizitlar). Pre
 
 ## 6. Baholash (qidiruv sifati)
 
-To'plam: `eval/questions.jsonl`, 50 savol — 46 tasi gold modda bilan, 4 tasi bazada yo'q; lotin 34, kirill 9, rus 7. Savollar modda matnini o'qib, oddiy odam tilida parafraza qilib yozilgan; gold modda bazada borligi har safar tekshiriladi. LLM'siz. Commit `afc2096`, 2026-11-01 01:43. Metodika: `eval/README.md`.
+To'plam: `eval/questions.jsonl`, **170 savol** — 161 tasi gold modda bilan, 9 tasi ataylab bazada yo'q (chet el qonunlari, umumiy savollar, bazada yo'q soha). Yozuv/til: lotin 111, kirill 30, rus 20 + 9 "yo'q"; 25 kategoriya; qiyinlik: oson 61, o'rta 67, qiyin 42. Ikki qism: **DEV 85** (barcha sozlash — sweep, chegaralar, stemmer — faqat shu yerda) va **TEST 85** (yakuniy raqamlar; sozlashda qaralmagan), tasodifiy, seed bilan, kategoriya va til bo'yicha muvozanatli. 3-bosqichdagi 50 savol o'zgarmagan; yangi 120 savolni Claude (Anthropic) yordamchi agentlari moddani `data/chunks.jsonl` dan o'qib, oddiy odam tilida parafraza qilib yozdi (qidiruv tizimi va Gemini ishlatilmadi); har gold modda bazada borligi va moddadan olingan iqtibos (`evidence`) avtomatik tekshirildi. Kirill savollarning bir qismi ataylab rus klaviaturasida (у/к/х o'rniga ў/қ/ҳ), lotinning bir qismi apostrofsiz yozilgan — real foydalanuvchilar kabi. LLM'siz. Metodika: `eval/README.md`, to'liq jadvallar: `eval/results.md`.
 
-| Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | vaqt |
+### Hozirgi natija — TEST (80 javobli savol)
+
+| Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | o'rtacha vaqt |
 |---|---|---|---|---|---|---|---|
-| Dense (bge-m3) | 57.2% | 74.3% | 81.5% | 88.0% | 0.733 | 0.750 | 489 ms |
-| BM25 | 14.1% | 18.1% | 22.5% | 27.9% | 0.200 | 0.207 | 1 ms |
-| Gibrid (RRF) | 55.1% | 69.9% | 83.7% | 88.0% | 0.716 | 0.738 | 490 ms |
-| Gibrid + bo'lish | 54.4% | 69.2% | 83.0% | 88.0% | 0.702 | 0.730 | 564 ms |
+| Dense (bge-m3) | 51.2% | 68.8% | 76.9% | 83.1% | 0.678 | 0.691 | 565 ms |
+| BM25 | 23.8% | 36.9% | 42.5% | 51.9% | 0.350 | 0.380 | 1 ms |
+| Gibrid (RRF) | 53.8% | 68.1% | 76.9% | 82.5% | 0.696 | 0.700 | 566 ms |
+| Gibrid + bo'lish | 54.4% | 68.1% | 76.9% | 82.5% | 0.702 | 0.702 | 627 ms |
 
-"Bazada yo'q" savollarni rad etish (NO_ANSWER_COS = 0.48): 3/4 to'g'ri rad, javobi bor savollardan 0/46 xato rad, aniqlik 98.0%.
+DEV (81 javobli): Dense (bge-m3) R@5 78.8% / MRR 0.676, BM25 R@5 43.6% / MRR 0.335, Gibrid (RRF) R@5 79.6% / MRR 0.690, Gibrid + bo'lish R@5 79.0% / MRR 0.657.
 
-Standartlar sweep bo'yicha o'zgardi:
+### 4-bosqich: zaif joylarni tuzatish
 
-| | oldin (W_BM25 0.6, NO_ANSWER_COS 0.45) | keyin |
-|---|---|---|
-| Gibrid recall@5 | 61.2% | 83.7% |
-| Gibrid recall@1 | 35.5% | 55.1% |
-| Gibrid MRR@10 | 0.509 | 0.716 |
+"Oldin" — 3-bosqich kodi aynan shu 170 savolda (`eval/baseline_v2.json`), "keyin" — hozirgi kod. Har qatorda TEST, qavsda DEV. TEST'da 80 ta javobli savol: bitta savol ≈ 1.25 foiz punkt, shuning uchun ~3 punktdan kichik farq shovqin chegarasida.
 
-W_BM25 = 0.05: BM25 parafrazali savollarda umumiy so'zlar bo'yicha shovqin beradi va RRF'da dense topgan moddani pastga suradi (BM25 yolg'iz recall@5 22.5%). Sof dense (W_BM25 = 0) MRR'da biroz yaxshiroq (0.733), lekin recall@5 pastroq (81.5%). NO_ANSWER_COS: javobi bor savollarda eng yaqin cosine ≥ 0.5545, "yo'q" savollarda 0.4315, 0.4439, 0.4481, 0.6102 — 0.46–0.54 oralig'i bir xil natija beradi, 0.48 tanlandi.
+| Zaif joy | Sabab (DEV'da topilgan) | Nima qilindi | Natija: TEST oldin → keyin (DEV) |
+|---|---|---|---|
+| Kirill savollar (3-bosqich: 8 savolda gibrid R@5 68.8%, lotin 87.5%) | Kengaytirilgan to'plamda kirill lotindan yomon emas (oldin: TEST kirill 76.7%, lotin 76.4%) — eski farq kichik namunaning shovqini edi. Translit to'g'ri ishlaydi (е/ye, ц, ё, ю, я, ъ). Aniq sabab: rus klaviaturasida yozilgan savol ("тулик туланадими" → `tulik tulanadimi`, aslida `toʻliq toʻlanadimi`) — bunday so'z korpusda yo'q, BM25 topmaydi. Asl kirill matnni dense'ga berish yomonroq (DEV kirill R@5 85.6% → 72.2%) | Korpus lug'ati bo'yicha so'z tiklash (`translit.repair_latin`: у→ў, к→қ, х→ҳ, г→ғ variantlari va apostrofsiz shakl) — faqat BM25 so'roviga (dense'ga berish DEV'da bitta savolni 2 → 6-o'ringa tushirdi) | Gibrid R@5 kirill: 76.7% → **83.3%** (DEV 85.6% → 85.6%); BM25 R@5 kirill: 30.0% → **46.7%** (DEV 51.1% → 55.6%) |
+| BM25 kuchsiz (TEST R@5 31.2%) | So'z 7 harfgacha kesilardi: "taʼtilining" va "taʼtil" mos kelmaydi, qisqa so'zlar umuman qisqarmaydi; "uchun", "qanday", "kerak" kabi so'zlar ball oladi | `lexrag/stem.py`: qoidaga asoslangan suffix stripper (kelishik, egalik, ko'plik, yuklama, fe'l -adi/-gan/-ish + majhul nisbat), apostrof normalizatsiyasi, minimal o'zak, istisnolar (xodim, taʼlim, qonun|i — korpusdan); so'rov stopwordlari. "modda/qonun"ni tashlash DEV'da ta'sir qilmadi — kiritilmadi. Indeks qayta qurildi (`python -m lexrag bm25` → `bm25_new`, so'ng `data/index/bm25` ga almashtirildi; eskisi `bm25_old`) | BM25 R@5: 31.2% → **42.5%** (DEV 36.8% → 43.6%); BM25 MRR: 0.299 → **0.350** (DEV 0.283 → 0.335) |
+| Gibrid (asosiy rejim) | BM25 shovqini RRF'da to'g'ri moddani pastga surardi | Yangi BM25 + W_BM25 DEV'da qayta sweep (0.05…2.0): eng yaxshisi yana **0.05** — o'zgarmadi; stemmer bilan katta og'irlik kamroq zarar qiladi (DEV, W=0.6: R@5 67.7% → 74.9%) | R@5: 77.5% → **76.9%** (DEV 79.4% → 79.6%); R@1: 48.1% → **53.8%** (DEV 49.0% → 52.1%); MRR: 0.658 → **0.696** (DEV 0.665 → 0.690) |
+| Ruscha savol BM25'da | Baza o'zbekcha; lotinlashtirilgan ruscha so'zlar (`skolko dney`) BM25'ga shovqin | Ruscha savol BM25'ga yuborilmaydi (`RU_BM25=off`; DEV'da lug'atli variantdan teng yoki biroz yaxshi) | Gibrid R@5 rus: 85.0% → **85.0%** (DEV 90.0% → 90.0%) — o'zgarmadi, ruscha savollarni dense (bge-m3) topadi |
+| Ruscha javobda ishonch belgisi | Manba o'zbekcha: bge-m3 tillararo o'xshashligi pastroq (to'g'ri ruscha da'volarda 0.49–0.78), leksik moslik yo'q; chegara (0.64) o'zbekchadagidek edi; ruscha son so'zlari tanilmasdi | Alohida chegaralar (COS_OK_RU 0.64 → 0.58; sonli da'vo, sonlar manbada bo'lsa 0.52), ro'yxat bandi kirish qatori bilan solishtiriladi, ruscha son so'zlari ("пятнадцать" = 15) raqam tekshiruviga qo'shildi. Kalibrlash: 7 ta haqiqiy ruscha LLM javobi (r01 + 4-bosqichda 6 ta yangi so'rov, gemini-3.1-flash-lite, `eval/answers_ru.json`; har da'vo manba bilan qo'lda tekshirildi) + 4 ta qo'lda tarjima + ataylab noto'g'ri da'volar | Haqiqiy ruscha javoblar (7): Yuqori 2 / O'rta 0 / Past 5 → **Yuqori 6 / O'rta 1 / Past 0**; to'g'ri ruscha da'volar tasdiqlandi 21/37 → **35/37**; yolg'on ruscha da'volar o'tib ketdi 2/17 → 6/17 (o'zbekcha qoidalar o'sha da'volarning o'zbekcha variantidan 6/17 o'tkazadi — endi teng qattiqlik); o'zbekcha: o'zgarmadi (Yuqori 4 / O'rta 0 / Past 0) |
+| "Bazada yo'q" savollar | Sweep'ning eski mezoni (balanslangan aniqlik) DEV'da 0.62 ni tanlardi — 4 ta "yo'q" savolga katta og'irlik berib, javobi bor savollarning 32% ini rad etardi | Mezon: xato rad ≤ 1% sharti bilan eng ko'p to'g'ri rad; DEV'da 0.46–0.52 teng → NO_ANSWER_COS **0.48** o'zgarmadi | TEST: 2/5 to'g'ri rad, 0/80 xato (DEV 2/4, 0/81) |
 
-Javob sifati (ixtiyoriy, 5 savol, gemini-3.1-flash-lite, 5 ta LLM so'rovi): faithfulness (ishonch tekshiruvi tasdiqlagan da'volar ulushi) 90.0%, gold modda iqtibos qilingan 5/5, [n] lar to'g'ri 5/5. Ruscha javobda tekshiruv ma'no o'xshashligini past baholaydi (manba o'zbekcha) — r01 javobi to'g'ri, lekin "past" chiqdi.
+TEST'da gibrid R@5 bo'yicha 1 ta savol yaxshilandi (b04 (6→5)), 2 tasi yomonlashdi (q18 (5→7), b18 (ikki golddan biri top-5 dan chiqdi); 5-o'rin chegarasidagi siljishlar); 13 ta savolda gold modda yuqoriroq o'ringa chiqdi — shuning uchun R@1 va MRR o'sdi, R@5 deyarli o'zgarmadi.
 
-Xulosa: asosiy ishni dense (bge-m3) qiladi; BM25 bu to'plamda yordamchi xolos. Eng ko'p xato: savol kundalik so'z bilan, modda esa rasmiy atama bilan yozilgan holatlar ("o'g'irlik" o'rniga "yashirincha olib qo'yish", "QQS" o'rniga "налог на добавленную стоимость"). Kirill savollarda recall pastroq. To'liq jadvallar: `eval/results.md`, veb-ilovada `/baholash`.
+DEV'dagi sozlash variantlari (`scripts/tune_stage4.py` → `eval/tuning_stage4.json`): kirill uchun 5 ta, BM25 tokenizatori/stopwordlar uchun 7 ta, ruscha BM25 uchun 3 ta variant va W_BM25 sweep.
+
+Cheklovlar:
+
+* Savollarni bitta model oilasi (Claude) yozgan — uslub bir xilligi bo'lishi mumkin; haqiqiy foydalanuvchi savollari logi bilan tekshirish kerak.
+* TEST kichik (80 javobli savol): 1 savol ≈ 1.25 p.p. Gibrid R@5 dagi o'zgarish shovqin chegarasida; ishonchli o'sish — BM25 (≈ +11 p.p.), gibrid R@1 va MRR.
+* "Bazada yo'q" savollar 9 ta. Chet el qonunlari haqidagi savollar (Rossiya ta'tili, AQSh guvohnomasi, Qozog'iston pensiyasi) O'zbekiston moddalariga ma'no jihatdan yaqin (cosine 0.61–0.69) — ularni cosine chegarasi bilan rad etib bo'lmaydi; buni LLM "manbada yo'q" deb aytishi kerak (system prompt 4-qoida).
+* Dense qidiruvda juda yaqin cosine'lar tartibi ikki ishga tushirish orasida almashishi mumkin (ONNX/HNSW): ayrim rejimlarda ±1 savol farq kuzatildi.
+* Ishonch kalibrlashi kichik namunada (37 to'g'ri va 17 yolg'on ruscha da'vo) va o'sha namunada tanlangan; mazmunan noto'g'ri, lekin mavzusi to'g'ri da'volarni embedding ajrata olmaydi (ikkala tilda ham) — raqam tekshiruvi ushlaydi.
+* Yangi BM25 indeksi `data/index/bm25_new` da qurilgan va `data/index/bm25` ga almashtirildi (eski nusxa `bm25_old`); ishlab turgan server qayta ishga tushirilguncha xotiradagi eski indeks bilan ishlaydi.
