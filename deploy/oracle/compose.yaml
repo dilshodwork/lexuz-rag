@@ -1,0 +1,24 @@
+# Dalil - Oracle Cloud (Ampere A1, Ubuntu 24.04). Ishga tushirish: docker compose up -d --build
+services:
+  app:
+    build: ./app
+    restart: unless-stopped
+    env_file: .env.docker
+    environment:
+      ENV: production
+      TRUST_PROXY: "1"
+      PORT: "7860"
+      DALIL_DATA_DIR: /data/dalil
+    volumes:
+      - ./data:/data/dalil
+    expose: ["7860"]
+  caddy:
+    image: caddy:2.8
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on: [app]
+volumes:
+  caddy_data:
