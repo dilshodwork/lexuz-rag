@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import threading
 from typing import Iterator
 
 import httpx
@@ -64,15 +65,17 @@ def _client():
 
 
 # Gemini 3.x da "thinking" tokenlari ham maxOutputTokens ichiga kiradi: 2048 da javob o'rtada uzilardi
-def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8192) -> Iterator[str]:
+def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8192,
+           seed: int | None = None) -> Iterator[str]:
     """Javobni bo'laklab qaytaradi (UI'da so'zma-so'z chiqishi uchun).
 
     Gemini 503/429 (yuklama), 404 (model yo'q) yoki timeout bo'lsa, birinchi bo'lak chiqmaguncha
     qayta urinadi va GEMINI_FALLBACKS dagi zaxira modellarga o'tadi.
     """
     provider, model, key = settings()
+    LAST.model, LAST.usage = model, {}
     if provider != "gemini":
-        yield from _stream_once(provider, model, key, system, user, temperature, max_tokens)
+        yield from _stream_once(provider, model, key, system, user, temperature, max_tokens, seed)
         return
     import time
     chain = [model] + [m for m in GEMINI_FALLBACKS if m != model]
@@ -83,10 +86,11 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8
             started = False
             t0 = time.time()
             try:
-                for piece in _stream_once(provider, m, key, system, user, temperature, max_tokens):
+                for piece in _stream_once(provider, m, key, system, user, temperature, max_tokens, seed):
                     if not started:
                         global LAST_MODEL
                         LAST_MODEL = m
+                        LAST.model = m
                     started = True
                     yield piece
                 return
@@ -108,6 +112,8 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8
 # Har modelning kunlik kvotasi alohida, shuning uchun 3.5-flash ham zaxirada.
 GEMINI_FALLBACKS = ["gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.1-flash-lite", "gemini-flash-latest"]
 LAST_MODEL: str | None = None  # oxirgi javobni yozgan model (UI/log uchun)
+# shu oqimdagi (thread) oxirgi chaqiruv: model va tokenlar - /v1 API har savol uchun qaytaradi
+LAST = threading.local()
 
 
 class LLMBusy(RuntimeError):
@@ -122,13 +128,15 @@ class LLMNoModel(RuntimeError):
     """Bunday model yo'q yoki bu kalitga berilmaydi (404)."""
 
 
-def _stream_once(provider, model, key, system, user, temperature, max_tokens) -> Iterator[str]:
+def _stream_once(provider, model, key, system, user, temperature, max_tokens, seed=None) -> Iterator[str]:
     with _client() as c:
         if provider == "gemini":
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse"
             body = {"system_instruction": {"parts": [{"text": system}]},
                     "contents": [{"role": "user", "parts": [{"text": user}]}],
                     "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens}}
+            if seed is not None:
+                body["generationConfig"]["seed"] = seed
             with c.stream("POST", url, json=body, headers={"x-goog-api-key": key}) as r:
                 _raise(r)
                 finish, usage = None, {}
@@ -141,11 +149,15 @@ def _stream_once(provider, model, key, system, user, temperature, max_tokens) ->
                             for part in cand.get("content", {}).get("parts", []):
                                 if part.get("text") and not part.get("thought"):
                                     yield part["text"]
+                LAST.usage = {"input_tokens": usage.get("promptTokenCount"),
+                              "output_tokens": usage.get("candidatesTokenCount")}
                 if finish and finish != "STOP":
                     log.warning("Gemini %s javobi to'liq emas: finishReason=%s, tokenlar=%s", model, finish, usage)
         elif provider == "openai":
             body = {"model": model, "temperature": temperature, "max_tokens": max_tokens, "stream": True,
                     "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
+            if seed is not None:
+                body["seed"] = seed
             with c.stream("POST", "https://api.openai.com/v1/chat/completions", json=body,
                           headers={"Authorization": f"Bearer {key}"}) as r:
                 _raise(r)

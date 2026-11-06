@@ -693,6 +693,17 @@ async def eval_run(request: Request):
     return EVAL_RUN
 
 
+# ---------------------------------------------------------------- /v1 test API (catch-all'dan oldin ulanadi)
+from . import api_v1  # noqa: E402
+
+app.include_router(api_v1.router)
+
+
+@app.get("/v1/{rest:path}", include_in_schema=False)
+async def v1_404(rest: str):
+    return api_v1._err(404, "NOT_FOUND", f"Bunday endpoint yoʻq: /v1/{rest}")
+
+
 @app.get("/api/{rest:path}", include_in_schema=False)
 async def api_404(rest: str):
     return JSONResponse({"error": f"Bunday API yoʻq: /api/{rest}"}, status_code=404)
