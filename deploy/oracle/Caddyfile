@@ -1,4 +1,4 @@
-130-61-27-19.sslip.io {
+92-5-109-49.sslip.io {
 	encode gzip
 	reverse_proxy app:7860 {
 		flush_interval -1
