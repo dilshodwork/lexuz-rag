@@ -1,0 +1,122 @@
+{
+ "method": "retrieval.hybrid_search (ilovadagi qidiruv), faqat amaldagi hujjatlar; Hit@k - kamida bitta gold modda top-k da; doc_hit@5 - gold hujjat top-5 da",
+ "splits": {
+  "dev": {
+   "summary": {
+    "n": 81,
+    "hit@1": 0.5802,
+    "hit@3": 0.7901,
+    "hit@5": 0.8395,
+    "hit@10": 0.8889,
+    "mrr@10": 0.6896,
+    "doc_hit@5": 0.9753
+   },
+   "by_lang": {
+    "uz": {
+     "n": 56,
+     "hit@1": 0.5357,
+     "hit@3": 0.7679,
+     "hit@5": 0.8036,
+     "hit@10": 0.8571,
+     "mrr@10": 0.6506,
+     "doc_hit@5": 0.9643
+    },
+    "uz_cyr": {
+     "n": 15,
+     "hit@1": 0.6667,
+     "hit@3": 0.8667,
+     "hit@5": 0.9333,
+     "hit@10": 1.0,
+     "mrr@10": 0.7895,
+     "doc_hit@5": 1.0
+    },
+    "ru": {
+     "n": 10,
+     "hit@1": 0.7,
+     "hit@3": 0.8,
+     "hit@5": 0.9,
+     "hit@10": 0.9,
+     "mrr@10": 0.7583,
+     "doc_hit@5": 1.0
+    }
+   }
+  },
+  "test": {
+   "summary": {
+    "n": 80,
+    "hit@1": 0.6,
+    "hit@3": 0.75,
+    "hit@5": 0.8375,
+    "hit@10": 0.8875,
+    "mrr@10": 0.6956,
+    "doc_hit@5": 0.9
+   },
+   "by_lang": {
+    "uz": {
+     "n": 55,
+     "hit@1": 0.5818,
+     "hit@3": 0.7273,
+     "hit@5": 0.8,
+     "hit@10": 0.8727,
+     "mrr@10": 0.6717,
+     "doc_hit@5": 0.8727
+    },
+    "uz_cyr": {
+     "n": 15,
+     "hit@1": 0.6,
+     "hit@3": 0.8,
+     "hit@5": 0.9333,
+     "hit@10": 0.9333,
+     "mrr@10": 0.73,
+     "doc_hit@5": 0.9333
+    },
+    "ru": {
+     "n": 10,
+     "hit@1": 0.7,
+     "hit@3": 0.8,
+     "hit@5": 0.9,
+     "hit@10": 0.9,
+     "mrr@10": 0.775,
+     "doc_hit@5": 1.0
+    }
+   }
+  }
+ },
+ "rerank": {
+  "model": "jinaai/jina-reranker-v2-base-multilingual",
+  "split": "dev",
+  "top_n": 15,
+  "chars": 700,
+  "base": {
+   "n": 81,
+   "hit@1": 0.5802,
+   "hit@3": 0.7901,
+   "hit@5": 0.8395,
+   "hit@10": 0.8889,
+   "mrr@10": 0.6896
+  },
+  "reranked": {
+   "n": 81,
+   "hit@1": 0.4691,
+   "hit@3": 0.6914,
+   "hit@5": 0.8025,
+   "hit@10": 0.8642,
+   "mrr@10": 0.5985
+  },
+  "ms_per_question": 2514,
+  "by_lang_hit5": {
+   "uz": [
+    0.8036,
+    0.7679
+   ],
+   "uz_cyr": [
+    0.9333,
+    0.9333
+   ],
+   "ru": [
+    0.9,
+    0.8
+   ]
+  }
+ }
+}

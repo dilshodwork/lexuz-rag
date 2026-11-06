@@ -182,7 +182,7 @@ def _ba(base, r, mode, key, slice_=None, val=None, pct=True) -> str:
     return f"{f(t0)} → **{f(t1)}** (DEV {f(d0)} → {f(d1)})"
 
 
-def report_section() -> str:
+def _core_section() -> str:
     r, sw = _load(EVAL_DIR / "results.json"), _load(EVAL_DIR / "sweep.json")
     base, st3 = _load(EVAL_DIR / "baseline_v2.json"), _load(EVAL_DIR / "baseline_stage3.json")
     cal, tun = _load(EVAL_DIR / "trust_calibration.json"), _load(EVAL_DIR / "tuning_stage4.json")
@@ -367,3 +367,41 @@ def _sup(x: dict, prm: dict) -> bool:
         return cos >= prm["ok"] or (bool(nums) and cos >= prm["num"])
     from . import trust
     return cos >= trust.COS_OK or (x["lex"] is not None and any(x["lex"] >= lx and cos >= cx for lx, cx in trust.LEX_TIERS))
+
+
+def _pp(x: float) -> str:
+    return f"{x * 100:.1f}%"
+
+
+def spec_section() -> str:
+    """Ustoz spetsifikatsiyasi metrikalari (scripts/spec_metrics.py -> eval/spec_metrics.json)."""
+    d = _load(EVAL_DIR / "spec_metrics.json")
+    if not d:
+        return ""
+    t, v = d["splits"]["test"]["summary"], d["splits"]["dev"]["summary"]
+    L = ["", "### Spetsifikatsiya metrikalari (Hit@k)", "",
+         "Yuqoridagi R@k — **Recall@k**: savolning *barcha* gold moddalaridan qanchasi top-k da (TEST'da 17 savolda 2–3 "
+         "gold modda bor). \"RAG API — test spetsifikatsiyasi\" esa **Hit@k** ni o'lchaydi: kamida bitta kutilgan modda "
+         "top-k da. Quyidagi raqamlar ilovadagi qidiruvning o'zidan (`retrieval.hybrid_search`, faqat amaldagi hujjatlar), "
+         "sozlashsiz: `scripts/spec_metrics.py` → `eval/spec_metrics.json`.", "",
+         "| To'plam | Hit@1 | Hit@3 | Hit@5 (modda) | Hit@10 | MRR@10 | Hit@5 (hujjat) |", "|---|---|---|---|---|---|---|"]
+    for name, s in ((f"**TEST** ({t['n']})", t), (f"DEV ({v['n']})", v)):
+        L.append(f"| {name} | {_pp(s['hit@1'])} | {_pp(s['hit@3'])} | **{_pp(s['hit@5'])}** | {_pp(s['hit@10'])} | "
+                 f"{s['mrr@10']:.3f} | {_pp(s['doc_hit@5'])} |")
+    L += ["", "Spetsifikatsiyadagi taklif: Hit@5 (hujjat) ≥ 90%, Hit@5 (modda) ≥ 80%, MRR ≥ 0.70."]
+    if r := d.get("rerank"):
+        b, a = r["base"], r["reranked"]
+        langs = ", ".join(f"{LANG_NAMES.get(k, k)} {_pp(x[0])} → {_pp(x[1])}" for k, x in r["by_lang_hit5"].items())
+        L += ["", "### Reranker tajribasi (DEV, qo'shilmadi)", "",
+              f"`{r['model']}` (fastembed, ONNX, CPU): gibrid top-{r['top_n']} qayta tartiblandi, moddaning birinchi "
+              f"{r['chars']} belgisi bilan. Hit@1 {_pp(b['hit@1'])} → {_pp(a['hit@1'])}, Hit@5 {_pp(b['hit@5'])} → "
+              f"{_pp(a['hit@5'])}, MRR {b['mrr@10']:.3f} → {a['mrr@10']:.3f}; vaqt +{r['ms_per_question']} ms/savol. "
+              f"Til bo'yicha Hit@5: {langs}. `BAAI/bge-reranker-v2-m3-int8` bu protsessorda 10 moddaga ~13 s "
+              "(to'liq matn) — javob vaqti talabiga (p50 ≤ 5 s) sig'maydi. Xulosa: o'zbek tilida tayyor reranker "
+              "natijani yaxshilamadi; qo'shilmadi. TEST'da sinalmagan (qaror DEV'da)."]
+    return "\n".join(L) + "\n"
+
+
+def report_section() -> str:
+    core = _core_section()
+    return (core.rstrip("\n") + "\n" + spec_section()) if core else ""

@@ -118,10 +118,10 @@ To'plam: `eval/questions.jsonl`, **170 savol** — 161 tasi gold modda bilan, 9 
 
 | Rejim | R@1 | R@3 | R@5 | R@10 | MRR@10 | nDCG@10 | o'rtacha vaqt |
 |---|---|---|---|---|---|---|---|
-| Dense (bge-m3) | 51.2% | 68.8% | 76.9% | 83.1% | 0.678 | 0.691 | 565 ms |
+| Dense (bge-m3) | 51.2% | 68.8% | 76.9% | 83.1% | 0.678 | 0.691 | 578 ms |
 | BM25 | 23.8% | 36.9% | 42.5% | 51.9% | 0.350 | 0.380 | 1 ms |
-| Gibrid (RRF) | 53.8% | 68.1% | 76.9% | 82.5% | 0.696 | 0.700 | 566 ms |
-| Gibrid + bo'lish | 54.4% | 68.1% | 76.9% | 82.5% | 0.702 | 0.702 | 627 ms |
+| Gibrid (RRF) | 53.8% | 68.1% | 76.9% | 82.5% | 0.696 | 0.700 | 579 ms |
+| Gibrid + bo'lish | 54.4% | 68.1% | 76.9% | 82.5% | 0.702 | 0.702 | 644 ms |
 
 DEV (81 javobli): Dense (bge-m3) R@5 78.8% / MRR 0.676, BM25 R@5 43.6% / MRR 0.335, Gibrid (RRF) R@5 79.6% / MRR 0.690, Gibrid + bo'lish R@5 79.0% / MRR 0.657.
 
@@ -150,3 +150,18 @@ Cheklovlar:
 * Dense qidiruvda juda yaqin cosine'lar tartibi ikki ishga tushirish orasida almashishi mumkin (ONNX/HNSW): ayrim rejimlarda ±1 savol farq kuzatildi.
 * Ishonch kalibrlashi kichik namunada (37 to'g'ri va 17 yolg'on ruscha da'vo) va o'sha namunada tanlangan; mazmunan noto'g'ri, lekin mavzusi to'g'ri da'volarni embedding ajrata olmaydi (ikkala tilda ham) — raqam tekshiruvi ushlaydi.
 * Yangi BM25 indeksi `data/index/bm25_new` da qurilgan va `data/index/bm25` ga almashtirildi (eski nusxa `bm25_old`); ishlab turgan server qayta ishga tushirilguncha xotiradagi eski indeks bilan ishlaydi.
+
+### Spetsifikatsiya metrikalari (Hit@k)
+
+Yuqoridagi R@k — **Recall@k**: savolning *barcha* gold moddalaridan qanchasi top-k da (TEST'da 17 savolda 2–3 gold modda bor). "RAG API — test spetsifikatsiyasi" esa **Hit@k** ni o'lchaydi: kamida bitta kutilgan modda top-k da. Quyidagi raqamlar ilovadagi qidiruvning o'zidan (`retrieval.hybrid_search`, faqat amaldagi hujjatlar), sozlashsiz: `scripts/spec_metrics.py` → `eval/spec_metrics.json`.
+
+| To'plam | Hit@1 | Hit@3 | Hit@5 (modda) | Hit@10 | MRR@10 | Hit@5 (hujjat) |
+|---|---|---|---|---|---|---|
+| **TEST** (80) | 60.0% | 75.0% | **83.8%** | 88.8% | 0.696 | 90.0% |
+| DEV (81) | 58.0% | 79.0% | **84.0%** | 88.9% | 0.690 | 97.5% |
+
+Spetsifikatsiyadagi taklif: Hit@5 (hujjat) ≥ 90%, Hit@5 (modda) ≥ 80%, MRR ≥ 0.70.
+
+### Reranker tajribasi (DEV, qo'shilmadi)
+
+`jinaai/jina-reranker-v2-base-multilingual` (fastembed, ONNX, CPU): gibrid top-15 qayta tartiblandi, moddaning birinchi 700 belgisi bilan. Hit@1 58.0% → 46.9%, Hit@5 84.0% → 80.2%, MRR 0.690 → 0.599; vaqt +2514 ms/savol. Til bo'yicha Hit@5: lotin 80.4% → 76.8%, kirill 93.3% → 93.3%, rus 90.0% → 80.0%. `BAAI/bge-reranker-v2-m3-int8` bu protsessorda 10 moddaga ~13 s (to'liq matn) — javob vaqti talabiga (p50 ≤ 5 s) sig'maydi. Xulosa: o'zbek tilida tayyor reranker natijani yaxshilamadi; qo'shilmadi. TEST'da sinalmagan (qaror DEV'da).
