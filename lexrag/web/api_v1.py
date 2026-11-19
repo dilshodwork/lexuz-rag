@@ -34,6 +34,7 @@ import re
 import sqlite3
 import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timezone, timedelta
 from typing import Any
 
@@ -61,6 +62,23 @@ def _sync_wait() -> float:
         return float(os.environ.get("V1_SYNC_WAIT_S", "110"))
     except ValueError:
         return 110.0
+
+
+def _llm_deadline() -> float:
+    """Bitta savolda LLM birinchi bo'lagini kutish chegarasi, barcha zaxira modellar bilan (V1_LLM_DEADLINE_S)."""
+    try:
+        return max(5.0, float(os.environ.get("V1_LLM_DEADLINE_S", "45")))
+    except ValueError:
+        return 45.0
+
+
+def _concurrency() -> int:
+    """Batch ichida bir vaqtda nechta savol (V1_CONCURRENCY, standart 3). Gemini bepul tarifida birinchi token
+    1-12 s navbatda kutadi: ketma-ket 10 savol 120 s ga yaqinlashadi. RPM limitiga urilmaslik uchun 1-4."""
+    try:
+        return max(1, min(4, int(os.environ.get("V1_CONCURRENCY", "3"))))
+    except ValueError:
+        return 3
 
 
 class JSONUTF8(JSONResponse):
@@ -223,17 +241,24 @@ def _index_version() -> str | None:
     return f"lex-idx-{_snapshot_date() or 'unknown'}-{h}"
 
 
-def system_info() -> dict:
+def system_info(results: list[dict] | None = None) -> dict:
+    """results berilsa llm_model - javoblarni haqiqatda yozgan model(lar): Gemini band bo'lsa zaxira modelga
+    o'tiladi, sozlangan modelni ko'rsatish run'larni noto'g'ri taqqoslashga olib keladi."""
     if not _SYSTEM_CACHE:
         _SYSTEM_CACHE.update(index_version=_index_version(), lex_snapshot_date=_snapshot_date())
     try:
         provider, model, _ = llm.settings()
     except RuntimeError:
         provider, model = None, None
-    return {"pipeline_version": PIPELINE_VERSION, "llm_provider": provider, "llm_model": model,
+    used = list(dict.fromkeys(r["llm_model"] for r in results or [] if r.get("llm_model")))
+    info = {"pipeline_version": PIPELINE_VERSION, "llm_provider": provider,
+            "llm_model": ", ".join(used) if used else model, "llm_model_configured": model,
             "embedding_model": MODEL, "reranker": None, "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
             "index_version": _SYSTEM_CACHE["index_version"],
             "lex_snapshot_date": _SYSTEM_CACHE["lex_snapshot_date"]}
+    if results is not None:
+        info["llm_models_used"] = used
+    return info
 
 
 # ---------------------------------------------------------------- iqtibos (quote) va qism
@@ -361,7 +386,7 @@ def run_item(item: Item, opt: Options) -> dict:
     base = {"id": item.id}
     if item.language is not None and item.language not in LANG_IN:
         return {**base, "status": "error", "answer": None, "answer_language": None, "no_answer": False,
-                "confidence": None, "citations": [], "contexts": [],
+                "confidence": None, "citations": [], "contexts": [], "llm_model": None,
                 "error": {"code": "INVALID_LANGUAGE", "message": "language: uz-Latn | uz-Cyrl | ru",
                           "retryable": False}}
     # answer_language=auto - savol tilida: items[].language berilgan bo'lsa shu, bo'lmasa avtomatik
@@ -377,7 +402,9 @@ def run_item(item: Item, opt: Options) -> dict:
         t_ret = time.perf_counter()
         timing["retrieval_ms"] = int((t_ret - t0) * 1000)
         cards = p["sources"]
-        metas = chunk_meta([c["chunk_id"] for c in cards])
+        from . import app as web
+        with web._search_lock:  # batch savollari parallel: ChromaDB o'qishi ham qidiruv qulfi ostida
+            metas = chunk_meta([c["chunk_id"] for c in cards])
         answer, model, usage, llm_no = None, None, None, False
         if p["no_answer"]:
             answer = rag.NO_ANSWER_TEXT
@@ -386,7 +413,7 @@ def run_item(item: Item, opt: Options) -> dict:
             text = ""
             try:
                 for piece in llm.stream(p["prompt"]["system"], p["prompt"]["user"], temperature=opt.temperature,
-                                        seed=opt.seed):
+                                        seed=opt.seed, deadline_s=_llm_deadline()):
                     text += out.feed(piece)
                     if time.perf_counter() - t_ret > GEN_DEADLINE_S:
                         raise TimeoutError
@@ -425,13 +452,14 @@ def run_item(item: Item, opt: Options) -> dict:
         timing["total_ms"] = int((time.perf_counter() - t0) * 1000)
         res["timing"] = timing
         res["usage"] = usage
+        res["llm_model"] = model  # javobni yozgan model (zaxiraga o'tilgan bo'lsa ham); LLM chaqirilmagan - null
         res["error"] = None
         return res
     except ItemError as e:
         timing["total_ms"] = int((time.perf_counter() - t0) * 1000)
         return {**base, "status": "timeout" if e.code == "LLM_TIMEOUT" else "error", "answer": None,
                 "answer_language": None, "no_answer": False, "confidence": None, "citations": [], "contexts": [],
-                "timing": timing, "usage": None,
+                "timing": timing, "usage": None, "llm_model": None,
                 "error": {"code": e.code, "message": e.message, "retryable": e.retryable}}
 
 
@@ -496,14 +524,17 @@ def _process(req: BatchReq, h: str, previous: dict | None):
     try:
         with _work_lock:
             old = {r["id"]: r for r in (previous or {}).get("results", [])}
-            results = []
-            for it in req.items:
+
+            def one(it: Item) -> dict:
                 r = old.get(it.id)
                 if r is None or (r["status"] in ("error", "timeout") and (r.get("error") or {}).get("retryable")):
                     r = run_item(it, req.options)
-                results.append(r)
+                return r
+            # savollar parallel: qidiruv baribir umumiy qulf ostida (~0.4 s), vaqtning asosiy qismi LLM navbati
+            with ThreadPoolExecutor(max_workers=_concurrency(), thread_name_prefix="v1-item") as ex:
+                results = list(ex.map(one, req.items))  # tartib items bilan bir xil
         resp = {"run_id": req.run_id, "batch_id": req.batch_id, "batch_index": req.batch_index,
-                "total_batches": req.total_batches, "status": "completed", "system": system_info(),
+                "total_batches": req.total_batches, "status": "completed", "system": system_info(results),
                 "options": req.options.model_dump(mode="json"),
                 "timing": {"received_at": received, "completed_at": _now(),
                            "total_ms": int((time.perf_counter() - t0) * 1000)},
@@ -611,7 +642,7 @@ async def post_query(request: Request):
         with _work_lock:
             return run_item(Item(id=req.id, question=req.question, language=req.language), req.options)
     res = await run_in_threadpool(work)
-    return JSONUTF8({"system": system_info(), "result": res})
+    return JSONUTF8({"system": system_info([res]), "result": res})
 
 
 @router.get("/meta")

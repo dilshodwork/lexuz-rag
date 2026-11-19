@@ -1,0 +1,1323 @@
+{
+ "run_id": "spec-2026-11-19",
+ "batch_id": "spec-2026-11-19-b06",
+ "batch_index": 6,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-19T19:17:12+05:00",
+  "completed_at": "2026-11-19T19:18:03+05:00",
+  "total_ms": 51591
+ },
+ "summary": {
+  "total": 10,
+  "ok": 9,
+  "no_answer": 1,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q051",
+   "status": "ok",
+   "answer": "Ha, siz \"Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida\"gi Qonunning 14-moddasiga muvofiq, yoshga doir pensiyani muddatidan oldin olish huquqiga egasiz [1].\n\nUshbu moddaga koʻra, korxonaning tugatilganligi munosabati bilan ishdan ozod etilgan va ishsiz deb eʼtirof etilgan erkaklar 58 yoshga toʻlganda va ish staji kamida 25 yil boʻlgan taqdirda pensiya olish huquqiga ega boʻladilar [1]. Sizning holatingizda yosh (58 yosh) va ish staji (26 yil) talabga javob beradi.",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.642,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "938-XII",
+     "url": "https://lex.uz/uz/docs/-112314",
+     "article_url": "https://lex.uz/uz/docs/-112314#-127089",
+     "article": "14-modda",
+     "article_title": "Yoshga doir pensiyalarni muddatidan oldin tayinlash",
+     "part": "2-qism",
+     "edition_date": "2025-05-20",
+     "doc_status": "amalda",
+     "chunk_id": "112314_0015_14_1",
+     "quote": "erkaklar — 58 yoshga toʻlganda va ish staji kamida 25 yil boʻlgan taqdirda;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "112314_0015_14_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "14-modda",
+     "retrieval_score": 0.6418,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Texnologiyadagi, ishlab chiqarish va mehnatni tashkil etishdagi oʻzgarishlar, xodimlar soni (shtati) yoki ish xususiyatining oʻzgarishiga olib kelgan ishlar hajmining qisqarganligi yoxud korxonaning tugatilganligi munosabati bilan ishdan ozod etilgan va ishsiz deb eʼtirof etilgan shaxslar:\nerkaklar — 58 yoshga toʻlganda va ish staji kamida 25 yil boʻlgan taqdirda;\nayollar — 53 yoshga toʻlganda va ish staji kamida 20 yil boʻlgan taqdirda pensiya olish huquqiga ega boʻladilar."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "112314_0011_11_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "11-modda",
+     "retrieval_score": 0.5908,
+     "fusion_score": 0.01674,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oxirgi ish joyidan qatʼi nazar, quyidagilar ushbu Qonunning 7-moddasida belgilangan yoshni 10 yilga qisqartirilgan holda pensiya olish huquqiga ega boʻladilar:\na) yerosti ishlarida, mehnat sharoiti oʻta zararli va oʻta ogʻir ishlarda toʻliq ish kuni davomida band boʻlgan xodimlar (2-sonli roʻyxat, I qism):\nerkaklar — ish staji kamida 20 yil boʻlib, bundan kamida 10 yili koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda;\nayollar — ish staji kamida 15 yil boʻlib, bundan kamida 7 yilu 6 oyi koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda.\nYer osti ishlaridagi mehnat staji erkaklarda 10 yildan kam va ayollarda 7 yilu 6 oydan kam boʻlgan hollarda xodimlarga bu ishlardagi har bir toʻliq yil uchun ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi 1 yilga qisqartiriladi.\nMehnat sharoiti oʻta zararli va oʻta ogʻir ishlarda — erkaklar kamida 5 yil, ayollar kamida 3 yil 9 oy — ishlagan xodimlarga pensiya ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi shunday ishda band boʻlingan har bir toʻliq yil uchun 1 yilga qisqartirilgan holda tayinlanadi;\nb) sirklar va konsert tashkilotlari artistlarining ayrim toifalari ijodiy ishdagi staji kamida 20 yil boʻlgan taqdirda (2-sonli roʻyxat, II qism)."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "112314_0012_12_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "12-modda",
+     "retrieval_score": 0.5871,
+     "fusion_score": 0.0165,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oxirgi ish joyidan qatʼi nazar, quyidagilar ushbu Qonunning 7-moddasida belgilangan yoshni 5 yilga qisqartirilgan holda pensiya olish huquqiga ega boʻladilar:\na) urush nogironlari va ularga tenglashtirilgan shaxslar;\nb) mehnat sharoiti zararli va ogʻir ishlarda toʻliq ish kuni davomida band boʻlgan xodimlar (3-sonli roʻyxat, I qism):\nerkaklar — ish staji kamida 25 yil boʻlib, bundan kamida 12 yilu 6 oyi koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda;\nayollar — ish staji kamida 20 yil boʻlib, bundan kamida 10 yili koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda.\nMehnat sharoiti zararli va ogʻir ishlarda — erkaklar kamida 6 yilu 3 oy, ayollar kamida 5 yil — ishlagan xodimlarga pensiya ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi erkaklarning bunday ishdagi har 2 yilu 6 oyi uchun va ayollarning bunday ishdagi har 2 yili uchun 1 yilga qisqartirilgan holda tayinlanadi;\nz) bolalikdan nogironligi boʻlgan farzandlarning onalari ularni sakkiz yoshgacha tarbiyalagan boʻlsa — ish staji kamida 20 yil boʻlgan taqdirda. Basharti, ayol oʻgay oʻgʻil va oʻgay qizni ular 8 yoshga toʻlguniga qadar kamida 5 yil tarbiyalagan boʻlsa, pensiya tayinlashda ular haqiqiy farzandlar bilan teng ravishda hisobga olinadi;\nk) nogironligi boʻlgan bolalar uchun ixtisoslashgan taʼlim muassasalari, “Mehribonlik” uylari, harbiy akademik litseylar, tarbiya koloniyalari oʻqituvchilari — maxsus ish staji kamida 25 yil boʻlgan taqdirda (3-sonli roʻyxat, VII qism);\nl) ixtisoslashgan tibbiy muassasalarning shifokorlari va oʻrta tibbiy xodimlari — maxsus ish staji shaharchalar, qishloqlar hamda ovullarda kamida 25 yil va shaharlarda kamida 30 yil boʻlgan taqdirda (3-sonli roʻyxat, VIII qism);\nm) qariyalarga, nogironligi boʻlgan shaxslarga va yolgʻiz fuqarolarga xizmat koʻrsatishda bevosita band boʻlgan ijtimoiy xodimlar (3-sonli roʻyxat, IX qism):\nerkaklar — maxsus ish staji kamida 25 yil boʻlgan taqdirda;\nayollar — maxsus ish staji kamida 20 yil boʻlgan taqdirda."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "112314_0018_17_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "17-modda",
+     "retrieval_score": 0.5822,
+     "fusion_score": 0.01619,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mehnatda mayiblanganda yoki kasb kasalligiga uchraganda beriladigan nogironlik pensiyalari ish stajidan qatʼi nazar, tayinlanadi.\nUmumiy kasallik tufayli beriladigan nogironlik pensiyalari nogironlik boshlangan paytga qadar quyidagicha ish stajiga ega boʻlgan taqdirda tayinlanadi:\nYosh‎ | Ish staji‎\n23 yoshga qadar | 2‎\n23 yoshdan 26 yoshga qadar‎ | 3‎\n26 yoshdan 31 yoshga qadar‎ | 5‎\n31 yoshdan 36 yoshga qadar‎ | 7‎\n36 yoshdan 41 yoshga qadar‎ | 9‎\n41 yoshdan 46 yoshga qadar‎ | 11‎\n46 yoshdan 51 yoshga qadar‎ | 14‎\n51 yoshdan 56 yoshga qadar‎ | 17‎\n56 yosh va undan oshganda‎ | 20‎\n20 yoshga toʻlgunga qadar umumiy kasallik tufayli ish davrida yoki ishlash toʻxtatilganidan keyin nogironligi boʻlgan shaxs deb topilgan fuqarolarga pensiyalar ish stajidan qatʼi nazar tayinlanadi.\nMehnatda mayiblanganda yoki kasb kasalligiga uchraganda beriladigan nogironlik pensiyasidan umumiy kasallik tufayli beriladigan nogironlik pensiyasiga oʻtkazilganda zarur staj nogironlik dastlab belgilangan vaqtdagi yoshga qarab aniqlanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "112314_0010_10_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "10-modda",
+     "retrieval_score": 0.5785,
+     "fusion_score": 0.01571,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yoshidan qatʼi nazar, quyidagilar imtiyozli pensiya olish huquqiga ega boʻladilar:\na) kon sanoatidagi yetakchi kasb egalari boʻlgan xodimlar — basharti, ular ana shu ishlarda kamida 20 yil ishlagan boʻlsalar (1-sonli roʻyxat, I qism);\nb) bevosita yerosti va ochiq kon ishlarida (shu jumladan, kon-qutqaruv qismlarining shaxsiy tarkibi) koʻmir, maʼdanlar va boshqa foydali qazilmalarni qazib olishda, shaxtalar va konlar qurilishida toʻliq ish kuni davomida band boʻlgan xodimlar — basharti, ular ana shu ishlarda kamida 25 yil ishlagan boʻlsalar (1-sonli roʻyxat, II qism);\nv) uchuvchilar va uchuvchi-sinovchilar tarkibiga kiruvchi xodimlar, ular xizmat qilgan korxonalar, muassasalar va tashkilotlarning idoraviy boʻysunuvidan qatʼi nazar, belgilangan xizmat muddatini ana shu lavozimlarda erkaklar kamida 25 yil va ayollar kamida 20 yil ado etganlari taqdirda (1-sonli roʻyxat, III qism).\nYuqorida qayd etib oʻtilgan xodimlar salomatligiga (kasalligiga) koʻra uchish ishlaridan boʻshatilgan taqdirda, belgilangan xizmat muddatini — erkaklar kamida 20 yil va ayollar kamida 15 yil ado etgan boʻlsalar;\ng) teatrlar va boshqa teatr-tomosha korxonalari artistlarining ayrim toifalari:\nijodiy ish staji kamida 20 yil boʻlganda (1-sonli roʻyxat, IV qism);\nijodiy ish staji kamida 25 yil boʻlganda (1-sonli roʻyxat, V qism);\nijodiy ish staji kamida 30 yil boʻlganda (1-sonli roʻyxat,VI qism);\nd) sportchilarning ayrim toifalari — ish staji kamida 20 yil boʻlganda (1-sonli roʻyxat, VII qism)."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Zavod yopilib ishsiz qoldim, 58 yoshdaman, 26 yillik stajim bor. Pensiyaga erta chiqsam boʻladimi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6418,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1605,
+    "rerank_ms": null,
+    "generation_ms": 35285,
+    "total_ms": 36891
+   },
+   "usage": {
+    "input_tokens": 3608,
+    "output_tokens": 225
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q052",
+   "status": "ok",
+   "answer": "\"Psixiatriya yordami toʻgʻrisida\"gi Qonunning 31-moddasiga koʻra, agar ruhiy holati buzilgan shaxsni faqat statsionar sharoitida tekshirish yoki davolash zarur boʻlsa va uning ruhiy holati quyidagi holatlar bilan bogʻliq boʻlsa, uni sud qarori chiqarilmasidanoq gʻayriixtiyoriy tartibda psixiatriya statsionariga yotqizish mumkin:\n\n*   shaxsning oʻzi uchun yoki atrofidagilar uchun bevosita xavf solish ehtimoli;\n*   shaxsning yordamga muhtojligi, yaʼni asosiy hayotiy ehtiyojlarni mustaqil ravishda qanoatlantirishga layoqatsizligi;\n*   psixiatriya yordami koʻrsatilmasdan qoldirilgudek boʻlsa, ruhiy holati yomonlashuvi tufayli sogʻligʻiga jiddiy zarar yetishi [5].\n\nShifokor-psixiatrlar komissiyasi tomonidan tekshiruv muddatiga kelsak:\n\n*   \"Psixiatriya yordami toʻgʻrisida\"gi Qonunning 34-moddasiga muvofiq, gʻayriixtiyoriy tartibda yotqizilgan shaxs shifokor-psixiatrlar komissiyasi tomonidan qirq sakkiz soatdan oshmagan muddatda majburiy tekshiruvdan oʻtkazilishi lozim [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.659,
+   "citations": [
+    {
+     "ref": 5,
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-690",
+     "url": "https://lex.uz/uz/docs/-5422209",
+     "article_url": "https://lex.uz/uz/docs/-5422209#-5423191",
+     "article": "31-modda",
+     "article_title": "Psixiatriya statsionariga gʻayriixtiyoriy tartibda yotqizish uchun asoslar",
+     "part": "5-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5422209_0030_31_1",
+     "quote": "agar shaxs psixiatriya yordami koʻrsatilmasdan qoldirilgudek boʻlsa, ruhiy holati yomonlashuvi tufayli uning sogʻligʻiga jiddiy zarar yetishi."
+    },
+    {
+     "ref": 1,
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-690",
+     "url": "https://lex.uz/uz/docs/-5422209",
+     "article_url": "https://lex.uz/uz/docs/-5422209#-5423227",
+     "article": "34-modda",
+     "article_title": "Psixiatriya statsionariga gʻayriixtiyoriy tartibda yotqizilgan shaxslarni tekshiruvdan oʻtkazish",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5422209_0033_34_1",
+     "quote": "Ushbu Qonunning 31-moddasida nazarda tutilgan asoslar boʻyicha psixiatriya statsionariga yotqizilgan ruhiy holati buzilgan shaxs shifokor-psixiatrlar komissiyasi tomonidan qirq sakkiz soatdan oshmagan muddatda majburiy tekshiruvdan oʻtkazilishi lozim, komissiya statsionarga yotqizilganlikning asoslanganligi toʻgʻrisida qaror qabul qiladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "5422209_0033_34_1",
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.6501,
+     "fusion_score": 0.03226,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ushbu Qonunning 31-moddasida nazarda tutilgan asoslar boʻyicha psixiatriya statsionariga yotqizilgan ruhiy holati buzilgan shaxs shifokor-psixiatrlar komissiyasi tomonidan qirq sakkiz soatdan oshmagan muddatda majburiy tekshiruvdan oʻtkazilishi lozim, komissiya statsionarga yotqizilganlikning asoslanganligi toʻgʻrisida qaror qabul qiladi. Statsionarga yotqizish asossiz deb topilgan va statsionarga yotqizilgan shaxs psixiatriya statsionarida qolish istagini bildirmagan hollarda, u darhol statsionardan chiqarilishi lozim.\nAgar ruhiy holati buzilgan shaxsni statsionarga yotqizish asosli deb topilsa, shaxsning u yerda bundan buyon boʻlishi toʻgʻrisidagi masalani hal qilish uchun shifokor-psixiatrlar komissiyasining xulosasi yigirma toʻrt soat ichida psixiatriya statsionari joylashgan yerdagi sudga yuboriladi.\nRuhiy holati buzilgan shaxsni psixiatriya statsionariga gʻayriixtiyoriy tartibda yotqizish toʻgʻrisidagi ariza sudga shaxs yotgan psixiatriya statsionari tomonidan beriladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "5422209_0032_33_1",
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "article": "33-modda",
+     "retrieval_score": 0.6324,
+     "fusion_score": 0.03202,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻz qonuniy vakillarining iltimosiga binoan yoki roziligi bilan psixiatriya statsionariga yotqizilgan voyaga yetmagan shaxs va sud tomonidan muomalaga layoqatsiz deb topilgan shaxs ushbu Qonun 34-moddasining birinchi qismida nazarda tutilgan tartibda shifokor-psixiatrlar komissiyasi tomonidan majburiy tekshiruvdan oʻtkazilishi lozim. Dastlabki olti oy ichida bu shaxslar statsionarda yotishni uzaytirish toʻgʻrisidagi masalani hal qilish uchun shifokor-psixiatrlar komissiyasi tomonidan har oyda kamida bir marta tekshiruvdan oʻtkazilishi lozim.\nStatsionarda yotish olti oydan ortiq uzaytirilgan taqdirda, ruhiy holati buzilgan shaxsni tekshiruvdan oʻtkazish shifokor-psixiatrlar komissiyasi tomonidan olti oyda kamida bir marta amalga oshiriladi.\nShifokor-psixiatrlar komissiyasi yoki psixiatriya statsionari maʼmuriyati voyaga yetmagan shaxsni yoki sud tomonidan muomalaga layoqatsiz deb topilgan shaxsni statsionarga yotqizishda yoʻl qoʻyilgan suiisteʼmolliklarni aniqlagan taqdirda, psixiatriya statsionari maʼmuriyati bu haqda vasiylikdagi shaxsning turar joyidagi vasiylik va homiylik organini xabardor qiladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111460_0658_534_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "534-modda",
+     "retrieval_score": 0.6221,
+     "fusion_score": 0.03178,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mahkum jazoni oʻtayotgan vaqtida jazoni oʻtashga monelik qiladigan ruhiy holatining surunkali buzilishi yuzaga kelgan yoki boshqa ogʻir kasallikka duchor boʻlgan taqdirda sudya jazoning ijro qilinishiga mutasaddi organning taqdimnomasiga binoan, maxsus tibbiy komissiyaning xulosasiga asosan mahkumni oʻtalmay qolgan jazoni oʻtashdan ozod qilish toʻgʻrisida ajrim chiqarishga haqlidir.\nRuhiy holatining surunkali buzilishi yuzaga kelgan mahkumni oʻtalmay qolgan jazodan ozod qilishda sudya unga nisbatan tibbiy yoʻsindagi majburlov chorasini tayinlashga yoxud uni sogʻliqni saqlash organlari yoki qarindoshlari vasiyligiga berishga haqlidir.\nBunday shaxslar sogʻaygan taqdirda, basharti bu hol jazoning ijro etish muddati tugashiga qadar sodir boʻlsa, sud tayinlangan jazoni ijro etish toʻgʻrisida ajrim chiqaradi.\nRuhiy holatining buzilishi yuzaga kelgan shaxslardan tashqari, ogʻir kasallikka duchor boʻlgan shaxslarni oʻtalmay qolgan jazodan ozod qilish masalasini hal etishda sudya sodir etilgan jinoyatning ogʻirligini, mahkumning shaxsini va boshqa holatlarni hisobga oladi.\nMahkumni oʻtalmay qolgan jazodan kasalligi tufayli ozod qilganda sudya uni faqat asosiy jazodan emas, balki qoʻshimcha jazo chorasidan ham ozod qilishga haqli, bu ajrimda koʻrsatilishi lozim."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "5422209_0025_26_1",
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "article": "26-modda",
+     "retrieval_score": 0.6592,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shaxsni oʻzining roziligisiz yoki qonuniy vakilining roziligisiz psixiatriya tekshiruvidan oʻtkazish toʻgʻrisidagi qaror shunday tekshiruv oʻtkazish uchun ushbu Qonun 24-moddasining yettinchi qismida sanab oʻtilgan asoslar mavjudligi haqidagi maʼlumotlarni oʻz ichiga olgan yozma arizaga binoan shifokor-psixiatr tomonidan qabul qilinadi, bundan ushbu Qonun 24-moddasining sakkizinchi qismida nazarda tutilgan hollar mustasno.\nYozma ariza psixiatriya tekshiruvidan oʻtkazilishi lozim boʻlgan shaxsning qarindoshlari, har qanday tibbiy ixtisoslikdagi shifokor, mansabdor shaxslar va boshqa fuqarolar tomonidan berilishi mumkin.\nUshbu Qonun 24-moddasi yettinchi qismining ikkinchi xatboshisida nazarda tutilgan hollarda ariza ogʻzaki shaklda ham berilishi mumkin. Shaxsni psixiatriya tekshiruvidan oʻtkazish toʻgʻrisidagi qaror shifokor-psixiatr tomonidan darhol qabul qilinadi va tibbiy hujjatlarga yozib qoʻyish orqali rasmiylashtiriladi.\nShaxs oʻzi uchun yoki atrofidagilar uchun bevosita xavf tugʻdirmagan taqdirda, psixiatriya tekshiruvi oʻtkazish toʻgʻrisidagi ariza yozma shaklda berilishi, shunday tekshiruv oʻtkazish zarurligini asoslovchi batafsil maʼlumotlarni va shaxs yoki uning qonuniy vakili shifokor-psixiatrga murojaat etishni rad etganligiga doir koʻrsatmani oʻz ichiga olgan boʻlishi kerak. Shifokor-psixiatr qaror qabul qilish uchun zarur boʻlgan qoʻshimcha maʼlumotlarni soʻrab olishga haqli. Arizada ushbu Qonun 24-moddasi yettinchi qismining uchinchi va toʻrtinchi xatboshilarida nazarda tutilgan holatlar mavjudligi toʻgʻrisida dalolat beruvchi maʼlumotlar mavjud emasligini aniqlab, shifokor-psixiatr psixiatriya tekshiruvi oʻtkazishni yozma ravishda asoslantirilgan holda rad etadi.\nShaxsni oʻzining roziligisiz yoki qonuniy vakilining roziligisiz psixiatriya tekshiruvidan oʻtkazish toʻgʻrisidagi ariza asosli boʻlganida shifokor-psixiatrning bunday tekshiruv oʻtkazish zarurligi haqidagi yozma xulosasi, shuningdek shaxsni tekshiruvdan oʻtkazish toʻgʻrisidagi ariza va boshqa mavjud materiallar tegishli tibbiyot muassasasi tomonidan shaxsning yashash joyidagi sudga yuboriladi.\nSud psixiatriya tekshiruvi oʻtkazish toʻgʻrisidagi masalani barcha materiallar olingan paytdan eʼtiboran qirq sakkiz soat ichida hal qiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "5422209_0030_31_1",
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "article": "31-modda",
+     "retrieval_score": 0.602,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Shaxsni gʻayriixtiyoriy tartibda psixiatriya statsionariga yotqizish sudning qaroriga koʻra Oʻzbekiston Respublikasi Fuqarolik protsessual kodeksida belgilangan tartibda amalga oshiriladi.\nAgar ruhiy holati buzilgan shaxsni faqat statsionar sharoitlarida tekshiruvdan oʻtkazish yoki davolash mumkin boʻlsa, ruhiy holatning buzilishi esa ogʻir hamda quyidagilar bilan bogʻliq boʻlsa, bu shaxs oʻzining roziligisiz yoki qonuniy vakilining roziligisiz sud qarori chiqarilmasidanoq psixiatriya statsionariga yotqizilishi mumkin:\nuning oʻzi uchun yoki atrofidagilar uchun bevosita xavf solish ehtimoli;\nuning yordamga muhtojligi, yaʼni asosiy hayotiy ehtiyojlarni mustaqil ravishda qanoatlantirishga layoqatsizligi;\nagar shaxs psixiatriya yordami koʻrsatilmasdan qoldirilgudek boʻlsa, ruhiy holati yomonlashuvi tufayli uning sogʻligʻiga jiddiy zarar yetishi."
+    },
+    {
+     "rank": 6,
+     "chunk_id": "5422209_0024_25_1",
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "article": "25-modda",
+     "retrieval_score": 0.6427,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Qonun 24-moddasining yettinchi qismi ikkinchi xatboshisida va sakkizinchi qismida nazarda tutilgan hollarda shaxsni psixiatriya tekshiruvidan oʻtkazish toʻgʻrisidagi qaror shifokor-psixiatr tomonidan ushbu shaxsning roziligisiz yoki qonuniy vakilining roziligisiz mustaqil ravishda, ushbu Qonunning 26-moddasida nazarda tutilgan tartibda qabul qilinadi.\nUshbu Qonun 24-moddasi yettinchi qismining uchinchi va toʻrtinchi xatboshilarida nazarda tutilgan hollarda shaxsni oʻzining roziligisiz yoki qonuniy vakilining roziligisiz psixiatriya tekshiruvidan oʻtkazish toʻgʻrisidagi qaror sud tomonidan chiqariladi."
+    },
+    {
+     "rank": 7,
+     "chunk_id": "111460_0310_269_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "269-modda",
+     "retrieval_score": 0.6052,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Statsionar sud-tibbiy yoki sud-psixiatriya ekspertizasi xulosasini olganidan soʻng prokuror, tergovchi va surishtiruvchi qaror chiqargan sudni albatta xabardor qilgan holda shaxsni tibbiy muassasaga joylashtirish tarzidagi protsessual majburlov chorasini bekor qilish haqida qaror chiqaradi.\nSud ekspertizasi natijalariga koʻra shaxs aqli noraso deb eʼtirof etilganda uning tibbiy muassasada bundan buyon boʻlishi toʻgʻrisidagi masala ushbu Kodeksning 61-bobi normalariga muvofiq hal etiladi, jabrlanuvchi, guvoh aqli noraso deb eʼtirof etilgan yoki shaxsning psixiatriya yordami koʻrsatish talab etiladigan boshqa turdagi ruhiy kasalligi aniqlangan hollarda esa, qonunchilikka muvofiq umumiy asoslarda hal etiladi."
+    },
+    {
+     "rank": 8,
+     "chunk_id": "3517337_0343_318_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "318-modda",
+     "retrieval_score": 0.6112,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shaxsni psixiatriya statsionariga yotqizish toʻgʻrisidagi yoki uning statsionarda yotishi muddatini uzaytirish haqidagi ish sud tomonidan statsionarga yotqizilayotgan shaxsning qonuniy vakili va statsionarga yotqizishning asosliligi toʻgʻrisida xulosa bergan komissiya tarkibidagi shifokor psixiatr, prokuror, shuningdek shaxs yotgan psixiatriya muassasasi vakili ishtirokida oʻn kunlik muddat ichida koʻrib chiqiladi.\nSud majlisiga psixiatriya muassasasi vakilining uzrsiz sabablarga koʻra kelmaganligi arizani koʻrib chiqishga monelik qilmaydi, biroq sud uning kelishini shart deb topishi mumkin."
+    },
+    {
+     "rank": 9,
+     "chunk_id": "5422209_0034_35_1",
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "article": "35-modda",
+     "retrieval_score": 0.5968,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sud ruhiy holati buzilgan shaxsni psixiatriya statsionariga gʻayriixtiyoriy tartibda yotqizish toʻgʻrisidagi arizani mazmunan koʻrib chiqib, uni qanoatlantiradi yoki rad etadi.\nOʻziga nisbatan qaror chiqarilgan shaxs, uning qonuniy vakili, psixiatriya statsionari rahbari sudning qarori ustidan shikoyat qilishi yoki prokuror protest keltirishi mumkin."
+    },
+    {
+     "rank": 10,
+     "chunk_id": "163629_0190_189_1",
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "article": "189-modda",
+     "retrieval_score": 0.5776,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bemorni shifoxonadan chiqarishdan oʻn kun oldin ruhiy kasalliklar shifoxonasi maʼmuriyati bu haqda uning yashash joyidagi ichki ishlar organlariga, shuningdek uning qarindoshlari yoki vasiylariga xabar qiladi.\nMajburiy davolanish sud tomonidan bekor qilinganidan keyin oʻn sutka ichida davolash muassasasi maʼmuriyati bemorning yashash joyidagi psixonevrologiya dispanseriga ambulatoriya kartasidan koʻchirma yuboradi hamda uning qarindoshlari yoki vasiylarini, shuningdek bemorning yashash joyidagi ichki ishlar organlarini voqeadan xabardor qiladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Akamni ruhiy kasalliklar shifoxonasiga roziligisiz, sud qarorisiz yotqizishdi. Bu mumkinmi va uni qancha vaqt ichida shifokorlar komissiyasi tekshirishi kerak?",
+    "sub_queries": [
+     "Akamni ruhiy kasalliklar shifoxonasiga roziligisiz, sud qarorisiz yotqizishdi. Bu mumkinmi?",
+     "Akamni ruhiy kasalliklar shifoxonasiga qancha vaqt ichida shifokorlar komissiyasi tekshirishi kerak?"
+    ],
+    "retrieved_total": 10,
+    "best_cosine": 0.6592,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 2907,
+    "rerank_ms": null,
+    "generation_ms": 17257,
+    "total_ms": 20165
+   },
+   "usage": {
+    "input_tokens": 5667,
+    "output_tokens": 428
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q053",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga mos qonun normasi topilmadi. Savolni aniqroq yozib koʻring (masalan, qaysi soha yoki hujjat haqida).",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6472100_0031_31_1",
+     "doc_id": "lex:6472100",
+     "doc_title": "Alkogol va tamaki mahsulotlarining tarqatilishini hamda isteʼmol qilinishini cheklash toʻgʻrisida",
+     "article": "31-modda",
+     "retrieval_score": 0.4439,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Alkogol mahsulotlarining oʻralishiga va tamgʻalanishiga doir talablar texnik jihatdan tartibga solish sohasidagi normativ hujjatlarda belgilanadi.\nAlkogol mahsulotlarining oʻrovi ularning muomalasi jarayonida xavfsizligini va alkogol mahsulotlarining butun yaroqlilik muddati mobaynida (vinochilik mahsulotlari uchun — ishlab chiqaruvchi tomonidan belgilanadigan saqlash muddati mobaynida) isteʼmol xossalari saqlanishini taʼminlashi kerak.\nAlkogol mahsulotlarining tamgʻasi har bitta oʻrovning oʻqish uchun qulay joyiga (yorligʻiga, kontryorligʻiga, kolyeretkasiga va boshqa joylariga) bosiladi.\nAlkogol mahsulotlarining (bundan tabiiy va koʻpiklanadigan vinolar mustasno) isteʼmol idishida yorliq asosiy yuzasining kamida qirq foizini egallaydigan matnli yozuv va (yoki) rasm tarzidagi tibbiy ogohlantirish boʻlishi kerak.\nOʻzbekiston Respublikasida ishlab chiqariladigan va uning hududiga olib kiriladigan alkogol mahsulotlari (bundan tabiiy va koʻpiklanadigan vinolar, pivo va pivo ichimliklari mustasno) belgilangan namunadagi aksiz markalari bilan tamgʻalanishi shart."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "7050441_0040_41_1",
+     "doc_id": "lex:7050441",
+     "doc_title": "Probatsiya toʻgʻrisida",
+     "article": "41-modda",
+     "retrieval_score": 0.424,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Alkogolli ichimliklarni isteʼmol qilish yuzasidan sud belgilagan taqiqqa (cheklovga) probatsiya nazoratidagi shaxs tomonidan rioya etilishi ustidan nazoratni tuman (shahar) probatsiya boʻlinmalari ichki ishlar organlarining huquqbuzarliklar profilaktikasi boʻlinmalari bilan hamkorlikda amalga oshiradi.\nProbatsiya nazoratidagi shaxsning psixoaktiv moddalar taʼsiridan mastlik holatida ekanligini aniqlash uchun tekshiruv oʻtkazishga quyidagilar asos boʻladi:\nogʻiz boʻshligʻidan alkogol hidi kelishi;\nbir holatda toʻgʻri tura olmaslik (chayqalib turish);\nnutqning buzilganligi;\nqoʻl barmoqlarining titrashi;\nyuz terisi rangining sezilarli tarzda oʻzgarganligi.\nTekshiruv oʻtkazish uchun asoslardan biri aniqlangan taqdirda, tekshiruv toʻrt soat ichida oʻtkazilishi kerak.\nProbatsiya nazoratidagi shaxsning alkogolli ichimliklar taʼsiridan mastlik holatida ekanligini aniqlash uchun tekshiruv havoga chiqarilgan etanol bugʻlarini aniqlaydigan va tekshiruv natijalarini qogʻozda aks ettiradigan sertifikatlangan maxsus texnika vositasi yordamida oʻtkaziladi.\nTekshiruv oʻtkazish oldidan probatsiya nazoratidagi shaxs sertifikatlangan maxsus texnika vositasining texnik xususiyatlarini va ishlash tartibini tasdiqlovchi hujjatlar bilan tanishtiriladi.\nSertifikatlangan maxsus texnika vositasi yordamida tekshiruv kamida ikki nafar xolisning hozirligida tuman (shahar) probatsiya boʻlinmasi xodimi tomonidan amalga oshiriladi.\nProbatsiya nazoratidagi shaxs tomonidan nafas orqali chiqariladigan havodagi etanol bugʻlari konsentratsiyasi koʻrsatkichi 0,135 milligramm yoki undan yuqori boʻlgan hollarda, probatsiya xizmati xodimi probatsiya nazoratidagi shaxsga nisbatan uning alkogolli ichimliklar isteʼmol qilganligi fakti yuzasidan dalolatnoma rasmiylashtiradi hamda dalolatnomaga sertifikatlangan maxsus texnika vositasidan foydalangan holda oʻtkazilgan tekshiruv natijalari toʻgʻrisidagi chop etilgan maʼlumotlarni ilova qiladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6472100_0003_3_4",
+     "doc_id": "lex:6472100",
+     "doc_title": "Alkogol va tamaki mahsulotlarining tarqatilishini hamda isteʼmol qilinishini cheklash toʻgʻrisida",
+     "article": "3-modda",
+     "retrieval_score": 0.4164,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… tamaki mavjud boʻlmagan mahsulotlarning tutashi va (yoki) qizdirilishi natijasida hosil boʻladigan aerozolni (bugʻni, tutunni) nafas orqali yutish uchun foydalaniladigan moslama boʻlib, unda aerozol (bugʻ, tutun) suyuqlik solingan idish (chilim suvdoni) orqali oʻtadi;\nqizdiriladigan tamaki mahsuloti — chekiladigan tamaki mahsulotining ingrediyentlar qoʻshilgan yoki qoʻshilmagan tamakidan (tamaki aralashmasidan) iborat boʻlgan, tamakini qizdirish tizimlarida foydalanish uchun moʻljallangan turi;\nelektron sigareta — elektr toki (akkumulyator) yordamida moslamadagi nikotinli yoki nikotinsiz suyuqlikni qizdiradigan va isteʼmolchi tomonidan nafas orqali yutiladigan aerozol (bugʻ, tutun) hosil qiladigan, bir marta ishlatiladigan moslama."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Eng mazali palovni qanday qilib damlash kerak?",
+    "sub_queries": [],
+    "retrieved_total": 3,
+    "best_cosine": 0.4439,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "low_similarity",
+    "llm_model": null,
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1607,
+    "rerank_ms": null,
+    "generation_ms": null,
+    "total_ms": 1615
+   },
+   "usage": null,
+   "llm_model": null,
+   "error": null
+  },
+  {
+   "id": "q054",
+   "status": "ok",
+   "answer": "Yoʻq, xotinining homiladorlik vaqtida er xotinining roziligisiz nikohdan ajratish toʻgʻrisida ish qoʻzgʻatishga haqli emas.\n\nOʻzbekiston Respublikasi Oila kodeksining 39-moddasiga koʻra, xotinining homiladorlik vaqtida va bola tugʻilganidan keyin bir yil mobaynida er xotinining roziligisiz nikohdan ajratish toʻgʻrisida ish qoʻzgʻatishga haqli emas [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.605,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-158838",
+     "article": "39-modda",
+     "article_title": "Erning nikohdan ajratish toʻgʻrisida talab qoʻyishini man etadigan hollar",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0039_39_1",
+     "quote": "Xotinining homiladorlik vaqtida va bola tugʻilganidan keyin bir yil mobaynida er xotinining roziligisiz nikohdan ajratish toʻgʻrisida ish qoʻzgʻatishga haqli emas."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "104720_0039_39_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "39-modda",
+     "retrieval_score": 0.6053,
+     "fusion_score": 0.01713,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Xotinining homiladorlik vaqtida va bola tugʻilganidan keyin bir yil mobaynida er xotinining roziligisiz nikohdan ajratish toʻgʻrisida ish qoʻzgʻatishga haqli emas."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "106136_0107_108_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "108-modda",
+     "retrieval_score": 0.5789,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Vasiylikka yoki homiylikka olingan shaxsning foydalanishida yoxud mulkida boʻlgan turar joyni almashtirish uchun tegishli vasiylik va homiylik organining roziligi talab qilinadi.\nAlmashtirishga rozilik bermaslik ustidan sud tartibida shikoyat qilinishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0391_392_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "392-modda",
+     "retrieval_score": 0.5785,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Homiladorligi yoki farzandlari borligi bilan bogʻliq sababga koʻra ishga qabul qilishni rad etish, ishdan boʻshatish yoki ish haqini kamaytirish taqiqlanadi.\nIsh beruvchi ishga qabul qilishni rad etgan taqdirda, rad etish sabablarining ishga qabul qilish huquqiga ega boʻlgan mansabdor shaxs tomonidan imzolangan yozma asosini homilador ayol yoki farzandlari bor shaxs talabiga koʻra uch kun ichida taqdim etishi shart. Ishga qabul qilishni rad etish sabablarining yozma asosini taqdim etmaganlik ishga qabul qilishni rad etganlik ustidan shikoyat qilishga monelik qilmaydi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "2307826_0031_32_2",
+     "doc_id": "lex:2307826",
+     "doc_title": "Vasiylik va homiylik toʻgʻrisida",
+     "article": "32-modda",
+     "retrieval_score": 0.5725,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "oʻz vasiyligidagi yoki homiyligidagi voyaga yetmagan shaxs bilan birga yashashi shart.\nOʻz vasiyligidagi yoki homiyligidagi shaxs bilan birga yashayotgan vasiyning yoki homiyning yashash joyini oʻzgartirishi, shuningdek vasiyning yoki homiyning, shu jumladan vasiylikdagi yoki homiylikdagi shaxsning Oʻzbekiston Respublikasidan chiqishi vasiylik va homiylik organining yozma ruxsati va oʻn yoshga toʻlgan voyaga yetmaganning roziligi bilan amalga oshiriladi.\nHomiyning oʻz homiyligidagi oʻn olti yoshga toʻlgan shaxsdan alohida yashashiga, basharti bu homiylikdagi shaxsning tarbiyasiga, taʼminotiga va taʼlim olishiga, huquqlari, erkinliklari va qonuniy manfaatlari himoya qilinishiga salbiy taʼsir koʻrsatmasa, vasiylik va homiylik organlarining yozma ruxsati bilan yoʻl qoʻyiladi. Homiy oʻz homiyligidagi shaxsdan alohida yashagan taqdirda, uning yashash, taʼlim olish sharoitlarini nazorat qilishi, uni atrofdagilarning salbiy taʼsiridan himoya qilishi shart.\nVasiylikdagi yoki homiylikdagi voyaga yetmagan shaxsning turar joyi mavjud boʻlmagan taqdirda, vasiy yoki homiy uy-joy toʻgʻrisidagi qonunchilikka muvofiq uni olish boʻyicha choralar koʻrishi shart.\nMuomala layoqati cheklangan fuqarolarning homiylari ularni spirtli ichimliklar, giyohvandlik vositalari, psixotrop yoki aql-iroda faoliyatiga taʼsir etuvchi boshqa moddalarni isteʼmol etishdan, chekishdan himoya qilishga doir zarur chora-tadbirlarni koʻrishi shart.\nVasiylik va homiylik boʻyicha majburiyatlar bepul bajariladi.\nVasiylar va homiylarning zimmasida qonunchilikka muvofiq boshqa majburiyatlar ham boʻlishi mumkin."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "2307826_0036_37_1",
+     "doc_id": "lex:2307826",
+     "doc_title": "Vasiylik va homiylik toʻgʻrisida",
+     "article": "37-modda",
+     "retrieval_score": 0.5711,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Vasiylar vasiylik va homiylik organlarining ruxsati bilan:\nvasiylikdagi shaxs nomidan notarial tartibda tasdiqlanishi lozim boʻlgan bitimlar tuzishga;\nmol-mulkni taqsimlashga;\nvasiylikdagi shaxsning mol-mulkini bir yildan ortiq boʻlmagan muddatga garovga berishga;\nvasiylikdagi shaxsning turar joyini ayirboshlashga;\nvasiylikdagi shaxs nomidan meros va (yoki) hadya olishdan voz kechishga haqli, bundan voyaga yetmaganlarning vasiylari mustasno.\nAgar vasiyning yoki homiyning harakatlari vasiylikdagi yoki homiylikdagi shaxsga qarashli mol-mulkning qiymati pasayishiga olib kelishi mumkin boʻlsa, barcha hollarda, xususan:\nvasiylikdagi yoki homiylikdagi shaxsning manfaatlarini koʻzlab berilgan daʼvodan voz kechilganda;\nsud muhokamasida vasiylikdagi yoki homiylikdagi shaxs nomidan kelishuv bitimini tuzishda;\nvasiylikdagi yoki homiylikdagi shaxs daʼvogar boʻlgan ijro ishini yuritish boʻyicha qarzdor bilan kelishuv bitimini tuzishda vasiylik va homiylik organlarining ruxsati talab etiladi.\nVasiylikdagi yoki homiylikdagi shaxs nomidan ishonchnoma berilgan taqdirda ham vasiylik va homiylik organining ruxsati talab etiladi.\nVasiylik va homiylik organi rad etish sabablarini koʻrsatgan holda ruxsat berishni rad etishi mumkin.\nVasiylik va homiylik organining ruxsati yoki ruxsat berishni rad etishi bunday ruxsatni berish toʻgʻrisida ariza topshirilgan kundan eʼtiboran oʻn besh kundan kechiktirmasdan vasiyga yoki homiyga taqdim etilishi kerak."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Xotinim homilador. Uning roziligisiz ajrashish uchun sudga ariza bera olamanmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6053,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1285,
+    "rerank_ms": null,
+    "generation_ms": 11699,
+    "total_ms": 12985
+   },
+   "usage": {
+    "input_tokens": 2927,
+    "output_tokens": 191
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q055",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi rezidenti boʻlgan jismoniy shaxsning daromadlariga, agar qonunchilikda boshqa qoida nazarda tutilmagan boʻlsa, 12 foizlik soliq stavkasi boʻyicha soliq solinadi [1].\n\nSoliq kodeksining 381-moddasiga muvofiq, ushbu stavka rezident jismoniy shaxslarning umumiy daromadlariga nisbatan qoʻllanadi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.648,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4674902",
+     "article_url": "https://lex.uz/uz/docs/-4674902#-4687419",
+     "article": "381-modda",
+     "article_title": "Oʻzbekiston Respublikasining rezidentlari boʻlgan jismoniy shaxslar uchun soliq stavkalari",
+     "part": "1-qism",
+     "edition_date": "2026-10-21",
+     "doc_status": "amalda",
+     "chunk_id": "4674902_0386_381_1",
+     "quote": "Oʻzbekiston Respublikasi rezidenti boʻlgan jismoniy shaxsning daromadlariga, agar ushbu moddaning ikkinchi qismida boshqa qoida nazarda tutilmagan boʻlsa, 12 foizlik soliq stavkasi boʻyicha soliq solinadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4674902_0386_381_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "381-modda",
+     "retrieval_score": 0.6418,
+     "fusion_score": 0.01667,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi rezidenti boʻlgan jismoniy shaxsning daromadlariga, agar ushbu moddaning ikkinchi qismida boshqa qoida nazarda tutilmagan boʻlsa, 12 foizlik soliq stavkasi boʻyicha soliq solinadi.\nDividendlar va foizlar tarzidagi daromadlarga 5 foizlik soliq stavkasi boʻyicha soliq solinadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4674902_0310_304_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "304-modda",
+     "retrieval_score": 0.6482,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Quyidagilar daromad sifatida hisobga olinmaydi:\n1) ustav fondiga (ustav kapitaliga) qoʻshilgan hissa tarzida olingan mablagʻlar;\n2) aksiyalarni (ulushlarni) joylashtirish narxining ularning nominal qiymatidan (dastlabki miqdoridan) ortiqcha summasi;\n3) ishtirokchilar tarkibidan chiqish (chiqib ketish) chogʻida ustav fondiga (ustav kapitaliga) qoʻshilgan hissa doirasida olingan yoki ishtirokchining ulushi miqdorini kamaytirish, shuningdek tugatilayotgan yuridik shaxsning mol-mulkini ishtirokchilar oʻrtasida taqsimlash chogʻida olingan mablagʻlar;\n4) oddiy shirkat shartnomasi boʻyicha birgalikdagi faoliyatni amalga oshirish uchun birlashtiriladigan mablagʻlar;\n5) oddiy shirkat shartnomasi boʻyicha sherikning (ishtirokchining) shartnoma sheriklari (ishtirokchilari) umumiy mulkidagi ulushi qaytarilgan yoki bunday mol-mulk boʻlingan taqdirda, ushbu sherik (ishtirokchi tomonidan) qoʻshilgan hissa miqdorida olingan mablagʻlar;\n6) realizatsiya qilinadigan tovarlar (xizmatlar) uchun oldindan toʻlov (boʻnak) tarzida boshqa shaxslardan olingan mablagʻlar;\n6¹) boshqaruvchi tashkilotlar yoki koʻp kvartirali uylarni boshqaruvchilar tomonidan umumiy mol-mulkni boshqarish, unga texnik xizmat koʻrsatish va uni taʼmirlash, shuningdek koʻp kvartirali uylarga tutash yer uchastkalarini obodonlashtirish boʻyicha koʻrsatilgan xizmatlardan hamda bajarilgan ishlardan olingan mablagʻlar;\n6²) “Mahalla servis” kompaniyalari tomonidan mahallalarni obod qilish bilan bogʻliq ishlarni bajarishdan hamda mahallalar aholisiga qonunchilik hujjatlarida belgilangan ayrim turdagi ijtimoiy ahamiyatli pulli xizmatlar koʻrsatishdan olingan mablagʻlar;\n7) qonunchilikka muvofiq ushbu majburiyatlarning taʼminoti sifatida garov yoki zakalat tarzida olingan mablagʻlar, ularga boʻlgan mulk huquqi boshqa shaxsga oʻtgan paytga qadar;\n8) Oʻzbekiston Respublikasi Prezidentining yoki Oʻzbekiston Respublikasi Vazirlar Mahkamasining qarorlari asosida, shuningdek Oʻzbekiston Respublikasining xalqaro shartnomalariga muvofiq tekinga olingan mol-mulk va xizmatlar;\n9) ushbu Kodeksning 48-moddasida nazarda tutilgan talablar bajarilishi sharti bilan olingan grantlar, insonparvarlik yordami va maqsadli tushumlar;\n10) sugʻurta shartnomalari boʻyicha sugʻurta tovoni (sugʻurta summasi) tarzida olingan mablagʻlar;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4674902_0381_376_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "376-modda",
+     "retrieval_score": 0.6412,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Soliq toʻlovchi tomonidan moddiy naf tarzida olingan daromadlar, agar ushbu Kodeks 369-moddasining ikkinchi qismida boshqacha qoida nazarda tutilmagan boʻlsa, quyidagilardan iborat:\n1) soliq agenti tomonidan soliq toʻlovchi manfaatlarini koʻzlab, tovarlar (xizmatlar), mulkiy huquqlar haqini toʻlash, shu jumladan:\nsoliq toʻlovchining bolalarini maktabgacha taʼlim tashkilotlarida oʻqitish, tarbiyalash haqini toʻlash;\nsoliq toʻlovchilarga berilgan uy-joyning kommunal xizmatlar haqini, uy-joydan foydalanish xarajatlarini, yotoqxonadagi joylar haqini yoki ularning oʻrnini qoplash qiymatini toʻlash;\nsanatoriy-kurortlarda davolanish yoʻllanmalari qiymatini, dam olish, statsionar va ambulator davolanish haqini yoki ularning oʻrnini qoplash qiymatini toʻlash;\nsoliq agentining soliq toʻlovchi daromadi boʻlgan boshqa xarajatlarini toʻlash;\n2) soliq toʻlovchining manfaatlarini koʻzlab tekin, shu jumladan hadya shartnomasi boʻyicha berilgan mol-mulkning va koʻrsatilgan xizmatlarning qiymati;\n3) tovarlarni (xizmatlarni) soliq toʻlovchilarga realizatsiya qilish narxi hamda shu tovarlarning (xizmatlarning) ushbu moddaning ikkinchi va uchinchi qismlariga muvofiq hisoblab chiqarilgan qiymati oʻrtasidagi salbiy farq;\n4) qonunchilikka muvofiq xodimlarga temir yoʻl, aviatsiya, daryo, avtomobil transporti va shahar elektr transportida yurish boʻyicha beriladigan imtiyozlar summasi;\n5) jismoniy shaxsning soliq agenti oldidagi qarzining yuridik shaxs qarori bilan hisobdan chiqarilgan summalari;\n6) soliq agenti tomonidan toʻlovlar hisobiga toʻlanib, soliq toʻlovchidan ushlab qolinishi lozim boʻlgan, lekin ushlab qolinmagan summalar.\nSoliq toʻlovchi tomonidan soliq agentidan tovarlar (xizmatlar) olingan taqdirda, ushbu tovarlarning (xizmatlarning) qiymati ularni sotib olish narxidan yoki tannarxidan kelib chiqqan holda aniqlanadi.\nSoliq toʻlovchi tomonidan soliq agentidan aksiz toʻlanadigan tovarlar yoki qoʻshilgan qiymat soligʻi solinadigan tovarlar (xizmatlar) olingan taqdirda, bunday tovarlarning (xizmatlarning) qiymatida aksiz soligʻining va qoʻshilgan qiymat soligʻining tegishli summasi hisobga olinadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4674902_0358_353_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "353-modda",
+     "retrieval_score": 0.633,
+     "fusion_score": 0.01571,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Soliq stavkalari quyidagi miqdorlarda belgilanadi:\nT/r | Soliq solinadigan daromad | Soliq stavkalari, foizlarda\n1 | Dividendlar va foizlar | 10\n2 | Sugʻurta, birgalikda sugʻurta qilish va qayta sugʻurta qilish shartnomalari boʻyicha sugʻurta mukofotlari | 10\n3 | Xalqaro aloqa uchun telekommunikatsiyalar, xalqaro tashishlar (fraxtdan olingan daromadlar) | 6\n4 | Investitsiya loyihalarini moliyalashtirish uchun jalb etilgan kreditlar boʻyicha, Oʻzbekiston Respublikasi banklari va lizing beruvchilari tomonidan chet el moliya institutlariga toʻlanadigan daromadlar | 0\n5 | Oʻzbekiston Respublikasining rezidentlari boʻlgan banklarning vakillik hisobvaraqlarini ochish va yuritish hamda ular yuzasidan hisob-kitoblarni amalga oshirish, shuningdek xalqaro toʻlov kartochkalari vositasida hisob-kitoblarni amalga oshirish bilan bogʻliq xizmatlar koʻrsatishdan olinadigan daromadlar | 0\n6 | Boshqa daromadlar, bundan 1 — 5-bandlarda koʻrsatilgan daromadlar mustasno | 20"
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4674902_0474_464_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "464-modda",
+     "retrieval_score": 0.6399,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Kodeksning 463-moddasiga muvofiq hisoblab chiqarilgan jami daromad soliq bazasi deb eʼtirof etiladi, bundan quyidagilar mustasno:\n1) Oʻzbekiston Respublikasining davlat obligatsiyalari va boshqa davlat qimmatli qogʻozlari boʻyicha daromadlar, shuningdek Oʻzbekiston Respublikasi rezidentlari boʻlgan yuridik shaxslarning xalqaro obligatsiyalari boʻyicha daromadlar;\n2) soliq agentida soliq solinishi lozim boʻlgan dividendlar;\n3) qaytariladigan koʻp marta aylanadigan tara qiymati, agar uning qiymati ilgari tovarlarni (xizmatlarni) sotishdan olinadigan daromadga kiritilgan boʻlsa;\n4) amortizatsiya qilinadigan aktivlarni tugatishda ularni qoʻshimcha baholashda olingan, oldingi narxni tushirishlardagi summadan ortiqcha summa hisobidan olingan daromadlar;\n5) hisobot yilida aniqlangan oʻtgan yillardagi daromadlar. Mazkur daromadlarga ular shakllangan davrdagi qonunchilikka muvofiq soliqlar boʻyicha qayta hisob-kitob oʻtkazilganligi inobatga olingan holda soliq solinadi.\nSoliq solinadigan baza ushbu moddaning birinchi qismida nazarda tutilgan chegirmalardan tashqari quyidagilar uchun kamaytiriladi:\n1) brokerlik tashkilotlari uchun — bitim summasidan birjaga oʻtkaziladigan vositachilik yigʻimi summasiga;\n2) komissiya shartnomasi boʻyicha vositachilik xizmatlarini koʻrsatuvchi yuridik shaxslar uchun — tovarlarni import qilishda toʻlangan bojxona toʻlovlari summasiga realizatsiya qilingan tovar ulushida;\n3) turizm faoliyati subyektlari uchun — turistik xizmatlarni onlayn bronlashtirish va sotish uchun yaratilgan dasturiy mahsulotlarni hamda axborot tizimlarini joriy etishga yoʻnaltirilgan mablagʻlar summasiga.\n4) tadbirkorlik subyektlari uchun — tovarlarni (xizmatlarni) realizatsiya qilishdan olingan daromadlarining 0,5 foizidan oshmagan miqdorda oʻz xodimlariga va ularning yaqin qarindoshlariga ommaviy-madaniy hamda konsert-tomosha tadbirlariga borishi uchun chiptalar xarid qilishga doir xarajatlar summasiga;"
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Oylik maoshdan olinadigan daromad soligʻi necha foiz?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6482,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 378,
+    "rerank_ms": null,
+    "generation_ms": 29609,
+    "total_ms": 29988
+   },
+   "usage": {
+    "input_tokens": 3929,
+    "output_tokens": 184
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q056",
+   "status": "ok",
+   "answer": "Ўзбекистон Республикаси Меҳнат кодексининг 264-моддасига кўра, тунги вақтдаги меҳнат учун ҳақ тўлаш камида бир ярим баравар миқдорида амалга оширилади [2].\n\nБунда қуйидаги тартиблар қўлланади:\n* Меҳнатга ҳақ тўлашнинг вақтбай тизимида — тунги вақтдаги ишнинг ҳар бир соати учун 1,5 ёки ундан ортиқ коэффитсиент қўлланади [2].\n* Меҳнатга ҳақ тўлашнинг ишбай тизимида — тегишли разрядга эга бўлган вақтбай ишловчининг соатлик тариф ставкасининг (маошининг) 50 фоизи ёки ундан ортиқ миқдорида қўшимча тўлов тўланади [2].\n\nТунги вақтдаги иш учун оширилган миқдордаги ҳақ тўлаш тариф ставкаларига (маошларга) киритилмайди. Қўшимча тўловнинг аниқ миқдори жамоа шартномасида, ички ҳужжатларда ёки меҳнат шартномасида белгиланади [2].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.714,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6264064",
+     "article": "264-modda",
+     "article_title": "Tungi vaqtdagi mehnat uchun haq toʻlash",
+     "part": "2-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0263_264_1",
+     "quote": "mehnatga haq toʻlashning vaqtbay tizimida — tungi vaqtdagi ishning har bir soati uchun 1,5 yoki undan ortiq koeffitsiyentni qoʻllagan holda;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0287_288_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "288-modda",
+     "retrieval_score": 0.6579,
+     "fusion_score": 0.01669,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sayyor xususiyatga ega ish uchun ustamalar quyidagi eng kam miqdorlarda belgilanadi:\ntashkilot joylashgan joydan ish joyiga (obyektga) yetib borish va orqaga qaytish uchun safar kun davomida uch soatdan kam boʻlmagan va ish vaqtidan tashqari vaqtda amalga oshirilgan hollarda, — qonunchilikda belgilangan sutkalik stavkaning sakson foizigacha va sakson foizi miqdorida, uch soatdan kam boʻlgan hollarda esa qirq foizigacha va qirq foizi miqdorida;\nishlarni yoʻlda bajarish bilan bogʻliq safar chogʻida — yoʻlda oʻtgan har bir kun uchun oylik tarif stavkasining (maoshning) bir yarim foizi, yoʻlovchi poyezdlariga, pochta-bagaj poyezdlariga, yoʻlovchi poyezdlari va pochta vagonlarining restoran-vagonlarida (kafe-bufetlarda) xizmat koʻrsatuvchi xodimlarga esa uch foizi miqdorida;\nagar xodimlar bir oyda oʻn ikki va undan ortiq kun safarda boʻlsa, — qonunchilikda belgilangan sutkalik normaning yigirma foizigacha, agar bir oyda oʻn ikki kundan kam safarda boʻlsa, — sayyor xususiyatga ega sharoitlardagi ishning bir sutkasi uchun oylik tarif stavkasining (maoshning) oʻn besh foizigacha miqdorda.\nKoʻchib yurish xususiyatiga ega ish uchun ustama quyidagi eng kam miqdorlarda belgilanadi:\nolis obyektlarda boʻlish kunlarida — har bir toʻliq ishlangan ish kuni (smena) uchun xodim kunlik stavkasining oʻttiz foizigacha;\nobyekt joylashgan yerga borish va orqaga qaytish kunlarida — xodimning kunlik tarif stavkasi miqdorida.\nDala sharoitlaridagi ish uchun dala nafaqasi quyidagi miqdorlardan kam boʻlmagan miqdorda toʻlanadi:\nbevosita dala ishlari oʻtkaziladigan obyektlarda, tashkilotning daladagi bazaviy shaharchasidan tashqarida ishlaganda — kunlik mehnatga haq toʻlash eng kam miqdorining yetti foizi;\ntashkilotlarning daladagi bazaviy shaharchalarida bajariladigan ish uchun — kunlik mehnatga haq toʻlash eng kam miqdorining ikki foizi.\nVaxta usulidagi ish uchun oylik mehnatga haq toʻlash eng kam miqdorining ellik foizidan kam boʻlmagan miqdorda ustama belgilanadi.\nJamoa shartnomasi yoki kasaba uyushmasi qoʻmitasi bilan kelishilgan ichki hujjat yoxud xodim va ish beruvchi oʻrtasidagi kelishuv bilan ushbu moddaning ikkinchi, uchinchi va toʻrtinchi qismlarida nazarda tutilganidan koʻproq miqdorda kompensatsiyalar belgilanishi mumkin. Bunda ushbu moddada belgilangan miqdorlardan ortiq boʻlgan toʻlovlarga soliq toʻgʻrisidagi qonunchilikka muvofiq soliq solinishi lozim."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0263_264_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "264-modda",
+     "retrieval_score": 0.7139,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Quyidagi hollarda tungi vaqtdagi mehnat uchun haq toʻlash kamida bir yarim baravar miqdorida amalga oshiriladi:\nmehnatga haq toʻlashning vaqtbay tizimida — tungi vaqtdagi ishning har bir soati uchun 1,5 yoki undan ortiq koeffitsiyentni qoʻllagan holda;\nmehnatga haq toʻlashning ishbay tizimida — tegishli razryadga (malakaga) ega boʻlgan vaqtbay ishlovchining soatlik tarif stavkasining (maoshining) ellik foizi yoki undan ortiq miqdorida ishbay ish haqi va qoʻshimcha toʻlov toʻliq toʻlanadi.\nTungi vaqtdagi ish uchun oshirilgan miqdorda haq toʻlash tarif stavkalariga (maoshlarga) kiritilmaydi.\nTungi vaqtdagi, shuningdek koʻp smenali rejimdagi ish uchun ish haqiga doir qoʻshimcha toʻlovning aniq miqdori jamoa shartnomasida, ish beruvchi tomonidan kasaba uyushmasi qoʻmitasi bilan kelishuvga koʻra qabul qilinadigan ichki hujjatlarda yoxud mehnat shartnomasida belgilanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0261_262_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "262-modda",
+     "retrieval_score": 0.6877,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish vaqtidan tashqari ishning bir kundagi birinchi ikki soati uchun kamida bir yarim hissa miqdorida, ikki soatdan ortiq qismi uchun kamida ikki hissa miqdorida (mehnat sharoitlari noqulay boʻlgan ishlarda — har bir soati uchun kamida ikki hissa miqdorida) haq toʻlanadi.\nJamoa shartnomasida, kasaba uyushmasi qoʻmitasi bilan kelishuvga koʻra ish beruvchi tomonidan qabul qilingan ichki hujjatda, mehnat shartnomasida ish vaqtidan tashqari ish uchun qoʻshimcha toʻlovlarning yuqoriroq miqdorlari nazarda tutilishi mumkin.\nXodimning xohishiga koʻra ish vaqtidan tashqari ish uchun oshirilgan haq toʻlash oʻrniga ish vaqtidan tashqari ishlab berilgan vaqtning davomiyligiga muvofiq keladigan qoʻshimcha dam olish vaqtini berish bilan kompensatsiya qilinishi mumkin. Bunday holda ish vaqtidan tashqari ish uchun bir hissa miqdorida haq toʻlanadi, dam olish vaqti uchun esa haq toʻlanmaydi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0262_263_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "263-modda",
+     "retrieval_score": 0.6545,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Dam olish kunlaridagi yoki ishlanmaydigan bayram kunlaridagi ish uchun quyidagilarga kamida ikki hissa miqdorida haq toʻlanadi:\nishbay ishlovchilarga — kamida ikki hissali ishbay baholar boʻyicha;\nmehnatiga kunbay va soatbay tarif stavkalari boʻyicha haq toʻlanadigan xodimlarga — kunbay yoki soatbay tarif stavkasining kamida ikki hissasi miqdorida;\nmaosh oladigan xodimlarga — har bir ishlangan kun yoki soat uchun maoshdan tashqari kunbay yoki soatbay stavkasining kamida bir hissasi miqdorida.\nJamoa shartnomasida, ish beruvchi tomonidan kasaba uyushmasi qoʻmitasi bilan kelishuvga koʻra qabul qilingan ichki hujjatda, mehnat shartnomasida dam olish kunlaridagi yoki ishlanmaydigan bayram kunlaridagi ish uchun qoʻshimcha toʻlovlarning yuqoriroq miqdorlari nazarda tutilishi mumkin.\nDam olish kunidagi yoki ishlanmaydigan bayram kunidagi ish xodimning xohishiga koʻra boshqa dam olish kunini berish bilan kompensatsiya qilinishi mumkin. Dam olish kunidagi yoki ishlanmaydigan bayram kunidagi ish boshqa dam olish kunini berish bilan kompensatsiya qilingan taqdirda, bunday ish uchun haq toʻlash kamida bir hissa miqdorida amalga oshiriladi, dam olish kuni uchun esa haq toʻlanmaydi.\nAgar xodim jadvalga yoki mehnat shartnomasiga muvofiq umumiy belgilangan dam olish kunlarida (besh kunlik ish haftasida shanba yoki yakshanba kunlari yoki olti kunlik ish haftasida yakshanba kuni) mehnat qilgan boʻlsa, dam olish kunlari esa unga ish haftasining boshqa kunlarida berilgan boʻlsa, umumiy belgilangan dam olish kunlaridagi ish uchun bir hissa miqdorida haq toʻlanadi.\nIshlanmaydigan bayram kunlaridagi ish uchun, ushbu ish jadvalga binoan amalga oshirilganligidan yoki xodim mazkur Kodeksning 210-moddasiga muvofiq ishlanmaydigan bayram kuni ishga jalb etilganligidan qatʼi nazar, kamida ikki hissa miqdorida haq toʻlanadi yoxud xodimning xohishiga koʻra boshqa dam olish kunini berish va bir hissa miqdorida haq toʻlash orqali kompensatsiya qilinadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0256_257_2",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "257-modda",
+     "retrieval_score": 0.6528,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… haqiqatda hisoblangan ish haqiga yoki ishlab berilgan kunlarga ega boʻlmagan boʻlsa, oʻrtacha ish haqi xodim tomonidan oʻrtacha ish haqining saqlanib qolishi bilan bogʻliq boʻlgan hodisa yuz bergan oyda haqiqatda ishlab berilgan kunlar uchun hisoblangan ish haqi miqdoridan kelib chiqqan holda belgilanadi.\nAgar xodim hisob-kitob davri uchun, hisob-kitob davri boshlanguniga qadar va oʻrtacha ish haqining saqlanib qolishi bilan bogʻliq boʻlgan hodisa yuz berguniga qadar haqiqatda hisoblangan ish haqiga yoki haqiqatda ishlab berilgan kunlarga ega boʻlmagan boʻlsa, oʻrtacha ish haqi unga belgilangan tarif stavkasidan (maoshidan) kelib chiqqan holda aniqlanadi.\nAgar hisob-kitob davrining bir oyi yoki bir necha oyi toʻliq ishlab berilmagan yoki ushbu moddaning toʻrtinchi qismiga muvofiq undan vaqt chiqarib tashlangan boʻlsa, oʻrtacha kunlik ish haqi hisob-kitob davri uchun haqiqatda hisoblangan ish haqi summasini toʻliq kalendar oylar soniga hamda toʻliq boʻlmagan kalendar oylardagi kalendar kunlar soniga koʻpaytirilgan ish kunlarining oʻrtacha oylik sonining (25,3) summasiga boʻlish orqali hisoblab chiqariladi. Toʻliq boʻlmagan kalendar oydagi ish kunlarining soni ish kunlarining oʻrtacha oylik sonini (25,3) ushbu oydagi ish kunlarining haqiqiy soniga boʻlish hamda mazkur oyda ishlab berilgan vaqtga toʻgʻri keladigan ish kunlari soniga koʻpaytirish orqali hisoblab chiqiladi.\nOʻrtacha kunlik ish haqi uni hisoblab chiqarishning barcha hollarida ushbu moddaning uchinchi, toʻrtinchi va beshinchi qismlariga muvofiq hisoblab chiqarilgan oʻrtacha ish haqi summasini ish kunlarining oʻrtacha oylik soniga (25,3) boʻlish orqali belgilanadi.\nOʻrtacha soatlik ish haqi uni hisoblab chiqarishning barcha hollarida ushbu moddaning uchinchi, toʻrtinchi va beshinchi qismlariga muvofiq hisoblab chiqarilgan oʻrtacha ish haqi summasini xodimning oʻrtacha ish haqi saqlanib qoladigan oydan oldingi oxirgi kalendar oyda ishlab berilgan soatlar soniga boʻlish orqali belgilanadi.\nAlohida hollar (ish vaqti jamlab hisobga olinganda, uni hisoblab chiqarish uchun qabul qilingan davrda ish vaqti toʻliq ishlab berilmaganda, ushbu davrda ish haqi boʻlmaganda va boshqa hollarda) uchun xodimlarning oʻrtacha ish haqini hisoblab chiqarishning oʻziga xos xususiyatlari Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi.\nBarcha hollarda ish vaqtining oylik normasini ishlab bergan va mehnat shartnomasida belgilangan mehnat vazifasini bajargan xodimning oʻrtacha oylik ish haqi qonunchilikda belgilangan hisoblash kunidagi mehnatga haq toʻlashning eng kam miqdoridan kam boʻlishi mumkin emas."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kechasi ishlaganim uchun ish haqi qancha koʻproq toʻlanishi kerak?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7139,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 393,
+    "rerank_ms": null,
+    "generation_ms": 27033,
+    "total_ms": 27427
+   },
+   "usage": {
+    "input_tokens": 4312,
+    "output_tokens": 329
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q057",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasining Saylov kodeksining 51-moddasiga koʻra, saylov kuni ovoz berish soat 8.00 dan 20.00 gacha oʻtkaziladi [1].\n\nChet davlatlardagi diplomatik va boshqa vakolatxonalar huzurida tuzilgan saylov uchastkalarida ovoz berish ushbu uchastkalar joylashgan yerdagi mahalliy vaqt bilan soat 8.00 dan 20.00 gacha amalga oshiriladi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.686,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4386848",
+     "article_url": "https://lex.uz/uz/docs/-4386848#-4388639",
+     "article": "51-modda",
+     "article_title": "Ovoz berish vaqti va joyi",
+     "part": "2-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "4386848_0055_51_1",
+     "quote": "Oʻzbekiston Respublikasining chet davlatlardagi diplomatik va boshqa vakolatxonalari huzurida tuzilgan saylov uchastkalarida ovoz berish saylov kuni ushbu saylov uchastkalari joylashgan yerdagi mahalliy vaqt bilan soat 8.00 dan 20.00 gacha oʻtkaziladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4386848_0055_51_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "51-modda",
+     "retrieval_score": 0.6858,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ovoz berish saylov kuni soat 8.00 dan 20.00 gacha oʻtkaziladi. Ovoz berish vaqti va joyi toʻgʻrisida uchastka saylov komissiyasi saylovchilarni saylovdan kamida oʻn kun oldin xabardor qiladi.\nOʻzbekiston Respublikasining chet davlatlardagi diplomatik va boshqa vakolatxonalari huzurida tuzilgan saylov uchastkalarida ovoz berish saylov kuni ushbu saylov uchastkalari joylashgan yerdagi mahalliy vaqt bilan soat 8.00 dan 20.00 gacha oʻtkaziladi.\nOʻzbekiston Respublikasining chet davlatlardagi diplomatik va boshqa vakolatxonalari huzurida, harbiy qismlarda, sanatoriylarda, dam olish uylarida, kasalxonalar va boshqa statsionar davolash muassasalarida, olis va borish qiyin boʻlgan hududlardagi fuqarolar turgan joylarda, qamoqda saqlash va ozodlikdan mahrum etish joylarida tuzilgan saylov uchastkalarida uchastka saylov komissiyasi, agar roʻyxatga kiritilgan barcha fuqarolar ovoz berib boʻlgan boʻlsa, ovoz berish tugaganligini istalgan vaqtda eʼlon qilishi mumkin.\nOʻzbekiston Respublikasi hududida joylashgan saylov uchastkalarida saylov qutilarini soat 20.00 dan oldin ochish va ovozlarni sanab chiqishga yoʻl qoʻyilmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4386848_0058_54_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "54-modda",
+     "retrieval_score": 0.6579,
+     "fusion_score": 0.01691,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ovoz berish kuni saylov uchastkasida soat 8.00 da Oʻzbekiston Respublikasining Davlat madhiyasi yangraydi.\nUchastka saylov komissiyasining raisi komissiya aʼzolari, kuzatuvchilar, ommaviy axborot vositalari vakillari hozirligida:\novoz berish boshlanganligini eʼlon qiladi;\nsaylov qutilarining boʻshligini tekshiradi va ularni bir marotaba ishlatiladigan plastmassa plombalar bilan plombalaydi, plombalar raqami koʻrsatilgan holda dalolatnoma tuziladi;\nuchastkadagi roʻyxat boʻyicha saylovchilarning soni, olingan saylov byulletenlari soni hamda muddatidan oldin ovoz berganlar haqida maʼlum qiladi. Ushbu maʼlumotlar yakuniy bayonnomaga kiritiladi;\novoz berishni tashkil etish va oʻtkazishni muvofiqlashtirib boradi hamda nazorat qiladi, zarurat boʻlganda komissiya aʼzolariga yordam koʻrsatadi, ular vaqtinchalik yoʻq boʻlgan hollarda ularni boshqa aʼzolar bilan almashtiradi;\novoz berish tugallanganligini eʼlon qiladi;\nbinoda hozir boʻlgan saylovchilarga ovoz berishni tugallashi uchun imkoniyat beradi.\nUchastka saylov komissiyasining aʼzolari:\nsaylovchining shaxsini tasdiqlovchi hujjati asosida uning saylovchilar roʻyxatidagi maʼlumotlarini tekshiradi, unga ovoz berish uchun saylov byulletenini imzo qoʻydirib topshiradi;\nkuzatuvchilarga va ommaviy axborot vositalari vakillariga saylov jarayonini kuzatish uchun shart-sharoitlar yaratadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4386848_0057_53_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "53-modda",
+     "retrieval_score": 0.6376,
+     "fusion_score": 0.01658,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Saylov kuni ovoz berish binosi uchastka saylov komissiyasi aʼzolarining kamida uchdan ikki qismi hozir boʻlganda ochiladi.\nUchastka saylov komissiyalari:\nyashirin ovoz berish uchun binoni ovoz berish boshlanguniga qadar tayyor holatga keltiradi;\nuchastka saylov komissiyasi aʼzolari orasida vazifalarni taqsimlaydi;\nkomissiyaning ikki aʼzosi tomonidan imzolangan, muhr bilan tasdiqlangan saylov byulletenlarini tayyorlaydi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4386848_0062_57_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "57-modda",
+     "retrieval_score": 0.637,
+     "fusion_score": 0.01638,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Saylov kuni oʻz yashash joyida boʻlish imkoniyatiga ega boʻlmagan saylovchi muddatidan oldin ovoz berish huquqiga ega.\nMuddatidan oldin ovoz berish saylovga oʻn kun qolganida boshlanadi va saylovga uch kun qolganida tugallanadi. Muddatidan oldin ovoz berishni oʻtkazish vaqti Markaziy saylov komissiyasi tomonidan belgilanadi va saylovchilarning, kuzatuvchilarning eʼtiboriga ommaviy axborot vositalari orqali yetkaziladi.\nMuddatidan oldin ovoz berishni amalga oshirish uchun saylovchi saylov kunida boʻla olmasligining sabablari (taʼtil, xizmat safari, xorijga chiqish va hokazo) koʻrsatilgan ariza asosida tegishli uchastka saylov komissiyasidan saylov byulletenini oladi. Saylovchi saylov byulletenini olganligi haqida tegishli uchastka saylov komissiyasining kamida ikki nafar aʼzosi hozirligida saylovchilar roʻyxatiga imzo qoʻyadi.\nSaylov byulleteni maxsus jihozlangan yashirin ovoz berish kabinasida yoki xonasida saylovchi tomonidan toʻldiriladi.\nSaylovchi qaror qabul qiladi va toʻldirilgan saylov byulletenini yopiq konvertda qoldiradi, konvert tegishli uchastka saylov komissiyasining seyfida saqlanadi. Konvertning yelimlangan joyiga uchastka saylov komissiyasining ikki nafar aʼzosining imzolari qoʻyilib, ular komissiyaning muhri bilan tasdiqlanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4386848_0027_26_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "26-modda",
+     "retrieval_score": 0.6172,
+     "fusion_score": 0.0159,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Saylov komissiyasining majlisi, agar unda majlis oʻtkazilayotgan kundagi komissiya aʼzolari umumiy sonining kamida uchdan ikki qismi ishtirok etayotgan boʻlsa, vakolatli boʻladi. Komissiya qarori ochiq ovoz berish orqali komissiya aʼzolari umumiy sonining koʻpchilik ovozi bilan qabul qilinadi. Qarorga rozi boʻlmagan komissiya aʼzolari alohida fikrini bayon etishga haqli boʻlib, bu fikr yozma shaklda bayonnomaga ilova qilinadi. Ovozlar teng boʻlib qolgan taqdirda, raislik qiluvchining ovozi hal qiluvchi hisoblanadi.\nMarkaziy saylov komissiyasining qaroriga muvofiq saylov jarayoni ishtirokchilari tomonidan saylov komissiyalariga hujjatlarni taqdim etish, saylov komissiyalarining qarorlarini qabul qilish, shuningdek saylovlarni tashkil etish va oʻtkazish bilan bogʻliq boshqa jarayonlar elektron shaklda amalga oshirilishi mumkin.\nHududiy, tuman, shahar, okrug va uchastka saylov komissiyalarida ish yuritish tartibi Markaziy saylov komissiyasi tomonidan belgilanadi.\nSaylov komissiyasining oʻz vakolatlari doirasida qabul qilgan qarori quyi saylov komissiyalari, shuningdek barcha davlat organlari, siyosiy partiyalar va boshqa jamoat birlashmalari, mehnat jamoalari va harbiy qismlar, korxonalarning, muassasalarning va tashkilotlarning rahbarlari ijro etishi uchun majburiydir.\nKomissiyaning jamoatchilik asosida ishlovchi aʼzosi saylovga tayyorgarlik koʻrish va uni oʻtkazish davrida ishlab chiqarish yoki xizmat vazifalarini bajarishdan saylov komissiyasining qaroriga binoan oʻrtacha oylik ish haqi saqlangan holda ozod qilinishi mumkin.\nHududiy, tuman, shahar, okrug va uchastka saylov komissiyasi aʼzolari Markaziy saylov komissiyasi tomonidan belgilangan tartibda tegishli guvohnomaga ega boʻladi.\nDavlat organlari va jamoat birlashmalarining organlari, korxonalar, muassasalar, tashkilotlar, mansabdor shaxslar saylov komissiyalariga oʻz vakolatlarini amalga oshirishida koʻmaklashishi, ularning ishi uchun zarur maʼlumotlarni taqdim etishi shart.\nDavlat organlari, korxonalar, muassasalar, tashkilotlar saylovga tayyorgarlik koʻrish va uni oʻtkazish uchun kerakli boʻlgan binolar va jihozlarni saylov komissiyalari ixtiyoriga bepul berib turishi shart.\nSaylov komissiyasi saylovga tayyorgarlik koʻrish va uni oʻtkazish bilan bogʻliq masalalar yuzasidan davlat organlariga hamda jamoat birlashmalarining organlariga, korxonalarga, muassasalarga, tashkilotlarga, mansabdor shaxslarga murojaat qilish huquqiga ega, ular qoʻyilgan masalani koʻpi bilan uch kunlik muddatda koʻrib chiqishi va saylov komissiyasiga javob qaytarishi shart.\nOkrug va uchastka saylov komissiyalari tegishincha Oʻzbekiston Respublikasi Prezidenti saylovi yakunlari chiqarilganidan, tegishli saylov okruglaridan saylangan deputatlar Markaziy saylov komissiyasi, hududiy, tuman va shahar saylov komissiyalari tomonidan roʻyxatga olinganidan keyin oʻz faoliyatini tugatadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Saylov kuni ovoz berish soat nechadan nechagacha davom etadi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6858,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 375,
+    "rerank_ms": null,
+    "generation_ms": 3217,
+    "total_ms": 3592
+   },
+   "usage": {
+    "input_tokens": 3512,
+    "output_tokens": 175
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q058",
+   "status": "ok",
+   "answer": "1) Oʻzbekiston Respublikasi Mehnat kodeksining 560-moddasiga koʻra, ishga tiklash toʻgʻrisidagi nizolar boʻyicha sudga murojaat qilish muddati xodimga u bilan mehnat shartnomasi bekor qilinganligi haqidagi ish beruvchi buyrugʻining koʻchirma nusxasi topshirilgan kundan eʼtiboran uch oyni tashkil etadi [1].\n\n2) Sud xarajatlari davlat boji va ishni koʻrish bilan bogʻliq chiqimlardan (pochta xarajatlari, ekspertiza, guvohni chaqirish va h.k.) iborat boʻladi [3][10]. Bazadagi hujjatlarda ishga tiklash boʻyicha sudga murojaat qilishda davlat boji toʻlash yoki toʻlamaslik masalasi boʻyicha aniq javob topilmadi. Bu borada \"Davlat boji toʻgʻrisida\"gi qonun hujjatlari yoki sud amaliyotiga oid qoʻshimcha manbalarni koʻrib chiqish tavsiya etiladi.",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.688,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6269139",
+     "article": "560-modda",
+     "article_title": "Yakka tartibdagi mehnat nizosining koʻrib chiqilishi uchun sudga murojaat qilish muddatlari",
+     "part": "2-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0559_560_1",
+     "quote": "ishga tiklash toʻgʻrisidagi nizolar boʻyicha — xodimga u bilan mehnat shartnomasi bekor qilinganligi haqidagi ish beruvchi buyrugʻining koʻchirma nusxasi topshirilgan kundan eʼtiboran uch oy;"
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:3527353",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-3527353",
+     "article_url": "https://lex.uz/uz/docs/-3527353#-3530109",
+     "article": "113-modda",
+     "article_title": "Sud chiqimlari",
+     "part": "1-qism",
+     "edition_date": "2026-08-14",
+     "doc_status": "amalda",
+     "chunk_id": "3527353_0118_113_1",
+     "quote": "Sud chiqimlari sud xabarnomalari va sud hujjatlarini yuborish bilan bogʻliq pochta xarajatlaridan, sud tayinlagan ekspertizani oʻtkazish, guvohni chaqirish, dalillarni joyida koʻzdan kechirish, sud majlisini videokonferensaloqa rejimida oʻtkazish bilan bogʻliq xarajatlardan, shuningdek ishni koʻrish bilan bogʻliq boshqa xarajatlardan iboratdir."
+    },
+    {
+     "ref": 10,
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-3517337",
+     "article_url": "https://lex.uz/uz/docs/-3517337#-3521108",
+     "article": "127-modda",
+     "article_title": "Sud xarajatlarining turlari",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "3517337_0131_127_1",
+     "quote": "Sud xarajatlari davlat boji va ishni koʻrish bilan bogʻliq chiqimlardan iborat boʻladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0559_560_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "560-modda",
+     "retrieval_score": 0.6881,
+     "fusion_score": 0.03279,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Yakka tartibdagi mehnat nizosining koʻrib chiqilishi uchun sudga murojaat qilishning quyidagi muddatlari belgilanadi:\nishga tiklash toʻgʻrisidagi nizolar boʻyicha — xodimga u bilan mehnat shartnomasi bekor qilinganligi haqidagi ish beruvchi buyrugʻining koʻchirma nusxasi topshirilgan kundan eʼtiboran uch oy;\nxodim tomonidan ish beruvchiga yetkazilgan moddiy zararning oʻrnini qoplash toʻgʻrisidagi nizolar boʻyicha — ish beruvchi zarar yetkazilganligini aniqlagan kundan eʼtiboran bir yil;\nboshqa mehnat nizolari boʻyicha — xodim oʻzining huquqi buzilganligi toʻgʻrisida bilgan yoki bilishi kerak boʻlgan kundan eʼtiboran olti oy.\nXodimning hayotiga va sogʻligʻiga yetkazilgan ziyonning oʻrnini qoplash toʻgʻrisidagi nizolar boʻyicha, shuningdek xodimga yetkazilgan maʼnaviy ziyonni kompensatsiya qilish haqidagi nizolar boʻyicha sudga murojaat etish muddati belgilanmaydi.\nYakka tartibdagi mehnat nizolarini koʻrib chiqish boʻyicha sudga murojaat etish muddatining oʻtishi yakka tartibdagi mehnat nizosini mediatsiya tartibida koʻrib chiqish davrida toʻxtatib turiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "97664_0623_324²⁶_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "324²⁶-modda",
+     "retrieval_score": 0.6661,
+     "fusion_score": 0.032,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shikoyat (protest) apellyatsiya yoki kassatsiya instansiyasi sudining qarori chiqarilgan kundan eʼtiboran olti oy ichida berilishi mumkin.\nUshbu moddaning birinchi qismida nazarda tutilgan muddat oʻtkazib yuborilgan taqdirda, taftish instansiyasi sudi shikoyat (protest) berayotgan shaxsning iltimosnomasiga koʻra, agar uni oʻtkazib yuborish sabablarini uzrli deb topsa, oʻtkazib yuborilgan muddatni tiklashga haqli boʻlib, bu haqda ajrim chiqariladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "3527353_0118_113_1",
+     "doc_id": "lex:3527353",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksi",
+     "article": "113-modda",
+     "retrieval_score": 0.6102,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Sud chiqimlari sud xabarnomalari va sud hujjatlarini yuborish bilan bogʻliq pochta xarajatlaridan, sud tayinlagan ekspertizani oʻtkazish, guvohni chaqirish, dalillarni joyida koʻzdan kechirish, sud majlisini videokonferensaloqa rejimida oʻtkazish bilan bogʻliq xarajatlardan, shuningdek ishni koʻrish bilan bogʻliq boshqa xarajatlardan iboratdir.\nPochta xarajatlarining summasi sud tomonidan belgilanadi, biroq bu summa bazaviy hisoblash miqdorining oʻndan bir qismidan oshmasligi kerak va sudning depozit hisobvaragʻiga kiritilishi lozim.\nSud majlisini videokonferensaloqa rejimida oʻtkazish bilan bogʻliq xarajatlarning summasi sud tomonidan belgilanadi va ishda ishtirok etuvchi shaxslardan ishni koʻrib chiqish natijalari boʻyicha ushbu Kodeksning 115-moddasiga muvofiq undiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "5534923_0082_83_1",
+     "doc_id": "lex:5534923",
+     "doc_title": "Sudlar toʻgʻrisida",
+     "article": "83-modda",
+     "retrieval_score": 0.6094,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Uy-joyga muhtoj boʻlgan sudya mahalliy ijro etuvchi hokimiyat organlari tomonidan Oʻzbekiston Respublikasi Vazirlar Mahkamasi belgilagan tartibda sud joylashgan yerda xizmat turar joyi bilan taʼminlanadi.\nSudya unga doimiy yashash uchun belgilangan tartibda turar joy berilgunga qadar turar joy arendasi, ijarasi (ikkilamchi ijarasi) bilan bogʻliq xarajatlari kompensatsiya qilinishi huquqiga ega."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111460_0354_311_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "311-modda",
+     "retrieval_score": 0.6379,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shaxsning mehnat qilish, pensiya olish va uy-joydan foydalanish huquqlarini tiklash, shuningdek mol-mulkni qaytarish yoki uning qiymatini toʻlash toʻgʻrisidagi talabi qanoatlantirilmagan boʻlsa yoxud shaxs qabul qilingan qarorga rozi boʻlmasa, u tegishli talab bilan daʼvo ishini yuritish tartibida sudga murojaat qilishga haqlidir."
+    },
+    {
+     "rank": 6,
+     "chunk_id": "3527353_0198_186_1",
+     "doc_id": "lex:3527353",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksi",
+     "article": "186-modda",
+     "retrieval_score": 0.6387,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar ushbu Kodeksda yoki oʻzga qonunlarda boshqa muddatlar belgilanmagan boʻlsa, maʼmuriy organning, fuqarolar oʻzini oʻzi boshqarish organining, ular mansabdor shaxslarining qarori, harakati (harakatsizligi) ustidan ariza (shikoyat) manfaatdor shaxsga oʻzining huquqlari, erkinliklari va qonuniy manfaatlari buzilganligi toʻgʻrisida maʼlum boʻlgan paytdan eʼtiboran olti oy ichida sudga berilishi mumkin.\nDavlat ijrochisining qarorini haqiqiy emas, harakatlarini (harakatsizligini) qonunga xilof deb topish toʻgʻrisidagi ariza (shikoyat) manfaatdor shaxsga oʻzining huquqlari, erkinliklari va qonuniy manfaatlari buzilganligi toʻgʻrisida maʼlum boʻlgan paytdan eʼtiboran oʻn kun ichida sudga berilishi mumkin.\nAriza (shikoyat) berishning uzrli sababga koʻra oʻtkazib yuborilgan muddati sud tomonidan tiklanishi mumkin."
+    },
+    {
+     "rank": 7,
+     "chunk_id": "5534923_0080_81_1",
+     "doc_id": "lex:5534923",
+     "doc_title": "Sudlar toʻgʻrisida",
+     "article": "81-modda",
+     "retrieval_score": 0.6056,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sudyaning ish haqi qonunchilikda belgilangan miqdorlarda va respublika budjeti mablagʻlari hisobidan toʻlanadigan oylik lavozim maoshidan, malaka darajasi, koʻp yillik xizmati, faxriy unvoni uchun har oylik ustama haqlardan iborat boʻladi.\nNormativ-huquqiy hujjatlarga muvofiq sudyalarga boshqa toʻlovlar ham amalga oshirilishi mumkin.\nSudyalarga mehnatga haq toʻlashning belgilangan fondi doirasida mukofotlar toʻlanishi va moddiy yordam koʻrsatilishi mumkin.\nSudyalar xizmat safariga yuborilganda havo, temir yoʻl, avtomobil yoʻlovchilar transportida (taksi va shahar yoʻlovchilar transporti bundan mustasno) joy band qilib qoʻyish va yoʻl hujjatlarini navbatsiz olish huquqidan foydalanadi."
+    },
+    {
+     "rank": 8,
+     "chunk_id": "111460_0355_312_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "312-modda",
+     "retrieval_score": 0.6417,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mulkiy ziyonni qoplash uchun pul tovoni toʻlashni reabilitatsiya etilgan shaxs yoki ushbu Kodeks 304-moddasining uchinchi qismida koʻrsatilgan shaxslar bunday toʻlovlarni amalga oshirish haqidagi ajrim yoki qarorni olgan paytdan eʼtiboran ikki yil mobaynida talab qilishlari mumkin.\nBoshqa huquqlarni tiklashni reabilitatsiya etilgan shaxs huquqlarini tiklash tartibini tushuntiruvchi bildirish xati olgan paytdan eʼtiboran bir yil mobaynida talab qilishi mumkin. Uzrli sabablarga koʻra bu muddat oʻtkazib yuborilgan hollarda u manfaatdor shaxsning arizasiga binoan surishtiruvchi, tergovchi, prokuror yoki sud tomonidan tiklanishi lozim."
+    },
+    {
+     "rank": 9,
+     "chunk_id": "97664_0644_324⁴⁷_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "324⁴⁷-modda",
+     "retrieval_score": 0.6469,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qonuniy kuchga kirgan sud hujjatini yangi ochilgan holatlar boʻyicha qayta koʻrish toʻgʻrisidagi ariza u sudga kelib tushgan kundan eʼtiboran oʻn besh kundan oshmagan muddatda, ishda ishtirok etuvchi shaxslar xabardor qilingan holda koʻrib chiqiladi.\nTegishli tarzda xabardor qilingan shaxslarning kelmaganligi arizani koʻrib chiqish uchun toʻsqinlik qilmaydi."
+    },
+    {
+     "rank": 10,
+     "chunk_id": "3517337_0131_127_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "127-modda",
+     "retrieval_score": 0.6042,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Sud xarajatlari davlat boji va ishni koʻrish bilan bogʻliq chiqimlardan iborat boʻladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Meni noqonuniy ishdan boʻshatishdi. Ishga tiklanish uchun sudga qancha muddat ichida murojaat qilishim kerak va sud uchun pul toʻlashim kerakmi?",
+    "sub_queries": [
+     "Meni noqonuniy ishdan bo'shatishdi. Ishga tiklanish uchun sudga qancha muddat ichida murojaat qilishim kerak?",
+     "Sud uchun pul to'lashim kerakmi?"
+    ],
+    "retrieved_total": 10,
+    "best_cosine": 0.6881,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1268,
+    "rerank_ms": null,
+    "generation_ms": 4136,
+    "total_ms": 5405
+   },
+   "usage": {
+    "input_tokens": 4508,
+    "output_tokens": 338
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q059",
+   "status": "ok",
+   "answer": "Apellyatsiya shikoyatini berish muddati ish turiga qarab belgilanadi:\n\n*   Fuqarolik protsessual kodeksining 385¹-moddasiga koʻra, umumiy tartibdagi ishlar boʻyicha hal qiluv qarori ustidan shikoyat qaror qabul qilingan kundan eʼtiboran bir oy ichida berilishi mumkin [1].\n*   Soddalashtirilgan ish yuritish tartibida koʻrib chiqilgan, shuningdek oʻzboshimchalik bilan egallab olingan yer uchastkasini qaytarish yoki oʻzboshimchalik bilan qurilgan imoratni buzib tashlash toʻgʻrisidagi ishlar boʻyicha shikoyat qaror qabul qilinganidan keyin oʻn kun ichida berilishi mumkin [1].\n*   Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksning 203-moddasiga koʻra, qonunda boshqa muddat belgilanmagan boʻlsa, shikoyat hal qiluv qarori qabul qilingan kundan eʼtiboran bir oy ichida beriladi [2].\n*   Iqtisodiy protsessual kodeksining 262-moddasiga koʻra, umumiy tartibdagi ishlar boʻyicha shikoyat bir oy ichida, soddalashtirilgan tartibdagi, huquqiy taʼsir chorasini qoʻllash, yer uchastkasini qaytarish yoki imoratni buzib tashlash toʻgʻrisidagi ishlar boʻyicha esa oʻn kun ichida berilishi mumkin [3].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.725,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-3517337",
+     "article_url": "https://lex.uz/uz/docs/-3517337#-6716442",
+     "article": "385¹-modda",
+     "article_title": "Apellyatsiya shikoyatini (protestini) berish muddati",
+     "part": "2-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "3517337_0412_385¹_1",
+     "quote": "Sudning soddalashtirilgan ish yuritish tartibida koʻrib chiqilgan, shuningdek oʻzboshimchalik bilan egallab olingan, davlat mulkida boʻlgan yer uchastkasini qaytarish, oʻzboshimchalik bilan qurilgan imoratni buzib tashlash toʻgʻrisidagi ishlar boʻyicha hal qiluv qarori ustidan apellyatsiya shikoyati (protesti) hal qiluv qarori qabul qilinganidan keyin oʻn kun ichida berilishi mumkin."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:3527353",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-3527353",
+     "article_url": "https://lex.uz/uz/docs/-3527353#-3531349",
+     "article": "203-modda",
+     "article_title": "Apellyatsiya shikoyatini (protestini) berish muddati",
+     "part": "1-qism",
+     "edition_date": "2026-08-14",
+     "doc_status": "amalda",
+     "chunk_id": "3527353_0211_203_1",
+     "quote": "Agar qonunda boshqa muddat belgilanmagan boʻlsa, apellyatsiya shikoyati (protesti) hal qiluv qarori qabul qilingan kundan eʼtiboran bir oy ichida berilishi mumkin."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:3523891",
+     "doc_title": "Oʻzbekiston Respublikasining Iqtisodiy protsessual kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-3523891",
+     "article_url": "https://lex.uz/uz/docs/-3523891#-3533756",
+     "article": "262-modda",
+     "article_title": "Apellyatsiya shikoyatini (protestini) berish muddati",
+     "part": "2-qism",
+     "edition_date": "2026-10-21",
+     "doc_status": "amalda",
+     "chunk_id": "3523891_0292_262_1",
+     "quote": "Sudning soddalashtirilgan ish yuritish tartibida koʻrib chiqilgan, shuningdek huquqiy taʼsir chorasini qoʻllash, oʻzboshimchalik bilan egallab olingan, davlat mulkida boʻlgan yer uchastkasini qaytarish, oʻzboshimchalik bilan qurilgan imoratni buzib tashlash toʻgʻrisidagi ishlar boʻyicha hal qiluv qarori ustidan apellyatsiya shikoyati (protesti) hal qiluv qarori qabul qilinganidan keyin oʻn kun ichida berilishi mumkin."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "3517337_0412_385¹_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "385¹-modda",
+     "retrieval_score": 0.7251,
+     "fusion_score": 0.0169,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Apellyatsiya shikoyati (protesti) sud tomonidan hal qiluv qarori qabul qilingan kundan eʼtiboran bir oy ichida berilishi mumkin.\nSudning soddalashtirilgan ish yuritish tartibida koʻrib chiqilgan, shuningdek oʻzboshimchalik bilan egallab olingan, davlat mulkida boʻlgan yer uchastkasini qaytarish, oʻzboshimchalik bilan qurilgan imoratni buzib tashlash toʻgʻrisidagi ishlar boʻyicha hal qiluv qarori ustidan apellyatsiya shikoyati (protesti) hal qiluv qarori qabul qilinganidan keyin oʻn kun ichida berilishi mumkin.\nOʻtkazib yuborilgan muddat, agar iltimosnoma hal qiluv qarori qabul qilingan kundan eʼtiboran uch oydan kechiktirmay berilgan va muddatni oʻtkazib yuborish sabablari uzrli deb topilgan boʻlsa, apellyatsiya shikoyati (protesti) berayotgan shaxsning iltimosnomasiga koʻra apellyatsiya instansiyasi sudining sudyasi tomonidan tiklanishi mumkin.\nApellyatsiya shikoyatini (protestini) berishning oʻtkazib yuborilgan muddatini tiklash haqida apellyatsiya shikoyatini (protestini) ish yuritishga qabul qilish toʻgʻrisidagi ajrimda koʻrsatiladi.\nApellyatsiya shikoyatini (protestini) berish muddatini tiklashni rad etish haqida apellyatsiya shikoyatini (protestini) qabul qilishni rad etish toʻgʻrisidagi ajrimda koʻrsatiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "3527353_0211_203_1",
+     "doc_id": "lex:3527353",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksi",
+     "article": "203-modda",
+     "retrieval_score": 0.7011,
+     "fusion_score": 0.01664,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Agar qonunda boshqa muddat belgilanmagan boʻlsa, apellyatsiya shikoyati (protesti) hal qiluv qarori qabul qilingan kundan eʼtiboran bir oy ichida berilishi mumkin.\nApellyatsiya shikoyatini (protestini) berishning oʻtkazib yuborilgan muddati shikoyat (protest) berayotgan shaxsning iltimosnomasi boʻyicha apellyatsiya instansiyasi sudining sudyasi tomonidan, agar iltimosnoma hal qiluv qarori qabul qilingan kundan eʼtiboran uch oydan kechiktirmay berilgan va apellyatsiya shikoyatini (protestini) berish muddati oʻtkazib yuborilishining sabablari uzrli deb topilgan boʻlsa, tiklanishi mumkin.\nApellyatsiya shikoyatini (protestini) berishning oʻtkazib yuborilgan muddatini tiklash haqida apellyatsiya shikoyatini (protestini) ish yuritishga qabul qilish toʻgʻrisidagi ajrimda koʻrsatiladi.\nApellyatsiya shikoyatini (protestini) berish muddatini tiklashni rad etish haqida apellyatsiya shikoyatini (protestini) qabul qilishni rad etish toʻgʻrisidagi ajrimda koʻrsatiladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "3523891_0292_262_1",
+     "doc_id": "lex:3523891",
+     "doc_title": "Oʻzbekiston Respublikasining Iqtisodiy protsessual kodeksi",
+     "article": "262-modda",
+     "retrieval_score": 0.6905,
+     "fusion_score": 0.01588,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Agar qonunchilikda boshqacha muddat belgilanmagan boʻlsa, apellyatsiya shikoyati (protesti) birinchi instansiya sudi tomonidan shikoyat qilinayotgan (protest keltirilayotgan) hal qiluv qarori qabul qilingan kundan eʼtiboran bir oy ichida berilishi mumkin.\nSudning soddalashtirilgan ish yuritish tartibida koʻrib chiqilgan, shuningdek huquqiy taʼsir chorasini qoʻllash, oʻzboshimchalik bilan egallab olingan, davlat mulkida boʻlgan yer uchastkasini qaytarish, oʻzboshimchalik bilan qurilgan imoratni buzib tashlash toʻgʻrisidagi ishlar boʻyicha hal qiluv qarori ustidan apellyatsiya shikoyati (protesti) hal qiluv qarori qabul qilinganidan keyin oʻn kun ichida berilishi mumkin.\nApellyatsiya shikoyatini (protestini) berishning oʻtkazib yuborilgan muddati, shikoyat (protest) bergan shaxsning iltimosnomasi boʻyicha apellyatsiya instansiyasi sudi tomonidan, agar iltimosnoma hal qiluv qarori qabul qilingan kundan eʼtiboran ikki oydan kechiktirmasdan berilgan va apellyatsiya shikoyatini (protestini) berish muddati oʻtkazib yuborilishining sabablari sud tomonidan uzrli deb topilgan boʻlsa, tiklanishi mumkin.\nApellyatsiya shikoyatini (protestini) berishning oʻtkazib yuborilgan muddatini tiklash haqida apellyatsiya shikoyatini (protestini) ish yuritishga qabul qilish toʻgʻrisidagi ajrimda koʻrsatiladi.\nApellyatsiya shikoyatini (protestini) berish muddatini tiklashni rad etish haqida apellyatsiya shikoyatini (protestini) qabul qilishni rad etish toʻgʻrisidagi ajrimda koʻrsatiladi.\nIshda ishtirok etishga jalb qilinmagan, ammo huquqlari va majburiyatlari toʻgʻrisida sud hal qiluv qarori qabul qilgan shaxslar, shuningdek sud majlisining vaqti va joyi toʻgʻrisida tegishli tarzda xabardor qilinmagan ishda ishtirok etuvchi shaxslar uchun ushbu moddaning birinchi va ikkinchi qismlarida nazarda tutilgan apellyatsiya shikoyatini berish muddati ularga hal qiluv qarori qabul qilinganligi maʼlum boʻlgan kundan eʼtiboran hisoblanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "3517337_0438_405¹_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "405¹-modda",
+     "retrieval_score": 0.6956,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Kassatsiya shikoyati (protesti) birinchi instansiya sudining hal qiluv qarori qonuniy kuchga kirgan kundan eʼtiboran olti oy ichida berilishi mumkin.\nOʻtkazib yuborilgan kassatsiya shikoyati (protesti) berish muddati shikoyat (protest) berayotgan shaxsning iltimosnomasiga koʻra kassatsiya instansiya sudining sudyasi tomonidan, agar iltimosnoma kassatsiya shikoyati (protesti) berish muddati oʻtgan kundan eʼtiboran uch oydan kechiktirmay berilgan boʻlsa va oʻtkazib yuborilgan muddat sud tomonidan uzrli deb topilsa, tiklanishi mumkin.\nKassatsiya shikoyatini (protestini) berishning oʻtkazib yuborilgan muddatini tiklash haqida kassatsiya shikoyatini (protestini) ish yuritishga qabul qilish toʻgʻrisidagi ajrimda koʻrsatiladi.\nKassatsiya shikoyatini (protestini) berish muddatini tiklashni rad etish haqida kassatsiya shikoyatini (protestini) qabul qilishni rad etish toʻgʻrisidagi ajrimda koʻrsatiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "3517337_0426_395_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "395-modda",
+     "retrieval_score": 0.6879,
+     "fusion_score": 0.01566,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Apellyatsiya instansiyasi sudi birinchi instansiya sudining hal qiluv qarori ustidan berilgan apellyatsiya shikoyatini (protestini) apellyatsiya shikoyatini (protestini) ish yuritishga qabul qilish toʻgʻrisida ajrim chiqarilgan kundan eʼtiboran bir oydan ortiq boʻlmagan muddatda koʻrib chiqadi.\nSudning soddalashtirilgan ish yuritish tartibida koʻrib chiqilgan, shuningdek oʻzboshimchalik bilan egallab olingan, davlat mulkida boʻlgan yer uchastkasini qaytarish, oʻzboshimchalik bilan qurilgan imoratni buzib tashlash toʻgʻrisidagi ishlar boʻyicha hal qiluv qarori ustidan apellyatsiya shikoyati (protesti) u sudga kelib tushgan kundan eʼtiboran oʻn besh kun ichida koʻrib chiqiladi.\nAlohida hollarda, apellyatsiya shikoyatini (protestini) koʻrib chiqish muddati ishni koʻrayotgan sudlov hayʼati tomonidan koʻpi bilan bir oyga uzaytirilishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Sud hukmiga rozi boʻlmasam, apellyatsiya shikoyatini necha kun ichida berishim kerak?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7251,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 429,
+    "rerank_ms": null,
+    "generation_ms": 4208,
+    "total_ms": 4638
+   },
+   "usage": {
+    "input_tokens": 3244,
+    "output_tokens": 450
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q060",
+   "status": "ok",
+   "answer": "Ваш иностранный диплом будет признан действительным на всей территории Республики Узбекистан после прохождения процедуры признания [1].\n\nСогласно закону «Об образовании» (статья 60), документы об образовании, полученные в иностранном государстве после 1 января 1992 года, признаются в Узбекистане только после завершения процесса их признания [1].\n\nОсновные положения:\n* Процедура признания осуществляется уполномоченным республиканским органом исполнительной власти [1].\n* Порядок признания документов об образовании, полученных в зарубежных странах, устанавливается Кабинетом Министров Республики Узбекистан [1].\n* Взаимное признание документов об образовании также может осуществляться на основе двусторонних соглашений между правительствами Узбекистана и иностранных государств [5].\n* В случае наличия договора между вузами Узбекистана и зарубежных стран выпускникам может выдаваться диплом двойного образца (Double Diploma), который признается в Узбекистане как документ о высшем образовании [5].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.595,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-637",
+     "url": "https://lex.uz/uz/docs/-5013007",
+     "article_url": "https://lex.uz/uz/docs/-5013007#-5014066",
+     "article": "60-modda",
+     "article_title": "Xorijiy davlatda olingan taʼlim toʻgʻrisidagi hujjatni tan olish",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5013007_0056_60_1",
+     "quote": "Xorijiy davlatda 1992-yil 1-yanvardan keyin olingan taʼlim toʻgʻrisidagi hujjat tan olish jarayonidan oʻtkazilganidan keyin Oʻzbekiston Respublikasining butun hududida qonuniy kuchga ega hujjat sifatida tan olinadi."
+    },
+    {
+     "ref": 5,
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-637",
+     "url": "https://lex.uz/uz/docs/-5013007",
+     "article_url": "https://lex.uz/uz/docs/-5013007#-5013799",
+     "article": "40-modda",
+     "article_title": "Taʼlim toʻgʻrisidagi hujjat",
+     "part": "7-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5013007_0038_40_1",
+     "quote": "Xorijiy davlatlarning va Oʻzbekiston Respublikasining oliy taʼlim tashkilotlari oʻrtasida tuzilgan shartnoma asosida ularning bitiruvchilariga Oʻzbekiston Respublikasi hududida oliy maʼlumot toʻgʻrisidagi hujjat sifatida tan olinadigan ikki tomonlama diplom (Double Diploma) berilishi mumkin."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "5013007_0056_60_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "60-modda",
+     "retrieval_score": 0.5951,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Xorijiy davlatda 1992-yil 1-yanvardan keyin olingan taʼlim toʻgʻrisidagi hujjat tan olish jarayonidan oʻtkazilganidan keyin Oʻzbekiston Respublikasining butun hududida qonuniy kuchga ega hujjat sifatida tan olinadi.\nXorijiy davlatda olingan taʼlim toʻgʻrisidagi hujjatni tan olish tegishli vakolatli respublika ijro etuvchi hokimiyat organi tomonidan amalga oshiriladi.\nXorijiy davlatda olingan taʼlim toʻgʻrisidagi hujjatni tan olish tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "5013007_0065_69_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "69-modda",
+     "retrieval_score": 0.5539,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasida doimiy yashovchi fuqarolar Oʻzbekiston Respublikasining xalqaro shartnomalariga muvofiq yoki yakka tartibda xorijda taʼlim olish huquqiga ega."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "180552_0784_1173_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1173-modda",
+     "retrieval_score": 0.5525,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi hududidan tashqarida Oʻzbekiston Respublikasi fuqarolari, chet el fuqarolari va fuqaroligi boʻlmagan shaxslarga nisbatan tegishli davlatlarning qonunlari boʻyicha tuzilgan fuqarolik holati hujjatlarini tasdiqlash uchun xorijiy davlatlarning vakolatli organlari tomonidan berilgan hujjatlar legallashtirilgan yoki apostil qoʻyilgan taqdirda, Oʻzbekiston Respublikasida haqiqiy deb tan olinadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "5443899_0017_18_1",
+     "doc_id": "lex:5443899",
+     "doc_title": "Oʻzbekiston Respublikasida chet el fuqarolarining va fuqaroligi boʻlmagan shaxslarning huquqiy holati toʻgʻrisida",
+     "article": "18-modda",
+     "retrieval_score": 0.5515,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Boshqa davlatlar hududida doimiy yashaydigan chet el fuqarolari va fuqaroligi boʻlmagan shaxslar Oʻzbekiston Respublikasining xalqaro shartnomalariga va qonunchiligiga muvofiq Oʻzbekiston Respublikasida taʼlim olishga haqlidir.\nOʻzbekiston Respublikasida doimiy yashaydigan fuqaroligi boʻlmagan shaxslar taʼlim olishda Oʻzbekiston Respublikasi fuqarolari bilan teng huquqlarga ega."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "5013007_0038_40_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "40-modda",
+     "retrieval_score": 0.5504,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Akkreditatsiya qilingan taʼlim tashkilotlarining davlat taʼlim standartlariga va davlat taʼlim talablariga muvofiq taʼlim olgan bitiruvchilariga davlat tomonidan tasdiqlangan namunadagi taʼlim toʻgʻrisidagi hujjat (shahodatnoma, diplom, sertifikat, guvohnoma) beriladi. Davlat tomonidan tasdiqlangan namunadagi taʼlim toʻgʻrisidagi hujjat oilada taʼlim olgan yoki mustaqil taʼlim olgan hamda akkreditatsiya qilingan davlat taʼlim muassasalarining tegishli oʻquv dasturlari boʻyicha eksternat tartibida yakuniy va davlat attestatsiyasidan oʻtgan shaxslarga ham beriladi.\nOʻrta maxsus taʼlim, professional taʼlim hamda oliy taʼlim toʻgʻrisidagi diplomga oʻzlashtirilgan fanlar roʻyxati, ularning hajmlari va fanlar boʻyicha baholari yozilgan varaqa ilova qilinadi.\nTegishli ilmiy darajani olish uchun dissertatsiya himoya qilgan shaxslarga falsafa doktori (Doctor of Philosophy (PhD) yoki fan doktori (Doctor of Science (DSc) ilmiy darajasi beriladi va davlat tomonidan tasdiqlangan namunadagi diplom topshiriladi.\nOʻzbekiston Respublikasining va xorijiy davlatlarning hukumatlari oʻrtasidagi ikki tomonlama bitimlar asosida taʼlim toʻgʻrisidagi hujjatlarni oʻzaro tan olish amalga oshirilishi mumkin.\nUzluksiz taʼlimning tegishli turini tamomlamagan shaxslarga belgilangan namunadagi maʼlumotnoma beriladi.\nDavlat tomonidan tasdiqlangan namunadagi taʼlim toʻgʻrisidagi hujjat, shuningdek nodavlat taʼlim tashkilotlari tomonidan beriladigan Oʻzbekiston Respublikasida tan olinadigan taʼlim toʻgʻrisidagi hujjat uzluksiz taʼlimning keyingi turi (darajasi) boʻyicha oʻqishni davom ettirish yoki tegishli mutaxassislik va kasb boʻyicha ishlash huquqini beradi.\nXorijiy davlatlarning va Oʻzbekiston Respublikasining oliy taʼlim tashkilotlari oʻrtasida tuzilgan shartnoma asosida ularning bitiruvchilariga Oʻzbekiston Respublikasi hududida oliy maʼlumot toʻgʻrisidagi hujjat sifatida tan olinadigan ikki tomonlama diplom (Double Diploma) berilishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ya okonchil universitet za granitsey. Budet li moy inostranniy diplom deystvitelen v Uzbekistane?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5951,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 414,
+    "rerank_ms": null,
+    "generation_ms": 5285,
+    "total_ms": 5701
+   },
+   "usage": {
+    "input_tokens": 2510,
+    "output_tokens": 267
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 51.6
+}

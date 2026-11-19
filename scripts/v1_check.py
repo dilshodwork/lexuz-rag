@@ -86,6 +86,7 @@ def run(client, key: str, live_llm: bool):
         return
     items = QS + [{"id": "q005", "question": "Bad language", "language": "xx"}]
     body = batch(run_id, f"{run_id}-b01", items)
+    time.sleep(1.1)  # validatsiya so'rovlari rate limit oynasidan chiqsin (5 POST/s)
     t0 = time.time()
     r = client.post("/v1/rag/batch", content=json.dumps(body, ensure_ascii=False).encode(), headers=H)
     dt = time.time() - t0
@@ -99,6 +100,9 @@ def run(client, key: str, live_llm: bool):
                                        ("pipeline_version", "llm_model", "embedding_model", "index_version",
                                         "lex_snapshot_date")), json.dumps(d.get("system"), ensure_ascii=False))
     check("timing va summary bor", "total_ms" in d.get("timing", {}) and d.get("summary", {}).get("total") == len(items))
+    used = list(dict.fromkeys(x.get("llm_model") for x in res if x.get("llm_model")))
+    check("system.llm_model = javobni haqiqatda yozgan model", used and (d.get("system") or {}).get("llm_model")
+          == ", ".join(used), f"{(d.get('system') or {}).get('llm_model')} vs {used}")
     by = {x["id"]: x for x in res}
     bad = by.get("q005", {})
     check("Bitta savol xatosi batch'ni yiqitmaydi (INVALID_LANGUAGE)",
@@ -175,7 +179,7 @@ def main():
         config.STATE = tmp  # sinov batch'lari haqiqiy data/state ga yozilmasin
         os.environ["RAG_API_KEYS"] = key = "test-" + uuid.uuid4().hex
 
-        def fake_stream(system, user, temperature=0.1, max_tokens=8192, seed=None):
+        def fake_stream(system, user, temperature=0.1, max_tokens=8192, seed=None, deadline_s=None):
             llm.LAST.model, llm.LAST.usage = "mock", {"input_tokens": len(user) // 4, "output_tokens": 30}
             if "Mars" in user:  # haqiqiy LLM ham shunday javob beradi (promptdagi 4-qoida)
                 txt = "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Yer kodeksiga qarang [1]."

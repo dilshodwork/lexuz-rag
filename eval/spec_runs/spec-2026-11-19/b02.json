@@ -1,0 +1,1224 @@
+{
+ "run_id": "spec-2026-11-19",
+ "batch_id": "spec-2026-11-19-b02",
+ "batch_index": 2,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-19T19:10:25+05:00",
+  "completed_at": "2026-11-19T19:10:42+05:00",
+  "total_ms": 16953
+ },
+ "summary": {
+  "total": 10,
+  "ok": 9,
+  "no_answer": 1,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q011",
+   "status": "ok",
+   "answer": "Ҳа, агар сайлов куни ўз яшаш жойингизда бўлиш имкониятига эга бўлмасангиз, муддатидан олдин овоз бериш ҳуқуқига эгасиз [1].\n\nЎзбекистон Республикасининг Сайлов кодексининг 57-моддасига кўра, муддатидан олдин овоз бериш жараёни қуйидагича амалга оширилади:\n\n*   **Муддат:** Сайловга ўн кун қолганида бошланади ва сайловга уч кун қолганида тугалланади [1].\n*   **Тартиб:** Тегишли участка сайлов комиссиясига сайлов кунида бўла олмаслигингиз сабаблари (таътил, хизмат сафари, хорижга чиқиш ва ҳоказо) кўрсатилган ариза билан мурожаат қиласиз [1].\n*   **Жараён:** Ариза асосида бюллетен оласиз, сайловчилар рўйхатига имзо қўясиз ва яширин овоз бериш кабинасида бюллетенни тўлдирасиз [1].\n*   **Сақлаш:** Тўлдирилган бюллетен ёпиқ конвертда қолдирилади, конверт участка сайлов комиссиясининг сейфида сақланади [1].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.679,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4386848",
+     "article_url": "https://lex.uz/uz/docs/-4386848#-4388673",
+     "article": "57-modda",
+     "article_title": "Muddatidan oldin ovoz berish",
+     "part": "1-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "4386848_0062_57_1",
+     "quote": "Saylov kuni oʻz yashash joyida boʻlish imkoniyatiga ega boʻlmagan saylovchi muddatidan oldin ovoz berish huquqiga ega."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4386848_0062_57_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "57-modda",
+     "retrieval_score": 0.6791,
+     "fusion_score": 0.01715,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Saylov kuni oʻz yashash joyida boʻlish imkoniyatiga ega boʻlmagan saylovchi muddatidan oldin ovoz berish huquqiga ega.\nMuddatidan oldin ovoz berish saylovga oʻn kun qolganida boshlanadi va saylovga uch kun qolganida tugallanadi. Muddatidan oldin ovoz berishni oʻtkazish vaqti Markaziy saylov komissiyasi tomonidan belgilanadi va saylovchilarning, kuzatuvchilarning eʼtiboriga ommaviy axborot vositalari orqali yetkaziladi.\nMuddatidan oldin ovoz berishni amalga oshirish uchun saylovchi saylov kunida boʻla olmasligining sabablari (taʼtil, xizmat safari, xorijga chiqish va hokazo) koʻrsatilgan ariza asosida tegishli uchastka saylov komissiyasidan saylov byulletenini oladi. Saylovchi saylov byulletenini olganligi haqida tegishli uchastka saylov komissiyasining kamida ikki nafar aʼzosi hozirligida saylovchilar roʻyxatiga imzo qoʻyadi.\nSaylov byulleteni maxsus jihozlangan yashirin ovoz berish kabinasida yoki xonasida saylovchi tomonidan toʻldiriladi.\nSaylovchi qaror qabul qiladi va toʻldirilgan saylov byulletenini yopiq konvertda qoldiradi, konvert tegishli uchastka saylov komissiyasining seyfida saqlanadi. Konvertning yelimlangan joyiga uchastka saylov komissiyasining ikki nafar aʼzosining imzolari qoʻyilib, ular komissiyaning muhri bilan tasdiqlanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4386848_0061_56¹_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "56¹-modda",
+     "retrieval_score": 0.6549,
+     "fusion_score": 0.01671,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasining xalqaro shartnomalariga va chet davlatlarning vakolatli davlat hokimiyati organlari bilan kelishuvlarga muvofiq chet davlatlarning aholi zich joylashgan hududlarda muddatidan oldin ovoz berish saylovchining turgan joyida oʻtkazilishi mumkin.\nOʻzbekiston Respublikasining chet davlatdagi diplomatik va boshqa vakolatxonasi huzurida tuzilgan uchastka saylov komissiyasi saylovchilarning turgan joyida ovoz berish vaqti hamda joyi toʻgʻrisida qaror qabul qiladi va bu haqda saylovchilarni, kuzatuvchilarni ommaviy axborot vositalari orqali xabardor etadi.\nSaylovchilarning turgan joyida ovoz berish Oʻzbekiston Respublikasining chet davlatdagi diplomatik va boshqa vakolatxonasi huzurida tuzilgan uchastka saylov komissiyasining kamida ikki nafar aʼzosi hozirligida oʻtkaziladi.\nOvoz berish tugaganidan keyin uchastka saylov komissiyasi aʼzolari koʻchma ovoz berish qutisini ochadi, uning ichidagi saylov byulletenlarini sanamasdan maxsus qopga joylaydi, qopni surgʻuchlaydi va bu haqda dalolatnoma tuzadi.\nSaylov byulletenlari solingan qop surgʻuchlangan holda dalolatnoma bilan birga saylov uchastkasiga olib boriladi va saylov kuni ovozlarni sanab chiqish jarayoni boshlanguniga qadar saqlanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4386848_0055_51_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "51-modda",
+     "retrieval_score": 0.6213,
+     "fusion_score": 0.01669,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ovoz berish saylov kuni soat 8.00 dan 20.00 gacha oʻtkaziladi. Ovoz berish vaqti va joyi toʻgʻrisida uchastka saylov komissiyasi saylovchilarni saylovdan kamida oʻn kun oldin xabardor qiladi.\nOʻzbekiston Respublikasining chet davlatlardagi diplomatik va boshqa vakolatxonalari huzurida tuzilgan saylov uchastkalarida ovoz berish saylov kuni ushbu saylov uchastkalari joylashgan yerdagi mahalliy vaqt bilan soat 8.00 dan 20.00 gacha oʻtkaziladi.\nOʻzbekiston Respublikasining chet davlatlardagi diplomatik va boshqa vakolatxonalari huzurida, harbiy qismlarda, sanatoriylarda, dam olish uylarida, kasalxonalar va boshqa statsionar davolash muassasalarida, olis va borish qiyin boʻlgan hududlardagi fuqarolar turgan joylarda, qamoqda saqlash va ozodlikdan mahrum etish joylarida tuzilgan saylov uchastkalarida uchastka saylov komissiyasi, agar roʻyxatga kiritilgan barcha fuqarolar ovoz berib boʻlgan boʻlsa, ovoz berish tugaganligini istalgan vaqtda eʼlon qilishi mumkin.\nOʻzbekiston Respublikasi hududida joylashgan saylov uchastkalarida saylov qutilarini soat 20.00 dan oldin ochish va ovozlarni sanab chiqishga yoʻl qoʻyilmaydi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4386848_0059_55_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "55-modda",
+     "retrieval_score": 0.6071,
+     "fusion_score": 0.01628,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Saylovchi saylov byulletenini olgach, uni yashirin ovoz berish kabinasida yoki xonasida toʻldiradi. Saylov byulletenini toʻldirish chogʻida ovoz beruvchi shaxsdan boshqa shaxslarning hozir boʻlishi taqiqlanadi. Saylov byulletenini mustaqil ravishda toʻldirish imkoniyatiga ega boʻlmagan saylovchi oʻz xohishiga koʻra yashirin ovoz berish kabinasiga yoki xonasiga boshqa shaxsni taklif qilishga haqli, bundan saylov komissiyasi tarkibiga kiradigan shaxslar, kuzatuvchilar va ommaviy axborot vositalari vakillari mustasno.\nSaylovchi oʻzi yoqlab ovoz berayotgan nomzodning familiyasi, siyosiy partiyaning nomi roʻparasida, oʻng tomonda joylashgan boʻsh kvadratga “+” yoki “” yoxud “x” belgisini qoʻyadi.\nOvoz beruvchi toʻldirilgan saylov byulletenini saylov qutisiga tashlaydi.\nBuzib qoʻyilgan saylov byulleteni saylovchining iltimosiga koʻra yangisiga almashtirilishi mumkin. Buzib qoʻyilgan saylov byulletenlari hisobga olinishi, bekor qilinishi (yuqori chap burchagini kesish yoʻli bilan) lozim va alohida saqlanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4386848_0034_32_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "32-modda",
+     "retrieval_score": 0.593,
+     "fusion_score": 0.01619,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Uchastka saylov komissiyalari saylov byulletenlarini ovoz berish kuniga, shu jumladan muddatidan oldin ovoz berish kuniga kamida uch kun qolganida tuman, shahar saylov komissiyalaridan oladi. Saylov byulletenlarining topshirilganligi hamda qabul qilinganligini tuman, shahar va uchastka saylov komissiyasining raisi yoki rais oʻrinbosari yoxud kotibi tegishli hujjatda oʻz imzosi bilan tasdiqlaydi.\nOʻzbekiston Respublikasining chet davlatlardagi diplomatik va boshqa vakolatxonalari huzurida tuzilgan saylov uchastkalaridagi saylovchilar soni haqida Oʻzbekiston Respublikasi Tashqi ishlar vazirligi tomonidan taqdim etilgan maʼlumotlar asosida Markaziy saylov komissiyasi saylov byulletenlarining tayyorlanishi va yetkazib berilishini taʼminlaydi.\nUchastka saylov komissiyasi oladigan saylov byulletenlarining soni saylov uchastkasi boʻyicha roʻyxatlarga kiritilgan saylovchilar soniga nisbatan yarim foizdan ortiqroq boʻlishi mumkin emas. Saylov byulleteni oʻng tomonining yuqori burchagiga uchastka saylov komissiyasining ikki aʼzosi imzo qoʻyadi, imzolar uchastka saylov komissiyasining muhri bilan tasdiqlanadi. Uchastka saylov komissiyasi tomonidan tasdiqlanmagan saylov byulletenlari ovozlarni sanab chiqishda hisobga olinmaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Saylov kuni boshqa shaharda boʻlaman, ovozimni oldinroq berib qoʻysam boʻladimi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6791,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1249,
+    "rerank_ms": null,
+    "generation_ms": 4103,
+    "total_ms": 5352
+   },
+   "usage": {
+    "input_tokens": 3129,
+    "output_tokens": 362
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q012",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Ushbu manbalar faqat Oʻzbekiston Respublikasi qonunchiligiga oid maʼlumotlarni oʻz ichiga oladi.",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6764454_0043_44_1",
+     "doc_id": "lex:6764454",
+     "doc_title": "Yoʻl harakati toʻgʻrisida",
+     "article": "44-modda",
+     "retrieval_score": 0.6252,
+     "fusion_score": 0.01715,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Quyidagilarni:\nmototsikllar, motorollerlarni va boshqa mototransport vositalarini boshqarish huquqi — oʻn olti yoshga toʻlgan shaxslarga beriladi;\nruxsat etilgan eng koʻp ogʻirligi 3500 kilogrammdan va oʻrindiqlar soni haydovchining oʻrindigʻidan tashqari sakkiztadan oshmaydigan avtomobillarni boshqarish huquqi, bundan taksi mustasno — oʻn sakkiz yoshga toʻlgan shaxslarga beriladi;\nruxsat etilgan eng koʻp ogʻirligi 3500 kilogrammdan oshadigan yuk avtomobillarini boshqarish huquqi — oʻn sakkiz yoshga toʻlgan shaxslarga beriladi;\ntaksi sifatida foydalaniladigan avtomobillarni, shuningdek yoʻlovchilar tashish uchun moʻljallangan va haydovchining oʻrindigʻidan tashqari sakkiztadan ortiq oʻrindigʻi boʻlgan avtomobillarni, tramvaylar va trolleybuslarni boshqarish huquqi — yigirma bir yoshga toʻlgan shaxslarga beriladi;\ntransport vositalari tarkiblarini boshqarish huquqi — ushbu qismning uchinchi, toʻrtinchi va beshinchi xatboshilarida koʻrsatilgan transport vositalarini boshqarish huquqiga ega boʻlgan shaxslarga transport vositasini boshqarish staji oʻn ikki oydan kam boʻlmagan taqdirda beriladi.\nTransport vositalarini boshqarish huquqi tibbiy tekshiruvdan oʻtgan va malaka imtihonlarini topshirgan shaxslarga beriladigan belgilangan namunadagi guvohnoma bilan tasdiqlanadi.\nMalaka imtihonlarini topshirish va transport vositalarini boshqarish huquqiga doir guvohnomani berish tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi.\nOʻzbekiston Respublikasi hududida belgilangan talablarga muvofiq boʻlgan milliy va xalqaro haydovchilik guvohnomalari amal qiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4445288_0012_13_1",
+     "doc_id": "lex:4445288",
+     "doc_title": "Qurol toʻgʻrisida",
+     "article": "13-modda",
+     "retrieval_score": 0.5291,
+     "fusion_score": 0.0167,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasining yigirma besh yoshga toʻlgan fuqarolari fuqaroviy ov qurolini va uning oʻq-dorilarini olish huquqiga ega.\nOʻzbekiston Respublikasining oʻn sakkiz yoshga toʻlgan fuqarolari fuqaroviy sport qurolini va oʻzini oʻzi himoya qilish qurolini olish huquqiga ega.\nOv quroli va uning oʻq-dorilari Oʻzbekiston Respublikasining ov qilish huquqi berilgan fuqarolari tomonidan olinishi mumkin.\nOʻzbekiston Respublikasi fuqarosi olgan, uning egaligida turgan soyli stvolli oʻqotar ov qurolining umumiy soni uchtadan, pnevmatik ov qurolining umumiy soni uchtadan, silliq stvolli oʻqotar qurolning umumiy soni beshtadan oshmasligi kerak, bundan mazkur qurol turlari kolleksiyalash yoki koʻrgazmaga qoʻyish obyektlari boʻlgan hollar mustasno.\nBittadan ortiq har bir soyli stvolli oʻqotar ov quroliga, pnevmatik ov quroliga va silliq stvolli oʻqotar ov quroliga egalik qilganlik uchun har yili bazaviy hisoblash miqdorining bir baravari miqdorida yigʻim undiriladi, bundan mazkur qurol turlari kolleksiyalash yoki koʻrgazmaga qoʻyish obyektlari boʻlgan hollar mustasno.\nOʻzbekiston Respublikasining ov qilish huquqi berilgan fuqarolari ovchilikka bogʻliq kasbiy faoliyat bilan shugʻullanayotgan yoki kamida oʻn yil davomida mulkida avtomatik boʻlmagan (bir zaryadlovchi) silliq stvolli oʻqotar ov quroliga ega boʻlgan boʻlsa hamda ularda ov qilish qoidalarini yoki qurol muomalasini buzish bilan bogʻliq huquqbuzarliklar mavjud boʻlmasa, soyli stvolli oʻqotar ov qurolini, shu jumladan aralash oʻqotar qurolni yoxud yarim avtomat silliq stvolli oʻqotar ov qurolini va uning oʻq-dorilarini, oʻqdon (baraban) sigʻimi toʻrt dona patrondan ortiq boʻlgan silliq stvolli oʻqotar ov qurolini, shuningdek ogʻiz qismidagi quvvat oltmish besh jouldan yuqori va kalibri toʻqqiz millimetrdan ortiq boʻlgan pnevmatik ov qurolini olish huquqiga egadir.\nFuqaroviy qurolni olishga doir ruxsatnomani olish uchun Oʻzbekiston Respublikasi fuqarosi doimiy yashash joyi boʻyicha ichki ishlar organiga quyidagilarni taqdim etishi shart:\narizani;\nquroldan xavfsiz foydalanish qoidalariga oʻqish boʻyicha maxsus qisqa muddatli kurslarda oʻqitilganligi toʻgʻrisidagi guvohnomani;\nOʻzbekiston Respublikasi Ekologiya va iqlim oʻzgarishi milliy qoʻmitasi tomonidan berilgan ovchilik guvohnomasini (ov qurolini olish uchun);"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0117_118_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "118-modda",
+     "retrieval_score": 0.5274,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ishga qabul qilishga ushbu Kodeksning 20-moddasiga muvofiq shaxslar mehnatga oid huquq layoqatiga va muomala layoqatiga ega boʻlishi bilan, oʻn olti yoshdan yoʻl qoʻyiladi.\nYoshlarni mehnatga tayyorlash uchun umumiy oʻrta, oʻrta maxsus, professional taʼlim tashkilotlarining oʻquvchilarini ularning sogʻligʻiga hamda maʼnaviy kamol topishiga ziyon yetkazmaydigan, oʻqitish jarayonini buzmaydigan yengil mehnatni oʻqishdan boʻsh vaqtida bajarishi uchun ishga qabul qilishga — ular oʻn besh yoshga toʻlishi bilan ota-onadan birining (ota-onasining oʻrnini bosuvchi shaxsning) yozma roziligi bilan yoʻl qoʻyiladi.\nMadaniy-tomosha tashkilotlarida, televideniye, radioeshittirish tashkilotlarida va boshqa ommaviy axborot vositalarida, shuningdek professional sportchilar bilan ota-onaning har ikkisining (ota-ona oʻrnini bosuvchi shaxsning) roziligi hamda vasiylik va homiylik organining ruxsati bilan, sogʻligʻiga va maʼnaviy kamol topishiga ziyon yetkazmasdan asarlarni yaratish va (yoki) ijro etishda (koʻrgazmaga qoʻyishda) ishtirok etish uchun oʻn besh yoshga toʻlmagan shaxslar bilan mehnat shartnomasini tuzishga yoʻl qoʻyiladi. Koʻrsatilgan yoshga toʻlgan shaxslar qabul qilinishi mumkin boʻlgan ishlar, kasblar, lavozimlar roʻyxatlari Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan Ijtimoiy-mehnat masalalari boʻyicha uch tomonlama respublika komissiyasi bilan kelishilgan holda tasdiqlanadi. Bunday holda xodimning nomidan mehnat shartnomasini uning ota-onasi (ota-onasining oʻrnini bosuvchi shaxs) imzolaydi. Vasiylik va homiylik organining ruxsatnomasida har kunlik ishning eng koʻp yoʻl qoʻyiladigan davomiyligi hamda ish bajarilishi mumkin boʻlgan boshqa shartlar koʻrsatiladi.\nOʻn sakkiz yoshga toʻlmagan shaxslarni ishga qabul qilish va ularning mehnatini qoʻllash ushbu Kodeksning 411 — 422-moddalarida nazarda tutilgan talablarga rioya etilgan holda amalga oshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6764454_0044_45_1",
+     "doc_id": "lex:6764454",
+     "doc_title": "Yoʻl harakati toʻgʻrisida",
+     "article": "45-modda",
+     "retrieval_score": 0.5272,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Transport vositalarini boshqarish huquqini olish uchun malaka imtihonlarini topshirishga tegishli toifadagi haydovchilar tayyorlashning oʻquv rejalari va dasturlarida nazarda tutilgan hajmda tegishli tayyorgarlikdan oʻtgan shaxslar qoʻyiladi.\nTegishli toifalardagi haydovchilarni tayyorlashning yagona dasturlari Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilangan tartibda tasdiqlanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "112314_0007_7_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "7-modda",
+     "retrieval_score": 0.518,
+     "fusion_score": 0.01544,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yoshga doir pensiya olish huquqiga:\nerkaklar — 60 yoshga toʻlganda va ish stajlari kamida 25 yil boʻlgan taqdirda;\nayollar — 55 yoshga toʻlganda va ish stajlari kamida 20 yil boʻlgan taqdirda ega boʻladilar."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "AQShda mashina haydash guvohnomasini necha yoshdan olish mumkin?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6252,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1240,
+    "rerank_ms": null,
+    "generation_ms": 3126,
+    "total_ms": 4367
+   },
+   "usage": {
+    "input_tokens": 3478,
+    "output_tokens": 130
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q013",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi hududida reklama davlat tilida tarqatilishi shart, shuning uchun faqat rus tilidagi reklamani joylashtirish mumkin emas [1].\n\n\"Reklama toʻgʻrisida\"gi Qonunning 6-moddasiga koʻra, reklama mazmunining boshqa tillardagi tarjimasi quyidagi talablar asosida qoʻshimcha ravishda berilishi mumkin:\n\n*   Tashqi reklama orqali joylashtiriladigan boshqa tildagi tarjima matni davlat tilidagi reklama matnining pastki qismida gorizontal holda joylashtirilishi kerak [1].\n*   Boshqa tildagi tarjima matni umumiy reklama maydonining qirq foizidan oshmasligi lozim [1].\n*   Boshqa tildagi tarjima matni harfining oʻlchami davlat tilidagi reklama matni harfining oʻlchamidan kichik boʻlishi kerak [1].\n*   Tarjima matni davlat tilidagi asosiy maʼnoni buzib koʻrsatmasligi kerak [1].\n\nShuningdek, belgilangan tartibda roʻyxatga olingan tovar belgilari (logotiplar) asli qaysi tilda boʻlsa, shu tilda keltirilishi mumkin [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.596,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6052631",
+     "doc_title": "Reklama toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-776",
+     "url": "https://lex.uz/uz/docs/-6052631",
+     "article_url": "https://lex.uz/uz/docs/-6052631#-6052840",
+     "article": "6-modda",
+     "article_title": "Reklamaning tili",
+     "part": "4-qism",
+     "edition_date": "2025-03-12",
+     "doc_status": "amalda",
+     "chunk_id": "6052631_0005_6_1",
+     "quote": "tashqi reklama orqali joylashtiriladigan reklamaning boshqa tillardagi tarjimasi matni Oʻzbekiston Respublikasi davlat tilidagi reklama matnining pastki qismida gorizontal holda joylashtirilishi va umumiy reklama maydonining qirq foizidan oshmasligi kerak;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6052631_0005_6_1",
+     "doc_id": "lex:6052631",
+     "doc_title": "Reklama toʻgʻrisida",
+     "article": "6-modda",
+     "retrieval_score": 0.5961,
+     "fusion_score": 0.01692,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi hududida reklama Oʻzbekiston Respublikasining davlat tilida tarqatiladi.\nReklama mazmunining tarjimasi quyidagi talablarga rioya etgan holda boshqa tillarda takror berilishi mumkin:\nreklama mazmunining boshqa tillardagi tarjimasi matni uning Oʻzbekiston Respublikasi davlat tilidagi asosiy maʼnosini buzib koʻrsatmasligi kerak;\ntashqi reklama orqali joylashtiriladigan reklamaning boshqa tillardagi tarjimasi matni Oʻzbekiston Respublikasi davlat tilidagi reklama matnining pastki qismida gorizontal holda joylashtirilishi va umumiy reklama maydonining qirq foizidan oshmasligi kerak;\nreklamaning boshqa tillardagi tarjimasi matni harfining oʻlchami Oʻzbekiston Respublikasi davlat tilidagi reklama matni harfining oʻlchamidan kichik boʻlishi kerak;\ntele- va radiokanallarda, shuningdek bosma nashrlarda tarqatiladigan reklamaning boshqa tillardagi tarjimasi har kungi umumiy reklama hajmining yigirma foizidan oshmasligi kerak.\nUshbu modda birinchi va ikkinchi qismlarining amal qilishi:\nfaqat chet tillarda eʼlon qilinadigan bosma nashrlarda va noshirlik mahsulotining boshqa turlarida joylashtiriladigan reklamaga;\nkoʻrsatuvni (eshittirishni) chet tillarda amalga oshiruvchi ommaviy axborot vositalarining tele-, radio-, video-, kinoxronikal dasturlarini namoyish etish (eshittirish) jarayonida joylashtiriladigan reklamaga;\nInternet jahon axborot tarmogʻidagi materiallarni faqat chet tillarda joylashtiradigan veb-saytlarning axborot resurslariga joylashtiriladigan reklamaga nisbatan tatbiq etilmaydi.\nBelgilangan tartibda roʻyxatga olingan tovar belgilari (xizmat koʻrsatish belgilari), bosma usulda terilgan boʻgʻinli belgilar (logotiplar) asli qaysi tilda boʻlsa, shu tilda keltirilishi mumkin."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6052631_0033_34_1",
+     "doc_id": "lex:6052631",
+     "doc_title": "Reklama toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.5772,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Quyidagi dori vositalarini reklama qilish taqiqlanadi:\nfaqat shifokorning retsepti boʻyicha tarqatiladigan dori vositalarini;\ntarkibida giyohvandlik vositalari yoki psixotrop va (yoki) kuchli taʼsir qiluvchi moddalar mavjud boʻlgan dori vositalarini;\nOʻzbekiston Respublikasida tibbiyotda qoʻllanish uchun ruxsat etilmagan dori vositalarini;\nOʻzbekiston Respublikasi Sogʻliqni saqlash vazirligida davlat roʻyxatdan oʻtkazilmagan dori vositalarini.\nDori vositalarini reklama qilishda quyidagilar taqiqlanadi:\ntaniqli shaxslarning, tibbiyot xodimlarining yoki tashqi koʻrinishi shifokorlarning tashqi koʻrinishiga oʻxshash shaxslarning ishtirok etishi. Mazkur talab foydalanuvchilari faqat tibbiyot va farmatsevtika xodimlari boʻlgan reklamaga, tibbiyot yoki farmatsevtika koʻrgazmalari, seminarlari, konferensiyalari va boshqa shunga oʻxshash tadbirlar oʻtkaziladigan joylarda tarqatiladigan reklamaga, shuningdek bosma nashrlarga joylashtirilgan reklamaga nisbatan tatbiq etilmaydi;\nolimlarning, tibbiyot xodimlarining tavsiyalaridan, xuddi shuningdek alohida shaxslarning minnatdorchiligidan, tavsiyalaridan va reklama qilinayotgan dori vositalarining taʼsiri haqidagi hikoyalaridan iborat boʻlgan tavsiyalardan foydalanish;\nkasallik (jarohat) va (yoki) dori vositalarining inson organizmiga taʼsiri natijasida inson organizmida yuz beradigan oʻzgarishlar toʻgʻrisidagi videolavhadan, tasvirdan yoki vizual namoyishdan foydalanish. Mazkur talab taʼsiri klinik jihatdan tasdiqlangan, inson organizmidagi dori vositasini qabul qilish yoki isteʼmol qilish bilan bogʻliq boʻlgan va inson organizmidagi tasvirlanayotgan oʻzgarishlar jarayoni dori vositasining inson organizmiga klinik jihatdan tasdiqlangan taʼsirini aniq koʻrsatadigan oʻzgarishlar haqidagi tasvirga yoki vizual namoyishga taalluqli emas;\ndori vositalarini haddan ziyod va notoʻgʻri ishlatishga undash;\nshifokor maslahatini olmasdan mustaqil ravishda davolanish yoki jarrohlik aralashuvini amalga oshirish imkoniyati toʻgʻrisida taassurot (ishonch) uygʻotish;\ndori vositalari muvaffaqiyatli qoʻllanilganligiga doir muayyan hollarga havola qilinadigan reklama.\nRetseptsiz beriladigan dori vositalarining reklamasi:\ndori vositasini nojoʻya taʼsirlar mavjud emasligi jihatidan noyob, eng samarali, eng xavfsiz deb taqdim etmasligi;\ndori vositasining tarkibiga, kelib chiqishiga, yangiligiga yoki patentlanganligiga nisbatan yanglishishlarga olib kelmasligi;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6052631_0004_5_2",
+     "doc_id": "lex:6052631",
+     "doc_title": "Reklama toʻgʻrisida",
+     "article": "5-modda",
+     "retrieval_score": 0.5438,
+     "fusion_score": 0.01595,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… vositalaridan foydalangan holda tarqatiladigan, mazmuni Oʻzbekiston Respublikasi hududida boʻlgan reklamadan foydalanuvchilarga qaratilgan va reklama obyektiga eʼtiborni jalb qilish, unga boʻlgan qiziqishni shakllantirish yoki qoʻllab-quvvatlash, shuningdek uni bozorda bevosita yoki bilvosita foyda (daromad) olish maqsadida ilgari surish uchun moʻljallangan maxsus axborot;\nreklama beruvchi — reklama qilinadigan tovarni ishlab chiqarishni yoki sotishni amalga oshiruvchi, Oʻzbekiston Respublikasining rezidenti yoxud norezidenti boʻlgan jismoniy yoki yuridik shaxs yoxud reklama obyektini va (yoki) reklama mazmunini belgilab bergan boshqa shaxs, shu jumladan homiy;\nreklama vositalari — reklamadan foydalanuvchiga reklamani yetkazish uchun foydalaniladigan vositalar;\nreklama joyi (tashqi reklama va axborot obyekti (konstruksiyasi) oʻrnatiladigan joy) — tashqi reklama va axborot obyekti (konstruksiyasi) oʻrnatiladigan maxsus ajratilgan va (yoki) berilgan hudud (yer, asfalt, yashil hudud va boshqalar), bino, inshoot sirtqi qismining muayyan yuzasi;\nreklama joyining pasporti — Qoraqalpogʻiston Respublikasi Vazirlar Kengashi, viloyatlar hamda Toshkent shahar hokimliklari tomonidan beriladigan hujjat boʻlib, ushbu hujjat yuridik va jismoniy shaxslarning tashqi reklama va axborot obyektlarini (konstruksiyalarini) unda koʻrsatilgan yer uchastkasiga, binoga yoki inshootga, mulk shaklidan qatʼi nazar, oʻrnatish huquqini tasdiqlaydi;\nreklama joyi pasportining egasi — davlat mulki boʻlgan yer uchastkasiga, binoga yoki inshootga yagona elektron savdo maydonchasi orqali ochiq elektron auksion asosida yoxud xususiylashtirilgan yer uchastkalariga, shuningdek xususiy mulk boʻlgan binolarga yoki inshootlarga — xususiylashtirilgan yer uchastkasining, binoning yoxud inshootning mulkdori bilan tuzilgan shartnoma asosida tashqi reklama va axborot obyektini (konstruksiyasini) oʻrnatish huquqini olgan yuridik yoki jismoniy shaxs;\nreklama obyekti — eʼtiborni jalb etish uchun reklama oʻziga nisbatan yoʻnaltirilgan tovar, shu jumladan tadbirlar, texnologiyalar, individuallashtirish vositalari, intellektual faoliyat natijalari, shuningdek jismoniy yoki yuridik shaxslar toʻgʻrisidagi axborot;\nreklamaga oid faoliyat — reklamaning aylanishi sohasida ishlar hamda xizmatlarni bajarish bilan bogʻliq faoliyat;\nreklama tayyorlovchi — reklamani tarqatish (joylashtirish) uchun axborotni toʻliq yoxud qisman tayyor shaklga keltirishni amalga oshiradigan, Oʻzbekiston Respublikasining rezidenti yoki norezidenti boʻlgan jismoniy yoki yuridik shaxs;\nreklama tarqatuvchi — reklama vositalari orqali reklama tarqatishni amalga oshiradigan, Oʻzbekiston Respublikasining rezidenti yoki norezidenti boʻlgan jismoniy yoki yuridik shaxs;\nreklamadan foydalanuvchi — reklama oʻziga nisbatan yoʻnaltirilgan shaxs yoki shaxslar guruhi;"
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6052631_0015_16_2",
+     "doc_id": "lex:6052631",
+     "doc_title": "Reklama toʻgʻrisida",
+     "article": "16-modda",
+     "retrieval_score": 0.5674,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… reklama qilinishi taqiqlangan yoxud reklama qilinishiga nisbatan tegishli cheklovlar yoki talablar belgilangan tovarning tovar belgilari (xizmat koʻrsatish belgilari) bilan adashtirib yuborish darajasida bir xil yoxud unga aynan oʻxshash boʻlgan boshqa tovarning reklamasi koʻrinishida tovarni reklama qilish;\ndavlat ramzlaridan, xususan Oʻzbekiston Respublikasining Davlat gerbi, Oʻzbekiston Respublikasining Davlat bayrogʻi tasviridan hamda Oʻzbekiston Respublikasining Davlat madhiyasi ohangidan foydalanish yoki ularni aynan takrorlash;\nmaktabgacha taʼlimda hamda tarbiyada, umumiy oʻrta, oʻrta maxsus va professional taʼlimda foydalaniladigan bosma nashrlarda (darsliklarda, maktab kundaliklarida, maktab daftarlarida va boshqalarda) tovarlarni reklama qilish;\nnarxlarni (tariflarni) chet el valyutasida koʻrsatish;\nbolalarni ularning sogʻligʻiga zarar yetkazuvchi axborotdan himoya qilish toʻgʻrisidagi qonunchilikda nazarda tutilgan hollarda axborot mahsulotini yosh tasnifini koʻrsatmasdan reklama qilish;\ntovar toʻgʻrisidagi, uni olish yoki undan foydalanish shartlari haqidagi muhim maʼlumotlarni yashirish va (yoki) oʻqish uchun farqlab olishni qiyinlashtiradigan qilib tasvirlash, agar bunda axborotning mazmuni buzib koʻrsatilsa va reklamadan foydalanuvchilarni chalgʻitsa;\nmilliy va oilaviy anʼanalarga, shuningdek axloq va maʼnaviyatning umum qabul qilingan normalariga zid boʻlgan shakllar, iboralar va obrazlardan foydalanish.\nQuyidagilarni:\nishlab chiqarilishi yoki realizatsiya qilinishi qonunda taqiqlangan tovarlarni;\nishlab chiqarilishi va (yoki) realizatsiya qilinishi uchun tegishli sertifikatlari va litsenziyalari, majburiy sertifikatlashtirish guvohnomalari yoki maxsus ruxsatnomalari mavjud boʻlmagan tovarlarni;\ngiyohvandlik vositalarini yoki psixotrop va (yoki) kuchli taʼsir qiluvchi moddalarni;\npornografiya mahsulotlarini reklama qilish taqiqlanadi.\nAyrim turdagi tovarlar reklamasiga nisbatan mazkur reklamaga qoʻshimcha axborot va (yoki) ogohlantirishlarni ilova qilish zarurligi toʻgʻrisida talablar belgilanishi mumkin.\nReklama beruvchi va reklama tarqatuvchi bir vaqtning oʻzida Oʻzbekiston Respublikasining norezidentlari boʻlgan taqdirda, reklamani tarqatishga yoʻl qoʻyilmaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6052631_0017_18_1",
+     "doc_id": "lex:6052631",
+     "doc_title": "Reklama toʻgʻrisida",
+     "article": "18-modda",
+     "retrieval_score": 0.54,
+     "fusion_score": 0.01585,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Reklama, tarqatilish shakllaridan yoki vositalaridan qatʼi nazar, uni reklama sifatida identifikatsiya qilish mumkin boʻladigan tarzda boshqa axborotdan ajratilgan boʻlishi kerak. Mazkur talab uygʻunlashtirilgan reklamaga nisbatan tatbiq etilmaydi.\nTelevideniye va radiodagi reklama boshqa dasturlardan oʻzining boshlanishi va oxirida audio-, video-, aralash vositalar yoki boshlovchilarning sharhlari yordamida ajratib qoʻyilishi kerak.\nBosma nashrlardagi reklama boshqa axborotdan “Reklama” degan soʻz koʻrsatilgan holda ajratilgan boʻlishi kerak.\nReklama beruvchi tomonidan bevosita yoki bilvosita foyda (daromad) olish maqsadida eʼlon qilingan, tovarga qiziqishni shakllantirish va uni realizatsiya qilishga koʻmaklashish uchun tovarning muayyan markasiga (nomiga, modeliga, artikuliga) yoxud uni ishlab chiqaruvchiga reklamadan foydalanuvchilarning eʼtiborini atayin jalb etadigan yoki mazkur tovarni ishlab chiqaruvchi yoki tarqatuvchi shaxsning nashrga oid maʼlumotlarini (rekvizitlarini) oʻz ichiga olgan axborot materiali, mualliflik va tahririyat materiali reklama deb hisoblanadi hamda u “Reklama” rukni ostida joylashtirilgan boʻlishi kerak."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Dokonim oldiga faqat ruscha yozilgan reklama osib qoysam boladimi yoki ozbekchasi ham bolishi kerakmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5961,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1228,
+    "rerank_ms": null,
+    "generation_ms": 7442,
+    "total_ms": 8671
+   },
+   "usage": {
+    "input_tokens": 4564,
+    "output_tokens": 370
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q014",
+   "status": "ok",
+   "answer": "Ha, qon va uning tarkibiy qismlarini topshiradigan kunlari ishga bormasligingiz mumkin va bu kunlar uchun oʻrtacha ish haqingiz saqlanadi.\n\nOʻzbekiston Respublikasi Mehnat kodeksining 283-moddasiga hamda \"Qon va uning tarkibiy qismlari donorligi toʻgʻrisida\"gi Qonunning 20-moddasiga koʻra:\n\n*   Ish beruvchi xodimni tibbiy tekshiruvdan oʻtish va qon topshirish kunida ishdan moneliksiz ozod qilishi shart [1][3].\n*   Ushbu kunlarda xodimning oʻrtacha ish haqi saqlanadi [1][3].\n*   Donorlik faktini tasdiqlash uchun qon xizmati tomonidan berilgan maʼlumotnoma yoki boshqa hujjat taqdim etilishi kerak [1].\n*   Shuningdek, qon topshirilgan kunning bevosita ertasiga dam olish uchun oʻrtacha ish haqi saqlangan holda qoʻshimcha bir kun beriladi [3].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.656,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6264497",
+     "article": "283-modda",
+     "article_title": "Qon va uning tarkibiy qismlarini topshirganda xodimlarga kafolatli toʻlovlar",
+     "part": "6-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0282_283_1",
+     "quote": "Donorlik faktini tasdiqlash, shu jumladan tibbiy tekshiruvdan oʻtish hamda bevosita qon va uning tarkibiy qismlarini topshirish qon xizmati tomonidan berilgan maʼlumotnoma yoki boshqa hujjat asosida amalga oshiriladi."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:46727",
+     "doc_title": "QON VA UNING TARKIBIY QISMLARI DONORLIGI TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "402-II",
+     "url": "https://lex.uz/uz/docs/-46727",
+     "article_url": "https://lex.uz/uz/docs/-46727#-46828",
+     "article": "20-modda",
+     "article_title": "Donorga beriladigan kafolatlar va kompensatsiyalar",
+     "part": "3-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "46727_0019_20_1",
+     "quote": "Donorga har safar qon va uning tarkibiy qismlarini topshirgan kunning bevosita ertasiga dam olish uchun oʻrtacha ish haqi saqlangan holda qoʻshimcha bir kun beriladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0282_283_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "283-modda",
+     "retrieval_score": 0.6564,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ish beruvchi tibbiy tekshiruvdan oʻtish kunida hamda qon va uning tarkibiy qismlarini topshirish kunida xodimlarni tibbiyot muassasalariga moneliksiz yuborishi shart.\nAgar ish beruvchi bilan kelishuvga binoan xodim qon va uning tarkibiy qismlarini topshirish kunida ishga chiqqan boʻlsa (bundan xodimning oʻsha kuni ishga chiqish imkoni boʻlmagan zararli va (yoki) xavfli mehnat sharoitlarida bajariladigan ishlar mustasno), unga oʻz xohishiga koʻra boshqa dam olish kuni beriladi.\nHar yilgi mehnat taʼtili davrida, dam olish kunida yoki ishlanmaydigan bayram kunida qon va uning tarkibiy qismlarini topshirgan taqdirda, xodimga uning xohishiga koʻra boshqa dam olish kuni beriladi.\nDonor boʻlgan xodimlarga bevosita qon va uning tarkibiy qismlari topshirilgan har bir kundan keyin dam olish kuni beriladi. Xodimning xohishiga koʻra bu kun yillik mehnat taʼtiliga qoʻshiladi yoki qon va uning tarkibiy qismlari topshirilgan kundan keyin yil davomida boshqa vaqtda bu kundan foydalanilishi mumkin.\nTibbiy tekshiruv oʻtkaziladigan hamda qon va uning tarkibiy qismlari topshiriladigan kunda ishdan ozod qilinganda, shuningdek dam olish kunlarida xodimning oʻrtacha ish haqi saqlanadi.\nDonorlik faktini tasdiqlash, shu jumladan tibbiy tekshiruvdan oʻtish hamda bevosita qon va uning tarkibiy qismlarini topshirish qon xizmati tomonidan berilgan maʼlumotnoma yoki boshqa hujjat asosida amalga oshiriladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0099_100_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "100-modda",
+     "retrieval_score": 0.6453,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mehnat shartnomasi quyidagi asoslar boʻyicha bekor qilingan taqdirda, ish qidirish davrida oʻrtacha oylik ish haqining ishdan boʻshatish nafaqasi hisobga olingan holda, biroq koʻpi bilan ikki oyga saqlanib qolishi xodimlar uchun kafolatlanadi:\nxodim yangi mehnat shartlari asosida ishlashni davom ettirishni rad etganligi;\nxodim ish beruvchi bilan birga ishlash uchun boshqa joyga koʻchishni rad etganligi;\nxodim sogʻligʻining holatiga koʻra tibbiy xulosaga muvofiq sogʻligʻining holati boʻyicha oʻziga qarshi koʻrsatma mavjud boʻlmagan boshqa ishga oʻtishni rad etganligi yoki ish beruvchida tegishli ish mavjud emasligi;\ntexnologiyaning, ishlab chiqarish va mehnatni tashkil etishning oʻzgarishi sababli tashkilot xodimlarining soni yoki shtati oʻzgarganligi, ishlar (mahsulot, xizmatlar) hajmining qisqarganligi;\ntashkilotning (uning alohida boʻlinmasining) oʻz taʼsischilari (ishtirokchilari) qaroriga koʻra tugatilganligi yoxud taʼsis hujjatlari bilan shunga vakolatli boʻlgan yuridik shaxs organining qaroriga koʻra tugatilganligi;\nbajarayotgan ishiga malakasi yetarli emasligi oqibatida noloyiq ekanligi;\nshu ishni ilgari bajarib kelgan xodimning ishga tiklanganligi;\nsudning tashkilotni tugatish toʻgʻrisidagi qarori qonuniy kuchga kirganligi.\nUshbu moddaning birinchi qismida nazarda tutilgan kafolatlar tashkilot rahbari, uning oʻrinbosarlari, bosh buxgalter bilan, tashkilotda bosh buxgalter lavozimi mavjud boʻlmagan taqdirda esa bosh buxgalter vazifalarini amalga oshiruvchi xodim (bundan buyon matnda bosh buxgalter deb yuritiladi) bilan tuzilgan mehnat shartnomasi mulkdorning almashishi sababli bekor qilingan hollarga nisbatan ham tatbiq etiladi, bundan banklar sanatsiya qilingan taqdirda mehnat shartnomasining bekor qilinishi mustasno."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "46727_0019_20_1",
+     "doc_id": "lex:46727",
+     "doc_title": "QON VA UNING TARKIBIY QISMLARI DONORLIGI TOʻGʻRISIDA",
+     "article": "20-modda",
+     "retrieval_score": 0.6197,
+     "fusion_score": 0.01596,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Qon va uning tarkibiy qismlarini topshiradigan kuni, shuningdek tibbiy koʻrikdan oʻtadigan kuni donor ana shu kunlar uchun oʻrtacha ish haqi saqlangan holda ishdan ozod qilinadi.\nOʻrta maxsus va professional taʼlim tashkilotlarining oʻquvchilari, oliy taʼlim tashkilotlarining talabalari, taʼlim oluvchilarning boshqa toifalari qon va uning tarkibiy qismlarini topshiradigan kuni, shuningdek tibbiy koʻrikdan oʻtadigan kuni mashgʻulotlardan, harbiy xizmatchilar esa naryadlarni bajarishdan, xizmatni oʻtashning vaxta va boshqa shakllaridan ozod qilinadilar.\nDonorga har safar qon va uning tarkibiy qismlarini topshirgan kunning bevosita ertasiga dam olish uchun oʻrtacha ish haqi saqlangan holda qoʻshimcha bir kun beriladi. Donorning xohishiga koʻra mazkur dam olish kuni har yilgi mehnat taʼtiliga qoʻshib berilishi mumkin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0268_269_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "269-modda",
+     "retrieval_score": 0.639,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Umumiy qoidaga koʻra xodimning yozma roziligi bilan, xodimning roziligi boʻlmagan taqdirda esa ushbu moddaning ikkinchi qismiga muvofiq ish haqidan ushlab qolinishi mumkin.\nQuyidagi hollarda, xodimning yozma roziligidan qatʼi nazar, ish haqidan ushlab qolish amalga oshiriladi:\n1) soliqlar va yigʻimlarni undirish uchun;\n2) “Sud hujjatlari va boshqa organlar hujjatlarini ijro etish toʻgʻrisida”gi Oʻzbekiston Respublikasi Qonunida belgilangan sud qarorlarini va boshqa ijro hujjatlarini ijro etish uchun, shuningdek vakolatli organlarning qonuniy talablarini bajarish uchun;\n3) ish haqi hisobiga berilgan boʻnakni ushlab qolish uchun, boshqa joydagi ishga koʻchib oʻtganligi munosabati bilan xoʻjalik ehtiyojlariga, xizmat safarlariga berilgan, sarflanmagan va oʻz vaqtida qaytarilmagan boʻnakni ushlab qolish uchun hamda hisob-kitobdagi xatolar oqibatida ortiqcha toʻlangan summalarni qaytarib olish uchun. Bunday hollarda ish beruvchi boʻnakni qaytarish, qarzdorlikni toʻlash uchun belgilangan muddat tamom boʻlgan kundan yoki toʻlov notoʻgʻri hisoblab chiqarilgan kundan eʼtiboran bir oydan kechiktirmay ushlab qolish haqida buyruq chiqarishga haqli. Agar bu muddat oʻtib ketgan boʻlsa yoki xodim boʻnakni toʻlash uchun ushlab qolish asoslariga yoxud miqdoriga eʼtiroz bildirayotgan boʻlsa, qarzni toʻlash sud tartibida amalga oshiriladi;\n4) xodim tomonidan ish beruvchiga yetkazilgan zararning oʻrnini qoplash uchun, agar yetkazilgan zararning miqdori xodimning oʻrtacha oylik ish haqidan oshmasa;\n5) ushbu Kodeks 312-moddasi birinchi qismining 2-bandida nazarda tutilgan jarimani undirish uchun;\n6) xodim qaysi ish yili hisobiga taʼtil olib boʻlgan boʻlsa, oʻsha yil tugaguniga qadar mehnat shartnomasi bekor qilinganda taʼtilning ishlab berilmagan kunlari uchun;\n7) qonunda nazarda tutilgan boshqa hollarda."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0099_100_2",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "100-modda",
+     "retrieval_score": 0.6332,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… taqdirda esa bosh buxgalter vazifalarini amalga oshiruvchi xodim (bundan buyon matnda bosh buxgalter deb yuritiladi) bilan tuzilgan mehnat shartnomasi mulkdorning almashishi sababli bekor qilingan hollarga nisbatan ham tatbiq etiladi, bundan banklar sanatsiya qilingan taqdirda mehnat shartnomasining bekor qilinishi mustasno.\nUshbu moddaning birinchi qismida ayrim toifadagi xodimlar uchun nazarda tutilgan kafolatlarni taqdim etishning oʻziga xos xususiyatlari ushbu Kodeks 494-moddasining beshinchi qismiga, 506-moddasining toʻrtinchi qismiga, 511-moddasining yettinchi qismiga, 518-moddasining yettinchi qismiga muvofiq belgilanadi.\nAgar ushbu moddaning birinchi va ikkinchi qismlarida koʻrsatilgan xodimlar mehnat shartnomasi bekor qilinganidan keyin oʻttiz kalendar kun ichida mahalliy mehnat organida ish qidirayotgan shaxslar sifatida roʻyxatdan oʻtgan boʻlsa, ular mahalliy mehnat organi tomonidan berilgan maʼlumotnoma boʻyicha uchinchi oy uchun ham avvalgi ish joyidan oʻrtacha oylik ish haqini olish huquqiga ega boʻladi.\nUshbu moddaning birinchi va ikkinchi qismlarida koʻrsatilgan xodimlarga uch oylik davr tugagach maqbul keladigan ish topib berilmagan taqdirda, ular ishsiz deb eʼtirof etiladi.\nIsh beruvchi toʻlovga qobiliyatsiz deb topilgan taqdirda, u bilan mehnatga oid munosabatlarda boʻlgan xodimlar ish haqi va oʻziga tegishli boshqa toʻlovlar xususida boshqa barcha kreditorlarning talablariga nisbatan imtiyozli huquqdan foydalanadi.\nTugatilayotgan tashkilotlarda mablagʻlar mavjud boʻlmagan taqdirda, ushbu moddaning birinchi qismida koʻrsatilgan xodimlarga kompensatsiyalarni toʻlash Oʻzbekiston Respublikasi Bandlikka koʻmaklashish davlat jamgʻarmasining mablagʻlari hisobidan amalga oshiriladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Qon topshiradigan kunim ishga bormasam boʻladimi, oʻsha kun uchun oyligim saqlanadimi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6564,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 441,
+    "rerank_ms": null,
+    "generation_ms": 2799,
+    "total_ms": 3240
+   },
+   "usage": {
+    "input_tokens": 4017,
+    "output_tokens": 328
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q015",
+   "status": "ok",
+   "answer": "В Узбекистане нерабочими праздничными днями являются следующие даты:\n\n* 1 января — Новый год;\n* 8 марта — Женский день;\n* 21 марта — праздник Навруз;\n* 9 мая — День памяти и почестей;\n* 1 сентября — День независимости;\n* 1 октября — День учителей и наставников;\n* 8 декабря — День Конституции Республики Узбекистан;\n* первый день религиозного праздника Руза хаит (Ийд ал-Фитр);\n* первый день религиозного праздника Курбан хаит (Ийд ал-Адха) [1].\n\nТакже 21 октября установлено Днем праздника узбекского языка [3].\n\nСогласно «Трудовому кодексу» (статья 208), если выходной день совпадает с нерабочим праздничным днем, то выходной переносится на следующий после праздника рабочий день. Исключение составляют производства, где остановка работы невозможна по техническим или организационным причинам [1]. Кроме того, в целях рационального использования выходных и праздничных дней Президент Республики Узбекистан может издавать указы о переносе выходных дней на другие даты [1].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.557,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6262819",
+     "article": "208-modda",
+     "article_title": "Ishlanmaydigan bayram kunlari",
+     "part": "2-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0207_208_1",
+     "quote": "1-yanvar — Yangi yil;"
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:4784608",
+     "doc_title": "Oʻzbek tili bayrami kunini belgilash toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-615",
+     "url": "https://lex.uz/uz/docs/-4784608",
+     "article_url": "https://lex.uz/uz/docs/-4784608#-4784876",
+     "article": "1-modda",
+     "article_title": null,
+     "part": "1-qism",
+     "edition_date": "2020-04-10",
+     "doc_status": "amalda",
+     "chunk_id": "4784608_0000_1_1",
+     "quote": "21-oktabr Oʻzbek tili bayrami kuni etib belgilansin."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0207_208_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "208-modda",
+     "retrieval_score": 0.5573,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Quyidagi kunlar ishlanmaydigan bayram kunlaridir:\n1-yanvar — Yangi yil;\n8-mart — Xotin-qizlar kuni;\n21-mart — Navroʻz bayrami;\n9-may — Xotira va qadrlash kuni;\n1-sentabr — Mustaqillik kuni;\n1-oktabr — Oʻqituvchi va murabbiylar kuni;\n8-dekabr — Oʻzbekiston Respublikasi Konstitutsiyasi kuni;\nRoʻza hayit (Iyd al-Fitr) diniy bayramining birinchi kuni;\nQurbon hayit (Iyd al-Adha) diniy bayramining birinchi kuni.\nDam olish kuni ishlanmaydigan bayram kuniga toʻgʻri kelgan taqdirda, dam olish kuni bayramdan keyingi ish kuniga koʻchiriladi. Bunda ishlab chiqarish-texnik va tashkiliy sharoitlar (mavjud uzluksiz ishlab chiqarish, aholiga har kuni xizmat koʻrsatish, navbatchilik asosida ishlash va boshqalar) tufayli ishlanmaydigan bayram kunlari toʻxtatib qoʻyish mumkin boʻlmagan ishlarni bajarishda dam olish kunlari koʻchirilmaydi.\nDam olish kunlaridan va ishlanmaydigan bayram kunlaridan xodimlarning oqilona foydalanishi maqsadida dam olish kunlari Oʻzbekiston Respublikasi Prezidentining Farmoni bilan boshqa kunlarga koʻchirilishi mumkin."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0206_207_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "207-modda",
+     "retrieval_score": 0.5058,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xodimlarga har haftada dam olish kunlari beriladi.\nBesh kunlik ish haftasida xodimlarga haftada ikki dam olish kuni, olti kunlik ish haftasida esa bir dam olish kuni beriladi. Aynan bitta ish beruvchida mehnat shartnomasi asosida mehnat faoliyatini amalga oshirayotgan xodimlar uchun bajariladigan ishning oʻziga xos xususiyatlariga qarab ish haftasining har xil turlari belgilanishi mumkin.\nBesh kunlik va olti kunlik ish haftasida umumiy dam olish kuni yakshanbadir. Besh kunlik ish haftasidagi ikkinchi dam olish kuni jamoa shartnomasida yoki ichki mehnat tartib qoidalarida yoxud smenalarga boʻlinib ishlash jadvallarida, ular mavjud boʻlmaganda esa mehnat shartnomasida belgilanadi.\nUzluksiz ishlaydigan ishlab chiqarishlarda yoki ishlab chiqarish-texnika sharoitlari boʻyicha yoki aholiga doimiy uzluksiz xizmat koʻrsatish zarurati oqibatida dam olish kunlari ishini toʻxtatish mumkin boʻlmagan ishlab chiqarishlarda band boʻlgan, shuningdek vaxta usulida ishlaydigan xodimlarga (xodimlar guruhiga) dam olish kunlari ichki mehnat tartib qoidalariga, smenalarga boʻlinib ishlash jadvallariga binoan haftaning har xil kunlarida navbatma-navbat beriladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4784608_0000_1_1",
+     "doc_id": "lex:4784608",
+     "doc_title": "Oʻzbek tili bayrami kunini belgilash toʻgʻrisida",
+     "article": "1-modda",
+     "retrieval_score": 0.5016,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "21-oktabr Oʻzbek tili bayrami kuni etib belgilansin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0209_210_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "210-modda",
+     "retrieval_score": 0.4921,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Dam olish kunlari va ishlanmaydigan bayram kunlari xodimning roziligisiz ishga jalb etishga yoʻl qoʻyilmaydi, bundan quyidagi hollar mustasno:\n1) tabiiy yoki texnogen xususiyatga ega halokatlarning, ishlab chiqarishdagi avariyalarning, ishlab chiqarishdagi baxtsiz hodisalarning, shuningdek yongʻinlarning, toshqinlarning, zilzilalarning, epidemiyalarning yoki epizootiyalarning oldini olish yoki oqibatlarini bartaraf etish hamda aholining yoxud uning bir qismining hayotiga yoki normal yashash sharoitlariga tahdid soladigan boshqa alohida hollarda bajariladigan ishlar amalga oshirilishi uchun;\n2) baxtsiz hodisalarning oldini olish uchun;\n3) markazlashtirilgan issiq suv taʼminoti, sovuq suv taʼminoti va (yoki) suv chiqarish tizimlarining, gaz taʼminoti, issiqlik taʼminoti, yoritish, transport, aloqa tizimlarining normal ishlashini buzadigan kutilmagan holatlarni bartaraf etishga doir ijtimoiy jihatdan zarur ishlar amalga oshirilishi uchun;\n4) ish beruvchining mulkini nobud qilish yoki unga zarar yetkazishning oldini olish uchun.\nUshbu modda birinchi qismining 3-bandida koʻrsatilgan holatlarga koʻra xodimlarni dam olish kunlari va ishlanmaydigan bayram kunlari ishga jalb etishga xodimning mehnat vazifasi doirasida yoʻl qoʻyiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0211_212_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "212-modda",
+     "retrieval_score": 0.4894,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xodimlarni dam olish kuni yoki ishlanmaydigan bayram kuni ishga jalb etish ish beruvchining buyrugʻi bilan rasmiylashtiriladi. Xodimning dam olish kuni yoki ishlanmaydigan bayram kuni ishlashga roziligi xodim tomonidan tegishli ariza berish yoxud xodim tomonidan ish beruvchining xodim dam olish kuni yoki ishlanmaydigan bayram kuni ishlashga rozi ekanligi toʻgʻrisidagi buyrugʻiga imzo qoʻyish orqali olinishi mumkin.\nXodim dam olish kuni yoki ishlanmaydigan bayram kuni ishga oʻz roziligisiz jalb etilganda ish beruvchining buyrugʻida ushbu Kodeks 210-moddasida nazarda tutilgan alohida hol koʻrsatilishi kerak."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kakiye prazdnichnie dni v Uzbekistane schitayutsya vixodnimi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5573,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 369,
+    "rerank_ms": null,
+    "generation_ms": 2751,
+    "total_ms": 3121
+   },
+   "usage": {
+    "input_tokens": 2726,
+    "output_tokens": 320
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q016",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Jinoyat kodeksining 17-moddasiga koʻra, jinoyat sodir etgunga qadar oʻn olti yoshga toʻlgan, aqli raso jismoniy shaxslar javobgarlikka tortiladilar [1].\n\nBiroq, ayrim turdagi jinoyatlar uchun javobgarlik yoshi quyidagicha belgilanadi:\n* Oʻn toʻrt yoshga toʻlgan shaxslar Jinoyat kodeksining 17-moddasida sanab oʻtilgan muayyan jinoyatlar (masalan, qasddan odam oʻldirish, bosqinchilik, oʻgʻrilik va boshqalar) uchun javobgarlikka tortiladilar [1].\n* Jinoyat kodeksining 122, 123, 125¹, 126¹, 127, 127¹, 128¹, 144, 146, 193 — 195, 205 — 210, 225, 226, 230 — 232, 234, 235, 276¹⁰, 279 — 302-moddalarida nazarda tutilgan jinoyatlar uchun esa jinoyat sodir etgunga qadar oʻn sakkiz yoshga toʻlgan shaxslar javobgarlikka tortiladilar [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.731,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111453",
+     "article_url": "https://lex.uz/uz/docs/-111453#-179901",
+     "article": "17-modda",
+     "article_title": "Jismoniy shaxslarning javobgarligi",
+     "part": "3-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111453_0016_17_1",
+     "quote": "Ushbu Kodeksning 122, 123, 125¹-moddalarida, 126¹-moddasining birinchi va ikkinchi qismlarida, 127, 127¹, 128¹, 144, 146, 193 — 195, 205 — 210, 225, 226, 230 — 232, 234, 235, 276¹⁰, 279 — 302-moddalarida nazarda tutilgan jinoyatlar uchun jinoyat sodir etgunga qadar oʻn sakkiz yoshga toʻlgan shaxslar javobgarlikka tortiladilar."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111453_0016_17_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "17-modda",
+     "retrieval_score": 0.7308,
+     "fusion_score": 0.01715,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Jinoyat sodir etgunga qadar oʻn olti yoshga toʻlgan, aqli raso jismoniy shaxslar javobgarlikka tortiladilar.\nJinoyat sodir etgunga qadar oʻn toʻrt yoshga toʻlgan shaxslar ushbu Kodeks 97, 98, 104 — 106, 118, 119-moddalari, 126¹-moddasining toʻrtinchi — sakkizinchi qismlarida, 137, 164 — 166, 169-moddalari, 173-moddasining ikkinchi va uchinchi qismlari, 220, 222, 247, 252, 263, 267, 271-moddalari, 277-moddasining ikkinchi va uchinchi qismlarida nazarda tutilgan jinoyatlar uchun javobgarlikka tortiladilar.\nUshbu Kodeksning 122, 123, 125¹-moddalarida, 126¹-moddasining birinchi va ikkinchi qismlarida, 127, 127¹, 128¹, 144, 146, 193 — 195, 205 — 210, 225, 226, 230 — 232, 234, 235, 276¹⁰, 279 — 302-moddalarida nazarda tutilgan jinoyatlar uchun jinoyat sodir etgunga qadar oʻn sakkiz yoshga toʻlgan shaxslar javobgarlikka tortiladilar.\nOʻn sakkiz yoshga toʻlgunga qadar jinoyat sodir etgan shaxslar umumiy qoidalarga muvofiq va ushbu Kodeksning Umumiy qismi oltinchi boʻlimida nazarda tutilgan xususiyatlar hisobga olingan holda javobgarlikka tortiladilar."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111453_0092_86_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "86-modda",
+     "retrieval_score": 0.6873,
+     "fusion_score": 0.01694,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sud voyaga yetmaganlarga jazo tayinlashda jazo tayinlashning umumiy asoslariga amal qiladi, voyaga yetmaganning rivojlanganlik darajasi, turmush sharoiti va tarbiyasini, sogʻligʻini, sodir etgan jinoyatining sabablarini, katta yoshdagilarning va boshqa holatlarning uning shaxsiga taʼsirini hisobga oladi.\nOʻn toʻrt yoshdan oʻn olti yoshgacha boʻlgan vaqtda jinoyat sodir etgan shaxslarga nisbatan jinoyatlar majmui tariqasida jazo tayinlanganda ozodlikdan mahrum qilishning eng koʻp muddati oʻn yilgacha, agar sodir etgan jinoyatlarining bittasi oʻta ogʻir jinoyat boʻlsa, oʻn ikki yilgacha tayinlanadi.\nOʻn olti yoshdan oʻn sakkiz yoshgacha boʻlgan vaqtda jinoyat sodir etgan shaxslarga nisbatan jinoyatlar majmui tariqasida ozodlikdan mahrum qilish jazosi — oʻn ikki yilgacha muddatga, agar sodir etgan jinoyatlarining bittasi oʻta ogʻir jinoyat boʻlsa, oʻn besh yilgacha muddatga tayinlanishi mumkin.\nJinoyat sodir etish paytida oʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan shaxslarga nisbatan bir necha hukm yuzasidan tayinlanadigan ozodlikdan mahrum qilish jazosining muddati oʻn besh yildan oshmasligi kerak.\nVoyaga yetmagan shaxsga nisbatan ozodlikdan mahrum qilish yoki axloq tuzatish ishlari jazosi tayinlanganda sud ushbu Kodeksning 72-moddasida nazarda tutilgan asos va shartlar mavjud boʻlsa, shartli jazo belgilashi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111453_0086_81_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "81-modda",
+     "retrieval_score": 0.6854,
+     "fusion_score": 0.01661,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn sakkiz yoshga toʻlmasdan jinoyat sodir etgan shaxslarga quyidagi asosiy jazolar qoʻllanilishi mumkin:\na) jarima;\na¹) majburiy jamoat ishlari;\nb) axloq tuzatish ishlari;\nv¹) ozodlikni cheklash;\ng) ozodlikdan mahrum qilish.\nOʻn sakkiz yoshga toʻlmasdan jinoyat sodir etgan shaxslarga nisbatan qoʻshimcha jazolar tayinlanishi mumkin emas."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111453_0091_85_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "85-modda",
+     "retrieval_score": 0.6628,
+     "fusion_score": 0.01618,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Voyaga yetmaganlarga nisbatan ozodlikdan mahrum qilish jazosi bir oydan oʻn yilgacha muddatga tayinlanadi, ushbu Kodeks 86-moddasining ikkinchi, uchinchi va toʻrtinchi qismlarida nazarda tutilgan hollar bundan mustasno.\nOzodlikdan mahrum qilish jinoyat sodir etish paytida oʻn toʻrt yoshdan oʻn olti yoshgacha boʻlgan shaxslarga nisbatan:\nb) ogʻir jinoyat uchun — olti yilgacha;\nv) oʻta ogʻir jinoyat uchun — oʻn yilgacha muddatga tayinlanadi.\nOzodlikdan mahrum qilish jinoyat sodir etish paytida oʻn olti yoshdan oʻn sakkiz yoshgacha boʻlgan shaxslarga nisbatan:\nb) ogʻir jinoyat uchun — yetti yilgacha;\nv) oʻta ogʻir jinoyat uchun — oʻn yilgacha muddatga tayinlanadi.\nVoyaga yetmay turib ijtimoiy xavfi katta boʻlmagan jinoyat sodir etgan, ehtiyotsizlik oqibatida jinoyat sodir etgan yoxud qasddan uncha ogʻir boʻlmagan jinoyat sodir etgan shaxslarga nisbatan ozodlikdan mahrum qilish tariqasidagi jazo tayinlanmaydi.\nHukm chiqarish paytida oʻn sakkiz yoshga toʻlmagan shaxslarga nisbatan ozodlikdan mahrum qilish jazosini tarbiya koloniyalarida oʻtash tayinlanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111453_0093_87_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "87-modda",
+     "retrieval_score": 0.6767,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ijtimoiy xavfi katta boʻlmagan jinoyatni birinchi marta sodir etgan voyaga yetmagan shaxs, agar sodir etgan qilmishining xususiyatlari, aybdorning shaxsi va ishning boshqa holatlarini eʼtiborga olib, uni jazo qoʻllamasdan turib ham tuzatish mumkin degan xulosaga kelinsa, javobgarlikdan ozod qilinib, ish bolalar masalalari boʻyicha komissiyada koʻrishga topshirilishi mumkin.\nBesh yildan koʻp boʻlmagan muddatga ozodlikdan mahrum qilish jazosi tayinlash nazarda tutilgan uncha ogʻir boʻlmagan jinoyatni birinchi marta sodir etgan yoki ijtimoiy xavfi katta boʻlmagan jinoyatni takroran sodir etgan voyaga yetmagan shaxsni, mazkur moddaning birinchi qismida nazarda tutilgan asoslar mavjud boʻlsa, sud jazodan ozod qilish va unga nisbatan majburlov choralarini qoʻllash toʻgʻrisidagi masalani koʻrib chiqishi shart.\nVoyaga yetmagan shaxs rivojlanishda oʻz yoshiga nisbatan ancha orqada qolgan boʻlsa va sodir etgan qilmishining ahamiyatini toʻla ravishda anglab yetmasa, sud jazo oʻrniga majburlov chorasi qoʻllash maqsadga muvofiqligi masalasini koʻrib chiqishi shart."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Jinoyat uchun necha yoshdan javob beriladi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7308,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 357,
+    "rerank_ms": null,
+    "generation_ms": 2804,
+    "total_ms": 3162
+   },
+   "usage": {
+    "input_tokens": 3195,
+    "output_tokens": 427
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q017",
+   "status": "ok",
+   "answer": "\"Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida\"gi Qonunning 7-moddasiga koʻra, yoshga doir pensiya olish huquqi quyidagicha belgilanadi:\n\n* Erkaklar — 60 yoshga toʻlganda va ish staji kamida 25 yil boʻlgan taqdirda [1].\n* Ayollar — 55 yoshga toʻlganda va ish staji kamida 20 yil boʻlgan taqdirda [1].\n\nShuningdek, qonunchilikda ayrim toifadagi shaxslar uchun imtiyozli shartlarda yoki muddatidan oldin pensiyaga chiqish holatlari ham nazarda tutilgan [2][3][4][5].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.737,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "938-XII",
+     "url": "https://lex.uz/uz/docs/-112314",
+     "article_url": "https://lex.uz/uz/docs/-112314#-127020",
+     "article": "7-modda",
+     "article_title": "Yoshga doir pensiya olish huquqi",
+     "part": "2-qism",
+     "edition_date": "2025-05-20",
+     "doc_status": "amalda",
+     "chunk_id": "112314_0007_7_1",
+     "quote": "erkaklar — 60 yoshga toʻlganda va ish stajlari kamida 25 yil boʻlgan taqdirda;"
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "938-XII",
+     "url": "https://lex.uz/uz/docs/-112314",
+     "article_url": "https://lex.uz/uz/docs/-112314#-172568",
+     "article": "12¹-modda",
+     "article_title": "Umumiy belgilangan yoshni bir yilga qisqartirilgan holda pensiya olish huquqi",
+     "part": "1-qism",
+     "edition_date": "2025-05-20",
+     "doc_status": "amalda",
+     "chunk_id": "112314_0013_12¹_1",
+     "quote": "Ushbu Qonun 37-moddasi birinchi qismining “a” — “g” va “k” bandlarida nazarda tutilgan kamida yigirma yillik ish staji boʻlgan ayollar ellik toʻrt yoshga toʻlganda pensiya olish huquqiga ega boʻladilar."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "938-XII",
+     "url": "https://lex.uz/uz/docs/-112314",
+     "article_url": "https://lex.uz/uz/docs/-112314#-127089",
+     "article": "14-modda",
+     "article_title": "Yoshga doir pensiyalarni muddatidan oldin tayinlash",
+     "part": "1-qism",
+     "edition_date": "2025-05-20",
+     "doc_status": "amalda",
+     "chunk_id": "112314_0015_14_1",
+     "quote": "Texnologiyadagi, ishlab chiqarish va mehnatni tashkil etishdagi oʻzgarishlar, xodimlar soni (shtati) yoki ish xususiyatining oʻzgarishiga olib kelgan ishlar hajmining qisqarganligi yoxud korxonaning tugatilganligi munosabati bilan ishdan ozod etilgan va ishsiz deb eʼtirof etilgan shaxslar:"
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "938-XII",
+     "url": "https://lex.uz/uz/docs/-112314",
+     "article_url": "https://lex.uz/uz/docs/-112314#-127051",
+     "article": "12-modda",
+     "article_title": "Umumiy belgilangan yoshni 5 yilga qisqartirilgan holda imtiyozli pensiya olish huquqi",
+     "part": "4-qism",
+     "edition_date": "2025-05-20",
+     "doc_status": "amalda",
+     "chunk_id": "112314_0012_12_1",
+     "quote": "Mehnat sharoiti zararli va ogʻir ishlarda — erkaklar kamida 6 yilu 3 oy, ayollar kamida 5 yil — ishlagan xodimlarga pensiya ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi erkaklarning bunday ishdagi har 2 yilu 6 oyi uchun va ayollarning bunday ishdagi har 2 yili uchun 1 yilga qisqartirilgan holda tayinlanadi;"
+    },
+    {
+     "ref": 5,
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "938-XII",
+     "url": "https://lex.uz/uz/docs/-112314",
+     "article_url": "https://lex.uz/uz/docs/-112314#-127043",
+     "article": "11-modda",
+     "article_title": "Umumiy belgilangan yoshni 10 yilga qisqartirilgan holda imtiyozli pensiya olish huquqi",
+     "part": "5-qism",
+     "edition_date": "2025-05-20",
+     "doc_status": "amalda",
+     "chunk_id": "112314_0011_11_1",
+     "quote": "Mehnat sharoiti oʻta zararli va oʻta ogʻir ishlarda — erkaklar kamida 5 yil, ayollar kamida 3 yil 9 oy — ishlagan xodimlarga pensiya ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi shunday ishda band boʻlingan har bir toʻliq yil uchun 1 yilga qisqartirilgan holda tayinlanadi;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "112314_0007_7_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "7-modda",
+     "retrieval_score": 0.7373,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Yoshga doir pensiya olish huquqiga:\nerkaklar — 60 yoshga toʻlganda va ish stajlari kamida 25 yil boʻlgan taqdirda;\nayollar — 55 yoshga toʻlganda va ish stajlari kamida 20 yil boʻlgan taqdirda ega boʻladilar."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "112314_0013_12¹_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "12¹-modda",
+     "retrieval_score": 0.7214,
+     "fusion_score": 0.01686,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ushbu Qonun 37-moddasi birinchi qismining “a” — “g” va “k” bandlarida nazarda tutilgan kamida yigirma yillik ish staji boʻlgan ayollar ellik toʻrt yoshga toʻlganda pensiya olish huquqiga ega boʻladilar."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "112314_0015_14_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "14-modda",
+     "retrieval_score": 0.7209,
+     "fusion_score": 0.01664,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Texnologiyadagi, ishlab chiqarish va mehnatni tashkil etishdagi oʻzgarishlar, xodimlar soni (shtati) yoki ish xususiyatining oʻzgarishiga olib kelgan ishlar hajmining qisqarganligi yoxud korxonaning tugatilganligi munosabati bilan ishdan ozod etilgan va ishsiz deb eʼtirof etilgan shaxslar:\nerkaklar — 58 yoshga toʻlganda va ish staji kamida 25 yil boʻlgan taqdirda;\nayollar — 53 yoshga toʻlganda va ish staji kamida 20 yil boʻlgan taqdirda pensiya olish huquqiga ega boʻladilar."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "112314_0012_12_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "12-modda",
+     "retrieval_score": 0.7157,
+     "fusion_score": 0.01642,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oxirgi ish joyidan qatʼi nazar, quyidagilar ushbu Qonunning 7-moddasida belgilangan yoshni 5 yilga qisqartirilgan holda pensiya olish huquqiga ega boʻladilar:\na) urush nogironlari va ularga tenglashtirilgan shaxslar;\nb) mehnat sharoiti zararli va ogʻir ishlarda toʻliq ish kuni davomida band boʻlgan xodimlar (3-sonli roʻyxat, I qism):\nerkaklar — ish staji kamida 25 yil boʻlib, bundan kamida 12 yilu 6 oyi koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda;\nayollar — ish staji kamida 20 yil boʻlib, bundan kamida 10 yili koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda.\nMehnat sharoiti zararli va ogʻir ishlarda — erkaklar kamida 6 yilu 3 oy, ayollar kamida 5 yil — ishlagan xodimlarga pensiya ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi erkaklarning bunday ishdagi har 2 yilu 6 oyi uchun va ayollarning bunday ishdagi har 2 yili uchun 1 yilga qisqartirilgan holda tayinlanadi;\nz) bolalikdan nogironligi boʻlgan farzandlarning onalari ularni sakkiz yoshgacha tarbiyalagan boʻlsa — ish staji kamida 20 yil boʻlgan taqdirda. Basharti, ayol oʻgay oʻgʻil va oʻgay qizni ular 8 yoshga toʻlguniga qadar kamida 5 yil tarbiyalagan boʻlsa, pensiya tayinlashda ular haqiqiy farzandlar bilan teng ravishda hisobga olinadi;\nk) nogironligi boʻlgan bolalar uchun ixtisoslashgan taʼlim muassasalari, “Mehribonlik” uylari, harbiy akademik litseylar, tarbiya koloniyalari oʻqituvchilari — maxsus ish staji kamida 25 yil boʻlgan taqdirda (3-sonli roʻyxat, VII qism);\nl) ixtisoslashgan tibbiy muassasalarning shifokorlari va oʻrta tibbiy xodimlari — maxsus ish staji shaharchalar, qishloqlar hamda ovullarda kamida 25 yil va shaharlarda kamida 30 yil boʻlgan taqdirda (3-sonli roʻyxat, VIII qism);\nm) qariyalarga, nogironligi boʻlgan shaxslarga va yolgʻiz fuqarolarga xizmat koʻrsatishda bevosita band boʻlgan ijtimoiy xodimlar (3-sonli roʻyxat, IX qism):\nerkaklar — maxsus ish staji kamida 25 yil boʻlgan taqdirda;\nayollar — maxsus ish staji kamida 20 yil boʻlgan taqdirda."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "112314_0011_11_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "11-modda",
+     "retrieval_score": 0.6978,
+     "fusion_score": 0.01619,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oxirgi ish joyidan qatʼi nazar, quyidagilar ushbu Qonunning 7-moddasida belgilangan yoshni 10 yilga qisqartirilgan holda pensiya olish huquqiga ega boʻladilar:\na) yerosti ishlarida, mehnat sharoiti oʻta zararli va oʻta ogʻir ishlarda toʻliq ish kuni davomida band boʻlgan xodimlar (2-sonli roʻyxat, I qism):\nerkaklar — ish staji kamida 20 yil boʻlib, bundan kamida 10 yili koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda;\nayollar — ish staji kamida 15 yil boʻlib, bundan kamida 7 yilu 6 oyi koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda.\nYer osti ishlaridagi mehnat staji erkaklarda 10 yildan kam va ayollarda 7 yilu 6 oydan kam boʻlgan hollarda xodimlarga bu ishlardagi har bir toʻliq yil uchun ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi 1 yilga qisqartiriladi.\nMehnat sharoiti oʻta zararli va oʻta ogʻir ishlarda — erkaklar kamida 5 yil, ayollar kamida 3 yil 9 oy — ishlagan xodimlarga pensiya ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi shunday ishda band boʻlingan har bir toʻliq yil uchun 1 yilga qisqartirilgan holda tayinlanadi;\nb) sirklar va konsert tashkilotlari artistlarining ayrim toifalari ijodiy ishdagi staji kamida 20 yil boʻlgan taqdirda (2-sonli roʻyxat, II qism)."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Erkaklar va ayollar necha yoshda pensiyaga chiqadi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7373,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 913,
+    "rerank_ms": null,
+    "generation_ms": 3368,
+    "total_ms": 4283
+   },
+   "usage": {
+    "input_tokens": 2774,
+    "output_tokens": 238
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q018",
+   "status": "ok",
+   "answer": "Ҳа, сиз ўғлингиз билан кўришиш ва унинг тарбиясида иштирок этиш ҳуқуқига эгасиз. Оила кодексининг 76-моддасига кўра, боладан алоҳида яшаётган ота бола билан кўришиш, унинг тарбиясида иштирок этиш ва таълим олиши масаласини ҳал этишда қатнашиш ҳуқуқига эга [5].\n\nУшбу ҳуқуқни амалга ошириш бўйича қуйидаги тартиблар мавжуд:\n\n*   **Келишув:** Ота-она ота-оналик ҳуқуқларини амалга ошириш тартиби тўғрисида ёзма равишда келишув тузишга ҳақли [5].\n*   **Медиация:** Низо юзага келганда, судга мурожаат қилингунига қадар медиация тартиб-таомилини амалга ошириш орқали келишувга эришиш мумкин [5].\n*   **Суд тартиби:** Агар ота-она келиша олмаса, низо ота-онанинг талабига биноан васийлик ва ҳомийлик органи иштирокида суд томонидан ҳал қилинади [5].\n*   **Қаршилик кўрсатиш:** Бола билан бирга яшаётган она, агар кўришиш боланинг жисмоний ва руҳий соғлиғига ҳамда ахлоқий камолотига зарар келтирмаса, сизнинг учрашувингизга қаршилик қилмаслиги керак [5].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.676,
+   "citations": [
+    {
+     "ref": 5,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-159051",
+     "article": "76-modda",
+     "article_title": "Boladan alohida yashayotgan ota(ona)ning ota-onalik huquqini amalga oshirishi",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0076_76_1",
+     "quote": "Boladan alohida yashayotgan ota (ona) bola bilan koʻrishish, uning tarbiyasida ishtirok etish va taʼlim olishi masalasini hal etishda qatnashish huquqiga ega."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "104720_0085_85_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "85-modda",
+     "retrieval_score": 0.6765,
+     "fusion_score": 0.01719,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sud tomonidan ota-onalik huquqi cheklangan ota-onaning bolasi bilan koʻrishishi unga salbiy taʼsir koʻrsatmasa, bola bilan koʻrishishga ruxsat berilishi mumkin. Ota-onaning bola bilan koʻrishishiga vasiylik va homiylik organining roziligi bilan yoxud vasiy (homiy)ning, bolaning tutingan ota-onasi yoki bola turgan muassasa maʼmuriyatining roziligi bilan yoʻl qoʻyiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "104720_0066_66_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "66-modda",
+     "retrieval_score": 0.6716,
+     "fusion_score": 0.01684,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bola otasi, onasi, bobosi, buvisi, aka-ukalari, opa-singillari va boshqa qarindoshlari bilan koʻrishish huquqiga ega. Ota-onasining nikohdan ajralishi, nikohning haqiqiy emas deb topilishi yoki ota-onaning boshqa-boshqa yashashi bolaning huquqlariga taʼsir qilmaydi.\nOta va ona alohida yashagan holda bola ularning har biri bilan koʻrishish huquqiga ega. Ota-ona turli davlatlarda yashagani taqdirda ham bola ular bilan koʻrishish huquqiga ega.\nFavqulodda vaziyatlarga tushib qolgan bola (ushlab turish, qamoqqa olish, hibsga olish, davolash muassasasida boʻlish va boshqa hollarda) oʻz ota-onasi va boshqa qarindoshlari bilan qonunda belgilangan tartibda koʻrishish huquqiga ega."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "1297315_0013_13_1",
+     "doc_id": "lex:1297315",
+     "doc_title": "BOLA HUQUQLARINING KAFOLATLARI TOʻGʻRISIDA",
+     "article": "13-modda",
+     "retrieval_score": 0.6595,
+     "fusion_score": 0.01654,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Har bir bola oilada yashash va tarbiyalanish, oʻz ota-onasini bilish, ular bilan birga yashash va ularning gʻamxoʻrligidan foydalanish huquqiga ega, uning eng ustun manfaatlariga zid boʻlgan hollar bundan mustasno.\nBolaning ota-onasi boʻlmaganda, ular ota-onalik huquqidan mahrum qilinganda hamda bola ota-ona qaramogʻidan mahrum boʻlgan boshqa hollarda uning oilada yashash hamda tarbiyalanish huquqi vasiylik va homiylik organi tomonidan taʼminlanadi.\nBola otasi, onasi, bobosi, buvisi, aka-ukalari, opa-singillari va boshqa qarindoshlari bilan koʻrishish huquqiga ega. Ota-onasining nikohdan ajralishi, nikohning haqiqiy emas deb topilishi yoki ota va onaning boshqa-boshqa yashashi bolaning huquqlariga taʼsir qilmaydi.\nOta va ona turli davlatlarda yashagan taqdirda ham bola ular bilan koʻrishish huquqiga ega.\nEkstremal vaziyatlarga (ushlab turish, hibsga olish, qamoqqa olish, davolash muassasasida boʻlish va boshqa hollarda) tushib qolgan bola oʻz ota-onasi va boshqa qarindoshlari bilan qonunchilikda belgilangan tartibda koʻrishish huquqiga ega."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "104720_0077_77_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "77-modda",
+     "retrieval_score": 0.6585,
+     "fusion_score": 0.01637,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bobo, buvi, aka-uka, opa-singil va boshqa yaqin qarindoshlar bola bilan koʻrishib turish huquqiga ega.\nOta-ona (ulardan biri) yaqin qarindoshlarning bola bilan koʻrishishiga imkoniyat bermasalar, vasiylik va homiylik organi ota-onani (ulardan birini) bunday imkoniyat berishga majbur qilishi mumkin.\nAgar ota-ona (ulardan biri) vasiylik va homiylik organining qarorini bajarmasa, bolaning yaqin qarindoshlari yoki vasiylik va homiylik organi bola bilan koʻrishib turishga toʻsqinlik qiluvchi hollarni bartaraf qilish haqida daʼvo bilan sudga murojaat qilishga haqlidir. Sud bolaning eng ustun manfaatlarini va bolaning fikrini hisobga olgan holda nizoni hal qiladi.\nSudning hal qiluv qarori bajarilmagan taqdirda aybdor ota (ona)ga nisbatan qonunchilikda nazarda tutilgan choralar qoʻllaniladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "104720_0076_76_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "76-modda",
+     "retrieval_score": 0.6562,
+     "fusion_score": 0.01592,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Boladan alohida yashayotgan ota (ona) bola bilan koʻrishish, uning tarbiyasida ishtirok etish va taʼlim olishi masalasini hal etishda qatnashish huquqiga ega.\nBola bilan birga yashayotgan ota (ona) bolaning ona (ota)si bilan koʻrishishiga, agar bunday koʻrishish bolaning jismoniy va ruhiy sogʻligʻiga, axloqiy kamolotiga zarar keltirmasa, qarshilik qilmasligi kerak.\nOta-ona boladan alohida yashaydigan otaning (onaning) ota-onalik huquqlarini amalga oshirish tartibi toʻgʻrisida yozma ravishda kelishuv tuzishga haqlidir. Bu boradagi nizo ota-onaning (yoki ulardan birining) talabiga binoan sudga murojaat qilinguniga qadar mediatsiya tartib-taomilini amalga oshirish orqali hal qilinishi mumkin.\nAgar ota-ona kelisha olmasa, nizo ota-onaning (yoki ulardan birining) talabiga binoan sud tomonidan vasiylik va homiylik organi ishtirokida hal qilinadi. Sudning hal qiluv qarori bajarilmagan taqdirda aybdor ota-onaga nisbatan qonunchilikda nazarda tutilgan choralar qoʻllaniladi. Sudning hal qiluv qarori qasddan bajarilmagan taqdirda sud boladan alohida yashayotgan otaning (onaning) talabiga binoan bolaning eng ustun manfaatlarini va fikrini hisobga olgan holda bolani unga berish toʻgʻrisida hal qiluv qarori chiqarishi mumkin.\nBoladan alohida yashayotgan ota (ona) tarbiya, davolash, aholini ijtimoiy himoyalash muassasalari va boshqa shunga oʻxshash muassasalardan oʻz bolasi toʻgʻrisida axborot olish huquqiga ega. Ota (ona) tomonidan bolaning hayoti va sogʻligʻi uchun xavf-xatar boʻlgandagina, ularga axborot berish rad etilishi mumkin. Axborot berishning rad etilishi ustidan sud tartibida shikoyat qilinishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ajrashganimizdan keyin oʻgʻlim onasi bilan yashayapti, u esa bolani koʻrsatmayapti. Otasi sifatida oʻgʻlim bilan uchrashib turishga haqqim bormi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6765,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 716,
+    "rerank_ms": null,
+    "generation_ms": 2925,
+    "total_ms": 3642
+   },
+   "usage": {
+    "input_tokens": 2981,
+    "output_tokens": 428
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q019",
+   "status": "ok",
+   "answer": "Государственные пенсии, выплачиваемые в соответствии с законом, не облагаются налогом.\n\nСогласно статье 67 Закона «О государственном пенсионном обеспечении граждан», пенсии, выплачиваемые в соответствии с данным Законом, освобождаются от налогообложения [1].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.602,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "938-XII",
+     "url": "https://lex.uz/uz/docs/-112314",
+     "article_url": "https://lex.uz/uz/docs/-112314#-128257",
+     "article": "67-modda",
+     "article_title": "Pensiyalarni soliqlardan ozod qilish",
+     "part": "1-qism",
+     "edition_date": "2025-05-20",
+     "doc_status": "amalda",
+     "chunk_id": "112314_0068_67_1",
+     "quote": "Ushbu Qonunga muvofiq toʻlanadigan pensiyalarga soliq solinmaydi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "112314_0068_67_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "67-modda",
+     "retrieval_score": 0.6019,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ushbu Qonunga muvofiq toʻlanadigan pensiyalarga soliq solinmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "390573_0013_14_1",
+     "doc_id": "lex:390573",
+     "doc_title": "FUQAROLARNING JAMGʻARIB BORILADIGAN PENSIYA TAʼMINOTI TOʻGʻRISIDA",
+     "article": "14-modda",
+     "retrieval_score": 0.5839,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jamgʻarib boriladigan majburiy pensiya badallaridan, shaxsiy jamgʻarib boriladigan pensiya hisobvaraqlaridagi mablagʻlarga hisoblab chiqarilgan foizlardan hamda bunday mablagʻlar foydalanilishidan fuqarolar va Xalq banki oladigan boshqa daromadlardan, jamgʻarib boriladigan pensiya toʻlovlaridan, shuningdek jamgʻarib boriladigan pensiya tizimi mablagʻlari aylanmasidan soliqlar va boshqa majburiy toʻlovlar olinmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "112314_0002_2_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "2-modda",
+     "retrieval_score": 0.5736,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Qonun bilan davlat pensiyalarining quyidagi turlari belgilanadi:\nyoshga doir pensiya;\nnogironlik pensiyasi;\nboquvchisini yoʻqotganlik pensiyasi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "112314_0067_66_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "66-modda",
+     "retrieval_score": 0.5733,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Qonunga muvofiq tayinlangan pensiyalarni toʻlash Pensiya jamgʻarmasi mablagʻlari hisobidan amalga oshiriladi. Pensiya jamgʻarmasini shakllantirish tartibi Oʻzbekiston Respublikasining qonunchiligi bilan belgilanadi. Pensiyalarni toʻlash uchun Pensiya jamgʻarmasiga Oʻzbekiston Respublikasi Davlat budjetidan transfertlar ajratilishi mumkin.\nMulkchilik shaklidan qatʼi nazar, korxonalar va tashkilotlar:\nboquvchisini yoʻqotganlik uchun, shuningdek xodimning mehnat vazifalarini bajarishi bilan bogʻliq holda mehnatda mayiblanganligi yoki kasb kasalligiga uchraganligi oqibatidagi nogironlik uchun;\nxodim ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshiga toʻlguniga qadar mazkur Qonun 12-moddasining “b” bandiga muvofiq tayinlangan pensiyalarni toʻlash xarajatlarining oʻrnini qoplovchi pulni ish haqi toʻlashga moʻljallangan mablagʻlar hisobidan Pensiya jamgʻarmasiga oʻtkazadi.\nPensioner ushbu Qonunning 7-moddasida nazarda tutilgan yoshga toʻlguniga qadar ushbu Qonunning 14-moddasiga muvofiq tayinlangan pensiyalarni toʻlash Pensiya jamgʻarmasiga ajratiladigan Oʻzbekiston Respublikasi Bandlikka koʻmaklashish davlat jamgʻarmasi mablagʻlari hisobidan amalga oshiriladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "112314_0001_1_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "1-modda",
+     "retrieval_score": 0.5707,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi fuqarolari ushbu Qonunda nazarda tutilgan tartibda davlat tomonidan pensiya bilan taʼminlanish huquqiga egadirlar.\nRespublika hududidan tashqarida yashab turgan Oʻzbekiston Respublikasining fuqarolarini pensiya bilan taʼminlash Oʻzbekiston Respublikasining xalqaro shartnomalari asosida amalga oshiriladi.\nOʻzbekiston Respublikasida doimiy yashab turgan chet el fuqarolari va fuqaroligi boʻlmagan shaxslar, Oʻzbekiston Respublikasi fuqarolari bilan teng ravishda pensiya olish huquqiga egadirlar.\nIsh stajiga ega boʻlmagan fuqarolar va ularning oilalari ushbu Qonunga binoan davlat pensiyalari olish huquqiga ega emaslar. Ularning ijtimoiy taʼminlanish tartibini Oʻzbekiston Respublikasi Vazirlar Mahkamasi belgilab qoʻyadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Oblagayetsya li gosudarstvennaya pensiya nalogom na doxodi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6019,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 375,
+    "rerank_ms": null,
+    "generation_ms": 3806,
+    "total_ms": 4182
+   },
+   "usage": {
+    "input_tokens": 2074,
+    "output_tokens": 97
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q020",
+   "status": "ok",
+   "answer": "\"Xoʻjalik yurituvchi subyektlar faoliyatining shartnomaviy-huquqiy bazasi toʻgʻrisida\"gi Qonunning 25-moddasiga koʻra, tovar yetkazib berish muddatlari kechiktirilgan hollarda, yetkazib beruvchi sotib oluvchiga kechiktirilgan har bir kun uchun majburiyat bajarilmagan qismining 0,5 foizi miqdorida penya toʻlaydi [2].\n\nBunda quyidagi qoidalarga eʼtibor qaratish lozim:\n* Penyaning umumiy summasi yetkazib berilmagan tovarlar bahosining 50 foizidan oshib ketmasligi kerak [2].\n* Penyani toʻlash yetkazib beruvchini shartnoma majburiyatlarini buzish oqibatida yetkazilgan zararni qoplashdan ozod etmaydi [2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.588,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:18942",
+     "doc_title": "Xoʻjalik yurituvchi subyektlar faoliyatining shartnomaviy-huquqiy bazasi toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "670-I",
+     "url": "https://lex.uz/uz/docs/-18942",
+     "article_url": "https://lex.uz/uz/docs/-18942#-20210",
+     "article": "25-modda",
+     "article_title": "Tovarlarni yetkazib berish muddatlarini kechiktirib yuborganlik, toʻliq yetkazib bermaganlik, ishlarni bajarmaganlik yoki xizmat koʻrsatmaganlik uchun javobgarlik",
+     "part": "1-qism",
+     "edition_date": "2026-06-12",
+     "doc_status": "amalda",
+     "chunk_id": "18942_0024_25_1",
+     "quote": "Tovarlarni yetkazib berish muddatlari kechiktirib yuborilgan, toʻliq yetkazib berilmagan, ishlar bajarilmagan yoki xizmatlar koʻrsatilmagan hollarda, tovar yetkazib beruvchi (pudratchi) sotib oluvchiga (buyurtmachiga) kechiktirilgan har bir kun uchun majburiyat bajarilmagan qismining 0,5 foizi miqdorida penya toʻlaydi, biroq bunda penyaning umumiy summasi yetkazib berilmagan tovarlar, bajarilmagan ishlar yoki koʻrsatilmagan xizmatlar bahosining 50 foizidan oshib ketmasligi lozim."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111453_0087_82_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "82-modda",
+     "retrieval_score": 0.5882,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jarima bazaviy hisoblash miqdorining ikki baravaridan yigirma baravarigacha miqdorda tayinlanadi.\nMahkum jarima toʻlashdan olti oy muddat mobaynida boʻyin tovlasa, sud toʻlanmagan jarima miqdorini bazaviy hisoblash miqdorining bir baravari miqdoridagi jarimani majburiy jamoat ishlarining ikki soatiga tenglashtirgan holda hisoblab, majburiy jamoat ishlari tariqasidagi jazo bilan almashtiradi yoki bazaviy hisoblash miqdorining ikki baravari miqdoridagi jarimani axloq tuzatish ishlarining bir oyiga tenglashtirgan holda hisoblab, axloq tuzatish ishlari tariqasidagi jazo bilan almashtiradi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "18942_0024_25_1",
+     "doc_id": "lex:18942",
+     "doc_title": "Xoʻjalik yurituvchi subyektlar faoliyatining shartnomaviy-huquqiy bazasi toʻgʻrisida",
+     "article": "25-modda",
+     "retrieval_score": 0.5827,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Tovarlarni yetkazib berish muddatlari kechiktirib yuborilgan, toʻliq yetkazib berilmagan, ishlar bajarilmagan yoki xizmatlar koʻrsatilmagan hollarda, tovar yetkazib beruvchi (pudratchi) sotib oluvchiga (buyurtmachiga) kechiktirilgan har bir kun uchun majburiyat bajarilmagan qismining 0,5 foizi miqdorida penya toʻlaydi, biroq bunda penyaning umumiy summasi yetkazib berilmagan tovarlar, bajarilmagan ishlar yoki koʻrsatilmagan xizmatlar bahosining 50 foizidan oshib ketmasligi lozim. Penyani toʻlash shartnoma majburiyatlarini buzgan tarafni tovarlarni yetkazib berish muddatlarini kechiktirib yuborish, toʻliq yetkazib bermaslik, ishlarni bajarmaslik yoki xizmatlarni koʻrsatmaslik oqibatida yetkazilgan zararni qoplashdan ozod etmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "97664_0251_159¹_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "159¹-modda",
+     "retrieval_score": 0.5759,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqarolar oʻrtasida binoni, inshootni yoki ularning bir qismini, turar joyni ijaraga berish shartnomasining, tekin foydalanishga berish shartnomasining mavjud emasligi yoxud davlat soliq organlarida ijaraga berish shartnomasining majburiy hisobga qoʻyilishiga rioya etmaslik, —\nbazaviy hisoblash miqdorining besh baravaridan oʻn baravarigacha miqdorda jarima solishga sabab boʻladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "18942_0030_31_1",
+     "doc_id": "lex:18942",
+     "doc_title": "Xoʻjalik yurituvchi subyektlar faoliyatining shartnomaviy-huquqiy bazasi toʻgʻrisida",
+     "article": "31-modda",
+     "retrieval_score": 0.5737,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tovarlarni tanlab olmaslik, shuningdek yetkazib beruvchi shartnomada belgilangan muddatda (davrda) ularni yetkazib berganda tovarlarni olishni asossiz ravishda rad etganlik uchun sotib oluvchi yetkazib beruvchiga tanlab olinmagan (oʻz muddatida olinmagan) tovarlar qiymatining 5 foizi miqdorida, tez buziladigan tovarlar boʻyicha esa — 10 foiz miqdorida jarima toʻlaydi.\nTovarlar tanlab olinmagan (olish asossiz rad etilgan) hollarda, yetkazib beruvchi jarima undirishdan tashqari, ushbu tovarlar mavjudligining kafolatlarini taqdim etgan holda, tanlab olinmagan (oʻz muddatida olinmagan) tovarlar qiymati toʻlanishini talab qilishga haqlidir."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "97664_0426_227¹³_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "227¹³-modda",
+     "retrieval_score": 0.5719,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tovarlarni saqlash uchun joylashtirishning belgilangan talablari va shartlariga, ularni saqlash tartibiga, xuddi shuningdek bojxona omborlarida hamda erkin omborlarda tovarlarga doir operatsiyalar oʻtkazish tartibiga rioya etmaslik, bundan ushbu moddaning uchinchi qismida, ushbu Kodeksning 227⁴, 227⁸, 227⁹ va 227¹¹-moddalarida nazarda tutilgan hollar mustasno, —\nfuqarolarga bazaviy hisoblash miqdorining uch baravaridan besh baravarigacha, mansabdor shaxslarga esa — yetti baravaridan oʻn baravarigacha miqdorda jarima solishga sabab boʻladi.\nXuddi shunday huquqbuzarlik maʼmuriy jazo chorasi qoʻllanilganidan keyin bir yil davomida takror sodir etilgan boʻlsa, —\nfuqarolarga bazaviy hisoblash miqdorining besh baravaridan yetti baravarigacha, mansabdor shaxslarga esa — oʻn baravaridan yigirma baravarigacha miqdorda jarima solishga sabab boʻladi.\nTovarlarni bojxona rejimida saqlash muddatlariga rioya etmaslik, —\nbazaviy hisoblash miqdorining uch baravari miqdorida jarima solishga sabab boʻladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Mebel doʻkoniga divan uchun oldindan toʻliq pul toʻladim, lekin kelishilgan kunda olib kelishmadi, ikki haftadan beri paysalga solishyapti. Kechikkan har bir kun uchun menga qancha jarima toʻlashlari kerak?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5882,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 588,
+    "rerank_ms": null,
+    "generation_ms": 4042,
+    "total_ms": 4631
+   },
+   "usage": {
+    "input_tokens": 2690,
+    "output_tokens": 293
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 0.0
+}

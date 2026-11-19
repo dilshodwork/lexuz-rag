@@ -1,0 +1,1379 @@
+{
+ "run_id": "spec-2026-11-19",
+ "batch_id": "spec-2026-11-19-b01",
+ "batch_index": 1,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-19T19:10:20+05:00",
+  "completed_at": "2026-11-19T19:10:25+05:00",
+  "total_ms": 4948
+ },
+ "summary": {
+  "total": 10,
+  "ok": 7,
+  "no_answer": 3,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q001",
+   "status": "ok",
+   "answer": "1) Ha, \"Taʼlim toʻgʻrisida\"gi Qonunning 18-moddasiga koʻra, bolalarning oilada taʼlim olishiga ruxsat beriladi. Bu jarayon davlat taʼlim muassasasi hamda taʼlim oluvchilarning ota-onasi yoki boshqa qonuniy vakillari oʻrtasidagi shartnoma asosida amalga oshiriladi [1].\n\n2) Oilada taʼlim olgan shaxslarga davlat tomonidan tasdiqlangan namunadagi taʼlim toʻgʻrisidagi hujjat (attestat) eksternat tartibida beriladi [1]. Bunda taʼlim oluvchi davlat taʼlim muassasalarida yakuniy va davlat attestatsiyalaridan oʻtishi talab etiladi [7].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.651,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-637",
+     "url": "https://lex.uz/uz/docs/-5013007",
+     "article_url": "https://lex.uz/uz/docs/-5013007#-5013370",
+     "article": "18-modda",
+     "article_title": "Oilada taʼlim olish va mustaqil taʼlim olish",
+     "part": "3-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5013007_0018_18_1",
+     "quote": "Oilada taʼlim olish bolalar, oila, davlat va jamiyat manfaatlarini hisobga olgan holda davlat taʼlim muassasasi hamda taʼlim oluvchilarning ota-onasi yoki boshqa qonuniy vakillari oʻrtasidagi shartnoma asosida amalga oshiriladi."
+    },
+    {
+     "ref": 7,
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-637",
+     "url": "https://lex.uz/uz/docs/-5013007",
+     "article_url": "https://lex.uz/uz/docs/-5013007#-5013391",
+     "article": "21-modda",
+     "article_title": "Eksternat tartibidagi taʼlim",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5013007_0021_21_1",
+     "quote": "Eksternat tartibidagi taʼlim olish oʻquv dasturlarini mustaqil ravishda oʻzlashtirishni oʻz ichiga olib, uning yakunlari boʻyicha taʼlim oluvchilardan davlat taʼlim muassasalarida yakuniy va davlat attestatsiyalaridan oʻtishni talab etadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "5013007_0018_18_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "18-modda",
+     "retrieval_score": 0.6508,
+     "fusion_score": 0.03279,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Davlat oilada taʼlim olishga va mustaqil taʼlim olishga koʻmaklashadi. Bolalarning oilada taʼlim olishi va mustaqil taʼlim olish uslubiy va maslahat yordami koʻrsatilgan holda tegishli oʻquv dasturlari boʻyicha amalga oshiriladi.\nOilada taʼlim olish va mustaqil taʼlim olish tartibi, shuningdek taʼlim oluvchilarning toifalari taʼlim sohasidagi vakolatli davlat boshqaruvi organlari tomonidan belgilanadi.\nOilada taʼlim olish bolalar, oila, davlat va jamiyat manfaatlarini hisobga olgan holda davlat taʼlim muassasasi hamda taʼlim oluvchilarning ota-onasi yoki boshqa qonuniy vakillari oʻrtasidagi shartnoma asosida amalga oshiriladi.\nMustaqil taʼlim olish yakka tartibda amalga oshiriladi hamda taʼlim oluvchilarni kasbiy, intellektual, maʼnaviy va madaniy rivojlantirishga xizmat qiladi.\nOilada taʼlim olgan va mustaqil taʼlim olgan shaxslarga davlat tomonidan tasdiqlangan namunadagi taʼlim toʻgʻrisidagi hujjatni berish davlat taʼlim muassasalarining tasdiqlangan oʻquv dasturiga muvofiq eksternat tartibida amalga oshiriladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "5013007_0050_55_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "55-modda",
+     "retrieval_score": 0.5591,
+     "fusion_score": 0.0315,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Davlat jismoniy, aqliy, sensor (sezgi) yoki ruhiy nuqsonlari boʻlgan bolalarning (shaxslarning) davlat ixtisoslashtirilgan taʼlim muassasalarida, umumiy oʻrta, oʻrta maxsus, professional taʼlim muassasalarida inklyuziv shaklda bepul umumiy oʻrta, oʻrta maxsus, professional va qoʻshimcha taʼlim olishini taʼminlaydi.\nJismoniy, aqliy, sensor (sezgi) yoki ruhiy nuqsonlari boʻlgan, shuningdek uzoq vaqt davolanishga muhtoj boʻlgan bolalarni oʻqitish hamda tarbiyalash uchun davlat ixtisoslashtirilgan taʼlim muassasalari tashkil etiladi. Taʼlim oluvchilarni ushbu taʼlim muassasalariga yuborish va ulardan chetlatish ota-onasining yoki boshqa qonuniy vakillarining roziligi bilan tibbiy-psixologik-pedagogik komissiyaning xulosasiga binoan amalga oshiriladi.\nDavlat ixtisoslashtirilgan taʼlim muassasalarida taʼlim oluvchilar davlat taʼminotida boʻladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "5055690_0078_80_1",
+     "doc_id": "lex:5055690",
+     "doc_title": "Aholi bandligi toʻgʻrisida",
+     "article": "80-modda",
+     "retrieval_score": 0.529,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Kasbga oʻqitish markazlarida oʻqitish yakunlari boʻyicha yakuniy malaka imtihonlari oʻtkaziladi.\nYakuniy malaka imtihonlarini oʻtkazish uchun ish beruvchilar orasidan tashkilotlarning rahbarlari va mutaxassislari, shuningdek kasbga oʻqitish markazlarining rahbarlari, oʻqituvchilari va ishlab chiqarish taʼlimi ustalari orasidan malaka komissiyalari tuziladi.\nYakuniy malaka imtihonlarini oʻtkazish tartibi Oʻzbekiston Respublikasi Kambagʻallikni qisqartirish va bandlik vazirligi tomonidan belgilanadi.\nYakuniy malaka imtihonini muvaffaqiyatli topshirgan oʻquvchilarga:\nuzoq muddatli oʻqishni oʻtaganda — diplomlar;\noʻrta muddatli va qisqa muddatli oʻqishni oʻtaganda — sertifikatlar beriladi.\nKasbga oʻqitish markazlarida oʻqitish yakunlari boʻyicha yakuniy malaka imtihoni bilan birga malakani baholash markazini shartnoma asosida jalb etgan holda ishchilarga malaka razryadini va mutaxassislarga malaka toifasini berish boʻyicha imtihon oʻtkazishga yoʻl qoʻyiladi. Bunda malakani baholash markazi tomonidan oʻtkazilgan imtihon muvaffaqiyatli topshirilgan taqdirda diplom yoki sertifikat bilan birga malaka pasporti beriladi.\nKasbga oʻqitish markazi tomonidan berilgan diplom tegishli mutaxassislik va malaka boʻyicha ishlash huquqini beradi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4646908_0018_20_1",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "20-modda",
+     "retrieval_score": 0.5264,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yakka tartibdagi tadbirkor sifatida roʻyxatdan oʻtkazilgan jismoniy shaxslar maktabgacha taʼlim va tarbiya sohasida oilaviy nodavlat maktabgacha taʼlim tashkiloti shaklida taʼlim xizmatlari koʻrsatadi.\nYakka tartibdagi tadbirkor sifatida roʻyxatdan oʻtkazilgan jismoniy shaxslar Oʻzbekiston Respublikasi Maktabgacha va maktab taʼlimi vazirligini belgilangan tartibda xabardor qilganidan keyin maktabgacha taʼlim va tarbiya sohasida taʼlim xizmatlarini koʻrsatishga haqli.\nOilaviy nodavlat maktabgacha taʼlim tashkilotlarida koʻpi bilan ellik nafar maktabgacha boʻlgan yoshdagi bolaning taʼlim va tarbiya olishiga yoʻl qoʻyiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "5307886_0018_19_1",
+     "doc_id": "lex:5307886",
+     "doc_title": "Auditorlik faoliyati toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.5272,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Auditorning malaka sertifikati (bundan buyon matnda sertifikat deb yuritiladi) auditorning malakasini tasdiqlaydigan va unga auditorlik tashkiloti tarkibida auditorlik xizmatlarini koʻrsatish huquqini beradigan hujjatdir.\nSertifikat basharti talabgor malaka imtihonini muvaffaqiyatli topshirsa, auditorlarning respublika jamoat birlashmasi tomonidan beriladigan, qatʼiy hisobotga oid hujjatdir.\nSertifikat dastlabki besh yillik muddatga beriladi, uning amal qilishi navbatdagi oʻn yillik muddatga va keyinchalik muddatsiz davrga uzaytiriladi.\nTalabgorda xalqaro buxgalter sertifikati mavjud boʻlgan hamda u ushbu Qonunning 21 va 22-moddalarida nazarda tutilgan talablarga rioya etgan taqdirda, sertifikat unga malaka imtihonini topshirmagan holda dastlabki besh yillik muddatga beriladi va belgilangan davriylik bilan uzaytiriladi."
+    },
+    {
+     "rank": 6,
+     "chunk_id": "5013007_0054_58_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "58-modda",
+     "retrieval_score": 0.5613,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi hududida faoliyat koʻrsatayotgan maktabgacha, umumiy oʻrta taʼlim tashkilotlari davlat taʼlim standartlariga, davlat taʼlim talablariga hamda oʻquv dasturlariga muvofiqlik jihatidan attestatsiyadan va davlat akkreditatsiyasidan oʻtkaziladi.\nOʻrta maxsus, professional, oliy taʼlimni va oliy taʼlimdan keyingi taʼlimni amalga oshiruvchi davlat va nodavlat taʼlim tashkilotlari, bitiruvchilarga davlat tomonidan tasdiqlangan namunadagi taʼlim toʻgʻrisidagi hujjatlarni beruvchi, kadrlar malakasini oshirish va ularni qayta tayyorlash boʻyicha davlat va nodavlat taʼlim tashkilotlari davlat taʼlim standartlariga, davlat taʼlim talablariga, shuningdek taʼlim dasturlariga muvofiqlik jihatidan kompleks va maxsus davlat akkreditatsiyasidan oʻtkaziladi.\nAttestatsiya va kompleks davlat akkreditatsiyasi ikki bosqichda — taʼlim tashkilotlari faoliyatini ichki baholash va tashqi baholash bosqichlarida oʻtkaziladi.\nIchki baholash taʼlim tashkilotining oʻzini oʻzi baholashidir.\nTashqi baholash ichki baholash oʻtkazilganidan keyin taʼlim sohasidagi tegishli vakolatli respublika ijro etuvchi hokimiyat organlari yoki respublikada tan olingan xalqaro akkreditatsiya tashkilotlari tomonidan amalga oshiriladigan baholashdir.\nOʻzbekiston Respublikasi Prezidentining yoki Oʻzbekiston Respublikasi Vazirlar Mahkamasining qarorlari asosida tashkil etilgan, shuningdek vazirliklar, idoralar va mahalliy davlat hokimiyati vakillik organlari tomonidan tashkil etilgan taʼlim tashkilotlari tashkil etilgan kundan eʼtiboran belgilangan muddatga akkreditatsiya qilingan hisoblanadi.\nMaktabgacha, umumiy oʻrta taʼlimni amalga oshiruvchi nodavlat taʼlim tashkilotlari tegishli litsenziya olingan kundan eʼtiboran Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilangan muddat davomida akkreditatsiyadan oʻtgan deb hisoblanadi, bu muddat tugagach, ushbu Qonunda belgilangan tartibda attestatsiyadan va davlat akkreditatsiyasidan oʻtkaziladi.\nTaʼlim tashkilotlarini davlat akkreditatsiyasidan, shuningdek kompleks va maxsus davlat akkreditatsiyasidan oʻtkazish maqsadida taʼlim sohasidagi vakolatli respublika ijro etuvchi hokimiyat organlari huzurida doimiy faoliyat koʻrsatuvchi davlat akkreditatsiya komissiyalari tuziladi.\nTaʼlim sohasidagi vakolatli respublika ijro etuvchi hokimiyat organlari respublikada tan olinadigan xalqaro akkreditatsiya tashkilotlariga qoʻyiladigan talablarni belgilaydi va ularning reyestrlarini yuritadi."
+    },
+    {
+     "rank": 7,
+     "chunk_id": "5013007_0021_21_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "21-modda",
+     "retrieval_score": 0.5612,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Eksternat tartibidagi taʼlim olish oʻquv dasturlarini mustaqil ravishda oʻzlashtirishni oʻz ichiga olib, uning yakunlari boʻyicha taʼlim oluvchilardan davlat taʼlim muassasalarida yakuniy va davlat attestatsiyalaridan oʻtishni talab etadi.\nEksternat tartibidagi taʼlim olishni tashkil etish tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 8,
+     "chunk_id": "5307886_0021_22_1",
+     "doc_id": "lex:5307886",
+     "doc_title": "Auditorlik faoliyati toʻgʻrisida",
+     "article": "22-modda",
+     "retrieval_score": 0.5243,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Talabgor dastlabki besh yillik muddatga sertifikat olish uchun auditorlarning respublika jamoat birlashmasiga quyidagi hujjatlarni ilova qilgan holda ariza taqdim etadi:\npasportining yoki identifikatsiyalovchi ID-kartasining maʼlumotlari;\nilmiy daraja toʻgʻrisidagi hujjatning yoxud chet davlatda olingan oliy maʼlumot yoki ilmiy daraja toʻgʻrisidagi hujjatni tan olish haqidagi tegishli vakolatli davlat organi guvohnomasining koʻchirma nusxasini;\nbelgilangan davriylik bilan malaka oshirganligini tasdiqlovchi hujjatlar ilova qilingan holda, xalqaro buxgalter sertifikatining koʻchirma nusxasini (mavjud boʻlgan taqdirda);\nmehnat daftarchasining koʻchirma nusxasini (oʻrindoshlik asosida ish staji mavjud boʻlgan taqdirda bu haqda mehnat daftarchasiga yozuv kiritilgan holda, shuningdek xorijdagi ish stajini tasdiqlovchi hujjatni) yoki “Yagona milliy mehnat tizimi” idoralararo dasturiy-apparat kompleksidan koʻchirmani.\nAuditor sertifikatining amal qilish muddatini uzaytirish uchun uning dastlabki besh yillik muddati yoki navbatdagi oʻn yillik muddati tugashidan uch oy oldin, biroq sertifikatning amal qilish muddati tugashidan koʻpi bilan olti oy oldin auditorlarning respublika jamoat birlashmasiga quyidagi hujjatlarni ilova qilgan holda ariza taqdim etadi:\nsertifikatning asl nusxasini;\nbelgilangan davriylik bilan malaka oshirganligini tasdiqlovchi hujjatlarni ilova qilgan holda, xalqaro buxgalter sertifikatining koʻchirma nusxasini (mavjud boʻlgan taqdirda);\nmehnat daftarchasining koʻchirma nusxasini yoki “Yagona milliy mehnat tizimi” idoralararo dasturiy-apparat kompleksidan koʻchirmani.\nUshbu moddaning birinchi va ikkinchi qismlarida belgilangan hujjatlar yozma yoki elektron shaklda taqdim etiladi.\nUshbu moddada nazarda tutilmagan hujjatlar taqdim etilishini talab qilishga yoʻl qoʻyilmaydi."
+    },
+    {
+     "rank": 9,
+     "chunk_id": "5013007_0049_54_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "54-modda",
+     "retrieval_score": 0.529,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yetim bolalarni va ota-onasining yoki boshqa qonuniy vakillarining qaramogʻidan mahrum boʻlgan bolalarni oʻqitish va ularning toʻliq taʼminoti Oʻzbekiston Respublikasi Davlat budjeti mablagʻlari hisobidan amalga oshiriladi."
+    },
+    {
+     "rank": 10,
+     "chunk_id": "5307886_0020_21_1",
+     "doc_id": "lex:5307886",
+     "doc_title": "Auditorlik faoliyati toʻgʻrisida",
+     "article": "21-modda",
+     "retrieval_score": 0.5214,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sertifikat olish uchun talabgor oliy maʼlumotga hamda oliy taʼlim tashkilotini tamomlaganidan keyin oxirgi oʻn yildan kamida uch yil buxgalteriya hisobi va audit sohasida yoki oliy taʼlim tashkilotida “Buxgalteriya hisobi” yoxud “Audit” fanidan dars berish sohasida ish stajiga (shu jumladan oʻrindoshlik asosida) ega boʻlishi kerak.\n“Buxgalteriya hisobi” va “audit” ixtisosliklari boʻyicha magistr diplomiga ega boʻlgan talabgor uchun auditorlik tashkilotida kamida bir yillik ish staji (shu jumladan oʻrindoshlik asosida) talab qilinadi.\nTalabgorning iqtisodiy ixtisosliklar boʻyicha ilmiy darajasi mavjud boʻlgan taqdirda, buxgalteriya hisobi va audit sohasidagi ish staji talab etilmaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Farzandimni maktabga qatnatmay uyda oʻzim oʻqitmoqchiman. Shunday qilsa boʻladimi va keyin u attestatni qanday oladi?",
+    "sub_queries": [
+     "Farzandimni maktabga qatnatmay uyda o'zim o'qitmoqchiman. Shunday qilsa bo'ladimi?",
+     "Keyin u attestatni qanday oladi?"
+    ],
+    "retrieved_total": 10,
+    "best_cosine": 0.6508,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 2112,
+    "rerank_ms": null,
+    "generation_ms": 6416,
+    "total_ms": 8529
+   },
+   "usage": {
+    "input_tokens": 5602,
+    "output_tokens": 251
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q002",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Mehnat kodeksining 160-moddasiga koʻra, xodim nomuayyan muddatga tuzilgan mehnat shartnomasini, shuningdek muddati tugaguniga qadar muddatli mehnat shartnomasini oʻn toʻrt kalendar kun oldin ish beruvchini yozma shaklda ogohlantirgan holda bekor qilishga haqli [2].\n\nAyrim toifadagi xodimlar (tashkilot rahbari, uning oʻrinbosarlari, bosh buxgalter, mavsumiy xodimlar, vaqtinchalik ishlarda band boʻlganlar, mikrofirmalar xodimlari, yakka tartibdagi tadbirkorlarda ishlovchilar va uy ishchilari) uchun qonunchilikda boshqa ogohlantirish muddatlari belgilangan [2]. Shuningdek, xodim va ish beruvchi oʻrtasidagi kelishuvga koʻra, mehnat shartnomasi ogohlantirish muddati tugashiga qadar ham bekor qilinishi mumkin [2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.657,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6261538",
+     "article": "160-modda",
+     "article_title": "Mehnat shartnomasini xodimning tashabbusiga koʻra bekor qilish",
+     "part": null,
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0159_160_1",
+     "quote": "Xodim nomuayyan muddatga tuzilgan mehnat shartnomasini, shuningdek muddati tugaguniga qadar muddatli mehnat shartnomasini oʻn toʻrt kalendar kun oldin bu haqda ish beruvchini yozma shaklda ogohlantirgan holda bekor qilishga haqli."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0164_165_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "165-modda",
+     "retrieval_score": 0.6575,
+     "fusion_score": 0.01719,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish beruvchi oʻzining mehnat shartnomasini bekor qilish niyati haqida xodimni quyidagi muddatlarda yozma shaklda (imzo qoʻydirib) ogohlantirishi shart:\n1) mehnat shartnomasi:\ntashkilot (uning alohida boʻlinmasi) oʻz muassislarining (ishtirokchilarining) yoxud taʼsis hujjatlari bilan bunga vakolat berilgan yuridik shaxs organining qaroriga binoan tugatilganligi;\ntexnologiyaning, ishlab chiqarish va mehnatni tashkil etishning oʻzgarishiga, ishlar (mahsulot, xizmatlar) hajmining qisqarishiga bogʻliq boʻlgan tashkilot xodimlarining soni yoki shtati oʻzgarganligi;\ntashkilot rahbariga, uning oʻrinbosarlariga, bosh buxgalterga va tashkilotning alohida boʻlinmasi rahbariga nisbatan tashkilot mulkdorining oʻzgarganligi munosabati bilan bekor qilinganda kamida ikki oy oldin;\n2) mehnat shartnomasi xodimning malakasi yetarli boʻlmaganligi tufayli bajarayotgan ishiga muvofiq emasligi munosabati bilan bekor qilinganda kamida ikki hafta oldin;\n3) mehnat shartnomasi xodimning aybli harakatlari (harakatsizligi) munosabati bilan bekor qilinganda kamida uch kun oldin.\nXodimni mehnat shartnomasini ish beruvchining tashabbusiga koʻra kelgusida bekor qilish toʻgʻrisida ogohlantirishning ushbu moddaning birinchi qismida nazarda tutilgan muddatlari barcha hollarda qoʻllaniladi, bundan ushbu Kodeksning VI boʻlimida ayrim toifadagi xodimlarga nisbatan boshqa ogohlantirish muddatlari belgilangan hollar mustasno.\nIsh beruvchi ushbu moddaning birinchi qismida nazarda tutilgan xodimni ogohlantirish muddatlarini ogohlantirish muddatining davomiyligiga muvofiq keladigan pulli kompensatsiya bilan almashtirishga haqlidir. Xodimga ogohlantirish muddatiga mutanosib pulli kompensatsiya toʻlash ish beruvchini qonunchilikda nazarda tutilgan boshqa toʻlovlarni amalga oshirish majburiyatidan, shuningdek oʻzga toʻlovlarni, agar ular mehnat haqidagi boshqa huquqiy hujjatlarda yoki mehnat shartnomasida nazarda tutilgan boʻlsa, amalga oshirishdan ozod etmaydi.\nXodimni ogohlantirish muddati ichida, bundan mehnatga oid munosabatlarni uning aybli harakatlari (harakatsizligi) munosabati bilan tugatish toʻgʻrisidagi ogohlantirish mustasno, xodimga boshqa ish qidirish uchun haftada kamida bir kun shu vaqt uchun ish haqi saqlangan holda ishga chiqmaslik huquqi beriladi.\nXodimni ogohlantirish muddatiga xodimning vaqtincha mehnatga qobiliyatsizlik davrlari, shuningdek uning davlat yoki jamoat majburiyatlarini bajargan vaqti kiritilmaydi, bundan mehnatga oid munosabatlarning tashkilot (uning alohida boʻlinmasi) tugatilganligi munosabati bilan tugatilishi mustasno."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0159_160_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "160-modda",
+     "retrieval_score": 0.643,
+     "fusion_score": 0.01694,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Xodim nomuayyan muddatga tuzilgan mehnat shartnomasini, shuningdek muddati tugaguniga qadar muddatli mehnat shartnomasini oʻn toʻrt kalendar kun oldin bu haqda ish beruvchini yozma shaklda ogohlantirgan holda bekor qilishga haqli. Oʻz tashabbusiga koʻra bekor qilinganda ish beruvchini ogohlantirishning boshqa muddatlari quyidagilarga nisbatan belgilab qoʻyilgan:\ntashkilot rahbari, uning oʻrinbosarlari, tashkilotning bosh buxgalteri va tashkilot alohida boʻlinmasining rahbari (ushbu Kodeks 489-moddasining uchinchi va toʻrtinchi qismlari);\nmavsumiy xodimlar (ushbu Kodeks 494-moddasining birinchi qismi);\nvaqtinchalik ishlarda band boʻlgan shaxslar (ushbu Kodeks 499-moddasining birinchi qismi);\nmikrofirmalar ish beruvchilarining xodimlari (ushbu Kodeks 506-moddasining birinchi qismi);\nyakka tartibdagi tadbirkorlarda ishlaydigan shaxslar (ushbu Kodeks 511-moddasining birinchi qismi);\nuy ishchilari (ushbu Kodeks 518-moddasining birinchi qismi);\nqonunda nazarda tutilgan hollarda boshqa xodimlar.\nOgohlantirish muddatining oʻtishi ish beruvchi tomonidan xodimning mehnat shartnomasini bekor qilish toʻgʻrisidagi arizasi olinganidan soʻng keyingi kunda boshlanadi.\nXodim mehnat shartnomasini bekor qilish toʻgʻrisidagi arizani pochta joʻnatmasini topshirish haqidagi xabarnoma bilan yuborishga haqli. Bunda mehnat shartnomasini bekor qilish haqidagi ogohlantirish muddatini hisoblab chiqarish ish beruvchi tomonidan ariza olingan sanadan soʻng keyingi kunda boshlanadi.\nXodim va ish beruvchi oʻrtasidagi kelishuvga koʻra mehnat shartnomasi ogohlantirish muddati tugashiga qadar bekor qilinishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0582_583_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "583-modda",
+     "retrieval_score": 0.6302,
+     "fusion_score": 0.01617,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Kasaba uyushmasi qoʻmitasi ish tashlashni eʼlon qilish toʻgʻrisidagi qaror haqida ish beruvchini ushbu qaror qabul qilingan paytdan eʼtiboran bir ish kunidan kechiktirmay yozma ravishda xabardor qilishi kerak.\nIsh beruvchi boʻlajak ish tashlashni eʼlon qilish toʻgʻrisida yozma xabarnomani olgan paytdan eʼtiboran bir ish kunidan kechiktirmay bu haqda jamoaviy mehnat nizolarini tartibga solish boʻyicha davlat organlarini yozma ravishda ogohlantiradi.\nIsh tashlashni eʼlon qilish toʻgʻrisidagi qarorda belgilangan vaqtda ish tashlash boshlanmagan boʻlsa, jamoaviy mehnat nizosini hal qilish ushbu Kodeksning 573-moddasida belgilangan tartibda amalga oshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "5957612_0084_85_1",
+     "doc_id": "lex:5957612",
+     "doc_title": "Toʻlovga qobiliyatsizlik toʻgʻrisida",
+     "article": "85-modda",
+     "retrieval_score": 0.6289,
+     "fusion_score": 0.01603,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qarzdorga nisbatan kuzatuv tartib-taomili joriy etilganligi haqidagi xabarni muvaqqat boshqaruvchi oʻzi tayinlangan paytdan eʼtiboran uch kun ichida ommaviy axborot vositalarida ushbu Qonunning 53-moddasida nazarda tutilgan tartibda eʼlon qilish uchun yuborishi shart.\nMuvaqqat boshqaruvchi ish haqi boʻyicha qarzni toʻlash talabini qoʻyadigan kreditorlardan tashqari qarzdorning aniqlangan barcha kreditorlarini qarzdorga nisbatan kuzatuv tartib-taomili joriy etilganligi toʻgʻrisida sud ajrim chiqarganligi haqida kuzatuv tartib-taomili joriy etilganligiga oid xabar eʼlon qilingan sanadan eʼtiboran oʻn kundan kechiktirmay xabardor qilishi shart.\nQarzdorning rahbari qarzdorning xodimlarini, muassislarini (ishtirokchilarini) yoki qarzdor mol-mulkining egasini qarzdorga nisbatan kuzatuv tartib-taomilini joriy etish haqidagi sud ajrimini olgan sanadan eʼtiboran uch ish kunidan kechiktirmay xabardor qilishi shart.\nIsh haqi boʻyicha qarzni toʻlash talabini qoʻyadigan kreditorlardan tashqari kreditorlarga kuzatuv tartib-taomili joriy etilganligini xabar qilish kreditor tomonidan xabar olingan sanani belgilay olish imkoniyatini beradigan usulda xabar yuborish orqali amalga oshiriladi.\nIsh haqi boʻyicha qarzni toʻlash talabnomalari yuzasidan kreditorlarni xabardor qilish qarzdor xodimlarining umumiy yigʻilishini chaqirish va oʻtkazish orqali amalga oshiriladi.\nQarzdorning muassislarini (ishtirokchilarini) xabardor qilish muassislar (ishtirokchilar) umumiy yigʻilishini chaqirish yoki yuridik shaxsning qonunchilikka yoxud taʼsis hujjatlariga muvofiq muassislarning (ishtirokchilarning) umumiy yigʻilishini chaqirish huquqiga ega boʻlgan organiga qarzdorga nisbatan kuzatuv tartib-taomili joriy etish haqida xabar yuborish orqali amalga oshiriladi.\nQarzdorga nisbatan kuzatuv tartib-taomilini joriy etish haqidagi xabarda quyidagilar koʻrsatilishi kerak:\nqarzdorning nomi (familiyasi, ismi, otasining ismi), joylashgan yeri (pochta manzili), elektron pochta manzili (mavjud boʻlgan taqdirda);\nqarzdorga nisbatan kuzatuv tartib-taomilini joriy etish toʻgʻrisida ajrim chiqargan sudning nomi, bunday ajrim chiqarilgan sana va toʻlovga qobiliyatsizlik toʻgʻrisidagi ishning tartib raqami;\ntayinlangan muvaqqat boshqaruvchining familiyasi, ismi, otasining ismi va uning pochta manzili;\nsud tomonidan toʻlovga qobiliyatsizlik toʻgʻrisidagi ishni koʻrib chiqish yuzasidan belgilangan sud majlisining sanasi, vaqti va joyi;\nxabarni joʻnatuvchining (muvaqqat boshqaruvchining yoki qarzdor rahbarining) xohishiga koʻra boshqa axborot."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0145_146_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "146-modda",
+     "retrieval_score": 0.6421,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish beruvchi xodimni ish beruvchining kelgusida boshqa joyga (xodimning yashash joyidan unga yashash joyiga qaytish imkonini bermaydigan masofada joylashgan hududga) koʻchishi toʻgʻrisida kamida ikki oy oldin yozma shaklda ogohlantirishi shart.\nIsh beruvchi oʻzining kelgusida boshqa joyga koʻchishi toʻgʻrisida xodimni ikki haftadan oshadigan ogohlantirish muddatini mutanosib pulli kompensatsiya bilan almashtirishga haqli.\nXodimning ish beruvchi bilan birga boshqa joyga koʻchib oʻtishga roziligi mehnat shartnomasiga doir qoʻshimcha kelishuv tuzish orqali rasmiylashtiriladi.\nXodimning ish beruvchi bilan birga boshqa joyga koʻchishi munosabati bilan xodimga ushbu Kodeksning 289-moddasida nazarda tutilgan kompensatsiya toʻlovlari beriladi.\nXodim ish beruvchi bilan birga boshqa joyga koʻchishni yozma ravishda rad etgan taqdirda, xodim bilan tuzilgan mehnat shartnomasi xodim ish beruvchi bilan birga boshqa joyga koʻchishni rad etganligi sababli xodimga ushbu Kodeksning 173-moddasiga muvofiq ishdan boʻshatish nafaqasi toʻlangan va ishga joylashish davrida 100-moddasi birinchi qismiga muvofiq oʻrtacha ish haqi saqlab qolingan holda bekor qilinadi.\nAgar ish beruvchi bilan birga boshqa joyga koʻchib oʻtishni rad etgan xodim ish beruvchining taklifi bilan tanishgan boʻlsa, biroq oʻzining rad etishini yozma shaklda bayon etishga rozi boʻlmagan boʻlsa, uning rad etishi bunda hozir boʻlgan guvohlar koʻrsatilgan holda dalolatnoma bilan rasmiylashtiriladi.\nMehnat nizosi yuzaga kelgan taqdirda, xodimning ish beruvchi bilan boshqa joyga koʻchib oʻtishni rad etganligini isbotlash vazifasi ish beruvchining zimmasiga yuklatiladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ozim xohishim bilan ishdan ketmoqchiman, rahbarni necha kun oldin ogohlantirishim kerak?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6575,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1733,
+    "rerank_ms": null,
+    "generation_ms": 8193,
+    "total_ms": 9927
+   },
+   "usage": {
+    "input_tokens": 4492,
+    "output_tokens": 317
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q003",
+   "status": "ok",
+   "answer": "Согласно «Уголовному кодексу», наказание за получение взятки (статья 210) зависит от обстоятельств совершения преступления:\n\n*   **Базовый состав:** штраф от 50 до 100 базовых расчетных величин (БРВ), либо ограничение свободы от 2 до 5 лет с лишением определенных прав, либо лишение свободы до 5 лет [1].\n*   **При отягчающих обстоятельствах** (повторность, опасный рецидив, в крупном размере, путем вымогательства или группой должностных лиц по предварительному сговору): лишение свободы от 5 до 10 лет [1].\n*   **При особо отягчающих обстоятельствах** (в особо крупном размере или в интересах организованной группы): лишение свободы от 10 до 15 лет [1].\n\nТакже, согласно статье 214 «Уголовного кодекса», если служащий государственного органа или организации с государственным участием получает незаконное вознаграждение (не являющееся взяткой в рамках статьи 210) после применения административного взыскания за аналогичные действия, предусмотрены наказания от штрафа до лишения свободы на срок до 8 лет в зависимости от квалификации деяния [2].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.631,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111453",
+     "article_url": "https://lex.uz/uz/docs/-111453#-266382",
+     "article": "210-modda",
+     "article_title": "Pora olish",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111453_0259_210_1",
+     "quote": "Pora olish, yaʼni davlat organi, davlat ishtirokidagi tashkilot yoki fuqarolarning oʻzini oʻzi boshqarish organi mansabdor shaxsining oʻz xizmat mavqeyidan foydalangan holda sodir etishi lozim yoki mumkin boʻlgan muayyan harakatni pora berayotgan shaxsning manfaatlarini koʻzlab bajarishi yoki bajarmasligi evaziga shaxsan oʻzi yoki vositachi orqali qonunga xilof ekanligini bila turib, moddiy qimmatliklar olishi yoxud mulkiy manfaatdor boʻlishi, —"
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111453",
+     "article_url": "https://lex.uz/uz/docs/-111453#-2734874",
+     "article": "214-modda",
+     "article_title": "Davlat organi, davlat ishtirokidagi tashkilot yoki fuqarolarning oʻzini oʻzi boshqarish organi xizmatchisining qonunga xilof ravishda moddiy qimmatliklar olishi yoki mulkiy manfaatdor boʻlishi",
+     "part": "5-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111453_0263_214_1",
+     "quote": "a) takroran, xavfli retsidivist yoki ilgari ushbu Kodeksning 210 — 212-moddalarida nazarda tutilgan jinoyatlarni sodir etgan shaxs tomonidan;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111453_0259_210_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "210-modda",
+     "retrieval_score": 0.6314,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Pora olish, yaʼni davlat organi, davlat ishtirokidagi tashkilot yoki fuqarolarning oʻzini oʻzi boshqarish organi mansabdor shaxsining oʻz xizmat mavqeyidan foydalangan holda sodir etishi lozim yoki mumkin boʻlgan muayyan harakatni pora berayotgan shaxsning manfaatlarini koʻzlab bajarishi yoki bajarmasligi evaziga shaxsan oʻzi yoki vositachi orqali qonunga xilof ekanligini bila turib, moddiy qimmatliklar olishi yoxud mulkiy manfaatdor boʻlishi, —\nbazaviy hisoblash miqdorining ellik baravaridan yuz baravarigacha miqdorda jarima yoki muayyan huquqdan mahrum etilgan holda ikki yildan besh yilgacha ozodlikni cheklash yoxud besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nPora olish:\na) takroran, xavfli retsidivist yoki ilgari ushbu Kodeksning 211 yoki 212-moddalarida nazarda tutilgan jinoyatlarni sodir etgan shaxs tomonidan;\nb) koʻp miqdorda;\nv) tamagirlik yoʻli bilan;\ng) bir guruh mansabdor shaxslar tomonidan oldindan til biriktirib sodir etilgan boʻlsa, —\nbesh yildan oʻn yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nPora olish:\na) juda koʻp miqdorda;\nb) uyushgan guruh manfaatlarini koʻzlab sodir etilgan boʻlsa, —\noʻn yildan oʻn besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111453_0263_214_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "214-modda",
+     "retrieval_score": 0.6079,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Davlat organi, davlat ishtirokidagi tashkilot yoki fuqarolarning oʻzini oʻzi boshqarish organi xizmatchisining oʻz xizmat mavqeyidan foydalangan holda bajarishi lozim yoki mumkin boʻlgan muayyan harakatni uni pora evaziga oʻziga ogʻdirib olayotgan shaxs manfaatlarini koʻzlab bajarishi yoki bajarmasligi evaziga qonunga xilof ekanligini bila turib, moddiy qimmatliklar olishi yoki mulkiy manfaatdor boʻlishi, shunday harakatlar uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ellik baravarigacha miqdorda jarima yoki uch yuz soatgacha majburiy jamoat ishlari yoxud ikki yilgacha axloq tuzatish ishlari yoki bir yilgacha ozodlikni cheklash yoxud bir yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar:\na) ancha miqdorda;\nb) tamagirlik yoʻli bilan sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ellik baravaridan yuz baravarigacha miqdorda jarima yoki uch yuz soatdan uch yuz oltmish soatgacha majburiy jamoat ishlari yoki ikki yildan uch yilgacha axloq tuzatish ishlari yoxud bir yildan uch yilgacha ozodlikni cheklash yoki bir yildan uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar:\na) takroran, xavfli retsidivist yoki ilgari ushbu Kodeksning 210 — 212-moddalarida nazarda tutilgan jinoyatlarni sodir etgan shaxs tomonidan;\nb) koʻp miqdorda;\nv) bir guruh shaxslar tomonidan oldindan til biriktirib;\ng) tadbirkorlik faoliyatini amalga oshirishi munosabati bilan shaxsga nisbatan tamagirlik yoʻli bilan sodir etilgan boʻlsa, —\nuch yildan besh yilgacha ozodlikni cheklash yoxud uch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar:\na) juda koʻp miqdorda;\nb) uyushgan guruh manfaatlarini koʻzlab sodir etilgan boʻlsa, —\nbesh yildan sakkiz yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111453_0260_211_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "211-modda",
+     "retrieval_score": 0.6053,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Pora berish, yaʼni davlat organi, davlat ishtirokidagi tashkilot yoki fuqarolarning oʻzini oʻzi boshqarish organi mansabdor shaxsiga mazkur mansabdor shaxsning oʻz xizmat mavqeyidan foydalangan holda sodir etishi lozim yoki mumkin boʻlgan muayyan harakatni pora bergan shaxsning manfaatlarini koʻzlab bajarishi yoki bajarmasligi evaziga qonunga xilof ekanligini bila turib bevosita yoki vositachi orqali moddiy qimmatliklar berish yoki uni mulkiy manfaatdor etish, —\nbazaviy hisoblash miqdorining ellik baravaridan yuz baravarigacha miqdorda jarima yoki ikki yildan besh yilgacha ozodlikni cheklash yoxud besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nPora berish:\na) takroran, xavfli retsidivist yoki ilgari ushbu Kodeksning 210 yoki 212-moddalarida nazarda tutilgan jinoyatlarni sodir etgan shaxs tomonidan;\nb) koʻp miqdorda sodir etilgan boʻlsa, —\nbesh yildan oʻn yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nPora berish:\na) juda koʻp miqdorda;\nb) uyushgan guruh manfaatlarini koʻzlab sodir etilgan boʻlsa, —\noʻn yildan oʻn besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nBasharti, shaxsga nisbatan pora soʻrab tovlamachilik qilingan boʻlsa va ushbu shaxs jinoiy harakatlar sodir etilganidan keyin bu haqda oʻttiz sutka mobaynida oʻz ixtiyori bilan arz qilsa, chin koʻngildan pushaymon boʻlib, jinoyatni ochishda faol yordam bergan boʻlsa, u javobgarlikdan ozod etiladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111453_0262_213_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "213-modda",
+     "retrieval_score": 0.5985,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Davlat organining, davlat ishtirokidagi tashkilotning yoki fuqarolar oʻzini oʻzi boshqarish organining xizmatchisiga mazkur xizmatchining oʻz xizmat mavqeyidan foydalangan holda sodir etishi lozim yoki mumkin boʻlgan muayyan harakatni uni pora evaziga oʻziga ogʻdirib olayotgan shaxs manfaatlarini koʻzlab bajarishi yoki bajarmasligi evaziga qonunga xilof ekanligini bila turib, moddiy qimmatliklar berish yoki uni mulkiy manfaatdor etish, shunday harakatlar uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ellik baravarigacha miqdorda jarima yoki uch yuz soatgacha majburiy jamoat ishlari yoxud ikki yilgacha axloq tuzatish ishlari yoki bir yilgacha ozodlikni cheklash yoxud bir yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar ancha miqdorda sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ellik baravaridan yuz baravarigacha miqdorda jarima yoki uch yuz soatdan uch yuz oltmish soatgacha majburiy jamoat ishlari yoki ikki yildan uch yilgacha axloq tuzatish ishlari yoxud bir yildan uch yilgacha ozodlikni cheklash yoki bir yildan uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar:\na) takroran, xavfli retsidivist yoki ilgari ushbu Kodeksning 210 — 212-moddalarida nazarda tutilgan jinoyatlarni sodir etgan shaxs tomonidan;\nb) koʻp miqdorda;\nv) bir guruh shaxslar tomonidan oldindan til biriktirib sodir etilgan boʻlsa, —\nuch yildan besh yilgacha ozodlikni cheklash yoxud uch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar:\na) juda koʻp miqdorda;\nb) uyushgan guruh manfaatlarini koʻzlab sodir etilgan boʻlsa, —\nbesh yildan sakkiz yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nBasharti moddiy qimmatliklar bergan yoki mulkiy manfaatdor etgan shaxsga nisbatan moddiy qimmatliklar yoki mulkiy manfaat soʻrab tovlamachilik qilingan boʻlsa va ushbu shaxs jinoiy harakatlar sodir etilganidan keyin bu haqda oʻttiz sutka ichida oʻz ixtiyori bilan arz qilsa, chin koʻngildan pushaymon boʻlib, jinoyatni ochishda faol yordam bergan boʻlsa, u javobgarlikdan ozod etiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111453_0261_212_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "212-modda",
+     "retrieval_score": 0.598,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Pora olish-berishda vositachilik qilish, yaʼni pora olish yoki berish xususidagi kelishuvga erishishga qaratilgan faoliyat, shuningdek manfaatdor shaxslarning topshirigʻi bilan porani bevosita berish, —\nbazaviy hisoblash miqdorining ellik baravaridan yuz baravarigacha miqdorda jarima yoki ikki yildan besh yilgacha ozodlikni cheklash yoxud besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakat:\na) takroran, xavfli retsidivist yoki ilgari ushbu Kodeksning 210 yoki 211-moddalarida nazarda tutilgan jinoyatlarni sodir etgan shaxs tomonidan;\nb) koʻp miqdorda pora olish yoki berish vaqtida;\nv) bir guruh mansabdor shaxslar tomonidan oldindan til biriktirib pora olayotganligi vositachiga ayon boʻlgan holda sodir etilgan boʻlsa, —\nbesh yildan oʻn yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nPora olish-berishda vositachilik qilish:\na) haq evaziga;\nb) juda koʻp miqdorda pora olish yoki berish vaqtida;\nv) uyushgan guruh manfaatlarini koʻzlab sodir etilgan boʻlsa, —\noʻn yildan oʻn besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nBasharti, pora olish-berishda vositachilik qilgan shaxs jinoiy harakatlarni sodir etganidan keyin bu haqda oʻttiz sutka mobaynida oʻz ixtiyori bilan arz qilsa, chin koʻngildan pushaymon boʻlib, jinoyatni ochishda faol yordam bergan boʻlsa, javobgarlikdan ozod qilinadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kakoye nakazaniye grozit chinovniku za polucheniye vzyatki?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6314,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 363,
+    "rerank_ms": null,
+    "generation_ms": 4583,
+    "total_ms": 4947
+   },
+   "usage": {
+    "input_tokens": 4298,
+    "output_tokens": 340
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q004",
+   "status": "ok",
+   "answer": "1) \"Nogironligi boʻlgan shaxslarning huquqlari toʻgʻrisida\"gi Qonunning 31-moddasiga koʻra, agar shaxs sogʻligʻining holatiga koʻra tibbiy-ijtimoiy ekspert komissiyasiga borish imkoniga ega boʻlmasa va bu tibbiyot muassasasining xulosasi bilan tasdiqlansa, tibbiy-ijtimoiy ekspertiza shaxsning xohishiga koʻra uning uyida yoki shaxs davolanishda boʻlgan statsionarda oʻtkaziladi [1].\n\n2) Xuddi shu qonunning 31-moddasiga muvofiq, tibbiy-ijtimoiy ekspertiza tibbiy hujjatlar qabul qilingan kundan eʼtiboran yigirma kalendar kundan kechiktirmay oʻtkazilishi shart [1]. Shuningdek, tibbiy-ijtimoiy ekspert komissiyasi hujjatlar qabul qilingan kundan eʼtiboran ikki ish kuni ichida shaxsni tekshiruvdan oʻtkazish kuni toʻgʻrisida xabardor qilishi kerak [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.662,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:5049511",
+     "doc_title": "Nogironligi boʻlgan shaxslarning huquqlari toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-641",
+     "url": "https://lex.uz/uz/docs/-5049511",
+     "article_url": "https://lex.uz/uz/docs/-5049511#-5054284",
+     "article": "31-modda",
+     "article_title": "Tibbiy-ijtimoiy ekspertiza",
+     "part": null,
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "5049511_0032_31_1",
+     "quote": "Agar shaxs sogʻligʻining holatiga koʻra tibbiy-ijtimoiy ekspert komissiyasiga borish imkoniga ega boʻlmasa va bu tibbiyot muassasasining xulosasi bilan tasdiqlansa, tibbiy-ijtimoiy ekspertiza shaxsning xohishiga koʻra uning uyida yoki shaxs davolanishda boʻlgan statsionarda oʻtkaziladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "5049511_0032_31_1",
+     "doc_id": "lex:5049511",
+     "doc_title": "Nogironligi boʻlgan shaxslarning huquqlari toʻgʻrisida",
+     "article": "31-modda",
+     "retrieval_score": 0.6503,
+     "fusion_score": 0.03252,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Fuqaroni nogironligi boʻlgan shaxs yoki oʻn sakkiz yoshgacha boʻlgan bolani nogironligi boʻlgan bola deb topish tibbiy-ijtimoiy ekspert komissiyalari tomonidan amalga oshiriladi.\nShaxs tibbiy-ijtimoiy ekspertizaga davlat tibbiyot muassasasi tomonidan yuboriladi, bundan ushbu moddaning uchinchi qismida nazarda tutilgan hollar mustasno.\nTashkiliy-huquqiy shaklidan qatʼi nazar, tibbiyot tashkilotlari nogironligi belgilari aniq koʻrinib turgan shaxslarni klinik-funksional maʼlumotlarni olishga doir qoʻshimcha tekshiruvlarni oʻtkazmasdan turib, tibbiy-ijtimoiy ekspertizaga yuborishga haqli.\nAgar shaxs sogʻligʻining holatiga koʻra tibbiy-ijtimoiy ekspert komissiyasiga borish imkoniga ega boʻlmasa va bu tibbiyot muassasasining xulosasi bilan tasdiqlansa, tibbiy-ijtimoiy ekspertiza shaxsning xohishiga koʻra uning uyida yoki shaxs davolanishda boʻlgan statsionarda oʻtkaziladi.\nTibbiy-ijtimoiy ekspert komissiyasining majlislarida mahalliy mehnat organlarining, mahalliy davlat hokimiyati organlarining, kasaba uyushmalarining, sugʻurta tashkilotlarining va boshqa tashkilotlarning vakillari, shuningdek nogironligi boʻlgan shaxslarning jamoat birlashmalari vakillari ishtirok etishi mumkin.\nTekshiruvdan oʻtkazish tibbiy hujjatlar qabul qilingan kundan eʼtiboran yigirma kalendar kundan kechiktirmay tibbiy-ijtimoiy ekspert komissiyalari tomonidan oʻtkaziladi. Tibbiy-ijtimoiy ekspertizadan oʻtish uchun yuborilgan shaxs tibbiy-ijtimoiy ekspert komissiyasi tomonidan tekshiruvdan oʻtkazish kuni toʻgʻrisida tibbiy hujjatlar qabul qilingan kundan eʼtiboran ikki ish kuni ichida xabardor qilinadi. Nogironlik aniqlangan taqdirda, tibbiy-ijtimoiy ekspert komissiyalari tomonidan hujjatlar qabul qilingan sanadan boshlab fuqaro nogironligi boʻlgan shaxs deb eʼtirof etiladi.\nTibbiy-ijtimoiy ekspertiza natijalari boʻyicha nogironligi boʻlgan shaxs deb topilgan fuqaroga — nogironlik guruhi, uning belgilanish sababi va muddatlari, oʻn sakkiz yoshgacha boʻlgan bolalarga esa qayta tekshiruvdan oʻtish muddati bilan — “Nogironligi boʻlgan bolalar” toifasi belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "5049511_0032_31_2",
+     "doc_id": "lex:5049511",
+     "doc_title": "Nogironligi boʻlgan shaxslarning huquqlari toʻgʻrisida",
+     "article": "31-modda",
+     "retrieval_score": 0.6573,
+     "fusion_score": 0.03252,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… boʻlgan shaxs deb topilgan fuqaroga — nogironlik guruhi, uning belgilanish sababi va muddatlari, oʻn sakkiz yoshgacha boʻlgan bolalarga esa qayta tekshiruvdan oʻtish muddati bilan — “Nogironligi boʻlgan bolalar” toifasi belgilanadi.\nQayta tekshiruvdan oʻtkazish muddati koʻrsatilmaydigan nogironlik inson aʼzolari funksiyalarining hamda organizmi tizimlarining barqaror, asliga qaytarib boʻlmas tarzdagi morfologik oʻzgarishlari va buzilishlari mavjud boʻlgan, amalga oshirilgan reabilitatsiya tadbirlarining samarasizligi oqibatida kasallikning kechishi va sogʻliqning tiklanishini, ijtimoiy moslashuvni yaxshilash mumkin boʻlmagan taqdirda, belgilangan tartibda tasdiqlangan kasalliklar va anatomik nuqsonlar roʻyxatiga muvofiq belgilanadi.\nKoʻrsatilgan muddatlardan oldin qayta tekshiruvdan oʻtkazish sogʻliqning holati va hayot faoliyatining cheklanganlik darajasi oʻzgarganda yoki tibbiy-ijtimoiy ekspert komissiyalari asoslanmagan qaror qabul qilganligi faktlari aniqlanganda yoxud yuqori turuvchi tibbiy-ijtimoiy ekspert komissiyalari tomonidan nazorat vazifasi bajarilganda amalga oshiriladi.\nTibbiy-ijtimoiy ekspert komissiyalari zarur uskunalar bilan jihozlangan davlat tibbiyot muassasalariga bepul tekshiruvlar oʻtkazish uchun biriktirib qoʻyiladi.\nRespublika ijro etuvchi hokimiyat organlari va boshqa davlat tashkilotlari nogironlikning yuzaga kelishiga taʼsir etuvchi omillar hamda shart-sharoitlarni oʻrganish maqsadida nogironlikka olib keluvchi kasalliklar yuzaga kelishining ishlab chiqarish, ijtimoiy, ekologik va boshqa sabablarini tahlil qilishni oʻz vakolatlari doirasida amalga oshiradi.\nTibbiy-ijtimoiy ekspert komissiyalari nogironligi boʻlgan shaxslarning maʼlumotlar bazasini shakllantirish, nogironlikni hisobga olish va nogironlik tuzilmasini tahlil qilish maqsadida nogironligi boʻlgan shaxslarning (bolalarning) koʻrik ishlarini elektron shaklda yuritadi.\nNogironlikni belgilash mezonlari va mexanizmlari Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "112314_0017_16_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "16-modda",
+     "retrieval_score": 0.6166,
+     "fusion_score": 0.03175,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sogʻligʻini yoki mehnat qobiliyatini yoʻqotganlik darajasiga qarab, nogironlikning uch guruhi aniqlanadi.\nNogironlik sabablari va guruhlari, shuningdek nogironlik boshlangan vaqt va nogironlikning qancha muddatga belgilanishi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tasdiqlaydigan ular toʻgʻrisidagi Nizom asosida ishlovchi tibbiy-ijtimoiy ekspert komissiyalari tomonidan aniqlanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0307_308_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "308-modda",
+     "retrieval_score": 0.6625,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xizmat tekshiruvini oʻtkazish muddati oʻn besh ish kunidan oshmasligi kerak.\nXizmat tekshiruvini ushbu moddaning birinchi qismida belgilangan muddatda, obyektiv sabablarga koʻra tugallash mumkin boʻlmagan alohida hollarda, ish beruvchi komissiyaning asoslantirilgan vajlari asosida xizmat tekshiruvini oʻtkazish muddatini yana oʻn besh ish kunigacha uzaytirishga haqlidir."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4445288_0014_13²_1",
+     "doc_id": "lex:4445288",
+     "doc_title": "Qurol toʻgʻrisida",
+     "article": "13²-modda",
+     "retrieval_score": 0.6498,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tibbiy tekshiruv tibbiyot muassasasi tomonidan Oʻzbekiston Respublikasining tekshiruvdan oʻtayotgan fuqarosining yoki yuridik shaxs xodimining shaxsini tasdiqlovchi hujjat (identifikatsiyalovchi ID-kartasi, pasporti yoki shaxsni tasdiqlovchi boshqa hujjat) koʻrsatilgan holda, ichki ishlar organlarining yoʻllanmasi asosida oʻtkaziladi.\nTibbiy tekshiruv tibbiyot muassasasi tomonidan ichki ishlar organlarining yoʻllanmasi taqdim etilgan kundan eʼtiboran oʻn kunlik muddat ichida oʻtkaziladi.\nTibbiy tekshiruvni oʻtkazish uchun tibbiyot muassasasi tomonidan maxsus tibbiy komissiya tuziladi. Tibbiy komissiya tarkibi tibbiyot muassasasining maʼmuriyati tomonidan tasdiqlanadi.\nTibbiy komissiya tibbiy tekshiruvdan oʻtkazish bilan bogʻliq maʼlumotlarni qayd etish uchun tibbiy tekshiruvdan oʻtayotgan shaxslarning ambulatoriya kartalarini yuritadi.\nAmbulatoriya kartasida tibbiy tekshiruvni oʻtkazishda ishtirok etayotgan barcha shifokorlar va mutaxassislarning tibbiy tekshiruvdan oʻtayotgan shaxs toʻgʻrisidagi tibbiy xulosalari koʻrsatilishi kerak.\nTibbiy tekshiruvdan oʻtayotgan shaxsni tekshirish uning doimiy yashash joyi boʻyicha ruhiy-asab kasalliklari va narkologiya dispanserlarida tibbiy komissiya tomonidan amalga oshiriladi.\nTibbiyot muassasasi tibbiy komissiyaning tibbiy tekshiruv natijalari boʻyicha qurolga egalik qilishga qarshi koʻrsatmalar mavjudligi (mavjud emasligi) toʻgʻrisidagi xulosasini elektron shaklda rasmiylashtiradi hamda tibbiy tekshiruv oʻtkazilgan paytdan eʼtiboran bir ish kuni ichida xulosa yoʻllanma bergan ichki ishlar organiga axborotning maxfiyligi taʼminlangan holda, pochta aloqasi vositalari yoki axborot tizimi orqali yuboriladi.\nXulosa tibbiy komissiya rahbarining imzosi va tibbiyot muassasasining muhri bilan tasdiqlanadi.\nTibbiy komissiyaning xulosasi berilgan paytdan eʼtiboran oʻttiz kun ichida amal qiladi."
+    },
+    {
+     "rank": 6,
+     "chunk_id": "4674902_0196_195_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "195-modda",
+     "retrieval_score": 0.6464,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tekshiruv Oʻzbekiston Respublikasi Davlat soliq qoʻmitasi rahbarining (rahbar oʻrinbosarining) tekshiruv oʻtkazish toʻgʻrisidagi qarori asosida uning mansabdor shaxslari tomonidan oʻtkaziladi.\nTekshiruv oʻtkazish toʻgʻrisidagi qaror, agar ushbu moddada boshqacha qoida nazarda tutilmagan boʻlsa, ushbu Kodeksning 182-moddasi birinchi va ikkinchi qismlarida koʻrsatilgan bildirishnoma yoki xabarnoma olingan kundan eʼtiboran uch yildan kechiktirmay chiqarilishi mumkin.\nOʻzbekiston Respublikasi Davlat soliq qoʻmitasi qaror qabul qilinganligi toʻgʻrisida u qabul qilingan kundan eʼtiboran uch kun ichida soliq toʻlovchini xabardor qiladi.\nAgar soliq toʻlovchi ushbu Kodeksning 177-moddasiga muvofiq soliq summasi soliq hisobotida ilgari berilganidan koʻra kam miqdorda (zarar summasi — kattaroq miqdorda) aks ettirgan holda aniqlashtirilgan soliq hisobotini taqdim etgan boʻlsa, tekshiruv oʻtkazish toʻgʻrisidagi qaror ushbu aniqlashtirilgan soliq hisoboti taqdim etilgan kundan eʼtiboran uch yildan kechiktirmay chiqarilishi mumkin. Bunda tekshiruv faqat tuzatish kiritish amalga oshirilgan nazorat qilinadigan bitimga nisbatan oʻtkaziladi.\nTekshiruv olti oydan oshmaydigan muddatda oʻtkaziladi.\nTekshiruv oʻtkazish muddati uni oʻtkazish toʻgʻrisida qaror chiqarilgan kundan eʼtiboran va bunday tekshiruv oʻtkazilganligi haqidagi maʼlumotnoma tuzilgan kunga qadar hisoblab chiqariladi.\nAlohida hollarda, tekshirish oʻtkazishning mazkur muddati Oʻzbekiston Respublikasi Davlat soliq qoʻmitasi rahbarining (rahbar oʻrinbosarining) qaroriga koʻra oʻn ikki oygacha uzaytirilishi mumkin.\nTekshiruv oʻtkazish muddatini uzaytirish asoslarini va tartibini Oʻzbekiston Respublikasi Vazirlar Mahkamasi belgilaydi.\nChet davlat organlaridan axborot olish, soliq toʻlovchi tomonidan chet tilida taqdim etilgan hujjatlarni ekspertizadan oʻtkazish va (yoki) oʻzbek yoki rus tiliga tarjima qilish zarur boʻlgan taqdirda, tekshiruv oʻtkazish muddati qoʻshimcha ravishda olti oydan oshmaydigan muddatga uzaytirilishi mumkin.\nAgar tekshiruv chet davlat organlaridan axborot olish uchun uzaytirilgan boʻlsa va Oʻzbekiston Respublikasi Davlat soliq qoʻmitasi soʻralayotgan axborotni olti oy ichida ololmagan boʻlsa, mazkur tekshiruvni uzaytirish muddati qoʻshimcha ravishda uch oyga koʻpaytirilishi mumkin.\nTekshiruv oʻtkazish muddatini uzaytirish toʻgʻrisidagi qarorning koʻchirma nusxasi soliq toʻlovchiga qaror qabul qilingan kundan eʼtiboran uch kun ichida yuboriladi."
+    },
+    {
+     "rank": 7,
+     "chunk_id": "6020838_0000_1_4",
+     "doc_id": "lex:6020838",
+     "doc_title": "Oʻzbekiston Respublikasida tibbiy-ijtimoiy xizmatlar tizimi takomillashtirilishi munosabati bilan Oʻzbekiston Respublikasining ayrim qonun hujjatlariga oʻzgartishlar kiritish toʻgʻrisida",
+     "article": "1-modda",
+     "retrieval_score": 0.5896,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "“55-modda. Nogironlik davrida tanaffuslar boʻlganda pensiya toʻlashni qayta tiklash shartlari\nAgar nogironligi boʻlgan shaxs uzrsiz sababga koʻra belgilangan muddatda qayta koʻrikdan oʻtish uchun tibbiy-ijtimoiy ekspert komissiyasiga bormagan boʻlsa, unga pensiya toʻlash toʻxtatib turiladi, u yana nogironligi boʻlgan shaxs deb tan olingan taqdirda esa toʻxtatib turilgan kundan eʼtiboran, lekin koʻpi bilan bir oy oldin pensiyani toʻlash qayta tiklanadi.\nQayta koʻrikdan oʻtish muddati uzrli sababga koʻra oʻtkazib yuborilganda, agar tibbiy-ijtimoiy ekspert komissiyasi uni ana shu davrda nogironligi boʻlgan shaxs deb topsa, pensiya toʻlash toʻlov toʻxtatib turilgan kundan eʼtiboran to qayta koʻrikdan oʻtish kunigacha, lekin koʻpi bilan uch yil uchun amalga oshiriladi. Bunda, agar nogironligi boʻlgan shaxs qayta koʻrikdan oʻtkazish chogʻida nogironlikning boshqa guruhiga (yuqori yoki past guruhga) oʻtkazilgan boʻlsa, pensiya koʻrsatib oʻtilgan vaqt uchun avvalgi guruh boʻyicha toʻlanadi.\nAgar umumiy kasallik oqibatida mehnat qobiliyatini yoʻqotgan nogironligi boʻlgan shaxsga mehnat qobiliyati tiklanganligi sababli pensiya toʻlash toʻxtatilgan yoki u qayta koʻrikdan oʻtish uchun uzrsiz sabablarga koʻra kelmaganligi oqibatida toʻxtatib turilgan boʻlsa, keyinchalik u yana nogironligi boʻlgan shaxs deb tan olingan taqdirda, basharti pensiyani toʻlash toʻxtatilganidan keyin besh yildan ortiq vaqt oʻtmagan boʻlsa, ilgari tayinlangan pensiyani toʻlash nogironlik belgilangan kundan eʼtiboran yangitdan qayta tiklanadi. Agar besh yildan ortiq vaqt oʻtgan boʻlsa, pensiya umumiy asoslarda yangitdan tayinlanadi”."
+    },
+    {
+     "rank": 8,
+     "chunk_id": "5049511_0021_22_1",
+     "doc_id": "lex:5049511",
+     "doc_title": "Nogironligi boʻlgan shaxslarning huquqlari toʻgʻrisida",
+     "article": "22-modda",
+     "retrieval_score": 0.5725,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Davlat nogironligi boʻlgan shaxslarga uy-joy qurilishi boʻyicha davlat dasturlaridan va maxsus dasturlardan foydalanish imkoniyatini taʼminlaydi.\nDavlat nogironligi boʻlgan shaxslarga va oʻz tarkibida nogironligi boʻlgan shaxs bor oilalarga uy-joyni qulay narxlar boʻyicha olish uchun zarur shart-sharoitlar hamda imkoniyatlarni taʼminlaydi.\nUy-joyga yoki uy-joy sharoitlarini yaxshilashga muhtoj nogironligi boʻlgan shaxslarni hisobga olish mahalliy ijro etuvchi hokimiyati organlari tomonidan amalga oshiriladi.\nMahalliy ijro etuvchi hokimiyati organlari tomonidan uy-joy olishga yoki uy-joy sharoitlarini yaxshilashga muhtoj boʻlgan fuqarolarni hisobga olish roʻyxatlarini shakllantirish chogʻida nogironligi boʻlgan shaxslar va oʻz tarkibida nogironligi boʻlgan shaxs bor oilalar alohida roʻyxatga kiritiladi.\nNogironligi boʻlgan shaxslar uy-joy qurilishi boʻyicha davlat dasturlari va maxsus dasturlar doirasida imtiyozli shartlar asosida uy-joy va imtiyozli ipoteka krediti olish huquqiga ega.\nNogironligi boʻlgan shaxslarning va oʻz tarkibida nogironligi boʻlgan shaxs bor oilalarning elektron onlayn-auksionlar vositasida yer uchastkalarini sotib olish bilan bogʻliq xarajatlarining oʻrni Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilangan tartibda qoplanadi.\nNogironligi boʻlgan shaxslarga uy-joyni taqsimlashda imkoniyatga qarab, obyektlar va xizmatlarning qulayligi prinsipiga rioya etilgan holda, ish joyiga, tibbiyot va reabilitatsiya muassasalariga yaqin boʻlgan uy-joy beriladi.\nNogironligi boʻlgan shaxslarga davlat uy-joy fondining koʻp kvartirali uylaridagi turar joylar ularning xohishiga koʻra pastki qavatlardan berilishi mumkin. Yuqori qavatlardagi kvartiralarga ega boʻlgan nogironligi boʻlgan shaxslar boʻsh turar joylar mavjud boʻlgan taqdirda ularni pastki qavatlarda joylashgan turar joylarga almashtirishga haqli.\nNogironligi boʻlgan shaxslarga yoki oʻz tarkibida nogironligi boʻlgan shaxs bor oilalarga beriladigan turar joylar obyektlar va xizmatlarning qulayligi prinsipiga muvofiq boʻlishi kerak.\nNogironligi boʻlgan shaxslar egallab turgan turar joylar nogironligi boʻlgan shaxslarning erkin harakatlanishi va foydalanishi uchun maxsus vositalar hamda moslamalar bilan jihozlangan boʻlishi kerak. Mazkur turar joylarni jihozlash mahalliy ijro etuvchi hokimiyati organlari tomonidan amalga oshiriladi.\nNogironligi boʻlgan shaxslar imtiyozli shartlar asosida ijtimoiy uy-joy olish huquqiga ega."
+    },
+    {
+     "rank": 9,
+     "chunk_id": "62843_0022_23_1",
+     "doc_id": "lex:62843",
+     "doc_title": "MUHOFAZA ChORALARI, ANTIDEMPING VA KOMPENSATSIYA BOJLARI TOʻGʻRISIDA",
+     "article": "23-modda",
+     "retrieval_score": 0.6488,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ariza berilganidan keyin oʻttiz kun ichida vakolatli organ arizada koʻrsatilgan maʼlumotlarning ishonchliligi va yetarliligini koʻrib chiqishi hamda tekshiruv oʻtkazish toʻgʻrisida yoki tekshiruv oʻtkazishni rad etish toʻgʻrisida qaror qabul qilib, bu haqda ariza beruvchiga yozma ravishda xabar qilishi kerak. Tekshiruv oʻtkazishni rad etish toʻgʻrisida qaror qabul qilinganda rad etish sabablaridan ariza beruvchini vakolatli organ xabardor etadi.\nTekshiruv oʻtkazish toʻgʻrisida qaror qabul qilingunga qadar vakolatli organ arizaning mazmunini, uning olinganligi va koʻrib chiqilganligi haqidagi maʼlumotlarni oshkor qilish huquqiga ega emas.\nVakolatli organ, agar u maʼlumotlarni yetarli emas deb topsa, ariza olingan kundan eʼtiboran oʻn kunlik muddatda bu haqda ariza beruvchiga yozma ravishda xabar qiladi va unga oʻz arizasiga oʻzgartirishlar yoki qoʻshimchalar kiritish imkoniyatini beradi.\nAgar ariza beruvchi oʻz arizasiga oʻzgartirishlar yoki qoʻshimchalar kiritsa, arizani koʻrib chiqish muddati ana shu oʻzgartirishlar yoki qoʻshimchalar olingan kundan eʼtiboran boshlanadi.\nAgar ariza beruvchi vakolatli organ soʻrayotgan qoʻshimcha maʼlumotlarni xabar olingan sanadan eʼtiboran oʻn besh kun ichida taqdim etmasa va bunday maʼlumotlarni taqdim etishni kechiktirish toʻgʻrisida iltimos qilmagan boʻlsa, vakolatli organ arizani koʻrib chiqishni rad etishga haqli boʻlib, bu haqda ariza beruvchiga yozma ravishda xabar qiladi.\nVakolatli organ tekshiruvni boshlash uchun ariza beruvchining ariza berilishiga sabab boʻlgan tovarni umumiy ishlab chiqarishdagi ulushini aniqlash orqali arizani koʻrib chiqishda xolislikka rioya etilishini va ariza yuzasidan Oʻzbekiston Respublikasining iqtisodiyot tegishli tarmogʻi ishlab chiqaruvchilarining fikrlari mumkin qadar koʻproq inobatga olinishini taʼminlaydi. Buning uchun vakolatli organ Oʻzbekiston Respublikasining oʻxshash tovar boshqa ishlab chiqaruvchilari va isteʼmolchilarining ushbu ariza yuzasidan fikrlarini soʻrab olishga haqli."
+    },
+    {
+     "rank": 10,
+     "chunk_id": "112314_0056_55_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "55-modda",
+     "retrieval_score": 0.5847,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar nogironligi boʻlgan shaxs uzrsiz sababga koʻra belgilangan muddatda qayta koʻrikdan oʻtish uchun tibbiy-ijtimoiy ekspert komissiyasiga bormagan boʻlsa, unga pensiya toʻlash toʻxtatib turiladi, u yana nogironligi boʻlgan shaxs deb tan olingan taqdirda esa toʻxtatib turilgan kundan eʼtiboran, lekin koʻpi bilan bir oy oldin pensiyani toʻlash qayta tiklanadi.\nQayta koʻrikdan oʻtish muddati uzrli sababga koʻra oʻtkazib yuborilganda, agar tibbiy-ijtimoiy ekspert komissiyasi uni ana shu davrda nogironligi boʻlgan shaxs deb topsa, pensiya toʻlash toʻlov toʻxtatib turilgan kundan eʼtiboran to qayta koʻrikdan oʻtish kunigacha, lekin koʻpi bilan uch yil uchun amalga oshiriladi. Bunda, agar nogironligi boʻlgan shaxs qayta koʻrikdan oʻtkazish chogʻida nogironlikning boshqa guruhiga (yuqori yoki past guruhga) oʻtkazilgan boʻlsa, pensiya koʻrsatib oʻtilgan vaqt uchun avvalgi guruh boʻyicha toʻlanadi.\nAgar umumiy kasallik oqibatida mehnat qobiliyatini yoʻqotgan nogironligi boʻlgan shaxsga mehnat qobiliyati tiklanganligi sababli pensiya toʻlash toʻxtatilgan yoki u qayta koʻrikdan oʻtish uchun uzrsiz sabablarga koʻra kelmaganligi oqibatida toʻxtatib turilgan boʻlsa, keyinchalik u yana nogironligi boʻlgan shaxs deb tan olingan taqdirda, basharti pensiyani toʻlash toʻxtatilganidan keyin besh yildan ortiq vaqt oʻtmagan boʻlsa, ilgari tayinlangan pensiyani toʻlash nogironlik belgilangan kundan eʼtiboran yangitdan qayta tiklanadi. Agar besh yildan ortiq vaqt oʻtgan boʻlsa, pensiya umumiy asoslarda yangitdan tayinlanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Onam yotib qolgan, nogironlik guruhini olish uchun komissiyaga olib borolmaymiz. Uyda tekshirishlari mumkinmi va tekshiruv qancha vaqtda oʻtkazilishi kerak?",
+    "sub_queries": [
+     "Onam yotib qolgan, nogironlik guruhini olish uchun komissiyaga olib borolmaymiz. Uyda tekshirishlari mumkinmi?",
+     "Tekshiruv qancha vaqtda o'tkazilishi kerak?"
+    ],
+    "retrieved_total": 10,
+    "best_cosine": 0.6625,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1345,
+    "rerank_ms": null,
+    "generation_ms": 9550,
+    "total_ms": 10896
+   },
+   "usage": {
+    "input_tokens": 7955,
+    "output_tokens": 347
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q005",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Toshkent metrosidagi yoʻl haqi tariflari boʻyicha maʼlumotlarni Oʻzbekiston Respublikasi Transport vazirligi yoki Toshkent shahar hokimligining rasmiy qarorlari va normativ-huquqiy hujjatlar bazasidan qidirishingiz mumkin.",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4635016_0039_text_1",
+     "doc_id": "lex:4635016",
+     "doc_title": "2020-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5805,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "T/r | Ijaraga beriladigan mol-mulk turi | Belgilangan stavka miqdorini tavsiflovchi koʻrsatkich | Oylik ijara toʻlovi stavkalarining eng kam miqdorlari, soʻmda\nToshkent shahri | Nukus shahri va viloyat markazlaridagi shaharlar | boshqa aholi punktlari\n1. | Uy-joylar:\nturar joy | umumiy maydonning 1 kv. metri uchun | 12 000 | 7 500 | 3 500\nnoturar joy | 25 000 | 15 000 | 6 500\n2. | Avtomobil transporti:\nyengil avtomobil (yoʻlovchilar, bagaj tashishga moʻljallangan hamda haydovchi oʻrnini hisoblamaganda, oʻrindiqlari soni 8 tadan koʻp boʻlmagan avtotransport vositasi) | 1 ta avtotransport vositasi uchun | 500 000\nmikroavtobuslar, avtobuslar va yuk avtomobillari | 1 000 000\nIzoh: Mazkur stavkalar jismoniy shaxslarning mol-mulkni ijaraga berishdan olingan daromadlariga soliq solish maqsadida qoʻllaniladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6333240_0021_text_6",
+     "doc_id": "lex:6333240",
+     "doc_title": "2023-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5701,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "“Toshshahartransxizmat” AJning cheklangan tariflar boʻyicha yoʻlovchilarni tashishdan koʻrgan zararini qoplash uchun xarajatlar | 56 958,0 10. | Ekologiya, atrof-muhitni muhofaza qilish va iqlim oʻzgarishi vazirligi | 574 125,8 shu jumladan: joriy xarajatlar | 521 071,4 shundan: rivojlantirish dasturlari uchun xarajatlar | 212 702,3 tizimdagi tahliliy laboratoriyalarning moddiy-texnik bazasini mustahkamlash uchun xarajatlar | 28 000,0 hayvonot va oʻsimlik dunyosi, muhofaza etiladigan tabiiy hududlar, chiqindilarni utilizatsiya qilish joylarining davlat kadastrlarini yuritish uchun xarajatlar | 4 954,5 tizimdagi muhofaza etiladigan hududlarning moddiy-texnik bazasini mustahkamlash xarajatlari | 16 690,0 sugʻoriladigan yerlarning shamol eroziyasiga va suv xoʻjaligi obyektlarining qum bosishiga qarshi ihota daraxtzorlarini barpo etish uchun xarajatlar | 73 000,0 “Yashil makon” umummilliy loyihasi doirasidagi xarajatlar | 40 000,0 shu jumladan qayta taqsimlanadigan mablagʻlar: sanitar tozalash ishlarini tashkil etish va aholi punktlarida tozalikni taʼminlash bilan bogʻliq xarajatlar | 50 057,8 obyektlarni loyihalashtirish, qurish (rekonstruksiya qilish) va jihozlash uchun kapital qoʻyilmalar | 38 054,4 Turizmni qoʻllab-quvvatlash jamgʻarmasiga transfertlar | 15 000,0 11. | Oʻzbekiston Respublikasi Togʻ-kon sanoati va geologiya vazirligi | 1 024 283,1 shu jumladan: joriy xarajatlar | 1 021 116,2 shundan: rivojlantirish dasturlari uchun xarajatlar | 990 000,0 geologiya-qidiruv ishlariga subsidiyalar | 990 000,0 obyektlarni loyihalashtirish, qurish (rekonstruksiya qilish) va jihozlash uchun kapital qoʻyilmalar | 3 166,9 12. | Oʻzbekiston Respublikasi Yoshlar siyosati va sport vazirligi | 1 477 124,7 shu jumladan: joriy xarajatlar | 1 191 398,2 shundan: rivojlantirish dasturlari uchun xarajatlar | 785 130,0 Olimpiya oʻyinlariga samarali tayyorgarlik koʻrish uchun xarajatlar | 216 000,0 Paralimpiya oʻyinlariga samarali tayyorgarlik koʻrish xarajatlari | 34 000,0 sport va ommaviy jismoniy tarbiya tadbirlarining kalendar rejasiga kiritilgan tadbirlar uchun xarajatlar | 215 030,0 yurish, yugurish, mini-futbol, velosport, badminton, stritbol va “Workout” kabi sport turlarini ommalashtirish va rivojlantirish dasturlarini amalga oshirish uchun xarajatlar | 50 000,0 sport maktablari tibbiyot xonalarini zamonaviy asbob-uskunalar, dori-darmon va tiklanish vositalari bilan jihozlash, zamonaviy oʻquv adabiyotini chop etish va xarid qilish, sport maktablari shugʻullanuvchilarini (terma jamoalarini) maxsus sport kiyimlari (ekipirovkalar) bilan taʼminlash uchun xarajatlar | 25 000,0 “Besh tashabbus olimpiadasi” doirasidagi sport musobaqalarini tizimli tashkil etish"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "5186044_0027_text_1",
+     "doc_id": "lex:5186044",
+     "doc_title": "2021-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5659,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "T/r | Yigʻim turi | Bir oyga chegaralangan stavkalar (soʻmda)\nToshkent shahri | Nukus shahri, shaharlar -viloyat markazlari | boshqa shaharlar | boshqa aholi punktlari\n1. | Alkogolli mahsulotlarni sotish huquqi uchun undiriladigan yigʻim | 1 200 000 | 840 000 | 600 000 | 300 000\n2. | Umumiy ovqatlanish korxonalari uchun alkogolli mahsulotlarni sotish huquqi uchun undiriladigan yigʻim | 600 000 | 420 000 | 300 000 | 150 000"
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6333240_0024_text_1",
+     "doc_id": "lex:6333240",
+     "doc_title": "2023-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5645,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "T/r | Ijaraga beriladigan mol-mulk turi | Belgilangan stavka miqdorini tavsiflovchi koʻrsatkich | Oylik ijara toʻlovi stavkalarining eng kam miqdorlari, soʻmda\nToshkent shahri | Nukus shahri va viloyat markazi boʻlgan shaharlar | boshqa aholi punktlari\n1. | Binolar:\nturar joy | umumiy maydonning 1 kv.metri uchun | 17 000 | 10 500 | 4 500\nnoturar joy | 35 000 | 20 500 | 8 300\n2. | Avtomobil transporti:\nyengil avtomobil (yoʻlovchilar, bagaj tashishga moʻljallangan hamda haydovchi oʻrnini hisoblamaganda, oʻrindiqlari soni 8 tadan koʻp boʻlmagan avtotransport vositasi) | 1 ta avtotransport vositasi uchun | 695 000\nmikroavtobuslar, avtobuslar va yuk avtomobillari | 1 375 000\nIzoh: Mazkur stavkalar jismoniy shaxslarning mol-mulkni ijaraga berishdan olingan daromadlariga soliq solish maqsadida qoʻllaniladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6333240_0025_text_1",
+     "doc_id": "lex:6333240",
+     "doc_title": "2023-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5631,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "T/r | Yigʻim turi | Bir oyga chegaralangan stavkalar (soʻmda)\nToshkent shahri | Nukus shahri, shaharlar — viloyat markazlari | boshqa shaharlar | boshqa aholi punktlari\n1. | Alkogol mahsulotlarini realizatsiya qilish huquqi uchun undiriladigan yigʻim | 1 200 000 | 840 000 | 600 000 | 300 000\n2. | Umumiy ovqatlanish korxonalaridan alkogol mahsulotlarini realizatsiya qilish huquqi uchun undiriladigan yigʻim | 600 000 | 420 000 | 300 000 | 150 000"
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Toshkent metrosida bir martalik yoʻl haqi hozir qancha turadi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5805,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 379,
+    "rerank_ms": null,
+    "generation_ms": 6983,
+    "total_ms": 7362
+   },
+   "usage": {
+    "input_tokens": 3382,
+    "output_tokens": 174
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q006",
+   "status": "ok",
+   "answer": "Uy-joy kodeksining 32-moddasiga koʻra, uy yoki kvartira mulkdorining oila aʼzolari, shuningdek u bilan doimiy yashayotgan fuqarolar, mulkdor bilan oilaviy munosabatlarni tugatgan (ajrashgan) taqdirda ham ularda turar joydan foydalanish huquqi saqlanib qoladi [4].\n\nBiroq, turar joydan foydalanish tartibi taraflar oʻrtasidagi kelishuv bilan belgilanadi va nizoli vaziyatlarda bu masala sud tartibida hal etiladi [2][4]. Sud turar joydan foydalanish boʻyicha nizolarni koʻrib chiqishda, taraflarning kelishuviga asosan, mulkdorning tashabbusi bilan turar joyga majburiy tartibda kiritilayotgan tarafni boshqa turar joyga koʻchirish yoki ijaraga olingan turar joy uchun ijara haqini toʻlash majburiyatini mulkdorning zimmasiga yuklashi mumkin [2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.633,
+   "citations": [
+    {
+     "ref": 4,
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-106136",
+     "article_url": "https://lex.uz/uz/docs/-106136#-148675",
+     "article": "32-modda",
+     "article_title": "Mulkdor oila aʼzolarining, shuningdek u bilan doimiy yashayotgan fuqarolarning huquq va majburiyatlari",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "106136_0031_32_1",
+     "quote": "Uy, kvartiraning mulkdori bilan uning sobiq oila aʼzolari, shuningdek u bilan doimiy yashayotgan fuqarolar oʻrtasida turar joydan foydalanish tartibi taraflar kelishuvi bilan belgilanadi."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-106136",
+     "article_url": "https://lex.uz/uz/docs/-106136#-148675",
+     "article": "32-modda",
+     "article_title": "Mulkdor oila aʼzolarining, shuningdek u bilan doimiy yashayotgan fuqarolarning huquq va majburiyatlari",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "106136_0031_32_2",
+     "quote": "Turar joydan foydalanish haqidagi nizolar koʻrib chiqilayotganda sud taraflarning kelishuviga asosan mulkdorning tashabbusiga koʻra turar joyga majburiy tartibda kiritilayotgan tarafni mulkdorga tegishli mutanosib sharoitlarga ega boʻlgan boshqa turar joyga kiritish yoki ijaraga olingan turar joy uchun ijara haqini toʻlash majburiyatini mulkdorning zimmasiga yuklatishi mumkin."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "180552_0146_532_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "532-modda",
+     "retrieval_score": 0.6333,
+     "fusion_score": 0.01697,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Umrbod taʼminlash sharti bilan uy-joy (uyning bir qismi), kvartirani boshqa shaxsga berish shartnomasiga muvofiq, oluvchi shartnoma amal qilib turgan davrda bu uyni (uyning bir qismini), kvartirani sotish, hadya qilish, garovga qoʻyishga va uy (uyning bir qismi), kvartiraga mulk huquqini ogʻirlashtiradigan boshqa harakatlarni amalga oshirishga haqli emas. Bu uy (uyning bir qismi), kvartiraga oluvchining qarzlari boʻyicha undirish qaratilmaydi.\nUmrbod taʼminlash sharti bilan uy-joy (kvartira)ni boshqa shaxsga berish shartnomasi boʻyicha boshqa shaxsga beruvchidan olingan uy-joy (uyning bir qismi), kvartiraning tasodifan nobud boʻlishi oluvchini shartnoma boʻyicha oʻz zimmasiga olgan majburiyatlardan ozod qilmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "106136_0031_32_2",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "32-modda",
+     "retrieval_score": 0.6305,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Xususiylashtirilgan kvartira yoki uy mulkdorining voyaga yetgan oila aʼzolari va uy-joyning xususiylashtirilishiga rozilik bergan shaxslar ham ularning umumiy mulki boʻlmish xususiylashtirilgan kvartira yoki uyga nisbatan qonunda belgilangan tartibda teng huquqlarga ega boʻladilar va teng majburiyatlarni bajaradilar.\nXususiylashtirilgan kvartirani yoki uyni sotish, ayirboshlash, hadya qilish yoki ijaraga, arendaga berish kvartira yoki uy mulkdorining voyaga yetgan oila aʼzolarining va kvartirani yoki uyni xususiylashtirish uchun rozilik bergan shaxslarning roziligi bilan amalga oshiriladi. Uy-joyni xususiylashtirishga rozilik bergan shaxsning turar joydan foydalanish huquqi uning vafotidan keyin ochiladigan meros tarkibiga kirmaydi. Xususiylashtirilgan uy-joy mulkdorining voyaga yetmagan oila aʼzolari manfaatlarini ularning ota-onasi, ular boʻlmagan taqdirda esa vasiylik va homiylik organlari ifodalaydi.\nXususiylashtirilgan bir kvartira yoki uyda turar joy mulkdorlari yashay olmaydigan holda, sudning qaroriga binoan mulkdorlardan biri koʻchirilib, boshqasining zimmasiga kvartira yoki uyning tegishli qismi uchun koʻchirilgan mulkdorga sud ishni koʻrib chiqqan kundagi bozor bahosida pulini toʻlash yoki uning umumiy mulkdagi ulushiga mos keladigan boshqa turar joyni sotib olib berish majburiyati yuklanishi mumkin.\nUy yoki kvartiraning mulkdori, uning oila aʼzolari, u bilan doimiy yashayotgan fuqarolar va sobiq oila aʼzosi oʻrtasidagi turar joydan foydalanish hamda qilingan xarajatlardagi ulush miqdori haqidagi nizolar sud tartibida hal etiladi. Turar joydan foydalanish haqidagi nizolar koʻrib chiqilayotganda sud taraflarning kelishuviga asosan mulkdorning tashabbusiga koʻra turar joyga majburiy tartibda kiritilayotgan tarafni mulkdorga tegishli mutanosib sharoitlarga ega boʻlgan boshqa turar joyga kiritish yoki ijaraga olingan turar joy uchun ijara haqini toʻlash majburiyatini mulkdorning zimmasiga yuklatishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "106136_0022_23_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "23-modda",
+     "retrieval_score": 0.6149,
+     "fusion_score": 0.01604,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xususiy mulkida uyi, kvartirasi boʻlgan fuqarolar ulardan oʻzlari va oila aʼzolari yashashi uchun foydalanadilar. Ular uyiga, kvartirasiga boshqa fuqarolarni koʻchirib kiritishga, shuningdek turar joylarni ushbu Kodeksda hamda oʻzga qonunchilik hujjatlarida belgilangan shartlarda va tartibda ijaraga berish shartnomasi asosida boshqa fuqarolarga yashash uchun berishga haqlidirlar.\nMulkida uyi, kvartirasi boʻlgan fuqarolar ulardan boshqa fuqarolar hamda yuridik shaxslarning huquq va qonuniy manfaatlarini buzmagan holda boshqa maqsadlarda foydalanishga haqlidirlar.\nMulkida uyi, kvartirasi boʻlgan yuridik shaxslar ularni ijaraga, arendaga berishga hamda ulardan uy-joy toʻgʻrisidagi qonunchilikka zid kelmaydigan boshqa maqsadlarda foydalanishga haqlidirlar.\nIchki ishlar organlari tegishli hududda fuqarolar va yuridik shaxslarga xususiy mulk huquqi asosida tegishli boʻlgan turar joylardan hamda yashash uchun moʻljallanmagan joylardan foydalanilishi, shu jumladan pasport rejimiga rioya etilishi, yashayotgan shaxslarning hisobga olinishi va tegishli shartnomalarning mavjudligi yuzasidan nazoratni fuqarolarning oʻzini oʻzi boshqarish organlari hamda uy-joy mulkdorlari shirkatlari bilan birgalikda amalga oshiradi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "106136_0031_32_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "32-modda",
+     "retrieval_score": 0.6253,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Uy, kvartira mulkdorining oila aʼzolari, shuningdek u bilan doimiy yashayotgan fuqarolar, agar ularni koʻchirib kelgan paytda yozma ravishda boshqa hol qayd etilgan boʻlmasa, uydagi, kvartiradagi xonalardan mulkdor bilan teng foydalanishga haqlidirlar. Ular mulkdor bergan turar joyga oʻzlarining voyaga yetmagan farzandlarini koʻchirib kiritishga haqlidirlar, oilaning boshqa aʼzolarini esa, uy, kvartira mulkdorining roziligi bilangina koʻchirib kiritishlari mumkin. Bu shaxslar uy, kvartiraning mulkdori bilan oilaviy munosabatlarni tugatgan taqdirda ham ularda turar joydan foydalanish huquqi saqlanib qoladi. Uy, kvartiraning mulkdori bilan uning sobiq oila aʼzolari, shuningdek u bilan doimiy yashayotgan fuqarolar oʻrtasida turar joydan foydalanish tartibi taraflar kelishuvi bilan belgilanadi.\nTurar joy mulkdorining oila aʼzolari deb u bilan doimiy birga yashayotgan xotini (eri) va ularning farzandlari tan olinadi. Er-xotinning ota-onasi, shuningdek mulkdor bilan doimiy birga yashayotgan oilali farzandlari va ularning er-xotini, agar ular ilgari bu huquqqa ega boʻlmagan boʻlsa, faqat oʻzaro kelishuvga binoan mulkdorning oila aʼzolari deb tan olinishi mumkin.\nMehnatga qobiliyatsiz boqimandalar, shuningdek mulkdor bilan doimiy birga yashayotgan fuqarolar, agar ular mulkdor bilan umumiy xoʻjalik yuritayotgan va uning turar joyida roʻyxatdan oʻtgan boʻlsalar, uning oila aʼzosi deb topilishlari mumkin.\nMulkdorning voyaga yetmagan oila aʼzolari yashayotgan turar joyni, ularning ota-onasi boʻlmagan taqdirda, vasiylik va homiylik organining roziligi bilan boshqa shaxsga berish mumkin.\nXususiylashtirilgan kvartira yoki uy mulkdorining voyaga yetgan oila aʼzolari va uy-joyning xususiylashtirilishiga rozilik bergan shaxslar ham ularning umumiy mulki boʻlmish xususiylashtirilgan kvartira yoki uyga nisbatan qonunda belgilangan tartibda teng huquqlarga ega boʻladilar va teng majburiyatlarni bajaradilar."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "106136_0012_14_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "14-modda",
+     "retrieval_score": 0.614,
+     "fusion_score": 0.01574,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Belgilangan tartibda ajratilgan yer uchastkasida yangi qurilayotgan uyga mulk huquqi uy davlat roʻyxatidan oʻtkazilgan paytdan boshlab vujudga keladi.\nUyning, kvartiraning oldi-sotdi va ayirboshlash shartnomasi yozma shaklda, taraflar imzolaydigan bitta hujjatni tayyorlash yoʻli bilan tuziladi hamda u notarial tasdiqlanishi va davlat roʻyxatidan oʻtkazilishi shart.\nUyning, kvartiraning oldi-sotdi shartnomasi shakliga rioya etmaslik uning haqiqiy emasligiga olib keladi. Sotib oluvchi sotib olganidan keyin qonunga muvofiq turar joydan foydalanish huquqini oʻzida saqlab qoladigan shaxslar yashab turgan shu uy, kvartirani oldi-sotdi shartnomasining muhim sharti – bu shaxslarning roʻyxatini sotilayotgan turar joydan foydalanish huquqlari koʻrsatilgan holda tuzishdan iboratdir.\nUmrbod taʼminlash sharti bilan uyni, kvartirani boshqa shaxsga berish toʻgʻrisidagi shartnoma Oʻzbekiston Respublikasi Fuqarolik kodeksining qoidalariga rioya etilgan holda notarial tasdiqlanishi kerak.\nTurar joyni almashtirishga ushbu Kodeksda hamda boshqa qonunchilik hujjatlarida belgilangan shartlar va tartibda yoʻl qoʻyiladi.\nUyni, kvartirani hadya qilish shartnomasi notarial tasdiqlangan boʻlishi hamda davlat roʻyxatidan oʻtkazilishi shart.\nDavlatga qarashli uyga, kvartiraga boʻlgan mulk huquqi qonunchilikda nazarda tutilgan xususiylashtirish tartibida vujudga keladi.\nKooperativ uyga, kvartiraga boʻlgan mulk huquqi uy-joy qurish va uy-joy kooperativlari aʼzolari pay badallarini toʻliq toʻlab boʻlganidan keyin vujudga keladi.\nUy-joy obligatsiyalarini olish va ularning qolgan qiymatini bank kreditlari hisobiga toʻlash yoʻli bilan qurilgan va olingan uyga, kvartiraga boʻlgan mulk huquqi kredit toʻliq qaytarilgandan keyin vujudga keladi.\nXususiy mulkdagi uyga, kvartiraga boʻlgan mulk huquqi qonunchilikda belgilangan tartibda davlat mulkiga oʻtkazilishi mumkin.\nUyga, kvartiraga boʻlgan meros tariqasida oʻtadigan mulk huquqi Oʻzbekiston Respublikasi Fuqarolik kodeksida nazarda tutilgan asoslarga koʻra vujudga keladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kvartira erimning nikohdan oldin olgan shaxsiy mulki, men u bilan shu yerda yashayman. Agar ajrashsak, shu kvartirada yashash huquqimni yoʻqotamanmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6333,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 504,
+    "rerank_ms": null,
+    "generation_ms": 10170,
+    "total_ms": 10675
+   },
+   "usage": {
+    "input_tokens": 4134,
+    "output_tokens": 316
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q007",
+   "status": "ok",
+   "answer": "\"Фуқароларнинг давлат пенсия таъминоти тўғрисида\"ги Қонуннинг 64-моддасига кўра, чет элга доимий яшаш учун чиқиб кетаётган фуқароларга пенсиялар чиқиб кетишдан олдин 6 ой аввал тўлаб берилади [1].\n\nШуни таъкидлаш керакки, чет элда бўлган вақт учун пенсия тўловлари фақат меҳнатда майибланиш ёки касб касаллиги оқибатида тайинланган пенсиялар учун амалга оширилади [1]. Бошқа турдаги пенсияларнинг хорижда тўланиши бўйича қонунчиликда алоҳида тартиб кўрсатилмаган.\n\nШунингдек, \"Фуқароларнинг жамғариб бориладиган пенсия таъминоти тўғрисида\"ги Қонуннинг 17-моддасига мувофиқ, агар сиз доимий яшаш учун хорижга чиқиб кетаётган бўлсангиз, шахсий жамғариб бориладиган пенсия ҳисобварағингиздаги маблағларни бир йўла тўлиқ ҳажмда олиш ҳуқуқига эгасиз [3].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.622,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "938-XII",
+     "url": "https://lex.uz/uz/docs/-112314",
+     "article_url": "https://lex.uz/uz/docs/-112314#-128242",
+     "article": "64-modda",
+     "article_title": "Oʻzbekiston Respublikasi hududidan chiqib ketgan fuqarolarga pensiyalar toʻlash",
+     "part": "1-qism",
+     "edition_date": "2025-05-20",
+     "doc_status": "amalda",
+     "chunk_id": "112314_0065_64_1",
+     "quote": "Chet elga doimiy yashash uchun chiqib ketishdan oldinroq tayinlangan pensiyalar Pensiya jamgʻarmasining tuman (shahar) boʻlimiga chiqib ketish toʻgʻrisida ariza berilgan kundagi holatga koʻra pensiya miqdori hisobidan chet elga chiqib ketish oldidan 6 oy avval toʻlanadi."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:390573",
+     "doc_title": "FUQAROLARNING JAMGʻARIB BORILADIGAN PENSIYA TAʼMINOTI TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "702-II",
+     "url": "https://lex.uz/uz/docs/-390573",
+     "article_url": "https://lex.uz/uz/docs/-390573#-390724",
+     "article": "17-modda",
+     "article_title": "Jamgʻarib boriladigan pensiya toʻlovlarini ayrim hollarda olish huquqi",
+     "part": "1-qism",
+     "edition_date": "2024-03-19",
+     "doc_status": "amalda",
+     "chunk_id": "390573_0016_17_1",
+     "quote": "Fuqaro vafot etgan taqdirda, shaxsiy jamgʻarib boriladigan pensiya hisobvaragʻida jamgʻarilgan mablagʻlar qonunchilikda belgilangan tartibda merosga oʻtadi va merosxoʻrga bir yoʻla toʻla hajmda toʻlanadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "112314_0065_64_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "64-modda",
+     "retrieval_score": 0.6216,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Chet elga doimiy yashash uchun chiqib ketishdan oldinroq tayinlangan pensiyalar Pensiya jamgʻarmasining tuman (shahar) boʻlimiga chiqib ketish toʻgʻrisida ariza berilgan kundagi holatga koʻra pensiya miqdori hisobidan chet elga chiqib ketish oldidan 6 oy avval toʻlanadi.\nBu fuqarolarning chet elda boʻlgan vaqti uchun, mehnatda mayiblanish yoki kasb kasalligi oqibatida tayinlangan pensiyalargina toʻlanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "112314_0037_36_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "36-modda",
+     "retrieval_score": 0.5688,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Chet elda yollanib ishlagan Oʻzbekiston Respublikasi fuqarolarining pensiyasini hisoblab chiqarish uchun olinadigan ish haqi quyidagicha aniqlanadi, bundan ushbu moddaning ikkinchi qismida nazarda tutilgan hollar mustasno:\n2019-yil 1-yanvarga qadar boʻlgan davr uchun — Pensiya jamgʻarmasiga toʻlangan sugʻurta badallarining miqdoridan;\n2019-yil 1-yanvardan 2019-yil 31-dekabrga qadar boʻlgan davr uchun — toʻlangan yagona ijtimoiy toʻlov miqdoridan;\n2020-yil 1-yanvardan — toʻlangan ijtimoiy soliq miqdoridan kelib chiqqan holda aniqlanadi.\nOʻzbekiston Respublikasining diplomatik vakolatxonalari va konsullik muassasalari xodimlari, shuningdek Oʻzbekiston Respublikasi Tashqi ishlar vazirligi tomonidan xalqaro hukumatlararo tashkilotlarga kvota qilingan lavozimlarga xizmat safariga yuborilgan shaxslarga pensiyani hisoblab chiqarish uchun ish haqini aniqlash tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "390573_0016_17_1",
+     "doc_id": "lex:390573",
+     "doc_title": "FUQAROLARNING JAMGʻARIB BORILADIGAN PENSIYA TAʼMINOTI TOʻGʻRISIDA",
+     "article": "17-modda",
+     "retrieval_score": 0.5685,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Fuqaro vafot etgan taqdirda, shaxsiy jamgʻarib boriladigan pensiya hisobvaragʻida jamgʻarilgan mablagʻlar qonunchilikda belgilangan tartibda merosga oʻtadi va merosxoʻrga bir yoʻla toʻla hajmda toʻlanadi.\nFuqaro Oʻzbekiston Respublikasi hududidan tashqariga doimiy yashash joyiga chiqib ketayotgan boʻlsa, shaxsiy jamgʻarib boriladigan pensiya hisobvaragʻida jamgʻarilgan mablagʻlar bir yoʻla toʻla hajmda toʻlanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4664142_0047_48_1",
+     "doc_id": "lex:4664142",
+     "doc_title": "Investitsiyalar va investitsiya faoliyati toʻgʻrisida",
+     "article": "48-modda",
+     "retrieval_score": 0.5673,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Investorlar va chet el investitsiyalari ishtirokidagi korxonalar investitsiya faoliyatini amalga oshirish maqsadida har qanday chet davlat fuqarolari va Oʻzbekiston Respublikasidan tashqarida doimiy yashovchi fuqaroligi boʻlmagan shaxslar bilan mehnat shartnomalarini erkin tuzish huquqiga ega. Bunday shaxslar mehnat shartnomasining butun amal qilish davrida tegishli koʻp martalik vizalarni olgan holda Oʻzbekiston Respublikasi hududiga kirish va uning hududida boʻlish huquqiga ega.\nChet ellik xodimlar mehnatiga haq toʻlash, ularga taʼtil berish, ularni pensiya bilan taʼminlash masalalari ushbu xodimlarning har biri bilan tuzilgan mehnat shartnomalarida hal etilishi kerak. Ushbu xodimlarning ish haqi va qonuniy yoʻl bilan olingan boshqa daromadlari qonunda belgilangan soliq va toʻlov toʻlangandan keyin ular tomonidan boshqa davlatlarga hech bir cheklovlarsiz oʻtkazilishi mumkin.\nInvestor, chet el investitsiyasi ishtirokidagi korxona chet ellik xodim uchun pensiya taʼminoti boʻyicha toʻlovlarni ushbu xodimning doimiy yashash joyi boʻlgan mamlakatning tegishli fondlariga oʻtkazishi mumkin."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "5443899_0015_16_1",
+     "doc_id": "lex:5443899",
+     "doc_title": "Oʻzbekiston Respublikasida chet el fuqarolarining va fuqaroligi boʻlmagan shaxslarning huquqiy holati toʻgʻrisida",
+     "article": "16-modda",
+     "retrieval_score": 0.5658,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi hududida doimiy yashaydigan chet el fuqarolari va fuqaroligi boʻlmagan shaxslar Oʻzbekiston Respublikasining qonunchiligida va xalqaro shartnomalarida belgilangan tartibda, Oʻzbekiston Respublikasi fuqarolari bilan teng ravishda pensiya olish huquqiga ega.\nOʻzbekiston Respublikasi hududida doimiy yashaydigan, pensiya tayinlash uchun zarur boʻlgan ish stajiga ega boʻlmagan chet el fuqarolarining va fuqaroligi boʻlmagan shaxslarning ijtimoiy taʼminoti tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Pensiyadaman, xorijga doimiy yashash uchun koʻchib ketmoqchiman. Pensiyamni u yoqda ham olib tura olamanmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6216,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 465,
+    "rerank_ms": null,
+    "generation_ms": 9545,
+    "total_ms": 10010
+   },
+   "usage": {
+    "input_tokens": 2486,
+    "output_tokens": 360
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q008",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Fuqarolik kodeksi, Oila kodeksi, Soliq kodeksi va boshqa taqdim etilgan qonun hujjatlarida qarzni undirish boʻyicha sudga murojaat qilishning umumiy daʼvo muddati haqida maʼlumot berilmagan. Siz ushbu masalani Oʻzbekiston Respublikasining Fuqarolik kodeksidagi \"Daʼvo muddati\"ga oid boblar orqali qidirib koʻrishingiz mumkin.",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "180552_0362_746¹_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "746¹-modda",
+     "retrieval_score": 0.6317,
+     "fusion_score": 0.01669,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Kreditni muddatidan oldin sud tartibida undirishda, agar shartnomada boshqacha tartib nazarda tutilgan boʻlmasa, kreditor dastlab qarzning belgilangan muddatda qaytarilmagan qismini undirish uchun sudga murojaat qiladi. Bunda agar qarz oluvchi muddati oʻtgan qarzni toʻliq toʻlamagan taqdirda, kreditor kreditning qolgan barcha summasini muddatidan oldin qaytarish haqidagi talab bilan sudga murojaat qilishga haqli."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "104720_0136_136_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "136-modda",
+     "retrieval_score": 0.6162,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Aliment olish huquqiga ega boʻlgan shaxs, aliment talab qilish huquqi vujudga kelganidan soʻng qancha muddat oʻtganidan qatʼi nazar, xohlagan vaqtda aliment undirish toʻgʻrisidagi talab bilan sudga murojaat qilishga haqlidir.\nMazkur shaxs, nizo boʻlmagan taqdirda, voyaga yetmagan bolalar uchun aliment undirish toʻgʻrisidagi ariza bilan sudga murojaat etishga haqli boʻlib, bu ariza buyruq tartibida ish yuritish tarzida koʻrib chiqiladi.\nAliment sudga murojaat etilgan paytdan boshlab undiriladi.\nAgar taʼminot uchun mablagʻ olish choralari sudga murojaat qilingunga qadar koʻrilganligi, ammo aliment toʻlashi shart boʻlgan shaxsning uni toʻlashdan bosh tortganligi oqibatida aliment olinmaganligi sud tomonidan aniqlansa, oʻtgan davr uchun aliment sudga murojaat etilgan paytdan boshlab uch yillik muddat doirasida undirib olinishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "5957612_0034_35_1",
+     "doc_id": "lex:5957612",
+     "doc_title": "Toʻlovga qobiliyatsizlik toʻgʻrisida",
+     "article": "35-modda",
+     "retrieval_score": 0.6347,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qarzdorni davlat tomonidan yordam koʻrsatgan holda sudgacha sanatsiya qilish oʻn ikki oydan yigirma toʻrt oygacha muddatga joriy etiladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "8354256_0019_20_7",
+     "doc_id": "lex:8354256",
+     "doc_title": "Davlat organining yoki uning mansabdor shaxsining qonunga xilof qarori, harakati yoxud harakatsizligi tufayli yetkazilgan zararning oʻrnini qoplash toʻgʻrisida",
+     "article": "20-modda",
+     "retrieval_score": 0.632,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "“Budjetga mablagʻlarni undirish, davlat organining yoki uning mansabdor shaxsining qonunga xilof qarori, harakati yoxud harakatsizligi tufayli yetkazilgan zararning oʻrnini qoplash yuzasidan ijro varaqasi qarzdor turgan joydagi davlat ijrochisiga sud hujjati qonuniy kuchga kirganidan keyin besh kun ichida yuboriladi”.\n6. Oʻzbekiston Respublikasining 2018-yil 25-yanvarda qabul qilingan OʻRQ-462-sonli Qonuni bilan tasdiqlangan Oʻzbekiston Respublikasining Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksi (Oʻzbekiston Respublikasi Oliy Majlisi palatalarining Axborotnomasi, 2018-yil, 1-songa 3-ilova, № 10, 672-modda; 2019-yil, № 5, 261-modda, № 9, 592-modda, № 11, 791-modda, № 12, 880-modda; 2020-yil, № 1, 1-modda, № 3, 198-modda; 2021-yil, № 1, 9-modda, 4-songa ilova, № 8, 800, 803-moddalar, № 9, 903-modda; 2022-yil, № 8, 787-modda, № 12, 1188-modda; 2023-yil, № 3, 185-modda, № 4, 269-modda, № 11, 923-modda, № 12, 1009-modda; 2024-yil, № 2, 115-modda, № 9, 964, 969-moddalar, № 12, 1286-modda; 2025-yil, № 3, 373-modda, № 6, 729-modda) 278-moddasining yettinchi qismi quyidagi tahrirda bayon etilsin:\n“Budjetga mablagʻlarni undirish, davlat organining yoki uning mansabdor shaxsining qonunga xilof qarori, harakati yoxud harakatsizligi tufayli yetkazilgan zararning oʻrnini qoplash yuzasidan ijro varaqasi qarzdor turgan joydagi davlat ijrochisiga sud hujjati qonuniy kuchga kirganidan keyin besh kun ichida yuboriladi”.\n7. Oʻzbekiston Respublikasining 2019-yil 2-dekabrda qabul qilingan “Yer uchastkalarini kompensatsiya evaziga jamoat ehtiyojlari uchun olib qoʻyish tartib-taomillari toʻgʻrisida”gi OʻRQ-781-sonli Qonuni (Oʻzbekiston Respublikasi Oliy Majlisi palatalarining Axborotnomasi, 2022-yil, № 6, 576-modda; 2024-yil, № 8, 830-modda, № 10, 1072-modda) 7-moddasining ikkinchi qismiga quyidagi oʻzgartirishlar kiritilsin:\nikkinchi va uchinchi xatboshilar quyidagi mazmundagi ikkinchi, uchinchi va toʻrtinchi xatboshilar bilan almashtirilsin:\n“tegishincha Qoraqalpogʻiston Respublikasi respublika budjetining, viloyatlar viloyat budjetlarining va Toshkent shahri shahar budjetining zaxira jamgʻarmalari mablagʻlarining oʻn besh foizidan kam boʻlmagan miqdordagi mablagʻlari;"
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4674902_0121_121¹_2",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "121¹-modda",
+     "retrieval_score": 0.615,
+     "fusion_score": 0.01584,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bunda soliq toʻlovchining debitorlik qarzi aniqlangan kundan eʼtiboran uch ish kunidan kechiktirmay bu haqda soliq toʻlovchining oʻziga va debitoriga soliq toʻlovchining shaxsiy kabineti orqali bildirish xati yuboriladi.\nSoliq toʻlovchi va uning debitori soliq organining bildirish xatini ushbu bildirish xati olingan kundan eʼtiboran oʻn ish kunidan kechiktirmay tasdiqlashi yoki asoslangan holda rad etishi lozim. Bildirish xati javobsiz qoldirilgan taqdirda, debitorlik (kreditorlik) qarzi tan olingan deb hisoblanadi.\nSoliq organining ushbu moddaga muvofiq taqdim etilgan inkasso topshiriqnomasining ijrosini banklar tomonidan taʼminlash yoki soliq organi tomonidan undirish, ijrosiz chaqirib olish ushbu Kodeksning 121-moddasida belgilangan tartibda amalga oshiriladi.\nDebitorlik qarzi soliq toʻlovchiga toʻlab berilganligi haqida asoslovchi hujjatlar taqdim etilgan taqdirda yoki sud qarori asosida inkasso topshiriqnomasi soliq organi tomonidan uch ish kunidan kechiktirmay ijrosiz qaytarib olinadi.\nSoliq toʻlovchi bilan uning debitori oʻrtasidagi oʻzaro hisob-kitoblarning solishtirma dalolatnomasida quyidagi maʼlumotlar koʻrsatilgan boʻlishi kerak:\nsoliq toʻlovchi va uning debitorining nomi, ularning identifikatsiya raqami;\nsoliq toʻlovchi va uning debitori soliq hisobida turgan joydagi soliq organining nomi;\nsoliq toʻlovchi va uning debitorining bankdagi hisobvaraqlari rekvizitlari;\ndebitorning soliq toʻlovchi oldidagi qarz summasi;\nsoliq toʻlovchi va uning debitorining elektron hujjat shaklida tasdiqlangan imzolari;\nsoliq toʻlovchi va uning debitori oʻrtasida oʻzaro hisob-kitoblarning solishtirma dalolatnomasi tuzilgan sana.\nSoliq toʻlovchi bilan uning debitori oʻrtasidagi oʻzaro hisob-kitoblarning solishtirma dalolatnomasi elektron hujjat shaklida tuziladi. Oʻzbekiston Respublikasi Soliq qoʻmitasi soliq toʻlovchilarga oʻzaro hisob-kitoblarning solishtirma dalolatnomasini elektron hujjat shaklida taqdim etish, tasdiqlash (qisman tasdiqlash) yoki rad etish imkoniyatini yaratadi.\nQuyidagi hollarda soliq qarzini undirish soliq toʻlovchining debitorlik qarziga qaratilmaydi, agar:\ndebitorlik qarz summasi asoslangan holda rad etilgan boʻlsa;\ndaʼvo muddati oʻtgan boʻlsa;\ndebitordan undirilishi lozim boʻlgan qarz summasi boʻyicha sud hujjati majburiy ijro organining ish yurituvida boʻlsa yoki uni ijroga taqdim etish muddati oʻtgan boʻlsa yoxud ushbu sud hujjati boʻyicha ijro harakatlari belgilangan tartibda toʻxtatib turilgan, tugatilgan yoki kechiktirilgan (boʻlib-boʻlib ijro etilgan) boʻlsa;\nu Oʻzbekiston Respublikasining soliq toʻlovchisi boʻlmasa;\nu jismoniy shaxs boʻlsa;\ndebitor tugatilish jarayonida boʻlsa yoki unga nisbatan toʻlovga qobiliyatsizlik toʻgʻrisida ish qoʻzgʻatilgan boʻlsa;"
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Qarzni undirish uchun sudga murojaat qilishning umumiy muddati necha yil?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6347,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 385,
+    "rerank_ms": null,
+    "generation_ms": 7424,
+    "total_ms": 7810
+   },
+   "usage": {
+    "input_tokens": 3701,
+    "output_tokens": 193
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q009",
+   "status": "ok",
+   "answer": "1) \"Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida\"gi Qonunning 23-moddasiga koʻra, ichki ishlar organining mansabdor shaxsi tazyiq va zoʻravonlik fakti yoki ularni sodir etish xavfi aniqlangan paytdan eʼtiboran 24 soat ichida himoya orderini oʻttiz kun muddatgacha beradi [1][4].\n\n2) Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Himoya orderi talablarini bajarmaslik oqibatlari toʻgʻrisida tazyiq oʻtkazgan shaxs ichki ishlar organi tomonidan xabardor qilinishi belgilangan [4], shuningdek, sudya ham himoya orderi talablarini hamda ularni bajarmaslik oqibatlarini tushuntirishi koʻrsatilgan [5]. Ushbu masalada javobgarlik turlari boʻyicha aniqroq maʼlumot olish uchun Maʼmuriy javobgarlik toʻgʻrisidagi kodeks yoki tegishli huquqiy manbalarga murojaat qilishingiz mumkin.",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.692,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4494709",
+     "doc_title": "Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-561",
+     "url": "https://lex.uz/uz/docs/-4494709",
+     "article_url": "https://lex.uz/uz/docs/-4494709#-6438485",
+     "article": "23-modda",
+     "article_title": "Himoya orderini berish",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "4494709_0023_23_2",
+     "quote": "… uchun masʼul boʻlgan ichki ishlar organining mansabdor shaxsi tazyiq va zoʻravonlik fakti yoki ularni sodir etish xavfi aniqlangan paytdan eʼtiboran 24 soat ichida himoya orderini oʻttiz kun muddatgacha beradi va ushbu order rasmiylashtirilgan paytdan eʼtiboran kuchga kiradi."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:4494709",
+     "doc_title": "Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-561",
+     "url": "https://lex.uz/uz/docs/-4494709",
+     "article_url": "https://lex.uz/uz/docs/-4494709#-6438485",
+     "article": "23-modda",
+     "article_title": "Himoya orderini berish",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "4494709_0023_23_1",
+     "quote": "Tegishli hududda tazyiq va zoʻravonlikning yakka tartibdagi profilaktikasini amalga oshirish uchun masʼul boʻlgan ichki ishlar organining mansabdor shaxsi tazyiq va zoʻravonlik fakti yoki ularni sodir etish xavfi aniqlangan paytdan eʼtiboran 24 soat ichida himoya orderini oʻttiz kun muddatgacha beradi va ushbu order rasmiylashtirilgan paytdan eʼtiboran kuchga kiradi."
+    },
+    {
+     "ref": 5,
+     "doc_id": "lex:4494709",
+     "doc_title": "Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-561",
+     "url": "https://lex.uz/uz/docs/-4494709",
+     "article_url": "https://lex.uz/uz/docs/-4494709#-6438561",
+     "article": "23¹-modda",
+     "article_title": "Himoya orderining amal qilish muddatini uzaytirish",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "4494709_0024_23¹_2",
+     "quote": "Sudya tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxsga qaror ustidan shikoyat qilish tartibi va muddatini, shuningdek himoya orderi talablarini hamda ularni bajarmaslik oqibatlarini tushuntiradi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4494709_0023_23_2",
+     "doc_id": "lex:4494709",
+     "doc_title": "Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida",
+     "article": "23-modda",
+     "retrieval_score": 0.6915,
+     "fusion_score": 0.03202,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "… uchun masʼul boʻlgan ichki ishlar organining mansabdor shaxsi tazyiq va zoʻravonlik fakti yoki ularni sodir etish xavfi aniqlangan paytdan eʼtiboran 24 soat ichida himoya orderini oʻttiz kun muddatgacha beradi va ushbu order rasmiylashtirilgan paytdan eʼtiboran kuchga kiradi.\nAgar tazyiq va zoʻravonlikdan jabrlanuvchi hamda tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxs bir joyda ishlasa yoki oʻqisa, tegishli hududda tazyiq va zoʻravonlikning yakka tartibdagi profilaktikasini amalga oshiruvchi ichki ishlar organining mansabdor shaxsi tomonidan jabrlanuvchiga himoya orderi berilganidan keyin bir ish kuni ichida tazyiq va zoʻravonlikdan jabrlanuvchining ish yoki oʻqish joyiga, agar tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxs tashkilot rahbari boʻlsa, yuqori turuvchi organga, jabrlanuvchi va tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxs oʻrtasidagi bevosita aloqani taqiqlash toʻgʻrisida taqdimnoma yuboriladi.\nTazyiq va zoʻravonlikdan jabrlanuvchi ishlayotgan yoki taʼlim olayotgan tashkilot rahbari taqdimnomani olganidan keyin, uch ish kuni ichida jabrlanuvchi hamda tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxs oʻrtasidagi bevosita aloqani bartaraf etishga qaratilgan harakatlarni amalga oshiradi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4494709_0024_23¹_1",
+     "doc_id": "lex:4494709",
+     "doc_title": "Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida",
+     "article": "23¹-modda",
+     "retrieval_score": 0.6885,
+     "fusion_score": 0.03202,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tazyiq va zoʻravonlik yoki ularni sodir etish xavfi bartaraf etilmagan taqdirda, tegishli hududda tazyiq va zoʻravonlikning yakka tartibdagi profilaktikasini amalga oshirish uchun masʼul boʻlgan ichki ishlar organining mansabdor shaxsi tomonidan tazyiq va zoʻravonlikdan jabrlanuvchining arizasiga koʻra, bir ish kuni ichida himoya orderining amal qilish muddatini uzaytirish boʻyicha materiallar tayyorlanadi hamda himoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi iltimosnoma rasmiylashtirilgan holda jabrlanuvchining yashash joyidagi jinoyat ishlari boʻyicha tuman (shahar) sudiga yuboriladi.\nHimoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi iltimosnoma materiallar kelib tushgan paytdan eʼtiboran yigirma toʻrt soat ichida yopiq sud majlisida jabrlanuvchi hamda tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxs hozirligida koʻrib chiqiladi.\nIltimosnomani sudda koʻrishda advokat ishtirok etishi mumkin.\nJabrlanuvchining hamda tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxsning sud majlisiga kelishi ichki ishlar organi xodimi kuzatuvi ostida amalga oshiriladi.\nTazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxsning sud majlisida uzrsiz sabablarga koʻra hozir boʻlmaganligi ishni koʻrib chiqishga monelik qilmaydi. Agar sud mazkur shaxsning sudda hozir boʻlishini shart deb topsa, sud uni majburan olib kelish toʻgʻrisida ajrim chiqarishi mumkin.\nSudya ish materiallari bilan tanishib chiqqanidan keyin himoya orderining amal qilish muddatini uzaytirish toʻgʻrisida yoki himoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi iltimosnomani qanoatlantirishni rad etish haqida qaror chiqaradi.\nHimoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi qarorda quyidagilar koʻrsatiladi:\nhimoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi qaror qabul qilingan vaqt va joy haqidagi maʼlumotlar, qarorni qabul qilgan sudning nomi, sudyaning, taraflarning, ishda ishtirok etuvchi boshqa shaxslarning familiyasi, ismi va otasining ismi;\ntazyiq va zoʻravonlikdan jabrlanuvchining hamda tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan shaxsning familiyasi, ismi va otasining ismi, tugʻilgan sanasi va joyi, mashgʻulotining turi hamda yashash joyi;\nhimoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi qarorni qabul qilish uchun asos boʻlib xizmat qilgan holatlar;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4494709_0023_23_3",
+     "doc_id": "lex:4494709",
+     "doc_title": "Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida",
+     "article": "23-modda",
+     "retrieval_score": 0.6915,
+     "fusion_score": 0.032,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… yoki taʼlim olayotgan tashkilot rahbari taqdimnomani olganidan keyin, uch ish kuni ichida jabrlanuvchi hamda tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxs oʻrtasidagi bevosita aloqani bartaraf etishga qaratilgan harakatlarni amalga oshiradi.\nAgar xavf hali bartaraf etilmagan boʻlsa, himoya orderining amal qilish muddati tazyiq va zoʻravonlikdan jabrlanuvchining arizasiga koʻra koʻpi bilan bir yilgacha muddatga jinoyat ishlari boʻyicha sud tomonidan uzaytirilishi mumkin.\nHimoya orderini berish yoki himoya orderini berishni yoxud uzaytirishni rad etish ustidan sudga shikoyat qilinishi mumkin.\nHimoya orderi talablarining ijrosi ustidan nazorat ichki ishlar organi tomonidan amalga oshiriladi.\nHimoya orderining shakli va uni berish tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan amalga oshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4494709_0023_23_1",
+     "doc_id": "lex:4494709",
+     "doc_title": "Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida",
+     "article": "23-modda",
+     "retrieval_score": 0.6882,
+     "fusion_score": 0.032,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Himoya orderi tazyiq va zoʻravonlikdan jabrlanuvchiga beriladi. Tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxsga himoya orderining nusxasi beriladi.\nHimoya orderini bergan ichki ishlar organining mansabdor shaxsi tazyiq oʻtkazgan va zoʻravonlik sodir etgan shaxsni himoya orderining shartlari hamda uni bajarmaslik oqibatlari va zoʻravonlik xulq-atvorini oʻzgartirish boʻyicha tuzatish dasturlaridan oʻtish zarurligi toʻgʻrisida xabardor qiladi.\nShaxs himoya orderini olish toʻgʻrisidagi tegishli hujjatni imzolashni rad etgan taqdirda, himoya orderini topshirayotgan ichki ishlar organining mansabdor shaxsi tomonidan xolislar ishtirokida dalolatnoma tuziladi.\nTegishli hududda tazyiq va zoʻravonlikning yakka tartibdagi profilaktikasini amalga oshirish uchun masʼul boʻlgan ichki ishlar organining mansabdor shaxsi tazyiq va zoʻravonlik fakti yoki ularni sodir etish xavfi aniqlangan paytdan eʼtiboran 24 soat ichida himoya orderini oʻttiz kun muddatgacha beradi va ushbu order rasmiylashtirilgan paytdan eʼtiboran kuchga kiradi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4494709_0024_23¹_2",
+     "doc_id": "lex:4494709",
+     "doc_title": "Xotin-qizlarni tazyiq va zoʻravonlikdan himoya qilish toʻgʻrisida",
+     "article": "23¹-modda",
+     "retrieval_score": 0.6796,
+     "fusion_score": 0.03077,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "himoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi qarorni qabul qilish uchun asos boʻlib xizmat qilgan holatlar;\ntazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxsga nisbatan qoʻllanilgan, ushbu Qonunning 26-moddasida nazarda tutilgan cheklovlarning roʻyxati.\nSudning himoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi qarori oʻqib eshittirilgan paytdan eʼtiboran kuchga kiradi va ichki ishlar organlari tomonidan darhol ijro etiladi.\nSudya tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxsga qaror ustidan shikoyat qilish tartibi va muddatini, shuningdek himoya orderi talablarini hamda ularni bajarmaslik oqibatlarini tushuntiradi.\nQarorning koʻchirma nusxasi tazyiq va zoʻravonlikning yakka tartibdagi profilaktikasini amalga oshirish uchun masʼul boʻlgan ichki ishlar organining mansabdor shaxsiga, tazyiq va zoʻravonlikdan jabrlanuvchiga, shuningdek tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxsga darhol topshiriladi.\nAgar ular sud majlisiga kelmagan boʻlsa, qarorning koʻchirma nusxasi bir sutka ichida pochta orqali taraflarga yuboriladi.\nSudning himoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi yoki himoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi iltimosnomani qanoatlantirishni rad etish haqidagi qarori ustidan tazyiq va zoʻravonlikdan jabrlanuvchi, tazyiq oʻtkazgan va (yoki) zoʻravonlik sodir etgan yoxud ularni sodir etishga moyil boʻlgan shaxs, agar ishda ishtirok etgan boʻlsa, ularning advokati, qonuniy vakili tomonidan 72 soat ichida apellyatsiya tartibida shikoyat qilinishi mumkin.\nHimoya orderining amal qilish muddatini uzaytirish toʻgʻrisidagi qaror ustidan shikoyat qilinishi uning ijro etilishini toʻxtatib turmaydi.\nHimoya orderi talablarining bajarilishi ustidan nazorat ichki ishlar organi tomonidan amalga oshiriladi."
+    },
+    {
+     "rank": 6,
+     "chunk_id": "111453_0243_197_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "197-modda",
+     "retrieval_score": 0.5669,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yer, yer osti boyliklaridan foydalanish shartlarini yoki ularni muhofaza qilish talablarini buzish ogʻir oqibatlarga sabab boʻlsa, —\nbazaviy hisoblash miqdorining ikki yuz baravaridan uch yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatdan toʻrt yuz sakson soatgacha majburiy jamoat ishlari yoki ikki yildan uch yilgacha axloq tuzatish ishlari yoxud uch yildan besh yilgacha ozodlikni cheklash yoki uch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 7,
+     "chunk_id": "111453_0289_229⁴_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "229⁴-modda",
+     "retrieval_score": 0.5458,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yer berish tartibini buzish, shunday harakat uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining bir yuz ellik baravaridan uch yuz baravarigacha miqdorda jarima yoki ikki yilgacha axloq tuzatish ishlari yoxud muayyan huquqdan mahrum qilib, bir yildan besh yilgacha ozodlikni cheklash yoki besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakat:\na) takroran sodir etilgan boʻlsa;\nb) sugʻoriladigan yerlarning qishloq xoʻjaligi oborotidan chiqishiga sabab boʻlsa;\nv) bir guruh shaxslar tomonidan oldindan til biriktirib sodir etilgan boʻlsa;\ng) davlat mulki boʻlgan hamda aholining madaniy-maishiy ehtiyojlarini qondirish va dam olishi uchun foydalaniladigan yerning yoki uning bir qismining begonalashtirilishiga, uning hududi qisqartirilishiga sabab boʻlsa, —\nbazaviy hisoblash miqdorining uch yuz baravaridan olti yuz baravarigacha miqdorda jarima yoki ikki yildan uch yilgacha axloq tuzatish ishlari yoxud muayyan huquqdan mahrum qilib, besh yildan yetti yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 8,
+     "chunk_id": "111453_0152_136_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "136-modda",
+     "retrieval_score": 0.5416,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ayolni erga tegishga yoki nikohda yashashni davom ettirishga majbur qilish yoxud ayolning erkiga xilof ravishda u bilan nikohda boʻlish uchun oʻgʻrilash, shuningdek, ayolning erga tegishiga toʻsqinlik qilish —\nbazaviy hisoblash miqdorining yigirma besh baravarigacha miqdorda jarima yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoki uch yilgacha axloq tuzatish ishlari yoxud bir yildan uch yilgacha ozodlikni cheklash yoki uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 9,
+     "chunk_id": "111453_0244_197¹_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "197¹-modda",
+     "retrieval_score": 0.5384,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sugʻoriladigan yerlarni oʻzboshimchalik bilan egallab olishga yoʻl qoʻymaslik boʻyicha, shu jumladan yer uchastkasi oʻzboshimchalik bilan egallab olinganligi fakti toʻgʻrisida vakolatli organlarni xabardor etish boʻyicha yer egasi, yerdan foydalanuvchi yoki ijarachi tomonidan choralar koʻrmaslik, shunday qilmish uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ikki yuz baravaridan toʻrt yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoki ikki yilgacha axloq tuzatish ishlari yoxud bir yildan uch yilgacha ozodlikni cheklash yoki uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha qilmish:\na) takroran;\nb) bir guruh shaxslar tomonidan oldindan til biriktirib sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining toʻrt yuz baravaridan olti yuz baravarigacha miqdorda jarima yoki ikki yildan uch yilgacha axloq tuzatish ishlari yoxud uch yildan besh yilgacha ozodlikni cheklash yoki uch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nBirinchi marta jinoyat sodir etgan shaxs, agar u oʻzboshimchalik bilan egallangan yer uchastkasining qaytarilishini taʼminlasa hamda oʻzboshimchalik bilan egallab olishning oqibatlarini bartaraf qilsa, javobgarlikdan ozod etiladi."
+    },
+    {
+     "rank": 10,
+     "chunk_id": "111453_0245_198_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "198-modda",
+     "retrieval_score": 0.5377,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Olovga ehtiyotsizlik bilan munosabatda boʻlish natijasida ekinzorlarni, oʻrmonlarni, daraxtlarni yoki boshqa oʻsimliklarni shikastlantirish yoxud nobud qilish koʻp miqdorda zarar yetkazilishiga yoki boshqacha ogʻir oqibatlarga sabab boʻlsa, —\nbazaviy hisoblash miqdorining yuz baravaridan ikki yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoxud uch yilgacha axloq tuzatish ishlari bilan jazolanadi.\nOʻrmonlarni, daraxtlarni yoki boshqa oʻsimliklarni qonunga xilof ravishda kesish koʻp miqdorda zarar yetkazilishiga sabab boʻlsa, —\nbazaviy hisoblash miqdorining besh yuz baravaridan olti yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatdan toʻrt yuz sakson soatgacha majburiy jamoat ishlari yoxud ikki yildan uch yilgacha axloq tuzatish ishlari yoki uch yildan besh yilgacha ozodlikni cheklash yoxud uch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nEkinzorlarni, oʻrmonlarni, daraxtlarni yoki boshqa oʻsimliklarni qasddan shikastlantirish, payhon qilish, nobud qilish koʻp miqdorda zarar yetkazilishiga sabab boʻlsa, —\nbazaviy hisoblash miqdorining besh yuz baravaridan olti yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatdan toʻrt yuz sakson soatgacha majburiy jamoat ishlari yoki ikki yildan uch yilgacha axloq tuzatish ishlari yoxud uch yildan besh yilgacha ozodlikni cheklash yoki uch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nYetkazilgan moddiy zararning oʻrni uch karra miqdorida qoplangan taqdirda, ozodlikni cheklash va ozodlikdan mahrum qilish tariqasidagi jazo qoʻllanilmaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Erim meni tez-tez urib, qoʻrqitib turadi. Ichki ishlar boʻlimi menga himoya orderini qancha muddatga beradi va erim uning shartlarini buzsa, unga qanday jazo bor?",
+    "sub_queries": [
+     "Erim meni tez-tez urib, qo'rqitib turadi. Ichki ishlar bo'limi menga himoya orderini qancha muddatga beradi?",
+     "Erim uning shartlarini buzsa, unga qanday jazo bor?"
+    ],
+    "retrieved_total": 10,
+    "best_cosine": 0.6915,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1369,
+    "rerank_ms": null,
+    "generation_ms": 74445,
+    "total_ms": 75816
+   },
+   "usage": {
+    "input_tokens": 6609,
+    "output_tokens": 344
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q010",
+   "status": "no_answer",
+   "answer": "Базадаги ҳужжатларда бу саволга аниқ жавоб топилмади. Ушбу масала бўйича Ўзбекистон Республикасининг Маъмурий жавобгарлик тўғрисидаги кодексини кўриб чиқиш тавсия этилади.",
+   "answer_language": "uz-Cyrl",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111453_0138_127¹_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "127¹-modda",
+     "retrieval_score": 0.6174,
+     "fusion_score": 0.01668,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Aeroportlarda, vokzallarda, xiyobonlarda, istirohat bogʻlarida, bozorlarda va savdo majmualari hududlarida, shuningdek ularga tutash hududlarda, avtomototransport vositalarini vaqtincha saqlash joylarida, koʻchalarda, stadionlarda, bekatlarda, yoʻllarning qatnov qismida, moddiy madaniy meros obyektlari joylashgan hududlarda, jamoat transportining barcha turlarida va boshqa jamoat joylarida pul, oziq-ovqat mahsulotlari va boshqa moddiy qimmatliklar berishni faol tarzda soʻrab, tilanchilik bilan shugʻullanish, shunday qilmish uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nikki yuz qirq soatgacha majburiy jamoat ishlari yoki ikki yilgacha axloq tuzatish ishlari yoxud bir yilgacha ozodlikni cheklash yoki bir yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nVoyaga yetmagan shaxslarni, keksa yoshdagi shaxslarni, ruhiy holati buzilgan, nogironligi boʻlgan shaxslarni va boshqa shaxslarni tilanchilik qilishga jalb etish, shuningdek shaxslarga alkogolli ichimliklarni yoxud giyohvandlik moddalari yoki psixotrop moddalar boʻlmagan, lekin shaxsning aql-idrokiga taʼsir koʻrsatuvchi moddalarni majburan isteʼmol qildirgan holda ularni tilanchilik qilishga jalb etish, shunday harakatlar uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining yuz baravaridan ikki yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoxud ikki yilgacha axloq tuzatish ishlari yoki bir yildan uch yilgacha ozodlikni cheklash yoki uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nUshbu moddaning ikkinchi qismida nazarda tutilgan harakatlar:\na) takroran yoki xavfli retsidivist tomonidan;\nb) uyushgan guruh tomonidan yoki uning manfaatlarini koʻzlab;\nv) boshqa shaxsni giyohvandlik vositalarini, ularning analoglarini yoki psixotrop moddalarni isteʼmol qilishga majburlagan holda sodir etilgan boʻlsa, —\nuch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111453_0192_164_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "164-modda",
+     "retrieval_score": 0.6184,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bosqinchilik, yaʼni oʻzganing mol-mulkini talon-toroj qilish maqsadida hujum qilib, hayot yoki sogʻliq uchun xavfli boʻlgan zoʻrlik ishlatib yoxud shunday zoʻrlik ishlatish bilan qoʻrqitib sodir etilgan boʻlsa, —\nbesh yildan sakkiz yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nBosqinchilik:\na) qurol yoki qurol sifatida foydalanish mumkin boʻlgan boshqa narsalarni ishlatib;\nb) bir guruh shaxslar tomonidan oldindan til biriktirib;\nv) ancha miqdordagi mulkni talon-toroj qilish bilan bogʻliq holda sodir etilgan boʻlsa, —\nsakkiz yildan oʻn yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nBosqinchilik:\na) takroran, xavfli retsidivist yoki ilgari ushbu Kodeksning 242-moddasida nazarda tutilgan jinoyatni sodir etgan shaxs tomonidan;\nb) koʻp miqdorda;\nv) uy-joyga, omborxona yoki boshqa binolarga gʻayriqonuniy ravishda kirgan holda;\ng) badanga ogʻir shikast yetkazgan holda sodir etilgan boʻlsa, —\noʻn yildan oʻn besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nBosqinchilik:\na) juda koʻp miqdorda;\nb) oʻta xavfli retsidivist tomonidan;\nv) uyushgan guruh tomonidan yoki uning manfaatlarini koʻzlab sodir etilgan boʻlsa, —\noʻn besh yildan yigirma yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111453_0270_217_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "217-modda",
+     "retrieval_score": 0.6097,
+     "fusion_score": 0.01619,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yigʻilishlar, mitinglar, koʻcha yurishlari yoki namoyishlar uyushtirish yoxud oʻtkazish tartibini ularning tashkilotchisi tomonidan buzish shunday harakatlari uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ikki yuz baravaridan uch yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoki bir yildan uch yilgacha ozodlikni cheklash yoxud uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nDiniy yigʻilishlar, koʻcha yurishlari va boshqa diniy marosimlar oʻtkazish qoidalarini buzish, shunday harakatlar uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa,—\nbazaviy hisoblash miqdorining ikki yuz baravaridan uch yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoki bir yildan uch yilgacha ozodlikni cheklash yoxud uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111453_0119_112_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "112-modda",
+     "retrieval_score": 0.6156,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻldirish yoki zoʻrlik ishlatish bilan qoʻrqitish, agar bu harakat amalga oshirilishidan xavfsirash uchun yetarli asoslar mavjud boʻlsa, —\nbazaviy hisoblash miqdorining yigirma besh baravarigacha miqdorda jarima yoki ikki yuz qirq soatgacha majburiy jamoat ishlari yoxud bir yilgacha axloq tuzatish ishlari bilan jazolanadi.\nOʻsha harakatlar:\na) oʻta xavfli retsidivist tomonidan;\nb) uyushgan guruh aʼzosi tomonidan yoki shu guruh manfaatlarini koʻzlab sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining yigirma besh baravaridan ellik baravarigacha miqdorda jarima yoki ikki yuz qirq soatdan uch yuz soatgacha majburiy jamoat ishlari yoki bir yildan ikki yilgacha axloq tuzatish ishlari yoxud bir yilgacha ozodlikni cheklash yoki bir yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar oʻz xizmat yoki fuqarolik burchini bajarishi munosabati bilan shaxsga yoki uning yaqin qarindoshlariga nisbatan sodir etilgan boʻlsa, —\nuch yuz soatdan uch yuz oltmish soatgacha majburiy jamoat ishlari yoki ikki yildan uch yilgacha axloq tuzatish ishlari yoxud bir yildan uch yilgacha ozodlikni cheklash yoki bir yildan uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111453_0350_268_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "268-modda",
+     "retrieval_score": 0.6101,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yoʻlovchi, piyoda, velosiped, ot-ulov transportining haydovchisi yoki yoʻl harakatining boshqa qatnashchilari tomonidan, ushbu Kodeksning 261-263, 265 yoki 266-moddalarida nazarda tutilgan shaxslardan tashqari, harakat xavfsizligi qoidalarini yoki barcha turdagi transport vositalaridan foydalanish qoidalarini buzish badanga oʻrtacha ogʻir yoki ogʻir shikast yetkazilishiga sabab boʻlsa, —\nbazaviy hisoblash miqdorining yigirma besh baravarigacha miqdorda jarima yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoki uch yilgacha axloq tuzatish ishlari yoxud bir yildan uch yilgacha ozodlikni cheklash yoki uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakat odam oʻlishiga sabab boʻlsa, —\nuch yildan besh yilgacha ozodlikni cheklash yoki uch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakat:\na) odamlar oʻlimiga;\nb) boshqa ogʻir oqibatlarga sabab boʻlsa, —\nbesh yildan sakkiz yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Koʻchada baqirib soʻkingan odamga qanday maʼmuriy jazo beriladi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6184,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 421,
+    "rerank_ms": null,
+    "generation_ms": 9907,
+    "total_ms": 10328
+   },
+   "usage": {
+    "input_tokens": 3593,
+    "output_tokens": 122
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 0.0
+}

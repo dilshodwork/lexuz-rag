@@ -1,0 +1,1192 @@
+{
+ "run_id": "spec-2026-11-19",
+ "batch_id": "spec-2026-11-19-b08",
+ "batch_index": 8,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-19T19:24:59+05:00",
+  "completed_at": "2026-11-19T19:25:07+05:00",
+  "total_ms": 7686
+ },
+ "summary": {
+  "total": 10,
+  "ok": 9,
+  "no_answer": 1,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q071",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Jinoyat kodeksining 37-moddasiga koʻra, zaruriy mudofaa holatida tajovuzchiga zarar yetkazish, agar mudofaa chegarasidan chetga chiqilmagan boʻlsa, jinoyat deb topilmaydi [2].\n\nBiroq, quyidagi holatlarga eʼtibor qaratish lozim:\n\n*   **Zaruriy mudofaa chegarasi:** Agar sizning harakatingiz tajovuzning xususiyati va xavflilik darajasiga butunlay muvofiq kelmasa, bu zaruriy mudofaa chegarasidan chetga chiqish deb baholanadi [2].\n*   **Javobgarlik:** Agar mudofaa chegarasidan chetga chiqish oqibatida ogʻir oqibatlar (masalan, qasddan odam oʻldirish) yuz bersa, bu Jinoyat kodeksining 100-moddasiga muvofiq jinoiy javobgarlikka sabab boʻlishi mumkin [3].\n*   **Huquq:** Zaruriy mudofaa huquqi shaxsga boshqa yoʻllar bilan (masalan, yordam soʻrab murojaat qilish) qutulish imkoniyati bor-yoʻqligidan qatʼi nazar tegishlidir [2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.569,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111453",
+     "article_url": "https://lex.uz/uz/docs/-111453#-184271",
+     "article": "37-modda",
+     "article_title": "Zaruriy mudofaa",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111453_0037_37_1",
+     "quote": "Zaruriy mudofaa holatida sodir etilgan, yaʼni mudofaalanuvchi yoxud boshqa kishining shaxsi yoki huquqlarini, jamiyat yoki davlat manfaatlarini qonunga xilof tajovuzlardan tajovuzchiga zarar yetkazgan holda himoya qilish chogʻida qilingan harakat, agar zaruriy mudofaa chegarasidan chetga chiqilmagan boʻlsa, jinoyat deb topilmaydi."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111453",
+     "article_url": "https://lex.uz/uz/docs/-111453#-233917",
+     "article": "100-modda",
+     "article_title": "Zaruriy mudofaa chegarasidan chetga chiqib, qasddan odam oʻldirish",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111453_0106_100_1",
+     "quote": "Zaruriy mudofaa chegarasidan chetga chiqib, qasddan odam oʻldirish —"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111453_0039_39_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "39-modda",
+     "retrieval_score": 0.5688,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ijtimoiy xavfli qilmish sodir etgan shaxsni hokimiyat organlariga topshirish maqsadida ushlash vaqtida unga zarar yetkazish, agar uni ushlash uchun zarur boʻlgan choralarning chegarasidan chetga chiqilmagan boʻlsa, jinoyat deb topilmaydi.\nUshlash vositalari va usullariga, qilmishning hamda uni sodir etgan shaxsning xavflilik darajasiga, shuningdek ushlash sharoitiga butunlay mos kelmaydigan, ushlash zarurati taqozo etmagan holda ushlanayotgan shaxsga qasddan zarar yetkazish ushlash choralari chegarasidan chetga chiqish deb topiladi.\nIjtimoiy xavfli qilmishni sodir etgan shaxsni ushlash vaqtida unga yetkazilgan zararning qonuniyligini baholashda, qilmishni sodir etgan shaxsning ushlanishdan qochish maqsadida qilgan harakatlari, ushlovchining kuchi va imkoniyatlari, ruhiy holati va ushlash bilan bogʻliq boʻlgan boshqa holatlar hisobga olinadi.\nMaxsus vakolatli shaxslar bilan bir qatorda jabrlanuvchi va boshqa fuqarolar ham ijtimoiy xavfli qilmishni sodir etgan shaxsni ushlash huquqiga egadirlar."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111453_0037_37_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "37-modda",
+     "retrieval_score": 0.5582,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Zaruriy mudofaa holatida sodir etilgan, yaʼni mudofaalanuvchi yoxud boshqa kishining shaxsi yoki huquqlarini, jamiyat yoki davlat manfaatlarini qonunga xilof tajovuzlardan tajovuzchiga zarar yetkazgan holda himoya qilish chogʻida qilingan harakat, agar zaruriy mudofaa chegarasidan chetga chiqilmagan boʻlsa, jinoyat deb topilmaydi.\nTajovuzning xususiyati va xavfliligi darajasiga butunlay muvofiq kelmaydigan mudofaa, zaruriy mudofaa chegarasidan chetga chiqish deb topiladi.\nBoshqa shaxslarga yoki hokimiyat organlariga yordam soʻrab murojaat qilish yoxud tajovuzdan oʻzga yoʻsinda qutulish imkoniyati bor-yoʻqligidan qatʼi nazar, zaruriy mudofaa huquqi shaxsga tegishlidir.\nZarar yetkazish maqsadida qasddan hujum qilish istagini qoʻzgʻatish zaruriy mudofaa deb topilmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111453_0106_100_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "100-modda",
+     "retrieval_score": 0.539,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Zaruriy mudofaa chegarasidan chetga chiqib, qasddan odam oʻldirish —\nuch yilgacha axloq tuzatish ishlari yoki bir yildan uch yilgacha ozodlikni cheklash yoxud uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4159913_0014_15_1",
+     "doc_id": "lex:4159913",
+     "doc_title": "Jabrlanuvchilarni, guvohlarni va jinoyat protsessining boshqa ishtirokchilarini himoya qilish toʻgʻrisida",
+     "article": "15-modda",
+     "retrieval_score": 0.5364,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Himoya qilinuvchi shaxs jinoyat protsessida ishtirok etishi munosabati bilan halok boʻlgan (vafot etgan) taqdirda, halok boʻlgan (vafot etgan) shaxsning oila aʼzolariga va uning qaramogʻida boʻlgan shaxslarga himoya qilishni taʼminlash toʻgʻrisida qaror qabul qiluvchi organning qaroriga koʻra Oʻzbekiston Respublikasi Davlat budjeti mablagʻlari hisobidan bir yoʻla beriladigan nafaqa toʻlanadi hamda boquvchisini yoʻqotganlik pensiyasi tayinlanadi.\nHimoya qilinuvchi shaxs jinoyat protsessida ishtirok etishi munosabati bilan unga nogironlikni keltirib chiqaruvchi tan jarohati yetkazilgan yoki uning sogʻligʻiga boshqacha ziyon yetkazilgan taqdirda, himoya qilishni taʼminlash toʻgʻrisida qaror qabul qiluvchi organning qaroriga koʻra Oʻzbekiston Respublikasi Davlat budjeti mablagʻlari hisobidan bir yoʻla beriladigan nafaqa toʻlanadi va nogironlik pensiyasi tayinlanadi.\nHimoya qilinuvchi shaxs jinoyat protsessida ishtirok etishi munosabati bilan unga nogironlikni keltirib chiqarmaydigan tan jarohati yetkazilgan yoki uning sogʻligʻiga boshqacha ziyon yetkazilgan taqdirda, himoya qilishni taʼminlash toʻgʻrisida qaror qabul qiluvchi organning qaroriga koʻra Oʻzbekiston Respublikasi Davlat budjeti mablagʻlari hisobidan bir yoʻla beriladigan nafaqa toʻlanadi.\nHimoya qilinuvchi shaxs jinoyat protsessida ishtirok etganligi munosabati bilan halok boʻlgan (vafot etgan) taqdirda, agar uning oila aʼzolari va uning qaramogʻida boʻlgan shaxslar turli bir yoʻla beriladigan nafaqalar olish huquqiga ega boʻlsa, bir yoʻla beriladigan nafaqalardan bittasi ularga oʻz tanloviga koʻra tayinlanadi.\nTan jarohati yetkazilgan yoki sogʻligʻiga boshqacha ziyon yetkazilgan taqdirda, bir vaqtning oʻzida turli bir yoʻla beriladigan nafaqalarni olish huquqiga ega boʻlgan himoya qilinuvchi shaxslarga oʻz tanloviga koʻra bir yoʻla beriladigan nafaqalardan bittasi tayinlanadi.\nHimoya qilinuvchi shaxsga jinoyat protsessida ishtirok etishi munosabati bilan yetkazilgan mulkiy zararning oʻrni Oʻzbekiston Respublikasi Davlat budjeti mablagʻlari va qonunchilikda taqiqlanmagan boshqa manbalar hisobidan qoplanib, keyinchalik ushbu mablagʻlar himoya qilinuvchi shaxsga mulkiy zarar yetkazilishida aybdor boʻlgan shaxsdan undirilishi lozim."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4159913_0003_4_1",
+     "doc_id": "lex:4159913",
+     "doc_title": "Jabrlanuvchilarni, guvohlarni va jinoyat protsessining boshqa ishtirokchilarini himoya qilish toʻgʻrisida",
+     "article": "4-modda",
+     "retrieval_score": 0.5343,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Himoya qilinuvchi shaxslar quyidagilardan iborat:\n1) jabrlanuvchi va uning qonuniy vakili;\n2) guvoh;\n3) jamoat ayblovchisi va jamoat himoyachisi;\n4) gumon qilinuvchi, ayblanuvchi, sudlanuvchi, ularning himoyachilari va qonuniy vakillari;\n5) mahkum, oqlangan shaxs, oʻziga nisbatan jinoyat ishi tugatilgan shaxs;\n6) fuqaroviy daʼvogar, fuqaroviy javobgar va ularning vakillari;\n7) ekspert, mutaxassis, tarjimon va xolis.\nUshbu moddaning birinchi qismida koʻrsatilgan shaxslarning oila aʼzolari va yaqin qarindoshlari ham himoya qilinuvchi shaxslar boʻlishi mumkin.\nHimoya qilish choralari jinoyat ishi qoʻzgʻatilguniga qadar arizachiga, jinoyat shohidiga yoki jinoyatning oldini olishga yoxud uni fosh etishga koʻmaklashuvchi shaxslarga nisbatan ham qoʻllanilishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Koʻchada menga hujum qilgan odamni oʻzimni himoya qilib urib yiqitsam, men ham jinoyatchi boʻlib qolamanmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5688,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1325,
+    "rerank_ms": null,
+    "generation_ms": 2441,
+    "total_ms": 3767
+   },
+   "usage": {
+    "input_tokens": 3105,
+    "output_tokens": 393
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q072",
+   "status": "ok",
+   "answer": "\"Истеъмолчиларнинг ҳуқуқларини ҳимоя қилиш тўғрисида\"ги Қонуннинг 14-моддасига кўра, сотувчи нуқсонли товарни айни шундай маркали (моделли, артикулли) товарга етти кунлик муддатда алмаштириб бериши шарт [1].\n\nАгар товар сифатини сотувчи томонидан қўшимча равишда текшириш зарур бўлса, алмаштириб бериш муддати истеъмолчи талаб қўйган пайтдан эътиборан йигирма кунни ташкил этади [1].\n\nШунингдек, қуйидаги ҳолатларни инобатга олиш лозим:\n* Агар айни шундай маркали (моделли, артикулли) товар сотувда бўлмаса, истеъмолчининг талаби даъво қилинган пайтдан эътиборан бир ой ичида қондирилиши керак [1].\n* Белгиланган муддатлар ўтказиб юборилган ҳар бир кун учун сотувчи истеъмолчига товар баҳосининг бир фоизи миқдорида неустойка (пеня) тўлаши шарт [1].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.619,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4704",
+     "doc_title": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "221-I",
+     "url": "https://lex.uz/uz/docs/-4704",
+     "article_url": "https://lex.uz/uz/docs/-4704#-5985",
+     "article": "14-modda",
+     "article_title": "Nuqsonli tovarni almashtirib berish tartibi",
+     "part": "1-qism",
+     "edition_date": "2026-02-02",
+     "doc_status": "amalda",
+     "chunk_id": "4704_0014_14_1",
+     "quote": "Isteʼmolchi tovarning ishlab chiqarilishiga, tuzilishiga, tarkibiga doir kamchiliklarni yoki boshqa nuqsonlarni aniqlagan taqdirda sotuvchi (ishlab chiqaruvchi) uni ayni shunday markali (modelli, artikulli) tovarga yetti kunlik muddatda, tovar sifatini sotuvchi (ishlab chiqaruvchi) tomonidan qoʻshimcha ravishda tekshirish zarur boʻlganida esa, isteʼmolchi talab qoʻygan paytdan eʼtiboran yigirma kun ichida almashtirib berishi shart."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4704_0014_14_1",
+     "doc_id": "lex:4704",
+     "doc_title": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida",
+     "article": "14-modda",
+     "retrieval_score": 0.6193,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Isteʼmolchi tovarning ishlab chiqarilishiga, tuzilishiga, tarkibiga doir kamchiliklarni yoki boshqa nuqsonlarni aniqlagan taqdirda sotuvchi (ishlab chiqaruvchi) uni ayni shunday markali (modelli, artikulli) tovarga yetti kunlik muddatda, tovar sifatini sotuvchi (ishlab chiqaruvchi) tomonidan qoʻshimcha ravishda tekshirish zarur boʻlganida esa, isteʼmolchi talab qoʻygan paytdan eʼtiboran yigirma kun ichida almashtirib berishi shart.\nAyni shunday markali (modelli, artikulli) tovar boʻlmagan taqdirda, isteʼmolchining almashtirib berish xususidagi talabi daʼvo qilingan paytdan eʼtiboran bir oy ichida qondirilishi kerak. Choʻl va olis joylarda, tovarlar vaqti-vaqti bilan olib boriladigan joylarda isteʼmolchining bunday talabi ushbu joylarga navbatdagi tovar yetkazib berish uchun ketadigan muddat ichida, lekin ikki oydan kechiktirmay qondirilishi lozim.\nAna shu muddatlarning oʻtkazib yuborilgan har bir kuni uchun sotuvchi (ishlab chiqaruvchi) isteʼmolchiga almashtirilgan tovarni berish bilan bir vaqtda tovar bahosining bir foizi miqdorida neustoyka (penya) toʻlaydi.\nIsteʼmolchining roziligi bilan sotuvchi nuqsonli tovarni boshqa markali (modelli, artikulli) shunday tovarga almashtirib berib, xarid narxini tegishincha qayta hisob-kitob qilishi shart."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4704_0015_15_1",
+     "doc_id": "lex:4704",
+     "doc_title": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida",
+     "article": "15-modda",
+     "retrieval_score": 0.5957,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tovarda kafolat muddatida topilgan nuqsonlarni sotuvchi isteʼmolchi tegishli talab qoʻygan paytdan eʼtiboran yigirma kun ichida, ishlab chiqaruvchi esa, oʻn kun ichida bepul bartaraf etishi lozim.\nIsteʼmolchi kafolat muddati tugaganidan keyin tovarning nuqsonlarini bepul bartaraf etish toʻgʻrisida ishlab chiqaruvchiga talab qoʻyishga haqli. Bunday talab, basharti tovarda ishlab chiqaruvchining aybi bilan yoʻl qoʻyilgan jiddiy nuqsonlar aniqlangan boʻlsa, belgilangan xizmat muddati mobaynida, agar xizmat muddati belgilanmagan boʻlsa, oʻn yil mobaynida qoʻyilishi mumkin.\nUzoq muddat davomida foydalaniladigan tovarni taʼmirlashga ketadigan vaqtda foydalanib turish uchun isteʼmolchining talabiga binoan nuqsonli tovar qaytarib berilganidan keyin uch kun ichida unga ayni shunday markali (modelli, artikulli) tovar berib turiladi (sotuvchining hisobidan uning oʻzi yoki vakili eltib beradi). Buning uchun ishlab chiqaruvchi sotuvchi bilan birgalikda shartnoma asosida tovarlarning almashuv fondini nazarda tutishlari shart. Mazkur talablar tatbiq etilmaydigan uzoq muddat davomida foydalaniladigan tovarlar roʻyxatini Oʻzbekiston Respublikasi Hukumati belgilaydi.\nTovardagi nuqsonlarni bartaraf etish xususida talab qoʻyilgan taqdirda, undan foydalanishning kafolat muddati isteʼmolchining tovardan foydalana olmagan davrga teng muddatga uzaytiriladi. Mazkur muddat isteʼmolchi nuqsonlarni bartaraf etish talabi bilan murojaat etgan kundan eʼtiboran hisoblana boshlaydi.\nSotuvchi (ishlab chiqaruvchi) isteʼmolchining taʼmirlashga ketadigan vaqtda foydalanish uchun shunday tovarni berib turish haqidagi talabini bajarish kechiktirilgan har bir kun uchun, shuningdek, nuqsonlarni bartaraf etishning shartnomadan kelib chiqadigan muddatlaridan ortiq kechiktirilgan har bir kun uchun tovar narxining bir foizi miqdorida isteʼmolchiga neustoyka (penya) toʻlaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6213382_0025_26_1",
+     "doc_id": "lex:6213382",
+     "doc_title": "Elektron tijorat toʻgʻrisida",
+     "article": "26-modda",
+     "retrieval_score": 0.5454,
+     "fusion_score": 0.01592,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shartnoma bekor qilinganda sotuvchi xaridorga tovarni qaytarib berish amalga oshiriladigan joy toʻgʻrisida xabar berishi kerak.\nTovarni namuna va (yoki) uning tavsifi boʻyicha realizatsiya qilish chogʻida sotuvchi namunaga va (yoki) tavsifga muvofiq boʻlgan tovarni taqdim etishi, shuningdek xaridorga tovarni qabul qilib olishi chogʻida uning butligini, yaroqliligini va isteʼmol xususiyatlari toʻliq saqlanganligini tekshirish imkoniyatini berishi shart.\nTovar namunaga va (yoki) tavsifga muvofiq boʻlmagan hollarda, xaridor uni almashtirishni yoki pul summasini qaytarishni talab qilish huquqiga ega.\nXaridorning aybisiz yetkazilgan shikastlantirishlar, shuningdek tovarni koʻzdan kechirish va uni tekshirib koʻrish maqsadida oʻrovini ochish sababli tovar qiymatining pasayishi xaridorni shartnomani bekor qilish huquqidan mahrum etmaydi.\nAgar tovardan foydalanilmagan, u shikastlanmagan, oʻrovi bilan qaytarilgan boʻlsa, uning isteʼmol xususiyatlari saqlangan va mazkur tovar shu sotuvchidan sotib olganligini tasdiqlovchi asoslar mavjud boʻlsa, xaridorning tovarni almashtirib berish yoxud qaytarib olish haqidagi talabi qanoatlantirilishi lozim.\nXaridor tovarning ishlab chiqarilishiga, tuzilishiga, tarkibiga doir nuqsonlarni yoki boshqa nuqsonlarni aniqlagan taqdirda, sotuvchi uni ayni shunday markali (modelli, artikulli) tovarga yetti kunlik muddatda, tovar sifatini sotuvchi tomonidan qoʻshimcha ravishda tekshirish zarur boʻlganda esa xaridor talab qoʻygan paytdan eʼtiboran yigirma kun ichida almashtirib berishi shart.\nAyni shunday markali (modelli, artikulli) tovar mavjud boʻlmagan taqdirda, xaridorning almashtirib berish toʻgʻrisidagi talabi eʼtiroz bildirilgan paytdan eʼtiboran bir oy ichida qanoatlantirilishi lozim.\nAgar ayni shunday markali (modelli, artikulli) tovar mavjud boʻlmasa, shartnoma bekor qilinib, koʻrilgan zararning oʻrni sotuvchi tomonidan xaridorga eʼtiroz bildirilgan paytdan eʼtiboran bir oy ichida qoplanishi lozim.\nXaridorning roziligiga koʻra, sotuvchi nuqsonli tovarni boshqa markali (modelli, artikulli) shunday tovarga almashtirib berib, xarid narxini tegishincha qayta hisob-kitob qilishi shart."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4704_0019_19_2",
+     "doc_id": "lex:4704",
+     "doc_title": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.5688,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "import yoki boshqa koʻchmas mulkda nuqsonlar aniqlangan kundan eʼtiboran ikki yil davomida roʻyobga chiqarishi mumkin.\nIsh bajarish (xizmat koʻrsatish) jarayonida aniqlangan nuqsonlarni bartaraf etish muddatlari shartnomada belgilab qoʻyiladi. Bajarilgan ish (koʻrsatilgan xizmat)dagi nuqsonlar, agar shartnomada birmuncha qisqaroq muddat belgilanmagan boʻlsa, isteʼmolchi talab qilgan kundan eʼtiboran yigirma kun ichida ijrochi tomonidan bartaraf etilishi kerak. Nuqsonlar belgilangan muddatda bartaraf etilmagan, shuningdek, ish bajarishni (xizmat koʻrsatishni) boshlash va tugallash kechiktirilgan taqdirda, ijrochi isteʼmolchi har bir kechiktirilgan kun, soat (agar muddat soatlarda belgilangan boʻlsa) uchun ish (xizmat) qiymatining yoki buyurtma qiymatini (agar uning qiymati alohida belgilanmagan boʻlsa) bir foizi miqdorida neustoyka (penya) toʻlaydi.\nIsteʼmolchi undirib olgan neustoyka (penya) summasi ish bajarish (xizmat koʻrsatish)ning alohida turi bahosidan yoki buyurtmaning umumiy bahosidan ortiq boʻlishi mumkin emas.\nBajarilgan ishdagi nuqsonlarni bartaraf etish kechiktirilganligi uchun ijrochi toʻlagan neustoyka (penya) qoplanishi lozim boʻlgan zarar hisobiga kirmaydi.\nIjrochining majburiyatni umuman yoki lozim darajada bajarilmaganlik uchun neustoyka (penya) toʻlashi va zararni qoplashi uni majburiyatni asl holida bajarishdan ozod etmaydi.\nIsteʼmolchidan qabul qilib olingan ashyo (material) yoʻqolgan, ishdan chiqqan, unga putur yetgan taqdirda yoki isteʼmolchining materialidan foydalanib bajarilgan ishda jiddiy nuqsonlar boʻlsa yo u buzib bajarilgan taqdirda ijrochi isteʼmolchiga aynan oʻxshash sifatli ashyoni qaytarishi (oʻzining aynan oʻxshash sifatli materialidan ish bajarishi yoki xizmat koʻrsatishi), buning imkoniyati boʻlmagan taqdirda esa, ashyoning (materialning) talab qoʻyilgan paytdagi qiymatini ikki baravar qilib toʻlashi shart.\nIjrochi tomonidan ishlar bajarish va xizmatlar koʻrsatish uchun qabul qilib olinayotgan ashyo (material) qiymati shartnoma tuzish paytida tomonlarning kelishuviga muvofiq belgilanadi.\nIshda (xizmatda) jiddiy nuqsonlar mavjud boʻlganida yoki shartnoma talablari jiddiy buzilganida, shuningdek, ashyo (material) yoʻqolgan, ishdan chiqqan, unga putur yetgan taqdirda isteʼmolchi bilan hisob-kitob ishning (xizmatning) yoki materialning shartnomani bekor qilish paytidan oshgan narxini hisobga olgan holda amalga oshiriladi.\nSifatsiz bajarilgan ish (koʻrsatilgan xizmat) tufayli isteʼmolchiga yetkazilgan zarar uchun ijrochi ushbu Qonunning 20, 22, 27, 29-moddalariga muvofiq javobgar boʻladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4680944_0033_text_17",
+     "doc_id": "lex:4680944",
+     "doc_title": "Davlat boji toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5489,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… arizachi tomonidan oʻtkazib yuborilgan muddatini tiklash belgilangan muddat tugagan sanadan boshlab 6 oygacha jismoniy shaxs tomonidan | — BHMning 2,8 baravari yuridik shaxs tomonidan | — BHMning 5,6 baravari 6 oydan 12 oygacha jismoniy shaxs tomonidan | — BHMning 6 baravari yuridik shaxs tomonidan | — BHMning 12 baravari 11.\nSeleksiya yutuqlarini huquqiy muhofaza qilganlik uchun:\na) talabnoma berganlik uchun\nseleksiya yutuqlariga patent berish yuzasidan talabnomalar berish va rasman ekspertiza oʻtkazish\njismoniy shaxs tomonidan | — BHMning 2 baravari\nyuridik shaxs tomonidan | — BHMning 4 baravari\nb) patentga munosiblik yuzasidan ekspertiza oʻtkazish uchun\nseleksiya yutugʻining yangilik ekanligi yuzasidan ekspertiza oʻtkazish\njismoniy shaxs tomonidan | — BHMning 2 baravari\nyuridik shaxs tomonidan | — BHMning 4 baravari\nseleksiya yutugʻining farqlanishi, oʻxshashligi va barqarorligi yuzasidan sinovlar oʻtkazish\njismoniy shaxs tomonidan | — BHMning 8 baravari\nyuridik shaxs tomonidan | — BHMning 16 baravari\nv) roʻyxatdan oʻtkazish, eʼlon qilish va patentlarni berish uchun\nseleksiya yutugʻini roʻyxatdan oʻtkazish\njismoniy shaxs tomonidan | — BHMning 1,2 baravari\nyuridik shaxs tomonidan | — BHMning 2,4 baravari\neʼlon qilish\nrasmiy axborotnomada\nseleksiya yutugʻi yuzasidan talabnoma qabul qilingani toʻgʻrisidagi maʼlumotlar\njismoniy shaxs tomonidan | — BHMning 40 foizi\nyuridik shaxs tomonidan | — BHMning 80 foizi\nroʻyxatdan oʻtkazilgan seleksiya yutuqlari toʻgʻrisidagi maʼlumotlar\njismoniy shaxs tomonidan | — BHMning 40 foizi\nyuridik shaxs tomonidan | — BHMning 80 foizi\nseleksiya yutugʻiga doir tavsiflar\nreferat va boshqa materiallar bilan birga 35 varaqqacha hajmda\njismoniy shaxs tomonidan | — BHMning 1,2 baravari\nyuridik shaxs tomonidan | — BHMning 2,4 baravari\n35 varaqdan ortiq keyingi har bir varaq uchun\njismoniy shaxs tomonidan | — BHMning 2 foizi\nyuridik shaxs tomonidan | — BHMning 4 foizi\npatentlar berish\njismoniy shaxs tomonidan | — BHMning 1,2 baravari\nyuridik shaxs tomonidan | — BHMning 2,4 baravari\nIzoh. Roʻyxatdan oʻtkazganlik, eʼlon qilganlik va patentlarni berganlik uchun davlat boji (patent boji) ekspertiza qarori joʻnatilgan sanadan eʼtiboran uch oy ichida toʻlanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Dukondan olgan yangi telefonim zavod braki bulib chikdi. Sotuvchi uni necha kun ichida yangisiga almashtirib berishi kerak?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6193,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1333,
+    "rerank_ms": null,
+    "generation_ms": 2350,
+    "total_ms": 3684
+   },
+   "usage": {
+    "input_tokens": 4724,
+    "output_tokens": 340
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q073",
+   "status": "ok",
+   "answer": "\"Taʼlim toʻgʻrisida\"gi Qonunning 9-moddasiga koʻra, umumiy oʻrta taʼlim tashkilotining birinchi sinfiga bolalar ular yetti yoshga toʻladigan yilda qabul qilinadi [3].\n\nShuningdek, \"Taʼlim toʻgʻrisida\"gi Qonunning 8-moddasiga muvofiq, maktabgacha taʼlim va tarbiya olti yoshdan yetti yoshgacha boʻlgan bolalarni boshlangʻich taʼlimga bir yillik majburiy tayyorlashni ham nazarda tutadi [4].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.66,
+   "citations": [
+    {
+     "ref": 3,
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-637",
+     "url": "https://lex.uz/uz/docs/-5013007",
+     "article_url": "https://lex.uz/uz/docs/-5013007#-5013234",
+     "article": "9-modda",
+     "article_title": "Umumiy oʻrta va oʻrta maxsus taʼlim",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5013007_0008_9_1",
+     "quote": "Umumiy oʻrta taʼlim tashkilotining birinchi sinfiga bolalar ular yetti yoshga toʻladigan yilda qabul qilinadi."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-637",
+     "url": "https://lex.uz/uz/docs/-5013007",
+     "article_url": "https://lex.uz/uz/docs/-5013007#-5013227",
+     "article": "8-modda",
+     "article_title": "Maktabgacha taʼlim va tarbiya",
+     "part": "2-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5013007_0007_8_1",
+     "quote": "Maktabgacha taʼlim va tarbiya olti yoshdan yetti yoshgacha boʻlgan bolalarni boshlangʻich taʼlimga bir yillik majburiy tayyorlashni ham nazarda tutadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4646908_0030_32_1",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "32-modda",
+     "retrieval_score": 0.6598,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Maktabgacha boʻlgan yosh bola shaxsining jismoniy, psixologik va ijtimoiy jihatdan shakllanishining asosiy davridir.\nMaktabgacha boʻlgan yosh quyidagi davrlarni oʻz ichiga oladi:\ngoʻdaklik (tugʻilganidan bir yoshgacha);\nilk bolalik (bir yoshdan uch yoshgacha);\nmaktabgacha boʻlgan kichik yosh (uch yoshdan toʻrt yoshgacha);\nmaktabgacha boʻlgan oʻrtacha yosh (toʻrt yoshdan besh yoshgacha);\nmaktabgacha boʻlgan katta yosh (besh yoshdan yetti yoshgacha)."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4646908_0032_34_1",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.5989,
+     "fusion_score": 0.01692,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Guruh maktabgacha taʼlim tashkilotining tarkibiy birligidir.\nMaktabgacha taʼlim tashkilotidagi guruhlar yoshga doir toifalar yoki yoshga doir boʻlmagan toifalar boʻyicha toʻldirilishi mumkin.\nGuruhlar yoshga doir toifalar boʻyicha toʻldirilganda quyidagi yosh toifalari belgilanadi:\nilk rivojlanish guruhi (bir yoshdan uch yoshgacha);\nkichik guruh (uch yoshdan toʻrt yoshgacha);\noʻrta guruh (toʻrt yoshdan besh yoshgacha);\nkatta guruh (besh yoshdan olti yoshgacha);\nmaktabga tayyorlov guruhi (olti yoshdan yetti yoshgacha).\nMaktabgacha taʼlim tashkiloti guruhlarini toʻldirish va bolalarni bir guruhdan boshqasiga oʻtkazish har yili oʻquv yili boshlanguniga qadar amalga oshiriladi.\nUmumiy turdagi davlat maktabgacha taʼlim tashkilotlarida guruhlar tegishli ravishda quyidagi miqdorda toʻldiriladi:\nuch yoshdan yetti yoshgacha boʻlgan bolalar guruhlarida — koʻpi bilan oʻttiz nafar bola;\nbolalar qisqa vaqt boʻladigan guruhlarda — koʻpi bilan oʻttiz nafar bola;\nturli yoshdagilar guruhlarida — koʻpi bilan yigirma besh nafar bola;\nbolalar kechayu kunduz boʻladigan guruhlarda — koʻpi bilan oʻn nafar bola.\nAgar davlat maktabgacha taʼlim tashkiloti joylashgan yerda davlat maktabgacha taʼlim tashkilotiga borishni xohlovchi maktabgacha boʻlgan yoshdagi bolalar soni yigirma nafardan kam boʻlsa va bu joyda boshqa davlat maktabgacha taʼlim tashkiloti mavjud boʻlmasa, Oʻzbekiston Respublikasi Maktabgacha va maktab taʼlimi vazirligi bilan kelishilgan holda kam sonli bolalardan iborat guruhlarni tashkil etishga yoʻl qoʻyiladi.\nOʻzbekiston Respublikasi Maktabgacha va maktab taʼlimi vazirligi bilan kelishuvga koʻra guruhlarni ularni toʻldirishning eng koʻp miqdori oshirilgan holda tashkil etishga yoʻl qoʻyiladi.\nNodavlat maktabgacha taʼlim tashkilotlarida guruhlarni toʻldirish tartibi maktabgacha taʼlim tashkilotlarini saqlashga, ularning tuzilishiga va ulardagi ish rejimini tashkil etishga doir sanitariya-gigiyena talablari hisobga olingan holda ularning muassisi tomonidan belgilanadi.\nKoʻp tarmoqli ixtisoslashtirilgan maktabgacha taʼlim tashkilotida rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan bolalar uchun guruhlar tegishincha quyidagi miqdorda toʻldiriladi:\nnutqida ogʻir nuqsonlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nkar bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nyaxshi eshitmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "5013007_0008_9_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "9-modda",
+     "retrieval_score": 0.5849,
+     "fusion_score": 0.01652,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Umumiy oʻrta va oʻrta maxsus taʼlim umumtaʼlim oʻquv dasturlarini, zarur bilim, malaka hamda koʻnikmalarni oʻzlashtirishga qaratilgan.\nUmumiy oʻrta taʼlim (I — XI sinflar) bosqichlari quyidagilardan iborat:\nboshlangʻich taʼlim (I — IV sinflar);\ntayanch oʻrta taʼlim (V — IX sinflar);\noʻrta taʼlim (X — XI sinflar).\nUmumiy oʻrta taʼlim tashkilotining birinchi sinfiga bolalar ular yetti yoshga toʻladigan yilda qabul qilinadi.\nBoshlangʻich taʼlim taʼlim oluvchilarda umumiy oʻrta taʼlimni davom ettirish uchun zarur boʻlgan savodxonlik, bilim, malaka va koʻnikmalar asoslarini shakllantirishga qaratilgan.\nTayanch oʻrta taʼlim oʻquv dasturiga muvofiq taʼlim oluvchilarga bilim, malaka va koʻnikmalarning zaruriy hajmini beradi, ularda mustaqil fikrlash va tahlil qilish qobiliyatini rivojlantiradi.\nTayanch oʻrta taʼlim doirasida (VII sinfdan soʻng) taʼlim oluvchilarda kasblar boʻyicha birlamchi bilim va koʻnikmalarni shakllantirish uchun ularni professional tashxislash va kasb-hunarga yoʻnaltirish boʻyicha choralar amalga oshiriladi.\nOʻrta taʼlim oʻquv dasturiga muvofiq taʼlim oluvchilar tomonidan zarur bilim, malaka va koʻnikmalar oʻzlashtirilishini, shuningdek taʼlimning keyingi turi tanlanishini hamda yuqori malaka talab qilinmaydigan kasblar egallanishini taʼminlaydi.\nProfessional tashxislash va kasb-hunarga yoʻnaltirish, shuningdek taʼlim oluvchilarni yuqori malaka talab qilinmaydigan kasblarga tayyorlash tartibi qonunchilikda belgilanadi.\nUmumiy oʻrta taʼlim umumiy oʻrta taʼlim tashkilotlarida uzluksiz tarzda, majburiy boʻlgan oʻn bir yil davomida amalga oshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "5013007_0007_8_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "8-modda",
+     "retrieval_score": 0.5819,
+     "fusion_score": 0.01629,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Maktabgacha taʼlim va tarbiya bolalarni oʻqitish va tarbiyalashga, ularni intellektual, maʼnaviy-axloqiy, etik, estetik va jismoniy jihatdan rivojlantirishga, shuningdek bolalarni umumiy oʻrta taʼlimga tayyorlashga qaratilgan taʼlim turidir.\nMaktabgacha taʼlim va tarbiya olti yoshdan yetti yoshgacha boʻlgan bolalarni boshlangʻich taʼlimga bir yillik majburiy tayyorlashni ham nazarda tutadi.\nMaktabgacha taʼlim va tarbiyani tashkil etish tartibi ushbu Qonun, shuningdek “Maktabgacha taʼlim va tarbiya toʻgʻrisida”gi Oʻzbekiston Respublikasi Qonuni bilan belgilanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4646908_0032_34_2",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.5789,
+     "fusion_score": 0.01609,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "yaxshi eshitmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nkoʻzi ojiz bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nkoʻzi yaxshi koʻrmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\ntayanch-harakat apparati buzilgan bolalar uchun guruhlarda — koʻpi bilan oʻn sakkiz nafar bola;\ngemiparez, monoparez, plegiya asoratlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nbolalar serebral falaji sindromi asoratlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nyengil darajada aqli zaif boʻlgan aqliy nuqsonlari bor bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola, oʻrtamiyona va oʻrtacha darajada aqli zaif boʻlgan aqliy nuqsonlari bor bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nautizmga chalingan uch yoshdan katta bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\naqliy rivojlanishi kechikayotgan uch yoshdan katta bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nmurakkab nuqsonlari (ikki va undan ortiq nuqsoni) boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola.\nInklyuziv guruhlarga ega maktabgacha taʼlim tashkilotida guruhlar tegishincha quyidagi miqdorda toʻldiriladi:\n1) uch yoshgacha boʻlgan bolalar uchun guruhlarda — koʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan ikki yoshdan uch yoshgacha koʻpi bilan uch nafar bola;\n2) uch yoshdan katta bolalar uchun guruhlarda:\nkoʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan (yaxshi koʻra olmaydigan yoki yaxshi eshita olmaydigan yoki tayanch-harakat apparatida nuqsonlari boʻlgan) koʻpi bilan uch nafar bola;\nkoʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan (koʻrish ambliopiyasiga chalingan, koʻzi gʻilay yoki nutqida ogʻir nuqsonlari boʻlgan yoki autizmga chalingan) koʻpi bilan ikki nafar bola;\nkoʻpi bilan yigirma besh nafar bola, shu jumladan nutqida ogʻir nuqsonlari boʻlgan koʻpi bilan uch nafar bola;"
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Oglim 6 yoshda, uni maktabga necha yoshida berish kerak, 1-sinfga qachon olishadi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6598,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1325,
+    "rerank_ms": null,
+    "generation_ms": 2140,
+    "total_ms": 3466
+   },
+   "usage": {
+    "input_tokens": 3816,
+    "output_tokens": 225
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q074",
+   "status": "ok",
+   "answer": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisidagi Qonunning 15-moddasiga koʻra, sotuvchi kafolat muddatida aniqlangan tovar nuqsonlarini isteʼmolchi tegishli talab qoʻygan paytdan eʼtiboran yigirma kun ichida bepul bartaraf etishi shart [1].\n\nShuningdek, ushbu moddaga muvofiq, agar muzlatgichni taʼmirlashga ketadigan vaqtda siz undan foydalanib turish uchun ayni shunday markali tovar berilishini talab qilsangiz, nuqsonli tovar qaytarib berilganidan keyin uch kun ichida sotuvchi sizga vaqtinchalik tovar taqdim etishi lozim [1]. Agar sotuvchi taʼmirlash muddatini kechiktirsa, u kechiktirilgan har bir kun uchun tovar narxining bir foizi miqdorida neustoyka (penya) toʻlashi shart [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.609,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4704",
+     "doc_title": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "221-I",
+     "url": "https://lex.uz/uz/docs/-4704",
+     "article_url": "https://lex.uz/uz/docs/-4704#-6010",
+     "article": "15-modda",
+     "article_title": "Tovar nuqsonlarini bepul bartaraf etish tartibi",
+     "part": "5-qism",
+     "edition_date": "2026-02-02",
+     "doc_status": "amalda",
+     "chunk_id": "4704_0015_15_1",
+     "quote": "Sotuvchi (ishlab chiqaruvchi) isteʼmolchining taʼmirlashga ketadigan vaqtda foydalanish uchun shunday tovarni berib turish haqidagi talabini bajarish kechiktirilgan har bir kun uchun, shuningdek, nuqsonlarni bartaraf etishning shartnomadan kelib chiqadigan muddatlaridan ortiq kechiktirilgan har bir kun uchun tovar narxining bir foizi miqdorida isteʼmolchiga neustoyka (penya) toʻlaydi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4704_0015_15_1",
+     "doc_id": "lex:4704",
+     "doc_title": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida",
+     "article": "15-modda",
+     "retrieval_score": 0.6086,
+     "fusion_score": 0.01709,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Tovarda kafolat muddatida topilgan nuqsonlarni sotuvchi isteʼmolchi tegishli talab qoʻygan paytdan eʼtiboran yigirma kun ichida, ishlab chiqaruvchi esa, oʻn kun ichida bepul bartaraf etishi lozim.\nIsteʼmolchi kafolat muddati tugaganidan keyin tovarning nuqsonlarini bepul bartaraf etish toʻgʻrisida ishlab chiqaruvchiga talab qoʻyishga haqli. Bunday talab, basharti tovarda ishlab chiqaruvchining aybi bilan yoʻl qoʻyilgan jiddiy nuqsonlar aniqlangan boʻlsa, belgilangan xizmat muddati mobaynida, agar xizmat muddati belgilanmagan boʻlsa, oʻn yil mobaynida qoʻyilishi mumkin.\nUzoq muddat davomida foydalaniladigan tovarni taʼmirlashga ketadigan vaqtda foydalanib turish uchun isteʼmolchining talabiga binoan nuqsonli tovar qaytarib berilganidan keyin uch kun ichida unga ayni shunday markali (modelli, artikulli) tovar berib turiladi (sotuvchining hisobidan uning oʻzi yoki vakili eltib beradi). Buning uchun ishlab chiqaruvchi sotuvchi bilan birgalikda shartnoma asosida tovarlarning almashuv fondini nazarda tutishlari shart. Mazkur talablar tatbiq etilmaydigan uzoq muddat davomida foydalaniladigan tovarlar roʻyxatini Oʻzbekiston Respublikasi Hukumati belgilaydi.\nTovardagi nuqsonlarni bartaraf etish xususida talab qoʻyilgan taqdirda, undan foydalanishning kafolat muddati isteʼmolchining tovardan foydalana olmagan davrga teng muddatga uzaytiriladi. Mazkur muddat isteʼmolchi nuqsonlarni bartaraf etish talabi bilan murojaat etgan kundan eʼtiboran hisoblana boshlaydi.\nSotuvchi (ishlab chiqaruvchi) isteʼmolchining taʼmirlashga ketadigan vaqtda foydalanish uchun shunday tovarni berib turish haqidagi talabini bajarish kechiktirilgan har bir kun uchun, shuningdek, nuqsonlarni bartaraf etishning shartnomadan kelib chiqadigan muddatlaridan ortiq kechiktirilgan har bir kun uchun tovar narxining bir foizi miqdorida isteʼmolchiga neustoyka (penya) toʻlaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4704_0019_19_2",
+     "doc_id": "lex:4704",
+     "doc_title": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.6075,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "import yoki boshqa koʻchmas mulkda nuqsonlar aniqlangan kundan eʼtiboran ikki yil davomida roʻyobga chiqarishi mumkin.\nIsh bajarish (xizmat koʻrsatish) jarayonida aniqlangan nuqsonlarni bartaraf etish muddatlari shartnomada belgilab qoʻyiladi. Bajarilgan ish (koʻrsatilgan xizmat)dagi nuqsonlar, agar shartnomada birmuncha qisqaroq muddat belgilanmagan boʻlsa, isteʼmolchi talab qilgan kundan eʼtiboran yigirma kun ichida ijrochi tomonidan bartaraf etilishi kerak. Nuqsonlar belgilangan muddatda bartaraf etilmagan, shuningdek, ish bajarishni (xizmat koʻrsatishni) boshlash va tugallash kechiktirilgan taqdirda, ijrochi isteʼmolchi har bir kechiktirilgan kun, soat (agar muddat soatlarda belgilangan boʻlsa) uchun ish (xizmat) qiymatining yoki buyurtma qiymatini (agar uning qiymati alohida belgilanmagan boʻlsa) bir foizi miqdorida neustoyka (penya) toʻlaydi.\nIsteʼmolchi undirib olgan neustoyka (penya) summasi ish bajarish (xizmat koʻrsatish)ning alohida turi bahosidan yoki buyurtmaning umumiy bahosidan ortiq boʻlishi mumkin emas.\nBajarilgan ishdagi nuqsonlarni bartaraf etish kechiktirilganligi uchun ijrochi toʻlagan neustoyka (penya) qoplanishi lozim boʻlgan zarar hisobiga kirmaydi.\nIjrochining majburiyatni umuman yoki lozim darajada bajarilmaganlik uchun neustoyka (penya) toʻlashi va zararni qoplashi uni majburiyatni asl holida bajarishdan ozod etmaydi.\nIsteʼmolchidan qabul qilib olingan ashyo (material) yoʻqolgan, ishdan chiqqan, unga putur yetgan taqdirda yoki isteʼmolchining materialidan foydalanib bajarilgan ishda jiddiy nuqsonlar boʻlsa yo u buzib bajarilgan taqdirda ijrochi isteʼmolchiga aynan oʻxshash sifatli ashyoni qaytarishi (oʻzining aynan oʻxshash sifatli materialidan ish bajarishi yoki xizmat koʻrsatishi), buning imkoniyati boʻlmagan taqdirda esa, ashyoning (materialning) talab qoʻyilgan paytdagi qiymatini ikki baravar qilib toʻlashi shart.\nIjrochi tomonidan ishlar bajarish va xizmatlar koʻrsatish uchun qabul qilib olinayotgan ashyo (material) qiymati shartnoma tuzish paytida tomonlarning kelishuviga muvofiq belgilanadi.\nIshda (xizmatda) jiddiy nuqsonlar mavjud boʻlganida yoki shartnoma talablari jiddiy buzilganida, shuningdek, ashyo (material) yoʻqolgan, ishdan chiqqan, unga putur yetgan taqdirda isteʼmolchi bilan hisob-kitob ishning (xizmatning) yoki materialning shartnomani bekor qilish paytidan oshgan narxini hisobga olgan holda amalga oshiriladi.\nSifatsiz bajarilgan ish (koʻrsatilgan xizmat) tufayli isteʼmolchiga yetkazilgan zarar uchun ijrochi ushbu Qonunning 20, 22, 27, 29-moddalariga muvofiq javobgar boʻladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4704_0010_11_1",
+     "doc_id": "lex:4704",
+     "doc_title": "Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisida",
+     "article": "11-modda",
+     "retrieval_score": 0.5998,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Uzoq muddat foydalaniladigan barcha turdagi tovarlar va xizmatlarga ishlab chiqaruvchi (ijrochi) kafolat muddati belgilashi lozim. Kafolat muddati tovar isteʼmolchiga sotilgan yoki xizmat koʻrsatilgan kundan boshlab hisoblanadi. Agar tovar sotilgan kunni aniqlashning imkoni boʻlmasa, bu muddat tovar ishlab chiqarilgan kundan boshlab hisoblanadi.\nIshlab chiqaruvchi (ijrochi) kafolat muddati mobaynida tovar (xizmat)ning, shu jumladan, butlovchi buyumlarning normal ishlashini (qoʻllanilishini, ulardan foydalanilishini) taʼminlashi shart.\nButlovchi buyumlarning kafolat muddati, agar qonunchilikda boshqacha qoida belgilanmagan boʻlsa, asosiy buyumning kafolat muddatidan kam boʻlmasligi lozim.\nKafolat muddati tovar (xizmat)ning pasportida yoki tovarni sotish yoxud xizmat koʻrsatish paytida tovar bilan birgalikda isteʼmolchiga beriladigan boshqa hujjatda koʻrsatiladi.\nIshlab chiqaruvchi tovardan kafolat muddati va xizmat muddati mobaynida foydalanish imkoniyatini taʼminlashi, tovarning taʼmirlanishini va unga texnik xizmat koʻrsatilishini tashkil etishi, tovarni ishlab chiqarish muddati mobaynida hamda u ishlab chiqarishdan olib tashlanganidan keyin tovarning xizmat muddati mobaynida, bunday muddat boʻlmagan taqdirda esa, tovar ishlab chiqarishdan olib tashlangan paytdan eʼtiboran oʻn yil mobaynida yetarli hajmda va turda ehtiyot qismlari ishlab chiqarishi hamda savdo va taʼmirlash tashkilotlariga yetkazib berishi shart.\nDori vositalari va tibbiy buyumlarda, oziq-ovqat va maishiy kimyo tovarlarida ularning ishlab chiqarilgan sanasi, yaroqlilik muddati hamda ularni saqlash shartlari koʻrsatilgan boʻlishi lozim. Sotuvchilarga ishlab chiqarilgan sanasi va yaroqlilik muddati koʻrsatilmagan yoki yaroqlilik muddati oʻtgan tovarlarni qabul qilish hamda realizatsiya qilish man etiladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0297_682_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "682-modda",
+     "retrieval_score": 0.5985,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar qurilish pudrati shartnomasida boshqacha tartib nazarda tutilgan boʻlmasa, pudratchi qurilish obyektining loyiha-smeta hujjatlarida belgilangan koʻrsatkichlarga erishishini va obyektni kafolat muddati davomida shartnomaga muvofiq holda ishlatish mumkinligini kafolatlaydi. Agar qonunda yoki shartnomada boshqacha kafolat muddati nazarda tutilgan boʻlmasa, kafolat muddati obyekt buyurtmachi tomondan qabul qilingan kundan boshlab oʻn yilni tashkil etadi.\nAgar pudratchi kafolat muddati davomida aniqlangan kamchiliklar (nuqsonlar) obyektning yoki uning qismlarining normal eskirishi, uning notoʻgʻri ishlatilishi yoxud buyurtmachining oʻzi yoki u jalb qilgan uchinchi shaxslar ishlab chiqqan qoʻllanmaning notoʻgʻriligi, obyektni buyurtmachining oʻzi yoki u jalb qilgan uchinchi shaxslar tegishli darajada taʼmirlamaganligi oqibatida vujudga kelganligini isbotlay olmasa, bu kamchiliklar uchun javobgar boʻladi.\nKafolat muddati pudratchi javobgar boʻlgan kamchiliklar natijasida obyektdan foydalanish mumkin boʻlmagan butun vaqtga toʻxtatib turiladi.\nKafolat muddati davomida ushbu Kodeks 681-moddasining birinchi va ikkinchi qismlarida koʻrsatilgan kamchiliklar aniqlangan taqdirda, buyurtmachi kamchiliklar aniqlangandan keyingi oqilona muddat davomida ular haqida pudratchini xabardor qilishi kerak."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "180552_0638_1019_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1019-modda",
+     "retrieval_score": 0.5948,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tovarning (ishning, xizmatning) nuqsonlari oqibatida yetkazilgan zarar, agar u tovarning (ishning, xizmatning) belgilangan yaroqlilik muddatlari mobaynida yetkazilgan boʻlsa, qoplanishi lozim, mabodo yaroqlilik muddati belgilanmagan boʻlsa, tovar ishlab chiqarilgan (ish, xizmat qabul qilib olingan) kundan boshlab oʻn yil mobaynida qoplanishi lozim.\nUshbu moddaning birinchi qismida koʻrsatilgan muddatlardan tashqari zarar quyidagi hollarda qoplanishi lozim, agar:\nqonun talablari buzilib yaroqlilik muddati belgilanmagan boʻlsa;\ntovarni sotib olgan, ishni bajartirgan yoki xizmatdan foydalangan shaxs yaroqlilik muddati tugaganidan keyin zarur boʻlgan harakatlarni qilishi toʻgʻrisida va koʻrsatilgan harakatlar bajarilmagan taqdirda kelib chiqishi mumkin boʻlgan oqibatlar toʻgʻrisida ogohlantirilmagan boʻlsa."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kafolat muddati tugamagan muzlatgichim buzildi. Doʻkon uni necha kun ichida tekinga tuzatib berishi shart?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6086,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1403,
+    "rerank_ms": null,
+    "generation_ms": 2367,
+    "total_ms": 3770
+   },
+   "usage": {
+    "input_tokens": 4088,
+    "output_tokens": 313
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q075",
+   "status": "ok",
+   "answer": "Ўзбекистон Республикаси Меҳнат кодексининг 408-моддасига кўра, ҳомиладор аёллар билан тузилган меҳнат шартномасини иш берувчининг ташаббусига кўра бекор қилишга йўл қўйилмайди [2].\n\nБундан фақат қуйидаги истиснолар мавжуд:\n* Ташкилот (унинг алоҳида бўлинмаси) тугатилганда [2].\n* Якка тартибдаги тадбиркорнинг иш фаолияти тугатилганда [2].\n* Меҳнат шартномаси йўқ бўлган ходимнинг мажбуриятларини бажариш вақтига тузилган бўлса ва ҳомиладорлик тугагунига қадар аёлни иш берувчида унинг соғлиғи ҳолати инобатга олинган ҳолда бошқа ишга ўтказиш имкони бўлмаса, муддатли меҳнат шартномаси муддати тугаганда [2].\n\nШунингдек, Меҳнат кодексининг 392-моддасига биноан, ҳомиладорлик билан боғлиқ сабабга кўра ишдан бўшатиш қатъиян тақиқланади [3].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.661,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6266520",
+     "article": "408-modda",
+     "article_title": "Mehnat shartnomasini bekor qilish chogʻida homilador ayollar uchun kafolatlar",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0407_408_1",
+     "quote": "Homilador ayollar bilan tuzilgan mehnat shartnomasini ish beruvchining tashabbusiga koʻra bekor qilishga yoʻl qoʻyilmaydi, bundan tashkilot (uning alohida boʻlinmasi) tugatilgan yoki yakka tartibdagi tadbirkorning ish faoliyati tugatilgan hollar mustasno."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-7389726",
+     "article": "392-modda",
+     "article_title": "Homiladorligi yoki farzandlari borligi sababli ishga qabul qilishni rad etishni, ishdan boʻshatishni yoki ish haqini kamaytirishni taqiqlash",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0391_392_1",
+     "quote": "Homiladorligi yoki farzandlari borligi bilan bogʻliq sababga koʻra ishga qabul qilishni rad etish, ishdan boʻshatish yoki ish haqini kamaytirish taqiqlanadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0393_394_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "394-modda",
+     "retrieval_score": 0.6608,
+     "fusion_score": 0.01715,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tibbiy xulosaga muvofiq homilador ayollarning ishlab chiqarish normalari, xizmat koʻrsatish normalari avvalgi ishlaridagi oʻrtacha oylik ish haqi saqlangan holda kamaytiriladi yoki ular yengilroq ishga yoxud noqulay ishlab chiqarish omillarining taʼsiridan xoli boʻlgan ishga oʻtkaziladi. Ishlab chiqarish normalarini kamaytirish, shuningdek vaqtincha boshqa ishga oʻtkazish muddatlari tibbiy xulosaga muvofiq belgilanadi.\nHomilador ayolga yengilroq ish yoki noqulay ishlab chiqarish omillari taʼsiridan xoli boʻlgan ish berish masalasi hal etilguniga qadar, u buning oqibatida qoldirilgan barcha ish kunlari uchun oʻrtacha ish haqi saqlangan holda ishdan ozod etilishi lozim."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0407_408_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "408-modda",
+     "retrieval_score": 0.6508,
+     "fusion_score": 0.01695,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Homilador ayollar bilan tuzilgan mehnat shartnomasini ish beruvchining tashabbusiga koʻra bekor qilishga yoʻl qoʻyilmaydi, bundan tashkilot (uning alohida boʻlinmasi) tugatilgan yoki yakka tartibdagi tadbirkorning ish faoliyati tugatilgan hollar mustasno.\nAyolning homiladorligi davrida muddatli mehnat shartnomasining muddati tugagan taqdirda, ish beruvchi ayolning yozma arizasiga binoan va homiladorlik holatini tasdiqlovchi tibbiy maʼlumotnoma taqdim etilgan taqdirda, mehnat shartnomasining amal qilish muddatini homiladorlik tugaguniga qadar, unga homiladorlik va tugʻish taʼtili berilgan taqdirda esa bunday taʼtilning oxiriga qadar uzaytirishi shart. Mehnat shartnomasi homiladorlikning oxiriga qadar uzaytirilgan ayol, ish beruvchining soʻroviga binoan, lekin uch oyda koʻpi bilan bir marta homiladorlik holatini tasdiqlovchi tibbiy maʼlumotnoma taqdim etishi shart. Agar bunda ayol homiladorlik tugaganidan keyin haqiqatda ishlashni davom ettirsa, ish beruvchi homiladorlikning tugaganligi faktini bilgan yoki bilishi kerak boʻlgan kundan eʼtiboran bir hafta ichida mehnat shartnomasini uning muddati tugaganligi sababli bekor qilishga haqli.\nAyol bilan tuzilgan mehnat shartnomasining muddati tugaganligi munosabati bilan ushbu shartnomani uning homiladorligi davrida bekor qilishga, agar mehnat shartnomasi yoʻq boʻlgan xodimning majburiyatlarini bajarish vaqtiga tuzilgan boʻlsa va homiladorlik tugaguniga qadar ayolni ish beruvchida uning sogʻligʻi holati inobatga olingan holda bajara oladigan boshqa ishga ayolning yozma roziligi bilan oʻtkazish mumkin boʻlmasa, yoʻl qoʻyiladi.\nHomilador ayol bilan mehnat shartnomasi bekor qilinganda ayolning ushbu Kodeks 404-moddasining birinchi qismida koʻrsatilgan davr uchun homiladorlik va tugʻish nafaqasini olish huquqi saqlanib qoladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0391_392_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "392-modda",
+     "retrieval_score": 0.6499,
+     "fusion_score": 0.01662,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Homiladorligi yoki farzandlari borligi bilan bogʻliq sababga koʻra ishga qabul qilishni rad etish, ishdan boʻshatish yoki ish haqini kamaytirish taqiqlanadi.\nIsh beruvchi ishga qabul qilishni rad etgan taqdirda, rad etish sabablarining ishga qabul qilish huquqiga ega boʻlgan mansabdor shaxs tomonidan imzolangan yozma asosini homilador ayol yoki farzandlari bor shaxs talabiga koʻra uch kun ichida taqdim etishi shart. Ishga qabul qilishni rad etish sabablarining yozma asosini taqdim etmaganlik ishga qabul qilishni rad etganlik ustidan shikoyat qilishga monelik qilmaydi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0395_396_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "396-modda",
+     "retrieval_score": 0.6259,
+     "fusion_score": 0.01596,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Homilador ayollar, oʻn toʻrt yoshga toʻlmagan bolaning (oʻn olti yoshga toʻlmagan nogironligi boʻlgan bolaning) ota-onasidan biri (ota-onasining oʻrnini bosuvchi shaxs) faqat oʻz yozma roziligi bilan tungi ishlarga, ish vaqtidan tashqari ishlarga, dam olish kunlaridagi va ishlanmaydigan bayram kunlaridagi ishlarga jalb qilinishi, shuningdek xizmat safariga yuborilishi mumkin. Bunda ish beruvchi mazkur xodimlarni tungi ishlardan, ish vaqtidan tashqari ishlardan, dam olish kunlaridagi va ishlanmaydigan bayram kunlaridagi ishlardan yoki xizmat safaridan voz kechish borasidagi huquqi toʻgʻrisida xabardor qilishi shart.\nHomilador ayollarni va uch yoshga toʻlmagan bolasi bor ayollarni tungi ishlarga jalb qilishga bunday ish homilador ayolning hamda bolaning hayotiga va sogʻligʻiga xavf tugʻdirmasligini tasdiqlovchi tibbiy xulosa mavjud boʻlgan taqdirdagina yoʻl qoʻyiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0397_398_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "398-modda",
+     "retrieval_score": 0.6249,
+     "fusion_score": 0.01571,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish beruvchi quyidagi shaxslarga ularning iltimosiga koʻra toʻliqsiz ish vaqti belgilashi shart:\nhomilador ayolga;\noʻn toʻrt yoshga toʻlmagan bolaning (oʻn olti yoshga toʻlmagan nogironligi boʻlgan bolaning) ota-onasidan biriga (ota-onaning oʻrnini bosuvchi shaxsga);\ntibbiy xulosaga muvofiq oilaning betob aʼzosini parvarishlashni amalga oshirayotgan shaxsga."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ish beruvchi xomilador ayolni ishdan bushatishi mumkinmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6608,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1200,
+    "rerank_ms": null,
+    "generation_ms": 4142,
+    "total_ms": 5343
+   },
+   "usage": {
+    "input_tokens": 3503,
+    "output_tokens": 352
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q076",
+   "status": "ok",
+   "answer": "Ҳа, қарз шартномасида қарзни қисмлаб (бўлиб-бўлиб) қайтариш назарда тутилган бўлса, қарз олувчи навбатдаги қисмни қайтариш муддатини бузган тақдирда, сиз қарзнинг қолган барча суммасини тегишли фоизлар билан бирга муддатидан олдин қайтаришни талаб қилишга ҳақлисиз.\n\nБу қоида Ўзбекистон Республикаси Фуқаролик кодексининг 736-моддасида белгиланган [4].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.608,
+   "citations": [
+    {
+     "ref": 4,
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-180552",
+     "article_url": "https://lex.uz/uz/docs/-180552#-190181",
+     "article": "736-modda",
+     "article_title": "Qarz oluvchi tomonidan qarz shartnomasini buzish oqibatlari",
+     "part": "1-qism",
+     "edition_date": "2026-07-19",
+     "doc_status": "amalda",
+     "chunk_id": "180552_0351_736_1",
+     "quote": "Agar qonunchilikda yoki qarz shartnomasida boshqacha tartib nazarda tutilgan boʻlmasa, qarz oluvchi qarz summasini vaqtida qaytarmagan hollarda ushbu Kodeksning 734-moddasi birinchi qismida nazarda tutilgan foizlar toʻlangan boʻlishidan qatʼi nazar, qarz qaytarib berilishi kerak boʻlgan kundan boshlab to u qarz beruvchiga qaytarib berilgan kungacha bu summa yuzasidan ushbu Kodeksning 327-moddasi birinchi va ikkinchi qismlarida nazarda tutilgan miqdorda foizlar toʻlanishi kerak."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "180552_0350_735_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "735-modda",
+     "retrieval_score": 0.5963,
+     "fusion_score": 0.01642,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qarz oluvchi olingan qarz summasini qarz shartnomasida nazarda tutilgan muddatda va tartibda qarz beruvchiga qaytarishi shart.\nAgar qarz summasini qaytarish muddati shartnomada belgilangan boʻlmasa, qarz oluvchi uni qarz beruvchi qarzni qaytarish haqida talab qoʻygan kundan boshlab oʻttiz kun mobaynida qaytarishi kerak.\nFoizsiz qarz summasi qarz oluvchi tomonidan muddatidan oldin qaytarilishi mumkin.\nFoiz evaziga berilgan qarz summasi, agar qarz shartnomasida koʻzda tutilgan boʻlsa yoki qarz beruvchining roziligi bilan, muddatidan oldin qaytarilishi mumkin."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "3517337_0159_155_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "155-modda",
+     "retrieval_score": 0.6076,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sud (sudya) tayinlagan muddatlar sud (sudya) tomonidan uzaytirilishi mumkin.\nIshda ishtirok etuvchi shaxslar qonunda belgilangan muddatni sud (sudya) uzrli deb topgan sabablarga koʻra oʻtkazib yuborgan boʻlsa, mazkur muddat tiklanadi.\nOʻtkazib yuborilgan protsessual muddatni tiklash toʻgʻrisidagi iltimosnoma protsessual harakat amalga oshirilishi yoki hujjat topshirilishi lozim boʻlgan sudga beriladi va ishda ishtirok etuvchi shaxslar xabardor qilingan holda sud majlisida koʻrib chiqiladi. Biroq bu shaxslarning kelmaganligi iltimosnomani koʻrib chiqishga toʻsqinlik qilmaydi.\nOʻtkazib yuborilgan protsessual muddatni tiklash toʻgʻrisidagi iltimosnomani berish bilan bir vaqtda, muddati oʻtkazib yuborilgan harakat bajarilishi yoki hujjat topshirilishi lozim.\nOʻtkazib yuborilgan protsessual muddatni uzaytirish, tiklash haqida yoki uzaytirishni yoxud tiklashni rad etish toʻgʻrisida ajrim chiqariladi.\nOʻtkazib yuborilgan protsessual muddatni uzaytirishni rad etish yoki tiklashni rad etish yoxud tiklash haqidagi sud ajrimi ustidan xususiy shikoyat (protest) berilishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111189_0153_159_1",
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "159-modda",
+     "retrieval_score": 0.6026,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Basharti, sud daʼvo muddatining oʻtkazib yuborilganligi sababini uzrli deb topsa, buzilgan huquq himoya qilinishi kerak. Daʼvo muddatini oʻtkazib yuborish sabablari daʼvo muddatining oxirgi olti oyida, bu muddat olti oyga teng yoki olti oydan kam boʻlsa, daʼvo muddatida yuz bergan boʻlsa, ular uzrli deb hisoblanishi mumkin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0351_736_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "736-modda",
+     "retrieval_score": 0.5895,
+     "fusion_score": 0.01597,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Agar qonunchilikda yoki qarz shartnomasida boshqacha tartib nazarda tutilgan boʻlmasa, qarz oluvchi qarz summasini vaqtida qaytarmagan hollarda ushbu Kodeksning 734-moddasi birinchi qismida nazarda tutilgan foizlar toʻlangan boʻlishidan qatʼi nazar, qarz qaytarib berilishi kerak boʻlgan kundan boshlab to u qarz beruvchiga qaytarib berilgan kungacha bu summa yuzasidan ushbu Kodeksning 327-moddasi birinchi va ikkinchi qismlarida nazarda tutilgan miqdorda foizlar toʻlanishi kerak.\nAgar qarz shartnomasida qarzni qismlab (boʻlib-boʻlib) qaytarish nazarda tutilgan boʻlsa, qarz oluvchi qarzning navbatdagi qismini qaytarish uchun belgilangan muddatni buzgan taqdirda, qarz beruvchi qarzning qolgan barcha summasini tegishli foizlar bilan birga muddatidan oldin qaytarishni talab qilishga haqli.\nAgar qarz shartnomasida qarz boʻyicha foizlarni qarzning oʻzini qaytarish muddatidan oldin toʻlash nazarda tutilgan boʻlsa, bu majburiyat buzilgan taqdirda, qarz beruvchi qarz oluvchidan qarz summasini tegishli foizlari bilan birga muddatidan oldin qaytarishni talab qilishga haqli."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111460_0360_317_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "317-modda",
+     "retrieval_score": 0.5967,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Uzrli sabablarga koʻra oʻtkazib yuborilgan muddat ish yuritayotgan surishtiruvchi, tergovchi, prokurorning qarori yoki sudning ajrimi bilan tiklanishi lozim. Oʻtkazib yuborilgan muddatni tiklash haqidagi iltimosnomani qanoatlantirish yoki rad etish xususida surishtiruvchi, tergovchi, prokuror qaror, sud esa ajrim chiqaradi. Muddatni tiklashning rad etilishi ustidan umumiy tartibda shikoyat qilinishi va protest bildirilishi mumkin.\nBelgilangan muddat oʻtkazib yuborilgandan soʻng shikoyat qilinganda ajrim yoki qarorning ijrosi manfaatdor protsess ishtirokchisining iltimosiga binoan, oʻtkazib yuborilgan muddatni tiklash haqidagi masala hal qilinguniga qadar toʻxtatib turilishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Tanishimga karz berdim, xar oy bulib-bulib kaytarishga kelishgandik. U navbatdagi tulov muddatini utkazib yubordi. Kolgan xamma karzni birdaniga kaytarishni talab kilsam buladimi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6076,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 574,
+    "rerank_ms": null,
+    "generation_ms": 4550,
+    "total_ms": 5126
+   },
+   "usage": {
+    "input_tokens": 2615,
+    "output_tokens": 214
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q077",
+   "status": "ok",
+   "answer": "\"Maktabgacha taʼlim va tarbiya toʻgʻrisida\"gi Qonunning 34-moddasiga koʻra, umumiy turdagi davlat maktabgacha taʼlim tashkilotlarida guruhlar quyidagi miqdorda toʻldiriladi [1]:\n\n* uch yoshdan yetti yoshgacha boʻlgan bolalar guruhlarida — koʻpi bilan oʻttiz nafar bola;\n* bolalar qisqa vaqt boʻladigan guruhlarda — koʻpi bilan oʻttiz nafar bola;\n* turli yoshdagilar guruhlarida — koʻpi bilan yigirma besh nafar bola;\n* bolalar kechayu kunduz boʻladigan guruhlarda — koʻpi bilan oʻn nafar bola.\n\nShuningdek, ushbu moddaga muvofiq, Maktabgacha va maktab taʼlimi vazirligi bilan kelishuvga koʻra guruhlarni toʻldirishning eng koʻp miqdorini oshirilgan holda tashkil etishga yoʻl qoʻyiladi [1]. Agar hududda bolalar soni yigirma nafardan kam boʻlsa va boshqa davlat bogʻchasi mavjud boʻlmasa, vazirlik bilan kelishilgan holda kam sonli guruhlar ham tashkil etilishi mumkin [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.58,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-595",
+     "url": "https://lex.uz/uz/docs/-4646908",
+     "article_url": "https://lex.uz/uz/docs/-4646908#-4651848",
+     "article": "34-modda",
+     "article_title": "Maktabgacha taʼlim tashkiloti guruhlarini toʻldirish",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "4646908_0032_34_1",
+     "quote": "Agar davlat maktabgacha taʼlim tashkiloti joylashgan yerda davlat maktabgacha taʼlim tashkilotiga borishni xohlovchi maktabgacha boʻlgan yoshdagi bolalar soni yigirma nafardan kam boʻlsa va bu joyda boshqa davlat maktabgacha taʼlim tashkiloti mavjud boʻlmasa, Oʻzbekiston Respublikasi Maktabgacha va maktab taʼlimi vazirligi bilan kelishilgan holda kam sonli bolalardan iborat guruhlarni tashkil etishga yoʻl qoʻyiladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4646908_0032_34_1",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.5709,
+     "fusion_score": 0.01683,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Guruh maktabgacha taʼlim tashkilotining tarkibiy birligidir.\nMaktabgacha taʼlim tashkilotidagi guruhlar yoshga doir toifalar yoki yoshga doir boʻlmagan toifalar boʻyicha toʻldirilishi mumkin.\nGuruhlar yoshga doir toifalar boʻyicha toʻldirilganda quyidagi yosh toifalari belgilanadi:\nilk rivojlanish guruhi (bir yoshdan uch yoshgacha);\nkichik guruh (uch yoshdan toʻrt yoshgacha);\noʻrta guruh (toʻrt yoshdan besh yoshgacha);\nkatta guruh (besh yoshdan olti yoshgacha);\nmaktabga tayyorlov guruhi (olti yoshdan yetti yoshgacha).\nMaktabgacha taʼlim tashkiloti guruhlarini toʻldirish va bolalarni bir guruhdan boshqasiga oʻtkazish har yili oʻquv yili boshlanguniga qadar amalga oshiriladi.\nUmumiy turdagi davlat maktabgacha taʼlim tashkilotlarida guruhlar tegishli ravishda quyidagi miqdorda toʻldiriladi:\nuch yoshdan yetti yoshgacha boʻlgan bolalar guruhlarida — koʻpi bilan oʻttiz nafar bola;\nbolalar qisqa vaqt boʻladigan guruhlarda — koʻpi bilan oʻttiz nafar bola;\nturli yoshdagilar guruhlarida — koʻpi bilan yigirma besh nafar bola;\nbolalar kechayu kunduz boʻladigan guruhlarda — koʻpi bilan oʻn nafar bola.\nAgar davlat maktabgacha taʼlim tashkiloti joylashgan yerda davlat maktabgacha taʼlim tashkilotiga borishni xohlovchi maktabgacha boʻlgan yoshdagi bolalar soni yigirma nafardan kam boʻlsa va bu joyda boshqa davlat maktabgacha taʼlim tashkiloti mavjud boʻlmasa, Oʻzbekiston Respublikasi Maktabgacha va maktab taʼlimi vazirligi bilan kelishilgan holda kam sonli bolalardan iborat guruhlarni tashkil etishga yoʻl qoʻyiladi.\nOʻzbekiston Respublikasi Maktabgacha va maktab taʼlimi vazirligi bilan kelishuvga koʻra guruhlarni ularni toʻldirishning eng koʻp miqdori oshirilgan holda tashkil etishga yoʻl qoʻyiladi.\nNodavlat maktabgacha taʼlim tashkilotlarida guruhlarni toʻldirish tartibi maktabgacha taʼlim tashkilotlarini saqlashga, ularning tuzilishiga va ulardagi ish rejimini tashkil etishga doir sanitariya-gigiyena talablari hisobga olingan holda ularning muassisi tomonidan belgilanadi.\nKoʻp tarmoqli ixtisoslashtirilgan maktabgacha taʼlim tashkilotida rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan bolalar uchun guruhlar tegishincha quyidagi miqdorda toʻldiriladi:\nnutqida ogʻir nuqsonlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nkar bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nyaxshi eshitmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;"
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4646908_0032_34_3",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.5798,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "koʻpi bilan yigirma besh nafar bola, shu jumladan nutqida ogʻir nuqsonlari boʻlgan koʻpi bilan uch nafar bola;\nkoʻpi bilan yigirma besh nafar bola, shu jumladan ruhiy rivojlanishida kechikayotgan koʻpi bilan uch nafar bola.\nQoʻshma turdagi maktabgacha taʼlim tashkilotida rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan bolalar uchun guruhlar tegishincha quyidagi miqdorda toʻldiriladi:\nqulogʻi kar bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nqulogʻi yaxshi eshitmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nkoʻzi ojiz bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nkoʻzi yaxshi koʻrmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\ntayanch-harakat apparati buzilgan bolalar uchun guruhlarda — koʻpi bilan oʻn sakkiz nafar bola;\ngemiparez, monoparez, plegiya asoratlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nbolalar serebral falaji sindromi asoratlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nautizmga chalingan uch yoshdan katta bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nmurakkab nuqsonlari (ikki va undan ortiq nuqsoni) boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola.\nOʻzbekiston Respublikasi Prezidenti huzuridagi Ijtimoiy himoya milliy agentligi bilan kelishuvga koʻra, koʻp tarmoqli ixtisoslashtirilgan maktabgacha taʼlim tashkilotida, inklyuziv guruhlarga ega maktabgacha taʼlim tashkilotida hamda qoʻshma turdagi maktabgacha taʼlim tashkilotida rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan bolalar uchun guruhlarni sanitariya-gigiyena talablari hisobga olinib, mazkur guruhlarni toʻldirishning eng koʻp miqdori qisqartirilgan yoki oshirilgan holda tashkil etishga yoʻl qoʻyiladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4646908_0032_34_2",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.5709,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "yaxshi eshitmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nkoʻzi ojiz bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nkoʻzi yaxshi koʻrmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\ntayanch-harakat apparati buzilgan bolalar uchun guruhlarda — koʻpi bilan oʻn sakkiz nafar bola;\ngemiparez, monoparez, plegiya asoratlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nbolalar serebral falaji sindromi asoratlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nyengil darajada aqli zaif boʻlgan aqliy nuqsonlari bor bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola, oʻrtamiyona va oʻrtacha darajada aqli zaif boʻlgan aqliy nuqsonlari bor bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nautizmga chalingan uch yoshdan katta bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\naqliy rivojlanishi kechikayotgan uch yoshdan katta bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nmurakkab nuqsonlari (ikki va undan ortiq nuqsoni) boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola.\nInklyuziv guruhlarga ega maktabgacha taʼlim tashkilotida guruhlar tegishincha quyidagi miqdorda toʻldiriladi:\n1) uch yoshgacha boʻlgan bolalar uchun guruhlarda — koʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan ikki yoshdan uch yoshgacha koʻpi bilan uch nafar bola;\n2) uch yoshdan katta bolalar uchun guruhlarda:\nkoʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan (yaxshi koʻra olmaydigan yoki yaxshi eshita olmaydigan yoki tayanch-harakat apparatida nuqsonlari boʻlgan) koʻpi bilan uch nafar bola;\nkoʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan (koʻrish ambliopiyasiga chalingan, koʻzi gʻilay yoki nutqida ogʻir nuqsonlari boʻlgan yoki autizmga chalingan) koʻpi bilan ikki nafar bola;\nkoʻpi bilan yigirma besh nafar bola, shu jumladan nutqida ogʻir nuqsonlari boʻlgan koʻpi bilan uch nafar bola;"
+    },
+    {
+     "rank": 4,
+     "chunk_id": "104720_0004_4¹_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "4¹-modda",
+     "retrieval_score": 0.51,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Toʻrt nafar va undan ortiq oʻn sakkiz yoshga toʻlmagan bolasi boʻlgan oila koʻp bolali oiladir. Bunda, agar toʻrt nafar va undan ortiq bolalaridan bir nafari yoki undan koʻprogʻi taʼlimning kunduzgi shaklida (oʻrta maxsus va professional, oliy taʼlim) taʼlim tashkilotlarida oʻqiyotgan hamda yigirma ikki yoshga toʻlmagan boʻlsa, bu oila ham koʻp bolali oila deb hisoblanadi.\nDavlat koʻp bolali oilalarga qonunchilikka muvofiq imtiyozlar va ijtimoiy kafolatlar berilishini taʼminlaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4646908_0043_45_1",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "45-modda",
+     "retrieval_score": 0.4956,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Davlat maktabgacha boʻlgan yoshdagi bolalarning, ayniqsa yetim bolalar va ota-onasining qaramogʻidan mahrum boʻlgan bolalarning, sogʻligʻining holatini tuzatishga, uzoq vaqt davolanishga hamda reabilitatsiya qilishga muhtoj boʻlgan bolalarning, shuningdek kam taʼminlangan va koʻp bolali oilalardagi bolalarning ijtimoiy himoya qilinishi va qoʻllab-quvvatlanishini taʼminlaydi.\nJismoniy yoki ruhiy rivojlanishida turli nuqsonlar boʻlgan bolalarga qarab turish qisman yoki toʻliq davlat taʼminoti asosida amalga oshiriladi.\nYetim bolalar va ota-onasining yoki boshqa qonuniy vakillarining qaramogʻidan mahrum boʻlgan bolalar toʻliq davlat taʼminotida boʻladi.\nYetim bolalarga va ota-onasining qaramogʻidan mahrum boʻlgan bolalarga qarindoshlik munosabatlarini saqlash, shuningdek ularning shaxsiy nomulkiy va mulkiy huquqlarini himoya qilish huquqi kafolatlanadi.\nKoʻrish, eshitish qobiliyatini, tayanch-harakat apparatini tuzatishga muhtoj boʻlgan bolalar Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilangan tartibda Oʻzbekiston Respublikasi Davlat budjeti mablagʻlari hisobidan harakatlanish, protezlash, axborotni idrok etish va qabul qilish vositalari, shuningdek boshqa individual tuzatish vositalari bilan taʼminlanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Davlat bogʻchasida bitta guruhda koʻpi bilan nechta bola boʻlishi mumkin?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5798,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 412,
+    "rerank_ms": null,
+    "generation_ms": 2156,
+    "total_ms": 2568
+   },
+   "usage": {
+    "input_tokens": 4086,
+    "output_tokens": 382
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q078",
+   "status": "ok",
+   "answer": "Ha, kvartirani ijaraga berishda shartnomani yozma shaklda tuzish shart.\n\nOʻzbekiston Respublikasi Uy-joy kodeksining 25-moddasiga koʻra, turar joy ijarasi yoki arendasi shartnomasi yozma shaklda tuzilishi hamda qonunchilikda belgilangan tartibda hisobga olinishi (roʻyxatdan oʻtkazilishi) lozim [1]. Shuningdek, Fuqarolik kodeksining 603-moddasida ham uy-joyni ijaraga berish shartnomasi yozma shaklda tuzilishi va fuqarolar oʻrtasida tuzilgan bunday shartnoma davlat soliq organlarida hisobga qoʻyilishi shartligi belgilangan [5].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.635,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-106136",
+     "article_url": "https://lex.uz/uz/docs/-106136#-148615",
+     "article": "25-modda",
+     "article_title": "Fuqarolar va yuridik shaxslarga tegishli uylar, kvartiralardagi turar joylarni ijaraga, arendaga berish",
+     "part": "3-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "106136_0024_25_1",
+     "quote": "Turar joy ijarasi yoki arendasi shartnomasi yozma shaklda tuziladi hamda qonunchilikda belgilangan tartibda hisobga olinishi (roʻyxatdan oʻtkazilishi) lozim."
+    },
+    {
+     "ref": 5,
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-180552",
+     "article_url": "https://lex.uz/uz/docs/-180552#-186493",
+     "article": "603-modda",
+     "article_title": "Uy-joyni ijaraga berish shartnomasining shakli",
+     "part": "2-qism",
+     "edition_date": "2026-07-19",
+     "doc_status": "amalda",
+     "chunk_id": "180552_0217_603_1",
+     "quote": "Fuqarolar oʻrtasida tuzilgan uy-joyni ijaraga berish shartnomasi davlat soliq organlarida hisobga qoʻyilishi lozim."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "106136_0024_25_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "25-modda",
+     "retrieval_score": 0.6336,
+     "fusion_score": 0.01683,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Uy, kvartira mulkdori oʻzi bilan birga yashayotgan voyaga yetgan oila aʼzolarining roziligi bilan yoki yuridik shaxsning vakolatli organi qaroriga binoan uyni, kvartirani yoxud ularning bir qismini fuqarolarga va yuridik shaxslarga ijaraga yoki arendaga berishga haqlidir.\nTaraflarning huquq va majburiyatlari, ijara yoki arenda shartnomasi tuzilayotgan muddat, toʻlov haqi miqdori va boshqa shartlar, agar qonunchilikda boshqacha tartib belgilanmagan boʻlsa, taraflarning kelishuviga binoan belgilanadi.\nTurar joy ijarasi yoki arendasi shartnomasi yozma shaklda tuziladi hamda qonunchilikda belgilangan tartibda hisobga olinishi (roʻyxatdan oʻtkazilishi) lozim.\nTurar joy ijarasi yoki arendasi shartnomasiga nisbatan ushbu Kodeks qoidalari qoʻllaniladi. Turar joy ijarasi yoki arendasi shartnomasining ushbu Kodeks bilan tartibga solinmagan munosabatlari fuqarolik qonunchiligi bilan tartibga solinadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "180552_0188_574_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "574-modda",
+     "retrieval_score": 0.6247,
+     "fusion_score": 0.01663,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bino yoki inshootni ijaraga berish shartnomasi taraflar imzolaydigan bitta hujjat tarzida yozma shaklda tuziladi.\nBino yoki inshootni ijaraga berish shartnomasining shakliga rioya etmaslik uning haqiqiy boʻlmasligiga olib keladi.\nFuqarolar va (yoki) yuridik shaxslar oʻrtasida tuzilgan binoni yoki inshootni yoxud uning bir qismini ijaraga berish shartnomasi davlat soliq organlarida hisobga qoʻyilishi lozim, bundan qonunchilikda nazarda tutilgan hollar mustasno.\nBir yildan kam boʻlmagan muddatga tuzilgan bino yoki inshootni ijaraga berish shartnomasi davlat roʻyxatidan oʻtkazilishi lozim va roʻyxatdan oʻtkazilgan paytdan boshlab tuzilgan hisoblanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111189_0366_366_1",
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "366-modda",
+     "retrieval_score": 0.6349,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar qonunda muayyan turdagi shartnomalar uchun maʼlum bir shakl belgilab qoʻyilgan boʻlmasa, shartnoma bitimlar tuzish uchun nazarda tutilgan har qanday shaklda tuzilishi mumkin.\nNotarial tasdiqlanishi yoki davlat roʻyxatidan oʻtkazilishi shart boʻlgan shartnoma notarial tasdiqlangan yoki roʻyxatdan oʻtkazilgan paytdan eʼtiboran, notarial tasdiqlanishi va roʻyxatdan oʻtkazilishi zarur boʻlganda esa — shartnoma roʻyxatdan oʻtkazilgan paytdan eʼtiboran shartnoma tuzilgan hisoblanadi.\nAgar taraflar shartnomani muayyan shaklda tuzishga kelishgan boʻlsalar, garchi qonunda bu turdagi shartnomalar uchun bunday shakl talab qilingan boʻlmasa-da, shartnoma belgilangan shaklga keltirilganidan keyin tuzilgan hisoblanadi.\nYozma shartnoma taraflar imzolagan bitta hujjatni tuzish yoʻli bilan, shuningdek pochta, telegraf, teletayp, telefon, elektron aloqa yoki hujjat shartnomadagi tarafdan chiqqanligini ishonchli suratda aniqlash imkonini beradigan boshqa aloqa yordamida hujjatlar almashish yoʻli bilan tuzilishi mumkin.\nAgar shartnoma tuzish haqidagi yozma taklif ushbu Kodeks 370-moddasining toʻrtinchi qismida nazarda tutilgan tartibda olingan boʻlsa, shartnomaning yozma shakliga rioya qilingan hisoblanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "106136_0075_76_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "76-modda",
+     "retrieval_score": 0.6206,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xizmat turar joyi ijara shartnomasi shu turar joy mulkdori yoki u vakil qilgan organ bilan ish, xizmat vaqtida undan foydalanish uchun topshirilayotgan shaxs oʻrtasida tuziladi.\nXizmat turar joyi ijara shartnomasi yozma shaklda tuziladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "180552_0217_603_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "603-modda",
+     "retrieval_score": 0.6165,
+     "fusion_score": 0.01575,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Uy-joyni ijaraga berish shartnomasi yozma shaklda tuziladi.\nFuqarolar oʻrtasida tuzilgan uy-joyni ijaraga berish shartnomasi davlat soliq organlarida hisobga qoʻyilishi lozim."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kvartiramni ijaraga bermoqchiman. Shartnomani yozma tuzish shartmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6349,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 428,
+    "rerank_ms": null,
+    "generation_ms": 1187,
+    "total_ms": 1616
+   },
+   "usage": {
+    "input_tokens": 2408,
+    "output_tokens": 253
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q079",
+   "status": "no_answer",
+   "answer": "Базадаги ҳужжатларда бу саволга аниқ жавоб топилмади. Ўзбекистон Республикаси қонунчилигида фақат Ўзбекистон ҳудудида пенсия таъминоти масалалари тартибга солинган бўлиб, \"Фуқароларнинг давлат пенсия таъминоти тўғрисида\"ги Қонунда Қозоғистон Республикасидаги пенсия ёши ҳақида маълумотлар келтирилмаган.",
+   "answer_language": "uz-Cyrl",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "112314_0013_12¹_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "12¹-modda",
+     "retrieval_score": 0.6898,
+     "fusion_score": 0.0172,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Qonun 37-moddasi birinchi qismining “a” — “g” va “k” bandlarida nazarda tutilgan kamida yigirma yillik ish staji boʻlgan ayollar ellik toʻrt yoshga toʻlganda pensiya olish huquqiga ega boʻladilar."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "112314_0012_12_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "12-modda",
+     "retrieval_score": 0.661,
+     "fusion_score": 0.01691,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oxirgi ish joyidan qatʼi nazar, quyidagilar ushbu Qonunning 7-moddasida belgilangan yoshni 5 yilga qisqartirilgan holda pensiya olish huquqiga ega boʻladilar:\na) urush nogironlari va ularga tenglashtirilgan shaxslar;\nb) mehnat sharoiti zararli va ogʻir ishlarda toʻliq ish kuni davomida band boʻlgan xodimlar (3-sonli roʻyxat, I qism):\nerkaklar — ish staji kamida 25 yil boʻlib, bundan kamida 12 yilu 6 oyi koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda;\nayollar — ish staji kamida 20 yil boʻlib, bundan kamida 10 yili koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda.\nMehnat sharoiti zararli va ogʻir ishlarda — erkaklar kamida 6 yilu 3 oy, ayollar kamida 5 yil — ishlagan xodimlarga pensiya ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi erkaklarning bunday ishdagi har 2 yilu 6 oyi uchun va ayollarning bunday ishdagi har 2 yili uchun 1 yilga qisqartirilgan holda tayinlanadi;\nz) bolalikdan nogironligi boʻlgan farzandlarning onalari ularni sakkiz yoshgacha tarbiyalagan boʻlsa — ish staji kamida 20 yil boʻlgan taqdirda. Basharti, ayol oʻgay oʻgʻil va oʻgay qizni ular 8 yoshga toʻlguniga qadar kamida 5 yil tarbiyalagan boʻlsa, pensiya tayinlashda ular haqiqiy farzandlar bilan teng ravishda hisobga olinadi;\nk) nogironligi boʻlgan bolalar uchun ixtisoslashgan taʼlim muassasalari, “Mehribonlik” uylari, harbiy akademik litseylar, tarbiya koloniyalari oʻqituvchilari — maxsus ish staji kamida 25 yil boʻlgan taqdirda (3-sonli roʻyxat, VII qism);\nl) ixtisoslashgan tibbiy muassasalarning shifokorlari va oʻrta tibbiy xodimlari — maxsus ish staji shaharchalar, qishloqlar hamda ovullarda kamida 25 yil va shaharlarda kamida 30 yil boʻlgan taqdirda (3-sonli roʻyxat, VIII qism);\nm) qariyalarga, nogironligi boʻlgan shaxslarga va yolgʻiz fuqarolarga xizmat koʻrsatishda bevosita band boʻlgan ijtimoiy xodimlar (3-sonli roʻyxat, IX qism):\nerkaklar — maxsus ish staji kamida 25 yil boʻlgan taqdirda;\nayollar — maxsus ish staji kamida 20 yil boʻlgan taqdirda."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "112314_0007_7_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "7-modda",
+     "retrieval_score": 0.6588,
+     "fusion_score": 0.01669,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yoshga doir pensiya olish huquqiga:\nerkaklar — 60 yoshga toʻlganda va ish stajlari kamida 25 yil boʻlgan taqdirda;\nayollar — 55 yoshga toʻlganda va ish stajlari kamida 20 yil boʻlgan taqdirda ega boʻladilar."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "112314_0011_11_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "11-modda",
+     "retrieval_score": 0.6407,
+     "fusion_score": 0.01642,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oxirgi ish joyidan qatʼi nazar, quyidagilar ushbu Qonunning 7-moddasida belgilangan yoshni 10 yilga qisqartirilgan holda pensiya olish huquqiga ega boʻladilar:\na) yerosti ishlarida, mehnat sharoiti oʻta zararli va oʻta ogʻir ishlarda toʻliq ish kuni davomida band boʻlgan xodimlar (2-sonli roʻyxat, I qism):\nerkaklar — ish staji kamida 20 yil boʻlib, bundan kamida 10 yili koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda;\nayollar — ish staji kamida 15 yil boʻlib, bundan kamida 7 yilu 6 oyi koʻrsatib oʻtilgan ishlarga toʻgʻri kelgan taqdirda.\nYer osti ishlaridagi mehnat staji erkaklarda 10 yildan kam va ayollarda 7 yilu 6 oydan kam boʻlgan hollarda xodimlarga bu ishlardagi har bir toʻliq yil uchun ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi 1 yilga qisqartiriladi.\nMehnat sharoiti oʻta zararli va oʻta ogʻir ishlarda — erkaklar kamida 5 yil, ayollar kamida 3 yil 9 oy — ishlagan xodimlarga pensiya ushbu Qonunning 7-moddasida nazarda tutilgan pensiya yoshi shunday ishda band boʻlingan har bir toʻliq yil uchun 1 yilga qisqartirilgan holda tayinlanadi;\nb) sirklar va konsert tashkilotlari artistlarining ayrim toifalari ijodiy ishdagi staji kamida 20 yil boʻlgan taqdirda (2-sonli roʻyxat, II qism)."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "112314_0015_14_1",
+     "doc_id": "lex:112314",
+     "doc_title": "Fuqarolarning davlat pensiya taʼminoti toʻgʻrisida",
+     "article": "14-modda",
+     "retrieval_score": 0.6397,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Texnologiyadagi, ishlab chiqarish va mehnatni tashkil etishdagi oʻzgarishlar, xodimlar soni (shtati) yoki ish xususiyatining oʻzgarishiga olib kelgan ishlar hajmining qisqarganligi yoxud korxonaning tugatilganligi munosabati bilan ishdan ozod etilgan va ishsiz deb eʼtirof etilgan shaxslar:\nerkaklar — 58 yoshga toʻlganda va ish staji kamida 25 yil boʻlgan taqdirda;\nayollar — 53 yoshga toʻlganda va ish staji kamida 20 yil boʻlgan taqdirda pensiya olish huquqiga ega boʻladilar."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Qozogʻistonda ayollar necha yoshda pensiyaga chiqadi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6898,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 361,
+    "rerank_ms": null,
+    "generation_ms": 7322,
+    "total_ms": 7684
+   },
+   "usage": {
+    "input_tokens": 2790,
+    "output_tokens": 170
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q080",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksining 137-moddasiga koʻra, yoʻl-transport hodisasi qatnashchilarining hodisa yuz bergan joydan ketib qolishi quyidagicha jazolanadi:\n\n*   Umumiy holatda: bazaviy hisoblash miqdorining oʻn besh baravari miqdorida jarima solinadi [1].\n*   Agar ushbu hodisa jabrlanuvchiga yengil tan jarohati yoki ancha miqdorda moddiy zarar yetkazilishiga olib kelgan boʻlsa: bazaviy hisoblash miqdorining oʻttiz baravari miqdorida jarima solinadi, transport vositalarini boshqarish huquqidan uch yil muddatga mahrum etiladi yoki oʻn besh sutkagacha muddatga maʼmuriy qamoqqa olinadi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.614,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-97664",
+     "article_url": "https://lex.uz/uz/docs/-97664#-199997",
+     "article": "137-modda",
+     "article_title": "Yoʻl-transport hodisasi yuz bergan joydan ketib qolish",
+     "part": "4-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "97664_0224_137_1",
+     "quote": "bazaviy hisoblash miqdorining oʻttiz baravari miqdorida jarima solishga yoki transport vositalarini boshqarish huquqidan uch yil muddatga mahrum etishga yoxud oʻn besh sutkagacha muddatga maʼmuriy qamoqqa olishga sabab boʻladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "97664_0224_137_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "137-modda",
+     "retrieval_score": 0.6049,
+     "fusion_score": 0.01669,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Yoʻl-transport hodisasi qatnashchilarining belgilangan qoidalarni buzgan holda hodisa yuz bergan joydan ketib qolishi, —\nbazaviy hisoblash miqdorining oʻn besh baravari miqdorida jarima solishga sabab boʻladi.\nYoʻl-transport hodisasi qatnashchilarining belgilangan qoidalarni buzgan holda hodisa yuz bergan joydan ketib qolishi, agar ushbu yoʻl-transport hodisasi jabrlanuvchiga yengil tan jarohati yoki ancha miqdorda moddiy zarar yetkazilishiga olib kelgan boʻlsa, —\nbazaviy hisoblash miqdorining oʻttiz baravari miqdorida jarima solishga yoki transport vositalarini boshqarish huquqidan uch yil muddatga mahrum etishga yoxud oʻn besh sutkagacha muddatga maʼmuriy qamoqqa olishga sabab boʻladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111453_0322_248¹_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "248¹-modda",
+     "retrieval_score": 0.6137,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Uchuvchisiz uchadigan apparatlarni saqlash, ulardan foydalanish yoki ularni boshqa shaxslarga berish tartibini buzish, shuningdek ulardan boshqa maqsadlarda foydalanish, —\nuch yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar:\na) takroran yoki xavfli retsidivist tomonidan;\nb) mansab mavqeyini suiisteʼmol qilish yoʻli bilan;\nv) bir guruh shaxslar tomonidan oldindan til biriktirib sodir etilgan boʻlsa;\ng) badanga oʻrtacha ogʻir yoki ogʻir shikast yetkazilishiga sabab boʻlsa, —\nuch yildan besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar odam oʻlishiga sabab boʻlsa, —\nbesh yildan sakkiz yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha harakatlar:\na) odamlar oʻlimiga;\nb) halokatga;\nv) boshqa ogʻir oqibatlarga sabab boʻlsa, —\nsakkiz yildan oʻn yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111453_0401_298_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "298-modda",
+     "retrieval_score": 0.6103,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jangovar, maxsus yoki transport mashinalarini boshqarish yoxud ulardan foydalanish qoidalarini buzish badanga oʻrtacha ogʻir yoki ogʻir shikast yetkazilishiga sabab boʻlsa, —\nikki yilgacha xizmat boʻyicha cheklash yoki uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha qilmish odam oʻlishiga sabab boʻlsa, —\nuch yildan yetti yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha qilmish:\na) odamlar oʻlimiga;\nb) halokatga;\nv) boshqa ogʻir oqibatlarga sabab boʻlsa, —\nyetti yildan oʻn yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111453_0323_249_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "249-modda",
+     "retrieval_score": 0.5993,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻqotar qurolni va uning oʻq-dorilarini, shuningdek pnevmatik qurolni, tigʻli sovuq qurolni (ov pichoqlarini, ov xanjarchalari va xanjarlarni, rapiralar, shpagalar va qilichlarni), uloqtirish qurolini (kamonlar, arbaletlar va nayzalarni), signal beruvchi qurolni saqlash, olib yurish, tashish qoidalarini buzish odamning oʻlimiga yoxud boshqa ogʻir oqibatlar kelib chiqishiga sabab boʻlsa, —\nbazaviy hisoblash miqdorining bir yuz ellik baravarigacha miqdorda jarima yoki uch yilgacha axloq tuzatish ishlari yoki ikki yildan besh yilgacha ozodlikni cheklash yoxud besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111453_0400_297_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "297-modda",
+     "retrieval_score": 0.5968,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Atrofdagilar uchun katta xavf manbai boʻlgan qurol-yarogʻ, shuningdek, oʻq-dori, portlovchi, radioaktiv yoki boshqa modda va buyumlar bilan muomalada boʻlish qoidalarini buzish badanga oʻrtacha ogʻir shikast yetkazilishiga sabab boʻlsa, —\nikki yilgacha xizmat boʻyicha cheklash yoki besh yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha qilmish:\na) ikki yoki undan ortiq shaxsning badaniga oʻrtacha ogʻir shikast yetkazilishiga;\nb) ogʻir shikast yetkazilishiga;\nv) odam oʻlishiga sabab boʻlsa, —\nbesh yildan sakkiz yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nOʻsha qilmish:\na) odamlar oʻlimiga;\nb) boshqa ogʻir oqibatlarga sabab boʻlsa, —\nsakkiz yildan oʻn yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Mashinani urib qoyib avariya bolgan joydan ketib qolsa qancha jarima boladi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6137,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 420,
+    "rerank_ms": null,
+    "generation_ms": 2069,
+    "total_ms": 2490
+   },
+   "usage": {
+    "input_tokens": 2723,
+    "output_tokens": 299
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 7.7
+}

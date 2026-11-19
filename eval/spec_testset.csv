@@ -1,0 +1,101 @@
+id,batch,category,question,expected_answer,expected_doc_id,expected_article,answerable,language,source
+q001,b01,bir_nechta_modda,Farzandimni maktabga qatnatmay uyda o'zim o'qitmoqchiman. Shunday qilsa bo'ladimi va keyin u attestatni qanday oladi?,,lex:5013007,lex:5013007#18-modda|lex:5013007#21-modda,true,uz-Latn,dev:a25
+q002,b01,raqamlar,"Ozim xohishim bilan ishdan ketmoqchiman, rahbarni necha kun oldin ogohlantirishim kerak?",,lex:6257288,lex:6257288#160-modda,true,uz-Latn,test:a01
+q003,b01,rus_kirill,Какое наказание грозит чиновнику за получение взятки?,,lex:111453,lex:111453#210-modda,true,ru,test:r05
+q004,b01,raqamlar,"Onam yotib qolgan, nogironlik guruhini olish uchun komissiyaga olib borolmaymiz. Uyda tekshirishlari mumkinmi va tekshiruv qancha vaqtda o'tkazilishi kerak?",,lex:5049511,lex:5049511#31-modda,true,uz-Latn,test:a20
+q005,b01,javobsiz,Toshkent metrosida bir martalik yo'l haqi hozir qancha turadi?,,,,false,uz-Latn,dev:n07
+q006,b01,faktik,"Kvartira erimning nikohdan oldin olgan shaxsiy mulki, men u bilan shu yerda yashayman. Agar ajrashsak, shu kvartirada yashash huquqimni yo'qotamanmi?",,lex:106136,lex:106136#32-modda,true,uz-Latn,test:b13
+q007,b01,rus_kirill,"Пенсиядаман, хорижга доимий яшаш учун кўчиб кетмоқчиман. Пенсиямни у ёқда ҳам олиб тура оламанми?",,lex:112314,lex:112314#64-modda,true,uz-Cyrl,test:a16
+q008,b01,raqamlar,Qarzni undirish uchun sudga murojaat qilishning umumiy muddati necha yil?,,lex:111189,lex:111189#150-modda,true,uz-Latn,test:q18
+q009,b01,bir_nechta_modda,"Erim meni tez-tez urib, qo'rqitib turadi. Ichki ishlar bo'limi menga himoya orderini qancha muddatga beradi va erim uning shartlarini buzsa, unga qanday jazo bor?",,lex:4494709|lex:97664,lex:4494709#23-modda|lex:97664#206¹-modda,true,uz-Latn,test:c113
+q010,b01,rus_kirill,Кўчада бақириб сўкинган одамга қандай маъмурий жазо берилади?,,lex:97664,lex:97664#183-modda,true,uz-Cyrl,test:c07
+q011,b02,rus_kirill,"Сайлов куни бошқа шаҳарда бўламан, овозимни олдинроқ бериб қўйсам бўладими?",,lex:4386848,lex:4386848#57-modda,true,uz-Cyrl,test:c08
+q012,b02,javobsiz,AQShda mashina haydash guvohnomasini necha yoshdan olish mumkin?,,,,false,uz-Latn,test:n06
+q013,b02,faktik,Dokonim oldiga faqat ruscha yozilgan reklama osib qoysam boladimi yoki ozbekchasi ham bolishi kerakmi?,,lex:6052631,lex:6052631#6-modda,true,uz-Latn,test:d18
+q014,b02,bir_nechta_modda,"Qon topshiradigan kunim ishga bormasam bo'ladimi, o'sha kun uchun oyligim saqlanadimi?",,lex:6257288|lex:46727,lex:6257288#283-modda|lex:46727#20-modda,true,uz-Latn,test:a11
+q015,b02,rus_kirill,Какие праздничные дни в Узбекистане считаются выходными?,,lex:6257288,lex:6257288#208-modda,true,ru,test:r02
+q016,b02,raqamlar,Jinoyat uchun necha yoshdan javob beriladi?,,lex:111453,lex:111453#17-modda,true,uz-Latn,test:q23
+q017,b02,raqamlar,Erkaklar va ayollar necha yoshda pensiyaga chiqadi?,,lex:112314,lex:112314#7-modda,true,uz-Latn,test:q31
+q018,b02,rus_kirill,"Ажрашганимиздан кейин ўғлим онаси билан яшаяпти, у эса болани кўрсатмаяпти. Отаси сифатида ўғлим билан учрашиб туришга ҳаққим борми?",,lex:104720,lex:104720#76-modda,true,uz-Cyrl,test:b04
+q019,b02,bir_nechta_modda,Облагается ли государственная пенсия налогом на доходы?,,lex:112314|lex:4674902,lex:112314#67-modda|lex:4674902#369-modda,true,ru,test:a15
+q020,b02,raqamlar,"Mebel do'koniga divan uchun oldindan to'liq pul to'ladim, lekin kelishilgan kunda olib kelishmadi, ikki haftadan beri paysalga solishyapti. Kechikkan har bir kun uchun menga qancha jarima to'lashlari kerak?",,lex:4704,lex:4704#12¹-modda,true,uz-Latn,test:b21
+q021,b03,bir_nechta_modda,Yillik taʼtil necha kunlik bo'ladi va uni bir necha qismga bo'lib olsa bo'ladimi?,,lex:6257288,lex:6257288#217-modda|lex:6257288#231-modda,true,uz-Latn,test:q07
+q022,b03,bir_nechta_modda,Президент неча йилга сайланади ва кетма-кет неча марта сайланиши мумкин?,,lex:6445145|lex:4386848,lex:6445145#106-modda|lex:4386848#61-modda,true,uz-Cyrl,test:c03
+q023,b03,raqamlar,"Rul boshqarayotib telefonda gaplashsa, jarima qancha?",,lex:97664,lex:97664#128¹-modda,true,uz-Latn,dev:q27
+q024,b03,javobsiz,Germaniyada ishsiz qolganlarga oyiga qancha nafaqa to'lanadi?,,,,false,uz-Latn,test:n02
+q025,b03,raqamlar,Odam necha yoshdan boshlab o'z nomidan har qanday bitim tuza oladi?,,lex:111189,lex:111189#22-modda,true,uz-Latn,test:q17
+q026,b03,faktik,MChJda ishtirokchilar soni ko'pi bilan nechta bo'lishi mumkin?,,lex:8151376,lex:8151376#8-modda,true,uz-Latn,test:d16
+q027,b03,rus_kirill,Какая ставка налога на добавленную стоимость в Узбекистане?,,lex:4674902,lex:4674902#258-modda,true,ru,test:r06
+q028,b03,rus_kirill,Кто может разрешить ограничить тайну моей переписки и телефонных разговоров?,,lex:6445145,lex:6445145#31-modda,true,ru,test:d05
+q029,b03,raqamlar,Bolani asrab olmoqchi bo'lgan odam bilan bola o'rtasidagi yosh farqi kamida qancha bo'lishi kerak?,,lex:104720,lex:104720#152-modda,true,uz-Latn,test:q16
+q030,b03,rus_kirill,"Кучада ёки истирохат богида пиво ичиб утирса, канча жарима солинади?",,lex:97664,lex:97664#187-modda,true,uz-Cyrl,dev:c110
+q031,b04,rus_kirill,Таксида ишлаш учун ҳайдовчи камида неча ёшда бўлиши керак?,,lex:6764454,lex:6764454#44-modda,true,uz-Cyrl,test:c116
+q032,b04,bir_nechta_modda,"Akamga qarshi jinoyat ishi ochildi, tergovchi meni guvoh sifatida chaqiryapti. Akam haqida ko'rsatma berishdan bosh tortishga haqqim bormi?",,lex:111460|lex:6445145,lex:111460#116-modda|lex:111460#66-modda|lex:6445145#28-modda,true,uz-Latn,dev:c106
+q033,b04,raqamlar,Qozog'istonlik qarindoshim o'z mashinasida mehmonga keldi. Uning mashinasi O'zbekistonda bir yilda jami necha kungacha tura oladi?,,lex:2876354,lex:2876354#159-modda,true,uz-Latn,test:c120
+q034,b04,raqamlar,Ajrashgandan keyin otasi bitta bola uchun daromadining qancha qismini aliment qilib to'laydi?,,lex:104720,lex:104720#99-modda,true,uz-Latn,dev:q14
+q035,b04,faktik,Otam vasiyatsiz vafot etdi. Merosga birinchi navbatda kimlar ega bo'ladi?,,lex:180552,lex:180552#1135-modda,true,uz-Latn,test:q20
+q036,b04,raqamlar,"Hozir armiyaga ketsam necha oy xizmat qilaman, muddatli xizmat qancha davom etadi?",,lex:78717,lex:78717#5-modda,true,uz-Latn,test:c127
+q037,b04,rus_kirill,"Юқори қаватдаги қўшнимнинг квартирасидан сув оқиб тушяпти, ўзи эса уйда йўқ. Авария хизмати унинг уйига эгасиз кира оладими?",,lex:106136,lex:106136#24-modda,true,uz-Cyrl,test:b14
+q038,b04,javobsiz,Футбол бўйича жаҳон чемпионати қачон ва қаерда ўтади?,,,,false,uz-Cyrl,dev:n03
+q039,b04,raqamlar,Korxona shtatni qisqartirib meni ishdan bo'shatmoqchi. Ish beruvchi meni qancha vaqt oldin ogohlantirishi shart?,,lex:6257288,lex:6257288#165-modda,true,uz-Latn,test:q03
+q040,b04,bir_nechta_modda,Konstitutsiyaga o'zgartirish kiritish uchun deputatlar va senatorlarning qancha ovozi kerak?,,lex:6445145|lex:6449033,lex:6445145#154-modda|lex:6449033#8-modda,true,uz-Latn,test:d02
+q041,b05,rus_kirill,В течение какого срока банк обязан принять решение по моей заявке на потребительский кредит?,,lex:1004687,lex:1004687#9-modda,true,ru,test:b25
+q042,b05,raqamlar,"Bankdan olgan iste`mol kreditimni muddatidan oldin to`liq yopsam, qolgan oylar uchun ham foiz to`lashim kerakmi?",,lex:1004687,lex:1004687#16-modda,true,uz-Latn,test:b23
+q043,b05,raqamlar,"Kvartiramni ikki yil oldin sotib olganman. Hozir sotsam, olgan pulimdan daromad soligʻi toʻlashim kerakmi?",,lex:4674902,lex:4674902#378-modda,true,uz-Latn,test:d12
+q044,b05,raqamlar,Kafemga yong'in xavfsizligi bo'yicha tekshiruv kelmoqchi. Bunday tekshiruv necha kungacha cho'zilishi mumkin?,,lex:2006789,lex:2006789#39-modda,true,uz-Latn,test:d21
+q045,b05,raqamlar,Tergov davomida ayblanuvchini qamoqda eng ko'pi bilan qancha muddat ushlab turishlari mumkin?,,lex:111460,lex:111460#245-modda,true,uz-Latn,test:c105
+q046,b05,bir_nechta_modda,15 yoshli o'g'lim ota-onasining ruxsatisiz o'zi davolanishga rozilik bera oladimi yoki undan bosh tortishi mumkinmi?,,lex:26013,lex:26013#19-modda|lex:26013#26-modda,true,uz-Latn,test:a26
+q047,b05,faktik,Chet el kompaniyasining ilovasi o'zbekistonliklarning yuz va barmoq izi ma'lumotlarini xorijdagi serverda saqlasa bo'ladimi?,,lex:4396419,lex:4396419#27¹-modda,true,uz-Latn,test:d24
+q048,b05,bir_nechta_modda,"Иш берувчи уч ойдан бери маошимни бермаяпти. Судга даъво аризаси берсам, давлат божи тўлашим керакми?",,lex:4680944|lex:6257288,lex:4680944#8-modda|lex:6257288#562-modda,true,uz-Cyrl,test:d14
+q049,b05,rus_kirill,"Если квартиру купили в браке, но оформили на мужа, считается ли она общей собственностью супругов?",,lex:104720,lex:104720#23-modda,true,ru,test:r04
+q050,b05,javobsiz,Rossiyada yillik mehnat ta'tili necha kun beriladi?,,,,false,uz-Latn,dev:n05
+q051,b06,raqamlar,"Zavod yopilib ishsiz qoldim, 58 yoshdaman, 26 yillik stajim bor. Pensiyaga erta chiqsam bo'ladimi?",,lex:112314,lex:112314#14-modda,true,uz-Latn,test:a14
+q052,b06,bir_nechta_modda,"Akamni ruhiy kasalliklar shifoxonasiga roziligisiz, sud qarorisiz yotqizishdi. Bu mumkinmi va uni qancha vaqt ichida shifokorlar komissiyasi tekshirishi kerak?",,lex:5422209,lex:5422209#31-modda|lex:5422209#34-modda,true,uz-Latn,dev:a29
+q053,b06,javobsiz,Eng mazali palovni qanday qilib damlash kerak?,,,,false,uz-Latn,test:n01
+q054,b06,faktik,Xotinim homilador. Uning roziligisiz ajrashish uchun sudga ariza bera olamanmi?,,lex:104720,lex:104720#39-modda,true,uz-Latn,test:q15
+q055,b06,raqamlar,Oylik maoshdan olinadigan daromad solig'i necha foiz?,,lex:4674902,lex:4674902#381-modda,true,uz-Latn,test:q28
+q056,b06,rus_kirill,Кечаси ишлаганим учун иш ҳақи қанча кўпроқ тўланиши керак?,,lex:6257288,lex:6257288#264-modda,true,uz-Cyrl,test:c02
+q057,b06,raqamlar,Saylov kuni ovoz berish soat nechadan nechagacha davom etadi?,,lex:4386848,lex:4386848#51-modda,true,uz-Latn,test:q30
+q058,b06,bir_nechta_modda,Meni noqonuniy ishdan bo'shatishdi. Ishga tiklanish uchun sudga qancha muddat ichida murojaat qilishim kerak va sud uchun pul to'lashim kerakmi?,,lex:6257288,lex:6257288#560-modda|lex:6257288#562-modda,true,uz-Latn,test:a08
+q059,b06,raqamlar,"Sud hukmiga rozi bo'lmasam, apellyatsiya shikoyatini necha kun ichida berishim kerak?",,lex:111460,lex:111460#497⁴-modda,true,uz-Latn,test:c108
+q060,b06,rus_kirill,Я окончил университет за границей. Будет ли мой иностранный диплом действителен в Узбекистане?,,lex:5013007,lex:5013007#60-modda,true,ru,test:a24
+q061,b07,faktik,"Onam kasal bo'lib yotib qolgan, saylov uchastkasiga bora olmaydi. U uyda turib ovoz bera oladimi, buni qanday qilish kerak?",,lex:4386848,lex:4386848#56-modda,true,uz-Latn,test:d07
+q062,b07,rus_kirill,Колонияда ўтирган отам билан қисқа учрашув неча соатгача давом этиши мумкин?,,lex:163629,lex:163629#76-modda,true,uz-Cyrl,test:c107
+q063,b07,raqamlar,Avariyada mashinamga boshqa avtomobil urilib ketdi. Aybdorning majburiy sug'urtasi mashinam ta'miri uchun ko'pi bilan qancha to'lab beradi?,,lex:1342474,lex:1342474#22-modda,true,uz-Latn,dev:c115
+q064,b07,bir_nechta_modda,Shifokor mening kasalligim haqidagi ma'lumotni ish joyimga yoki qo'shnilarga aytib bersa bo'ladimi?,,lex:26013,lex:26013#45-modda|lex:26013#24-modda,true,uz-Latn,test:a28
+q065,b07,faktik,"Internetda birov haqida yolg'on gap tarqatib uni sharmanda qilsa, qanday jazo bor?",,lex:111453,lex:111453#139-modda,true,uz-Latn,test:q24
+q066,b07,raqamlar,"Ogay otam meni oz farzandi qilib rasmiylashtirmoqchi, men 12 yoshdaman. Mendan ham rozilik sorashlari shartmi?",,lex:104720,lex:104720#155-modda,true,uz-Latn,test:b03
+q067,b07,javobsiz,Fransiyada qoʻshilgan qiymat soligʻining asosiy stavkasi necha foiz?,,,,false,uz-Latn,extra:x01
+q068,b07,bir_nechta_modda,Болани мактабга беришдан олдин бир йил боғчада тайёрлов гуруҳига бориши шартми?,,lex:4646908,lex:4646908#6-modda|lex:4646908#37-modda,true,uz-Cyrl,test:a23
+q069,b07,rus_kirill,Туристларни суғурта қилиш мажбурийми ёки ихтиёрийми?,,lex:4428097,lex:4428097#38-modda,true,uz-Cyrl,test:d26
+q070,b07,raqamlar,"Agar bankning litsenziyasi olib qo'yilib, u yopilsa, omonatimdagi pulning qanchasi kafolatlangan holda qaytariladi?",,lex:7389404,lex:7389404#26-modda,true,uz-Latn,test:b22
+q071,b08,faktik,"Ko'chada menga hujum qilgan odamni o'zimni himoya qilib urib yiqitsam, men ham jinoyatchi bo'lib qolamanmi?",,lex:111453,lex:111453#37-modda,true,uz-Latn,dev:c101
+q072,b08,rus_kirill,Дукондан олган янги телефоним завод браки булиб чикди. Сотувчи уни неча кун ичида янгисига алмаштириб бериши керак?,,lex:4704,lex:4704#14-modda,true,uz-Cyrl,test:b20
+q073,b08,raqamlar,"Oglim 6 yoshda, uni maktabga necha yoshida berish kerak, 1-sinfga qachon olishadi?",,lex:5013007,lex:5013007#9-modda,true,uz-Latn,test:a21
+q074,b08,raqamlar,Kafolat muddati tugamagan muzlatgichim buzildi. Do'kon uni necha kun ichida tekinga tuzatib berishi shart?,,lex:4704,lex:4704#15-modda,true,uz-Latn,test:b19
+q075,b08,bir_nechta_modda,Иш берувчи хомиладор аёлни ишдан бушатиши мумкинми?,,lex:6257288,lex:6257288#408-modda|lex:6257288#163-modda,true,uz-Cyrl,test:a07
+q076,b08,rus_kirill,"Танишимга карз бердим, хар ой булиб-булиб кайтаришга келишгандик. У навбатдаги тулов муддатини утказиб юборди. Колган хамма карзни бирданига кайтаришни талаб килсам буладими?",,lex:180552,lex:180552#736-modda,true,uz-Cyrl,test:b10
+q077,b08,faktik,Davlat bog'chasida bitta guruhda ko'pi bilan nechta bola bo'lishi mumkin?,,lex:4646908,lex:4646908#34-modda,true,uz-Latn,test:a22
+q078,b08,bir_nechta_modda,Kvartiramni ijaraga bermoqchiman. Shartnomani yozma tuzish shartmi?,,lex:180552,lex:180552#603-modda|lex:180552#539-modda,true,uz-Latn,test:q19
+q079,b08,javobsiz,Қозоғистонда аёллар неча ёшда пенсияга чиқади?,,,,false,uz-Cyrl,test:n08
+q080,b08,raqamlar,Mashinani urib qoyib avariya bolgan joydan ketib qolsa qancha jarima boladi?,,lex:97664,lex:97664#137-modda,true,uz-Latn,test:c117
+q081,b09,raqamlar,Necha yoshdan boshlab maʼmuriy javobgarlikka tortish mumkin?,,lex:97664,lex:97664#13-modda,true,uz-Latn,test:c109
+q082,b09,javobsiz,Какой смартфон лучше купить до 300 долларов?,,,,false,ru,test:n09
+q083,b09,rus_kirill,"Чет эллик йигитга турмушга чиқсам, Ўзбекистон фуқаролигимни йўқотаманми?",,lex:4761984,lex:4761984#8-modda,true,uz-Cyrl,dev:c125
+q084,b09,bir_nechta_modda,"Hovlimga faqat qo'shnining yeri orqali o'tib kirsa bo'ladi, boshqa yo'l yo'q. Qo'shnimdan o'tib yurish uchun yo'l berishini qonuniy talab qila olamanmi?",,lex:152653|lex:111189,lex:152653#30-modda|lex:111189#173-modda,true,uz-Latn,test:b18
+q085,b09,raqamlar,"Jinoyat sodir etilganidan keyin qancha vaqt o'tsa, odamni endi javobgarlikka tortib bo'lmaydi?",,lex:111453,lex:111453#64-modda,true,uz-Latn,test:c103
+q086,b09,faktik,Maishiy chiqindini olib ketish xizmati uchun to'lov qilish fuqarolarning majburiyatimi?,,lex:42423,lex:42423#13-modda,true,uz-Latn,test:d27
+q087,b09,bir_nechta_modda,Yozuvchi vafot etganidan keyin uning asarlariga mualliflik huquqi yana necha yil saqlanib qoladi?,,lex:1022944|lex:180552,lex:1022944#35-modda|lex:180552#1065-modda,true,uz-Latn,test:b26
+q088,b09,raqamlar,Toshkentda MChJ sifatida kichik oziq-ovqat do'konim bor. Aylanmadan olinadigan soliq menga necha foiz bo'ladi?,,lex:4674902,lex:4674902#467-modda,true,uz-Latn,test:d13
+q089,b09,faktik,Otam vasiyatnomada hamma narsani akamga qoldiribdi. Voyaga yetmagan ukam umuman meros ololmaydimi?,,lex:180552,lex:180552#1142-modda,true,uz-Latn,test:q21
+q090,b09,rus_kirill,Сколько дней длится декретный отпуск до и после родов?,,lex:6257288,lex:6257288#404-modda,true,ru,test:r01
+q091,b10,faktik,"Uyda doimiy propiskada turgan voyaga yetgan barcha oila a'zolari svet, gaz va suv qarzi uchun birgalikda javob beradimi?",,lex:106136,lex:106136#133-modda,true,uz-Latn,test:b15
+q092,b10,bir_nechta_modda,Ish beruvchi oyligimni bir oyga kechiktirib berdi. Kechiktirgani uchun ustiga qo'shimcha pul to'lashi shartmi?,,lex:6257288,lex:6257288#333-modda|lex:6257288#253-modda,true,uz-Latn,test:a12
+q093,b10,rus_kirill,За сколько дней до выборов списки избирателей представляют для ознакомления?,,lex:4386848,lex:4386848#29-modda,true,ru,test:d09
+q094,b10,raqamlar,Ishga olishda sinov muddati eng ko'pi bilan qancha bo'lishi mumkin?,,lex:6257288,lex:6257288#130-modda,true,uz-Latn,test:q02
+q095,b10,rus_kirill,Бир ҳафтада оддий иш вақти неча соатдан ошмаслиги керак?,,lex:6257288,lex:6257288#182-modda,true,uz-Cyrl,dev:c01
+q096,b10,raqamlar,Chet el fuqarosi O'zbekiston fuqaroligini olishi uchun bu yerda necha yil yashagan bo'lishi kerak?,,lex:4761984,lex:4761984#19-modda,true,uz-Latn,test:c124
+q097,b10,javobsiz,"Как настроить домашний Wi-Fi роутер, чтобы интернет работал быстрее?",,,,false,ru,dev:n04
+q098,b10,faktik,Oliy Majlisning quyi palatasida nechta deputat bo'ladi?,,lex:6445145,lex:6445145#92-modda,true,uz-Latn,test:q11
+q099,b10,raqamlar,Ish joyimda oylikni oyiga faqat bir marta berishadi. Qonun bo'yicha maosh oyiga necha marta to'lanishi kerak?,,lex:6257288,lex:6257288#253-modda,true,uz-Latn,test:a03
+q100,b10,bir_nechta_modda,Prezidentlikka nomzod bo'lish uchun kamida necha yosh bo'lish kerak?,,lex:6445145|lex:4386848,lex:6445145#106-modda|lex:4386848#61-modda,true,uz-Latn,test:q09

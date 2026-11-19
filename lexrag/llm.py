@@ -59,18 +59,21 @@ def settings() -> tuple[str, str, str]:
     return provider, model, key
 
 
-def _client():
+def _client(read: float = 60):
     # read=60: bo'laklar orasidagi eng uzoq kutish; osilib qolgan model zaxirasiga tezroq o'tiladi
-    return httpx.Client(timeout=httpx.Timeout(60, connect=20))
+    return httpx.Client(timeout=httpx.Timeout(read, connect=min(20, read)))
 
 
 # Gemini 3.x da "thinking" tokenlari ham maxOutputTokens ichiga kiradi: 2048 da javob o'rtada uzilardi
 def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8192,
-           seed: int | None = None) -> Iterator[str]:
+           seed: int | None = None, deadline_s: float | None = None) -> Iterator[str]:
     """Javobni bo'laklab qaytaradi (UI'da so'zma-so'z chiqishi uchun).
 
     Gemini 503/429 (yuklama), 404 (model yo'q) yoki timeout bo'lsa, birinchi bo'lak chiqmaguncha
     qayta urinadi va GEMINI_FALLBACKS dagi zaxira modellarga o'tadi.
+    deadline_s: birinchi bo'lakni kutishning umumiy chegarasi (barcha urinish va zaxira modellar bilan).
+    Oshsa TimeoutError - /v1 API savolni LLM_TIMEOUT (retryable) bilan qaytaradi; chegarasiz zanjir
+    (har modelga 60 s) bitta savolni 2.5 daqiqagacha osiltirardi.
     """
     provider, model, key = settings()
     LAST.model, LAST.usage = model, {}
@@ -78,6 +81,10 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8
         yield from _stream_once(provider, model, key, system, user, temperature, max_tokens, seed)
         return
     import time
+    t_start = time.monotonic()
+
+    def left() -> float:
+        return 60.0 if deadline_s is None else deadline_s - (time.monotonic() - t_start)
     chain = [model] + [m for m in GEMINI_FALLBACKS if m != model]
     last: Exception | None = None
     first: Exception | None = None
@@ -85,8 +92,11 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8
         for attempt in range(2):
             started = False
             t0 = time.time()
+            if left() < 2:
+                raise TimeoutError(f"LLM {deadline_s:.0f} s ichida javob bermadi (oxirgi: {last or first})")
             try:
-                for piece in _stream_once(provider, m, key, system, user, temperature, max_tokens, seed):
+                for piece in _stream_once(provider, m, key, system, user, temperature, max_tokens, seed,
+                                          read=min(60.0, left())):
                     if not started:
                         global LAST_MODEL
                         LAST_MODEL = m
@@ -103,7 +113,7 @@ def stream(system: str, user: str, temperature: float = 0.1, max_tokens: int = 8
                 first = first or e
                 if not isinstance(e, LLMBusy) or isinstance(e, LLMQuota):
                     break  # 404 / osilib qolish / kunlik limit: shu modelni qayta urinmasdan keyingisiga
-                time.sleep(1.5 * (attempt + 1))
+                time.sleep(min(1.5 * (attempt + 1), max(0.0, left() - 2)))
     # asosiy modelning kunlik limiti tugagan bo'lsa, foydalanuvchiga aynan shu sabab aytiladi
     raise (first if isinstance(first, LLMQuota) else last) or RuntimeError("LLM javob bermadi")
 
@@ -128,8 +138,9 @@ class LLMNoModel(RuntimeError):
     """Bunday model yo'q yoki bu kalitga berilmaydi (404)."""
 
 
-def _stream_once(provider, model, key, system, user, temperature, max_tokens, seed=None) -> Iterator[str]:
-    with _client() as c:
+def _stream_once(provider, model, key, system, user, temperature, max_tokens, seed=None,
+                 read: float = 60) -> Iterator[str]:
+    with _client(read) as c:
         if provider == "gemini":
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse"
             body = {"system_instruction": {"parts": [{"text": system}]},

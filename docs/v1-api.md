@@ -43,13 +43,18 @@ curl -s https://92-5-109-49.sslip.io/v1/rag/batch \
 * **`citations`:** faqat javobda `[n]` bilan keltirilgan bo'laklar (`ref` = `contexts[].rank`). `quote` — bo'lak
   matnidan aynan olingan gap. Kontekstda yo'q `[n]` javobdan olib tashlanadi.
 * **Takrorlanuvchanlik:** qidiruv deterministik. `temperature` (standart 0) va `seed` LLM'ga uzatiladi.
-  LLM provayderi band bo'lsa, zaxira modelga o'tadi. Qaysi model javob berganini `debug.llm_model` ko'rsatadi.
+  LLM provayderi band bo'lsa, zaxira modelga o'tadi. Javobni qaysi model yozgani har savolda `llm_model` da,
+  batch bo'yicha `system.llm_model` da (bir nechta bo'lsa vergul bilan, `system.llm_models_used`) ko'rinadi;
+  sozlangan model - `system.llm_model_configured`.
 * **`as_of_date`** qo'llab-quvvatlanmaydi: indeksda faqat 31.10.2026 holatidagi tahrir bor
   (`debug.as_of_date_note`).
 * **Idempotentlik:** bir xil `batch_id` bilan bir xil so'rov saqlangan natijani qaytaradi. Boshqa mazmun bo'lsa
   `409` qaytadi. Saqlangan natijada `retryable: true` xatoli savollar bo'lsa, qayta yuborilganda faqat o'shalar
   qayta hisoblanadi. Natijalar o'chirilmaydi.
-* **Vaqt:** savol ~1.5–3 s. Batch 110 s ichida tugamasa `202` qaytadi, natijani `GET` bilan olish mumkin.
+* **Vaqt:** qidiruv ~0.4 s; qolgani LLM. Batch ichidagi savollar parallel (`V1_CONCURRENCY`, standart 3).
+  Bitta savolda LLM javobini kutish 45 s bilan cheklangan (`V1_LLM_DEADLINE_S`, barcha zaxira modellar bilan);
+  oshsa savol `status: timeout`, `LLM_TIMEOUT`, `retryable: true`. Batch 110 s ichida tugamasa `202` qaytadi,
+  natijani `GET` bilan olish mumkin.
 * **Rate limit:** bitta kalitga soniyasiga 5 ta POST; oshsa `429` + `Retry-After`.
 
 ## Tekshirish
@@ -60,3 +65,37 @@ curl -s https://92-5-109-49.sslip.io/v1/rag/batch \
 .venv/bin/python scripts/v1_check.py                                          # lokal, LLM mock
 RAG_TEST_KEY=... .venv/bin/python scripts/v1_check.py --url https://92-5-109-49.sslip.io --live-llm
 ```
+
+`scripts/spec_run.py` ustoz qiladigan testni takrorlaydi (1- va 6-bo'limlar): 100 savollik CSV → 10 ta batch
+ketma-ket, javoblar `eval/spec_runs/<run_id>/bNN.json`, metrikalar `report.md` / `report.json`.
+
+```bash
+.venv/bin/python scripts/spec_run.py build      # eval/spec_testset.csv (eval/questions.jsonl dan)
+RAG_TEST_KEY=... .venv/bin/python scripts/spec_run.py run --url https://92-5-109-49.sslip.io --run-id eval-1
+.venv/bin/python scripts/spec_run.py score --dir eval/spec_runs/eval-1     # LLM'siz qayta hisoblash
+```
+
+To'plam: 90 ta javobi bor savol (80 TEST + 10 DEV) va 10 ta javobsiz. Kategoriyalar taqribiy: eval to'plamida
+"o'zgargan normalar" va "noaniq savol" belgisi yo'q. `expected_answer` bo'sh, shuning uchun Answer correctness va
+Faithfulness hisoblanmaydi (LLM-hakam yoki qo'lda kerak).
+
+### Run `spec-2026-11-19` (Oracle, gemini-3.1-flash-lite, bepul tarif)
+
+| Metrika | Natija | Maqsad | |
+|---|---|---|---|
+| Hit@5 (hujjat) | 91.1% | ≥ 90% | ✅ |
+| Hit@5 (modda) | 84.4% | ≥ 80% | ✅ |
+| MRR | 0.699 | ≥ 0.70 | ❌ (0.001) |
+| Context precision (hujjat bo'yicha, taqribiy) | 63.6% | ≥ 60% | ✅ |
+| Citation accuracy (kutilgan modda keltirilgan, taqribiy) | 93.8% | ≥ 90% | ✅ |
+| To'qilgan manba / eskirgan norma | 0 / 0 | 0 / 0 | ✅ |
+| No-answer | 10/10 | ≥ 9/10 | ✅ |
+| Latency p50 / p95 | 5.3 s / 27.4 s | ≤ 5 / ≤ 12 s | ❌ |
+| Xato ulushi | 0% (qayta yuborishdan oldin 3%) | ≤ 2% | ✅ |
+
+* 3 savol birinchi urinishda `LLM_TIMEOUT` (retryable) bo'ldi; spetsifikatsiya bo'yicha o'sha `batch_id` qayta
+  yuborilganda faqat o'shalar qayta hisoblandi va javob berdi.
+* Javobi bor 9 savolda `no_answer: true` - hammasida kutilgan modda `contexts` da yo'q (qidiruv xatosi), LLM
+  to'qimasdan "topilmadi" dedi. Qidiruv xatolari asosan og'zaki "raqamlar" savollarida (Hit@5 72.7%).
+* Kechikish: qidiruv ~0.6 s, Gemini bepul tarifida generatsiya p50 4.6 s (oddiy "2+2" so'rovi ham 5–7 s).
+  p95 talabini bepul tarifda bajarib bo'lmaydi. Bir run ≈ 352 ming kirish + 25 ming chiqish tokeni.

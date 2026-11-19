@@ -1,0 +1,1223 @@
+{
+ "run_id": "spec-2026-11-19",
+ "batch_id": "spec-2026-11-19-b07",
+ "batch_index": 7,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-19T19:19:11+05:00",
+  "completed_at": "2026-11-19T19:19:24+05:00",
+  "total_ms": 12145
+ },
+ "summary": {
+  "total": 10,
+  "ok": 8,
+  "no_answer": 2,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q061",
+   "status": "ok",
+   "answer": "Ha, onangiz sogʻligʻi tufayli saylov uchastkasiga bora olmasa, u turgan joyda ovoz berishi mumkin. Bu Oʻzbekiston Respublikasining Saylov kodeksi 56-moddasida nazarda tutilgan [1].\n\nBuni amalga oshirish uchun quyidagi tartibga amal qilinadi:\n*   Onangiz tegishli uchastka saylov komissiyasiga murojaat qilib, oʻzining turgan joyida ovoz berish istagini bildirishi kerak [1].\n*   Uchastka saylov komissiyasi ushbu iltimosga binoan ovoz berishni onangiz turgan joyda tashkil etadi [1].\n*   Komissiyaning kamida ikki nafar aʼzosi koʻchma saylov qutisi bilan onangizning oldiga boradi [1].\n*   Ovoz berish jarayonida onangizning xohish-irodasi sir saqlanishi taʼminlanadi [1].\n*   Ushbu jarayonda kuzatuvchilar va ommaviy axborot vositalari vakillari ham hozir boʻlishi mumkin [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.641,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4386848",
+     "article_url": "https://lex.uz/uz/docs/-4386848#-4388670",
+     "article": "56-modda",
+     "article_title": "Saylovchining turgan joyida ovoz berish",
+     "part": "2-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "4386848_0060_56_1",
+     "quote": "Tegishli komissiyaning kamida ikki nafar aʼzosi koʻchma saylov qutisi bilan saylovchining turgan joyiga yuboriladi, ular saylovchining xohish-irodasi sir saqlanishiga rioya etilgan holda ovoz berish amalga oshirilishini taʼminlaydi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4386848_0060_56_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "56-modda",
+     "retrieval_score": 0.641,
+     "fusion_score": 0.01719,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ayrim saylovchilar sogʻligʻining holatiga yoki boshqa sabablarga koʻra ovoz berish binosiga kela olmagan hollarda, tegishli uchastka saylov komissiyasi ovoz berishni ushbu saylovchilarning iltimosiga binoan ular turgan joyda tashkil etadi.\nTegishli komissiyaning kamida ikki nafar aʼzosi koʻchma saylov qutisi bilan saylovchining turgan joyiga yuboriladi, ular saylovchining xohish-irodasi sir saqlanishiga rioya etilgan holda ovoz berish amalga oshirilishini taʼminlaydi. Bunda kuzatuvchilar va ommaviy axborot vositalari vakillari hozir boʻlishi mumkin."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4386848_0061_56¹_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "56¹-modda",
+     "retrieval_score": 0.6159,
+     "fusion_score": 0.01678,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasining xalqaro shartnomalariga va chet davlatlarning vakolatli davlat hokimiyati organlari bilan kelishuvlarga muvofiq chet davlatlarning aholi zich joylashgan hududlarda muddatidan oldin ovoz berish saylovchining turgan joyida oʻtkazilishi mumkin.\nOʻzbekiston Respublikasining chet davlatdagi diplomatik va boshqa vakolatxonasi huzurida tuzilgan uchastka saylov komissiyasi saylovchilarning turgan joyida ovoz berish vaqti hamda joyi toʻgʻrisida qaror qabul qiladi va bu haqda saylovchilarni, kuzatuvchilarni ommaviy axborot vositalari orqali xabardor etadi.\nSaylovchilarning turgan joyida ovoz berish Oʻzbekiston Respublikasining chet davlatdagi diplomatik va boshqa vakolatxonasi huzurida tuzilgan uchastka saylov komissiyasining kamida ikki nafar aʼzosi hozirligida oʻtkaziladi.\nOvoz berish tugaganidan keyin uchastka saylov komissiyasi aʼzolari koʻchma ovoz berish qutisini ochadi, uning ichidagi saylov byulletenlarini sanamasdan maxsus qopga joylaydi, qopni surgʻuchlaydi va bu haqda dalolatnoma tuzadi.\nSaylov byulletenlari solingan qop surgʻuchlangan holda dalolatnoma bilan birga saylov uchastkasiga olib boriladi va saylov kuni ovozlarni sanab chiqish jarayoni boshlanguniga qadar saqlanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4386848_0053_49_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "49-modda",
+     "retrieval_score": 0.6058,
+     "fusion_score": 0.0165,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ovoz berish binolari maxsus ajratilgan joylar boʻlib, ularda yashirin ovoz berish uchun yetarli miqdorda kabinalar yoki xonalar jihozlanishi, saylov byulletenlarini berish uchun joylar ajratilishi hamda saylov qutilari oʻrnatilishi kerak. Saylov qutilari ovoz beruvchilar ularning yoniga albatta yashirin ovoz berish kabinalari yoki xonalari orqali oʻtib keladigan qilib oʻrnatiladi. Ovoz berish binosida boshqa hech qanday siyosiy tadbirlar oʻtkazilishiga ruxsat etilmaydi. Binolarni jihozlash va ularda zarur tartibni saqlab turish masʼuliyati uchastka saylov komissiyasining zimmasida boʻladi.\nDavlat organlari, korxonalar, muassasalar, tashkilotlar saylovga tayyorgarlik koʻrish va uni oʻtkazish uchun zarur binolar va jihozlarni saylov komissiyalari ixtiyoriga bepul berib turishi shart.\nLozim boʻlgan darajada jihozlangan ovoz berish binolari saylov komissiyalariga saylovdan kamida oʻn bir kun oldin taqdim etilishi kerak.\nTutash hududlarni obodonlashtirish, fuqarolar, ayniqsa jismoniy imkoniyati cheklangan shaxslar uchun zarur shart-sharoitlar yaratish, saylov komissiyalarini texnik vositalar, mebel, ashyolar, ofis texnika vositalari, transport bilan taʼminlash mahalliy ijro etuvchi hokimiyat organlarining, aloqa vositalari bilan taʼminlash esa raqamli texnologiyalar sohasidagi vakolatli davlat organi zimmasiga yuklatiladi.\nJamoat tartibini saqlash, saylov oʻtkaziladigan binolar va joylarni qoʻriqlash, shuningdek saylov natijalariga doir hujjatlarni tashish chogʻida uchastka saylov komissiyalari aʼzolarini kuzatib borish tegishli vakolatli organlarning zimmasiga yuklatiladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4386848_0054_50_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "50-modda",
+     "retrieval_score": 0.5838,
+     "fusion_score": 0.01603,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Uchastka saylov komissiyalari joylashgan binolar tegishli tarzda jihozlanishi va quyidagilarga ega boʻlishi kerak:\nOʻzbekiston Respublikasining Davlat bayrogʻi (binoning ustida va ichida);\nOʻzbekiston Respublikasining Davlat gerbi (binoning ichida);\nsaylov uchastkasining tartib raqami koʻrsatilgan peshlavha;\nyashirin ovoz berish kabinalari yoki xonalari;\nsaylov qutilari;\nzarurat boʻlsa, jismoniy imkoniyati cheklangan shaxslar uchun maxsus jihozlangan yashirin ovoz berish kabinalari;\nkuzatuvchilar uchun alohida joylar;\nsaylov sanasiga bagʻishlangan plakatlar;\nsaylov uchastkasining xaritasi;\nuchastka saylov komissiyasi aʼzolarining tarkibi, ish rejasi, navbatchiliklar jadvali haqidagi axborot;\nsaylovga tayyorgarlik koʻrish va uni oʻtkazishga taalluqli maʼlumotlar joylashtiriladigan maxsus stend;\nbir mandatli saylov okruglari boʻyicha roʻyxatga olingan barcha nomzodlarning Markaziy saylov komissiyasi, hududiy, tuman, shahar saylov komissiyasi tomonidan chop etilgan tarjimai holi va dasturlarining asosiy yoʻnalishlari;\nsaylovda ishtirok etayotgan siyosiy partiyaning Markaziy saylov komissiyasi tomonidan nashr qilingan dasturi, partiya roʻyxati;\nzarur mebel, ofis texnika vositalari (telefon, printer, Internet jahon axborot tarmogʻiga ulangan va Saylov jarayonini boshqarish axborot tizimiga kirish imkoniyatiga ega boʻlgan kompyuterlar, seyf, kanselyariya tovarlari);\nyongʻinga qarshi vositalar.\nOvoz berish xonalari yorugʻ va keng boʻlishi, alohida kirish va chiqish joyi boʻlishi, shuningdek ularda jismoniy imkoniyati cheklangan shaxslar uchun nishab yoʻlkalar nazarda tutilgan boʻlishi lozim."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4386848_0057_53_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "53-modda",
+     "retrieval_score": 0.5802,
+     "fusion_score": 0.01588,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Saylov kuni ovoz berish binosi uchastka saylov komissiyasi aʼzolarining kamida uchdan ikki qismi hozir boʻlganda ochiladi.\nUchastka saylov komissiyalari:\nyashirin ovoz berish uchun binoni ovoz berish boshlanguniga qadar tayyor holatga keltiradi;\nuchastka saylov komissiyasi aʼzolari orasida vazifalarni taqsimlaydi;\nkomissiyaning ikki aʼzosi tomonidan imzolangan, muhr bilan tasdiqlangan saylov byulletenlarini tayyorlaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Onam kasal boʻlib yotib qolgan, saylov uchastkasiga bora olmaydi. U uyda turib ovoz bera oladimi, buni qanday qilish kerak?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.641,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1363,
+    "rerank_ms": null,
+    "generation_ms": 8694,
+    "total_ms": 10058
+   },
+   "usage": {
+    "input_tokens": 3000,
+    "output_tokens": 327
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q062",
+   "status": "ok",
+   "answer": "Жиноят-ижроия кодексининг 76-моддасига кўра, маҳкумлар қариндошлари билан муддати тўрт соатгача бўлган қисқа муддатли учрашув олишлари мумкин [1].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.548,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-163629",
+     "article_url": "https://lex.uz/uz/docs/-163629#-170139",
+     "article": "76-modda",
+     "article_title": "Mahkumlarning uchrashuvlari",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "163629_0076_76_1",
+     "quote": "Ozodlikdan mahrum etishga hukm qilingan shaxslarga qisqa muddatli va uzoq muddatli uchrashuv huquqi beriladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "163629_0076_76_1",
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "article": "76-modda",
+     "retrieval_score": 0.5483,
+     "fusion_score": 0.01714,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ozodlikdan mahrum etishga hukm qilingan shaxslarga qisqa muddatli va uzoq muddatli uchrashuv huquqi beriladi.\nMahkumlar qarindoshlari bilan yoki muassasa boshligʻining ruxsatiga asosan boshqa shaxslar bilan muddati toʻrt soatgacha boʻlgan qisqa muddatli uchrashuv olishi mumkin.\nMahkumlarga yaqin qarindoshlari (er, xotin, ota-onalar, bolalar, oʻgʻil (qiz) qilib olgan shaxslar, oʻgʻil (qiz) qilib olingan shaxslar, aka-ukalar, opa-singillar, buvalar, buvilar, nevaralar) bilan uzoq muddatli uchrashuv muassasa hududida yoki, ushbu Kodeksning 114 va 130-moddalarida nazarda tutilgan hollarda, muassasa hududidan tashqarida ular bilan birga yashash huquqi bilan beriladi.\nUzoq muddatli uchrashuv muddati quyidagicha belgilanadi: muassasa hududida — bir sutkadan uch sutkagacha, muassasa hududidan tashqarida esa — uch sutkadan besh sutkagacha.\nQisqa muddatli va uzoq muddatli uchrashuv miqdori jazoni ijro etish muassasasining tartib turiga hamda mahkum saqlanayotgan sharoitga qarab belgilanadi.\nYuqumli kasalliklarga chalingan va statsionar davolanishda boʻlgan mahkumlarga uchrashuvlar shifokor ruxsati bilan beriladi.\nUchrashuv uchun berilgan vaqt mobaynida mahkumlar ishdan ozod etib qoʻyiladi, ana shu kunlar uchun ularga ish haqi yozilmaydi.\nMahkumning iltimosiga koʻra uzoq muddatli uchrashuv qisqa muddatli uchrashuvga yoki masofali video-uchrashuvga yoxud telefon orqali soʻzlashuvga, qisqa muddatli uchrashuv esa masofali video-uchrashuvga yoki telefon orqali soʻzlashuvga almashtiriladi.\nMahkumlar uchun masofali video-uchrashuvlar jazoni ijro etish muassasasi va organi tomonidan tashkil etiladi. Masofali video-uchrashuv himoyalangan aloqa kanallari orqali videokonferensiya tizimi vositasida amalga oshiriladi.\nUchrashuvlarni oʻtkazish tartibi Oʻzbekiston Respublikasi Ichki ishlar vazirligi tomonidan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "163629_0131_127_1",
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "article": "127-modda",
+     "retrieval_score": 0.5407,
+     "fusion_score": 0.01672,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tarbiya koloniyasida hibsxonaga kiritib qoʻyish tariqasidagi intizomiy jazo oʻn toʻrt yoshdan oʻn oltigacha boʻlgan mahkumlarga yetti sutkagacha, oʻn olti va undan katta yoshdagi mahkumlarga esa oʻn sutkagacha boʻlgan muddatga qoʻllaniladi.\nTarbiya koloniyasining hibsxonasiga kiritib qoʻyilgan mahkumlarning sayr qilish muddati sutkasiga ikki soat qilib belgilanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "163629_0134_130_1",
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "article": "130-modda",
+     "retrieval_score": 0.5188,
+     "fusion_score": 0.01628,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mahkuma homilador ayollar va uch yoshga toʻlmagan bolasi bor ayollar ushbu Kodeksda mahkumlar uchun nazarda tutilgan huquqlardan tashqari:\nmuassasa hududi doirasidan tashqarida yashash;\nbolalarini jazoni ijro etish koloniyalari qoshidagi bolalar uyiga joylashtirish;\nbolalarini joylashtirib kelish va ular bilan uchrashish uchun muassasa doirasidan chetga chiqish huquqiga ham ega.\nMahkuma ayollarga voyaga yetmagan bolalari bilan bir yil ichida toʻrt marta, muddati besh sutkagacha boʻlgan uzoq muddatli uchrashuv, manzil-koloniyada saqlanayotganlarga esa, ishdan boʻsh vaqtda muassasa hududidan tashqarida yashash imkoniyati bilan uzoq muddatli uchrashuvlar cheklanmagan miqdorda beriladi.\nMahkuma ayollarning voyaga yetmagan bolalari bilan uchrashishiga oʻzining shaxsini, qarindoshligini yoki vasiyligini (homiyligini) tasdiqlovchi hujjatlarini taqdim etgan taqdirda bitta yaqin qarindoshi yoki vasiy (homiy) kuzatuvida yoʻl qoʻyiladi.\nMahkuma ayollarning voyaga yetmagan bolalari bilan uchrashuvlari ushbu Kodeksda belgilangan uchrashuvlarga qoʻshib hisoblanmaydi.\nMahkuma ayollarning muassasadan tashqaridagi bolalar uylaridagi voyaga yetmagan bolalar bilan uchrashuvlari mahkuma ayollarning iltimosiga koʻra amalga oshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "163629_0129_125_1",
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "article": "125-modda",
+     "retrieval_score": 0.5132,
+     "fusion_score": 0.01614,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tarbiya koloniyalarida mahkumlar umumiy turar joylarda yashaydilar.\nMahkumlar belgilangan mehnatga haq toʻlash eng kam miqdorining 87,9 foizigacha boʻlgan summaga oziq-ovqat mahsulotlari va eng zarur narsalar sotib olishlari mumkin.\nTarbiya koloniyalarida mahkumlar yil mobaynida:\nyigirma toʻrt marta qisqa muddatli va sakkiz marta uzoq muddatli uchrashuv;\nyigirma toʻrt marta masofali video-uchrashuv yoki telefon orqali soʻzlashuv;\noʻn ikkita posilka yoki yoʻqlov;\noʻn ikkita banderol olish huquqiga ega.\nVoyaga yetmagan mahkumlarga ota-onasi va ularning oʻrnini bosuvchi shaxslar bilan uchrashuvlar cheklanmagan miqdorda beriladi.\nOʻn sakkiz yoshga toʻlgan va tarbiya koloniyalarida qoldirilgan mahkumlarga voyaga yetmagan mahkumlar uchun belgilangan normalarda ovqat, ust-bosh, moddiy-maishiy taʼminot va boshqa jazo oʻtash sharoitlari tatbiq etiladi. Bu shaxslarning mehnat sharoitlari mehnat toʻgʻrisidagi qonunchilikka muvofiq belgilanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "163629_0152_151_1",
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "article": "151-modda",
+     "retrieval_score": 0.5102,
+     "fusion_score": 0.01588,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Intizomiy qismda mahkumlar qisqa va uzoq muddatli uchrashuvlar olish huquqiga ega.\nMahkumlarning qarindoshlari va boshqa shaxslar bilan qisqa muddatli uchrashuvi oyda bir marta toʻrt soatgacha boʻlgan muddatda beriladi. Bunday uchrashuvlar ishdan va mashgʻulotlardan boʻsh vaqtda, maxsus jihozlangan xonada, intizomiy qism vakili kuzatuvi ostida oʻtkaziladi.\nMahkumlarning yaqin qarindoshlari bilan uzoq muddatli uchrashuvlari yiliga uch marta uch sutkagacha boʻlgan muddatda beriladi. Bunday uchrashuvlar intizomiy qismning maxsus jihozlangan binosida yoki qism komandirining ruxsati bilan intizomiy qism hududidan tashqarida oʻtkaziladi. Uzoq muddatli uchrashuv vaqtida mahkumlar ishdan va mashgʻulotlardan ozod qilinadi.\nMahkumning iltimosiga koʻra uchrashuv telefon orqali soʻzlashuv bilan almashtirilishi mumkin.\nUchrashuvlar va telefon orqali soʻzlashuvlar berish tartibi Oʻzbekiston Respublikasi Mudofaa vazirligi tomonidan belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Koloniyada oʻtirgan otam bilan qisqa uchrashuv necha soatgacha davom etishi mumkin?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5483,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1350,
+    "rerank_ms": null,
+    "generation_ms": 3167,
+    "total_ms": 4518
+   },
+   "usage": {
+    "input_tokens": 3310,
+    "output_tokens": 113
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q063",
+   "status": "ok",
+   "answer": "\"Transport vositalari egalarining fuqarolik javobgarligini majburiy sugʻurta qilish toʻgʻrisida\"gi Qonunning 22-moddasiga koʻra, jabrlanuvchining mol-mulkiga zarar yetkazilganda sugʻurta tovonining miqdori sugʻurta summasining 35 foizidan ortiq boʻlishi mumkin emas [3].\n\nShuningdek, ushbu Qonunning 23-moddasiga asosan, sugʻurta tovoni yetkazilgan zarar miqdorida, lekin sugʻurta summasidan oshmagan miqdorda toʻlanadi [1]. Agar sugʻurta tovoni yetkazilgan zararni toʻliq qoplash uchun yetishmasa, Oʻzbekiston Respublikasi Fuqarolik kodeksining 992-moddasiga muvofiq, sugʻurta tovoni va zararning haqiqiy miqdori oʻrtasidagi farqni aybdor shaxsning oʻzi toʻlaydi [4].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.677,
+   "citations": [
+    {
+     "ref": 3,
+     "doc_id": "lex:1342474",
+     "doc_title": "TRANSPORT VOSITALARI EGALARINING FUQAROLIK JAVOBGARLIGINI MAJBURIY SUGʻURTA QILISH TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-155",
+     "url": "https://lex.uz/uz/docs/-1342474",
+     "article_url": "https://lex.uz/uz/docs/-1342474#-1342972",
+     "article": "22-modda",
+     "article_title": "Sugʻurta tovoni miqdori",
+     "part": "3-qism",
+     "edition_date": "2026-06-23",
+     "doc_status": "amalda",
+     "chunk_id": "1342474_0024_22_1",
+     "quote": "Jabrlanuvchining mol-mulkiga zarar yetkazilganda sugʻurta tovonining miqdori sugʻurta summasining 35 foizidan ortiq boʻlishi mumkin emas."
+    },
+    {
+     "ref": 1,
+     "doc_id": "lex:1342474",
+     "doc_title": "TRANSPORT VOSITALARI EGALARINING FUQAROLIK JAVOBGARLIGINI MAJBURIY SUGʻURTA QILISH TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-155",
+     "url": "https://lex.uz/uz/docs/-1342474",
+     "article_url": "https://lex.uz/uz/docs/-1342474#-1342981",
+     "article": "23-modda",
+     "article_title": "Sugʻurta tovonini toʻlash",
+     "part": null,
+     "edition_date": "2026-06-23",
+     "doc_status": "amalda",
+     "chunk_id": "1342474_0025_23_1",
+     "quote": "Sugʻurta tovoni yetkazilgan zarar miqdorida, lekin sugʻurta summasidan oshmagan miqdorda sugʻurtalovchi tomonidan bevosita jabrlanuvchiga (uning merosxoʻriga yoki huquqiy vorisiga) toʻlanadi."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-180552",
+     "article_url": "https://lex.uz/uz/docs/-180552#-196603",
+     "article": "992-modda",
+     "article_title": "Zararning oʻz javobgarligini sugʻurtalagan shaxs tomonidan toʻlanishi",
+     "part": "1-qism",
+     "edition_date": "2026-07-19",
+     "doc_status": "amalda",
+     "chunk_id": "180552_0611_992_1",
+     "quote": "Ixtiyoriy yoki majburiy sugʻurta tartibida jabrlanuvchi foydasiga oʻz javobgarligini sugʻurtalagan yuridik shaxs yoki fuqaro yetkazilgan zararni toʻliq qoplash uchun sugʻurta tovoni (sugʻurta toʻlovi) yetishmagan taqdirda, sugʻurta tovoni (sugʻurta toʻlovi) va zararning haqiqiy miqdori oʻrtasidagi farqni toʻlaydi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "1342474_0025_23_1",
+     "doc_id": "lex:1342474",
+     "doc_title": "TRANSPORT VOSITALARI EGALARINING FUQAROLIK JAVOBGARLIGINI MAJBURIY SUGʻURTA QILISH TOʻGʻRISIDA",
+     "article": "23-modda",
+     "retrieval_score": 0.6773,
+     "fusion_score": 0.01705,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Sugʻurta tovoni yetkazilgan zarar miqdorida, lekin sugʻurta summasidan oshmagan miqdorda sugʻurtalovchi tomonidan bevosita jabrlanuvchiga (uning merosxoʻriga yoki huquqiy vorisiga) toʻlanadi.\nAgar sugʻurta qildiruvchi (fuqarolik javobgarligi majburiy sugʻurta shartnomasi boʻyicha sugʻurtalangan boshqa shaxs) jabrlanuvchiga yetkazilgan zararning oʻrnini sugʻurtalovchining yozma roziligi bilan oʻz hisobidan qoplasa, sugʻurta qildiruvchi (fuqarolik javobgarligi majburiy sugʻurta shartnomasi boʻyicha sugʻurtalangan boshqa shaxs) yetkazilgan zararning oʻrnini qoplash tartibida oʻzi amalga oshirgan toʻlovlarni tasdiqlovchi hujjatlarni taqdim etganidan keyin sugʻurtalovchi sugʻurta qildiruvchiga sugʻurta toʻlovini toʻlaydi.\nAgar sugʻurta qildiruvchi (fuqarolik javobgarligi majburiy sugʻurta shartnomasi boʻyicha sugʻurtalangan boshqa shaxs) transport vositasidan foydalanish natijasida yetkazilgan zararning oʻrnini jabrlanuvchiga (uning merosxoʻriga yoki huquqiy vorisiga) sugʻurtalovchining yozma roziligisiz har qanday usulda qoplasa yoki qoplashni vaʼda qilsa, sugʻurta qildiruvchining (fuqarolik javobgarligi majburiy sugʻurta shartnomasi boʻyicha sugʻurtalangan boshqa shaxsning) bu harakatlari sugʻurtalovchi uchun majburiyatlarni keltirib chiqarmaydi.\nJabrlanuvchi (uning merosxoʻri) hayoti yoki sogʻligʻiga yetkazilgan zararning oʻrnini qoplash hisobiga boshqa manbalardan olgan toʻlovlar sugʻurtalovchining sugʻurta tovonini toʻlash boʻyicha majburiyatini kamaytirmaydi.\nSugʻurta qildiruvchi (fuqarolik javobgarligi majburiy sugʻurta shartnomasi boʻyicha sugʻurtalangan boshqa shaxs) sugʻurta hodisasi sodir boʻlganda zararni bartaraf qilish va (yoki) kamaytirish choralarini koʻrganligi yoxud jabrlanuvchiga kechiktirib boʻlmaydigan yordam koʻrsatganligi sugʻurtalovchi ushbu Qonunda oʻzi uchun belgilangan majburiyatlarni bajarishni rad etishiga asos boʻlolmaydi.\nAgar majburiy sugʻurta obyekti bir vaqtning oʻzida ixtiyoriy sugʻurta boʻyicha ham sugʻurtalangan boʻlsa, ixtiyoriy sugʻurta boʻyicha sugʻurta tovoni majburiy sugʻurta boʻyicha sugʻurta tovonini toʻlash shartlaridan qatʼi nazar toʻlanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "1342474_0023_21_1",
+     "doc_id": "lex:1342474",
+     "doc_title": "TRANSPORT VOSITALARI EGALARINING FUQAROLIK JAVOBGARLIGINI MAJBURIY SUGʻURTA QILISH TOʻGʻRISIDA",
+     "article": "21-modda",
+     "retrieval_score": 0.6615,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jabrlanuvchining hayoti yoki sogʻligʻiga yetkazilgan hamda majburiy sugʻurta shartnomasi boʻyicha oʻrni qoplanadigan zararning miqdori Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilangan tartibda aniqlanadi. Jabrlanuvchi (uning merosxoʻri) oʻz tashabbusi bilan yoki sugʻurtalovchining soʻroviga binoan sugʻurtalovchiga ushbu Qonun 19-moddasining toʻrtinchi qismida koʻrsatilgan barcha hujjatlarni taqdim etishi, shuningdek unga hayoti yoki sogʻligʻiga yetkazilgan zararning hajmi hamda xususiyatini tasdiqlovchi barcha maʼlum boʻlgan maʼlumotlarni yozma shaklda xabar qilishi shart.\nMol-mulkka zarar yetkazilganda jabrlanuvchi (uning merosxoʻri yoki huquqiy vorisi) shikastlangan mol-mulkni yoki uning qoldiqlarini zarar yetkazilishi holatlarini aniqlash uchun koʻzdan kechirish va mustaqil ekspertizani tashkil etish hamda oʻrni qoplanishi lozim boʻlgan zararning miqdorini belgilash uchun baholashni tashkil etish maqsadida sugʻurtalovchiga oʻz tashabbusi bilan yoki sugʻurtalovchining soʻroviga binoan taqdim qilishi shart.\nAgar jabrlanuvchi (uning merosxoʻri yoki huquqiy vorisi) tomonidan taqdim etilgan shikastlangan mol-mulkni yoki uning qoldiqlarini koʻzdan kechirish va mustaqil ekspertiza qilish sugʻurta hodisasi mavjudligini toʻgʻri belgilash, oʻtkazilgan baholash natijalari esa majburiy sugʻurta shartnomasi boʻyicha oʻrni qoplanishi lozim boʻlgan zararning miqdorini toʻgʻri aniqlash imkonini bermasa, mazkur holatlarni aniqlash uchun sugʻurtalovchi sugʻurta qildiruvchining foydalanilayotganda jabrlanuvchiga zarar yetkazilgan shikastlangan transport vositasini koʻzdan kechirishga va (yoki) ushbu transport vositasi yoki uning qoldiqlariga nisbatan takroriy mustaqil ekspertizani tashkil etishga, shuningdek jabrlanuvchi (uning merosxoʻri yoki huquqiy vorisi) tomonidan taqdim etilgan shikastlangan mol-mulkni yoki uning qoldiqlarini baholash toʻgʻrisidagi hisobotning ishonchliligi ekspertizasini qonunchilikda belgilangan tartibda tashkil etishga haqli. Sugʻurta qildiruvchi sugʻurtalovchining talabiga koʻra ushbu transport vositasini yoki uning qoldiqlarini majburiy sugʻurta shartnomasida nazarda tutilgan tartibda taqdim etishi shart.\nSugʻurtalovchi shikastlangan mol-mulkni yoki uning qoldiqlarini jabrlanuvchi (uning merosxoʻri yoki huquqiy vorisi) yozma ravishda murojaat etgan kundan eʼtiboran besh ish kunidan koʻp boʻlmagan muddatda, agar ular oʻrtasida yozma shaklda boshqa muddat kelishilmagan boʻlsa, koʻzdan kechirishi, uning mustaqil ekspertizasini va baholashdan oʻtkazishni tashkil etishi shart."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "1342474_0024_22_1",
+     "doc_id": "lex:1342474",
+     "doc_title": "TRANSPORT VOSITALARI EGALARINING FUQAROLIK JAVOBGARLIGINI MAJBURIY SUGʻURTA QILISH TOʻGʻRISIDA",
+     "article": "22-modda",
+     "retrieval_score": 0.6519,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Jabrlanuvchining hayoti yoki sogʻligʻiga zarar yetkazilganda sugʻurta tovonining miqdori sugʻurta summasining 65 foizidan ortiq boʻlishi mumkin emas.\nBir nechta jabrlanuvchining hayoti yoki sogʻligʻiga zarar yetkazilganda har bir jabrlanuvchiga (uning merosxoʻriga) tegadigan sugʻurta tovoni miqdori har bir jabrlanuvchining hayoti yoki sogʻligʻiga yetkazilgan zararning darajasiga mutanosib ravishda, ushbu moddaning birinchi qismida belgilangan summa doirasida aniqlanadi.\nJabrlanuvchining mol-mulkiga zarar yetkazilganda sugʻurta tovonining miqdori sugʻurta summasining 35 foizidan ortiq boʻlishi mumkin emas.\nBir nechta jabrlanuvchining mol-mulkiga zarar yetkazilganda har bir jabrlanuvchiga (uning merosxoʻriga yoki huquqiy vorisiga) tegadigan sugʻurta tovoni miqdori har bir jabrlanuvchining mol-mulkiga yetkazilgan zararning darajasiga mutanosib ravishda, ushbu moddaning uchinchi qismida belgilangan summa doirasida aniqlanadi.\nSugʻurtalovchi sugʻurta qildiruvchining (fuqarolik javobgarligi majburiy sugʻurta shartnomasi boʻyicha sugʻurtalangan boshqa shaxsning) tashabbusi bilan yoki sugʻurtalovchining talabiga binoan zararni bartaraf qilish va (yoki) kamaytirish yuzasidan kechiktirib boʻlmaydigan choralar koʻrilishi munosabati bilan yuzaga kelgan sugʻurta qildiruvchining (fuqarolik javobgarligi majburiy sugʻurta shartnomasi boʻyicha sugʻurtalangan boshqa shaxsning) barcha bildirilgan va isbotlanadigan xarajatlarini, hatto bu choralar muvaffaqiyatsiz boʻlgan hollarda ham qoplaydi.\nZararni bartaraf qilish va (yoki) kamaytirish boʻyicha xarajatlar sugʻurta tovoni miqdoridan ortiq boʻlishi mumkin emas.\nSugʻurta tovoni sud xarajatlarini, shuningdek jarimalar va boshqa shu kabi toʻlovlarni qoplamaydi.\nJabrlanuvchining hayoti, sogʻligʻi va (yoki) mol-mulkiga yetkazilgan zararning oʻrni Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadigan sugʻurta summasi doirasida qoplanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0611_992_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "992-modda",
+     "retrieval_score": 0.6372,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ixtiyoriy yoki majburiy sugʻurta tartibida jabrlanuvchi foydasiga oʻz javobgarligini sugʻurtalagan yuridik shaxs yoki fuqaro yetkazilgan zararni toʻliq qoplash uchun sugʻurta tovoni (sugʻurta toʻlovi) yetishmagan taqdirda, sugʻurta tovoni (sugʻurta toʻlovi) va zararning haqiqiy miqdori oʻrtasidagi farqni toʻlaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "1471197_0015_16_1",
+     "doc_id": "lex:1471197",
+     "doc_title": "ISH BERUVCHINING FUQAROLIK JAVOBGARLIGINI MAJBURIY SUGʻURTA QILISH TOʻGʻRISIDA",
+     "article": "16-modda",
+     "retrieval_score": 0.6351,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Annuitetlar shartnomasi boʻyicha sugʻurta summasi jabrlanuvchiga yoki naf oluvchiga qonunchilikka muvofiq oʻrni qoplanishi lozim boʻlgan yetkazilgan zarar miqdorida belgilanadi.\nYetkazilgan zarar miqdorini aniqlashda jabrlanuvchiga uning oʻz mehnat vazifalarini bajarishi bilan bogʻliq holda mehnatda mayib boʻlishi, kasb kasalligiga chalinishi yoki sogʻligʻining boshqacha tarzda shikastlanishi munosabati bilan tayinlangan nogironlik pensiyasi, xuddi shuningdek boshqa turdagi pensiyalar, nafaqalar va sogʻligʻi shikastlanguniga qadar ham, undan keyin ham boʻlgan boshqa shunga oʻxshash toʻlovlar hisobga olinmaydi va yetkazilgan zararning oʻrni qoplanishi lozim boʻlgan miqdori kamaytirilishiga olib kelmaydi (yetkazilgan zararning oʻrnini qoplash hisobiga kiritilmaydi). Jabrlanuvchi sogʻligʻi shikastlanganidan keyin oladigan ish haqi (daromad) ham yetkazilgan zararning oʻrnini qoplash hisobiga kiritilmaydi.\nAnnuitetlar shartnomasi boʻyicha sugʻurta mukofoti sugʻurtalovchi tomonidan annuitetlar shartnomasi boʻyicha sugʻurtaning butun davri uchun bir yoʻla toʻlanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Avariyada mashinamga boshqa avtomobil urilib ketdi. Aybdorning majburiy sugʻurtasi mashinam taʼmiri uchun koʻpi bilan qancha toʻlab beradi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6773,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1342,
+    "rerank_ms": null,
+    "generation_ms": 3397,
+    "total_ms": 4740
+   },
+   "usage": {
+    "input_tokens": 4196,
+    "output_tokens": 293
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q064",
+   "status": "ok",
+   "answer": "Yoʻq, shifokor sizning kasalligingiz haqidagi maʼlumotlarni ish joyingizga yoki qoʻshnilaringizga oshkor qilishga haqli emas.\n\n\"Fuqarolar sogʻligʻini saqlash toʻgʻrisida\"gi Qonunning 45-moddasiga koʻra, shifokor siri hisoblangan maʼlumotlarni fuqaroning yoki uning qonuniy vakilining roziligisiz oshkor qilishga yoʻl qoʻyilmaydi [1]. Ushbu maʼlumotlar faqat qonunda belgilangan alohida hollardagina (masalan, sud, tergov organlarining soʻrovi yoki yuqumli kasalliklar tarqalishi xavfi boʻlganda) oshkor etilishi mumkin [1].\n\nShuningdek, \"Fuqarolar sogʻligʻini saqlash toʻgʻrisida\"gi Qonunning 25-moddasiga muvofiq, fuqaroning tibbiy hujjatlarida aks etgan maʼlumotlar shifokorlik siri hisoblanadi va u faqat 45-moddada nazarda tutilgan asoslardagina fuqaroning roziligisiz taqdim etilishi mumkin [2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.635,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:26013",
+     "doc_title": "Fuqarolar sogʻligʻini saqlash toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "265-I",
+     "url": "https://lex.uz/uz/docs/-26013",
+     "article_url": "https://lex.uz/uz/docs/-26013#-27245",
+     "article": "45-modda",
+     "article_title": "Shifokor siri",
+     "part": "2-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "26013_0043_45_1",
+     "quote": "Shifokor siri hisoblangan maʼlumotlardan oʻqish hamda kasb-korga, xizmatga doir va boshqa xil vazifalarni bajarish paytida xabardor boʻlib qolgan shaxslarning bu maʼlumotlarni fuqaro yoki uning qonuniy vakilining roziligisiz oshkor qilishiga yoʻl qoʻyilmaydi, ushbu moddaning uchinchi qismida belgilangan hollar bundan mustasno."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:26013",
+     "doc_title": "Fuqarolar sogʻligʻini saqlash toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "265-I",
+     "url": "https://lex.uz/uz/docs/-26013",
+     "article_url": "https://lex.uz/uz/docs/-26013#-26431",
+     "article": "25-modda",
+     "article_title": "Fuqarolarning oʻz sogʻligʻining holati toʻgʻrisida maʼlumot olish huquqi",
+     "part": "5-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "26013_0024_25_1",
+     "quote": "Fuqaroning tibbiy hujjatlarida aks etgan maʼlumotlar shifokorlik siri boʻlib, u faqat ushbu Qonun 45-moddasining uchinchi qismida nazarda tutilgan asoslardagina fuqaroning roziligisiz taqdim etilishi mumkin."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "26013_0043_45_1",
+     "doc_id": "lex:26013",
+     "doc_title": "Fuqarolar sogʻligʻini saqlash toʻgʻrisida",
+     "article": "45-modda",
+     "retrieval_score": 0.6351,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Fuqaroning tibbiy yordam soʻrab murojaat qilganligi, uning sogʻligʻining holati, kasalligiga qoʻyilgan tashxis xususidagi hamda uni tekshirish va davolash davomida olingan boshqa maʼlumotlar shifokor sirini tashkil etadi.\nShifokor siri hisoblangan maʼlumotlardan oʻqish hamda kasb-korga, xizmatga doir va boshqa xil vazifalarni bajarish paytida xabardor boʻlib qolgan shaxslarning bu maʼlumotlarni fuqaro yoki uning qonuniy vakilining roziligisiz oshkor qilishiga yoʻl qoʻyilmaydi, ushbu moddaning uchinchi qismida belgilangan hollar bundan mustasno.\nShifokor siri hisoblangan maʼlumotlarni fuqaro yoki uning qonuniy vakilining roziligisiz berishga quyidagi sabablarga koʻra yoʻl qoʻyiladi:\nahvoli ogʻirligi sababli oʻz xohish-irodasini bildira olmaydigan fuqaroni tekshirish va davolash maqsadida;\nyuqumli kasalliklar tarqalishi, yalpi zaharlanish va zararlanish xavfi tahdid solganida;\ntergovga qadar tekshiruvni amalga oshiruvchi organlarning, surishtiruv, tergov organlarining, prokuraturaning va sudning ishni sudga qadar yuritish yoki sud tekshiruvi oʻtkazilishi munosabati bilan soʻrovi boʻyicha;\nOʻzbekiston Respublikasi Prezidenti huzuridagi Ijtimoiy himoya milliy agentligining fuqaroning ijtimoiy xizmatlar va yordam koʻrsatishga muhtojligini aniqlashga qaratilgan soʻrovi boʻyicha;\noʻn toʻrt yoshga toʻlmagan voyaga yetmagan shaxsga yordam koʻrsatilayotganda uning ota-onasi yoki qonuniy vakillarini xabardor qilish uchun;\nfuqaroning sogʻligʻiga gʻayriqonuniy xatti-harakatlar yoki baxtsiz tasodif natijasida zarar yetkazilgan deb gumon qilishga asoslar mavjud boʻlganida.\nShifokor siri hisoblangan maʼlumotlar qonunda belgilangan tartibda berilgan shaxslar shifokor sirini oshkor qilganlik uchun qonunga muvofiq tibbiyot va farmatsevtika xodimlari bilan bab-baravar javobgar boʻladilar."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "26013_0024_25_1",
+     "doc_id": "lex:26013",
+     "doc_title": "Fuqarolar sogʻligʻini saqlash toʻgʻrisida",
+     "article": "25-modda",
+     "retrieval_score": 0.6078,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Har bir fuqaro oʻz sogʻligʻining holati toʻgʻrisida maʼlumot, shu jumladan tekshirish natijalari, qanday kasali borligi, qanday tashxis qoʻyilganligi, kasallikning bundan buyon qanday kechishiga oid taxminlar, davolash usullari va bu usullar bilan bogʻliq xavf-xatar, tibbiy aralashuvning ehtimol tutilgan turlari va ularning oqibatlari, amalga oshirilgan davolashning natijalari toʻgʻrisidagi maʼlumotlarni olish huquqiga ega.\nFuqaroning sogʻligʻi haqidagi maʼlumotni uning oʻziga, oʻn toʻrt yoshga toʻlmagan shaxslar hamda qonunda belgilangan tartibda muomalaga layoqatsiz deb topilgan fuqarolar sogʻligʻi toʻgʻrisidagi maʼlumotlarni esa ularning qonuniy vakillariga davolash-profilaktika muassasasining davolovchi shifokori, boʻlim mudiri yoki tekshirish va davolashda bevosita qatnashayotgan boshqa mutaxassislar beradi.\nKasallikning kechishi nomaqbul deb taxmin qilingan hollarda bu haqda fuqaroga va, basharti uning oʻzi oila aʼzolariga xabar qilishni taqiqlamagan va (yoki) bunday maʼlumot berilishi uchun biror shaxsni tayinlamagan boʻlsa, bemorning oila aʼzolariga tibbiy-odob meʼyorlariga rioya qilgan holda xabar qilinishi kerak.\nFuqaroning talabiga muvofiq unga sogʻligʻining holatini aks ettiruvchi tibbiy hujjatlardan koʻchirmalar beriladi.\nFuqaroning tibbiy hujjatlarida aks etgan maʼlumotlar shifokorlik siri boʻlib, u faqat ushbu Qonun 45-moddasining uchinchi qismida nazarda tutilgan asoslardagina fuqaroning roziligisiz taqdim etilishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "7196808_0016_17_1",
+     "doc_id": "lex:7196808",
+     "doc_title": "Aholiga psixologik yordam koʻrsatish toʻgʻrisida",
+     "article": "17-modda",
+     "retrieval_score": 0.5606,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shaxsning psixologik yordam koʻrsatilishini soʻrab murojaat qilganligi fakti, psixologik yordam natijalari toʻgʻrisidagi maʼlumotlar va psixologik yordam koʻrsatish chogʻida olingan boshqa maʼlumotlar psixologning kasbiy sirini tashkil etadi hamda shifokor siriga tenglashtiriladi.\nPsixologning kasbiy sirini psixologik yordam koʻrsatilishini soʻrab murojaat qilgan shaxsning yoki uning qonuniy vakilining roziligisiz oshkor etish taqiqlanadi, bundan ushbu moddaning uchinchi qismida nazarda tutilgan hollar mustasno.\nPsixologning kasbiy sirini psixologik yordam koʻrsatilishini soʻrab murojaat qilgan shaxsning yoki uning qonuniy vakilining roziligisiz oshkor etishga quyidagi hollarda yoʻl qoʻyiladi:\ntergovga qadar tekshiruvni amalga oshiruvchi organlarning, surishtiruv, tergov organlarining, prokuraturaning va sudning ishni sudga qadar yuritish yoki sud muhokamasi oʻtkazilishi munosabati bilan yozma soʻrovi boʻyicha;\nvoyaga yetmaganlarning huquqlari, erkinliklari va qonuniy manfaatlarini himoya qilish maqsadida fuqarolik ishlari boʻyicha sudning soʻroviga koʻra;\npsixologik yordam sifatini oshirish, ushbu sohada malakali kadrlar tayyorlash maqsadida maʼlumotlarni egasizlantirib, ularning muayyan shaxsga tegishliligini aniqlash imkonini bermaydigan holda ulardan foydalanish.\nPsixologning kasbiy siri boʻlgan maʼlumotlarni qonunda belgilangan tartibda olgan shaxs bu maʼlumotlarni oshkor qilishga va uchinchi shaxslarga taqdim etishga haqli emas."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0177_178_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "178-modda",
+     "retrieval_score": 0.5563,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xodimlarning shaxsga doir maʼlumotlarini saqlash, ulardan foydalanish va ularni berish tartibi ushbu Kodeks hamda boshqa qonunlar talablariga rioya etgan holda ish beruvchi tomonidan belgilanadi.\nXodimning shaxsga doir maʼlumotlarini berish chogʻida ish beruvchi quyidagi talablarga rioya etishi kerak:\nxodimning shaxsga doir maʼlumotlarini uning yozma roziligisiz uchinchi shaxsga xabar qilmaslik, bundan xodimning hayoti va sogʻligʻiga boʻlgan tahdidning oldini olish maqsadida, shuningdek ushbu Kodeksda va boshqa qonunlarda nazarda tutilgan boshqa hollarda xabar qilish zarur boʻlgan hollar mustasno;\nxodimning shaxsga doir maʼlumotlarini uning yozma roziligisiz tijorat maqsadlarida xabar qilmaslik;\nxodimning shaxsga doir maʼlumotlarini oladigan shaxslarni ushbu maʼlumotlardan faqat ular xabar qilingan maqsadlarda foydalanish mumkinligi toʻgʻrisida ogohlantirish va ushbu shaxslardan bu qoidaga rioya etilganligining tasdigʻini talab qilish. Xodimning shaxsga doir maʼlumotlarini oladigan shaxslar maxfiylik rejimiga rioya etishi shart. Mazkur qoida ushbu Kodeksda va boshqa qonunlarda belgilangan tartibda xodimlarning shaxsga doir maʼlumotlarini almashishga nisbatan tatbiq etilmaydi;\nxodimning shaxsga doir maʼlumotlarini bitta tashkilot doirasida, bitta yakka tartibdagi tadbirkorda xodim imzo qoʻygan holda tanishtirilishi kerak boʻlgan ichki hujjatga muvofiq berishni amalga oshirish;\nxodimlarning shaxsga doir maʼlumotlaridan foydalanishga faqat maxsus vakolatli shaxslarga ruxsat berish, bunda mazkur shaxslar xodimning faqat muayyan mehnat vazifalarini bajarish uchun zarur boʻlgan shaxsga doir maʼlumotlarini olish huquqiga ega boʻlishi kerak;\nxodimning sogʻligʻi holati haqidagi axborotni soʻrab olmaslik, bundan xodim tomonidan mehnat vazifasini bajarish imkoniyati toʻgʻrisidagi masalaga taalluqli boʻlgan maʼlumotlar mustasno;\nxodimning shaxsga doir maʼlumotlarini ushbu Kodeksda va boshqa qonunlarda belgilangan tartibda xodimlarning vakillariga topshirishi hamda ushbu axborotni faqat koʻrsatilgan vakillar tomonidan oʻz vazifalarini bajarishi uchun zarur boʻlgan shaxsga doir maʼlumotlar bilan cheklash."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "5422209_0011_12_1",
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "article": "12-modda",
+     "retrieval_score": 0.5432,
+     "fusion_score": 0.01539,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shaxsda ruhiy holatning buzilishi mavjudligi, u psixiatriya yordami uchun murojaat etganligi faktlari toʻgʻrisidagi maʼlumotlar, shuningdek uning ruhiy sogʻligʻining holati haqidagi boshqa maʼlumotlar qonun bilan qoʻriqlanadigan shifokor siri hisoblanadi.\nRuhiy holati buzilgan shaxsning huquqlarini va qonuniy manfaatlarini roʻyobga chiqarish uchun uning iltimosiga yoxud qonuniy vakilining iltimosiga binoan unga va uning qonuniy vakiliga mazkur shaxs ruhiy sogʻligʻining holati haqida hamda unga koʻrsatilgan psixiatriya yordami toʻgʻrisida tushunarli shaklda va ruhiy holati buzilgan shaxsning ruhiy holatini hisobga olgan holda maʼlumotlar taqdim etiladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Shifokor mening kasalligim haqidagi maʼlumotni ish joyimga yoki qoʻshnilarga aytib bersa boʻladimi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6351,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 892,
+    "rerank_ms": null,
+    "generation_ms": 4339,
+    "total_ms": 5232
+   },
+   "usage": {
+    "input_tokens": 3921,
+    "output_tokens": 370
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q065",
+   "status": "ok",
+   "answer": "Internetda birov haqida yolgʻon axborot tarqatib, uning qadr-qimmatini kamsitish yoki obroʻsizlantirish holatlari uchun maʼmuriy va jinoiy javobgarlik belgilangan.\n\n*   **Maʼmuriy javobgarlik:** Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksining 202²-moddasiga koʻra, shaxsning qadr-qimmati kamsitilishiga yoki obroʻsizlantirilishiga olib keladigan yolgʻon axborotni internetda tarqatish bazaviy hisoblash miqdorining ellik baravari miqdorida jarima solishga sabab boʻladi [1].\n*   **Jinoiy javobgarlik:** Oʻzbekiston Respublikasining Jinoyat kodeksining 244⁶-moddasiga muvofiq, shunday harakatlar uchun maʼmuriy jazo qoʻllanilganidan keyin takroran sodir etilgan boʻlsa, bazaviy hisoblash miqdorining bir yuz ellik baravarigacha jarima, ikki yuz qirq soatgacha majburiy jamoat ishlari, ikki yilgacha axloq tuzatish ishlari yoki ikki yilgacha ozodlikni cheklash bilan jazolanadi [2].\n*   **Tuhmat:** Agar harakat bila turib boshqa shaxsni sharmanda qiladigan uydirmalar tarqatish (tuhmat) shaklida boʻlsa, Jinoyat kodeksining 139-moddasiga binoan javobgarlik belgilanadi. Internetda joylashtirish orqali tuhmat qilish bazaviy hisoblash miqdorining ikki yuz baravaridan toʻrt yuz baravarigacha jarima, uch yuz soatdan uch yuz oltmish soatgacha majburiy jamoat ishlari, ikki yildan uch yilgacha axloq tuzatish ishlari yoki bir yilgacha ozodlikni cheklash bilan jazolanishi mumkin [4].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.686,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-97664",
+     "article_url": "https://lex.uz/uz/docs/-97664#-5190647",
+     "article": "202²-modda",
+     "article_title": "Yolgʻon axborot tarqatish",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "97664_0369_202²_1",
+     "quote": "Shaxsning qadr-qimmati kamsitilishiga yoki uning obroʻsizlantirilishiga olib keladigan yolgʻon axborotni tarqatish, shu jumladan ommaviy axborot vositalarida, telekommunikatsiya tarmoqlarida yoki Internet jahon axborot tarmogʻida tarqatish, —"
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111453",
+     "article_url": "https://lex.uz/uz/docs/-111453#-5192593",
+     "article": "244⁶-modda",
+     "article_title": "Yolgʻon axborot tarqatish",
+     "part": "2-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111453_0317_244⁶_1",
+     "quote": "bazaviy hisoblash miqdorining bir yuz ellik baravarigacha miqdorda jarima yoki ikki yuz qirq soatgacha majburiy jamoat ishlari yoxud ikki yilgacha axloq tuzatish ishlari yoki ikki yilgacha ozodlikni cheklash bilan jazolanadi."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111453",
+     "article_url": "https://lex.uz/uz/docs/-111453#-262239",
+     "article": "139-modda",
+     "article_title": "Tuhmat",
+     "part": "4-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111453_0155_139_1",
+     "quote": "bazaviy hisoblash miqdorining ikki yuz baravaridan toʻrt yuz baravarigacha miqdorda jarima yoki uch yuz soatdan uch yuz oltmish soatgacha majburiy jamoat ishlari yoxud ikki yildan uch yilgacha axloq tuzatish ishlari yoki bir yilgacha ozodlikni cheklash bilan jazolanadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "97664_0369_202²_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "202²-modda",
+     "retrieval_score": 0.686,
+     "fusion_score": 0.0172,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Shaxsning qadr-qimmati kamsitilishiga yoki uning obroʻsizlantirilishiga olib keladigan yolgʻon axborotni tarqatish, shu jumladan ommaviy axborot vositalarida, telekommunikatsiya tarmoqlarida yoki Internet jahon axborot tarmogʻida tarqatish, —\nbazaviy hisoblash miqdorining ellik baravari miqdorida jarima solishga sabab boʻladi.\nJamoat tartibiga yoki xavfsizligiga tahdid soluvchi yolgʻon axborotni tarqatish, shu jumladan ommaviy axborot vositalarida, telekommunikatsiya tarmoqlarida yoki Internet jahon axborot tarmogʻida tarqatish, —\nbazaviy hisoblash miqdorining ellik baravaridan yuz baravarigacha miqdorda jarima solishga sabab boʻladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111453_0317_244⁶_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "244⁶-modda",
+     "retrieval_score": 0.6659,
+     "fusion_score": 0.01692,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Shaxsning qadr-qimmati kamsitilishiga yoki uning obroʻsizlantirilishiga olib keladigan yolgʻon axborotni tarqatish, shu jumladan ommaviy axborot vositalarida, telekommunikatsiya tarmoqlarida yoki Internet jahon axborot tarmogʻida tarqatish, shunday harakatlar uchun maʼmuriy jazo qoʻllanilgandan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining bir yuz ellik baravarigacha miqdorda jarima yoki ikki yuz qirq soatgacha majburiy jamoat ishlari yoxud ikki yilgacha axloq tuzatish ishlari yoki ikki yilgacha ozodlikni cheklash bilan jazolanadi.\nJamoat tartibiga yoki xavfsizligiga tahdid soluvchi yolgʻon axborotni tarqatish, shu jumladan ommaviy axborot vositalarida, telekommunikatsiya tarmoqlarida yoki Internet jahon axborot tarmogʻida tarqatish, ushbu Kodeksning 244¹-moddasida nazarda tutilgan jinoyat alomatlari mavjud boʻlmagan taqdirda, shunday harakatlar uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ikki yuz baravarigacha miqdorda jarima yoki uch yuz soatgacha majburiy jamoat ishlari yoxud ikki yilgacha axloq tuzatish ishlari yoki ikki yilgacha ozodlikni cheklash bilan jazolanadi.\nUshbu moddaning birinchi yoki ikkinchi qismida nazarda tutilgan harakatlar:\na) takroran yoki xavfli retsidivist tomonidan;\nb) koʻp miqdorda zarar yetkazgan holda sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ikki yuz baravaridan uch yuz baravarigacha miqdorda jarima yoki bir yildan uch yilgacha ozodlikni cheklash bilan jazolanadi.\nUshbu moddaning birinchi yoki ikkinchi qismida nazarda tutilgan harakatlar:\na) ommaviy tadbirlar jarayonida yoki favqulodda vaziyat holatida;\nb) juda koʻp miqdorda zarar yetkazilgan yoki boshqa ogʻir oqibatlarga sabab boʻlgan holda;\nv) uyushgan guruh tomonidan yoki uning manfaatlarini koʻzlab sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ikki yuz baravaridan toʻrt yuz baravarigacha miqdorda jarima yoki ikki yildan uch yilgacha ozodlikni cheklash bilan jazolanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111453_0160_141³_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "141³-modda",
+     "retrieval_score": 0.6659,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shaxs tanasining va (yoki) jinsiy aʼzolarining yalangʻoch holdagi foto- va (yoki) videotasvirini oʻz ichiga olgan axborotni uning roziligisiz tarqatish, shu jumladan ommaviy axborot vositalarida, telekommunikatsiya tarmoqlarida yoki Internet jahon axborot tarmogʻida tarqatish yoxud bunday axborotni tarqatish bilan qoʻrqitish, —\nbazaviy hisoblash miqdorining toʻrt yuz baravaridan olti yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoxud uch yilgacha axloq tuzatish ishlari bilan jazolanadi.\nOʻsha harakatlar:\na) takroran yoki xavfli retsidivist tomonidan;\nb) bir guruh shaxslar tomonidan oldindan til biriktirib;\nv) oʻn sakkiz yoshga toʻlmaganligi aybdorga ayon boʻlgan shaxsga nisbatan sodir etilgan boʻlsa, —\nuch yuz oltmish soatdan toʻrt yuz sakson soatgacha majburiy jamoat ishlari yoki bir yildan uch yilgacha ozodlikni cheklash yoxud uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111453_0155_139_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "139-modda",
+     "retrieval_score": 0.639,
+     "fusion_score": 0.01617,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Tuhmat qilish, yaʼni bila turib boshqa shaxsni sharmanda qiladigan uydirmalar tarqatish, shunday harakatlar uchun maʼmuriy jazo qoʻllanilganidan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ikki yuz baravarigacha miqdorda jarima yoki uch yuz soatgacha majburiy jamoat ishlari yoxud ikki yilgacha axloq tuzatish ishlari bilan jazolanadi.\nNashr qilish yoki boshqacha usulda koʻpaytirilgan tarzda, shu jumladan ommaviy axborot vositalarida, telekommunikatsiya tarmoqlarida yoki Internet jahon axborot tarmogʻida joylashtirish orqali tuhmat qilish, —\nbazaviy hisoblash miqdorining ikki yuz baravaridan toʻrt yuz baravarigacha miqdorda jarima yoki uch yuz soatdan uch yuz oltmish soatgacha majburiy jamoat ishlari yoxud ikki yildan uch yilgacha axloq tuzatish ishlari yoki bir yilgacha ozodlikni cheklash bilan jazolanadi.\nTuhmat:\na) ogʻir yoki oʻta ogʻir jinoyat sodir etishda ayblab;\nb) ogʻir oqibatlar kelib chiqishiga sabab boʻlgan holda;\nv) xavfli retsidivist tomonidan;\ng) gʻarazgoʻylik yoki boshqa past niyatlarda qilinsa, —\nbazaviy hisoblash miqdorining uch yuz baravaridan besh yuz baravarigacha miqdorda jarima yoki uch yuz oltmish soatdan toʻrt yuz soatgacha majburiy jamoat ishlari yoxud bir yildan uch yilgacha ozodlikni cheklash bilan jazolanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111453_0316_244⁵_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "244⁵-modda",
+     "retrieval_score": 0.659,
+     "fusion_score": 0.01614,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Karantinli va inson uchun xavfli boʻlgan boshqa yuqumli kasalliklarning paydo boʻlishi hamda tarqalishi sharoitida karantinli va inson uchun xavfli boʻlgan boshqa yuqumli kasalliklar tarqalishi haqida haqiqatga toʻgʻri kelmaydigan maʼlumotlarni tarqatish, —\nbazaviy hisoblash miqdorining ikki yuz baravarigacha miqdorda jarima yoki uch yuz soatgacha majburiy jamoat ishlari yoxud ikki yilgacha axloq tuzatish ishlari bilan jazolanadi.\nUshbu moddaning birinchi qismida koʻrsatilgan maʼlumotlarni nashr qilish yoki boshqacha usulda koʻpaytirilgan matnda yoki ommaviy axborot vositalari, shuningdek Internet butunjahon axborot tarmogʻi orqali tarqatish —\nbazaviy hisoblash miqdorining ikki yuz baravaridan toʻrt yuz baravarigacha miqdorda jarima yoki uch yuz soatdan uch yuz oltmish soatgacha majburiy jamoat ishlari yoxud ikki yildan uch yilgacha axloq tuzatish ishlari yoki uch yilgacha ozodlikni cheklash yoki uch yilgacha ozodlikdan mahrum qilish bilan jazolanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Internetda birov haqida yolgʻon gap tarqatib uni sharmanda qilsa, qanday jazo bor?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.686,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 676,
+    "rerank_ms": null,
+    "generation_ms": 6065,
+    "total_ms": 6742
+   },
+   "usage": {
+    "input_tokens": 3478,
+    "output_tokens": 569
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q066",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Oila kodeksining 159-moddasiga koʻra, bolani farzandlikka olish uchun ota-onaning roziligi talab etiladi [2]. Biroq, qonunchilikda farzandlikka olinayotgan bolaning roziligi haqida alohida talab mavjud emas.\n\nShuni taʼkidlash joizki, Oila kodeksining 70-moddasiga muvofiq, oʻn yoshga toʻlgan bolaning ismi yoki familiyasini oʻzgartirishga faqat uning roziligi bilan yoʻl qoʻyiladi [4]. Farzandlikka olish jarayoni va uning huquqiy oqibatlari (familiya oʻzgarishi va boshqalar) boʻyicha aniqroq maʼlumot olish uchun vasiylik va homiylik organiga murojaat qilishingiz mumkin.",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.619,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-159524",
+     "article": "159-modda",
+     "article_title": "Ota-onaning bolaning farzandlikka olinishiga roziligi",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0159_159_1",
+     "quote": "Bolani farzandlikka olish uchun farzandlikka olinayotgan bola ota-onasining roziligi talab etiladi."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-159024",
+     "article": "70-modda",
+     "article_title": "Bolaning ismi va familiyasini oʻzgartirish",
+     "part": "4-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0070_70_1",
+     "quote": "Oʻn yoshga toʻlgan bolaning ismi yoki familiyasini oʻzgartirishga faqat uning roziligi bilan yoʻl qoʻyiladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "104720_0072_72_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "72-modda",
+     "retrieval_score": 0.6192,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Voyaga yetmagan ota-ona oʻz bolasi bilan birga yashash va uning tarbiyasida ishtirok etish huquqiga ega.\nOʻzaro nikohda boʻlmagan voyaga yetmagan ota-ona ulardan bola tugʻilganda hamda ularning onaligi va (yoki) otaligi belgilanganda oʻn olti yoshga toʻlishlari bilan ota-onalik huquqlarini mustaqil ravishda amalga oshirishga haqlidirlar. Voyaga yetmagan ota-ona oʻn olti yoshga yetgunga qadar, bolani voyaga yetmagan ota-ona bilan birgalikda tarbiyalash uchun bolaga vasiy tayinlanishi mumkin. Bolaning vasiysi bilan voyaga yetmagan ota-ona oʻrtasida kelib chiqadigan kelishmovchiliklar vasiylik va homiylik organi tomonidan hal etiladi.\nVoyaga yetmagan ota-ona oʻz otaligi va onaligini umumiy asoslarda eʼtirof etish yoki bunga eʼtiroz bildirish huquqiga egadir."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "104720_0159_159_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "159-modda",
+     "retrieval_score": 0.6091,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Bolani farzandlikka olish uchun farzandlikka olinayotgan bola ota-onasining roziligi talab etiladi.\nOta-ona bolaning muayyan bir shaxs (shaxslar) tomonidan farzandlikka olinishiga rozilik berishlari yoki farzandlikka berishga rozilik bildirib, farzandlikka oluvchilarni tanlash ixtiyorini vasiylik va homiylik organiga havola qilishlari mumkin.\nOta-onaning bolaning farzandlikka olinishiga roziligi notarial tasdiqlangan yoki ota-ona qaramogʻidan mahrum boʻlgan bola joylashgan muassasa rahbari tomonidan yoki farzandlikka olish amalga oshirilayotgan joydagi yoxud ota-ona doimiy yashash yoki vaqtincha turgan joyi boʻyicha roʻyxatdan oʻtgan joydagi vasiylik va homiylik organi tomonidan tasdiqlangan arizada bayon etilgan boʻlishi kerak, shuningdek farzandlikka olish toʻgʻrisida ish yuritilayotganda bevosita sudda bayon etilishi mumkin.\nSud tomonidan farzandlikka olish toʻgʻrisidagi hal qiluv qarori chiqarilguniga qadar ota-ona bolaning farzandlikka olinishiga bergan roziligini qaytarib olishga haqli."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "104720_0063_63_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "63-modda",
+     "retrieval_score": 0.6042,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tugʻilishni yozish daftaridagi tugʻilishga oid yozuv bolaning unda koʻrsatilgan ota-onadan tugʻilganligini tasdiqlovchi dalil hisoblanadi.\nBolaning otasi yoki onasi deb yozilgan shaxs unga bunday yozuv maʼlum boʻlgan yoki maʼlum boʻlishi lozim boʻlgan vaqtdan eʼtiboran bir yil mobaynida ana shu yozuv toʻgʻrisida sud tartibida eʼtiroz bildirishga haqlidir. Agar shu vaqtga kelib, bolaning otasi yoki onasi deb yozilgan shaxs voyaga yetmagan boʻlsa, bir yillik muddat mazkur shaxs oʻn sakkiz yoshga toʻlgan vaqtdan boshlab hisoblanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "104720_0070_70_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "70-modda",
+     "retrieval_score": 0.5971,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Fuqarolik holati dalolatnomalarini qayd etish organi ota-onaning birgalikdagi arizasiga binoan bola oʻn olti yoshga toʻlguncha bola manfaatlarini eʼtiborga olib, uning ismini oʻzgartirishga, shuningdek unga berilgan familiyani ham otasi yoki onasining familiyasiga qarab oʻzgartirishga haqlidir.\nAgar ota-ona alohida yashasa va bola bilan birga yashovchi ota (ona) bolaga oʻz familiyasini berishni xohlasa, vasiylik va homiylik organi bu masalani bolaning manfaatlarini va ona (ota)ning fikrini hisobga olgan holda hal qiladi. Ota yoki onaning turgan joyini aniqlash mumkin boʻlmaganda, ular ota-onalik huquqidan mahrum qilinganda, muomalaga layoqatsiz deb topilganda, shuningdek ota yoki ona bolaga taʼminot berish va uni tarbiyalash majburiyatlarini bajarishdan uzrsiz sabablarga koʻra boʻyin tovlagan hollarda ota yoki onaning fikrini hisobga olish shart emas.\nAgar bola oʻzaro nikohda boʻlmagan shaxslardan tugʻilgan va otalik qonuniy tartibda belgilanmagan boʻlsa, vasiylik va homiylik organi bolaning manfaatlarini eʼtiborga olib, uning familiyasini onaning murojaat qilgan davridagi familiyasiga almashtirish uchun ruxsat berishga haqli.\nOʻn yoshga toʻlgan bolaning ismi yoki familiyasini oʻzgartirishga faqat uning roziligi bilan yoʻl qoʻyiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "104720_0082_82_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "82-modda",
+     "retrieval_score": 0.597,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ota-ona (ulardan biri) oʻz xulq-atvorini, turmush tarzini va (yoki) bola tarbiyasiga boʻlgan munosabatini oʻzgartirgan hollarda ota-onalik huquqi tiklanishi mumkin.\nOta-onalik huquqini tiklash ota-onalik huquqidan mahrum qilingan ota-onaning (ulardan birining) daʼvosiga binoan sud tartibida amalga oshiriladi. Ota-onalik huquqini tiklash toʻgʻrisidagi ishlar vasiylik va homiylik organining, shuningdek prokurorning ishtirokida koʻrib chiqiladi.\nOta-onaning (ulardan birining) ota-onalik huquqini tiklash toʻgʻrisidagi daʼvosi bilan birga bolani ota-onaga (ulardan biriga) qaytarish toʻgʻrisidagi talabi ham koʻrib chiqilishi mumkin.\nAgar ota-onalik huquqining tiklanishi bolaning eng ustun manfaatlariga zid boʻlsa, sud bolaning fikrini hisobga olgan holda ota-onaning (ulardan birining) ota-onalik huquqini tiklash toʻgʻrisidagi daʼvosini qanoatlantirishni rad qilishga haqlidir.\nOʻn yoshga toʻlgan bolaga nisbatan ota-onalik huquqining tiklanishiga faqat uning roziligi bilan yoʻl qoʻyiladi.\nBola farzandlikka olingan va farzandlikka olish bekor qilinmagan boʻlsa, ota-onalik huquqini tiklashga yoʻl qoʻyilmaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ogay otam meni oz farzandi qilib rasmiylashtirmoqchi, men 12 yoshdaman. Mendan ham rozilik sorashlari shartmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6192,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 850,
+    "rerank_ms": null,
+    "generation_ms": 3330,
+    "total_ms": 4182
+   },
+   "usage": {
+    "input_tokens": 2993,
+    "output_tokens": 296
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q067",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Siz Oʻzbekiston Respublikasi Soliq kodeksining tegishli boʻlimlari yoki xalqaro soliq bitimlari boʻyicha maʼlumotlarni qidirishingiz mumkin.",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "8420999_0046_47_1",
+     "doc_id": "lex:8420999",
+     "doc_title": "Raqamli texnologiyalar xalqaro markazi toʻgʻrisida",
+     "article": "47-modda",
+     "retrieval_score": 0.5625,
+     "fusion_score": 0.01716,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Markazning organlari va ishtirokchilari qoʻshilgan qiymat soligʻining soliq toʻlovchilari deb eʼtirof etiladi hamda ularga soliq organlarida qoʻshilgan qiymat soligʻini toʻlovchi sifatida maxsus roʻyxatga olish hisobiga qoʻyilganlik toʻgʻrisidagi guvohnoma beriladi.\nRealizatsiya qilish joyi Markaz hududi va Oʻzbekiston Respublikasi hududi boʻlgan tovarlarni (xizmatlarni) realizatsiya qilish boʻyicha aylanma hamda Oʻzbekiston Respublikasidan tashqariga tovarlarni (xizmatlarni) realizatsiya qilish boʻyicha aylanma, shuningdek Oʻzbekiston Respublikasi hududiga olib kirilgan tovarlar qoʻshilgan qiymat soligʻi boʻyicha soliq solish obyektlari hisoblanadi.\nUshbu moddaning ikkinchi qismida koʻrsatilgan qoʻshilgan qiymat soligʻi boʻyicha soliq solish obyektlariga nisbatan soliq stavkasi quyidagi miqdorlarda belgilanadi:\nMarkaz hududida va Oʻzbekiston Respublikasidan tashqariga tovarlarni (xizmatlarni) realizatsiya qilish boʻyicha aylanmaga nol darajali stavka;\nrealizatsiya qilish joyi Oʻzbekiston Respublikasi boʻlgan tovarlarni (xizmatlarni) realizatsiya qilish boʻyicha aylanmaga va Oʻzbekiston Respublikasi hududiga tovarlarni olib kirishga nisbatan Markazning qaroriga muvofiq belgilangan stavka."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4674902_0418_415_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "415-modda",
+     "retrieval_score": 0.5514,
+     "fusion_score": 0.0167,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Soliq stavkasi, agar ushbu moddada boshqacha qoida nazarda tutilmagan boʻlsa, 1,5 foiz miqdorida belgilanadi.\nQurilishi normativ muddatda tugallanmagan obyektlarga nisbatan soliq stavkasi 3 foiz miqdorida belgilanadi.\nSoliq stavkasi quyidagilarga nisbatan 0,7 foiz miqdorida belgilanadi:\n1) umumiy foydalanishdagi temir yoʻllar, magistral quvurlar, aloqa va elektr uzatish liniyalari, shuningdek mazkur obyektlarning ajralmas texnologik qismi boʻlgan inshootlar;\n2) konservatsiya qilinishi toʻgʻrisida Oʻzbekiston Respublikasi Vazirlar Mahkamasining qarori qabul qilingan koʻchmas mulk va tugallanmagan qurilish obyektlari."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4674902_0320_314_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "314-modda",
+     "retrieval_score": 0.5453,
+     "fusion_score": 0.01615,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar ushbu moddada boshqacha qoida belgilanmagan boʻlsa, sotib olingan tovarlarning (xizmatlarning) qiymatida qoʻshilgan qiymat soligʻi boʻyicha quyidagi chiqimlar hisobga olinadi:\n1) ushbu Kodeksning 267-moddasida nazarda tutilgan tartibda hisobga olinmaydigan qoʻshilgan qiymat soligʻi summasi;\n2) ushbu Kodeks 268-moddasining oltinchi qismida nazarda tutilgan tartibda qoʻshilgan qiymat soligʻi summasi;\n3) ushbu Kodeksning 270-moddasida koʻrsatilgan holda qoʻshilgan qiymat soligʻiga tuzatish kiritish summasi.\nQoʻshilgan qiymat soligʻi toʻlovchisi hisobga olinmaydigan qoʻshilgan qiymat soligʻi summasini quyidagi hollarda xarajatlar jumlasiga kiritishga haqli:\n1) ushbu Kodeks 268-moddasining beshinchi qismiga muvofiq mutanosib usulni qoʻllashda;\n2) agar soliqning tuzatish kiritish summasini bunday tuzatish amalga oshirilayotgan sotib olingan tovarlarning (xizmatlarning) qiymatiga kiritish mumkin boʻlmasa, qoʻshilgan qiymat soligʻiga ushbu Kodeksning 269 va 270-moddalariga muvofiq tuzatish kiritishda;\n3) ushbu Kodeksning 271-moddasida nazarda tutilgan tartibda qoʻshilgan qiymat soligʻiga tuzatish kiritishda."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4674902_0295_289³_3",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "289³-modda",
+     "retrieval_score": 0.5474,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "1 litr uchun 500 soʻm 5 grammdan 10 grammgacha: 1 litr uchun 515 soʻm 10 gramm va undan yuqori:\n1 litr uchun 535 soʻm\ntarkibida boshqa shirinlashtiruvchi yoki xushboʻylashtiruvchi moddalar mavjud boʻlgan ichimliklar | 1 litr uchun 500 soʻm\n6. | Energetik va tetiklashtiruvchi ichimliklar | 1 litr uchun 2 000 soʻm | 1 litr uchun 2 150 soʻm\n7. | Yupqa toʻgʻralgan yoki yupqa shaklga keltirilgan, qovurilgan yoki quritilgan, isteʼmol qadogʻiga qadoqlangan, tarkibida kartoshka yoki uning taʼmini beruvchi qoʻshimchalar boʻlgan mahsulotlar (chipslar) ** | 1 kg mahsulot uchun 15 000 soʻm\n* Mevalar va (yoki) sabzavotlardan tayyorlangan, tabiiy shirin boʻlgan hamda tarkibida qoʻshimcha shakar va boshqa shirinlashtiruvchi yoki xushboʻylashtiruvchi moddalar mavjud boʻlmagan sharbatlarga nisbatan soliq qoʻllanilmaydi.\n** Belgilangan soliq stavkasi boʻyicha soliq ishlab chiqaruvchi yuridik shaxslar va Oʻzbekiston Respublikasi hududiga tovarlarni olib kiruvchilar tomonidan toʻlanadi.\nUshbu modda birinchi qismining 3-bandida soliq stavkalari Oʻzbekiston Respublikasida ishlab chiqariladigan aksiz toʻlanadigan tovarlar, shu jumladan import qilingan aksiz toʻlanadigan tovarlar uchun belgilangan va mazkur tovarlarni olib kirishda qoʻllanilmaydi.\nUshbu modda birinchi qismining 4-bandida nazarda tutilgan olib kirilgan (import qilingan) aksiz toʻlanadigan tovarlarni oʻz extiyojlari uchun ishlatilganda, soliq toʻlovchilari boʻlib ushbu tovarlarni oʻz ehtiyojlari uchun olib kirishni amalga oshirgan shaxslar eʼtirof etiladi.\nUshbu modda birinchi qismining 5-bandida nazarda tutilgan tovarlar tarkibidagi shakar miqdori boʻyicha maʼlumot isteʼmol qadogʻida koʻrsatilmagan taqdirda, ularga nisbatan eng yuqori soliq stavkasi qoʻllaniladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4635016_0035_text_1",
+     "doc_id": "lex:4635016",
+     "doc_title": "2020-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5443,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "T/r | Tovarlar (xizmatlar) nomi | Soliq stavkasi\n2020-yil 1-yanvardan | 2020-yil 1-apreldan | 2020-yil 1-oktabrdan\n1. | Oziq-ovqat xom ashyosidan rektifikatsiyalangan etil spirti, rektifikatsiyalangan va efiroaldegidli fraksiyadan texnik etil spirti va etil spirtining boshlangʻich fraksiyasi (1 dal uchun) | 10 800 soʻm\n2. | Vino (1 dal tayyor mahsulot uchun):\ntabiiy ravishda achitilgan tabiiy vinolar (etil spirti qoʻshilmagan holda) | 7 700 soʻm\nboshqa vinolar | 14 500 soʻm\n3. | Konyak (1 dal tayyor mahsulot uchun) | 102 000 soʻm\nhajmiy ulushda spirt 40 foizdan koʻp boʻlgan konyak | 168 100 soʻm\n4. | Aroq va boshqa alkogolli mahsulotlar (1 dal tayyor mahsulot uchun) | 98 000 soʻm\nhajmiy ulushda spirt 40 foizdan koʻp boʻlgan aroq va boshqa alkogolli mahsulotlar | 162 700 soʻm\n5. | Pivo (1 dal tayyor mahsulot uchun) | 10 600 soʻm\n6. | Filtrli, filtrsiz sigaretalar, papiroslar | 141 500 soʻm/1000 dona + 9,0 foiz * | 152 800 soʻm/1000 dona + 9,0 foiz * | 163 500 soʻm/1000 dona + 9,0 foiz *\n7. | Zargarlik buyumlari | 25%\n8. | Mobil aloqa xizmatlari | 20%\n9. | Kumushdan ishlangan oshxona anjomlari | 11%\n10. | Neft mahsulotlari:\nAi-80 benzini | 200 000 soʻm/ tonna\nAi-91, Ai-92, Ai-93, Ai-95 benzini va undan yuqori | 250 000 soʻm/ tonna\ndizel yoqilgʻisi | 200 000 soʻm/ tonna\nEKO-dizel yoqilgʻisi | 180 000 soʻm/ tonna\naviakerosin | 180 000 soʻm/ tonna\ndizel yoki karbyurator (injektor) dvigatellari uchun motor moyi | 250 000 soʻm/ tonna\n11. | Tabiiy gaz, shu jumladan, eksport | 20%\n12. | Ishlab chiqaruvchi korxonalar tomonidan sotiladigan suyultirilgan gaz (“Hududgaztaʼminot” AJ orqali aholiga sotiladigan hajmlar bundan mustasno), shu jumladan, eksport | 30%\n13. | Polietilen granulalar | 30%\n14. | Yakuniy isteʼmolchiga sotiladigan: **\nbenzin | 1 litr uchun 285 soʻm/ 1 tonna uchun 378 480 soʻm\ndizel yoqilgʻisi | 1 litr uchun 285 soʻm/ 1 tonna uchun 346 275 soʻm\nsuyultirilgan gaz | 1 litr uchun 285 soʻm/ 1 tonna uchun 540 645 soʻm\nsiqilgan gaz | 1 kub.metr uchun 435 soʻm"
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Fransiyada qoʻshilgan qiymat soligʻining asosiy stavkasi necha foiz?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5625,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1278,
+    "rerank_ms": null,
+    "generation_ms": 2435,
+    "total_ms": 3714
+   },
+   "usage": {
+    "input_tokens": 3959,
+    "output_tokens": 150
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q068",
+   "status": "ok",
+   "answer": "Ҳа, давлат ҳар бир боланинг умумий ўрта таълим ташкилотига ўқишга киришидан бир йил олдин давлат мактабгача таълим ташкилотларида умумий ўрта таълимга мажбурий бир йиллик тайёргарликдан ўтишга бўлган ҳуқуқини кафолатлайди [1]. \"Мактабгача таълим ва тарбия тўғрисида\"ги Қонуннинг 6-моддасига ҳамда \"Таълим тўғрисида\"ги Қонуннинг 8-моддасига кўра, мактабгача таълим ва тарбия олти ёшдан етти ёшгача бўлган болаларни бошланғич таълимга бир йиллик мажбурий тайёрлашни назарда тутади [1][4].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.641,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-595",
+     "url": "https://lex.uz/uz/docs/-4646908",
+     "article_url": "https://lex.uz/uz/docs/-4646908#-4650461",
+     "article": "6-modda",
+     "article_title": "Maktabgacha taʼlim va tarbiya olishga doir davlat kafolatlari",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "4646908_0005_6_1",
+     "quote": "Har bir bola maktabgacha taʼlim va tarbiya olish huquqiga ega."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-637",
+     "url": "https://lex.uz/uz/docs/-5013007",
+     "article_url": "https://lex.uz/uz/docs/-5013007#-5013227",
+     "article": "8-modda",
+     "article_title": "Maktabgacha taʼlim va tarbiya",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "5013007_0007_8_1",
+     "quote": "Maktabgacha taʼlim va tarbiya bolalarni oʻqitish va tarbiyalashga, ularni intellektual, maʼnaviy-axloqiy, etik, estetik va jismoniy jihatdan rivojlantirishga, shuningdek bolalarni umumiy oʻrta taʼlimga tayyorlashga qaratilgan taʼlim turidir."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4646908_0005_6_1",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "6-modda",
+     "retrieval_score": 0.6409,
+     "fusion_score": 0.01707,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Har bir bola maktabgacha taʼlim va tarbiya olish huquqiga ega.\nDavlat har bir bolaning umumiy oʻrta taʼlim tashkilotiga oʻqishga kirishidan bir yil oldin davlat maktabgacha taʼlim tashkilotlarida umumiy oʻrta taʼlimga majburiy bir yillik tayyorgarlikdan oʻtishga boʻlgan huquqini kafolatlaydi.\nBolaning maktabgacha taʼlim va tarbiya olishiga doir davlat kafolatlari davlat maktabgacha taʼlim tashkilotlari negizida maktabgacha taʼlim va tarbiya xizmatlarini koʻrsatish, shuningdek taʼlim va tarbiya berishning muqobil shakllarini tashkil etish orqali taʼminlanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4646908_0032_34_1",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.6074,
+     "fusion_score": 0.01695,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Guruh maktabgacha taʼlim tashkilotining tarkibiy birligidir.\nMaktabgacha taʼlim tashkilotidagi guruhlar yoshga doir toifalar yoki yoshga doir boʻlmagan toifalar boʻyicha toʻldirilishi mumkin.\nGuruhlar yoshga doir toifalar boʻyicha toʻldirilganda quyidagi yosh toifalari belgilanadi:\nilk rivojlanish guruhi (bir yoshdan uch yoshgacha);\nkichik guruh (uch yoshdan toʻrt yoshgacha);\noʻrta guruh (toʻrt yoshdan besh yoshgacha);\nkatta guruh (besh yoshdan olti yoshgacha);\nmaktabga tayyorlov guruhi (olti yoshdan yetti yoshgacha).\nMaktabgacha taʼlim tashkiloti guruhlarini toʻldirish va bolalarni bir guruhdan boshqasiga oʻtkazish har yili oʻquv yili boshlanguniga qadar amalga oshiriladi.\nUmumiy turdagi davlat maktabgacha taʼlim tashkilotlarida guruhlar tegishli ravishda quyidagi miqdorda toʻldiriladi:\nuch yoshdan yetti yoshgacha boʻlgan bolalar guruhlarida — koʻpi bilan oʻttiz nafar bola;\nbolalar qisqa vaqt boʻladigan guruhlarda — koʻpi bilan oʻttiz nafar bola;\nturli yoshdagilar guruhlarida — koʻpi bilan yigirma besh nafar bola;\nbolalar kechayu kunduz boʻladigan guruhlarda — koʻpi bilan oʻn nafar bola.\nAgar davlat maktabgacha taʼlim tashkiloti joylashgan yerda davlat maktabgacha taʼlim tashkilotiga borishni xohlovchi maktabgacha boʻlgan yoshdagi bolalar soni yigirma nafardan kam boʻlsa va bu joyda boshqa davlat maktabgacha taʼlim tashkiloti mavjud boʻlmasa, Oʻzbekiston Respublikasi Maktabgacha va maktab taʼlimi vazirligi bilan kelishilgan holda kam sonli bolalardan iborat guruhlarni tashkil etishga yoʻl qoʻyiladi.\nOʻzbekiston Respublikasi Maktabgacha va maktab taʼlimi vazirligi bilan kelishuvga koʻra guruhlarni ularni toʻldirishning eng koʻp miqdori oshirilgan holda tashkil etishga yoʻl qoʻyiladi.\nNodavlat maktabgacha taʼlim tashkilotlarida guruhlarni toʻldirish tartibi maktabgacha taʼlim tashkilotlarini saqlashga, ularning tuzilishiga va ulardagi ish rejimini tashkil etishga doir sanitariya-gigiyena talablari hisobga olingan holda ularning muassisi tomonidan belgilanadi.\nKoʻp tarmoqli ixtisoslashtirilgan maktabgacha taʼlim tashkilotida rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan bolalar uchun guruhlar tegishincha quyidagi miqdorda toʻldiriladi:\nnutqida ogʻir nuqsonlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nkar bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nyaxshi eshitmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4646908_0032_34_2",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "34-modda",
+     "retrieval_score": 0.5785,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "yaxshi eshitmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nkoʻzi ojiz bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nkoʻzi yaxshi koʻrmaydigan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\ntayanch-harakat apparati buzilgan bolalar uchun guruhlarda — koʻpi bilan oʻn sakkiz nafar bola;\ngemiparez, monoparez, plegiya asoratlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nbolalar serebral falaji sindromi asoratlari boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nyengil darajada aqli zaif boʻlgan aqliy nuqsonlari bor bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola, oʻrtamiyona va oʻrtacha darajada aqli zaif boʻlgan aqliy nuqsonlari bor bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\nautizmga chalingan uch yoshdan katta bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola;\naqliy rivojlanishi kechikayotgan uch yoshdan katta bolalar uchun guruhlarda — koʻpi bilan oʻn ikki nafar bola;\nmurakkab nuqsonlari (ikki va undan ortiq nuqsoni) boʻlgan bolalar uchun guruhlarda — koʻpi bilan oʻn nafar bola.\nInklyuziv guruhlarga ega maktabgacha taʼlim tashkilotida guruhlar tegishincha quyidagi miqdorda toʻldiriladi:\n1) uch yoshgacha boʻlgan bolalar uchun guruhlarda — koʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan ikki yoshdan uch yoshgacha koʻpi bilan uch nafar bola;\n2) uch yoshdan katta bolalar uchun guruhlarda:\nkoʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan (yaxshi koʻra olmaydigan yoki yaxshi eshita olmaydigan yoki tayanch-harakat apparatida nuqsonlari boʻlgan) koʻpi bilan uch nafar bola;\nkoʻpi bilan yigirma besh nafar bola, shu jumladan rivojlanishida jismoniy yoki ruhiy nuqsonlari boʻlgan (koʻrish ambliopiyasiga chalingan, koʻzi gʻilay yoki nutqida ogʻir nuqsonlari boʻlgan yoki autizmga chalingan) koʻpi bilan ikki nafar bola;\nkoʻpi bilan yigirma besh nafar bola, shu jumladan nutqida ogʻir nuqsonlari boʻlgan koʻpi bilan uch nafar bola;"
+    },
+    {
+     "rank": 4,
+     "chunk_id": "5013007_0007_8_1",
+     "doc_id": "lex:5013007",
+     "doc_title": "Taʼlim toʻgʻrisida",
+     "article": "8-modda",
+     "retrieval_score": 0.6012,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Maktabgacha taʼlim va tarbiya bolalarni oʻqitish va tarbiyalashga, ularni intellektual, maʼnaviy-axloqiy, etik, estetik va jismoniy jihatdan rivojlantirishga, shuningdek bolalarni umumiy oʻrta taʼlimga tayyorlashga qaratilgan taʼlim turidir.\nMaktabgacha taʼlim va tarbiya olti yoshdan yetti yoshgacha boʻlgan bolalarni boshlangʻich taʼlimga bir yillik majburiy tayyorlashni ham nazarda tutadi.\nMaktabgacha taʼlim va tarbiyani tashkil etish tartibi ushbu Qonun, shuningdek “Maktabgacha taʼlim va tarbiya toʻgʻrisida”gi Oʻzbekiston Respublikasi Qonuni bilan belgilanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4646908_0030_32_1",
+     "doc_id": "lex:4646908",
+     "doc_title": "Maktabgacha taʼlim va tarbiya toʻgʻrisida",
+     "article": "32-modda",
+     "retrieval_score": 0.5715,
+     "fusion_score": 0.01571,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Maktabgacha boʻlgan yosh bola shaxsining jismoniy, psixologik va ijtimoiy jihatdan shakllanishining asosiy davridir.\nMaktabgacha boʻlgan yosh quyidagi davrlarni oʻz ichiga oladi:\ngoʻdaklik (tugʻilganidan bir yoshgacha);\nilk bolalik (bir yoshdan uch yoshgacha);\nmaktabgacha boʻlgan kichik yosh (uch yoshdan toʻrt yoshgacha);\nmaktabgacha boʻlgan oʻrtacha yosh (toʻrt yoshdan besh yoshgacha);\nmaktabgacha boʻlgan katta yosh (besh yoshdan yetti yoshgacha)."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Bolani maktabga berishdan oldin bir yil bogʻchada tayyorlov guruhiga borishi shartmi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6409,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1287,
+    "rerank_ms": null,
+    "generation_ms": 3294,
+    "total_ms": 4582
+   },
+   "usage": {
+    "input_tokens": 3450,
+    "output_tokens": 277
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q069",
+   "status": "ok",
+   "answer": "\"Туризм тўғрисида\"ги Қонуннинг 38-моддасига кўра, туристлар ва экскурсантларни суғурта қилиш ихтиёрийдир [1].\n\nБироқ, ушбу қоиданинг айрим истиснолари мавжуд:\n* Туроператорлар ва турагентлар туристик маҳсулотнинг хусусияти ҳамда шаклига қараб, туристлар ва экскурсантларда суғурта полиси мавжуд бўлиши тўғрисида талаб белгилаш ҳуқуқига эга [1].\n* Қонунчиликда назарда тутилган бошқа мажбурий суғурта ҳоллари бундан мустасно [1].\n\nШунингдек, \"Туризм тўғрисида\"ги Қонуннинг 38-моддасига мувофиқ, туроператорлар ўзининг фуқаролик жавобгарлигини суғурта қилиши шарт [1].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.735,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4428097",
+     "doc_title": "Turizm toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-549",
+     "url": "https://lex.uz/uz/docs/-4428097",
+     "article_url": "https://lex.uz/uz/docs/-4428097#-4429450",
+     "article": "38-modda",
+     "article_title": "Turizm sohasida sugʻurta qilish",
+     "part": "1-qism",
+     "edition_date": "2026-03-01",
+     "doc_status": "amalda",
+     "chunk_id": "4428097_0037_38_1",
+     "quote": "Turistlar va ekskursantlarni sugʻurta qilish ixtiyoriydir, bundan ushbu moddaning ikkinchi qismida nazarda tutilgan hollar mustasno hamda turistlar va ekskursantlar tomonidan bunday faoliyatni olib borish huquqiga ega boʻlgan tegishli sugʻurta tashkilotlari bilan tuziladigan shartnomalar asosida amalga oshiriladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4428097_0037_38_1",
+     "doc_id": "lex:4428097",
+     "doc_title": "Turizm toʻgʻrisida",
+     "article": "38-modda",
+     "retrieval_score": 0.7353,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Turistlar va ekskursantlarni sugʻurta qilish ixtiyoriydir, bundan ushbu moddaning ikkinchi qismida nazarda tutilgan hollar mustasno hamda turistlar va ekskursantlar tomonidan bunday faoliyatni olib borish huquqiga ega boʻlgan tegishli sugʻurta tashkilotlari bilan tuziladigan shartnomalar asosida amalga oshiriladi.\nTuroperatorlar va turagentlar turistik mahsulotning xususiyati hamda shakliga qarab turistlar va ekskursantlarda sugʻurta polisi mavjud boʻlishi toʻgʻrisida talab belgilash huquqiga ega.\nTuroperatorlar oʻzining fuqarolik javobgarligini sugʻurta qilishi shart."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "180552_0532_914_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "914-modda",
+     "retrieval_score": 0.6386,
+     "fusion_score": 0.01686,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sugʻurta fuqaro yoki yuridik shaxs (sugʻurta qildiruvchi) sugʻurta tashkiloti (sugʻurtalovchi) bilan tuzadigan mulkiy yoki shaxsiy sugʻurta shartnomalari asosida amalga oshiriladi.\nShaxsiy sugʻurta shartnomasi ommaviy shartnoma hisoblanadi.\nQonunda koʻrsatilgan shaxslarga sugʻurta qiluvchilar sifatida boshqa shaxslarning hayoti, sogʻligʻi yoki mol-mulkini yoxud oʻzining boshqa shaxslar oldidagi fuqarolik javobgarligini oʻz hisobidan yoxud manfaatdor shaxslar hisobidan sugʻurta qilish (majburiy sugʻurta) majburiyati qonun bilan yuklangan hollarda sugʻurta ushbu bobning qoidalariga muvofiq shartnomalar tuzish yoʻli bilan amalga oshiriladi.\nMajburiy sugʻurtada sugʻurta qildiruvchi sugʻurtalovchi bilan sugʻurtaning ushbu turini tartibga soladigan qonunchilikda nazarda tutilgan shartlarda shartnoma tuzishi shart.\nQonunda fuqarolarning hayoti, sogʻligʻi va mol-mulkini davlat budjeti mablagʻlari hisobidan majburiy sugʻurta qilish hollari (davlat majburiy sugʻurtasi) nazarda tutilishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "22964_0027_28_1",
+     "doc_id": "lex:22964",
+     "doc_title": "AVTOMOBIL TRANSPORTI TOʻGʻRISIDA",
+     "article": "28-modda",
+     "retrieval_score": 0.6353,
+     "fusion_score": 0.01667,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yoʻlovchilarning hayotini, sogʻligʻini ixtiyoriy sugʻurta qilish, shuningdek bagaj va yuklarni sugʻurta qilish tegishli sugʻurta shartnomalari asosida amalga oshiriladi.\nTashuvchining fuqarolik javobgarligini majburiy sugʻurta qilish tashuvchi tomonidan amalga oshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0541_923_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "923-modda",
+     "retrieval_score": 0.6212,
+     "fusion_score": 0.01615,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Majburiy sugʻurta bunday sugʻurta qilish majburiyati yuklangan shaxs (sugʻurta qildiruvchi) sugʻurtalovchi bilan sugʻurta shartnomasi tuzishi vositasida amalga oshiriladi.\nMajburiy sugʻurta sugʻurta qildiruvchi hisobidan amalga oshiriladi, yoʻlovchilarni majburiy sugʻurtalash bundan mustasno boʻlib, bu sugʻurta qonunda nazarda tutilgan hollarda ularning oʻz hisobidan amalga oshirilishi mumkin.\nMajburiy sugʻurtalanishi lozim boʻlgan obyektlar, ular sugʻurtalanishga sabab boʻladigan xavflar va sugʻurta summasining eng kam miqdorlari qonunchilik bilan belgilanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4428097_0034_35_1",
+     "doc_id": "lex:4428097",
+     "doc_title": "Turizm toʻgʻrisida",
+     "article": "35-modda",
+     "retrieval_score": 0.6165,
+     "fusion_score": 0.01595,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi hududida turistlar va ekskursantlarning xavfsizligi davlat tomonidan kafolatlanadi.\nVakolatli davlat organi manfaatdor vazirliklar, idoralar va mahalliy ijro etuvchi hokimiyat organlari bilan birgalikda turistlar hamda ekskursantlarning xavfsizligini va himoya qilinishini, jamiyat va davlat manfaatlarini, turizmdan shaxslarning qonunga xilof migratsiyasi, ularning mehnatini ekspluatatsiya qilish hamda ularni boshqacha tarzda ekspluatatsiya qilish maqsadida foydalanishga qarshi kurashishni taʼminlash yuzasidan zarur chora-tadbirlar ishlab chiqadi.\nXavfsizlikni taʼminlash chora-tadbirlari turistlar va ekskursantlarning shaxsiy xavfsizligi, ularning mol-mulki but saqlanishi, atrof tabiiy muhitga, jamiyatning moddiy hamda maʼnaviy qadriyatlariga, davlat xavfsizligiga zarar yetkazilishining oldini olish taʼminlanishini nazarda tutadi.\nMahalliy ijro etuvchi hokimiyat organlari barcha turistik yoʻnalishlar boʻyicha turistlar va ekskursantlarning himoya qilinishini va xavfsizligini taʼminlash boʻyicha hududiy dasturlar ishlab chiqadi hamda ularning bajarilishini tashkil etadi.\nTurizm sohasi subyektlari turistlar va ekskursantlarning xavfsizligini taʼminlash, tabiiy ofatlar chogʻida, ular jarohatlanganda, kasallikka chalinganda hamda boshqa hollarda tibbiy va oʻzga tarzda yordam koʻrsatish boʻyicha chora-tadbirlar ishlab chiqadi.\nVakolatli davlat organi turoperatorlarni, turagentlarni, turistlar va ekskursantlarni vaqtincha boʻlish mamlakatidagi (joyidagi) turistlar hamda ekskursantlarning xavfsizligiga nisbatan tahdid toʻgʻrisida xabardor qiladi, shuningdek xavfsizlikka nisbatan tahdid mavjud boʻlganligi sababli borib koʻrish uchun tavsiya etilmaydigan mamlakatlar (joylar) roʻyxatini ommaviy axborot vositalariga, shu jumladan oʻzining rasmiy veb-saytiga joylashtiradi.\nMuassislari (hammuassislari) davlat organlari boʻlgan ommaviy axborot vositalari vakolatli davlat organiga turistlar va ekskursantlarning xavfsizligiga nisbatan tahdid haqidagi axborotni eʼlon qilish imkoniyatini darhol va bepul taqdim etadi.\nTuristlar va ekskursantlar yuqumli kasalliklarning yuqori darajadagi xavfiga uchrashi mumkin boʻlgan vaqtincha boʻlish mamlakatiga (joyiga) sayohatni amalga oshirish boshlanguniga qadar xalqaro tibbiy talablarga muvofiq profilaktikadan oʻtishi shart.\nTuristlar va ekskursantlar guruhlarini kuzatib boruvchi shaxslar birinchi tibbiy yordam koʻrsatish uchun dasturiy asosda minimal tibbiy tayyorgarlikka, tibbiy buyumlarga hamda dori qutichasiga ega boʻlishi shart."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Turistlarni sugʻurta qilish majburiymi yoki ixtiyoriymi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7353,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 382,
+    "rerank_ms": null,
+    "generation_ms": 3129,
+    "total_ms": 3512
+   },
+   "usage": {
+    "input_tokens": 2804,
+    "output_tokens": 275
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q070",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Omonatlarni kafolatlash tizimi doirasida kompensatsiya toʻlash tartibi va uning miqdorini belgilovchi aniq foiz stavkalari yoki pul miqdorlari taqdim etilgan manbalarda koʻrsatilmagan. Bu masalani \"Banklardagi omonatlarni himoya qilish kafolatlari toʻgʻrisida\"gi qonunning toʻliq matni yoki Agentlikning tegishli nizomlari orqali aniqlashtirish mumkin.\n\nShu bilan birga, \"Banklardagi omonatlarni himoya qilish kafolatlari toʻgʻrisida\"gi Qonunning 14-moddasiga koʻra, kafolatlash tizimi kafolatlash hodisasi yuzaga kelganda Agentlik tomonidan omonatchilarga kompensatsiyalarni toʻlash orqali omonatchilarning huquqlarini himoya qilishga qaratilgan. Bank faoliyatiga doir litsenziya Markaziy bank tomonidan chaqirib olingan taqdirda, bankning kafolatlash tizimidagi ishtiroki tugatiladi.",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "180552_0383_765_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "765-modda",
+     "retrieval_score": 0.6496,
+     "fusion_score": 0.01693,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bank qabul qilib olgan omonatlarning qaytarilishini taʼminlash uchun foydalanishi shart boʻlgan vositalar va usullar qonun bilan va bank omonati shartnomasi bilan belgilanadi.\nBank omonatchining talabiga muvofiq omonatning qaytarilishi taʼminlanganligi toʻgʻrisida axborot berishi shart.\nBank omonatning qaytarilishini taʼminlash boʻyicha majburiyatlarini bajarmagan, shuningdek taʼminotni yoʻqotgan yoki uning shartlarini yomonlashtirgan taqdirda, omonatchi bankdan omonat summasini darhol qaytarib berishni, ushbu Kodeksning 327-moddasiga muvofiq unga foizlar toʻlashni hamda oʻziga yetkazilgan zararni qoplashni talab qilishga haqli."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "7389404_0017_18_1",
+     "doc_id": "lex:7389404",
+     "doc_title": "Banklardagi omonatlarni himoya qilish kafolatlari toʻgʻrisida",
+     "article": "18-modda",
+     "retrieval_score": 0.6131,
+     "fusion_score": 0.01636,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bir yoʻla toʻlanadigan badal deganda yangidan tashkil etilgan bank tomonidan, bundan oraliq bank va qayta tashkil etish yoʻli bilan tashkil etilgan bank mustasno, Jamgʻarmaga dastlabki toʻlanadigan pul mablagʻlari tushuniladi.\nBankning bir yoʻla toʻlanadigan badali miqdori qonunchilikda belgilangan bank ustav kapitali eng kam miqdorining 0,1 foizini tashkil etadi.\nBank tomonidan bir yoʻla toʻlanadigan badal bank faoliyatiga doir tegishli litsenziya (litsenziyalar) berilgan kundan eʼtiboran oʻn ish kuni ichida toʻlanishi kerak."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "7592967_0026_27_2",
+     "doc_id": "lex:7592967",
+     "doc_title": "Banklarni sanatsiya qilish va tugatish toʻgʻrisida",
+     "article": "27-modda",
+     "retrieval_score": 0.623,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "sanatsiya qilinayotgan bankning (shu jumladan majburiy tugatish jarayonida boʻlgan sanatsiya qilinayotgan bankning) qoʻshimcha aktivlari, huquqlari va (yoki) majburiyatlarini oraliq bankka oʻtkazish;\noʻtkazilgan aktivlar, huquqlar va (yoki) majburiyatlarning bir qismini ushbu moddaning oltinchi qismiga muvofiq oraliq bankdan sanatsiya qilinayotgan bankka (shu jumladan majburiy tugatish jarayonida boʻlgan sanatsiya qilinayotgan bankka) qaytarish.\nOraliq bankdan sanatsiya qilinayotgan bankka aktivlar, huquqlar va (yoki) majburiyatlarning bir qismini qaytarishga quyidagi shartlarning barchasiga rioya etilganda yoʻl qoʻyiladi:\naktivlar, huquqlar va (yoki) majburiyatlarni qaytarish ular oraliq bankka oʻtkazilgan kundan eʼtiboran 90 kun ichida amalga oshirilishi;\nqaytarilayotgan majburiyatlarning ushbu Qonun 33-moddasining ikkinchi qismida belgilangan majburiyatlar emasligi;\nqaytarishning sanatsiya qilish maqsadlariga erishish va (yoki) omonatchilar va kreditorlarning huquqlari hamda qonuniy manfaatlari kafolatlanishi prinsipiga rioya etilishini taʼminlash uchun zarurligi.\nOraliq bankka sanatsiya qilinayotgan bankning aktivlari, huquqlari va (yoki) majburiyatlari oʻtkazilayotganda hamda oʻtkazilgan aktivlar, huquqlar va (yoki) majburiyatlar sanatsiya qilinayotgan bankka qaytarilayotganda quyidagilar talab etilmaydi:\nsanatsiya qilinayotgan bank aksiyadorlari, omonatchilari va kreditorlarining, shuningdek boshqa manfaatdor shaxslarning (xususan, sanatsiya qilinayotgan bankka garov taʼminoti va kafolat taqdim etgan shaxslarning) roziligini olish;\nsanatsiya qilinayotgan bank tomonidan omonatchilar, kreditorlar, shuningdek boshqa taraflar (xususan, sanatsiya qilinayotgan bankka garov taʼminoti va kafolat taqdim etgan shaxslar) bilan tuzilgan shartnomalarga shartnomalarning yangi tarafini koʻrsatish maqsadida oʻzgartirishlar kiritish;\nsanatsiya qilinayotgan bankning omonatchilari bilan oraliq bank tomonidan yangi bank hisobvaragʻi shartnomalarini tuzish.\nSanatsiya qilinayotgan bankning aktivlari, huquqlari va (yoki) majburiyatlarini oraliq bankka oʻtkazish toʻgʻrisidagi shartnoma imzolangan paytdan eʼtiboran aktivlar, huquqlar va (yoki) majburiyatlar oʻtkazilgan deb hisoblanadi va oʻtkazish bilan bogʻliq barcha huquqiy tartib-taomillar uchun asos boʻlib xizmat qiladi. Bunda oraliq bank barcha huquqlar va majburiyatlarning huquqiy vorisi boʻladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "7389404_0013_14_1",
+     "doc_id": "lex:7389404",
+     "doc_title": "Banklardagi omonatlarni himoya qilish kafolatlari toʻgʻrisida",
+     "article": "14-modda",
+     "retrieval_score": 0.6092,
+     "fusion_score": 0.01593,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Omonatlarni kafolatlash tizimi (bundan buyon matnda kafolatlash tizimi deb yuritiladi) kafolatlash hodisasi yuzaga kelganda Agentlik tomonidan omonatchilarga kompensatsiyalarni toʻlash orqali omonatchilarning huquqlarini va qonuniy manfaatlarini davlat tomonidan himoya qilishga qaratilgan chora-tadbirlar majmuidir.\nKafolatlash tizimida Agentlik, banklar va kafolatlash obyektlarining egalari ishtirok etadi.\nBank faoliyatini amalga oshirish huquqini beruvchi litsenziyaga va (yoki) islomiy bank faoliyatini amalga oshirish huquqini beruvchi litsenziyaga (bundan buyon matnda bank faoliyatiga doir tegishli litsenziya (litsenziyalar) deb yuritiladi) ega boʻlgan bankning kafolatlash tizimida ishtirok etishi shart.\nBank, shu jumladan mikromoliya banki va qonunchilikka muvofiq tashkil etilgan oraliq bank faoliyatiga doir tegishli litsenziya (litsenziyalar) berilgan paytdan eʼtiboran kafolatlash tizimining ishtirokchisiga aylanadi.\nBankning kafolatlash tizimidagi ishtiroki bank faoliyatiga doir tegishli litsenziya (litsenziyalar) Markaziy bank tomonidan chaqirib olingan taqdirda tugatiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "180552_0381_763_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "763-modda",
+     "retrieval_score": 0.6116,
+     "fusion_score": 0.01592,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bank omonatchiga omonat summasi uchun bank omonati shartnomasida belgilanadigan miqdorda foizlar va (yoki) boshqa daromadlar toʻlaydi.\nBank omonati shartnomasida toʻlanadigan foizlar miqdori haqida shart boʻlmagan taqdirda, bank talab qilib olinguncha saqlanadigan omonatlarga toʻlanadigan miqdorda foizlar toʻlashi shart.\nAgar bank omonati shartnomasida boshqacha tartib nazarda tutilgan boʻlmasa, bank talab qilib olinguncha saqlanadigan omonatlarga toʻlanadigan foizlar va (yoki) boshqa daromadlar miqdorini oʻzgartirish huquqiga ega.\nBank foizlar va (yoki) boshqa daromadlar miqdorini kamaytirgan taqdirda, ularning yangi miqdori ular kamaytirilganligi haqida omonatchilarga xabar berilganidan keyin qoʻyilgan omonatlarga nisbatan qoʻllaniladi. Agar bank omonati shartnomasida boshqa muddat nazarda tutilgan boʻlmasa, ushbu xabarga qadar qoʻyilgan omonatlarga nisbatan kamaytirilgan foizlar va (yoki) boshqa daromadlar miqdori tegishli xabar berilgan paytdan bir oy oʻtganidan keyin qoʻllaniladi.\nOmonatni muayyan muddat oʻtgach yoki shartnomada nazarda tutilgan vaziyatlar yuz berganidan keyin qaytarish sharti bilan qoʻyilgan omonat yuzasidan bank omonati shartnomasida belgilangan foizlar va (yoki) boshqa daromadlar miqdori, agar shartnomada boshqacha tartib belgilangan boʻlmasa, bank tomonidan bir tomonlama kamaytirilishi mumkin emas."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Agar bankning litsenziyasi olib qoʻyilib, u yopilsa, omonatimdagi pulning qanchasi kafolatlangan holda qaytariladi?",
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6496,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1280,
+    "rerank_ms": null,
+    "generation_ms": 10858,
+    "total_ms": 12138
+   },
+   "usage": {
+    "input_tokens": 3300,
+    "output_tokens": 345
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 80.1
+}
