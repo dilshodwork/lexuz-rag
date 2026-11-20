@@ -1,0 +1,1222 @@
+{
+ "run_id": "spec-2026-11-20-rw",
+ "batch_id": "spec-2026-11-20-rw-b05",
+ "batch_index": 5,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-20T10:17:15+05:00",
+  "completed_at": "2026-11-20T10:17:32+05:00",
+  "total_ms": 17102
+ },
+ "summary": {
+  "total": 10,
+  "ok": 9,
+  "no_answer": 1,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q041",
+   "status": "ok",
+   "answer": "Согласно закону «О потребительском кредите», организация, предоставляющая потребительский кредит, обязана принять решение о выдаче кредита или об обоснованном отказе в его выдаче в течение пяти рабочих дней после получения заявки [1].\n\nВ случае отказа в предоставлении кредита организация обязана уведомить об этом потребителя в письменной форме [1].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.693,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:1004687",
+     "doc_title": "ISTEʼMOL KREDITI TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-33",
+     "url": "https://lex.uz/uz/docs/-1004687",
+     "article_url": "https://lex.uz/uz/docs/-1004687#-1113899",
+     "article": "9-modda",
+     "article_title": "Kredit buyurtmasini koʻrib chiqish tartibi",
+     "part": "1-qism",
+     "edition_date": "2023-04-11",
+     "doc_status": "amalda",
+     "chunk_id": "1004687_0008_9_1",
+     "quote": "Isteʼmol krediti beruvchi tashkilot kredit buyurtmasini olganidan soʻng kredit berish toʻgʻrisida yoki kredit berishni asoslantirilgan holda rad etish haqida besh ish kuni ichida qaror qabul qiladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "1004687_0008_9_1",
+     "doc_id": "lex:1004687",
+     "doc_title": "ISTEʼMOL KREDITI TOʻGʻRISIDA",
+     "article": "9-modda",
+     "retrieval_score": 0.6926,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Isteʼmol krediti beruvchi tashkilot kredit buyurtmasini olganidan soʻng kredit berish toʻgʻrisida yoki kredit berishni asoslantirilgan holda rad etish haqida besh ish kuni ichida qaror qabul qiladi.\nIsteʼmol krediti berish asoslantirilgan holda rad etilgan taqdirda, isteʼmol krediti beruvchi tashkilot isteʼmolchiga bu haqda yozma shaklda maʼlum qilishi shart.\nKredit buyurtmasi isteʼmol krediti beruvchi tashkilot tomonidan koʻrib chiqilayotganda quyidagilarning tahlili amalga oshiriladi:\nisteʼmolchining daromadlari yetarliligini va kredit tarixini aniqlash;\nkredit buyurtmasida bayon etilgan maʼlumotlarning bir-biriga zid boʻlmasligi;\nisteʼmol krediti summasini qaytarishning maqbul istiqbollari mavjudligi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "7592967_0049_50_1",
+     "doc_id": "lex:7592967",
+     "doc_title": "Banklarni sanatsiya qilish va tugatish toʻgʻrisida",
+     "article": "50-modda",
+     "retrieval_score": 0.6376,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Dastlabki ruxsatnomani olish uchun bank aksiyadorlarining umumiy yigʻilishida ishtirok etayotgan ovoz beruvchi aksiyalar egalari boʻlgan aksiyadorlar ovozlarining toʻrtdan uch qismidan iborat koʻpchilik ovozi bilan dastlabki ruxsatnomani olish toʻgʻrisida qaror qabul qilinadi.\nUshbu moddaning birinchi qismida nazarda tutilgan qaror qabul qilingan kundan eʼtiboran besh ish kuni ichida bank tomonidan dastlabki ruxsatnomani olish uchun Markaziy bankka quyidagilar ilova qilingan holda ariza taqdim etiladi:\ndastlabki ruxsatnomani olish toʻgʻrisidagi qaror;\nbank aksiyadorlarining umumiy yigʻilishi tomonidan tasdiqlangan ixtiyoriy tugatish rejasi;\nbankning dastlabki ruxsatnomani olish toʻgʻrisidagi qaror qabul qilingan sanadagi balans hisoboti.\nBankni ixtiyoriy tugatish rejasi quyidagilarni oʻz ichiga olishi kerak:\nauditorlik tashkiloti tomonidan tasdiqlangan, bank aktivlari va majburiyatlarining tugatilish qiymati haqidagi maʼlumotlarni;\nbankning kreditorlari toʻgʻrisidagi maʼlumotlarni;\njoriy va ehtimoliy sud jarayonlari haqidagi, shuningdek sud xarajatlari va sud qarorlarini ijro etish bilan bogʻliq xarajatlar haqidagi maʼlumotlarni;\noperatsion xarajatlar, aktivlarni sotishdan koʻriladigan ehtimoliy zararlar, bank taraflaridan biri boʻlgan shartnomalarni muddatidan ilgari bekor qilish chogʻida yuzaga keladigan zararlar, shuningdek prognoz qilinayotgan har qanday boshqa xarajatlar haqidagi maʼlumotlarni;\nbankni ixtiyoriy tugatishni amalga oshirish muddatini;\nbankni ixtiyoriy tugatish jarayoni bosqichlarining, shu jumladan har bir bosqich davomiyligining, har bir bosqichda amalga oshiriladigan harakatlarning tavsifini;\nbankni ixtiyoriy tugatish jarayonining har bir bosqichi uchun istiqbolli balansni, shuningdek uni tuzishda foydalanilgan farazlar va ehtimolliklar tavsifini.\nAgar ushbu moddaning ikkinchi qismida koʻrsatilgan, bank tomonidan taqdim etilgan hujjatlar va maʼlumotlar dastlabki ruxsatnomani berish toʻgʻrisida qaror qabul qilish uchun yetarli boʻlmasa, Markaziy bank bankdan qoʻshimcha hujjatlar va maʼlumotlarni soʻrab olishga haqli.\nMarkaziy bank dastlabki ruxsatnomani berish toʻgʻrisidagi yoki dastlabki ruxsatnoma berishni asoslantirilgan holda rad etish haqidagi qarorni dastlabki ruxsatnomani olish uchun zarur boʻlgan barcha hujjatlar taqdim etilgan kundan eʼtiboran ikki oy ichida qabul qiladi.\nDastlabki ruxsatnoma berilganidan keyin bank “Banklardagi omonatlarni himoya qilish kafolatlari toʻgʻrisida”gi Oʻzbekiston Respublikasi Qonunining 25-moddasida nazarda tutilgan kafolatlash obyektlarining (bundan buyon matnda kafolatlash obyektlari deb yuritiladi) toʻliq qaytarilishi va (yoki) boshqa bankka oʻtkazilishi boʻyicha choralar koʻradi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "7592967_0051_52_1",
+     "doc_id": "lex:7592967",
+     "doc_title": "Banklarni sanatsiya qilish va tugatish toʻgʻrisida",
+     "article": "52-modda",
+     "retrieval_score": 0.6333,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yakuniy ruxsatnomani olish uchun bank aksiyadorlarining umumiy yigʻilishida ishtirok etayotgan ovoz beruvchi aksiyalar egalari boʻlgan aksiyadorlar ovozlarining toʻrtdan uch qismidan iborat koʻpchilik ovozi bilan bankni ixtiyoriy tugatish toʻgʻrisida qaror qabul qilinadi.\nUshbu moddaning birinchi qismida nazarda tutilgan qaror qabul qilingan kundan eʼtiboran uch ish kuni ichida bank tomonidan yakuniy ruxsatnomani olish uchun Markaziy bankka quyidagilar ilova qilingan holda ariza taqdim etiladi:\nbankni ixtiyoriy tugatish toʻgʻrisidagi qaror;\nkafolatlash obyektlari toʻliq qaytarilganligini va (yoki) boshqa bankka oʻtkazilganligini tasdiqlovchi hujjatlar;\nkafolatlash obyektlari toʻliq qaytarilganidan va (yoki) boshqa bankka oʻtkazilganidan keyin bankning zimmasida qolgan majburiyatlari toʻgʻrisidagi maʼlumotlar;\nbankning ixtiyoriy tugatish toʻgʻrisidagi qaror qabul qilingan sanadagi balans hisoboti;\ntugatuvchi toʻgʻrisidagi axborot, shu jumladan tugatuvchining belgilangan talablarga muvofiqligini tasdiqlovchi hujjatlar.\nAgar ushbu moddaning ikkinchi qismida koʻrsatilgan, bank tomonidan taqdim etilgan hujjatlar va maʼlumotlar yakuniy ruxsatnomani berish toʻgʻrisida qaror qabul qilish uchun yetarli boʻlmasa, Markaziy bank bankdan qoʻshimcha hujjatlar va maʼlumotlarni soʻrab olishga haqli.\nMarkaziy bank yakuniy ruxsatnomani berish toʻgʻrisidagi yoki yakuniy ruxsatnomani berishni asoslantirilgan holda rad etish haqidagi qarorni yakuniy ruxsatnomani olish uchun zarur boʻlgan barcha hujjatlar taqdim etilgan kundan eʼtiboran yigirma ish kuni ichida qabul qiladi.\nAksiyadorlar umumiy yigʻilishining bankni ixtiyoriy tugatish toʻgʻrisidagi qarori yakuniy ruxsatnoma berilganidan keyin kuchga kiradi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "5972411_0020_21_1",
+     "doc_id": "lex:5972411",
+     "doc_title": "Nobank kredit tashkilotlari va mikromoliyalashtirish faoliyati toʻgʻrisida",
+     "article": "21-modda",
+     "retrieval_score": 0.6232,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ariza beruvchi tomonidan hisob roʻyxatidan oʻtkazish uchun taqdim etilgan hujjatlar ushbu Qonunning 20-moddasiga muvofiq taqdim etilgan taqdirda Markaziy bank tomonidan koʻrib chiqiladi. Boshqa hollarda Markaziy bank ular olingan kundan eʼtiboran besh kun ichida ariza beruvchiga hujjatlar koʻrib chiqilmasligi haqida xabarnoma yuboradi. Mazkur xabarnomada ushbu Qonunning 20-moddasiga muvofiq taqdim etilishi lozim boʻlgan hujjatlar roʻyxati ham koʻrsatiladi.\nHisob roʻyxatidan oʻtkazish uchun ariza beruvchi tomonidan taqdim etilgan hujjatlarni koʻrib chiqqanlik uchun yigʻim undirilmaydi.\nHisob roʻyxatidan oʻtkazish yoki hisob roʻyxatidan oʻtkazishni asoslantirilgan holda rad etish toʻgʻrisidagi qaror hisob roʻyxatidan oʻtkazish uchun zarur boʻlgan hujjatlar olingan kundan eʼtiboran oʻn besh ish kuni ichida Markaziy bank tomonidan qabul qilinadi. Mikromoliya tashkiloti, ipotekani qayta moliyalashtirish tashkiloti, kafolatlar berish tashkiloti yoki faktoring tashkiloti norezidentlar tomonidan tashkil etilgan hollarda mazkur muddat oʻn ish kuniga uzaytirilishi mumkin.\nHisob roʻyxatidan oʻtkazish uchun taqdim etilgan hujjatlarni koʻrib chiqish davrida ularda koʻrsatilgan maʼlumotlar oʻzgargan taqdirda, ariza beruvchi bu haqda zudlik bilan Markaziy bankni xabardor qilishi va yangilangan hujjatlarni oʻzgartishlar yuzaga kelgan paytdan eʼtiboran uch ish kuni ichida taqdim etishi kerak. Bunda hisob roʻyxatidan oʻtkazish uchun taqdim etilgan hujjatlarni koʻrib chiqish muddati oʻn ish kuniga uzaytiriladi.\nAriza beruvchiga hisob roʻyxatidan oʻtkazilganligi toʻgʻrisidagi xabarnoma hisob roʻyxatidan oʻtkazish toʻgʻrisida qaror qabul qilingan sanadan eʼtiboran bir ish kunidan kechiktirmay yuboriladi.\nHisob roʻyxatidan oʻtkazish haqidagi axborot hisob roʻyxatidan oʻtkazish toʻgʻrisidagi qaror qabul qilingan kundan eʼtiboran bir ish kuni ichida Markaziy bankning rasmiy veb-saytida eʼlon qilinishi lozim."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "18942_0017_18_1",
+     "doc_id": "lex:18942",
+     "doc_title": "Xoʻjalik yurituvchi subyektlar faoliyatining shartnomaviy-huquqiy bazasi toʻgʻrisida",
+     "article": "18-modda",
+     "retrieval_score": 0.6231,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻziga talabnoma bildirilgan xoʻjalik yurituvchi subyekt talabnomani olgan kundan boshlab oʻn besh kunlik muddat ichida unga javob qaytarishi shart.\nTalabnomaga javob xoʻjalik yurituvchi subyekt rahbari yoki rahbarning oʻrinbosari tomonidan imzolanadi va muhr bilan (muhr mavjud boʻlgan taqdirda) tasdiqlanadi.\nTalabnomaga javob buyurtma yoki qimmatli xat tarzida, telegraf, teletayp orqali, shuningdek talabnoma joʻnatilganligini qayd etadigan, qabul qilib oluvchini ogohlantiradigan boshqa aloqa vositalaridan foydalanilgan holda joʻnatiladi yoxud tilxat olib topshiriladi.\nTalabnoma toʻliq yoki qisman tan olingan taqdirda xoʻjalik yurituvchi subyekt arz qiluvchiga oʻzi tan olgan summani ixtiyoriy ravishda oʻtkazadi.\nAgar talabnomani tan olish toʻgʻrisidagi javobda tan olingan summa oʻtkazilishi haqida maʼlumot boʻlmasa, talabnoma bildirgan taraf javob olingandan soʻng yigirma kun muddat oʻtgach, bank muassasasiga qarzdor tan olgan summani soʻzsiz tartibda oʻtkazish toʻgʻrisidagi farmoyishni taqdim etishga haqli. Farmoyishga qarzdorning javobi ilova qilinadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "V techeniye kakogo sroka bank obyazan prinyat resheniye po moyey zayavke na potrebitelskiy kredit?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6926,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1765,
+    "rerank_ms": null,
+    "generation_ms": 1636,
+    "total_ms": 3401,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 4070,
+    "output_tokens": 128
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q042",
+   "status": "ok",
+   "answer": "Yoʻq, isteʼmol kreditini muddatidan ilgari toʻliq yopganingizda, qolgan oylar uchun foiz toʻlamaysiz.\n\n\"Isteʼmol krediti toʻgʻrisida\"gi Qonunning 16-moddasiga koʻra, isteʼmolchi olingan kredit summasini va unga hisoblangan foizlarni muddatidan ilgari qaytarishga haqli. Bunday holatda isteʼmolchi faqat kreditdan haqiqatda foydalanilgan muddat uchun foizlar toʻlaydi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.715,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:1004687",
+     "doc_title": "ISTEʼMOL KREDITI TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-33",
+     "url": "https://lex.uz/uz/docs/-1004687",
+     "article_url": "https://lex.uz/uz/docs/-1004687#-1113964",
+     "article": "16-modda",
+     "article_title": "Isteʼmol kreditini muddatidan ilgari qaytarish",
+     "part": "1-qism",
+     "edition_date": "2023-04-11",
+     "doc_status": "amalda",
+     "chunk_id": "1004687_0015_16_1",
+     "quote": "Bunday holda isteʼmolchi faqat isteʼmol kreditidan haqiqatda foydalanilgan muddat uchun foizlar toʻlaydi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "1004687_0015_16_1",
+     "doc_id": "lex:1004687",
+     "doc_title": "ISTEʼMOL KREDITI TOʻGʻRISIDA",
+     "article": "16-modda",
+     "retrieval_score": 0.7145,
+     "fusion_score": 0.0172,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Isteʼmolchi olingan isteʼmol krediti summasini qaytarishni va mazkur kredit boʻyicha hisoblangan foizlarni toʻlashni muddatidan ilgari amalga oshirishga haqli. Bunday holda isteʼmolchi faqat isteʼmol kreditidan haqiqatda foydalanilgan muddat uchun foizlar toʻlaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "180552_0351_736_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "736-modda",
+     "retrieval_score": 0.6596,
+     "fusion_score": 0.01669,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar qonunchilikda yoki qarz shartnomasida boshqacha tartib nazarda tutilgan boʻlmasa, qarz oluvchi qarz summasini vaqtida qaytarmagan hollarda ushbu Kodeksning 734-moddasi birinchi qismida nazarda tutilgan foizlar toʻlangan boʻlishidan qatʼi nazar, qarz qaytarib berilishi kerak boʻlgan kundan boshlab to u qarz beruvchiga qaytarib berilgan kungacha bu summa yuzasidan ushbu Kodeksning 327-moddasi birinchi va ikkinchi qismlarida nazarda tutilgan miqdorda foizlar toʻlanishi kerak.\nAgar qarz shartnomasida qarzni qismlab (boʻlib-boʻlib) qaytarish nazarda tutilgan boʻlsa, qarz oluvchi qarzning navbatdagi qismini qaytarish uchun belgilangan muddatni buzgan taqdirda, qarz beruvchi qarzning qolgan barcha summasini tegishli foizlar bilan birga muddatidan oldin qaytarishni talab qilishga haqli.\nAgar qarz shartnomasida qarz boʻyicha foizlarni qarzning oʻzini qaytarish muddatidan oldin toʻlash nazarda tutilgan boʻlsa, bu majburiyat buzilgan taqdirda, qarz beruvchi qarz oluvchidan qarz summasini tegishli foizlari bilan birga muddatidan oldin qaytarishni talab qilishga haqli."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "180552_0399_781_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "781-modda",
+     "retrieval_score": 0.646,
+     "fusion_score": 0.01623,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar bank hisobvaragʻi shartnomasida boshqacha tartib nazarda tutilgan boʻlmasa, bank hisobvaraqda turgan pul mablagʻlaridan foydalanganligi uchun mijozga foizlar toʻlaydi, ularning summasi hisobvaraqqa kiritib qoʻyiladi.\nUshbu moddaning birinchi qismida koʻrsatilgan foizlar bank tomonidan bank hisobvaragʻi shartnomasida belgilanadigan miqdorda, shartnomada tegishli shartlar nazarda tutilmagan taqdirda esa— odatda bank talab qilib olinguncha saqlanadigan omonatlar yuzasidan toʻlaydigan miqdorda toʻlanadi.\nFoizlar summasi bank hisobvaragʻi shartnomasida nazarda tutilgan muddatlarda, bunday muddatlar bank hisobvaragʻi shartnomasida nazarda tutilmagan hollarda esa — yilning har choragi tamom boʻlgach, hisobvaraqqa kiritib qoʻyiladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0381_763_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "763-modda",
+     "retrieval_score": 0.6449,
+     "fusion_score": 0.01597,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Bank omonatchiga omonat summasi uchun bank omonati shartnomasida belgilanadigan miqdorda foizlar va (yoki) boshqa daromadlar toʻlaydi.\nBank omonati shartnomasida toʻlanadigan foizlar miqdori haqida shart boʻlmagan taqdirda, bank talab qilib olinguncha saqlanadigan omonatlarga toʻlanadigan miqdorda foizlar toʻlashi shart.\nAgar bank omonati shartnomasida boshqacha tartib nazarda tutilgan boʻlmasa, bank talab qilib olinguncha saqlanadigan omonatlarga toʻlanadigan foizlar va (yoki) boshqa daromadlar miqdorini oʻzgartirish huquqiga ega.\nBank foizlar va (yoki) boshqa daromadlar miqdorini kamaytirgan taqdirda, ularning yangi miqdori ular kamaytirilganligi haqida omonatchilarga xabar berilganidan keyin qoʻyilgan omonatlarga nisbatan qoʻllaniladi. Agar bank omonati shartnomasida boshqa muddat nazarda tutilgan boʻlmasa, ushbu xabarga qadar qoʻyilgan omonatlarga nisbatan kamaytirilgan foizlar va (yoki) boshqa daromadlar miqdori tegishli xabar berilgan paytdan bir oy oʻtganidan keyin qoʻllaniladi.\nOmonatni muayyan muddat oʻtgach yoki shartnomada nazarda tutilgan vaziyatlar yuz berganidan keyin qaytarish sharti bilan qoʻyilgan omonat yuzasidan bank omonati shartnomasida belgilangan foizlar va (yoki) boshqa daromadlar miqdori, agar shartnomada boshqacha tartib belgilangan boʻlmasa, bank tomonidan bir tomonlama kamaytirilishi mumkin emas."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111189_0326_327_1",
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "327-modda",
+     "retrieval_score": 0.6535,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Boshqa shaxslarning pul mablagʻlarini gʻayriqonuniy ushlab qolish, ularni qaytarib berishdan bosh tortish, ularni toʻlashni boshqacha tarzda kechiktirish yoxud boshqa shaxs hisobidan asossiz olish yoki jamgʻarish natijasida ulardan foydalanganlik uchun ushbu mablagʻlar summasiga foiz toʻlanishi kerak.\nFoizlar miqdori kreditor yashaydigan joyda, kreditor yuridik shaxs boʻlganida esa, uning joylashgan yerida pul majburiyati yoki uning tegishli qismi bajarilgan kunda mavjud boʻlgan bank foizining hisob stavkasi bilan belgilanadi. Qarz sud tartibida undirib olinganida sud kreditorning talabini daʼvo qoʻzgʻatilgan kundagi yoki qaror chiqarilgan kundagi bank foizining hisob stavkasiga qarab qondirishi mumkin. Ushbu qoidalar qonunda yoki shartnomada boshqa foiz miqdori belgilangan boʻlmasa qoʻllaniladi.\nKreditorning pul mablagʻlaridan qonunsiz foydalanish tufayli unga yetkazilgan zarar ushbu moddaning birinchi va ikkinchi qismlariga asosan unga tegishi kerak boʻlgan foizlar summasidan oshib ketsa, kreditor qarzdordan zararning bu summadan ortiqcha boʻlgan qismini toʻlashni talab qilishga haqli."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Bankdan olgan isteʼmol kreditimni muddatidan oldin toʻliq yopsam, qolgan oylar uchun ham foiz toʻlashim kerakmi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7145,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1767,
+    "rerank_ms": null,
+    "generation_ms": 1276,
+    "total_ms": 3044,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 2832,
+    "output_tokens": 215
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q043",
+   "status": "ok",
+   "answer": "Soliq kodeksining 378-moddasiga koʻra, jismoniy shaxslarga xususiy mulk huquqi asosida tegishli boʻlgan turar joyni sotishdan olingan daromadlar soliqqa tortilmaydi, agar ushbu turar joy soliq toʻlovchining mulkida oʻttiz olti kalendar oydan kam boʻlmagan muddatda boʻlgan boʻlsa [1].\n\nSizning holatingizda kvartira mulkda ikki yil (24 oy) boʻlganligi sababli, u oʻttiz olti oylik muddatdan kam hisoblanadi. Shu bois, ushbu turar joyni sotishdan olingan daromad soliqqa tortiladigan daromad hisoblanadi [1]. Mulkiy daromadlarni aniqlashda realizatsiya qilish summasi bilan uni olish qiymati oʻrtasidagi ijobiy farq daromad deb eʼtirof etiladi [5].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.596,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4674902",
+     "article_url": "https://lex.uz/uz/docs/-4674902#-4687278",
+     "article": "378-modda",
+     "article_title": "Soliq solinmaydigan daromadlar",
+     "part": null,
+     "edition_date": "2026-10-21",
+     "doc_status": "amalda",
+     "chunk_id": "4674902_0383_378_2",
+     "quote": "7) soliq toʻlovchilarga xususiy mulk huquqi asosida tegishli boʻlgan mol-mulkni sotishdan olinadigan daromadlar, bundan quyidagilarni sotishdan olingan daromadlar mustasno:"
+    },
+    {
+     "ref": 5,
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4674902",
+     "article_url": "https://lex.uz/uz/docs/-4674902#-4687228",
+     "article": "375-modda",
+     "article_title": "Mulkiy daromadlar",
+     "part": "1-qism",
+     "edition_date": "2026-10-21",
+     "doc_status": "amalda",
+     "chunk_id": "4674902_0380_375_1",
+     "quote": "Mazkur qiymatni tasdiqlovchi hujjatlar mavjud boʻlmagan taqdirda, mol-mulkni realizatsiya qilish qiymati, koʻchmas mulk boʻyicha esa – kadastr qiymati hamda realizatsiya qilish narxi oʻrtasidagi ijobiy farq daromad deb eʼtirof etiladi;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4674902_0383_378_2",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "378-modda",
+     "retrieval_score": 0.5722,
+     "fusion_score": 0.01491,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "7) soliq toʻlovchilarga xususiy mulk huquqi asosida tegishli boʻlgan mol-mulkni sotishdan olinadigan daromadlar, bundan quyidagilarni sotishdan olingan daromadlar mustasno:\nqimmatli qogʻozlarni (bundan fond birjasida realizatsiya qilinadigan emissiyaviy qimmatli qogʻozlar mustasno), yuridik shaxslarning ustav fondidagi (ustav kapitalidagi) ulushlarini (paylarini);\nnoturar joylarni;\noʻttiz olti kalendar oydan kam muddatda soliq toʻlovchining mulkida boʻlgan turar joylarni;\n8) uy xoʻjaligida, shu jumladan dehqon xoʻjaligida yetishtirilgan hayvonlarni (qoramollarni, parrandalarni, moʻynali va boshqa hayvonlarni, baliqlar va hokazolarni) tirik holda hamda ularni soʻyib mahsulotlarini xom yoki qayta ishlangan holda sotishdan (bundan sanoatda qayta ishlash mustasno) chorvachilik, asalarichilik va dehqonchilik mahsulotlarini tabiiy va qayta ishlangan holda sotishdan olinadigan daromadlar, bundan manzarali bogʻdorchilik (gulchilik) mahsulotlari mustasno;\n9) xalqaro hamda respublika tanlovlari va musobaqalarida olingan buyum tarzidagi sovrinlarning qiymati;\n10) ish beruvchidan soliq davri mobaynida mehnatga haq toʻlashning eng kam miqdorining 2,11 baravarigacha boʻlgan qiymatdagi:\nxodimlar natura shaklida olgan sovgʻalar;\nilgari mazkur ish beruvchining xodimlari boʻlgan ishlamayotgan pensionerlar va mehnat qobiliyatini yoʻqotgan shaxslar, vafot etgan xodimning oila aʼzolari tomonidan olingan sovgʻalar hamda boshqa turlardagi yordam;\n11) jismoniy shaxslardan meros yoki hadya tartibida, shuningdek tekinga olingan pul va natura shaklidagi daromadlar, bundan quyidagilar mustasno:\nilm-fan, adabiyot va sanʼat asarlarining, adabiyot hamda sanʼat asarlari ijrochilarining, shuningdek kashfiyotlar, ixtirolar va sanoat namunalari mualliflarining merosxoʻrlariga (huquqiy vorislariga) toʻlanadigan pul mukofotlari;\nyaqin qarindosh boʻlmagan shaxslar oʻrtasidagi koʻchmas mulk, avtotransport vositalari, qimmatli qogʻozlar, yuridik shaxslarning ustav fondlaridagi (ustav kapitallaridagi) ulushlar;\n12) davlat zayomining obligatsiyalari boʻyicha yutuqlar, shuningdek Oʻzbekiston Respublikasining davlat qimmatli qogʻozlari boʻyicha foizlar;\n13) jamgʻarma sertifikatlari, davlat qimmatli qogʻozlari boʻyicha daromadlar, shuningdek banklardagi omonatlar boʻyicha foizlar va yutuqlar;\n14) nodavlat notijorat tashkilotlaridan, xalqaro hamda chet el tashkilotlari va fondlaridan, shuningdek vakolatli organning xulosasi mavjud boʻlsa, Oʻzbekiston Respublikasining ilmiy-texnika hamkorligi sohasidagi xalqaro shartnomalari doirasida soliq toʻlovchi grant beruvchidan bevosita olgan grantning summasi;"
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4674902_0499_483_20",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "483-modda",
+     "retrieval_score": 0.585,
+     "fusion_score": 0.01664,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Kodeks 289³-moddasi birinchi qismining 2-bandida belgilangan polietilen granulalarni farmatsevtika mahsulotlari ishlab chiqaruvchilar tomonidan oʻz ishlab chiqarish ehtiyojlari uchun Oʻzbekiston Respublikasi hududiga olib kirish 2025-yil 1-yanvardan 2028-yil 1-yanvarga qadar aksiz soligʻidan ozod qilinadi.\nOʻzbekiston Respublikasining rezidentlari va norezidentlari boʻlgan yuridik shaxslarning ipotekani qayta moliyalashtirish tashkilotlari hamda ular qoshidagi maxsus vakolatli tashkilotlar tomonidan emissiya qilingan obligatsiyalar boʻyicha daromadlari 2030-yil 1-yanvarga qadar foyda soligʻidan ozod qilinadi.\nUshbu moddaning sakson birinchi qismida nazarda tutilgan imtiyoz mazkur obligatsiyalar muomalada boʻlgan davrda hisoblangan foizlar tarzidagi daromadlarga nisbatan tatbiq etiladi.\n2025-yil 1-maydan boshlab “Yangi Oʻzbekiston” massivlarini barpo etish doirasida auksion savdolarida yer uchastkasini koʻp kvartirali uy-joy qurish uchun ijaraga olgan yuridik shaxslar yer uchastkasi ijaraga olingan paytdan eʼtiboran ushbu yer uchastkasi boʻyicha yer soligʻini toʻlashdan 12 oy davomida ozod qilinadi. Bunda, agar koʻp kvartirali uy-joy belgilangan muddatda qurilib, foydalanishga topshirilmasa, imtiyozdan foydalanilgan davr uchun yer soligʻi 2 baravar miqdorda undiriladi.\nYangi tashkil etiladigan qishloq xoʻjaligi va dorivor oʻsimliklarni yetishtirish va qayta ishlash kooperativlari uchun ijtimoiy soliq hamda ularga ishga qabul qilingan xodimlar uchun jismoniy shaxslardan olinadigan daromad soligʻi 2025-yil 1-apreldan 2028-yil 1-yanvarga qadar boʻlgan davrda 1 foiz miqdordagi soliq stavkasi boʻyicha toʻlanadi.\nKreativ industriya parkining rezidentlari 2025-yil 1-maydan 2031-yil 1-yanvarga qadar:\nxodimlarining mehnatga haq toʻlash tarzidagi daromadlari boʻyicha jismoniy shaxslardan olinadigan daromad soligʻini hamda ijtimoiy soliqni belgilangan soliq stavkalariga nisbatan 50 foiz kamaytirilgan soliq stavkalari boʻyicha toʻlaydi;\ntovarlarni (xizmatlarni) realizatsiya qilishdan olingan daromadi miqdoridan qatʼi nazar, aylanmadan olinadigan soliqni toʻlovchilar hisoblanadi.\nMeva-sabzavot mahsulotlarini zamonaviy qadoqlarda realizatsiya qiluvchi quyidagi barcha shartlarga bir vaqtning oʻzida javob beradigan tadbirkorlik subyektlari 2025-yil 1-maydan 2028-yil 1-yanvarga qadar foyda soligʻini va ijtimoiy soliqni 1 foiz miqdordagi soliq stavkalari boʻyicha toʻlaydi:\nhar oyda har bir xodimga ish haqi miqdori mehnatga haq toʻlash eng kam miqdorining ikki baravaridan kam boʻlmagan miqdorda hisoblanganda;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4674902_0426_423_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "423-modda",
+     "retrieval_score": 0.7093,
+     "fusion_score": 0.01712,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Soliqni hisoblab chiqarish soliq solish obyekti joylashgan yerdagi soliq organlari tomonidan:\nushbu Kodeks 419-moddasining 1, 3 va 4-bandlarida nazarda tutilgan obyektlar boʻyicha — koʻchmas mulkka boʻlgan huquqlarni davlat roʻyxatidan oʻtkazishni amalga oshiruvchi organning maʼlumotlari asosida;\nushbu Kodeks 419-moddasining 2-bandida nazarda tutilgan obyektlar boʻyicha — koʻchmas mulkka boʻlgan huquqlarni davlat roʻyxatidan oʻtkazishni amalga oshiruvchi organning maʼlumotlari hamda ushbu Kodeks 420-moddasi ikkinchi qismining uchinchi xatboshisi va uchinchi qismi asosida amalga oshiriladi.\nSoliq summasi 1-yanvar holatiga koʻra ushbu Kodeksning 420-moddasiga muvofiq aniqlangan soliq bazasidan va belgilangan soliq stavkasidan kelib chiqqan holda hisoblab chiqariladi.\nSoliq toʻlovchi tadbirkorlik faoliyati va (yoki) daromad olish uchun moʻljallangan, yashash uchun moʻljallanmagan koʻchmas mulk obyektlari joylashgan yerdagi soliq organlariga baholovchi tashkilotlar tomonidan oʻtkazilgan, shu jumladan oʻtgan ikki yil ichida oʻtkazilgan mustaqil baholash natijalarini (mavjud boʻlgan taqdirda), shuningdek qonunchilikda belgilangan eng kam qiymat tatbiq etilmaydigan koʻchmas mulk obyektlari roʻyxatini taqdim etishga haqli.\nBir necha mulkdorlarining umumiy ulushli mulki boʻlgan imoratlar, binolar va inshootlar uchun soliq har bir mulkdor tomonidan ularning ushbu imoratlar, binolar va inshootlardagi ulushiga mutanosib ravishda toʻlanadi.\nMol-mulkka boʻlgan mulk huquqi kalendar yil mobaynida bir mulkdordan boshqasiga oʻtgan taqdirda, soliq avvalgi mulkdor tomonidan shu yilning 1-yanvaridan eʼtiboran u mol-mulkka boʻlgan mulk huquqini yoʻqotgan oyning boshlanishiga qadar, yangi mulkdor tomonidan esa, unda mulk huquqi vujudga kelgan oydan eʼtiboran toʻlanadi.\nYangi imoratlar, binolar va inshootlar boʻyicha soliq mulk huquqi yuzaga kelgan oydan eʼtiboran toʻlanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4674902_0303_297_3",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "297-modda",
+     "retrieval_score": 0.5956,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Soliq toʻlovchi tomonidan olingan, qiymati chet el valyutasida ifodalangan daromadlar qiymati milliy valyutada ifodalangan daromadlar bilan birgalikda hisobga olinadi.\nYuridik shaxs qayta tashkil etilganda, mol-mulkning va pulda ifodalanadigan bahoga ega boʻlgan nomulkiy huquqlarning qiymati va (yoki) yuridik shaxslarni qayta tashkil etish chogʻida huquqiy vorislik tartibida olinadigan (oʻtkaziladigan), qayta tashkil etilayotgan yuridik shaxslar oʻzining qayta tashkil etilish sanasiga qadar olgan majburiyatlarining qiymati yangi tashkil etilgan, qayta tashkil etilayotgan va qayta tashkil etilgan yuridik shaxslarning daromadlari deb eʼtirof etilmaydi.\nAgar daromadni buxgalteriya hisobi toʻgʻrisidagi qonunchilik talablariga muvofiq eʼtirof etish daromadni ushbu Kodeksga muvofiq aniqlash va eʼtirof etish tartibidan farq qilsa, mazkur daromad soliq solish maqsadlarida ushbu Kodeksda belgilangan tartibda hisobga olinadi, bundan ushbu moddaning toʻqqizinchi qismida koʻrsatilgan hol mustasno.\nKredit tashkilotlari tomonidan olingan daromadlarni eʼtirof etish sanasi Moliyaviy hisobotning xalqaro standartlari va (yoki) buxgalteriya hisobi toʻgʻrisidagi qonunchilik talablariga muvofiq hisobga olinadi.\nAgar ushbu boʻlimda boshqacha qoida belgilanmagan boʻlsa, buxgalteriya hisobi toʻgʻrisidagi qonunchilikni qoʻllash chogʻida aktivlar va (yoki) majburiyatlarning qiymati oʻzgarganligi munosabati bilan buxgalteriya hisobida aks ettirilgan daromadlarga soliq solish maqsadidagi daromadlar sifatida qaralmaydi, bundan haqiqatda olingan daromadlar mustasno.\nAgar ushbu Kodeksda boshqacha qoida belgilanmagan boʻlsa, daromadni eʼtirof etish sanasi buxgalteriya hisobi toʻgʻrisidagi qonunchilik talablariga muvofiq aniqlanadi.\nSoliq toʻlovchining daromadlariga tuzatish kiritish ushbu Kodeksning 332-moddasiga muvofiq amalga oshiriladi.\nAgar muayyan bir daromad daromadlarning bir nechta moddasida nazarda tutilgan boʻlsa, jami daromadni aniqlashda mazkur daromad faqat bir marta kiritiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4674902_0380_375_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "375-modda",
+     "retrieval_score": 0.6959,
+     "fusion_score": 0.01655,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Mulkiy daromadlar tarkibiga quyidagilar kiradi:\n1) foizlar;\n2) dividendlar;\n3) mol-mulkni ijaraga berishdan olingan daromadlar;\n4) soliq toʻlovchiga mulk huquqi asosida tegishli boʻlgan mol-mulkni realizatsiya qilishdan olingan daromadlar. Mol-mulkni realizatsiya qilishdan olingan daromadlar mazkur mol-mulkni realizatsiya qilish summasining hujjatlar bilan tasdiqlangan uni olish qiymatidan oshgan qismi sifatida aniqlanadi. Mazkur qiymatni tasdiqlovchi hujjatlar mavjud boʻlmagan taqdirda, mol-mulkni realizatsiya qilish qiymati, koʻchmas mulk boʻyicha esa – kadastr qiymati hamda realizatsiya qilish narxi oʻrtasidagi ijobiy farq daromad deb eʼtirof etiladi;\n5) sanoat mulki obyektlariga, seleksiya yutugʻiga oid patent (litsenziya) egasi boʻlgan soliq toʻlovchining patentdan boshqa shaxs foydasiga voz kechganda yoki litsenziya shartnomasi tuzganda olgan daromadi;\n6) royalti;\n7) ishonchli boshqaruvga berilgan mol-mulk boʻyicha ishonchli boshqaruvchidan olingan daromad;\n9) ushbu Kodeksning 327 — 329-moddalarida nazarda tutilgan tartibda aniqlanadigan, qimmatli qogʻozlar va (yoki) muddatli bitimlarning hosila moliyaviy vositalari bilan operatsiyalar boʻyicha daromad;\n10) ushbu Kodeksning VII boʻlimida belgilangan hollarda va tartibda nazorat qilinadigan chet el kompaniyasining foyda tarzidagi daromadi;\n11) ushbu Kodeksning 319-moddasiga muvofiq aniqlanadigan, oddiy shirkat shartnomasiga (birgalikdagi faoliyat toʻgʻrisidagi shartnomaga) muvofiq ishtirok etishdan olingan daromadlar;\n12) ushbu moddaning 1 — 11-bandlarida koʻrsatilmagan mulkiy xususiyatga ega boshqa daromadlar."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ko‘chmas mulkni sotishdan olingan daromadga soliq solish tartibi, Soliq kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5956,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 2213,
+    "rerank_ms": null,
+    "generation_ms": 1595,
+    "total_ms": 3809,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 5146,
+    "output_tokens": 304
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q044",
+   "status": "ok",
+   "answer": "\"Tadbirkorlik faoliyati erkinligining kafolatlari toʻgʻrisida\"gi Qonunning 39-moddasiga koʻra, tadbirkorlik subyektlarining moliya-xoʻjalik faoliyati bilan bogʻliq boʻlmagan tekshiruvlarni oʻtkazish muddatlari oʻn kalendar kundan oshmasligi kerak [2].\n\nShuningdek, ushbu qonunning 41-moddasiga muvofiq, nazorat qiluvchi organlar mansabdor shaxslarining tekshiruvga kirishishi uchun ularda tekshiruv oʻtkazish muddatlari koʻrsatilgan buyruqning koʻchirma nusxasi boʻlishi shart [4].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.623,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:2006789",
+     "doc_title": "Tadbirkorlik faoliyati erkinligining kafolatlari toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-328",
+     "url": "https://lex.uz/uz/docs/-2006789",
+     "article_url": "https://lex.uz/uz/docs/-2006789#-2007127",
+     "article": "39-modda",
+     "article_title": "Tadbirkorlik subyektlari faoliyatini tekshirishlarni cheklash",
+     "part": null,
+     "edition_date": "2025-12-25",
+     "doc_status": "amalda",
+     "chunk_id": "2006789_0043_39_1",
+     "quote": "Tadbirkorlik subyektlarining moliya-xoʻjalik faoliyati bilan bogʻliq boʻlmagan tekshiruvlarni oʻtkazish muddatlari oʻn kalendar kundan oshmasligi kerak."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:2006789",
+     "doc_title": "Tadbirkorlik faoliyati erkinligining kafolatlari toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-328",
+     "url": "https://lex.uz/uz/docs/-2006789",
+     "article_url": "https://lex.uz/uz/docs/-2006789#-8423327",
+     "article": "41-modda",
+     "article_title": "Tadbirkorlik subyektlarining faoliyatini tekshirishlarni amalga oshirayotgan mansabdor shaxslarga qoʻyiladigan talablar",
+     "part": "2-qism",
+     "edition_date": "2025-12-25",
+     "doc_status": "amalda",
+     "chunk_id": "2006789_0045_41_1",
+     "quote": "Nazorat qiluvchi organlar mansabdor shaxslarining tadbirkorlik subyektlari faoliyatini tekshirishga kirishishiga mazkur shaxslarda nazorat qiluvchi organning tekshirish maqsadlari, tekshiruvchi mansabdor shaxslar tarkibi, tekshiruv oʻtkazish muddatlari, Tekshiruvlarni elektron roʻyxatga olish yagona tizimidagi roʻyxatga olish raqami koʻrsatilgan buyrugʻining koʻchirma nusxasi, shuningdek tekshiruvchi mansabdor shaxslarning tekshiruvlar oʻtkazishga ruxsat berilganligi toʻgʻrisidagi maxsus"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0307_308_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "308-modda",
+     "retrieval_score": 0.6228,
+     "fusion_score": 0.01698,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xizmat tekshiruvini oʻtkazish muddati oʻn besh ish kunidan oshmasligi kerak.\nXizmat tekshiruvini ushbu moddaning birinchi qismida belgilangan muddatda, obyektiv sabablarga koʻra tugallash mumkin boʻlmagan alohida hollarda, ish beruvchi komissiyaning asoslantirilgan vajlari asosida xizmat tekshiruvini oʻtkazish muddatini yana oʻn besh ish kunigacha uzaytirishga haqlidir."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "2006789_0043_39_1",
+     "doc_id": "lex:2006789",
+     "doc_title": "Tadbirkorlik faoliyati erkinligining kafolatlari toʻgʻrisida",
+     "article": "39-modda",
+     "retrieval_score": 0.7947,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Tadbirkorlik subyektlari faoliyati tekshiruvlari tashabbusi bilan chiqish tegishli tadbirkorlik subyekti tomonidan qonunchilik buzilishi sodir etilishi xavfi darajasidan kelib chiqqan holda xavfni tahlil etish natijalari asosida nazorat qiluvchi organlar tomonidan belgilangan tartibida amalga oshiriladi.\nTadbirkorlik subyektlari faoliyati tekshiruvlarini muvofiqlashtirish hamda nazorat qiluvchi organlar tomonidan tekshiruvlar oʻtkazilishining qonuniyligi ustidan nazorat qilish Oʻzbekiston Respublikasi Prezidenti huzuridagi Tadbirkorlik subyektlarining huquqlari va qonuniy manfaatlarini himoya qilish boʻyicha vakil tomonidan amalga oshiriladi.\nTadbirkorlik subyektlari faoliyatining nazorat qiluvchi organlar tomonidan oʻtkaziladigan barcha tekshiruvlari Tekshiruvlarni elektron roʻyxatga olish yagona tizimida roʻyxatga olinishi shart, bundan kameral soliq tekshiruvlari mustasno.\nTadbirkorlik subyektlari faoliyatining oʻtkazilgan tekshiruvlari natijalari nazorat qiluvchi organlar tomonidan tekshiruvlar tugatilgandan keyin uch kun ichida Tekshiruvlarni elektron roʻyxatga olish yagona tizimiga kiritiladi.\nTadbirkorlik subyektlari faoliyatining Tekshiruvlarni elektron roʻyxatga olish yagona tizimida roʻyxatga olmasdan oʻtkazilgan tekshiruvlari qonunga xilofdir.\nTadbirkorlik subyektlarining moliya-xoʻjalik faoliyati bilan bogʻliq boʻlmagan tekshiruvlarni oʻtkazish muddatlari oʻn kalendar kundan oshmasligi kerak.\nSoliq tekshiruvlari Oʻzbekiston Respublikasining Soliq kodeksida belgilangan tartibda oʻtkaziladi.\nSayyor soliq tekshiruvini oʻtkazish uchun soliq organi rahbarining (rahbari oʻrinbosarining) buyrugʻi asos boʻladi. Sayyor soliq tekshiruvi oʻn kundan oshmagan muddatda oʻtkaziladi.\nTadbirkorlik subyektlarining soliq auditini oʻtkazish Oʻzbekiston Respublikasining Soliq kodeksida belgilangan muddatlardan oshmasligi lozim."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "62843_0024_25_1",
+     "doc_id": "lex:62843",
+     "doc_title": "MUHOFAZA ChORALARI, ANTIDEMPING VA KOMPENSATSIYA BOJLARI TOʻGʻRISIDA",
+     "article": "25-modda",
+     "retrieval_score": 0.6104,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Muhofaza choralari qoʻllanilishidan oldingi tekshiruvni oʻtkazish muddati tekshiruv boshlangan sanadan eʼtiboran toʻqqiz oydan oshmasligi lozim.\nAntidemping va kompensatsiya bojlari qoʻllanilishidan oldingi tekshiruvni oʻtkazish muddati tekshiruv boshlangan sanadan eʼtiboran oʻn ikki oydan oshmasligi lozim. Alohida hollarda, mazkur muhlat vakolatli organning qaroriga binoan olti oygacha boʻlgan muddatga uzaytirilishi mumkin.\nAgar chet davlat yoki eksport qiluvchi iqtisodiyot tarmogʻiga yetkazilayotgan jiddiy zararni yoki jiddiy zarar yetkazilishi xavfini bartaraf etish majburiyatini oʻz zimmasiga olsa, tekshiruv vakolatli organ tomonidan toʻxtatib turilishi yoki tugatilishi mumkin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "2006789_0045_41_1",
+     "doc_id": "lex:2006789",
+     "doc_title": "Tadbirkorlik faoliyati erkinligining kafolatlari toʻgʻrisida",
+     "article": "41-modda",
+     "retrieval_score": 0.7466,
+     "fusion_score": 0.01643,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Tadbirkorlik subyektlarining faoliyatini tekshirishlar huquqni muhofaza qiluvchi va nazorat qiluvchi organlarning mansabdor shaxslari tomonidan amalga oshiriladi.\nNazorat qiluvchi organlar mansabdor shaxslarining tadbirkorlik subyektlari faoliyatini tekshirishga kirishishiga mazkur shaxslarda nazorat qiluvchi organning tekshirish maqsadlari, tekshiruvchi mansabdor shaxslar tarkibi, tekshiruv oʻtkazish muddatlari, Tekshiruvlarni elektron roʻyxatga olish yagona tizimidagi roʻyxatga olish raqami koʻrsatilgan buyrugʻining koʻchirma nusxasi, shuningdek tekshiruvchi mansabdor shaxslarning tekshiruvlar oʻtkazishga ruxsat berilganligi toʻgʻrisidagi maxsus guvohnomasi hamda shaxsini tasdiqlovchi guvohnomasi boʻlgan taqdirda yoʻl qoʻyiladi.\nHuquqni muhofaza qiluvchi va nazorat qiluvchi organlarning mansabdor shaxslari tadbirkorlik subyektlarining faoliyatini tekshiruvdan oʻtkazayotganda tekshirishlarni roʻyxatdan oʻtkazish kitobiga qonunchilikda belgilangan tartibda tegishli yozuv kiritadi.\nHuquqni muhofaza qiluvchi va nazorat qiluvchi organlarning mansabdor shaxslari tadbirkorlik subyektlarining faoliyatini tekshirish chogʻida tadbirkorlik subyektlarining tijorat siri, xizmat siri va qonun bilan qoʻriqlanadigan boshqa sirlari, shuningdek oshkor etilmagan axboroti sir saqlanishini taʼminlashi shart."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4674902_0196_195_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "195-modda",
+     "retrieval_score": 0.5798,
+     "fusion_score": 0.01589,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tekshiruv Oʻzbekiston Respublikasi Davlat soliq qoʻmitasi rahbarining (rahbar oʻrinbosarining) tekshiruv oʻtkazish toʻgʻrisidagi qarori asosida uning mansabdor shaxslari tomonidan oʻtkaziladi.\nTekshiruv oʻtkazish toʻgʻrisidagi qaror, agar ushbu moddada boshqacha qoida nazarda tutilmagan boʻlsa, ushbu Kodeksning 182-moddasi birinchi va ikkinchi qismlarida koʻrsatilgan bildirishnoma yoki xabarnoma olingan kundan eʼtiboran uch yildan kechiktirmay chiqarilishi mumkin.\nOʻzbekiston Respublikasi Davlat soliq qoʻmitasi qaror qabul qilinganligi toʻgʻrisida u qabul qilingan kundan eʼtiboran uch kun ichida soliq toʻlovchini xabardor qiladi.\nAgar soliq toʻlovchi ushbu Kodeksning 177-moddasiga muvofiq soliq summasi soliq hisobotida ilgari berilganidan koʻra kam miqdorda (zarar summasi — kattaroq miqdorda) aks ettirgan holda aniqlashtirilgan soliq hisobotini taqdim etgan boʻlsa, tekshiruv oʻtkazish toʻgʻrisidagi qaror ushbu aniqlashtirilgan soliq hisoboti taqdim etilgan kundan eʼtiboran uch yildan kechiktirmay chiqarilishi mumkin. Bunda tekshiruv faqat tuzatish kiritish amalga oshirilgan nazorat qilinadigan bitimga nisbatan oʻtkaziladi.\nTekshiruv olti oydan oshmaydigan muddatda oʻtkaziladi.\nTekshiruv oʻtkazish muddati uni oʻtkazish toʻgʻrisida qaror chiqarilgan kundan eʼtiboran va bunday tekshiruv oʻtkazilganligi haqidagi maʼlumotnoma tuzilgan kunga qadar hisoblab chiqariladi.\nAlohida hollarda, tekshirish oʻtkazishning mazkur muddati Oʻzbekiston Respublikasi Davlat soliq qoʻmitasi rahbarining (rahbar oʻrinbosarining) qaroriga koʻra oʻn ikki oygacha uzaytirilishi mumkin.\nTekshiruv oʻtkazish muddatini uzaytirish asoslarini va tartibini Oʻzbekiston Respublikasi Vazirlar Mahkamasi belgilaydi.\nChet davlat organlaridan axborot olish, soliq toʻlovchi tomonidan chet tilida taqdim etilgan hujjatlarni ekspertizadan oʻtkazish va (yoki) oʻzbek yoki rus tiliga tarjima qilish zarur boʻlgan taqdirda, tekshiruv oʻtkazish muddati qoʻshimcha ravishda olti oydan oshmaydigan muddatga uzaytirilishi mumkin.\nAgar tekshiruv chet davlat organlaridan axborot olish uchun uzaytirilgan boʻlsa va Oʻzbekiston Respublikasi Davlat soliq qoʻmitasi soʻralayotgan axborotni olti oy ichida ololmagan boʻlsa, mazkur tekshiruvni uzaytirish muddati qoʻshimcha ravishda uch oyga koʻpaytirilishi mumkin.\nTekshiruv oʻtkazish muddatini uzaytirish toʻgʻrisidagi qarorning koʻchirma nusxasi soliq toʻlovchiga qaror qabul qilingan kundan eʼtiboran uch kun ichida yuboriladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Tadbirkorlik subyektlari faoliyatini tekshirish muddati, \"Tadbirkorlik faoliyati erkinligining kafolatlari toʻgʻrisida\"gi qonun, \"Tekshiruvlarni elektron roʻyxatga olish tizimi\".",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6228,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3349,
+    "rerank_ms": null,
+    "generation_ms": 2319,
+    "total_ms": 5669,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3636,
+    "output_tokens": 247
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q045",
+   "status": "ok",
+   "answer": "Jinoyat-protsessual kodeksining 245-moddasiga koʻra, jinoyatlar tergov qilinayotganda qamoqda saqlab turish yoki uy qamogʻi muddati koʻpi bilan uch oyni tashkil etadi [1].\n\nUshbu muddatni uzaytirish tartibi quyidagicha:\n* Besh oygacha uzaytirish — Qoraqalpogʻiston Respublikasi prokurori, viloyat, Toshkent shahar prokurori va ularga tenglashtirilgan prokurorlarning iltimosnomasiga binoan sud tomonidan amalga oshiriladi [1].\n* Yetti oygacha uzaytirish — Oʻzbekiston Respublikasi Bosh prokurori yoki uning oʻrinbosarlarining iltimosnomasiga binoan sud tomonidan koʻrib chiqiladi [1].\n\nQonun normalariga koʻra, qamoqda saqlab turish muddatini yetti oydan ortiq uzaytirishga yoʻl qoʻyilmaydi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.702,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111460",
+     "article_url": "https://lex.uz/uz/docs/-111460#-2461197",
+     "article": "245-modda",
+     "article_title": "Qamoqda va uy qamogʻida saqlab turish muddati",
+     "part": "7-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111460_0276_245_1",
+     "quote": "Agar Oʻzbekiston Respublikasiga xorijiy davlat tomonidan ushlab berilgan shaxsni ushbu modda ikkinchi qismining uchinchi xatboshisida belgilangan qamoqda saqlab turishning oxirgi muddati tugagan boʻlsa va ishning holatlariga koʻra qamoqqa olish tarzidagi ehtiyot chorasini oʻzgartirish mumkin boʻlmasa, Oʻzbekiston Respublikasi Bosh prokurori yoki uning oʻrinbosarlarining iltimosnomasiga binoan sud ushbu Kodeksning 247-moddasida nazarda tutilgan talablarga rioya etgan holda, qamoqda saqlab"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111460_0276_245_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "245-modda",
+     "retrieval_score": 0.7024,
+     "fusion_score": 0.01719,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Jinoyatlar tergov qilinayotganda qamoqda saqlab turish yoki uy qamogʻi muddati koʻpi bilan uch oyni tashkil etadi.\nQamoqda saqlab turishning yoki uy qamogʻining qonun normalarida belgilangan uch oylik muddatini:\nbesh oygacha uzaytirish imkoni — Qoraqalpogʻiston Respublikasi prokurori yoki viloyat, Toshkent shahar prokurori va ularga tenglashtirilgan prokurorlarning iltimosnomasiga binoan;\nyetti oygacha uzaytirish imkoni — Oʻzbekiston Respublikasi Bosh prokurori yoki uning oʻrinbosarlarining iltimosnomasiga binoan sud tomonidan koʻrib chiqiladi.\nMuddatni yanada uzaytirishga yoʻl qoʻyilmaydi. Ushbu moddaning birinchi qismida koʻrsatilgan iltimosnomalarni koʻrib chiqishda sud taqdim etilgan materiallarning asosliligini, shuningdek protsessual normalar va talablarga rioya etilganligini inobatga oladi.\nQamoqda saqlab turish muddatiga ushbu Kodeksning 599-moddasiga muvofiq shaxsni Oʻzbekiston Respublikasiga ushlab berish toʻgʻrisidagi soʻrovga koʻra uning xorijiy davlat hududida qamoqda saqlangan vaqti qoʻshib hisoblanadi.\nAgar Oʻzbekiston Respublikasiga xorijiy davlat tomonidan ushlab berilgan shaxsni ushbu modda ikkinchi qismining uchinchi xatboshisida belgilangan qamoqda saqlab turishning oxirgi muddati tugagan boʻlsa va ishning holatlariga koʻra qamoqqa olish tarzidagi ehtiyot chorasini oʻzgartirish mumkin boʻlmasa, Oʻzbekiston Respublikasi Bosh prokurori yoki uning oʻrinbosarlarining iltimosnomasiga binoan sud ushbu Kodeksning 247-moddasida nazarda tutilgan talablarga rioya etgan holda, qamoqda saqlab turishning qoʻshimcha muddatini belgilashga haqli, ammo ushbu muddat shaxs Oʻzbekiston Respublikasi hududida vaqtincha saqlash hibsxonasiga yoxud tergov hibsxonasiga joylashtirilgan paytdan eʼtiboran uch oydan ortiq boʻlmasligi kerak.\nTergovi tamomlangan jinoyat ishining materiallari ayblanuvchiga va uning himoyachisiga tanishib chiqish uchun ushbu modda ikkinchi qismining uchinchi xatboshisida yoxud ushbu moddaning beshinchi qismida nazarda tutilgan qamoqda saqlab turishning oxirgi muddati tugashidan kamida bir oy oldin taqdim etilgan boʻlishi lozim.\nAyblanuvchi va uning himoyachisi ishning materiallari bilan tanishib chiqishi uchun ketgan vaqt ehtiyot chorasi tariqasida qamoqda saqlab turish yoki uy qamogʻi muddatini hisoblab chiqishda inobatga olinmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111460_0275_244_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "244-modda",
+     "retrieval_score": 0.6767,
+     "fusion_score": 0.01672,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ehtiyot chorasi tariqasida qamoqqa olingan gumon qilinuvchilar va ayblanuvchilar tergov hibsxonasining kameralarida saqlanadi. Surishtiruvchi, tergovchi, prokuror yoki sud bir jinoyat ishi boʻyicha yoki bir necha oʻzaro bogʻliq jinoyat ishlari boʻyicha gumon qilinuvchilarni va ayblanuvchilarni alohida-alohida saqlash toʻgʻrisida tergov hibsxonasining maʼmuriyatiga yozma koʻrsatma berishga haqli.\nAgar qamoqqa olinganlar Jinoyat kodeksi 15-moddasining toʻrtinchi va beshinchi qismlarida nazarda tutilgan ogʻir va oʻta ogʻir jinoyatlarni sodir etishda ayblanayotgan boʻlsa, prokurorning qaroriga yoki sudning ajrimiga koʻra tergov hibsxonasining bir kishilik kamerasida qamoqda saqlab turilishi mumkin. Bu chora voyaga yetmaganlarga, oltmish yoshdan oshganlarga, shifokorning yozma xulosasi bilan tasdiqlangan ogʻir kasallarga va ruhiy holati buzilgan shaxslarga nisbatan qoʻllanilmaydi.\nQamoqqa olinganlar vaqtincha saqlash hibsxonalarida oʻn sutkagacha saqlanishi mumkin. Qamoqqa olinganlarni tergov hibsxonasiga olisligi yoki lozim darajadagi qatnov yoʻllari mavjud emasligi tufayli olib borishning imkoniyati boʻlmagan hollarda, bunday shaxslar vaqtincha saqlash hibsxonalarida surishtiruvchi yoki tergovchining prokuror bilan kelishilgan qaroriga, shuningdek prokurorning qaroriga yoxud sudning ajrimiga koʻra oʻttiz sutkagacha saqlanishi mumkin.\nQamoqqa olingan harbiy xizmatchilar gauptvaxtalarda koʻpi bilan yigirma sutkagacha, olis joylarda esa, bu ehtiyot chorasining butun amal qilish muddati mobaynida saqlanishi mumkin. Harbiy xizmatchini gauptvaxtada saqlash muddati harbiy sudlar tomonidan ishni sudda koʻrib chiqish vaqtiga, lekin koʻpi bilan oʻn besh sutkaga uzaytirilishi mumkin. Intizomiy qismga yuborishga hukm qilingan harbiy xizmatchilar hukm qonuniy kuchga kirguniga qadar gauptvaxtalarda saqlanishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111460_0259_226_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "226-modda",
+     "retrieval_score": 0.6547,
+     "fusion_score": 0.01614,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushlab turish muddati shaxs amalda ushlangan paytdan (erkin harakatlanishga boʻlgan huquqlarning haqiqiy cheklangan payti) eʼtiboran koʻpi bilan qirq sakkiz soatni tashkil etadi. Surishtiruvchi, tergovchi yoki prokuror tomonidan zarur va yetarli asoslar taqdim etilganda ushlab turish sudning qarori bilan qoʻshimcha ravishda qirq sakkiz soatga uzaytirilishi mumkin.\nUshlab turish muddati tugagunga qadar va asoslar mavjud boʻlganda shaxs ayblanuvchi tariqasida ishda ishtirok etishga jalb qilinishi, unga ayb eʼlon qilinishi, ushbu Kodeksning 109 — 112-moddalaridagi qoidalar boʻyicha soʻroq qilinishi va ushbu Kodeksning 236 — 240-moddalari qoidalariga amal qilgan holda ehtiyot chorasini tanlash haqidagi masala hal qilinishi zarur.\nAlohida hollarda, ushlab turilgan gumon qilinuvchiga nisbatan sud tomonidan qamoqqa olish, uy qamogʻi yoki garov tarzidagi ehtiyot choralari qoʻllanilishi mumkin. Bunda gumon qilinuvchiga u ushlangan kundan eʼtiboran oʻn kun ichida ayblov eʼlon qilinishi kerak. Aks holda ehtiyot chorasi bekor qilinadi va shaxs qamoqdan yoki uy qamogʻidan ozod etiladi, garov esa garovga qoʻyuvchiga qaytariladi. Jinoyat ishi qoʻzgʻatilganidan keyin va ushlab turishning butun muddati mobaynida ishni yuritish oʻziga taalluqli boʻlgan surishtiruvchi va tergovchi jinoyatni sodir etish holatlarini aniqlash, ushlab turishning asosli ekanligini tekshirish uchun oʻz vakolatlari doirasida tergov harakatlari oʻtkazishi mumkin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "163629_0053_53_1",
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "article": "53-modda",
+     "retrieval_score": 0.6725,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qasddan sodir etilgan ogʻir jinoyati uchun birinchi marta sakkiz yilgacha va sakkiz yil muddatga ozodlikdan mahrum etishga hukm qilingan shaxslar alohida hollarda, mahkumning yozma roziligi boʻlgan taqdirda, muassasa boshligʻining qaroriga binoan xoʻjalik xizmatiga oid ishlarni bajarish uchun tergov hibsxonasi yoki turmada qoldirilishi mumkin.\nXoʻjalik xizmatiga oid ishlarni bajarish uchun tergov hibsxonasida yoki turmada qoldirilgan mahkumlar jazoni qulflab qoʻyilmaydigan umumiy kameralarda, boshqa shaxslardan batamom ajratilgan holda, ushbu Kodeksning 18-bobida nazarda tutilgan sharoitlarda oʻtaydilar. Mahkumlarga uzoq muddatli uchrashuvga ruxsat berish imkoniyati boʻlmasa, ularga bitta uzoq muddatli uchrashuv oʻrniga ikkita qisqa muddatli uchrashuvga ruxsat beriladi.\nVoyaga yetmagan shaxslar, ajnabiy fuqarolar va fuqaroligi boʻlmagan shaxslar, shuningdek sudlar va huquq-tartibotni muhofaza qilish organlarining sobiq xodimlariga mansub mahkumlar xoʻjalik xizmatiga oid ishlarni bajarish uchun qoldirilmaydilar."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111460_0664_538_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "538-modda",
+     "retrieval_score": 0.6586,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Boshqa shaxs sodir etgan jinoyat haqidagi ish yuzasidan tergov harakatlari olib borish zarur boʻlganda jazoni ijro etish muassasasida jazoni oʻtash sharti bilan ozodlikdan mahrum qilishga hukm qilingan mahkum tergov hibsxonasiga Qoraqalpogʻiston Respublikasi prokurorining, viloyatlar va Toshkent shahar prokurorlarining hamda ularga tenglashtirilgan prokurorlarning roziligi bilan — uch oygacha muddatga, Oʻzbekiston Respublikasi Bosh prokurori yoki uning oʻrinbosarlarining roziligi bilan esa olti oygacha muddatga yoki ish sudda koʻrilishi munosabati bilan — sud ajrimiga koʻra ish sudda koʻrib chiqiladigan vaqtga qadar ushlab turilishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Tergov davomida ayblanuvchini qamoqda eng koʻpi bilan qancha muddat ushlab turishlari mumkin?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7024,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1462,
+    "rerank_ms": null,
+    "generation_ms": 2982,
+    "total_ms": 4445,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3841,
+    "output_tokens": 310
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q046",
+   "status": "ok",
+   "answer": "Ha, 15 yoshli voyaga yetmagan shaxs tibbiy aralashuvga ixtiyoriy ravishda rozilik berish yoki uni rad etish huquqiga ega.\n\n\"Fuqarolar sogʻligʻini saqlash toʻgʻrisida\"gi Qonunning 19-moddasiga koʻra, oʻn toʻrt yoshdan oshgan voyaga yetmaganlar maʼlumotlarni bilgan holda tibbiy aralashuvga ixtiyoriy ravishda rozilik berish yoki uni rad etish huquqiga egadirlar [3].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.632,
+   "citations": [
+    {
+     "ref": 3,
+     "doc_id": "lex:26013",
+     "doc_title": "Fuqarolar sogʻligʻini saqlash toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "265-I",
+     "url": "https://lex.uz/uz/docs/-26013",
+     "article_url": "https://lex.uz/uz/docs/-26013#-26342",
+     "article": "19-modda",
+     "article_title": "Voyaga yetmaganlarning huquqlari",
+     "part": "7-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "26013_0018_19_1",
+     "quote": "Oʻn toʻrt yoshdan oshgan voyaga yetmaganlar maʼlumotlarni bilgan holda tibbiy aralashuvga ixtiyoriy ravishda rozilik berish yoki uni rad etish huquqiga ega."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "3517337_0042_42_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "42-modda",
+     "retrieval_score": 0.585,
+     "fusion_score": 0.01493,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sudda oʻz huquq va majburiyatlarini amalga oshirish layoqati voyaga yetgan fuqarolar va tashkilotlarga tegishlidir.\nVoyaga yetmagan, yaʼni yoshi oʻn toʻrtdan oʻn sakkizgacha boʻlgan fuqarolarning, shuningdek muomala layoqati cheklangan deb topilgan fuqarolarning huquqlari va qonun bilan qoʻriqlanadigan manfaatlari sudda ularning ota-onalari, ularni farzandlikka olganlar yoki homiylar tomonidan himoya qilinadi. Ammo bu hol voyaga yetmaganlarni va muomala layoqati cheklangan deb topilgan fuqarolarni bunday ishlarda shaxsan ishtirok etish huquqidan mahrum qilmaydi.\nOta-onalardan aliment undirish toʻgʻrisidagi ishlar boʻyicha, shuningdek mehnat bilan bogʻliq huquqiy munosabatlardan va olingan ish haqini yoki boshqa daromadni tasarruf etish bilan bogʻliq bitimlardan kelib chiqadigan ishlar boʻyicha voyaga yetmaganlar sudda oʻz huquqlari va qonun bilan qoʻriqlanadigan manfaatlarini shaxsan himoya qilish huquqiga ega. Bunday ishlarda voyaga yetmaganlarga yordam berish uchun ularning ota-onalarini, ularni farzandlikka olganlarni yoki homiylarni jalb qilish toʻgʻrisidagi masala sud tomonidan hal qilinadi.\nOta-ona qaramogʻidan mahrum boʻlgan bola foydasiga ota-onadan yoki ularning biridan undirilishi belgilangan aliment miqdorini kamaytirish boʻyicha ishlarda “Inson” ijtimoiy xizmatlar markazlari jalb etiladi.\nOʻn olti yoshga toʻlgan voyaga yetmagan shaxs qonunchilikda belgilangan tartibda muomalaga toʻla layoqatli deb eʼlon qilingan (emansipatsiya) taqdirda, sudda oʻz huquqlari va majburiyatlarini shaxsan amalga oshirishi mumkin.\nOʻn toʻrt yoshga toʻlmagan kichik yoshdagi bolalarning, shuningdek ruhiy holati buzilganligi tufayli muomalaga layoqatsiz deb topilgan fuqarolarning huquqlari va qonun bilan qoʻriqlanadigan manfaatlarini sudda ularning qonuniy vakillari — ota-onalari, ularni farzandlikka olganlar yoki vasiylar himoya qiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "5422209_0014_15_1",
+     "doc_id": "lex:5422209",
+     "doc_title": "Psixiatriya yordami toʻgʻrisida",
+     "article": "15-modda",
+     "retrieval_score": 0.6322,
+     "fusion_score": 0.01692,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ruhiy holati buzilgan shaxs, ruhiy holati buzilgan voyaga yetmagan shaxsning ota-onasidan biri yoki boshqa qonuniy vakili, sud tomonidan muomalaga layoqatsiz deb topilgan shaxsning qonuniy vakili taklif etilayotgan davolanishni rad qilish yoki uni tugatishni talab qilish huquqiga ega, bundan tibbiy yoʻsindagi majburlov choralari qoʻllanilgan yoxud psixiatriya muassasasiga gʻayriixtiyoriy tartibda yotqizilgan hollar mustasno.\nSud tomonidan muomalaga layoqatsiz deb topilgan shaxsning qonuniy vakili davolanishni rad qilish yoki uni tugatish toʻgʻrisida davolanish rad etilgan yoxud tugatilgan kunning ertasidan kechiktirmay oʻz vasiyligi ostidagi shaxsning yashash joyidagi vasiylik va homiylik organini xabardor qiladi.\nDavolanishni rad etgan shaxsga yoki uning qonuniy vakiliga bunday rad etishning yoxud davolanishni tugatishning ehtimol tutilgan oqibatlari tushuntirilishi kerak. Davolanishni rad etish, rad etish kunida tibbiy hujjatga ehtimol tutilgan oqibatlar toʻgʻrisidagi maʼlumotlar koʻrsatilgan holda yozib qoʻyish orqali va davolanishni rad etgan shaxsning yoki uning qonuniy vakilining, shuningdek shifokor-psixiatrning imzosi bilan rasmiylashtiriladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "26013_0018_19_1",
+     "doc_id": "lex:26013",
+     "doc_title": "Fuqarolar sogʻligʻini saqlash toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.7475,
+     "fusion_score": 0.0172,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Davlat voyaga yetmaganlarning sogʻliqni saqlash huquqlarini ularning jismoniy, maʼnaviy rivojlanishi uchun, kasalliklarning oldini olish uchun eng qulay sharoit yaratish, shuningdek maktabgacha taʼlim tashkilotlarida, maktablarda va boshqa muassasalarda tibbiy xizmatni yoʻlga qoʻyish orqali taʼminlaydi.\nVoyaga yetmaganlar quyidagi huquqlarga ega:\nSogʻliqni saqlash vazirligi tomonidan belgilanadigan tartibda dispanser nazoratida boʻlish hamda bolalar va oʻsmirlarning davolash-profilaktika muassasalarida davolanish;\nsanitariya-gigiyena taʼlimi olish, oʻqish hamda oʻzlarining fiziologik xususiyatlari va sogʻligʻiga mos sharoitlarda mehnat qilish;\nkasbga yaroqliligini aniqlash chogʻida budjet mablagʻlari hisobidan bepul tibbiy maslahatlar olish;\nsogʻliqlari toʻgʻrisida oʻzlari uchun qulay tarzda zarur axborot olish.\nOʻn toʻrt yoshdan oshgan voyaga yetmaganlar maʼlumotlarni bilgan holda tibbiy aralashuvga ixtiyoriy ravishda rozilik berish yoki uni rad etish huquqiga ega.\nJismoniy yoki ruhiy rivojlanishida nuqsoni bor voyaga yetmaganlar ota-onalarining yoki ular oʻrnini bosuvchi shaxslarning arizasiga koʻra budjet mablagʻlari, xayriya jamgʻarmalari va boshqa fondlarning mablagʻlari, shuningdek ota-onalar yoki ularning oʻrnini bosuvchi shaxslarning mablagʻlari hisobidan ijtimoiy himoya tizimi muassasalarida yashashlari mumkin.\nOta-onalar yoki boshqa shaxslarning oʻz tarbiyasidagi voyaga yetmaganlarning huquqlari va manfaatlarini buzishlari, ularni tarbiyalashdan boʻyin tovlashlari, voyaga yetmaganlar bilan ularning sogʻligʻiga zarar yetkazadigan darajada shafqatsiz munosabatda boʻlishlari qonunda belgilangan tartibda javobgarlikka tortishga sabab boʻladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111189_0029_29_1",
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "29-modda",
+     "retrieval_score": 0.6006,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn toʻrt yoshga toʻlmagan voyaga yetmaganlar (kichik yoshdagi bolalar) uchun bitimlarni, ushbu moddaning ikkinchi qismida koʻrsatilganlardan tashqari, ularning nomidan faqat ota-onasi, farzandlikka oluvchilari yoki vasiylari tuzishi mumkin.\nOlti yoshdan oʻn toʻrt yoshgacha boʻlgan kichik yoshdagi bolalar quyidagilarni mustaqil ravishda amalga oshirishga haqlidirlar:\n1) mayda maishiy bitimlar;\n2) tekin manfaat koʻrishga qaratilgan, notarial tasdiqlashni yoki davlat roʻyxatidan oʻtkazishni talab qilmaydigan bitimlar;\n3) qonuniy vakil yoki uning roziligi bilan uchinchi shaxs tomonidan muayyan maqsad yoki erkin tasarruf etish uchun berilgan mablagʻlarni tasarruf etish borasidagi bitimlar.\nKichik yoshdagi bolaning bitimlari boʻyicha, shu jumladan oʻzi mustaqil tuzgan bitimlar boʻyicha uning ota-onasi, farzandlikka oluvchilari yoki vasiyi, agar ular majburiyatning buzilishida oʻzlarining ayblari yoʻqligini isbotlay olmasalar, mulkiy javobgar boʻladilar. Ushbu shaxslar qonunga muvofiq kichik yoshdagi bolalar yetkazgan zarar uchun ham javobgar boʻladilar."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "26013_0025_26_1",
+     "doc_id": "lex:26013",
+     "doc_title": "Fuqarolar sogʻligʻini saqlash toʻgʻrisida",
+     "article": "26-modda",
+     "retrieval_score": 0.7323,
+     "fusion_score": 0.0169,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqaroning oʻz kasaliga doir maʼlumotlarni bilgan holda oʻz ixtiyori bilan rozilik berishi tibbiy aralashuvning dastlabki zarur shartidir.\nFuqaroning ahvoli oʻz xohish-irodasini izhor etishga imkon bermaydigan, tibbiy aralashuvni esa kechiktirib boʻlmaydigan hollarda fuqaroning manfaatini koʻzlab tibbiy aralashuvni amalga oshirish masalasini konsilium hal qiladi, basharti konsiliumga yigʻilishning iloji boʻlmagan taqdirda esa, keyinchalik davolash-profilaktika muassasasining mansabdor shaxslarini xabardor qilish sharti bilan bevosita davolovchi (navbatchi) shifokor hal etadi.\nOʻn toʻrt yoshga toʻlmagan shaxslarga va qonunda belgilangan tartibda muomalaga layoqatsiz deb topilgan fuqarolarga nisbatan tibbiy aralashuvga ularning qonuniy vakillari rozilik beradi. Ota-ona yoki boshqa qonuniy vakillar yoʻqligida tibbiy aralashuv toʻgʻrisidagi qarorni konsilium qabul qiladi, basharti konsiliumga yigʻilishning iloji boʻlmagan taqdirda esa, keyinchalik davolash-profilaktika muassasasining mansabdor shaxslari va bemorning qonuniy vakillarini xabardor qilish sharti bilan bevosita davolovchi (navbatchi) shifokor qabul qiladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "voyaga yetmagan shaxsning tibbiy aralashuvga roziligi, Fuqarolik kodeksi, Fuqarolar sogʻligʻini saqlash toʻgʻrisidagi qonun",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6322,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 2590,
+    "rerank_ms": null,
+    "generation_ms": 1522,
+    "total_ms": 4113,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3608,
+    "output_tokens": 215
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q047",
+   "status": "ok",
+   "answer": "Yoʻq, chet el kompaniyasining ilovasi Oʻzbekiston Respublikasi fuqarolarining yuz va barmoq izi kabi biometrik maʼlumotlarini xorijdagi serverda saqlay olmaydi.\n\n\"Shaxsga doir maʼlumotlar toʻgʻrisida\"gi Qonunning 27¹-moddasiga koʻra, jismoniy shaxslarning biometrik maʼlumotlari Oʻzbekiston Respublikasi hududida saqlanishi shart [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.619,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4396419",
+     "doc_title": "Shaxsga doir maʼlumotlar toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-547",
+     "url": "https://lex.uz/uz/docs/-4396419",
+     "article_url": "https://lex.uz/uz/docs/-4396419#-8109511",
+     "article": "27¹-modda",
+     "article_title": "Shaxsga doir maʼlumotlarni saqlash va ularga ishlov berishning alohida shartlari",
+     "part": "2-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "4396419_0027_27¹_1",
+     "quote": "Quyidagi shaxsga doir maʼlumotlar Oʻzbekiston Respublikasi hududida saqlanishi shart:"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4396419_0027_27¹_1",
+     "doc_id": "lex:4396419",
+     "doc_title": "Shaxsga doir maʼlumotlar toʻgʻrisida",
+     "article": "27¹-modda",
+     "retrieval_score": 0.6036,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi fuqarolarining shaxsga doir maʼlumotlari ushbu Qonunning asosiy prinsiplari taʼminlangan holda saqlanishi lozim.\nQuyidagi shaxsga doir maʼlumotlar Oʻzbekiston Respublikasi hududida saqlanishi shart:\njismoniy shaxslarning biometrik maʼlumotlari;\njismoniy shaxslarning genetik maʼlumotlari;\nOʻzbekiston Respublikasi hududida oʻz faoliyatini amalga oshirayotgan telekommunikatsiyalar operatorlaridagi ularning xizmatlaridan foydalanuvchi jismoniy shaxslarning maʼlumotlari.\nUshbu moddaning ikkinchi qismida nazarda tutilmagan shaxsga doir maʼlumotlar kuyidagi shartlardan biri bajarilgan taqdirda, Oʻzbekiston Respublikasi hududidan tashqarida saqlanishi va ularga ishlov berilishi mumkin:\nchet davlatni shaxsga doir maʼlumotlarning bir xil himoya qilinishini taʼminlovchi davlat sifatida tan olish;\noperator tomonidan vakolatli davlat organi tasdiqlaydigan talablarga javob beruvchi standart shartnomaviy shartlar yoki majburiy korporativ qoidalar qabul qilinishi va ularga rioya etilishi;\nroʻyxati vakolatli davlat organi tomonidan tasdiqlanadigan shaxsga doir maʼlumotlarni boshqarish va saqlash sohasidagi xalqaro standartlarga operator tomonidan rioya etilishi.\nShaxsga doir maʼlumotlar bir xil himoya qilinishini taʼminlovchi chet davlatlar roʻyxati Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "7623461_0004_5_2",
+     "doc_id": "lex:7623461",
+     "doc_title": "Oʻzbekiston Respublikasi fuqarolarini, chet el fuqarolarini hamda fuqaroligi boʻlmagan shaxslarni yashash joyi va turgan joyi boʻyicha roʻyxatdan oʻtkazish toʻgʻrisida",
+     "article": "5-modda",
+     "retrieval_score": 0.6187,
+     "fusion_score": 0.01698,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "chet el fuqarosi — Oʻzbekiston Respublikasining fuqaroligiga ega boʻlmagan, boshqa davlat fuqaroligiga va oʻzining boshqa davlat fuqaroligiga mansubligiga doir dalilga ega boʻlgan shaxs;\nyashash joyi boʻyicha roʻyxatdan oʻtkazish — Oʻzbekiston Respublikasi fuqarosining, shuningdek Oʻzbekiston Respublikasida doimiy yashovchi chet el fuqarosining yoki fuqaroligi boʻlmagan shaxsning yashash joyi toʻgʻrisidagi maʼlumotlarni belgilangan tartibda qayd etish;\nOʻzbekiston Respublikasining xorijda doimiy yashovchi fuqarosi — Oʻzbekiston Respublikasidagi yashash joyi boʻyicha roʻyxatdan oʻtganligi bekor qilingan hamda xorijga doimiy yashash uchun chiqib ketishga doir ruxsatnoma rasmiylashtirgan Oʻzbekiston Respublikasi fuqarosi;\nharakatlanish hujjatlari — milliy pasportlar, shuningdek ularning oʻrnini bosuvchi boshqa hujjatlar boʻlib, ular asosida chet el fuqarolari va fuqaroligi boʻlmagan shaxslar Oʻzbekiston Respublikasining qonunchiligiga hamda xalqaro shartnomalariga muvofiq Oʻzbekiston Respublikasi hududiga kirish (undan chiqish) va uning hududida boʻlish huquqiga ega boʻladi;\n“E-mehmon” avtomatlashtirilgan axborot tizimi (bundan buyon matnda “E-mehmon” tizimi deb yuritiladi) — joylashtirish vositalarida va davolash muassasalarida foydalaniladigan, joylashtirish vositalarida yashovchi yoki davolash muassasalarida statsionar sharoitda davolanayotgan shaxslarni turgan joyi boʻyicha xabardor qilish tartibida roʻyxatdan oʻtkazishni amalga oshirish uchun moʻljallangan avtomatlashtirilgan axborot tizimi;\n“E-xabar berish” avtomatlashtirilgan axborot tizimi (bundan buyon matnda “E-xabar berish” tizimi deb yuritiladi) — shaxslarni turgan joyi boʻyicha xabardor qilish tartibida roʻyxatdan oʻtkazishni amalga oshirish uchun moʻljallangan avtomatlashtirilgan axborot tizimi;\n“Manzil” avtomatlashtirilgan axborot tizimi (bundan buyon matnda “Manzil” tizimi deb yuritiladi) — shaxslarni yashash joyi boʻyicha roʻyxatdan oʻtkazishni amalga oshirish uchun moʻljallangan avtomatlashtirilgan axborot tizimi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4396419_0014_15_1",
+     "doc_id": "lex:4396419",
+     "doc_title": "Shaxsga doir maʼlumotlar toʻgʻrisida",
+     "article": "15-modda",
+     "retrieval_score": 0.7869,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shaxsga doir maʼlumotlarni mulkdor va (yoki) operator tomonidan Oʻzbekiston Respublikasi hududidan tashqariga uzatish shaxsga doir maʼlumotlarni transchegaraviy uzatishdir.\nShaxsga doir maʼlumotlarni transchegaraviy uzatish shaxsga doir maʼlumotlar subyektlarining huquqlari bir xilda himoya qilinishini taʼminlovchi chet davlatlar hududiga amalga oshiriladi.\nShaxsga doir maʼlumotlarning bir xilda himoya qilinishini taʼminlamaydigan chet davlatlar hududiga shaxsga doir maʼlumotlarni transchegaraviy uzatish quyidagi hollarda amalga oshirilishi mumkin:\nsubyektning oʻz shaxsga doir maʼlumotlarini transchegaraviy uzatish boʻyicha roziligi mavjud boʻlganda;\nOʻzbekiston Respublikasining konstitutsiyaviy tuzumini himoya qilish, jamoat tartibini saqlash, fuqarolarning huquqlari va erkinliklarini, aholining sogʻligʻi va maʼnaviyatini muhofaza qilish zarur boʻlganda;\nOʻzbekiston Respublikasining xalqaro shartnomalarida nazarda tutilgan hollarda.\nShaxsga doir maʼlumotlarni transchegaraviy uzatish Oʻzbekiston Respublikasining konstitutsiyaviy tuzumi asoslarini, Oʻzbekiston Respublikasi fuqarolarining maʼnaviyatini, sogʻligʻini, huquqlari va qonuniy manfaatlarini himoya qilish, mamlakat mudofaasini hamda davlat xavfsizligini taʼminlash maqsadida taqiqlanishi yoki cheklanishi mumkin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "7623461_0018_19_3",
+     "doc_id": "lex:7623461",
+     "doc_title": "Oʻzbekiston Respublikasi fuqarolarini, chet el fuqarolarini hamda fuqaroligi boʻlmagan shaxslarni yashash joyi va turgan joyi boʻyicha roʻyxatdan oʻtkazish toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.6059,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Shakllantirilgan elektron soʻrovnoma (ariza) “E-mehmon” tizimiga yuklanadi.\nJoylashtirish vositasida turgan, boshqa davlatlar hududida doimiy yashaydigan va Oʻzbekiston Respublikasi hududida vaqtincha turgan chet el fuqarosini yoki fuqaroligi boʻlmagan shaxsni turgan joyi boʻyicha xabardor qilish tartibida “E-mehmon” tizimi orqali roʻyxatdan oʻtkazish uchun joylashtirish vositasining masʼul xodimi tomonidan boshqa davlatlar hududida doimiy yashaydigan va Oʻzbekiston Respublikasi hududida vaqtincha turgan chet el fuqarosini (fuqaroligi boʻlmagan shaxsni) turgan joyi boʻyicha roʻyxatdan oʻtkazish toʻgʻrisidagi elektron soʻrovnoma shakllantiriladi, elektron soʻrovnomaga roʻyxatdan oʻtayotgan shaxsning harakatlanish hujjatida koʻrsatilgan maʼlumotlar kiritiladi.\nDavolash muassasalarida statsionar sharoitda davolanayotgan, boshqa davlat hududida doimiy yashaydigan va Oʻzbekiston Respublikasi hududida vaqtincha turgan chet el fuqarosini yoki fuqaroligi boʻlmagan shaxsni turgan joyi boʻyicha xabardor qilish tartibida “E-mehmon” tizimi orqali roʻyxatdan oʻtkazish uchun davolash muassasasining masʼul xodimi tomonidan boshqa davlatlar hududida doimiy yashaydigan va Oʻzbekiston Respublikasi hududida vaqtincha turgan chet el fuqarosini (fuqaroligi boʻlmagan shaxsni) turgan joyi boʻyicha roʻyxatdan oʻtkazish toʻgʻrisidagi elektron soʻrovnoma shakllantiriladi, elektron soʻrovnomaga roʻyxatdan oʻtayotgan shaxsning harakatlanish hujjatida koʻrsatilgan maʼlumotlar kiritiladi.\nBoshqa davlat hududida doimiy yashaydigan va Oʻzbekiston Respublikasi hududida vaqtincha turgan chet el fuqarosini (fuqaroligi boʻlmagan shaxsni) turgan joyi boʻyicha roʻyxatdan oʻtkazish toʻgʻrisidagi elektron soʻrovnomani (arizani) koʻrib chiqish muddati bir ish kunidan oshmasligi kerak.\nTurgan joyi boʻyicha roʻyxatdan oʻtgan shaxsga turgan joyi boʻyicha roʻyxatdan oʻtganlik toʻgʻrisidagi elektron va (yoki) qogʻoz shaklidagi maʼlumotnoma rasmiylashtiriladi.\nBoshqa davlatlar hududida doimiy yashaydigan va Oʻzbekiston Respublikasi hududida vaqtincha turgan chet el fuqarolari va fuqaroligi boʻlmagan shaxslar Chet el fuqarolari va fuqaroligi boʻlmagan shaxslarning Oʻzbekiston Respublikasida boʻlishi qoidalariga rioya etishi, shu jumladan oʻzi turgan joyi boʻyicha roʻyxatdan oʻtgan manzilda yashashi, harakatlanish hujjatini yonida olib yurishi, uni vakolatli davlat organlari mansabdor shaxslarining talabiga binoan taqdim etishi, shuningdek harakatlanish hujjati yoʻqolganda bu haqda ichki ishlar organlarini hamda ularni qabul qilgan jismoniy yoki yuridik shaxslarni darhol xabardor qilishi shart."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4396419_0003_4_1",
+     "doc_id": "lex:4396419",
+     "doc_title": "Shaxsga doir maʼlumotlar toʻgʻrisida",
+     "article": "4-modda",
+     "retrieval_score": 0.7513,
+     "fusion_score": 0.01691,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Qonunda quyidagi asosiy tushunchalar qoʻllaniladi:\nshaxsga doir maʼlumotlar — muayyan jismoniy shaxsga taalluqli boʻlgan yoki uni identifikatsiya qilish imkonini beradigan, elektron tarzda, qogʻozda va (yoki) boshqa moddiy jismda qayd etilgan axborot;\nshaxsga doir maʼlumotlar subyekti (subyekt) — shaxsga doir maʼlumotlar oʻziga taalluqli boʻlgan jismoniy shaxs;\nshaxsga doir maʼlumotlar bazasi — tarkibida shaxsga doir maʼlumotlar mavjud boʻlgan axborot tizimi tarzidagi maʼlumotlar bazasi;\nshaxsga doir maʼlumotlarga ishlov berish — shaxsga doir maʼlumotlarni yigʻish, tizimlashtirish, saqlash, oʻzgartirish, toʻldirish, ulardan foydalanish, ularni berish, tarqatish, uzatish, egasizlantirish va yoʻq qilish boʻyicha bir harakatni yoki harakatlar majmuini amalga oshirish;\nshaxsga doir maʼlumotlar bazasining operatori (operator) — shaxsga doir maʼlumotlarga ishlov berishni amalga oshiruvchi davlat organi, jismoniy va (yoki) yuridik shaxs;\nshaxsga doir maʼlumotlar bazasining mulkdori (mulkdor) — shaxsga doir maʼlumotlar bazasiga egalik qilish, undan foydalanish va uni tasarruf etish huquqiga ega boʻlgan davlat organi, jismoniy va (yoki) yuridik shaxs;\nuchinchi shaxs — subyekt, mulkdor va (yoki) operator boʻlmagan, ammo shaxsga doir maʼlumotlarga ishlov berish boʻyicha holatlar yoki munosabatlar orqali ular bilan bogʻliq boʻlgan har qanday shaxs."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Shaxsga doir maʼlumotlar subyekti, biometrik maʼlumotlar, transchegaraviy uzatish, \"Shaxsga doir maʼlumotlar toʻgʻrisida\"gi Qonun.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6187,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 4210,
+    "rerank_ms": null,
+    "generation_ms": 3604,
+    "total_ms": 7814,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 4416,
+    "output_tokens": 198
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q048",
+   "status": "ok",
+   "answer": "Йўқ, иш ҳақини ундириш тўғрисидаги даъволар бўйича судга мурожаат қилганда давлат божи тўламайсиз.\n\n\"Давлат божи тўғрисида\"ги Қонуннинг 8-моддасига кўра, фуқаролик ишлари бўйича судларда даъвогарлар иш ҳақини ундириш тўғрисидаги даъволар ва меҳнат ҳуқуқлари муносабатларидан келиб чиқадиган бошқа талаблар юзасидан давлат божини тўлашдан озод қилинадилар [2].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.637,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:4680944",
+     "doc_title": "Davlat boji toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-600",
+     "url": "https://lex.uz/uz/docs/-4680944",
+     "article_url": "https://lex.uz/uz/docs/-4680944#-4682417",
+     "article": "8-modda",
+     "article_title": "Fuqarolik ishlari boʻyicha sudlarda davlat bojini toʻlashdan ozod qilish",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "4680944_0007_8_1",
+     "quote": "2) daʼvogarlar — alimentlar undirish toʻgʻrisidagi daʼvolar yuzasidan;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4680944_0018_19_1",
+     "doc_id": "lex:4680944",
+     "doc_title": "Davlat boji toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.6201,
+     "fusion_score": 0.01668,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sudlarga beriladigan daʼvo arizalaridan, alohida tartibda yuritiladigan ishlar boʻyicha arizalardan, maʼmuriy-huquqiy munosabatlardan kelib chiqadigan ishlar boʻyicha sudlarga beriladigan shikoyatlardan, sudlarning hal qiluv qarorlari ustidan apellyatsiya, kassatsiya va taftish tartibidagi shikoyatlardan, shuningdek sudlar tomonidan hujjatlarning koʻchirma nusxalarini berganlik uchun davlat boji quyidagi tartibda undiriladi:\nshartnomalarni haqiqiy emas deb eʼtirof etish toʻgʻrisidagi, shartnomalarni bekor qilish toʻgʻrisidagi yoki ularning shartlariga oʻzgartish va qoʻshimchalar kiritish haqidagi daʼvo arizalariga shartnoma toʻlaligicha yoki uning biron-bir qismi nizolashilayotganligidan qatʼi nazar, shartnoma oldi nizolari boʻyicha arizalar uchun belgilangan stavkalar boʻyicha toʻlanadi;\nqarshi daʼvo arizalaridan, shuningdek uchinchi shaxslarning ishga mustaqil daʼvo talablari bilan kirishganligi toʻgʻrisidagi arizalardan davlat boji umumiy asoslarda undiriladi.\nIshdan dastlabki daʼvogar chiqib ketgan va u huquqiy voris bilan almashtirilgan hollarda, davlat boji, agar u dastlabki daʼvogar tomonidan toʻlanmagan boʻlsa, qanoatlantirilgan daʼvo talablari miqdoriga mutanosib ravishda huquqiy vorisdan undiriladi.\nSudya bir yoki bir nechta birlashgan daʼvo talabini alohida ish yuritish uchun ajratgan taqdirda, daʼvo taqdim etilganda toʻlangan davlat boji qayta hisoblab chiqilmaydi va qaytarilmaydi. Alohida ish yurituvga ajratganlik yuzasidan davlat boji ikkinchi bor toʻlanmaydi.\nIlgari koʻrmasdan qoldirilgan takroran berilgan arizalar boʻyicha davlat boji qaytadan umumiy asoslarda toʻlanadi. Agar ariza koʻrmasdan qoldirilganligi munosabati bilan davlat boji qaytarilishi kerak boʻlsa-yu, lekin qaytarilmasa, agar davlat boji budjetga oʻtkazilgan kundan eʼtiboran fuqarolik toʻgʻrisidagi qonunchilikka muvofiq daʼvo muddati tugamagan boʻlsa, davlat boji toʻlanganligi toʻgʻrisidagi dastlabki hujjat takroran berilgan arizaga ilova qilinishi mumkin.\nDavlat boji hisoblab chiqariladigan daʼvo bahosi daʼvogar tomonidan, belgilangan hollarda esa fuqarolik protsessual va iqtisodiy protsessual qonunchilikka muvofiq sud tomonidan aniqlanadi.\nAgar ishni muhokamaga tayyorlash kunida daʼvogar alimentlarni undirish toʻgʻrisidagi ishni tugatish haqida ariza bergan boʻlsa, bunday hollarda javobgardan davlat boji undirilmaydi.\nDaʼvogar tomonidan daʼvo talablari kamaytirilgan taqdirda, toʻlangan davlat boji qayta hisoblab chiqilmaydi.\nDaʼvo summasi koʻpaytirilgan taqdirda, davlat bojining yetishmayotgan summasi daʼvoning koʻpaytirilgan summasiga muvofiq toʻlanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4680944_0007_8_1",
+     "doc_id": "lex:4680944",
+     "doc_title": "Davlat boji toʻgʻrisida",
+     "article": "8-modda",
+     "retrieval_score": 0.634,
+     "fusion_score": 0.01672,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Fuqarolik ishlari boʻyicha sudlarda davlat bojini toʻlashdan quyidagilar ozod qilinadi:\n1) daʼvogarlar — ish haqini undirish toʻgʻrisidagi daʼvolar va mehnat huquqlari munosabatlaridan kelib chiqadigan boshqa talablar yuzasidan;\n2) daʼvogarlar — alimentlar undirish toʻgʻrisidagi daʼvolar yuzasidan;\n3) daʼvogarlar — mehnatda mayib boʻlganligi yoki sogʻligʻining boshqacha tarzda shikastlanganligi, shuningdek boquvchisi vafot etganligi tufayli yetkazilgan zararning oʻrnini qoplash toʻgʻrisidagi daʼvolar yuzasidan;\n4) daʼvogarlar — qonunga xilof ravishda hukm etganlik, jinoiy javobgarlikka tortganlik, maʼmuriy jazo berganlik tufayli jismoniy shaxsga yetkazilgan zararning oʻrnini qoplash bilan bogʻliq nizolar yuzasidan;\n5) daʼvogarlar — jinoyat tufayli yetkazilgan moddiy zararning oʻrnini qoplash toʻgʻrisidagi daʼvolar yuzasidan;\n5¹) daʼvogarlar — tazyiq va zoʻravonlikdan jabrlangan xotin-qizlarga yetkazilgan maʼnaviy va moddiy zararning oʻrnini qoplash toʻgʻrisidagi daʼvolar yuzasidan;\n5²) pedagog xodimlar — kasbiy faoliyatini amalga oshirish davomida oʻz shaʼni, qadr-qimmati va ishchanlik obroʻsini himoya qilish bilan bogʻliq ishlar yuzasidan;\n5³) daʼvogarlar — zoʻravonlikdan jabrlangan bolaga (bolalarga) yetkazilgan moddiy zararning oʻrnini qoplash va maʼnaviy ziyonni kompensatsiya qilish toʻgʻrisidagi daʼvolar yuzasidan;\n6) yuridik va jismoniy shaxslar — alimentlarni undirishga doir fuqarolik ishlari bilan bogʻliq hujjatlarni ularga berganlik uchun;\n7) qonunchilikda nazarda tutilgan hollarda boshqa shaxslarning qonun bilan muhofaza qilinadigan huquqlari hamda manfaatlari himoya qilinishini soʻrab sudga ariza bilan murojaat etgan yuridik va jismoniy shaxslar;\n10) isteʼmolchilar — oʻz huquqlari va qonuniy manfaatlari buzilishi bilan bogʻliq daʼvolar yuzasidan;\n11) tovarlarning (ishlarning, xizmatlarning) xavfsiz boʻlishi va sifati ustidan nazoratni amalga oshiruvchi davlat organlari va isteʼmolchilarning jamoat birlashmalari — isteʼmolchilarning (isteʼmolchilar nomuayyan doirasining) manfaatlarini koʻzlab beriladigan daʼvolar yuzasidan;\n12) daʼvogarlar — oʻrmon daraxtlarini oʻzboshimchalik bilan kesish hamda oʻrmondan foydalanish, oʻrmonni qoʻriqlash va muhofaza qilishning tartibi va shartlarini boshqacha tarzda buzish tufayli oʻrmon fondiga yetkazilgan zararni undirish toʻgʻrisidagi ishlar yuzasidan;\n13) davlat organlari — oʻzboshimchalik bilan qurilgan imoratlarni buzish toʻgʻrisidagi daʼvolar yuzasidan, shuningdek jismoniy shaxslarga tegishli boʻlgan, tarixiy, ilmiy, badiiy qimmatga yoki oʻzga madaniy qimmatga ega boʻlgan mol-mulkni jismoniy shaxslar bu mol-mulkka xoʻjasizlarcha munosabatda boʻlgan hollarda jismoniy shaxslardan davlat mulkiga olib qoʻyish toʻgʻrisidagi ishlar yuzasidan;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "3517337_0178_174_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "174-modda",
+     "retrieval_score": 0.6149,
+     "fusion_score": 0.01641,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sud buyrugʻini berish toʻgʻrisidagi arizadan qonunchilikda daʼvo ishini yuritish uchun belgilangan tartibda va miqdorda davlat boji undiriladi.\nSud buyrugʻini berish toʻgʻrisidagi arizani qabul qilish rad etilgan taqdirda, undiruvchi tomonidan toʻlangan davlat boji qaytarib beriladi.\nSud buyrugʻi bekor qilingan taqdirda undiruvchi tomonidan toʻlangan davlat boji qaytarib berilmaydi. Undiruvchi tomonidan qarzdorga nisbatan daʼvo ishi yuritish tartibida daʼvo qoʻzgʻatilgan taqdirda, toʻlangan davlat boji toʻlanishi lozim boʻlgan bojga qoʻshib hisoblanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4680944_0018_19_4",
+     "doc_id": "lex:4680944",
+     "doc_title": "Davlat boji toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.5998,
+     "fusion_score": 0.01415,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qiymat jihatidan baholanmaydigan talablar (oʻzboshimchalik bilan egallab olingan joylarni boʻshatish toʻgʻrisidagi, natura shaklida maydon berish haqidagi, topshirish balansini qabul qilishga majburlash bilan bogʻliq nizolar va boshqalar) nomulkiy xususiyatga ega daʼvo arizalari jumlasiga kiradi.\nNikohni bekor qilish bilan bir vaqtda mol-mulkni boʻlish toʻgʻrisidagi daʼvo arizalaridan nikohni bekor qilganlik uchun va mol-mulkni boʻlganlik uchun davlat boji undiriladi.\nDaʼvo arizasini (arizani, shikoyatni) qaytarishga asos boʻlgan sharoitlar bartaraf etilganidan soʻng takroran beriladigan daʼvo arizalariga (arizalarga, shikoyatlarga) davlat boji toʻlanganligi toʻgʻrisidagi dastlabki hujjat davlat boji takroran toʻlanishining oldini olish uchun ilova qilinishi mumkin.\nArizachi davlat bojini toʻlashdan ozod qilingan hollarda daʼvo qanoatlantirilgan taqdirda davlat boji, agar javobgar davlat bojini toʻlashdan ozod qilinmagan boʻlsa, qanoatlantirilgan daʼvo talablari miqdoriga mutanosib ravishda javobgardan undiriladi.\nDavlat boji toʻlashdan ozod qilingan davlat organlari hamda boshqa shaxslar tomonidan yuridik va jismoniy shaxslarning manfaatlarini koʻzlab bildirilgan talablarini qanoatlantirish rad etilgan yoki ular qisman qanoatlantirilgan taqdirda, davlat boji ariza qaysi shaxslarning manfaatlarini koʻzlab taqdim etilgan boʻlsa, shu shaxslardan daʼvo talablarining qanoatlantirilishi rad etilgan qismiga mutanosib ravishda undiriladi.\nMuayyan sudda koʻrilishi lozim boʻlgan bir nechta ish uchun bir toʻlov topshiriqnomasi boʻyicha davlat boji oʻtkazilgan hollarda topshiriqnoma ishlarning biriga ilova qilinadi. Mazkur ish boʻyicha toʻlangan davlat bojining summasi toʻgʻrisida qolgan ishlarga belgi qoʻyiladi va toʻlov topshiriqnomasi qoʻshib qoʻyilgan ish koʻrsatiladi.\nSud buyrugʻi bekor qilingan taqdirda, undiruvchi tomonidan toʻlangan davlat boji qaytarilmaydi. Daʼvo undiruvchi tomonidan qarzdorga nisbatan daʼvo ishini yuritish tartibida qoʻzgʻatilgan taqdirda u toʻlanishi lozim boʻlgan davlat boji hisobiga oʻtkaziladi.\nPul mablagʻlari mavjud boʻlmagan va bu xizmat koʻrsatuvchi bank tomonidan tasdiqlangan taqdirda, tadbirkorlik faoliyati bilan shugʻullanuvchi yuridik va jismoniy shaxslarga sudning ajrimiga koʻra davlat bojini kechiktirib toʻlashga ruxsat berilishi mumkin. Bank tasdigʻida sudga murojaat qilingan sanadan koʻpi bilan uch kun oldingi sana qayd etilgan boʻlishi kerak."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "3517337_0145_141_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "141-modda",
+     "retrieval_score": 0.6147,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ishni koʻrish bilan bogʻliq boʻlgan va daʼvogar toʻlashdan ozod qilingan sud chiqimlari hamda davlat boji javobgardan arz qilingan talablarning qanoatlantirilgan qismiga mutanosib ravishda davlat daromadiga undiriladi.\nArz qilingan talablarni qanoatlantirish rad etilgan taqdirda sudning ishni koʻrish bilan bogʻliq chiqimlari daʼvogardan davlat daromadiga undiriladi.\nAgar arz qilingan talablar qisman qanoatlantirilgan, javobgar esa sud xarajatlarini toʻlashdan ozod qilingan boʻlsa, sudning ishni koʻrish bilan bogʻliq chiqimlari sud xarajatlarini toʻlashdan ozod qilinmagan daʼvogardan talablarining rad etilgan qismiga mutanosib ravishda davlat daromadiga undiriladi.\nAgar har ikki taraf ham sud xarajatlarini toʻlashdan ozod qilingan boʻlsa, sudning ishni koʻrish bilan bogʻliq chiqimlari davlat hisobiga oʻtkaziladi.\nJavobgarni qidirish ushbu Kodeksning 165-moddasida nazarda tutilgan tartibda eʼlon qilingan taqdirda, sud qidiruv ishi boʻyicha qilingan xarajatlarni javobgardan davlat daromadiga undiradi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ish haqi undirish boʻyicha daʼvo arizasi, davlat boji, Fuqarolik protsessual kodeksi, Soliq kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6373,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 4135,
+    "rerank_ms": null,
+    "generation_ms": 2083,
+    "total_ms": 6219,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 4503,
+    "output_tokens": 191
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q049",
+   "status": "ok",
+   "answer": "Да, такая квартира считается общей совместной собственностью супругов, независимо от того, на чье имя она оформлена.\n\nСогласно «Семейному кодексу» (статья 23), имущество, нажитое супругами во время брака, является их общей совместной собственностью. Это правило распространяется на недвижимое имущество, приобретенное за счет общих доходов, даже если оно оформлено на имя одного из супругов [3].\n\nВажные дополнения:\n*   Супруги имеют равные права на владение, пользование и распоряжение общим имуществом [5].\n*   Для совершения сделки по распоряжению недвижимостью, оформленной на одного из супругов, необходимо нотариально удостоверенное согласие другого супруга [5].\n*   При разделе имущества доли супругов признаются равными, если иное не предусмотрено брачным договором [4].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.577,
+   "citations": [
+    {
+     "ref": 3,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-158694",
+     "article": "23-modda",
+     "article_title": "Er va xotinning umumiy mulki",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0023_23_1",
+     "quote": "Er va xotinning nikoh davomida orttirgan mol-mulklari, shuningdek nikoh qayd etilgunga qadar, boʻlajak er-xotinning umumiy mablagʻlari hisobiga olingan mol-mulklari, agar qonun yoki nikoh shartnomasida boshqacha hol koʻrsatilmagan boʻlsa, ularning birgalikdagi umumiy mulki hisoblanadi."
+    },
+    {
+     "ref": 5,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-158708",
+     "article": "24-modda",
+     "article_title": "Er va xotinning umumiy mol-mulkka egalik qilishi, undan foydalanishi va uni tasarruf etishi",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0024_24_1",
+     "quote": "Er va xotin ularning birgalikdagi umumiy mulki boʻlgan mol-mulkka egalik qilish, undan foydalanish va uni tasarruf etishda teng huquqlarga egadir."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-158758",
+     "article": "28-modda",
+     "article_title": "Er va xotinning umumiy mol-mulkini boʻlishda ulushlarni aniqlash",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0028_28_1",
+     "quote": "Er va xotinning umumiy mol-mulkini boʻlishda hamda ularning shu mol-mulkdagi ulushlarini aniqlashda, agar er va xotin oʻrtasidagi nikoh shartnomasida boshqacha hol nazarda tutilmagan boʻlsa, er va xotinning ulushlari teng deb hisoblanadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "104720_0025_25_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "25-modda",
+     "retrieval_score": 0.5769,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Er va xotinning nikohga qadar oʻziga tegishli boʻlgan mol-mulki, shuningdek ulardan har birining nikoh davomida hadya, meros tariqasida yoki boshqa bepul bitimlar asosida olgan mol-mulki ulardan har birining oʻz mulki hisoblanadi.\nNikoh davomida er-xotinning umumiy mulki yoki ulardan har birining mol-mulki yoxud er va xotindan birining mehnati hisobiga mol-mulkning qiymati ancha oshishiga olib kelgan mablagʻlar (kapital taʼmirlash, qayta qurish, qayta jihozlash va boshqalar) qoʻshilgani aniqlansa, er yoki xotindan har birining mol-mulki ularning birgalikdagi mulki deb topilishi mumkin."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "104720_0027_27_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "27-modda",
+     "retrieval_score": 0.5749,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Er va xotinning umumiy mol-mulkini boʻlish er va xotindan birining talabiga koʻra, ular nikohda boʻlgan davrda ham, nikohdan ajralishgandan keyin ham, shuningdek kreditor er va xotindan birining umumiy mol-mulkdagi ulushiga undiruvni qaratish uchun umumiy mol-mulkni boʻlish talabi bilan arz qilgan hollarda amalga oshirilishi mumkin.\nEr va xotinning umumiy mol-mulki er va xotin oʻrtasida oʻzaro kelishuv asosida boʻlib olinishi mumkin. Er va xotinning xohishi bilan ularning umumiy mol-mulkni boʻlish toʻgʻrisidagi oʻzaro kelishuvi notarial tartibda tasdiqlanishi mumkin.\nNizo tugʻilgan hollarda er va xotinning umumiy mol-mulkini boʻlish, shuningdek er va xotinning bu mol-mulkdagi ulushini aniqlash sud tartibida amalga oshiriladi.\nUmumiy mol-mulkni boʻlishda sud er va xotinning har biriga mulkning qaysi qismi berilishi lozimligini aniqlaydi. Er (xotin)ga unga qarashli ulushdan oshiq qiymatga ega boʻlgan mol-mulk beriladigan hollarda, xotin (er)ga tegishli pul yoki oʻzga kompensatsiya belgilanishi mumkin.\nOilaviy munosabatlar tugatilganda, sud er va xotin alohida yashagan davrda orttirgan mol-mulkni ulardan har birining oʻz mulki deb topishi mumkin.\nVoyaga yetmagan bolalar ehtiyojini qondirish uchun olingan buyumlar (kiyim-bosh, poyabzal, maktab va sport jihozlari, musiqa asboblari, bolalar kutubxonasi va boshqalar) boʻlinmaydi hamda bolalar er va xotindan qaysi biri bilan yashasa, unga kompensatsiyasiz beriladi.\nEr va xotinning umumiy mol-mulki hisobidan oʻrtadagi voyaga yetmagan bolalar nomiga qoʻyilgan omonatlar oʻsha bolalarga tegishli hisoblanib, er-xotinning umumiy mol-mulkini boʻlish paytida eʼtiborga olinmaydi.\nEr va xotinning umumiy mol-mulki ular nikohda turgan davrda boʻlingan taqdirda, er va xotin mol-mulkining boʻlinmay qolgan qismi, shuningdek er va xotin tomonidan ular nikohda turgan davrda orttirilgan mol-mulk keyinchalik ularning birgalikdagi umumiy mulkini tashkil qiladi.\nNikohdan ajralgan er va xotinning umumiy mol-mulkni boʻlish toʻgʻrisidagi talablariga nisbatan uch yillik daʼvo muddati qoʻllaniladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "104720_0023_23_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "23-modda",
+     "retrieval_score": 0.5636,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Er va xotinning nikoh davomida orttirgan mol-mulklari, shuningdek nikoh qayd etilgunga qadar, boʻlajak er-xotinning umumiy mablagʻlari hisobiga olingan mol-mulklari, agar qonun yoki nikoh shartnomasida boshqacha hol koʻrsatilmagan boʻlsa, ularning birgalikdagi umumiy mulki hisoblanadi.\nEr va xotinning nikoh davomida orttirgan mol-mulklari jumlasiga (er va xotinning umumiy mol-mulkiga) er va xotin har birining mehnat faoliyatidan, tadbirkorlik faoliyatidan va intellektual faoliyat natijalaridan orttirgan daromadlari, ular tomonidan olingan pensiyalar, nafaqalar, shuningdek maxsus maqsadga moʻljallanmagan boshqa pul toʻlovlari (moddiy yordam summasi, mayib boʻlish yoki salomatligiga boshqacha zarar yetkazish oqibatida mehnat qobiliyatini yoʻqotganlik munosabati bilan yetkazilgan zararni qoplash tarzida toʻlangan summalar va boshqalar) kiradi. Er va xotinning umumiy daromadlari hisobiga olingan koʻchar va koʻchmas ashyolar, qimmatli qogʻozlari, paylari, omonatlari, kredit muassasalariga yoki boshqa tijorat tashkilotlariga kiritilgan kapitaldagi ulushlari hamda er va xotinning nikoh davomida orttirgan boshqa har qanday mol-mulklari, ular er yoki xotindan birining nomiga rasmiylashtirilgan yoxud pul mablagʻlari kimning nomiga yoki er va xotinning qaysi biri tomonidan kiritilgan boʻlishidan qatʼi nazar, ular ham er va xotinning umumiy mol-mulki hisoblanadi.\nEr va xotindan biri uy-roʻzgʻor ishlarini yuritish, bolalarni parvarish qilish bilan band boʻlgan yoki boshqa uzrli sabablarga koʻra mustaqil ish haqi va boshqa daromadga ega boʻlmagan taqdirda ham er va xotin umumiy mol-mulkka nisbatan teng huquqqa ega boʻladi.\nFermer xoʻjaligi va dehqon xoʻjaligi aʼzolarining birgalikdagi mulki boʻlgan mol-mulkka nisbatan er va xotinning egalik qilish, foydalanish va tasarruf etish huquqlari fermer xoʻjaligi va dehqon xoʻjaligi toʻgʻrisidagi qonunlarda belgilanadi. Fermer xoʻjaligi va dehqon xoʻjaligining mol-mulkini boʻlish Oʻzbekiston Respublikasi Fuqarolik kodeksining 223 va 225-moddalarida nazarda tutilgan qoidalar asosida amalga oshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "104720_0028_28_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "28-modda",
+     "retrieval_score": 0.5519,
+     "fusion_score": 0.01515,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Er va xotinning umumiy mol-mulkini boʻlishda hamda ularning shu mol-mulkdagi ulushlarini aniqlashda, agar er va xotin oʻrtasidagi nikoh shartnomasida boshqacha hol nazarda tutilmagan boʻlsa, er va xotinning ulushlari teng deb hisoblanadi.\nSud voyaga yetmagan bolalar manfaatlaridan va (yoki) er va xotindan birining eʼtiborga loyiq manfaatini hisobga olib, jumladan, agar er yoki xotin uzrsiz sabablarga koʻra daromad olmagan boʻlsa yoxud er va xotinning umumiy mol-mulkini oila manfaatlariga zarar yetkazgan holda sarflagan boʻlsa, er va xotinning umumiy mol-mulkidagi ulushlari tengligidan chekinishga haqlidir.\nEr va xotinning umumiy mol-mulkini boʻlishda er va xotinning umumiy qarzlari ularga belgilangan ulushlarga mutanosib ravishda har ikkalasi oʻrtasida taqsimlanadi.\nAgar er va xotindan biri umumiy mol-mulkni er yoki xotinning erkiga zid ravishda va oila manfaatiga mos boʻlmagan holda oʻz xohishiga koʻra sarflagan yoki boshqa shaxsga oʻtkazgan boʻlsa, uni boʻlishda bu mol-mulk yoki uning qiymati hisobga olinadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "104720_0024_24_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "24-modda",
+     "retrieval_score": 0.565,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Er va xotin ularning birgalikdagi umumiy mulki boʻlgan mol-mulkka egalik qilish, undan foydalanish va uni tasarruf etishda teng huquqlarga egadir.\nEr va xotindan birining umumiy mol-mulkini tasarruf etishi bilan bogʻliq bitim tuzilganda bu harakat boshqasining roziligiga koʻra amalga oshirilayotganligini anglatadi.\nEr-xotindan birining umumiy mol-mulkni tasarruf etish yuzasidan amalga oshirgan bitimi boshqasining bunga roziligi boʻlmaganligi sababligina bildirgan talabiga binoan va faqat bitimni amalga oshirgan ikkinchi tomon amalga oshirilgan bitim yuzasidan er (xotin) rozi emasligini oldindan bilgani yoki bilishi lozim boʻlganligi isbotlangan hollarda sud tomonidan haqiqiy emas deb topilishi mumkin.\nEr (xotin) oʻzining nomiga rasmiylashtirgan umumiy koʻchmas mol-mulkni tasarruf etish boʻyicha bitim tuzishi uchun xotin (er)ning notarial tartibda tasdiqlangan roziligini olishi lozim. Koʻrsatilgan bitimni tuzishga notarial tartibda tasdiqlangan roziligi olinmagan er yoki xotin mazkur bitim amalga oshirilganligini bilgan yoki bilishi lozim boʻlgan kundan boshlab bir yil davomida bu bitimni sud tartibida haqiqiy emas deb topishni talab qilishga haqlidir."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Er-xotinning birgalikdagi mulki, nikoh davrida orttirilgan mol-mulk, Oʻzbekiston Respublikasi Oila kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5769,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3352,
+    "rerank_ms": null,
+    "generation_ms": 2146,
+    "total_ms": 5499,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3596,
+    "output_tokens": 239
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q050",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Oʻzbekiston Respublikasi Mehnat kodeksida faqat Oʻzbekiston hududidagi mehnat munosabatlari va taʼtil muddatlari tartibga solingan, xorijiy davlatlar qonunchiligi boʻyicha maʼlumotlar keltirilmagan.",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0233_234_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "234-modda",
+     "retrieval_score": 0.6031,
+     "fusion_score": 0.01667,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mehnat shartnomasi bekor qilinganda xodimga barcha foydalanilmagan har yilgi asosiy va qoʻshimcha mehnat taʼtillari uchun pulli kompensatsiya toʻlanadi.\nXodimlarga ish davrida ularning xohishiga koʻra har yilgi mehnat taʼtili uchun taʼtilning ushbu Kodeksning 217-moddasida belgilangan eng kam davomiyligidan tashqari pulli kompensatsiya toʻlanishi mumkin.\nPulli kompensatsiya toʻlashda yakshanba kuni inobatga olinmaydi.\nOʻn sakkiz yoshga toʻlmagan xodimlarga, I yoki II guruh nogironligi boʻlgan xodimlarga beriladigan ijtimoiy taʼtillarning barcha turlaridan, har yilgi uzaytirilgan asosiy mehnat taʼtillaridan, shuningdek ushbu Kodeksning 481 va 483-moddalarida nazarda tutilgan qoʻshimcha taʼtillardan asli holida foydalaniladi hamda mehnat davrida ularni pulli kompensatsiya bilan almashtirishga yoʻl qoʻyilmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0113_114_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "114-modda",
+     "retrieval_score": 0.6891,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Muddatli mehnat shartnomasida uning muddati quyidagilar orqali belgilanishi mumkin:\nmehnat shartnomasi muddatining umumiy davomiyligini kunlarda, oylarda, yillarda koʻrsatish;\nmehnat shartnomasi boʻyicha ish boshlanadigan kalendar sanani va mehnat shartnomasining muddati tugaydigan kalendar sanani koʻrsatish;\nyuz berishi bilan mehnat shartnomasining muddati tugaydigan hodisani aniqlash (obyektni foydalanishga topshirish, oʻrniga ishlab turish vaqtiga boshqa xodim bilan muddatli mehnat shartnomasi tuzilgan vaqtincha yoʻq boʻlgan xodimning ishga chiqishi va boshqalar)."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0226_227_2",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "227-modda",
+     "retrieval_score": 0.6101,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "jamoa kelishuvlarida, shuningdek jamoa shartnomasida yoxud ichki hujjatlarda belgilangan boshqa hollarda boshqa xodimlarga.\nUshbu moddaning birinchi, ikkinchi va uchinchi qismlarida nazarda tutilgan hollarda har yilgi mehnat taʼtili toʻliq davomiylikda va toʻliq haq toʻlangan holda beriladi.\nOlti oydan kam ishlagan oʻrindoshlarga birinchi ish yili uchun har yilgi mehnat taʼtili ularning xohishiga koʻra asosiy ish boʻyicha har yilgi mehnat taʼtili bilan bir vaqtda oʻrindoshlik asosida ishdagi taʼtil uchun ishlab berilgan vaqtga mutanosib ravishda haq toʻlangan holda beriladi. Olti oy va undan ortiq ishlagan oʻrindoshlarga birinchi ish yili uchun oʻrindoshlik asosidagi ishda beriladigan har yilgi mehnat taʼtiliga, shuningdek ikkinchi va keyingi ish yillari uchun ushbu toifadagi xodimlarning mehnat taʼtiliga, ushbu taʼtil ish yili davomida qaysi vaqtda berilishidan qatʼi nazar, toʻliq haq toʻlanadi.\nHar yilgi mehnat taʼtili oʻquvchilarning yozgi taʼtili davrida beriladigan taʼlim tashkilotlarining oʻqituvchilar tarkibiga birinchi ish yilidagi har yilgi mehnat taʼtili oʻquvchilarning yozgi taʼtili davrida toʻliq davomiylikda, ular ushbu taʼlim tashkilotiga ishga kirgan vaqtidan qatʼi nazar, ishlab bergan vaqtiga mutanosib ravishda haq toʻlangan holda beriladi. Mazkur toifadagi xodimlarga ikkinchi va keyingi ish yillari uchun beriladigan mehnat taʼtiliga, ushbu taʼtil ish yili davomida qaysi vaqtda berilishidan qatʼi nazar, toʻliq haq toʻlanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0350_351_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "351-modda",
+     "retrieval_score": 0.6738,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mehnatni muhofaza qilish mehnat jarayonida insonning xavfsizligini, hayoti va sogʻligʻi, ish qobiliyati saqlanishini taʼminlashga doir huquqiy, ijtimoiy-iqtisodiy, tashkiliy, texnikaviy, sanitariya-gigiyena, davolash-profilaktika, reabilitatsiya tadbirlari va vositalari tizimidir."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0219_220_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "220-modda",
+     "retrieval_score": 0.6007,
+     "fusion_score": 0.01608,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xodimga u bitta tashkilotda yoki tarmoqda ishlagan har besh yil uchun davomiyligi ikki kalendar kun boʻlgan, biroq jami sakkiz kalendar kundan koʻp boʻlmagan har yilgi qoʻshimcha mehnat taʼtili beriladi.\nUshbu modda birinchi qismining qoidalari qonunchilikda oʻziga ish staji uchun har yilgi uzoqroq qoʻshimcha mehnat taʼtillari berilishi nazarda tutilgan ayrim toifadagi xodimlarga nisbatan tatbiq etilmaydi.\nQonunchilikda, jamoa kelishuvlarida, shuningdek jamoa shartnomasida, boshqa ichki hujjatlarda yoki mehnat shartnomasida ushbu moddaning birinchi qismida nazarda tutilgan har yilgi qoʻshimcha mehnat taʼtilini olish huquqini beruvchi ish stajiga boshqa ish beruvchidagi yoxud boshqa tarmoqdagi ish stajini kiritish nazarda tutilishi mumkin.\nAgar xodim ish beruvchining taklifiga koʻra ishga qabul qilingan boʻlsa, ushbu moddaning birinchi qismida nazarda tutilgan har yilgi qoʻshimcha mehnat taʼtilini olish huquqini beruvchi ish stajiga boshqa ish beruvchidagi ish staji kiritiladi. Mikrofirmalar xodimlariga ushbu moddaning birinchi qismida nazarda tutilgan har yilgi qoʻshimcha mehnat taʼtili ushbu Kodeksning 505-moddasi uchinchi qismida nazarda tutilgan oʻziga xos xususiyatlar hisobga olingan holda beriladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Mehnat taʼtili davomiyligi, Mehnat kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 547,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6101,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1691,
+    "rerank_ms": null,
+    "generation_ms": 1260,
+    "total_ms": 2952,
+    "rewrite_ms": 547
+   },
+   "usage": {
+    "input_tokens": 2871,
+    "output_tokens": 158
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 17.1
+}

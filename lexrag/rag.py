@@ -17,11 +17,13 @@ from typing import Iterator
 
 from . import llm, plan
 from .lang import LANG_NAMES, MARKER, NOT_FOUND_RE, FollowupSplitter, detect_lang, resolve_lang, script_of
-from .retrieval import chunk_meta, get_chunks, hybrid_search, prepare_query
+from .retrieval import chunk_meta, get_chunks, hybrid_search, prepare_query, rrf
 from .translit import LatToCyrStream, cyr_to_lat
 
 K_CONTEXT = 8
 K_SPLIT = 10          # savol bo'linganda manbalar soni
+REWRITE_POOL = 20     # qayta yozishda har qidiruvdan nechta nomzod RRF ga kiradi (DEV tajribasi)
+W_REWRITE = 1.0       # qayta yozilgan so'rov ro'yxatining RRF og'irligi (DEV: 0.5/0.7/1.0/1.5 dan eng yaxshisi)
 # eval/sweep.json: javobi bor 46 savolda eng yaqin cosine >= 0.55, bazada yo'q savollarda 0.43-0.45 (+ bitta 0.61).
 # 0.45 ham xuddi shu natijani berardi (3/4 rad, 0/46 xato), lekin bitta "yo'q" savol 0.448 da - chegara juda yaqin edi.
 NO_ANSWER_COS = 0.48
@@ -221,9 +223,13 @@ def _step(key: str, label: str, state: str, detail: str = "", ms: int | None = N
 
 def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = None, mode: str = "legal",
                   chunk_ids: list[str] | None = None, base_answer: str | None = None,
-                  llm_plan: bool = False, xray: bool = False, **kw) -> Iterator[tuple[str, dict]]:
+                  llm_plan: bool = False, xray: bool = False, rewritten: str | None = None,
+                  **kw) -> Iterator[tuple[str, dict]]:
     """Bosqichlar + natija. chunk_ids berilsa (sodda rejim) qayta qidirilmaydi: o'sha manbalar, o'sha [n].
-    xray=True: natijada "xray" - qidiruv ichi (XRay); qo'shimcha LLM so'rovisiz, faqat so'ralganda hisoblanadi."""
+    xray=True: natijada "xray" - qidiruv ichi (XRay); qo'shimcha LLM so'rovisiz, faqat so'ralganda hisoblanadi.
+    rewritten: huquqiy tilga qayta yozilgan so'rov (rewrite.py; LLM chaqiruvi chaqiruvchi tomonda, qidiruv
+    qulfidan tashqarida). Berilsa va savol bo'linmagan bo'lsa: asl savol va shu so'rov bilan alohida qidiruv,
+    RRF bilan birlashtiriladi. "Bazada yo'q" qarori (best_cosine) asl savol bo'yicha qoladi."""
     question = question.strip()
     lang = resolve_lang(question, lang_pref)
     # LLM'ga beriladigan savol: o'zbekcha kirill -> lotin (lotinda javob yozishi uchun), ruscha - asl holida
@@ -272,15 +278,19 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
     # 2. qidiruv (to'liq savol + har qism alohida)
     lists = []
     queries = [question] + parts
+    rw = rewritten if (rewritten and not parts) else None
+    k_search = max(k, REWRITE_POOL) if rw else k
     for i, q in enumerate(queries):
         t = time.time()
         label = "Qidirilmoqda" if i == 0 else f"Qidirilmoqda: «{q if len(q) <= 46 else q[:44].rstrip() + '…'}»"
         yield _step(f"search{i}", label, "run")
         trace: dict | None = {} if xr else None
-        res = hybrid_search(q, k=k, lang=lang, trace=trace, **kw)
+        res = hybrid_search(q, k=k_search, lang=lang, trace=trace, **kw)
         if xr:
             xr.add_search(i, trace)
         lists.append(res)
+        if rw:
+            res = res[:k]
         docs = []
         for h in res:
             d = short_doc(h.get("doc_title", ""))
@@ -293,7 +303,21 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
     t = time.time()
     tp = time.perf_counter()
     fusion = None
-    if parts:
+    orig_best = max(((h.get("cosine") or 0) for h in lists[0][:k]), default=0)
+    if rw:
+        t_rw = time.time()
+        yield _step("rewrite", f"Qidirilmoqda: «{rw if len(rw) <= 46 else rw[:44].rstrip() + '…'}»", "run")
+        rw_hits = hybrid_search(rw, k=k_search, lang="uz", **kw)
+        yield done(_step("rewrite", "Huquqiy atamalar bilan qayta qidirildi", "done", rw[:120],
+                         int((time.time() - t_rw) * 1000)))
+        by = {h["chunk_id"]: h for h in rw_hits}
+        by.update({h["chunk_id"]: h for h in lists[0]})  # ikkalasida bo'lsa - asl savol cosine'i
+        fused_rw = rrf([([h["chunk_id"] for h in lists[0]], 1.0), ([h["chunk_id"] for h in rw_hits], W_REWRITE)])
+        hits = [by[c] for c in sorted(fused_rw, key=fused_rw.get, reverse=True)[:k]]
+        found_detail = f"asl savol va huquqiy soʻrov birlashtirildi · {len({h.get('doc_id') for h in hits})} ta hujjatdan"
+        if xr:
+            xr.d["analysis"]["rewritten_query"] = rw
+    elif parts:
         before = sum(len(x) for x in lists)
         hits = _fuse(lists, max(k, K_SPLIT))
         found_detail = f"{len(queries)} qidiruv birlashtirildi, {before - len(hits)} ta takror olib tashlandi"
@@ -313,7 +337,7 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
     t = time.time()
     tp = time.perf_counter()
     yield _step("check", "Tekshirilmoqda", "run")
-    best = max((h.get("cosine") or 0) for h in hits) if hits else 0
+    best = orig_best if rw else (max((h.get("cosine") or 0) for h in hits) if hits else 0)
     no_answer = not hits or best < NO_ANSWER_COS
     active = sum(1 for h in hits if h.get("status") == "amalda")
     if no_answer:
@@ -327,7 +351,7 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
 
     if no_answer:
         yield "result", {"sources": source_cards(hits[:3]), "no_answer": True, "best_cosine": best, "lang": lang,
-                         "parts": parts, "steps": steps, "prompt": None,
+                         "parts": parts, "steps": steps, "prompt": None, "rewritten_query": rw,
                          **({"xray": xr.finish(hits, best, True, None, fusion)} if xr else {})}
         return
     user = f"MANBALAR:\n\n{format_context(hits)}\n\n===\n\nSAVOL: {q_llm}"
@@ -336,7 +360,7 @@ def prepare_steps(question: str, k: int = K_CONTEXT, lang_pref: str | None = Non
                 "\n".join(f"{i}) {p if lang == 'ru' else prepare_query(p)}" for i, p in enumerate(parts, 1))
     prompt = {"system": system_prompt(lang, mode), "user": user}
     yield "result", {"sources": source_cards(hits), "no_answer": False, "best_cosine": best, "lang": lang,
-                     "parts": parts, "steps": steps, "prompt": prompt,
+                     "parts": parts, "steps": steps, "prompt": prompt, "rewritten_query": rw,
                      **({"xray": xr.finish(hits, best, False, prompt, fusion)} if xr else {})}
 
 

@@ -1,0 +1,139 @@
+{
+ "run_dir": "/data/dalil/spec_runs/spec-2026-11-20-rw",
+ "n_results": 100,
+ "n_expected": 100,
+ "answerable": 90,
+ "unanswerable": 10,
+ "system_variants": 4,
+ "systems": [
+  {
+   "embedding_model": "BAAI/bge-m3",
+   "index_version": "lex-idx-2026-10-31-3f56d80b",
+   "lex_snapshot_date": "2026-10-31",
+   "llm_model": "gemini-3.1-flash-lite, gemini-3.5-flash",
+   "llm_model_configured": "gemini-3.1-flash-lite",
+   "llm_models_used": [
+    "gemini-3.1-flash-lite",
+    "gemini-3.5-flash"
+   ],
+   "llm_provider": "gemini",
+   "pipeline_version": "1.0.0",
+   "reranker": null,
+   "retrieval": "hybrid: bge-m3 dense + BM25, RRF"
+  },
+  {
+   "embedding_model": "BAAI/bge-m3",
+   "index_version": "lex-idx-2026-10-31-3f56d80b",
+   "lex_snapshot_date": "2026-10-31",
+   "llm_model": "gemini-3.1-flash-lite, gemini-3.8-flash, gemini-3.5-flash",
+   "llm_model_configured": "gemini-3.1-flash-lite",
+   "llm_models_used": [
+    "gemini-3.1-flash-lite",
+    "gemini-3.8-flash",
+    "gemini-3.5-flash"
+   ],
+   "llm_provider": "gemini",
+   "pipeline_version": "1.0.0",
+   "reranker": null,
+   "retrieval": "hybrid: bge-m3 dense + BM25, RRF"
+  },
+  {
+   "embedding_model": "BAAI/bge-m3",
+   "index_version": "lex-idx-2026-10-31-3f56d80b",
+   "lex_snapshot_date": "2026-10-31",
+   "llm_model": "gemini-3.1-flash-lite",
+   "llm_model_configured": "gemini-3.1-flash-lite",
+   "llm_models_used": [
+    "gemini-3.1-flash-lite"
+   ],
+   "llm_provider": "gemini",
+   "pipeline_version": "1.0.0",
+   "reranker": null,
+   "retrieval": "hybrid: bge-m3 dense + BM25, RRF"
+  },
+  {
+   "embedding_model": "BAAI/bge-m3",
+   "index_version": "lex-idx-2026-10-31-3f56d80b",
+   "lex_snapshot_date": "2026-10-31",
+   "llm_model": "gemini-3.1-flash-lite, gemini-3.5-flash, gemini-3.8-flash",
+   "llm_model_configured": "gemini-3.1-flash-lite",
+   "llm_models_used": [
+    "gemini-3.1-flash-lite",
+    "gemini-3.5-flash",
+    "gemini-3.8-flash"
+   ],
+   "llm_provider": "gemini",
+   "pipeline_version": "1.0.0",
+   "reranker": null,
+   "retrieval": "hybrid: bge-m3 dense + BM25, RRF"
+  }
+ ],
+ "metrics": {
+  "hit@5_doc_%": 98.9,
+  "hit@5_article_%": 93.3,
+  "mrr": 0.781,
+  "context_precision_%_proxy_doc": 72.2,
+  "citation_accuracy_%_proxy_gold_article_cited": 96.6,
+  "fabricated_citations": 0,
+  "outdated_norm_citations": 0,
+  "no_answer_accuracy": "10/10",
+  "false_reject_on_answerable": 3,
+  "latency_ms_p50": 4477,
+  "latency_ms_p95": 17540,
+  "error_or_timeout_%": 0.0,
+  "answer_correctness": "hisoblanmadi (expected_answer + LLM-hakam yoki qoʻlda)",
+  "faithfulness": "hisoblanmadi (LLM-hakam kerak)"
+ },
+ "targets": {
+  "hit@5_doc_%": ">= 90",
+  "hit@5_article_%": ">= 80",
+  "mrr": ">= 0.70",
+  "context_precision_%": ">= 60",
+  "citation_accuracy_%": ">= 90",
+  "fabricated_citations": "0",
+  "outdated_norm_citations": "0",
+  "no_answer_accuracy": ">= 9/10",
+  "latency_ms_p50": "<= 5000",
+  "latency_ms_p95": "<= 12000",
+  "error_or_timeout_%": "<= 2"
+ },
+ "by_category": {
+  "bir_nechta_modda": {
+   "n": 20,
+   "hit@5_article_%": 95.0,
+   "mrr": 0.842
+  },
+  "faktik": {
+   "n": 14,
+   "hit@5_article_%": 92.9,
+   "mrr": 0.792
+  },
+  "javobsiz": {
+   "n": 10,
+   "no_answer_ok": 10
+  },
+  "raqamlar": {
+   "n": 33,
+   "hit@5_article_%": 90.9,
+   "mrr": 0.745
+  },
+  "rus_kirill": {
+   "n": 23,
+   "hit@5_article_%": 95.7,
+   "mrr": 0.773
+  }
+ },
+ "error_causes": {
+  "retrieval": [
+   "q020",
+   "q027",
+   "q032",
+   "q059",
+   "q070",
+   "q086"
+  ],
+  "manba": [],
+  "no_answer": [],
+  "xato": []
+ }
+}

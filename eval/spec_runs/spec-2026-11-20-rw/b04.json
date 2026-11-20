@@ -1,0 +1,1167 @@
+{
+ "run_id": "spec-2026-11-20-rw",
+ "batch_id": "spec-2026-11-20-rw-b04",
+ "batch_index": 4,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite, gemini-3.5-flash, gemini-3.8-flash",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite",
+   "gemini-3.5-flash",
+   "gemini-3.8-flash"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-20T10:17:10+05:00",
+  "completed_at": "2026-11-20T10:17:15+05:00",
+  "total_ms": 5044
+ },
+ "summary": {
+  "total": 10,
+  "ok": 8,
+  "no_answer": 2,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q031",
+   "status": "ok",
+   "answer": "\"Йўл ҳаракати тўғрисида\"ги Қонуннинг 44-моддасига кўра, такси сифатида фойдаланиладиган автомобилларни бошқариш ҳуқуқи йигирма бир ёшга тўлган шахсларга берилади [1].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.675,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6764454",
+     "doc_title": "Yoʻl harakati toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-900",
+     "url": "https://lex.uz/uz/docs/-6764454",
+     "article_url": "https://lex.uz/uz/docs/-6764454#-6765794",
+     "article": "44-modda",
+     "article_title": "Transport vositalarini boshqarish huquqi",
+     "part": "2-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "6764454_0043_44_1",
+     "quote": "mototsikllar, motorollerlarni va boshqa mototransport vositalarini boshqarish huquqi — oʻn olti yoshga toʻlgan shaxslarga beriladi;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6764454_0043_44_1",
+     "doc_id": "lex:6764454",
+     "doc_title": "Yoʻl harakati toʻgʻrisida",
+     "article": "44-modda",
+     "retrieval_score": 0.6753,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Quyidagilarni:\nmototsikllar, motorollerlarni va boshqa mototransport vositalarini boshqarish huquqi — oʻn olti yoshga toʻlgan shaxslarga beriladi;\nruxsat etilgan eng koʻp ogʻirligi 3500 kilogrammdan va oʻrindiqlar soni haydovchining oʻrindigʻidan tashqari sakkiztadan oshmaydigan avtomobillarni boshqarish huquqi, bundan taksi mustasno — oʻn sakkiz yoshga toʻlgan shaxslarga beriladi;\nruxsat etilgan eng koʻp ogʻirligi 3500 kilogrammdan oshadigan yuk avtomobillarini boshqarish huquqi — oʻn sakkiz yoshga toʻlgan shaxslarga beriladi;\ntaksi sifatida foydalaniladigan avtomobillarni, shuningdek yoʻlovchilar tashish uchun moʻljallangan va haydovchining oʻrindigʻidan tashqari sakkiztadan ortiq oʻrindigʻi boʻlgan avtomobillarni, tramvaylar va trolleybuslarni boshqarish huquqi — yigirma bir yoshga toʻlgan shaxslarga beriladi;\ntransport vositalari tarkiblarini boshqarish huquqi — ushbu qismning uchinchi, toʻrtinchi va beshinchi xatboshilarida koʻrsatilgan transport vositalarini boshqarish huquqiga ega boʻlgan shaxslarga transport vositasini boshqarish staji oʻn ikki oydan kam boʻlmagan taqdirda beriladi.\nTransport vositalarini boshqarish huquqi tibbiy tekshiruvdan oʻtgan va malaka imtihonlarini topshirgan shaxslarga beriladigan belgilangan namunadagi guvohnoma bilan tasdiqlanadi.\nMalaka imtihonlarini topshirish va transport vositalarini boshqarish huquqiga doir guvohnomani berish tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi.\nOʻzbekiston Respublikasi hududida belgilangan talablarga muvofiq boʻlgan milliy va xalqaro haydovchilik guvohnomalari amal qiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6764454_0044_45_1",
+     "doc_id": "lex:6764454",
+     "doc_title": "Yoʻl harakati toʻgʻrisida",
+     "article": "45-modda",
+     "retrieval_score": 0.5679,
+     "fusion_score": 0.01656,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Transport vositalarini boshqarish huquqini olish uchun malaka imtihonlarini topshirishga tegishli toifadagi haydovchilar tayyorlashning oʻquv rejalari va dasturlarida nazarda tutilgan hajmda tegishli tayyorgarlikdan oʻtgan shaxslar qoʻyiladi.\nTegishli toifalardagi haydovchilarni tayyorlashning yagona dasturlari Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilangan tartibda tasdiqlanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6764454_0039_40_1",
+     "doc_id": "lex:6764454",
+     "doc_title": "Yoʻl harakati toʻgʻrisida",
+     "article": "40-modda",
+     "retrieval_score": 0.5621,
+     "fusion_score": 0.01615,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Transport vositalaridan foydalanishga bogʻliq faoliyat bilan shugʻullanuvchi yuridik shaxslar:\nhaydovchilarning ishini yoʻl harakati xavfsizligini taʼminlovchi talablarga muvofiq tashkil etishi;\nhaydovchilarning qonunchilikda belgilangan mehnat qilish va dam olish rejimiga rioya etishi;\nhaydovchilarning malakasini oshirish uchun zarur shart-sharoitlar yaratishi;\ntransport vositalarining sozligini va but saqlanishini taʼminlashi, yoʻl harakati xavfsizligiga tahdid soluvchi texnik nosozliklar mavjud boʻlganda transport vositalaridan foydalanishga yoʻl qoʻymasligi;\noʻziga tegishli transport vositalari ishtirokida sodir etilgan yoʻl-transport hodisalarining va Yoʻl harakati qoidalari buzilishlarining sabablarini tahlil qilishi hamda ularni bartaraf etish choralarini koʻrishi;\ntibbiyot xodimlarini jalb etgan holda haydovchilarning tibbiy koʻriklarini, haydovchilarning yoʻl-transport hodisalarida jabrlanganlarga hodisa yuz bergan joyning oʻzida, tibbiyot xodimlari yetib kelguniga qadar birlamchi shoshilinch yordam koʻrsatish boʻyicha koʻnikmalarini takomillashtirishga doir tadbirlarni tashkil etishi va oʻtkazishi;\nxodim oʻz mehnat vazifalarini bajarishi bilan bogʻliq boʻlgan holda mehnatda mayib boʻlganligi, kasb kasalligiga chalinganligi yoki sogʻligʻining boshqacha tarzda shikastlanganligi munosabati bilan uning hayotiga yoki sogʻligʻiga yetkazilgan zararning oʻrnini qoplash boʻyicha oʻz fuqarolik javobgarligini “Ish beruvchining fuqarolik javobgarligini majburiy sugʻurta qilish toʻgʻrisida”gi Oʻzbekiston Respublikasi Qonunida belgilangan tartibda sugʻurtalashi shart.\nTransport vositalaridan foydalanishga bogʻliq faoliyat bilan shugʻullanuvchi yuridik shaxslar zimmasida qonunchilikka muvofiq boshqa majburiyatlar ham boʻlishi mumkin.\nAvtomobil transportida yoki yer usti shahar elektr transportida yoʻlovchilar, bagaj va yuk tashish faoliyatini amalga oshirayotgan yuridik shaxslar tashishning oʻziga xos xususiyatlarini hisobga olgan holda, yoʻl harakati xavfsizligini taʼminlash maqsadida haydovchilarga nisbatan yoʻl harakati toʻgʻrisidagi qonunchilikka muvofiq qoʻshimcha talablar qoʻyishi mumkin.\nYuridik shaxslar transport vositalarining soniga qarab yoʻl harakati xavfsizligi boʻyicha xizmatlarni tashkil etadi yoki lavozimlar joriy etadi. Yoʻl harakati xavfsizligi xizmati xodimlarining sonini aniqlash normativlari qonunchilikda belgilanadi.\nYuridik shaxslar tomonidan oʻtkaziladigan yoʻl harakati xavfsizligini taʼminlashga doir tadbirlarni moliyalashtirish ularning oʻz mablagʻlari va qonunchilikda taqiqlanmagan boshqa manbalar hisobidan amalga oshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0443_444_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "444-modda",
+     "retrieval_score": 0.5797,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn olti yoshga toʻlgan jismoniy shaxs kasanachi boʻlishi mumkin.\nAgar kasanachilikning xususiyati kasanachi bilan yakka tartibdagi toʻliq moddiy javobgarlik toʻgʻrisida shartnoma tuzish zaruratini taqozo etsa, oʻn sakkiz yoshga toʻlgan shaxslarning kasanachilikni amalga oshirishiga yoʻl qoʻyiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "97664_0285_176⁴_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "176⁴-modda",
+     "retrieval_score": 0.5517,
+     "fusion_score": 0.01596,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yagona tanish belgilari bilan jihozlanmagan yoki belgilangan talablar buzilgan holda jihozlangan taksilarni yoʻlga chiqarish, —\ntransport vositalarining texnik holati va ulardan foydalanish uchun masʼul boʻlgan mansabdor shaxslarga bazaviy hisoblash miqdorining besh baravari miqdorida jarima solishga sabab boʻladi.\nBelgilangan tartibda yagona tanish belgilari bilan toʻliq jihozlangan taksilarning haydovchilari tomonidan mazkur belgilardan qasddan foydalanmaslik yoki ular shikastlanganligiga qaramay yoʻlovchilarni tashish, —\nfuqarolarga bazaviy hisoblash miqdorining bir baravari miqdorida jarima solishga sabab boʻladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Taksida ishlash uchun haydovchi kamida necha yoshda boʻlishi kerak?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6753,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1349,
+    "rerank_ms": null,
+    "generation_ms": 1389,
+    "total_ms": 2739,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3271,
+    "output_tokens": 127
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q032",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Siz Jinoyat-protsessual kodeksining yaqin qarindoshlarning koʻrsatuv berishdan bosh tortish huquqiga oid normalarini yoki ushbu kodeksning boshqa tegishli moddalarini oʻrganishingiz mumkin.\n\nOʻzbekiston Respublikasi Jinoyat-protsessual kodeksining 118-moddasiga koʻra, guvoh va jabrlanuvchi davlat siri, kasb siri yoki shaxslar hayotining sir tutiladigan tomonlarini bahona qilib koʻrsatuv berishdan bosh tortishga haqli emas. Shuningdek, jinoyat ishi boʻyicha aniqlanishi lozim boʻlgan holatni bilishi mumkin boʻlgan har qanday shaxs guvoh sifatida chaqirilishi mumkin.",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111460_0123_118_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "118-modda",
+     "retrieval_score": 0.6285,
+     "fusion_score": 0.01714,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Surishtiruvchi, tergovchi yoki sud tomonidan aniqlanayotgan holatlar oʻzida davlat sirlarini yoki kasb sirini yoxud gumon qilinuvchi, ayblanuvchi, sudlanuvchi yoxud boshqa shaxslar hayotining sir tutiladigan tomonlarini aks ettirganligini bahona qilib, guvoh va jabrlanuvchi koʻrsatuv berishdan bosh tortishga haqli emas.\nAniqlanishi lozim boʻlgan holatlar oʻzida davlat sirini yoki kasb sirini aks ettiradi yoxud shaxslar hayotining sir tutiladigan tomonlariga tegishli deb hisoblash uchun asos boʻlganda, surishtiruvchi, tergovchi va sud guvoh yoki jabrlanuvchini soʻroq qilish chogʻida bu holatlarning oshkor etilishiga yoʻl qoʻymaslik chora-tadbirlarini koʻrishi shart."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "3523891_0093_88_1",
+     "doc_id": "lex:3523891",
+     "doc_title": "Oʻzbekiston Respublikasining Iqtisodiy protsessual kodeksi",
+     "article": "88-modda",
+     "retrieval_score": 0.5832,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ishda ishtirok etuvchi shaxsning iltimosnomasi boʻyicha sud guvohni sud majlisida koʻrsatuvlar berish uchun chaqirtirishi mumkin.\nGuvohni chaqirish haqida iltimos qiluvchi shaxs ish uchun ahamiyatga molik qaysi holatlarni guvoh tasdiqlashi mumkinligini koʻrsatishi va uning familiyasi, ismi, otasining ismi va yashash joyini sudga maʼlum qilishi shart.\nGuvoh ish boʻyicha oʻziga maʼlum boʻlgan maʼlumotlar va holatlarni sudga ogʻzaki xabar qiladi. Guvoh sudning taklifiga koʻra oʻz koʻrsatuvlarini yozma shaklda bayon qilishi mumkin.\nAgar guvoh oʻzi bilgan maʼlumotlarning manbaini koʻrsatib bera olmasa, u xabar qilgan maʼlumotlar dalil hisoblanmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "3527353_0092_87_1",
+     "doc_id": "lex:3527353",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy sud ishlarini yuritish toʻgʻrisidagi kodeksi",
+     "article": "87-modda",
+     "retrieval_score": 0.5859,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ishda ishtirok etuvchi shaxsning iltimosnomasi boʻyicha sud guvohni sud majlisida koʻrsatuvlar berish uchun chaqirtirishi mumkin.\nGuvohni chaqirish haqida iltimosnoma kirituvchi shaxs ish uchun ahamiyatga molik qaysi holatlarni guvoh tasdiqlashi mumkinligini koʻrsatishi va uning familiyasi, ismi, otasining ismi va yashash joyini sudga maʼlum qilishi shart.\nGuvoh ish boʻyicha oʻziga maʼlum boʻlgan maʼlumotlar va holatlarni sudga ogʻzaki xabar qiladi. Guvoh sudning taklifiga koʻra oʻz koʻrsatuvlarini yozma shaklda bayon qilishi mumkin.\nAgar guvoh oʻzi bilgan maʼlumotlarning manbaini koʻrsatib bera olmasa, u xabar qilgan maʼlumotlar dalil hisoblanmaydi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "3517337_0057_57_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "57-modda",
+     "retrieval_score": 0.5745,
+     "fusion_score": 0.01539,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Guvoh sifatida chaqirilgan shaxs sudga kelishi va toʻgʻri koʻrsatuvlar berishi shart.\nAgar guvoh sud uzrsiz deb topgan sabablarga koʻra sud chaqiruvi boʻyicha kelmasa, shuningdek koʻrsatuvlar berishdan boʻyin tovlasa, u ushbu Kodeksning 146-moddasida belgilangan tartibda jarimaga tortilishi mumkin.\nJarima solinishi guvohni sudga kelish va koʻrsatuvlar berish majburiyatidan ozod etmaydi.\nBila turib yolgʻon koʻrsatuvlar berganlik uchun guvoh Oʻzbekiston Respublikasi Jinoyat kodeksining 238-moddasiga muvofiq javobgar boʻladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111460_0063_65_1",
+     "doc_id": "lex:111460",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-PROTSESSUAL KODEKSI",
+     "article": "65-modda",
+     "retrieval_score": 0.569,
+     "fusion_score": 0.01394,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jinoyat ishi boʻyicha aniqlanishi lozim boʻlgan biror holatni bilishi mumkin boʻlgan har qanday shaxs guvoh sifatida koʻrsatuv berish uchun chaqirilishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Guvohning yaqin qarindoshiga qarshi koʻrsatma berishdan bosh tortish huquqi, Jinoyat-protsessual kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6285,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3633,
+    "rerank_ms": null,
+    "generation_ms": 1262,
+    "total_ms": 4895,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 2272,
+    "output_tokens": 277
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q033",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Bojxona kodeksining 159-moddasiga koʻra, chet ellik jismoniy shaxslar tomonidan notijorat maqsadlarda vaqtincha olib kirilgan transport vositasining bojxona hududida turishining umumiy muddati kalendar yil mobaynida jami toʻqson kalendar kundan oshmasligi lozim [3].\n\nBiroq, ushbu muddatdan ortiqroq muddatga vaqtincha olib kirishga Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadigan yigʻimni toʻlagan holda yoʻl qoʻyiladi [3].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.638,
+   "citations": [
+    {
+     "ref": 3,
+     "doc_id": "lex:2876354",
+     "doc_title": "Oʻzbekiston Respublikasining Bojxona kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-2876354",
+     "article_url": "https://lex.uz/uz/docs/-2876354#-2880805",
+     "article": "159-modda",
+     "article_title": "Chet ellik jismoniy shaxslar tomonidan transport vositasini notijorat maqsadlarda vaqtincha olib kirish shartlari",
+     "part": "1-qism",
+     "edition_date": "2026-07-25",
+     "doc_status": "amalda",
+     "chunk_id": "2876354_0159_159_1",
+     "quote": "Chet ellik jismoniy shaxslar tomonidan notijorat maqsadlarda vaqtincha olib kirilgan transport vositasining bojxona hududida turishining umumiy muddati kalendar yil mobaynida jami toʻqson kalendar kundan oshmasligi lozim."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "2876354_0024_24_1",
+     "doc_id": "lex:2876354",
+     "doc_title": "Oʻzbekiston Respublikasining Bojxona kodeksi",
+     "article": "24-modda",
+     "retrieval_score": 0.5469,
+     "fusion_score": 0.01333,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Davlat xavfsizligini taʼminlash, jamoat tartibini, inson hayoti va sogʻligʻini saqlash, atrof muhitni muhofaza qilish, milliy va maʼnaviy qadriyatlarni saqlab qolish, Oʻzbekiston Respublikasi va boshqa mamlakatlar xalqlarining madaniy boyliklarini, mulk huquqini, shu jumladan intellektual mulk obyektlariga boʻlgan huquqni, olib kirilayotgan tovarlar isteʼmolchilarining manfaatlarini himoya qilish maqsadida, shuningdek Oʻzbekiston Respublikasining boshqa manfaatlaridan kelib chiqqan holda, Oʻzbekiston Respublikasining qonunchiligiga va xalqaro shartnomalariga muvofiq ayrim tovarlarni va (yoki) transport vositalarini Oʻzbekiston Respublikasi hududiga olib kirish hamda ushbu hududdan olib chiqish taqiqlanishi mumkin.\nOlib kirilishi va olib chiqilishi taqiqlangan tovarlar va (yoki) transport vositalari, agar Oʻzbekiston Respublikasining qonunchiligida yoki xalqaro shartnomalarida boshqacha tartib nazarda tutilmagan boʻlsa, ular olib kirilganda — darhol bojxona hududidan tashqariga olib chiqilishi yoxud ular olib chiqilganda — darhol bojxona hududiga qaytarilishi shart.\nTovarni olib chiqish yoki qaytarish, shuningdek yuk operatsiyalari tovarni olib oʻtayotgan shaxs yoxud tashuvchi tomonidan amalga oshiriladi.\nAgar tovar darhol olib chiqilmagan yoki qaytarilmagan boʻlsa, tovar bojxona organi egasi boʻlgan bojxona omboriga yoxud bojxona nazorati zonalariga tovarni olib oʻtayotgan shaxs yoki tashuvchi hisobidan vaqtincha saqlash bojxona rejimiga joylashtirilishi lozim. Bunday tovarni saqlashning eng koʻp muddati, agar qonunchilikda ayrim turdagi tovarlarga nisbatan boshqacha muddat nazarda tutilmagan boʻlsa, uch sutkani tashkil etadi. Ushbu muddat tugagach, mazkur tovarni tasarruf etish davlat daromadiga oʻtkazilishi lozim boʻlgan tovarlarga nisbatan qoʻllaniladigan tartibga muvofiq amalga oshiriladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "2876354_0064_64_1",
+     "doc_id": "lex:2876354",
+     "doc_title": "Oʻzbekiston Respublikasining Bojxona kodeksi",
+     "article": "64-modda",
+     "retrieval_score": 0.5561,
+     "fusion_score": 0.01389,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Vaqtincha olib kirish muddati tovar vaqtincha olib kirish bojxona rejimiga joylashtirilgan sanadan eʼtiboran ikki yilni tashkil etadi.\nTovarni vaqtincha olib kirish bojxona rejimiga joylashtirgan shaxs mazkur bojxona rejimini uning amal qilish muddati oʻtguniga qadar ushbu Kodeksning 69-moddasiga muvofiq tugallash huquqiga ega.\nQuyidagi tovarlarning vaqtincha olib kirish muddati vakolatli shaxsning arizasi asosida bojxona organi tomonidan ikki yildan koʻproq muddatga uzaytirilishi mumkin:\nOʻzbekiston Respublikasi hududidagi chet davlatlar diplomatik vakolatxonalarining va konsullik muassasalarining hamda ularga tenglashtirilgan vakolatxonalarning normal faoliyat koʻrsatishini taʼminlash uchun olib kiriladigan, ushbu vakolatxonalarning Oʻzbekiston Respublikasi hududida doimiy yashash joyiga ega boʻlmagan diplomatik agentlari va maʼmuriy-texnik xodimlari hamda ularning oila aʼzolari tomonidan shaxsiy foydalanish uchun olib kiriladigan tovarlarning, shuningdek chet davlatlar ommaviy axborot vositalarining akkreditatsiya qilingan muxbirlari va muxbirlik punktlarining oʻz ehtiyojlari uchun olib kiriladigan avtotransport vositalarining. Bunday tovarlarni vaqtincha olib kirish muddati ushbu vakolatxonalar va shaxslarning akkreditatsiya muddatidan kelib chiqqan holda belgilanadi;\nOʻzbekiston Respublikasining yuridik shaxslari bilan chet davlatlarning shaxslari oʻrtasidagi ijara shartnomalari asosida vaqtincha olib kiriladigan temir yoʻl va havo transporti vositalarining, shuningdek ularning ehtiyot qismlari va ularga xizmat koʻrsatish uchun moʻljallangan transport asbob-uskunasining. Ularni vaqtincha olib kirish muddati ijara shartnomasi muddatlaridan kelib chiqqan holda belgilanadi;\nlizing shartnomalari asosida olib kiriladigan tovarlarning. Bunday tovarlarni vaqtincha olib kirish muddati lizing shartnomasining amal qilish muddatidan kelib chiqqan holda belgilanadi;\nOʻzbekiston Respublikasining xalqaro shartnomalariga muvofiq olib kiriladigan tovarlarning. Bunday tovarlarni vaqtincha olib kirish muddati Oʻzbekiston Respublikasining xalqaro shartnomasining amal qilish muddatidan kelib chiqqan holda belgilanadi;\nmahsulot taqsimotiga oid bitimlar va geologiya-qidiruv ishlarini oʻtkazish toʻgʻrisidagi bitimlar asosida olib kiriladigan tovarlarning. Bunday tovarlarni vaqtincha olib kirish muddati mazkur kelishuvlarning amal qilish muddatidan kelib chiqqan holda belgilanadi;\ndavriy bojxona toʻlovlari toʻliq toʻlangan tovarlarning;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "2876354_0159_159_1",
+     "doc_id": "lex:2876354",
+     "doc_title": "Oʻzbekiston Respublikasining Bojxona kodeksi",
+     "article": "159-modda",
+     "retrieval_score": 0.5951,
+     "fusion_score": 0.01449,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Chet ellik jismoniy shaxslar tomonidan notijorat maqsadlarda vaqtincha olib kirilgan transport vositasining bojxona hududida turishining umumiy muddati kalendar yil mobaynida jami toʻqson kalendar kundan oshmasligi lozim. Bunda transport vositasini Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadigan yigʻimni toʻlagan holda yuqorida koʻrsatilgan muddatdan ortiqroq muddatga vaqtincha olib kirishga yoʻl qoʻyiladi.\nUshbu moddaning birinchi qismida koʻrsatilgan muddatni hisoblash transport vositasini vaqtincha olib kirish rasmiylashtirilgan kundan eʼtiboran boshlanadi.\nYigʻim undirilguniga qadar transport vositasi bojxona organlari tomonidan belgilanadigan joylarda vaqtincha saqlanishi lozim.\nUshbu moddaning birinchi qismida koʻrsatib oʻtilgan yigʻim quyidagi hollarda toʻlanmaydi:\nbojxona organlari tomonidan belgilanadigan joylarda vaqtincha saqlash davri uchun;\nagar vaqtincha olib kirilgan transport vositasi xatlangan, musodara qilingan, avariya yoki yengib boʻlmas kuch taʼsiri oqibatida foydalanish uchun yaroqsiz holga kelib qolgan va bu vakolatli organ tomonidan tasdiqlangan boʻlsa."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "2876354_0039_39_1",
+     "doc_id": "lex:2876354",
+     "doc_title": "Oʻzbekiston Respublikasining Bojxona kodeksi",
+     "article": "39-modda",
+     "retrieval_score": 0.5381,
+     "fusion_score": 0.01282,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tovarni vaqtincha olib chiqish muddati tovar vaqtincha olib chiqish bojxona rejimiga joylashtirilgan sanadan eʼtiboran ikki yilni tashkil etadi.\nTovarni vaqtincha olib chiqish bojxona rejimiga joylashtirgan shaxs mazkur bojxona rejimining amal qilishi muddati tugamay ushbu Kodeksning 41-moddasiga muvofiq ushbu bojxona rejimini tugallash huquqiga ega.\nQuyidagi tovarlarning vaqtincha olib chiqish muddati bojxona organi tomonidan vakolatli shaxsning arizasi asosida ikki yildan koʻproq muddatga uzaytirilishi mumkin:\nOʻzbekiston Respublikasining chet davlatlar hududida joylashgan obyektlarida, diplomatik vakolatxonalarida va konsullik muassasalarida foydalanish uchun olib chiqilgan tovarlar;\nOʻzbekiston Respublikasining yuridik shaxslari hamda chet davlatlarning yuridik va jismoniy shaxslari oʻrtasidagi ijara shartnomalari asosida vaqtincha olib chiqilgan temir yoʻl va havo transporti vositalari, shuningdek ularning ehtiyot qismlari hamda ularga xizmat koʻrsatish uchun moʻljallangan transport uskunalari. Bunda vaqtincha olib chiqish muddati ijara shartnomasi muddatlaridan kelib chiqqan holda belgilanadi;\nlizing shartnomasi asosida olib chiqilgan tovarlar. Bunday tovarlarni vaqtincha olib chiqishga lizing shartnomasining amal qilish muddatiga ruxsat etiladi;\ntovarlarni (ishlarni va xizmatlarni) eksport qilish kontrakti (shartnomasi, kelishuvi) shartlari boʻyicha kafolat muddati ichida xizmat koʻrsatish va nuqsonlarni bartaraf etish uchun olib chiqilgan tovarlar (bojxona hududidan tashqarida qoldirish uchun moʻljallangan tovarlar bundan mustasno). Bunday tovarlarni vaqtincha olib chiqishga kafolat davrining amal qilish muddatiga yoʻl qoʻyiladi;\nOʻzbekiston Respublikasi Vazirlar Mahkamasining qarorlari asosida vaqtincha olib chiqishning koʻproq muddati belgilangan tovarlar.\nTovarni vaqtincha olib chiqish muddatini uzaytirish toʻgʻrisidagi ariza vaqtincha olib chiqish bojxona rejimining amal qilish muddati tugaguniga qadar bojxona organiga berilishi lozim. Tovarni vaqtincha olib chiqish muddatini uzaytirish tovarni bojxona organiga taqdim etmasdan amalga oshiriladi.\nVakolatli shaxs tomonidan bojxona organiga tovarni vaqtincha olib chiqish muddatini uzaytirish toʻgʻrisida ariza berilishi tovarni vaqtincha olib chiqish muddatini uzib qoʻymaydi va toʻxtatib turmaydi.\nTovarni vaqtincha olib chiqish muddati uzaytirilayotganda boshqa bojxona deklaratsiyasi berilmaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "7277618_0026_text_1",
+     "doc_id": "lex:7277618",
+     "doc_title": "2025-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.6378,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "T/r | Yigʻim turi | Bitta avtotransport vositasi (avtopoyezd) uchun yigʻim stavkasi (AQSH dollarida)\n1. | Chet davlatlar yuk avtotransport vositalarining Oʻzbekiston Respublikasi hududiga kirganligi va uning hududi orqali tranziti uchun yigʻim (bundan 2 — 7 bandlarda koʻrsatilgan davlatlar mustasno) | 400\n2. | Tojikiston Respublikasi yuk avtotransport vositalarining Oʻzbekiston Respublikasi hududiga kirganligi va uning hududi orqali tranziti uchun yigʻim, yuk koʻtarish quvvatlari:\n10 tonnagacha | 100\n10 tonnadan 20 tonnagacha | 150\n20 tonnadan yuqori | 200\n3. | Yevropa Ittifoqiga aʼzo davlatlar va Ozarbayjon Respublikasi yuk avtotransport vositalarining Oʻzbekiston Respublikasi hududiga kirganligi va uning hududi orqali tranziti uchun yigʻim\n14 kun muddatgacha | 80\n14 kundan ortiq muddatga | 280\n4. | Qozogʻiston Respublikasi yuk avtotransport vositalarining Oʻzbekiston Respublikasi hududiga kirganligi va uning hududi orqali tranziti uchun yigʻim | 300\n5. | Qirgʻiziston Respublikasi yuk avtotransport vositalarining Oʻzbekiston Respublikasi hududiga kirganligi va uning hududi orqali tranziti uchun yigʻim | 300\n6. | Turkmaniston Respublikasi yuk avtotransport vositalarining Oʻzbekiston Respublikasi hududiga kirganligi va uning hududi orqali tranziti uchun yigʻim, yuk koʻtarish quvvatlari:\n10 tonnagacha | 130\n10 tonnadan 20 tonnagacha | 180\n20 tonnadan yuqori | 250\n7. | Afgʻoniston Respublikasi yuk avtotransport vositalarining Oʻzbekiston Respublikasi hududiga kirganligi va uning hududi orqali tranziti uchun yigʻim | 50\nIzohlar:\n1. Oʻzbekiston Respublikasi hududi boʻylab chet davlatlarning ogʻir vaznli va yirik gabaritli yuk avtotransport vositalari oʻtganligi uchun ushbu ilovada nazarda tutilgan stavkalar boʻyicha yigʻim toʻlanishi bilan bir qatorda qoʻshimcha ravishda qonunchilikda belgilangan miqdorlarda toʻlov undiriladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Vaqtinchalik olib kirilgan transport vositalarining O‘zbekiston hududida bo‘lish muddati, Bojxona kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6378,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3618,
+    "rerank_ms": null,
+    "generation_ms": 4265,
+    "total_ms": 7883,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 4541,
+    "output_tokens": 236
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q034",
+   "status": "ok",
+   "answer": "Oila kodeksining 99-moddasiga koʻra, agar ota-ona oʻrtasida aliment toʻlash boʻyicha kelishuv boʻlmasa, sud tomonidan bitta bola uchun ota-onaning har oydagi ish haqi va (yoki) boshqa daromadining toʻrtdan bir qismi miqdorida aliment undiriladi [1].\n\nBunda har bir bola uchun undiriladigan aliment miqdori qonunchilik bilan belgilangan mehnatga haq toʻlash eng kam miqdorining 26,5 foizidan kam boʻlmasligi kerak [1]. Shuningdek, sud taraflarning moddiy yoki oilaviy ahvolini va boshqa eʼtiborga loyiq holatlarni hisobga olgan holda bu miqdorni kamaytirishi yoki koʻpaytirishi mumkin [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.68,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-159203",
+     "article": "99-modda",
+     "article_title": "Ota-onaning voyaga yetmagan bolalariga toʻlaydigan aliment miqdori",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0099_99_1",
+     "quote": "Agar voyaga yetmagan bolalariga taʼminot berish haqida ota-ona oʻrtasida kelishuv boʻlmasa, ularning taʼminoti uchun aliment sud tomonidan ota-onaning har oydagi ish haqi va (yoki) boshqa daromadining bir bola uchun — toʻrtdan bir qismi;"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "104720_0099_99_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "99-modda",
+     "retrieval_score": 0.6804,
+     "fusion_score": 0.0172,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Agar voyaga yetmagan bolalariga taʼminot berish haqida ota-ona oʻrtasida kelishuv boʻlmasa, ularning taʼminoti uchun aliment sud tomonidan ota-onaning har oydagi ish haqi va (yoki) boshqa daromadining bir bola uchun — toʻrtdan bir qismi; ikki bola uchun — uchdan bir qismi; uch va undan ortiq bola uchun — yarmisi miqdorida undiriladi. Bu toʻlovlarning miqdori taraflarning moddiy yoki oilaviy ahvolini va boshqa eʼtiborga loyiq holatlarni hisobga olgan holda sud tomonidan kamaytirilishi yoki koʻpaytirilishi mumkin.\nHar bir bola uchun undiriladigan aliment miqdori qonunchilik bilan belgilangan mehnatga haq toʻlash eng kam miqdorining 26,5 foizidan kam boʻlmasligi kerak."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "104720_0102_102_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "102-modda",
+     "retrieval_score": 0.6544,
+     "fusion_score": 0.01644,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ota-onadan bolalarga undiriladigan aliment miqdori aliment toʻlovchining oylik ish haqiga va (yoki) boshqa daromadiga nisbatan ulushlar hisobida yoki pul bilan toʻlanadigan qatʼiy summada belgilanishi mumkin.\nAliment toʻlashi shart boʻlgan ota-onaning ish haqi va (yoki) boshqa daromadi doimo bir xilda boʻlmay, oʻzgarib tursa yoxud daromadining bir qismini natura tarzida oladigan boʻlsa, shuningdek daromaddan ulush tarzida aliment undirish imkoniyati boʻlmasa yoinki ota-ona rasman belgilangan ish haqi yoki daromadga ega boʻlmasa, voyaga yetmagan bolalarning taʼminoti uchun toʻlanishi lozim boʻlgan aliment miqdori har oyda pul bilan toʻlanadigan qatʼiy summada belgilanishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "104720_0119_119_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "119-modda",
+     "retrieval_score": 0.6626,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Er-xotin (sobiq er-xotin) oʻrtasida aliment toʻlash toʻgʻrisida kelishuv mavjud boʻlmagan hollarda er yoki xotinga (sobiq er yoki xotinga) sud tartibida undirib beriladigan aliment miqdori sud tomonidan er yoki xotinning (sobiq er yoki xotinning) moddiy va oilaviy ahvolini hamda taraflarning eʼtiborga loyiq boshqa manfaatlarini eʼtiborga olib, har oyda pul bilan toʻlanadigan qatʼiy summada belgilanadi, biroq bu summa qonunchilikda belgilangan mehnatga haq toʻlash eng kam miqdorining 11,75 foizidan kam boʻlmasligi lozim."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "104720_0110_110_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "110-modda",
+     "retrieval_score": 0.6399,
+     "fusion_score": 0.01602,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Voyaga yetgan, mehnatga layoqatli bolalar oʻz ota-onasiga ixtiyoriy ravishda moddiy yordam berishdan boʻyin tovlasalar, taʼminot miqdori bolalarning oilaviy va moddiy ahvolini hisobga olgan holda sudning hal qiluv qaroriga asosan belgilanadi.\nOta-ona, aliment undirish haqidagi talabni oʻz bolalarining biriga yoki bir nechtasiga nisbatan qoʻyganligidan qatʼi nazar, aliment miqdorini belgilashda sud voyaga yetgan, mehnatga layoqatli bolalarning barchasini hisobga olishi lozim.\nVoyaga yetgan, mehnatga layoqatli bolalardan aliment undirish nizosi uzil-kesil hal boʻlgunga qadar sudya shu nizo boʻyicha vaqtincha toʻlab turilishi lozim boʻlgan summani koʻrsatib, ajrim chiqarishi mumkin.\nVoyaga yetgan, mehnatga layoqatli bolalardan undirilayotgan aliment miqdori qonunchilikda belgilangan mehnatga haq toʻlash eng kam miqdorining 11,75 foizidan kam boʻlmasligi kerak."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "104720_0101_101_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "101-modda",
+     "retrieval_score": 0.6387,
+     "fusion_score": 0.01589,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ota-onadan voyaga yetgan mehnatga layoqatsiz, yordamga muhtoj bolalariga undiriladigan alimentning miqdori sud tomonidan aliment toʻlashi shart boʻlgan ota-onaning oilaviy va moddiy ahvoli hisobga olinib, har oyda pul bilan toʻlanadigan qatʼiy summada belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ajrashgandan keyin otasi bitta bola uchun daromadining qancha qismini aliment qilib toʻlaydi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6804,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 891,
+    "rerank_ms": null,
+    "generation_ms": 5121,
+    "total_ms": 6013,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 2401,
+    "output_tokens": 259
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q035",
+   "status": "ok",
+   "answer": "Fuqarolik kodeksining 1135-moddasiga koʻra, meros qoldiruvchining bolalari (shu jumladan farzandlikka olingan hamda vafotidan keyin tugʻilgan bolalari), eri (xotini) va ota-onasi (farzandlikka oluvchilar) teng ulushlarda qonun boʻyicha birinchi navbatdagi vorislik huquqiga ega boʻladilar [2].\n\nBirinchi navbatdagi vorislar tarkibiga quyidagilar kiradi [2]:\n- Meros qoldiruvchining bolalari (shu jumladan farzandlikka olingan va vafotidan keyin tugʻilgan bolalari);\n- Meros qoldiruvchining eri (xotini);\n- Meros qoldiruvchining ota-onasi (farzandlikka oluvchilar).",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.584,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-180552",
+     "article_url": "https://lex.uz/uz/docs/-180552#-198926",
+     "article": "1135-modda",
+     "article_title": "Qonun boʻyicha birinchi navbatdagi vorislar",
+     "part": "1-qism",
+     "edition_date": "2026-07-19",
+     "doc_status": "amalda",
+     "chunk_id": "180552_0745_1135_1",
+     "quote": "Meros qoldiruvchining bolalari (shu jumladan farzandlikka olingan bolalari), eri (xotini) va ota-onasi (farzandlikka oluvchilar) teng ulushlarda qonun boʻyicha birinchi navbatdagi vorislik huquqiga ega boʻladilar."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "180552_0730_1120_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1120-modda",
+     "retrieval_score": 0.5542,
+     "fusion_score": 0.01544,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqaroning oʻziga tegishli mol-mulkni yoki bu mol-mulkka nisbatan huquqini vafot etgan taqdirda tasarruf etish xususidagi xohish-irodasi vasiyat deb eʼtirof qilinadi.\nVasiyatnoma shaxsan tuzilishi lozim. Vasiyatnomaning vakil orqali tuzilishiga yoʻl qoʻyilmaydi.\nFuqaro oʻzining barcha mol-mulkini yoki uning muayyan qismini qonun boʻyicha merosxoʻrlar doirasiga kiradigan, shuningdek kirmaydigan bir yoki bir necha shaxsga, shu bilan birga yuridik shaxslarga, davlatga yoki fuqarolarning oʻzini oʻzi boshqarish organlariga vasiyat qilishi mumkin.\nVasiyat qiluvchi qonun boʻyicha merosxoʻrlardan bittasini, bir nechasini yoki hammasini izoh bermagan holda merosdan mahrum qilishga haqli. Qonun boʻyicha merosxoʻrni merosdan mahrum etish, agar vasiyatnomadan boshqa hol kelib chiqmasa, bu vasiyat qiluvchining taqdim etish huquqi boʻyicha vorislik qiladigan avlodlariga nisbatan tatbiq etilmaydi.\nMeros qoldiruvchi har qanday mol-mulk toʻgʻrisidagi farmoyishni oʻz ichiga oladigan vasiyatnoma tuzishga haqli.\nMeros qoldiruvchi vasiyat qilayotgan paytida oʻziga tegishli boʻlmagan mol-mulk toʻgʻrisidagi farmoyishni oʻz ichiga oladigan vasiyatnoma tuzishga haqli. Agar meros ochilgan paytga kelib, bunday mol-mulk unga tegishli boʻlib qolsa, tegishli farmoyish haqiqiy hisoblanadi.\nMeros qoldiruvchi vasiyatnoma tuzilganidan keyin uni istagan paytda bekor qilish va oʻzgartirish borasida erkin boʻlib, bunda bekor qilish yoki oʻzgartirish sabablarini koʻrsatishga majbur emas.\nMeros qoldiruvchi oʻzi vasiyatnomada merosxoʻr etib tayinlagan shaxslarga, oʻz navbatida vafot etishlari ehtimoli bilan oʻzlariga vasiyat qilingan mol-mulkni muayyan tarzda tasarruf etish xususida koʻrsatma berish majburiyatini yuklashga haqli emas."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "180552_0745_1135_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1135-modda",
+     "retrieval_score": 0.5837,
+     "fusion_score": 0.01695,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Meros qoldiruvchining bolalari (shu jumladan farzandlikka olingan bolalari), eri (xotini) va ota-onasi (farzandlikka oluvchilar) teng ulushlarda qonun boʻyicha birinchi navbatdagi vorislik huquqiga ega boʻladilar. Meros qoldiruvchining vafotidan keyin tugʻilgan bolalari ham birinchi navbatdagi vorislar jumlasiga kiradilar."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "180552_0765_1154_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1154-modda",
+     "retrieval_score": 0.5354,
+     "fusion_score": 0.01378,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Merosxoʻr merosdan voz kechgan yoxud ushbu Kodeksning 1119-moddasida koʻrsatilgan holatlar boʻyicha merosxoʻrlar orasidan chiqib ketgan taqdirda merosning unga tegadigan qismi vorislikka chaqirilgan qonun boʻyicha merosxoʻrlarga oʻtadi va ular oʻrtasida merosdagi ulushlariga mutanosib ravishda taqsimlanadi.\nAgar meros qoldiruvchi barcha mol-mulkni oʻzi tayinlagan merosxoʻrlarga vasiyat qilgan boʻlsa, merosning merosdan voz kechgan yoki merosxoʻrlar qatoridan chiqib ketgan merosxoʻrga tegishli boʻlgan qismi qolgan vasiyatnoma boʻyicha merosxoʻrlarga oʻtadi va, agar vasiyatnomada boshqacha tartib nazarda tutilgan boʻlmasa, ular oʻrtasida merosdagi ulushlariga mutanosib ravishda taqsimlanadi.\nUshbu moddaning birinchi qismida bayon etilgan qoidalar:\nagar voz kechgan yoki merosxoʻrlar qatoridan chiqib ketgan merosxoʻr oʻrniga boshqa merosxoʻr tayinlangan;\nmerosxoʻr merosdan muayyan shaxs foydasiga voz kechgan;\nqonun boʻyicha vorislikda merosxoʻrning voz kechishi yoki merosxoʻrlar qatoridan chiqib ketishi vorislikka keyingi navbatdagi merosxoʻrlarni chaqirishga sabab boʻlgan hollarda qoʻllanilmaydi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0744_1134_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1134-modda",
+     "retrieval_score": 0.5468,
+     "fusion_score": 0.0147,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qonun boʻyicha merosxoʻrlar vorislikka ushbu Kodeksning 1135 ––1141-moddalarida nazarda tutilgan navbat tartibida chaqiriladilar.\nQonun boʻyicha vorislikda farzandlikka olingan shaxs va uning avlodlari, bir tarafdan, farzandlikka oluvchi shaxs va uning qarindoshlari, ikkinchi tarafdan, tugʻishgan qarindoshlarga tenglashtiriladilar.\nFarzandlikka olinganlar va ularning avlodlari farzandlikka olingan shaxsning ota-onasi hamda buva-buvilari, aka-ukalari, opa-singillari vafot etganidan keyin qonun boʻyicha meros olmaydilar.\nFarzandlikka olingan shaxsning ota-onasi hamda buva-buvilari, aka-ukalari, opa-singillari farzandlikka olingan shaxs va uning avlodlari vafot etganidan keyin qonun boʻyicha meros olmaydilar.\nQonun boʻyicha vorislarning har bir navbati avvalgi navbatdagi merosxoʻrlar boʻlmagan, merosdan chetlashtirilgan, merosni qabul qilmagan yoxud undan voz kechgan taqdirda vorislik huquqiga ega boʻladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "180552_0746_1136_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1136-modda",
+     "retrieval_score": 0.5493,
+     "fusion_score": 0.01494,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Meros qoldiruvchining tugʻishgan hamda ona (ota) bir ota (ona) boshqa aka-ukalari va opa-singillari, shuningdek uning ham ota, ham ona tarafdan bobosi va buvisi teng ulushlarda qonun boʻyicha ikkinchi navbatdagi vorislik huquqiga ega boʻladilar."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Vasiyatnoma boʻyicha merosxoʻrlik, merosxoʻrlarning navbatliligi, Fuqarolik kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5841,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.5-flash",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1308,
+    "rerank_ms": null,
+    "generation_ms": 16231,
+    "total_ms": 17540,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 2823,
+    "output_tokens": 285
+   },
+   "llm_model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "id": "q036",
+   "status": "ok",
+   "answer": "\"Umumiy harbiy majburiyat va harbiy xizmat toʻgʻrisida\"gi Qonunning 5-moddasiga koʻra, muddatli harbiy xizmat muddati kalendar hisobida oʻn ikki oy etib belgilanadi [1].\n\nMuddatli harbiy xizmat chaqirilish yoshidagi fuqarolarning oddiy askarlar va serjantlar tarkibi lavozimlarida, shuningdek muqaddam harbiy xizmatni oʻtamagan ofitserlarning Qurolli Kuchlar safidagi majburiy xizmatidir [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.704,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:78717",
+     "doc_title": "UMUMIY HARBIY MAJBURIYAT VA HARBIY XIZMAT TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "436-II",
+     "url": "https://lex.uz/uz/docs/-78717",
+     "article_url": "https://lex.uz/uz/docs/-78717#-83531",
+     "article": "5-modda",
+     "article_title": "Muddatli harbiy xizmat",
+     "part": "1-qism",
+     "edition_date": "2025-01-03",
+     "doc_status": "amalda",
+     "chunk_id": "78717_0004_5_1",
+     "quote": "Muddatli harbiy xizmat chaqirilish yoshidagi fuqarolarning oddiy askarlar va serjantlar tarkibi lavozimlarida, shuningdek muqaddam harbiy xizmatni oʻtamagan ofitserlarning qonunchilikda belgilangan muddat mobaynida Qurolli Kuchlar safidagi majburiy xizmatidir."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "78717_0004_5_1",
+     "doc_id": "lex:78717",
+     "doc_title": "UMUMIY HARBIY MAJBURIYAT VA HARBIY XIZMAT TOʻGʻRISIDA",
+     "article": "5-modda",
+     "retrieval_score": 0.7036,
+     "fusion_score": 0.01717,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Muddatli harbiy xizmat chaqirilish yoshidagi fuqarolarning oddiy askarlar va serjantlar tarkibi lavozimlarida, shuningdek muqaddam harbiy xizmatni oʻtamagan ofitserlarning qonunchilikda belgilangan muddat mobaynida Qurolli Kuchlar safidagi majburiy xizmatidir.\nMuddatli harbiy xizmat muddati kalendar hisobida oʻn ikki oy etib belgilanadi.\nMuddatli harbiy xizmatni oʻtash tartibi qonunchilik bilan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "78717_0006_7_1",
+     "doc_id": "lex:78717",
+     "doc_title": "UMUMIY HARBIY MAJBURIYAT VA HARBIY XIZMAT TOʻGʻRISIDA",
+     "article": "7-modda",
+     "retrieval_score": 0.6624,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Kontrakt boʻyicha harbiy xizmat Qurolli Kuchlar safidagi haqiqiy harbiy xizmatga ixtiyoriylik asosida, harbiy xizmat nazarda tutilgan vazirliklar va idoralar orqali davlat bilan tuziladigan kontraktga binoan kirgan fuqarolar bajaradigan harbiy xizmat turidir.\nHarbiy xizmatni kasb tariqasida tanlagan fuqarolar kontrakt boʻyicha harbiy xizmatni oddiy askarlar, serjantlar va ofitserlar tarkibi lavozimlarida oʻtaydilar.\nHarbiy xizmatni oʻtash muddatlari va asosiy shartlari kontraktda belgilanadi. Bunda haqiqiy harbiy xizmatga kontrakt boʻyicha kirayotgan shaxslar bilan dastlabki kontrakt besh yilga tuziladi; kontrakt boʻyicha harbiy xizmatchilar (rezervdagi harbiy xizmatga majburlar) bilan yangi kontrakt besh yilga yoki agar harbiy xizmatda boʻlish yoshining chegarasiga yetishiga besh yildan kam qolgan boʻlsa, kamroq muddatga tuziladi.\nOliy harbiy taʼlim muassasalarining kursantlari bilan oʻqish davri uchun kelgusida ularning ofitserlar tarkibi lavozimlarida harbiy xizmatni kamida besh yil majburiy oʻtashi sharti bilan kontraktlar tuziladi.\nHarbiy xizmatning kontraktda nazarda tutilgan muddati tugaganidan keyin taraflarning kelishuvi bilan bu muddat yangi kontrakt tuzish orqali uzaytirilishi mumkin. Kontrakt boʻyicha harbiy xizmatni oʻtash tartibi va muddatlari Oʻzbekiston Respublikasi fuqarolarining harbiy xizmatni oʻtash tartibi toʻgʻrisidagi nizom bilan belgilanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "78717_0003_4_1",
+     "doc_id": "lex:78717",
+     "doc_title": "UMUMIY HARBIY MAJBURIYAT VA HARBIY XIZMAT TOʻGʻRISIDA",
+     "article": "4-modda",
+     "retrieval_score": 0.636,
+     "fusion_score": 0.01601,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Harbiy xizmat Oʻzbekiston Respublikasi fuqarolarining Qurolli Kuchlar safida umumiy harbiy majburiyatni bajarish borasidagi davlat xizmatining alohida turidir.\nHarbiy xizmatning quyidagi turlari joriy etiladi:\nmuddatli harbiy xizmat;\nsafarbarlik chaqiruvi rezervidagi harbiy xizmat;\nkontrakt boʻyicha harbiy xizmat;\nOʻzbekiston Respublikasi Qurolli Kuchlari safida harbiy xizmatni oʻtagan rezervchilar xizmati.\nTinchlik davrida oddiy askarlar va serjantlar tarkibi lavozimlarida muddatli harbiy xizmatga, shuningdek safarbarlik chaqiruvi rezervidagi xizmatga oʻn sakkiz yoshdan yigirma yetti yoshgacha boʻlgan, salomatligiga koʻra Qurolli Kuchlar safida harbiy xizmatni oʻtashga yaroqli erkak fuqarolar chaqiriladilar."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "78717_0039_37_1",
+     "doc_id": "lex:78717",
+     "doc_title": "UMUMIY HARBIY MAJBURIYAT VA HARBIY XIZMAT TOʻGʻRISIDA",
+     "article": "37-modda",
+     "retrieval_score": 0.6456,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Muqobil xizmat fuqarolarning umumiy harbiy majburiyatni bajarishining chaqiruv boʻyicha harbiy xizmat oʻrniga iqtisodiyot, ijtimoiy sohaning turli tarmoqlarida kam malaka talab etiladigan (yordamchi) ishlarni, shuningdek falokatlar, halokatlar, tabiiy ofatlar va boshqa favqulodda vaziyatlar oqibatlarini bartaraf etish ishlarini bajarish bilan bogʻliq boʻlgan alohida turidir.\nOʻn sakkiz yoshdan yigirma yetti yoshgacha boʻlgan, harbiy roʻyxatda turuvchi va xizmatga chaqirilishi lozim boʻlgan fuqarolar, agar ular diniy taʼlimoti qurol-yarogʻdan foydalanish va Qurolli Kuchlarda xizmat qilishga yoʻl qoʻymaydigan, roʻyxatga olingan diniy tashkilotlar hisobida tursalar, muqobil xizmat huquqiga ega.\nMuqobil xizmatning muddati yigirma toʻrt oyni, oliy maʼlumotli fuqarolar uchun esa oʻn sakkiz oyni tashkil etadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "78717_0018_19_1",
+     "doc_id": "lex:78717",
+     "doc_title": "UMUMIY HARBIY MAJBURIYAT VA HARBIY XIZMAT TOʻGʻRISIDA",
+     "article": "19-modda",
+     "retrieval_score": 0.6172,
+     "fusion_score": 0.01575,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqarolarning muddatli harbiy xizmatga hamda safarbarlik chaqiruvi rezervidagi xizmatga chaqirilishi Oʻzbekiston Respublikasi Prezidentining qaroriga asosan yiliga bir marta — mart — aprel oylarida oʻtkaziladi.\nOʻzbekiston Respublikasi Prezidentining qarori chaqiruv boshlanishiga kamida bir oy qolganida ommaviy axborot vositalarida eʼlon qilinadi.\nOʻzbekiston Respublikasi Prezidentining qarori eʼlon qilinganidan keyin chaqiriluvchilar, shu jumladan vaqtincha roʻyxatda turgan, chaqiriluvchilar chaqiruv qogʻozida koʻrsatilgan muddatda chaqiruv punktida hozir boʻlishi shart. Muddatli harbiy xizmatni yoki safarbarlik chaqiruvi rezervidagi xizmatni oʻtamagan va harbiy roʻyxatda turmagan chaqirilish yoshidagi fuqarolar, shuningdek doimiy turar joyidan vaqtincha boshqa joyga joʻnab ketgan va oʻsha yerda harbiy roʻyxatda turmagan chaqiriluvchilar turar joylaridagi mudofaa ishlari organlarida hozir boʻlishi shart.\nKorxonalar, muassasalar, tashkilotlarning va taʼlim muassasalarining rahbarlari xizmat safarida boʻlgan chaqiriluvchilarni chaqirtirib olishlari va ularning chaqiruv uchastkasida oʻz vaqtida hozir boʻlishini taʼminlashlari shart.\nOʻn sakkiz yoshga toʻlgan va yoshi oʻn sakkizdan oshgan chaqiriluvchilarning harbiy roʻyxatda turish joyini oʻzgartirishiga Oʻzbekiston Respublikasi Prezidentining navbatdagi chaqiruv toʻgʻrisidagi qarori eʼlon qilinguniga qadar yoʻl qoʻyiladi.\nOʻzbekiston Respublikasi Prezidentining qarori eʼlon qilinganidan keyin chaqiriluvchilar harbiy roʻyxatda turish joyini faqat quyidagi hollarda oʻzgartirishi mumkin:\nboshqa joydagi ishga oʻtkazilgan boʻlsa;\nyangi turar joyga koʻchib oʻtgan boʻlsa;\ntaʼlim muassasasiga oʻqishga kirgan va taʼlim olishni davom ettirish uchun ketayotgan boʻlsa.\nUshbu moddaning oltinchi qismida koʻrsatilgan asoslarning mavjudligi mudofaa ishlari organiga taqdim etiladigan tegishli hujjatlar bilan tasdiqlanishi lozim.\nFuqarolar mudofaa ishlari organlari tomonidan belgilangan muddatlarda chaqiruv uchastkalarida hozir boʻlmaganda quyidagilar uzrli sabab hisoblanadi:\nfuqaroning chaqiruv uchastkasiga kelishiga imkon bermagan kasalligi;\nyaqin qarindoshining (otasi, onasi, aka-ukasi, opa-singlisi, xotini, bolasi) vafot etganligi yoki ogʻir kasalligi;\nfuqaroga bogʻliq boʻlmagan holda, uning chaqiruv uchastkasiga kelishiga imkon bermagan tabiiy ofat yoki boshqa holatlar.\nHozir boʻlmaganlik sabablari tegishli hujjatlar bilan tasdiqlanishi lozim.\nTinchlik davrida quyidagilar muddatli harbiy xizmatga chaqirilmaydi:\nushbu Qonunning 21 va 22-moddalariga muvofiq chaqirilish muddati kechiktirilgan va chaqirilishdan ozod etilgan shaxslar;\nishi yuzasidan surishtiruv yoki dastlabki tergov olib borilayotgan yoki jinoyat ishi sudda koʻrilayotgan shaxslar."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Hozir armiyaga ketsam necha oy xizmat qilaman, muddatli xizmat qancha davom etadi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7036,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.5-flash",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 399,
+    "rerank_ms": null,
+    "generation_ms": 10126,
+    "total_ms": 10526,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3308,
+    "output_tokens": 209
+   },
+   "llm_model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "id": "q037",
+   "status": "ok",
+   "answer": "Уй-жой кодексининг 24-моддасига кўра, квартирада авария ҳолати юзага келганда ва мулкдор йўқ бўлганда, авария-таъмирлаш хизмати хонадонга киришга ҳақлидир [2].\n\nБироқ, квартира мулкдори йўқлигида аварияни бартараф этиш учун бу жойга кириш албатта **ички ишлар органлари** ва **фуқароларнинг ўзини ўзи бошқариш органлари** вакиллари иштирокида амалга оширилиши шарт [2].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.559,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-106136",
+     "article_url": "https://lex.uz/uz/docs/-106136#-1102997",
+     "article": "24-modda",
+     "article_title": "Uy, kvartira mulkdorining huquq va majburiyatlari",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "106136_0023_24_1",
+     "quote": "Uy, kvartira mulkdori xususiy uy-joy fondini boshqarishda ishtirok etish, uyning texnik holati masalalarida davlat hokimiyati va boshqaruv organlariga murojaat etish, uy, kvartiraga xizmat koʻrsatish hamda ularni taʼmirlash usulini tanlash huquqiga egadir."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "106136_0022_23_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "23-modda",
+     "retrieval_score": 0.5066,
+     "fusion_score": 0.01444,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xususiy mulkida uyi, kvartirasi boʻlgan fuqarolar ulardan oʻzlari va oila aʼzolari yashashi uchun foydalanadilar. Ular uyiga, kvartirasiga boshqa fuqarolarni koʻchirib kiritishga, shuningdek turar joylarni ushbu Kodeksda hamda oʻzga qonunchilik hujjatlarida belgilangan shartlarda va tartibda ijaraga berish shartnomasi asosida boshqa fuqarolarga yashash uchun berishga haqlidirlar.\nMulkida uyi, kvartirasi boʻlgan fuqarolar ulardan boshqa fuqarolar hamda yuridik shaxslarning huquq va qonuniy manfaatlarini buzmagan holda boshqa maqsadlarda foydalanishga haqlidirlar.\nMulkida uyi, kvartirasi boʻlgan yuridik shaxslar ularni ijaraga, arendaga berishga hamda ulardan uy-joy toʻgʻrisidagi qonunchilikka zid kelmaydigan boshqa maqsadlarda foydalanishga haqlidirlar.\nIchki ishlar organlari tegishli hududda fuqarolar va yuridik shaxslarga xususiy mulk huquqi asosida tegishli boʻlgan turar joylardan hamda yashash uchun moʻljallanmagan joylardan foydalanilishi, shu jumladan pasport rejimiga rioya etilishi, yashayotgan shaxslarning hisobga olinishi va tegishli shartnomalarning mavjudligi yuzasidan nazoratni fuqarolarning oʻzini oʻzi boshqarish organlari hamda uy-joy mulkdorlari shirkatlari bilan birgalikda amalga oshiradi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "106136_0023_24_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "24-modda",
+     "retrieval_score": 0.5594,
+     "fusion_score": 0.01717,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Uy, kvartira mulkdori xususiy uy-joy fondini boshqarishda ishtirok etish, uyning texnik holati masalalarida davlat hokimiyati va boshqaruv organlariga murojaat etish, uy, kvartiraga xizmat koʻrsatish hamda ularni taʼmirlash usulini tanlash huquqiga egadir.\nUy, kvartira mulkdori uy, kvartiraning asralishini, tegishli texnik va sanitariya holatini taʼminlashi, ularni oʻz hisobidan joriy va kapital taʼmirlash ishlarini amalga oshirishi shart.\nKoʻp kvartirali uydagi kvartira mulkdori oʻziga qarashli joyga koʻp kvartirali uyga xizmat koʻrsatuvchi tashkilotlar yoki avariya-taʼmirlash xizmatlari vakillari umumiy mol-mulkning holatini nazorat qilish, unga xizmat koʻrsatish va uni taʼmirlash maqsadida mulkdorni oldindan xabardor qilgach, uning borligida kirishlarini taʼminlashi shart.\nKoʻp kvartirali uydagi kvartira mulkdori avariya holati yuzaga kelgan taqdirda, avariyani bartaraf etish uchun tegishli avariya-taʼmirlash xizmatlari vakillari oʻziga qarashli joyga kirishlarini darhol taʼminlashi shart. Kvartira mulkdori yoʻqligida avariyani bartaraf etish uchun bu joyga kirish ichki ishlar organlari va fuqarolarning oʻzini oʻzi boshqarish organlari vakillari ishtirokida tegishli avariya-taʼmirlash xizmati tomonidan amalga oshiriladi.\nKoʻp kvartirali uydagi kvartira mulkdori tegishli ruxsatnoma olmasdan oʻziga qarashli joyni oʻzboshimchalik bilan qayta qurgan yoki oʻzgartirgan taqdirda, qonunchilikda belgilangan tartibda javobgar boʻladi hamda bu joyni oʻz hisobidan avvalgi holatiga keltirishi shart."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "106136_0008_10_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "10-modda",
+     "retrieval_score": 0.7049,
+     "fusion_score": 0.01678,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Turar joylarga quyidagilar kiradi:\nuylar;\nkoʻp kvartirali uylardagi kvartiralar;\nboshqa imoratlardagi yashash uchun moʻljallangan xonalar va oʻzga turar joylar."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "106136_0043_44_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "44-modda",
+     "retrieval_score": 0.5305,
+     "fusion_score": 0.01642,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar munitsipal, idoraviy uy-joy fondi va aniq maqsadli kommunal uy-joy fondining uyidan ikki va undan ortiq ijaraga oluvchi yashaydigan kvartirada boshqa turar joydan alohida boʻlmagan va shu turar joyga tutash xona boʻshab qolsa, bu xona foydalanish uchun tutash xonani ijaraga oluvchiga berilishi kerak.\nAgar kvartiradagi alohida xona boʻshasa, u belgilangan norma boʻyicha uy-joy maydoni bilan taʼminlanmagan ijaraga oluvchiga beriladi. Agar kvartirada belgilangan norma boʻyicha uy-joy maydoni bilan taʼminlanmagan bir necha ijaraga oluvchi boʻlsa, oilasi uy-joy sharoitlarini yaxshilashga eng koʻp muhtoj boʻlgan ijaraga oluvchi boʻshagan xonani olishda imtiyozli huquqqa ega boʻladi.\nIjaraga oluvchi (ijaraga oluvchilar) boʻshagan xonaga joylashishni rad etgan taqdirda, u umumiy tartibda beriladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "106136_0001_2_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "2-modda",
+     "retrieval_score": 0.7242,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Uy-joy toʻgʻrisidagi qonunchilik fuqarolar, yuridik shaxslar, respublika ijro etuvchi hokimiyat organlari va mahalliy ijro etuvchi hokimiyat organlarining quyidagi masalalar boʻyicha munosabatlarini tartibga soladi:\nturar joylarga mulk huquqi, egalik qilish va foydalanish huquqining yuzaga kelishi, amalga oshirilishi, oʻzgarishi hamda bekor boʻlishi;\nuy-joy fondini hisobga olish;\nuy-joy fondini saqlash, qarash va taʼmirlashni taʼminlash;\nfuqarolarning uy-joy huquqlariga rioya etilishi va uy-joy fondidan maqsadli foydalanish ustidan nazorat qilish.\nUylarni qurish, turar joylarni qayta qurish va oʻzgartirish, muhandislik qurilmalaridan foydalanish, kommunal xizmatlar bilan taʼminlash bilan bogʻliq munosabatlar ushbu Kodeks va boshqa qonunchilik hujjatlari bilan tartibga solinadi.\nAgar qonunda yoki Oʻzbekiston Respublikasining xalqaro shartnomasida boshqacha tartib belgilangan boʻlmasa, uy-joy toʻgʻrisidagi qonunchilikning qoidalari chet el fuqarolari, fuqaroligi boʻlmagan shaxslar, chet el yuridik shaxslari ishtirokidagi uy-joy munosabatlariga nisbatan qoʻllaniladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Turar joy daxlsizligi, favqulodda holatlarda uyga kirish tartibi, Fuqarolik kodeksi, Uy-joy kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5594,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.5-flash",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1479,
+    "rerank_ms": null,
+    "generation_ms": 11592,
+    "total_ms": 13072,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3001,
+    "output_tokens": 226
+   },
+   "llm_model": "gemini-3.5-flash",
+   "error": null
+  },
+  {
+   "id": "q038",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga mos qonun normasi topilmadi. Savolni aniqroq yozib koʻring (masalan, qaysi soha yoki hujjat haqida).",
+   "answer_language": "uz-Cyrl",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "8093787_0002_3_2",
+     "doc_id": "lex:8093787",
+     "doc_title": "Jismoniy tarbiya va sport toʻgʻrisida",
+     "article": "3-modda",
+     "retrieval_score": 0.4469,
+     "fusion_score": 0.04892,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "sport diskvalifikatsiyasi — sport turining qoidalarini yoki sport musobaqalari toʻgʻrisidagi qoidalarni (nizomlarni, reglamentlarni) yoxud antidoping qoidalarini buzganlik uchun sportchini, trenerni, sport hakamini va sport sohasidagi boshqa mutaxassislarni sport musobaqalarida ishtirok etishdan chetlashtirish;\nsport inshooti — sport tadbirlari, sport turlari boʻyicha oʻquv mashgʻulotlari va oʻquv-mashgʻulot yigʻinlarini oʻtkazish uchun moʻljallangan, belgilangan normalar va talablarga javob beradigan yopiq yoki ochiq turdagi ixtisoslashtirilgan inshoot;\nsport musobaqasi — sportchilar yoki sport jamoalari oʻrtasida sport turi (sport turlari) boʻyicha eng yaxshi ishtirokchini (ishtirokchilarni) aniqlash maqsadida tasdiqlangan qoidalar asosida oʻtkaziladigan bellashuv;\nsport tadbiri — tasdiqlangan qoidalar asosida tashkil etilgan, jismoniy faollik va raqobatga asoslangan musobaqa, shuningdek sogʻlom turmush tarzini targʻib qilishga, sportchilarning mahorati va salohiyatini namoyon etishga hamda aholini sportga jalb etishga qaratilgan tadbir;\nsport turi — sport musobaqalariga oʻziga xos tarzda tayyorgarlik koʻrilishi bilan ajralib turuvchi, sport musobaqalarini oʻtkazishga va ularda ishtirok etishga doir talablar va shartlar belgilanadigan qoidalarga (nizomga, reglamentga) ega boʻlgan jismoniy tarbiya va sport sohasidagi faoliyat turi;\nsport turining tarmogʻi — farqlovchi belgilarga ega boʻlgan hamda bitta yoki bir nechta sport musobaqalari dasturlari turlarini oʻz ichiga oladigan sport turining qismi;\nsport federatsiyasi (uyushmasi) — mamlakatda muayyan sport turini (turlarini) rivojlantirishni, ommalashtirishni, sport tadbirlarini tashkil etish va oʻtkazishni, shuningdek Oʻzbekiston Respublikasining sport terma jamoasi aʼzoligiga nomzodlarni saralashni va tavsiya etishni oʻz faoliyatining asosiy maqsadi sifatida belgilagan, tegishli tartibda Sport federatsiyalari (uyushmalari) reyestriga kiritilgan nodavlat notijorat tashkiloti;\nsportning texnik va amaliy turlari — sport natijalariga erishish uchun sportchi tomonidan umumiy jismoniy mashqlar majmuasidan tashqari, sport texnikasidan, moslamalaridan yoki texnikaviy vositalardan foydalana bilish hamda ularni boshqarish sohasidagi koʻnikmalar va mahorat qoʻllaniladigan, shuningdek har xil sport turlaridan olingan, amaliy ahamiyatga ega boʻlgan mashqlar birikmasidan foydalaniladigan sport turlari. Sportning texnik va amaliy turlari yoshlarni Oʻzbekiston Respublikasi Qurolli Kuchlarida xizmat qilishga tayyorlashning tarkibiy qismidir;\nsportning harbiy-amaliy turlari — asosi harbiy xizmatchilar hamda maxsus xizmatni oʻtayotgan shaxslar tomonidan oʻz xizmat vazifalarini bajarishi bilan bogʻliq maxsus harakatlardan (shu jumladan usullardan) iborat boʻlgan sport turlari;\nOʻzbekiston Respublikasining sport terma jamoalari — xalqaro sport musobaqalariga tayyorgarlik koʻrish hamda ularda Oʻzbekiston Respublikasi nomidan ishtirok etish uchun turli yosh toifalari boʻyicha sportchilardan, trenerlardan, jismoniy tarbiya va sport sohasidagi boshqa mutaxassislardan iborat jamoalar;\nhavaskorlik sporti — sportning aholini ixtiyoriylik asosida sportga jalb etish orqali odamlar sogʻligʻini mustahkamlashga qaratilgan qismi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "8093787_0020_21_1",
+     "doc_id": "lex:8093787",
+     "doc_title": "Jismoniy tarbiya va sport toʻgʻrisida",
+     "article": "21-modda",
+     "retrieval_score": 0.428,
+     "fusion_score": 0.04865,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sport federatsiyasi (uyushmasi) mamlakatda muayyan sport turini (turlarini) rivojlantirish, ommalashtirish, sport tadbirlarini tashkil etish va oʻtkazish, tegishli sport turi (turlari) boʻyicha sportchilarni tayyorlash ishlarini amalga oshiradi, xalqaro miqyosdagi barcha sport musobaqalari va tadbirlarida Oʻzbekiston Respublikasi manfaatlarini ifoda etadi.\nSport federatsiyasi (uyushmasi) oʻzi rivojlantiradigan sport turi (turlari) boʻyicha Oʻzbekiston Respublikasining chempionatlari va kuboklari musobaqalari oʻtkazib borilishini tashkil etadi.\nSport federatsiyasining (uyushmasining) rasmiy nomi nodavlat notijorat tashkilotlari toʻgʻrisidagi qonunchilikda belgilangan talablarga muvofiq boʻlishi hamda unda sport federatsiyasi (uyushmasi) faoliyatining hududiy sohasi, shuningdek sport federatsiyasi (uyushmasi) qaysi sport turini (turlarini) rivojlantirish maqsadida tashkil etilgan boʻlsa, oʻsha sport turi (turlari) koʻrsatilishi lozim.\nSport federatsiyalarining (uyushmalarining) tashkil etilishi, faoliyati, qayta tashkil etilishi va tugatilishi, ushbu Qonunda nazarda tutilgan oʻziga xos xususiyatlar inobatga olingan holda, nodavlat notijorat tashkilotlari toʻgʻrisidagi qonunchilikka muvofiq amalga oshiriladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "180552_0603_984_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "984-modda",
+     "retrieval_score": 0.431,
+     "fusion_score": 0.04762,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Lotereyalarning, Internet jahon axborot tarmogʻida tavakkalchilikka asoslangan oʻyinlarning va bukmekerlik garovlarining (bundan buyon matnda oʻyinlar deb yuritiladi) vakolatli davlat organidan litsenziya olgan tashkilotchilari hamda oʻyinlarning ishtirokchilari oʻrtasidagi munosabatlar qonunchilik hujjatlari bilan tartibga solinadi va shartnomaga asoslanadi. Oʻyinlarning tashkilotchisi va ishtirokchisi oʻrtasidagi shartnoma chipta, kvitansiya berish orqali yoki oʻyinni tashkil etish qoidalarida nazarda tutilgan boshqa usulda rasmiylashtiriladi hamda ishtirokchi chipta qiymatini toʻlagan yoki oʻyinga pul tikkan paytdan eʼtiboran tuzilgan deb eʼtirof etiladi.\nQonun hujjatlari bilan alohida toifadagi shaxslarning oʻyinlarda ishtirok etishi taqiqlanishi mumkin.\nUshbu moddaning birinchi qismida nazarda tutilgan shartnomani tuzish toʻgʻrisidagi taklif oʻyinlarni oʻtkazish muddati hamda yutuqni aniqlash tartibi va uning miqdori haqidagi shartlarni oʻz ichiga olgan boʻlishi kerak.\nOʻyinlarning tashkilotchisi ularni belgilangan muddatda oʻtkazishni rad etgan taqdirda, oʻyinlarning ishtirokchilari ularning tashkilotchisidan oʻyinlar qoldirilganligi yoki ularning muddati koʻchirilganligi tufayli yetkazilgan haqiqiy zararning oʻrnini qoplashni talab qilishga haqli.\nOʻyinlarni oʻtkazish shartlariga muvofiq gʻolib deb eʼtirof etiladigan shaxslarga oʻyinlarni oʻtkazish shartlarida nazarda tutilgan miqdorda, shaklda (pulda yoki naturada) va muddatda, agar ushbu shartlarda muddat koʻrsatilmagan boʻlsa, oʻyinlarning natijalari aniqlangan paytdan eʼtiboran oʻn kundan kechiktirmay yoxud qonunchilik hujjatlarida belgilangan boshqa muddatda oʻyinlar tashkilotchisi tomonidan yutuq toʻlanishi kerak.\nOʻyinlarning tashkilotchisi ushbu moddaning beshinchi qismida koʻrsatilgan majburiyatini bajarmagan taqdirda, oʻyinda gʻolib boʻlgan ishtirokchi oʻyinlar tashkilotchisidan yutuqni toʻlashni, shuningdek oʻyinlar tashkilotchisi tomonidan shartnoma buzilganligi tufayli yetkazilgan zararlarning oʻrnini qoplashni talab qilishga haqli."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Futbol boʻyicha jahon chempionati qachon va qayerda oʻtadi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [
+     "Футбол бўйича жаҳон чемпионати қачон?",
+     "Футбол бўйича жаҳон қаерда ўтади?"
+    ],
+    "retrieved_total": 3,
+    "best_cosine": 0.4469,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "low_similarity",
+    "llm_model": null,
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1111,
+    "rerank_ms": null,
+    "generation_ms": null,
+    "total_ms": 1118,
+    "rewrite_ms": null
+   },
+   "usage": null,
+   "llm_model": null,
+   "error": null
+  },
+  {
+   "id": "q039",
+   "status": "ok",
+   "answer": "Mehnat kodeksining 165-moddasiga koʻra, tashkilot xodimlarining soni yoki shtati oʻzgarganligi munosabati bilan mehnat shartnomasi bekor qilinganda, ish beruvchi xodimni kamida ikki oy oldin yozma shaklda (imzo qoʻydirib) ogohlantirishi shart [1].\n\nMazkur jarayonda quyidagi qoidalar amal qiladi:\n- Ish beruvchi ogohlantirish muddatini uning davomiyligiga muvofiq keladigan pulli kompensatsiya bilan almashtirishga haqlidir [1].\n- Ogohlantirish muddati ichida xodimga boshqa ish qidirish uchun haftada kamida bir kun ish haqi saqlangan holda ishga chiqmaslik huquqi beriladi [1].\n- Ogohlantirish muddatiga xodimning vaqtincha mehnatga qobiliyatsizlik davrlari hamda davlat yoki jamoat majburiyatlarini bajargan vaqti hisobga kiritilmaydi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.662,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6261634",
+     "article": "165-modda",
+     "article_title": "Mehnat shartnomasini ish beruvchining tashabbusiga koʻra bekor qilish toʻgʻrisida ogohlantirish",
+     "part": "7-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0164_165_1",
+     "quote": "Xodimni ogohlantirish muddati ichida, bundan mehnatga oid munosabatlarni uning aybli harakatlari (harakatsizligi) munosabati bilan tugatish toʻgʻrisidagi ogohlantirish mustasno, xodimga boshqa ish qidirish uchun haftada kamida bir kun shu vaqt uchun ish haqi saqlangan holda ishga chiqmaslik huquqi beriladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0164_165_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "165-modda",
+     "retrieval_score": 0.6619,
+     "fusion_score": 0.01719,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ish beruvchi oʻzining mehnat shartnomasini bekor qilish niyati haqida xodimni quyidagi muddatlarda yozma shaklda (imzo qoʻydirib) ogohlantirishi shart:\n1) mehnat shartnomasi:\ntashkilot (uning alohida boʻlinmasi) oʻz muassislarining (ishtirokchilarining) yoxud taʼsis hujjatlari bilan bunga vakolat berilgan yuridik shaxs organining qaroriga binoan tugatilganligi;\ntexnologiyaning, ishlab chiqarish va mehnatni tashkil etishning oʻzgarishiga, ishlar (mahsulot, xizmatlar) hajmining qisqarishiga bogʻliq boʻlgan tashkilot xodimlarining soni yoki shtati oʻzgarganligi;\ntashkilot rahbariga, uning oʻrinbosarlariga, bosh buxgalterga va tashkilotning alohida boʻlinmasi rahbariga nisbatan tashkilot mulkdorining oʻzgarganligi munosabati bilan bekor qilinganda kamida ikki oy oldin;\n2) mehnat shartnomasi xodimning malakasi yetarli boʻlmaganligi tufayli bajarayotgan ishiga muvofiq emasligi munosabati bilan bekor qilinganda kamida ikki hafta oldin;\n3) mehnat shartnomasi xodimning aybli harakatlari (harakatsizligi) munosabati bilan bekor qilinganda kamida uch kun oldin.\nXodimni mehnat shartnomasini ish beruvchining tashabbusiga koʻra kelgusida bekor qilish toʻgʻrisida ogohlantirishning ushbu moddaning birinchi qismida nazarda tutilgan muddatlari barcha hollarda qoʻllaniladi, bundan ushbu Kodeksning VI boʻlimida ayrim toifadagi xodimlarga nisbatan boshqa ogohlantirish muddatlari belgilangan hollar mustasno.\nIsh beruvchi ushbu moddaning birinchi qismida nazarda tutilgan xodimni ogohlantirish muddatlarini ogohlantirish muddatining davomiyligiga muvofiq keladigan pulli kompensatsiya bilan almashtirishga haqlidir. Xodimga ogohlantirish muddatiga mutanosib pulli kompensatsiya toʻlash ish beruvchini qonunchilikda nazarda tutilgan boshqa toʻlovlarni amalga oshirish majburiyatidan, shuningdek oʻzga toʻlovlarni, agar ular mehnat haqidagi boshqa huquqiy hujjatlarda yoki mehnat shartnomasida nazarda tutilgan boʻlsa, amalga oshirishdan ozod etmaydi.\nXodimni ogohlantirish muddati ichida, bundan mehnatga oid munosabatlarni uning aybli harakatlari (harakatsizligi) munosabati bilan tugatish toʻgʻrisidagi ogohlantirish mustasno, xodimga boshqa ish qidirish uchun haftada kamida bir kun shu vaqt uchun ish haqi saqlangan holda ishga chiqmaslik huquqi beriladi.\nXodimni ogohlantirish muddatiga xodimning vaqtincha mehnatga qobiliyatsizlik davrlari, shuningdek uning davlat yoki jamoat majburiyatlarini bajargan vaqti kiritilmaydi, bundan mehnatga oid munosabatlarning tashkilot (uning alohida boʻlinmasi) tugatilganligi munosabati bilan tugatilishi mustasno."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0159_160_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "160-modda",
+     "retrieval_score": 0.6385,
+     "fusion_score": 0.01672,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xodim nomuayyan muddatga tuzilgan mehnat shartnomasini, shuningdek muddati tugaguniga qadar muddatli mehnat shartnomasini oʻn toʻrt kalendar kun oldin bu haqda ish beruvchini yozma shaklda ogohlantirgan holda bekor qilishga haqli. Oʻz tashabbusiga koʻra bekor qilinganda ish beruvchini ogohlantirishning boshqa muddatlari quyidagilarga nisbatan belgilab qoʻyilgan:\ntashkilot rahbari, uning oʻrinbosarlari, tashkilotning bosh buxgalteri va tashkilot alohida boʻlinmasining rahbari (ushbu Kodeks 489-moddasining uchinchi va toʻrtinchi qismlari);\nmavsumiy xodimlar (ushbu Kodeks 494-moddasining birinchi qismi);\nvaqtinchalik ishlarda band boʻlgan shaxslar (ushbu Kodeks 499-moddasining birinchi qismi);\nmikrofirmalar ish beruvchilarining xodimlari (ushbu Kodeks 506-moddasining birinchi qismi);\nyakka tartibdagi tadbirkorlarda ishlaydigan shaxslar (ushbu Kodeks 511-moddasining birinchi qismi);\nuy ishchilari (ushbu Kodeks 518-moddasining birinchi qismi);\nqonunda nazarda tutilgan hollarda boshqa xodimlar.\nOgohlantirish muddatining oʻtishi ish beruvchi tomonidan xodimning mehnat shartnomasini bekor qilish toʻgʻrisidagi arizasi olinganidan soʻng keyingi kunda boshlanadi.\nXodim mehnat shartnomasini bekor qilish toʻgʻrisidagi arizani pochta joʻnatmasini topshirish haqidagi xabarnoma bilan yuborishga haqli. Bunda mehnat shartnomasini bekor qilish haqidagi ogohlantirish muddatini hisoblab chiqarish ish beruvchi tomonidan ariza olingan sanadan soʻng keyingi kunda boshlanadi.\nXodim va ish beruvchi oʻrtasidagi kelishuvga koʻra mehnat shartnomasi ogohlantirish muddati tugashiga qadar bekor qilinishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0097_98_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "98-modda",
+     "retrieval_score": 0.6334,
+     "fusion_score": 0.01669,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ommaviy ravishda ishdan boʻshatish mezonlari texnologiyaning, ishlab chiqarish va mehnatni tashkil etishning oʻzgarishi, ishlar (mahsulot, xizmatlar) hajmining qisqarishi bilan bogʻliq boʻlgan tashkilot xodimlarining soni yoki shtati oʻzgarganligi sababli yoki tashkilot (uning alohida boʻlinmasi) tugatilganligi munosabati bilan oʻzi bilan tuzilgan mehnat shartnomasi bekor qilinishi nazarda tutilayotgan xodimlar sonining koʻrsatkichlaridan iboratdir.\nXodimlarni ommaviy ravishda ishdan boʻshatish mezonlari jumlasiga quyidagilar kiradi:\na) xodimlarining soni yigirma nafar va undan ortiq boʻlgan har qanday tashkiliy-huquqiy shakldagi tashkilotni (uning alohida boʻlinmasini) tugatish;\nb) xodimlar sonining (shtatining) quyidagi miqdorda:\noʻttiz kalendar kun ichida ellik nafar va undan ortiq xodimning;\noltmish kalendar kun ichida ikki yuz nafar va undan ortiq xodimning;\ntoʻqson kalendar kun ichida besh yuz nafar va undan ortiq xodimning qisqarishi.\nQoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesi, xalq deputatlari viloyatlar va Toshkent shahar Kengashlari xodimlarni ommaviy ravishda ishdan boʻshatish toʻgʻrisidagi qarorlarni ushbu kechiktirish keltirib chiqargan yoʻqotishlarni ish beruvchiga bir vaqtning oʻzida qisman yoki toʻliq kompensatsiya qilish orqali olti oy muddatgacha toʻxtatib turishi mumkin.\nIsh beruvchi xodimlarni kelgusida ommaviy ravishda ishdan boʻshatish toʻgʻrisidagi axborotni ushbu Kodeksning 166-moddasida nazarda tutilgan tartibda va muddatlarda mehnat organining hamda hududiy yoki tarmoq kasaba uyushmalari birlashmalarining eʼtiboriga yetkazishi shart. Mehnat organlari mazkur axborotni olgach, ishdan boʻshatilayotgan xodimlarni qonunchilikda nazarda tutilgan tartibda ishga joylashtirish choralarini koʻrishi shart."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0165_166_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "166-modda",
+     "retrieval_score": 0.6326,
+     "fusion_score": 0.01635,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish beruvchi ushbu Kodeks 137-moddasining toʻrtinchi qismida, 146-moddasining beshinchi qismida, 161-moddasi ikkinchi qismining 1 va 2-bandlarida, 168-moddasi birinchi qismining 6-bandida nazarda tutilgan asoslar boʻyicha qaysi xodim bilan mehnat shartnomasini bekor qilish niyatida boʻlsa, oʻsha xodim ishdan boʻshatiladigan xodimdir.\nIsh beruvchi kasaba uyushmasi qoʻmitasiga yoxud kasaba uyushmalari tegishli birlashmasiga xodimlarning ehtimol tutilgan ishdan boʻshatilishi toʻgʻrisidagi axborotni oʻz vaqtida, kamida ikki oy oldin taqdim etadi va ishdan boʻshatish oqibatlarini yumshatishga qaratilgan maslahatlashuvlar oʻtkazadi.\nIsh beruvchi har bir xodimning kelgusida ishdan boʻshatilishi toʻgʻrisidagi maʼlumotlarni uning kasbi, mutaxassisligi, malakasini va mehnatiga haq toʻlash miqdorini koʻrsatgan holda ikki oydan kechiktirmay “Yagona milliy mehnat tizimi” idoralararo dasturiy-apparat majmuasiga kiritish orqali mahalliy mehnat organi eʼtiboriga ham yetkazishi shart."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0136_137_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "137-modda",
+     "retrieval_score": 0.6288,
+     "fusion_score": 0.01617,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar texnologiyadagi, ishlab chiqarish va mehnatni tashkil etishdagi oʻzgarishlar, ishlar (mahsulot, xizmatlar) hajmlarining qisqarganligi munosabati bilan avvalgi mehnat shartlari saqlab qolinishi mumkin boʻlmasa, ish beruvchi xodim mehnat shartnomasida shart qilib koʻrsatilgan mehnat vazifasini davom ettirayotganida xodimning roziligisiz mehnat shartlarini oʻzgartirishga haqli.\nAgar ushbu Kodeksda boshqacha qoida nazarda tutilmagan boʻlsa, ish beruvchi mehnat shartlarining kelgusidagi oʻzgarishi haqida xodimni kamida ikki oy oldin yozma shaklda, imzo qoʻydirib ogohlantirishi shart. Koʻrsatilgan muddatni qisqartirishga faqat xodim va ish beruvchi oʻrtasidagi kelishuvga koʻra yoʻl qoʻyiladi.\nIsh beruvchi mehnat shartlarining kelgusidagi oʻzgarishi toʻgʻrisida xodimni ogohlantirishning ikki haftadan ortiq boʻlgan muddatini mutanosib pulli kompensatsiya bilan almashtirishga haqli. Bunda xodimni ogohlantirish paytidan eʼtiboran ikki haftalik ogohlantirish muddati faqat xodimning roziligi bilan pulli kompensatsiya bilan almashtirilishi mumkin.\nAgar ushbu moddaning ikkinchi va uchinchi qismlarida nazarda tutilgan ogohlantirish muddati tugagach xodim yangi mehnat shartlarida mehnat qilishni rad etsa, xodim bilan tuzilgan mehnat shartnomasi xodim yangi mehnat shartlarida ishni davom ettirishni rad etganligi munosabati bilan unga ushbu Kodeksning 173-moddasiga muvofiq ishdan boʻshatish nafaqasi toʻlangan va 100-moddasida nazarda tutilgan kafolatlar taqdim etilgan holda bekor qilinishi mumkin.\nAgar oʻzining mehnat shartlari oʻzgartirilayotgan xodimlar soni ushbu Kodeksning 98-moddasi ikkinchi qismida nazarda tutilgan miqdorga teng boʻlsa yoki undan oshadigan boʻlsa, ish beruvchi xodimlar uchun mehnat shartlarining oʻzgartirilishi xususida kasaba uyushmasi qoʻmitasi bilan dastlabki maslahatlashuvlar oʻtkazadi.\nMehnat shartlari noqulay tarzda oʻzgargan taqdirda, ish beruvchi, agar mehnat shartlari yomonlashayotgan xodimlar soni ushbu Kodeksning 98-moddasi ikkinchi qismida nazarda tutilgan miqdorga teng boʻlsa yoki undan oshadigan boʻlsa, mahalliy mehnat organiga, shuningdek kasaba uyushmalarining hududiy yoki tarmoq birlashmasiga bunday oʻzgarishlarning sabablari toʻgʻrisida axborot taqdim etishi shart.\nXodim ish beruvchi tomonidan mehnat shartlari oʻzgartirilganligi ustidan shikoyat qilishga haqli. Yakka tartibdagi mehnat nizosini koʻrish chogʻida avvalgi mehnat shartlarini saqlab qolish imkoniyati yoʻqligini isbotlab berish majburiyati ish beruvchining zimmasiga yuklatiladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Korxona shtatni qisqartirib meni ishdan boʻshatmoqchi. Ish beruvchi meni qancha vaqt oldin ogohlantirishi shart?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6619,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.8-flash",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 440,
+    "rerank_ms": null,
+    "generation_ms": 28591,
+    "total_ms": 29032,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 4655,
+    "output_tokens": 331
+   },
+   "llm_model": "gemini-3.8-flash",
+   "error": null
+  },
+  {
+   "id": "q040",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Konstitutsiyasiga oʻzgartirish va qoʻshimchalar kiritish uchun Oliy Majlis Qonunchilik palatasi deputatlari va Senat aʼzolari umumiy sonining kamida uchdan ikki qismidan iborat koʻpchilik ovozi talab qilinadi [1][2][3][5].\n\nTafsilotlar:\n* Oʻzbekiston Respublikasi Konstitutsiyasining 154-moddasiga koʻra, oʻzgartirishlar konstitutsiyaviy qonun yoki referendum orqali kiritiladi [1].\n* Oliy Majlis Qonunchilik palatasi Reglamentining 18-moddasiga muvofiq, qonun loyihasini qabul qilish uchun deputatlar umumiy sonining uchdan ikki qismi ovozi zarur [3].\n* Oliy Majlis Senati Reglamentining 14-moddasiga koʻra, senatorlar umumiy sonining uchdan ikki qismidan iborat koʻpchilik ovozi talab qilinadi [2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.684,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "doc_type": "konstitutsiya",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6445145",
+     "article_url": "https://lex.uz/uz/docs/-6445145#-6446212",
+     "article": "154-modda",
+     "article_title": null,
+     "part": "1-qism",
+     "edition_date": "2026-07-25",
+     "doc_status": "amalda",
+     "chunk_id": "6445145_0154_154_1",
+     "quote": "Oʻzbekiston Respublikasining Konstitutsiyasiga oʻzgartirish va qoʻshimchalar tegishincha Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputatlari va Senati aʼzolari umumiy sonining kamida uchdan ikki qismidan iborat koʻpchiligi tomonidan qabul qilingan konstitutsiyaviy qonun yoki Oʻzbekiston Respublikasining referendumi bilan kiritiladi."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:60232",
+     "doc_title": "Oʻzbekiston Respublikasi Oliy Majlisi Senatining reglamenti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "523-II",
+     "url": "https://lex.uz/uz/docs/-60232",
+     "article_url": "https://lex.uz/uz/docs/-60232#-61576",
+     "article": "14-modda",
+     "article_title": "Oʻzbekiston Respublikasining Konstitutsiyasini, konstitutsiyaviy qonunni, ularga oʻzgartishlar va qoʻshimchalar kiritish toʻgʻrisidagi qonunlarni koʻrib chiqishning oʻziga xos xususiyatlari",
+     "part": "1-qism",
+     "edition_date": "2024-11-18",
+     "doc_status": "amalda",
+     "chunk_id": "60232_0014_14_1",
+     "quote": "Oʻzbekiston Respublikasining Konstitutsiyasini, konstitutsiyaviy qonunni, ularga oʻzgartishlar va qoʻshimchalar kiritish toʻgʻrisidagi qonunlarni maʼqullash uchun senatorlar umumiy sonining uchdan ikki qismidan iborat koʻpchilik ovozi talab qilinadi."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:39573",
+     "doc_title": "Oʻzbekiston Respublikasi Oliy Majlisi Qonunchilik palatasining Reglamenti toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "522-II",
+     "url": "https://lex.uz/uz/docs/-39573",
+     "article_url": "https://lex.uz/uz/docs/-39573#-6814428",
+     "article": "18-modda",
+     "article_title": "Oʻzbekiston Respublikasi Konstitutsiyasining, konstitutsiyaviy qonunning, ularga oʻzgartirishlar va qoʻshimchalar kiritish toʻgʻrisidagi qonunlarning loyihalarini koʻrib chiqishning oʻziga xos xususiyatlari",
+     "part": "1-qism",
+     "edition_date": "2026-05-01",
+     "doc_status": "amalda",
+     "chunk_id": "39573_0021_18_1",
+     "quote": "Oʻzbekiston Respublikasi Konstitutsiyasining, konstitutsiyaviy qonunning, ularga oʻzgartirishlar va qoʻshimchalar kiritish toʻgʻrisidagi qonunlarning loyihalarini qabul qilish uchun Qonunchilik palatasi deputatlari umumiy sonining uchdan ikki qismidan iborat koʻpchilik ovozi talab qilinadi."
+    },
+    {
+     "ref": 5,
+     "doc_id": "lex:6449033",
+     "doc_title": "Oʻzbekiston Respublikasi Konstitutsiyasi toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-837",
+     "url": "https://lex.uz/uz/docs/-6449033",
+     "article_url": "https://lex.uz/uz/docs/-6449033#-6449053",
+     "article": "8-modda",
+     "article_title": null,
+     "part": "1-qism",
+     "edition_date": "2023-05-01",
+     "doc_status": "amalda",
+     "chunk_id": "6449033_0008_8_1",
+     "quote": "Ushbu Konstitutsiyaviy Qonun va ushbu Konstitutsiyaviy Qonun tahriridagi Oʻzbekiston Respublikasi Konstitutsiyasiga oʻzgartirish va qoʻshimchalar tegishincha Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputatlari va Senati aʼzolari umumiy sonining kamida uchdan ikki qismidan iborat koʻpchiligi tomonidan qabul qilingan konstitutsiyaviy qonun yoki Oʻzbekiston Respublikasining referendumi bilan kiritilishi mumkin."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6445145_0154_154_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "154-modda",
+     "retrieval_score": 0.6844,
+     "fusion_score": 0.01693,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasining Konstitutsiyasiga oʻzgartirish va qoʻshimchalar tegishincha Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputatlari va Senati aʼzolari umumiy sonining kamida uchdan ikki qismidan iborat koʻpchiligi tomonidan qabul qilingan konstitutsiyaviy qonun yoki Oʻzbekiston Respublikasining referendumi bilan kiritiladi.\nUshbu Konstitutsiya 1-moddasining va ushbu modda ikkinchi qismining qoidalari qayta koʻrib chiqilishi mumkin emas.\nOʻzbekiston Respublikasining Konstitutsiyasiga oʻzgartirish va qoʻshimchalar kiritish toʻgʻrisidagi konstitutsiyaviy qonunda uning normalarini, shuningdek Konstitutsiyaning normalarini qoʻllashning oʻziga xos xususiyatlari nazarda tutilishi mumkin."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "60232_0014_14_1",
+     "doc_id": "lex:60232",
+     "doc_title": "Oʻzbekiston Respublikasi Oliy Majlisi Senatining reglamenti toʻgʻrisida",
+     "article": "14-modda",
+     "retrieval_score": 0.6607,
+     "fusion_score": 0.01685,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasining Konstitutsiyasini, konstitutsiyaviy qonunni, ularga oʻzgartishlar va qoʻshimchalar kiritish toʻgʻrisidagi qonunlarni maʼqullash uchun senatorlar umumiy sonining uchdan ikki qismidan iborat koʻpchilik ovozi talab qilinadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "39573_0021_18_1",
+     "doc_id": "lex:39573",
+     "doc_title": "Oʻzbekiston Respublikasi Oliy Majlisi Qonunchilik palatasining Reglamenti toʻgʻrisida",
+     "article": "18-modda",
+     "retrieval_score": 0.6306,
+     "fusion_score": 0.01634,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi Konstitutsiyasining, konstitutsiyaviy qonunning, ularga oʻzgartirishlar va qoʻshimchalar kiritish toʻgʻrisidagi qonunlarning loyihalarini qabul qilish uchun Qonunchilik palatasi deputatlari umumiy sonining uchdan ikki qismidan iborat koʻpchilik ovozi talab qilinadi.\nQonunchilik palatasi Oʻzbekiston Respublikasining Konstitutsiyasiga oʻzgartirishlar va qoʻshimchalar kiritish toʻgʻrisidagi qonun loyihasini tegishli taklif kiritilgandan keyin olti oy ichida uning keng muhokamasini inobatga olgan holda koʻrib chiqishi mumkin.\nAgar Qonunchilik palatasi Oʻzbekiston Respublikasining Konstitutsiyasiga oʻzgartirishlar va qoʻshimchalar kiritish toʻgʻrisidagi qonun loyihasini qabul qilmasa, uni koʻrib chiqish kamida bir yildan keyin qayta boshlanishi mumkin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6445145_0092_92_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "92-modda",
+     "retrieval_score": 0.6183,
+     "fusion_score": 0.01606,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi qonunga muvofiq saylanadigan bir yuz ellik deputatdan iborat.\nOʻzbekiston Respublikasi Oliy Majlisining Senati hududiy vakillik palatasi boʻlib, Senat aʼzolaridan (senatorlardan) iborat.\nOʻzbekiston Respublikasi Oliy Majlisining Senati aʼzolari Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesi, viloyatlar, tumanlar va shaharlar davlat hokimiyati vakillik organlari deputatlarining tegishli qoʻshma majlislarida mazkur deputatlar orasidan yashirin ovoz berish yoʻli bilan Qoraqalpogʻiston Respublikasi, viloyatlar va Toshkent shahridan teng miqdorda — toʻrt kishidan saylanadi. Oʻzbekiston Respublikasi Oliy Majlisi Senatining toʻqqiz nafar aʼzosi fan, sanʼat, adabiyot, ishlab chiqarish sohasida hamda davlat va jamiyat faoliyatining boshqa tarmoqlarida katta amaliy tajribaga ega boʻlgan hamda alohida xizmat koʻrsatgan eng obroʻli fuqarolar orasidan Oʻzbekiston Respublikasi Prezidenti tomonidan tayinlanadi.\nSaylov kuni yigirma besh yoshga toʻlgan hamda kamida besh yil Oʻzbekiston Respublikasi hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputati, shuningdek Oʻzbekiston Respublikasi Oliy Majlisining Senati aʼzosi boʻlishi mumkin. Deputatlikka nomzodlarga qoʻyiladigan talablar qonun bilan belgilanadi.\nAyni bir shaxs bir paytning oʻzida Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputati va Senati aʼzosi boʻlishi mumkin emas.\nOʻzbekiston Respublikasi Oliy Majlisi Qonunchilik palatasining deputati bir vaqtning oʻzida Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesining, viloyatlar, tumanlar, shaharlar davlat hokimiyati vakillik organlarining deputati boʻlishi mumkin emas."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6449033_0008_8_1",
+     "doc_id": "lex:6449033",
+     "doc_title": "Oʻzbekiston Respublikasi Konstitutsiyasi toʻgʻrisida",
+     "article": "8-modda",
+     "retrieval_score": 0.6495,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ushbu Konstitutsiyaviy Qonun va ushbu Konstitutsiyaviy Qonun tahriridagi Oʻzbekiston Respublikasi Konstitutsiyasiga oʻzgartirish va qoʻshimchalar tegishincha Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputatlari va Senati aʼzolari umumiy sonining kamida uchdan ikki qismidan iborat koʻpchiligi tomonidan qabul qilingan konstitutsiyaviy qonun yoki Oʻzbekiston Respublikasining referendumi bilan kiritilishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Konstitutsiyaga oʻzgartirish kiritish uchun deputatlar va senatorlarning qancha ovozi kerak?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6844,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 400,
+    "rerank_ms": null,
+    "generation_ms": 4637,
+    "total_ms": 5039,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 2574,
+    "output_tokens": 350
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 77.4
+}

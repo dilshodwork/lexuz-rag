@@ -1,0 +1,35 @@
+{
+ "pipeline_version": "1.0.0",
+ "llm_provider": "gemini",
+ "llm_model": "gemini-3.1-flash-lite",
+ "llm_model_configured": "gemini-3.1-flash-lite",
+ "embedding_model": "BAAI/bge-m3",
+ "reranker": null,
+ "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+ "index_version": "lex-idx-2026-10-31-3f56d80b",
+ "lex_snapshot_date": "2026-10-31",
+ "index": {
+  "chunks": 39961,
+  "chunking": "modda boʻyicha (1 modda = 1 chunk; uzun moddalar overlap bilan boʻlinadi, maks 800 token)",
+  "statuses": "faqat amaldagi hujjatlar qidiriladi; kuchini yoʻqotganlar indeksda bor, doc_status bilan belgilangan",
+  "doc_id": "lex:<lex.uz hujjat raqami> (URL dagi raqam, minus belgisisiz)"
+ },
+ "generation": {
+  "temperature_default": 0,
+  "seed": "Gemini/OpenAI ga uzatiladi",
+  "no_answer_threshold_cosine": 0.48
+ },
+ "limits": {
+  "items_per_batch": 10,
+  "question_max_chars": 2000,
+  "top_k_max": 20,
+  "sync_wait_s": 110.0,
+  "rate_limit_per_s": 5
+ },
+ "languages": [
+  "uz-Latn",
+  "uz-Cyrl",
+  "ru"
+ ],
+ "as_of_date": "qoʻllab-quvvatlanmaydi"
+}

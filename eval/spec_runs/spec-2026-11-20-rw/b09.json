@@ -1,0 +1,1179 @@
+{
+ "run_id": "spec-2026-11-20-rw",
+ "batch_id": "spec-2026-11-20-rw-b09",
+ "batch_index": 9,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-20T10:19:34+05:00",
+  "completed_at": "2026-11-20T10:19:44+05:00",
+  "total_ms": 10493
+ },
+ "summary": {
+  "total": 10,
+  "ok": 9,
+  "no_answer": 1,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q081",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Maʼmuriy javobgarlik toʻgʻrisidagi kodeksining 13-moddasiga koʻra, maʼmuriy huquqbuzarlik sodir etgan paytda oʻn olti yoshga toʻlgan shaxslar maʼmuriy javobgarlikka tortiladi [1].\n\nBiroq, oʻn olti yoshdan oʻn sakkiz yoshgacha boʻlgan shaxslar Maʼmuriy javobgarlik toʻgʻrisidagi kodeksning 14-moddasida koʻrsatilgan muayyan huquqbuzarliklarni sodir etgan taqdirda, umumiy asoslarda javobgarlikka tortilishi mumkin [2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.775,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-97664",
+     "article_url": "https://lex.uz/uz/docs/-97664#-197853",
+     "article": "13-modda",
+     "article_title": "Maʼmuriy javobgarlikka tortilish yoshi",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "97664_0011_13_1",
+     "quote": "Maʼmuriy huquqbuzarlik sodir etgan paytda oʻn olti yoshga toʻlgan shaxslar, agar ushbu Kodeksda boshqacha qoida nazarda tutilmagan boʻlsa, maʼmuriy javobgarlikka tortiladi."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-97664",
+     "article_url": "https://lex.uz/uz/docs/-97664#-197856",
+     "article": "14-modda",
+     "article_title": "Voyaga yetmaganlarning maʼmuriy huquqbuzarlik uchun javobgarligi",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "97664_0012_14_1",
+     "quote": "Maʼmuriy huquqbuzarlik sodir etgan oʻn olti yoshdan oʻn sakkiz yoshgacha boʻlgan shaxslarga nisbatan Bolalar masalalari boʻyicha komissiyalar toʻgʻrisidagi nizomda nazarda tutilgan choralar qoʻllaniladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "97664_0011_13_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "13-modda",
+     "retrieval_score": 0.7752,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Maʼmuriy huquqbuzarlik sodir etgan paytda oʻn olti yoshga toʻlgan shaxslar, agar ushbu Kodeksda boshqacha qoida nazarda tutilmagan boʻlsa, maʼmuriy javobgarlikka tortiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "97664_0012_14_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "14-modda",
+     "retrieval_score": 0.7213,
+     "fusion_score": 0.0168,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Maʼmuriy huquqbuzarlik sodir etgan oʻn olti yoshdan oʻn sakkiz yoshgacha boʻlgan shaxslarga nisbatan Bolalar masalalari boʻyicha komissiyalar toʻgʻrisidagi nizomda nazarda tutilgan choralar qoʻllaniladi.\nAna shu shaxslar mazkur Kodeksning 61, 116¹, 116², 116³, 125, 125¹, 126, 127, 128, 128¹, 128², 128³, 128⁴, 128⁵, 128⁶, 129, 130, 131, 132, 133, 134, 135, 135¹, 136, 138, 183, 185, 185¹, 185², 185³, 194, 194¹, 196¹, 206¹, 209¹, 218, 220, 221-moddalarida nazarda tutilgan maʼmuriy huquqbuzarliklarni sodir etgan taqdirda, ular umumiy asoslarda maʼmuriy javobgarlikka tortiladi. Sodir etilgan huquqbuzarlikning xususiyatini va huquqbuzarning shaxsini hisobga olgan holda mazkur shaxslarga nisbatan (bundan ushbu Kodeksning 194, 194¹ va 196¹-moddalarida nazarda tutilgan huquqbuzarliklarni sodir etgan shaxslar mustasno) ishlar bolalar masalalari boʻyicha tuman (shahar) komissiyalari ixtiyoriga berilishi mumkin, ushbu Kodeksning 61, 206¹-moddalarida nazarda tutilgan huquqbuzarliklarni sodir etgan shaxslarning ishlari esa shu komissiyalarga berilishi lozim."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111453_0016_17_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "17-modda",
+     "retrieval_score": 0.6892,
+     "fusion_score": 0.01659,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jinoyat sodir etgunga qadar oʻn olti yoshga toʻlgan, aqli raso jismoniy shaxslar javobgarlikka tortiladilar.\nJinoyat sodir etgunga qadar oʻn toʻrt yoshga toʻlgan shaxslar ushbu Kodeks 97, 98, 104 — 106, 118, 119-moddalari, 126¹-moddasining toʻrtinchi — sakkizinchi qismlarida, 137, 164 — 166, 169-moddalari, 173-moddasining ikkinchi va uchinchi qismlari, 220, 222, 247, 252, 263, 267, 271-moddalari, 277-moddasining ikkinchi va uchinchi qismlarida nazarda tutilgan jinoyatlar uchun javobgarlikka tortiladilar.\nUshbu Kodeksning 122, 123, 125¹-moddalarida, 126¹-moddasining birinchi va ikkinchi qismlarida, 127, 127¹, 128¹, 144, 146, 193 — 195, 205 — 210, 225, 226, 230 — 232, 234, 235, 276¹⁰, 279 — 302-moddalarida nazarda tutilgan jinoyatlar uchun jinoyat sodir etgunga qadar oʻn sakkiz yoshga toʻlgan shaxslar javobgarlikka tortiladilar.\nOʻn sakkiz yoshga toʻlgunga qadar jinoyat sodir etgan shaxslar umumiy qoidalarga muvofiq va ushbu Kodeksning Umumiy qismi oltinchi boʻlimida nazarda tutilgan xususiyatlar hisobga olingan holda javobgarlikka tortiladilar."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0613_994_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "994-modda",
+     "retrieval_score": 0.6662,
+     "fusion_score": 0.01599,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmaganlar yetkazilgan zarar uchun umumiy asoslarda mustaqil javobgar boʻladilar.\nOʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmaganning zararni qoplash uchun yetarli mol-mulki yoki boshqa daromad manbalari boʻlmagan taqdirda, zarar toʻligʻicha yoki uning yetishmagan qismi voyaga yetmaganning ota-onasi (farzandlikka oluvchilari) yoki vasiyi tomonidan, agar ular zarar oʻzlarining aybi bilan yetkazilmaganligini isbotlay olmasalar, toʻlanishi lozim.\nAgar homiylikka muhtoj oʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmagan tegishli tarbiyalash, davolash muassasasida, aholini ijtimoiy himoya qilish muassasasida yoki qonunga koʻra uning homiysi hisoblanuvchi boshqa shunga oʻxshash muassasada turgan boʻlsa, bu muassasalar, agar zarar ularning aybi bilan yetkazilmaganligini isbotlay olmasalar, zararni toʻligʻicha yoki uning yetishmaydigan qismini toʻlashlari shart.\nZarar yetkazgan voyaga yetganida yoxud u voyaga yetmasidan unda mol-mulk yoki zararni toʻlash uchun yetarli daromad manbalari paydo boʻlganida yoxud u voyaga yetmasidan muomala layoqatiga ega boʻlganida ota-ona (farzandlikka oluvchilar), homiy va tegishli muassasaning zararni toʻlash boʻyicha majburiyati tugaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "163629_0198_196¹_1",
+     "doc_id": "lex:163629",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT-IJROIYA KODEKSI",
+     "article": "196¹-modda",
+     "retrieval_score": 0.6665,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sud oʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmagan shaxsni ota-onasiga yoki ularning oʻrnini bosuvchi shaxslarga yoxud voyaga yetmaganlar oʻrtasida nazoratsizlik va huquqbuzarliklarning profilaktikasini amalga oshiruvchi organlar hamda muassasalar rahbarlariga nazorat ostiga berishi mumkin.\nOʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmagan shaxs nazorat ostida boʻlib turgan davrida huquqbuzarlik sodir etgan taqdirda, sud unga nisbatan belgilangan nazorat ostida boʻlish chorasini Oʻzbekiston Respublikasi Jinoyat kodeksining 88-moddasi birinchi qismi “v” bandida nazarda tutilgan majburlov chorasiga oʻzgartirishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Necha yoshdan boshlab maʼmuriy javobgarlikka tortish mumkin?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7752,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1178,
+    "rerank_ms": null,
+    "generation_ms": 1580,
+    "total_ms": 2759,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3091,
+    "output_tokens": 274
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q082",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga mos qonun normasi topilmadi. Savolni aniqroq yozib koʻring (masalan, qaysi soha yoki hujjat haqida).",
+   "answer_language": "ru",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6518381_0017_18_1",
+     "doc_id": "lex:6518381",
+     "doc_title": "Raqobat toʻgʻrisida",
+     "article": "18-modda",
+     "retrieval_score": 0.3779,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ustun mavqega yoki ustun muzokara kuchiga ega boʻlgan xoʻjalik yurituvchi subyektning yoki bir guruh shaxslarning pirovard natijada raqobatni cheklashga va (yoki) isteʼmolchilarning, boshqa xoʻjalik yurituvchi subyektlarning huquqlari va qonuniy manfaatlarini kamsitishga olib keladigan harakatlari, shu jumladan quyidagi harakatlari ustun mavqeni yoki ustun muzokara kuchini suiisteʼmol qilish deb eʼtirof etiladi hamda taqiqlanadi:\ntovarlarning muomalasi hajmini tovar yoki moliya bozorida taqchillikni keltirib chiqarish yoki saqlab turish maqsadida narxlarning oshishiga va (yoki) isteʼmolchilarning huquqlari va qonuniy manfaatlariga zarar yetkazilishiga olib keladigan tarzda qisqartirish;\nisteʼmolchilarning zarur hajmdagi tovarni va lozim darajadagi sifatli tovarni olishga boʻlgan huquqlari kamsitilishiga yoʻl qoʻyish;\ntovarning monopol yuqori yoki monopol past narxlarini belgilash;\nshartnoma predmetiga taalluqli boʻlmagan shartlarni (bundan qonun hujjatlariga muvofiq qattiq maishiy chiqindilarni toʻplash va olib chiqish xizmatlari uchun isteʼmolchilar qarzdorligining oldini olishga qaratilgan qoidalar mustasno), shu jumladan moliyaviy mablagʻlarni, boshqa mol-mulkni, mulkiy huquqlarni oʻzga shaxsga oʻtkazishga doir asossiz talablarni majburan qabul qildirish;\ntovarni realizatsiya qilishda yoki olishda kamsituvchi shart-sharoitlarni belgilash, shu jumladan tovardan foydalanish shartlarini majburan qabul qildirish;\nshartnoma tuzishga faqat kontragent tomonidan boshqa tovarni olish yoki realizatsiya qilish yoxud kontragentning tovarni oʻzga xoʻjalik yurituvchi subyektlardan olishdan yoki boshqa xoʻjalik yurituvchi subyektlarga realizatsiya qilishdan oʻzini tiyishi sharti bilan rozilik berish;\ntegishli tovarni ishlab chiqarish yoki realizatsiya qilish imkoniyati boʻla turib, shartnoma tuzishni asossiz ravishda rad etish;\ntovar yoki moliya bozoriga boshqa xoʻjalik yurituvchi subyektlarning kirishi uchun toʻsiqlar yaratish;\nnarxlarni davlat tomonidan tartibga solish qoʻllaniladigan tovarlar uchun belgilangan narxdan ortiq haq olish yoki narxlarni davlat tomonidan tartibga solish tartibini buzish, shuningdek koʻrsatilmagan xizmatlar yoki bepul koʻrsatilishi kerak boʻlgan xizmatlar uchun haq olish;\nboshqa xoʻjalik yurituvchi subyektlar (raqobatchilar) tomonidan ishlab chiqarilgan tovarlarni olishni yoki realizatsiya qilishni taqiqlash yoxud cheklash.\nUstun mavqega ega boʻlgan deb eʼtirof etilgan raqamli platforma operatoriga maʼlumotlar, texnologiyalar va raqamli mahsulotlardan foydalanish haqidagi talablarni belgilash orqali raqobatni cheklaydigan harakatlarni bajarish taqiqlanadi.\nUstun mavqega ega boʻlgan deb eʼtirof etilgan raqamli platforma operatorining raqobatning cheklanishiga olib keladigan harakatlarini aniqlash tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "8420999_0052_53_1",
+     "doc_id": "lex:8420999",
+     "doc_title": "Raqamli texnologiyalar xalqaro markazi toʻgʻrisida",
+     "article": "53-modda",
+     "retrieval_score": 0.3708,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Markazning organlari va ishtirokchilari quyidagi maqsadlar uchun asbob-uskunalarni va ularning tarkibiy qismlarini, dasturiy taʼminotni, materiallarni, namunalarni olib kirishda qoʻshilgan qiymat soligʻini, bojxona bojini toʻlashdan ozod etiladi:\nraqamli texnologiyalar mahsulotlarini ishlab chiqish va ishlab chiqarish zarurati uchun;\n“Tartibga solish qumdoni” doirasida foydalanish uchun;\nMarkaz organlarining faoliyatini taʼminlash uchun.\nInvestorlar investitsiya sifatida olib kirilayotgan asbob-uskunalar va ularning tarkibiy qismlari, dasturiy taʼminot, materiallar, namunalar uchun qoʻshilgan qiymat soligʻini hamda bojxona bojini toʻlashdan ozod etiladi.\nOʻzbekiston Respublikasining bojxona hududiga olib kirishda bojxona bojlari toʻlanilishidan ozod etiladigan tovarlarning roʻyxati Boshqaruv kengashi tomonidan tasdiqlanadi.\nMarkazning subyektlari tomonidan tovarlar va xizmatlarni Oʻzbekiston Respublikasining hududidan olib chiqishda bojxona bojlari solinmaydi.\nBojxona yigʻimlari Oʻzbekiston Respublikasining qonunchilik hujjatlariga muvofiq toʻlanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "180552_0047_433_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "433-modda",
+     "retrieval_score": 0.3634,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sotib oluvchi oʻziga nooziq-ovqat tovari topshirilgan paytdan boshlab oʻn kun mobaynida, agar bundan uzoqroq muddat sotuvchi tomonidan eʼlon qilinmagan boʻlsa, xarid qilingan tegishli sifatli tovarni xarid joyida yoki sotuvchi eʼlon qilgan boshqa joylarda oʻlchami, shakli, hajmi, andazasi, rangi, toʻplami boshqacha boʻlgan xuddi shunday tovarga almashtirishga haqli, bunda u narxlarda farq boʻlgan taqdirda sotuvchi bilan zarur hisob-kitobni amalga oshiradi.\nSotuvchida almashtirish uchun zarur tovar boʻlmaganida sotib oluvchi xarid qilingan tovarni sotuvchiga qaytarib berish va unga toʻlangan pul summasini olish huquqiga ega.\nAgar tovardan foydalanilmagan, uning isteʼmol xususiyatlari saqlangan boʻlsa va ushbu sotuvchidan sotib olinganining isboti boʻlsa, sotib oluvchining tovarni almashtirish yoki qaytarib olish haqidagi talabi qanoatlantirilishi lozim.\nUshbu moddada koʻrsatilgan asoslar boʻyicha almashtirilmaydigan yoki qaytarib olinmaydigan tovarlar roʻyxati qonunchilikda nazarda tutilgan tartibda belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kakoy smartfon luchshe kupit do 300 dollarov?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 3,
+    "best_cosine": 0.3779,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "low_similarity",
+    "llm_model": null,
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1192,
+    "rerank_ms": null,
+    "generation_ms": null,
+    "total_ms": 1199,
+    "rewrite_ms": null
+   },
+   "usage": null,
+   "llm_model": null,
+   "error": null
+  },
+  {
+   "id": "q083",
+   "status": "ok",
+   "answer": "Йўқ, чет эл фуқароси билан никоҳдан ўтиш Ўзбекистон Республикаси фуқаролигини йўқотишга сабаб бўлмайди.\n\n\"Ўзбекистон Республикасининг фуқаролиги тўғрисида\"ги Қонуннинг 8-моддасига кўра, Ўзбекистон Республикаси фуқаросининг чет давлат фуқароси билан никоҳдан ўтиши эр-хотиннинг фуқаролиги ўзгаришига сабаб бўлмайди [2]. Шунингдек, эр-хотиндан бирининг фуқаролиги ўзгариши иккинчисининг фуқаролиги ўзгаришига олиб келмайди [2].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.674,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-610",
+     "url": "https://lex.uz/uz/docs/-4761984",
+     "article_url": "https://lex.uz/uz/docs/-4761984#-4762634",
+     "article": "8-modda",
+     "article_title": "Nikohdan oʻtishda va uni bekor qilishda Oʻzbekiston Respublikasi fuqaroligini saqlab qolish",
+     "part": "1-qism",
+     "edition_date": "2024-09-21",
+     "doc_status": "amalda",
+     "chunk_id": "4761984_0007_8_1",
+     "quote": "Oʻzbekiston Respublikasi fuqarosining chet davlat fuqarosi yoki fuqaroligi boʻlmagan shaxs bilan nikohdan oʻtishi, shuningdek bunday nikohning bekor qilinishi er-xotinning fuqaroligi oʻzgarishiga sabab boʻlmaydi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4761984_0024_25_1",
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "article": "25-modda",
+     "retrieval_score": 0.6643,
+     "fusion_score": 0.01695,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasining fuqaroligi quyidagi hollarda yoʻqotiladi:\na) shaxs chet davlatning harbiy xizmatiga, xavfsizlik organlariga, huquqni muhofaza qiluvchi organlariga, davlat hokimiyati va boshqaruvi organlariga xizmatga kirganligi oqibatida;\nb) agar xorijda doimiy yashovchi shaxs yetti yil mobaynida uzrli sabablarsiz doimiy konsullik hisobiga turmagan boʻlsa;\nv) agar Oʻzbekiston Respublikasi fuqaroligiga qabul qilish bila turib yolgʻon maʼlumotlar yoki soxta hujjatlarni taqdim etish natijasida amalga oshirilgan boʻlsa;\ng) agar shaxs chet davlatning foydasini koʻzlab faoliyat koʻrsatgan holda yoki tinchlik va xavfsizlikka qarshi jinoyatlar sodir etish yoʻli bilan jamiyat hamda davlat manfaatlariga jiddiy zarar yetkazgan boʻlsa;\nd) agar shaxs ixtiyoriy ravishda chet davlatning fuqaroligini olgan boʻlsa;\ne) agar shaxs chet davlatning fuqaroligini tugʻilganlik boʻyicha yoxud chet davlat fuqarosi boʻlgan otasining yoki onasining fuqaroligi asosida, voyaga yetmagan yoshida olgan boʻlsa va yigirma bir yoshga toʻlguniga qadar chet davlat fuqaroligidan chiqishni rasmiylashtirmagan boʻlsa.\nShaxsning Oʻzbekiston Respublikasi fuqaroligini yoʻqotganligi uning erining (xotinining) va farzandining (bolalarining) fuqaroligi oʻzgarishiga sabab boʻlmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4761984_0007_8_1",
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "article": "8-modda",
+     "retrieval_score": 0.6744,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi fuqarosining chet davlat fuqarosi yoki fuqaroligi boʻlmagan shaxs bilan nikohdan oʻtishi, shuningdek bunday nikohning bekor qilinishi er-xotinning fuqaroligi oʻzgarishiga sabab boʻlmaydi.\nEr-xotindan birining Oʻzbekiston Respublikasi fuqaroligi oʻzgarishi ikkinchisining fuqaroligi oʻzgarishiga sabab boʻlmaydi.\nNikohning bekor qilinishi ushbu nikohda tugʻilgan yoki nikoh bekor qilinguniga qadar farzandlikka olingan bolaning fuqaroligi oʻzgarishiga sabab boʻlmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4761984_0018_19_1",
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.6246,
+     "fusion_score": 0.01617,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasining fuqaroligiga qabul qilishning umumiy tartibi chet davlat fuqarosiga yoki fuqaroligi boʻlmagan shaxsga nisbatan quyidagi hollarda amalga oshiriladi, agar u:\na) chet davlat fuqaroligidan chiqishni rasmiylashtirgan boʻlsa;\nb) fuqaroligi boʻlmagan shaxsga yashash guvohnomasi olingan kundan eʼtiboran va Oʻzbekiston Respublikasining fuqaroligiga qabul qilish toʻgʻrisidagi iltimosnoma bilan murojaat qilgan kunga qadar Oʻzbekiston Respublikasi hududida uzluksiz besh yil davomida doimiy yashab kelayotgan boʻlsa;\nv) tirikchilikning qonuniy manbaiga ega boʻlsa;\ng) Oʻzbekiston Respublikasining Konstitutsiyasiga rioya etish majburiyatini oʻz zimmasiga olsa;\nd) davlat tilini muloqot qilish uchun zarur darajada bilsa. Davlat tilini bilish darajasini aniqlash tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi.\nUshbu modda birinchi qismining “b” bandida nazarda tutilgan shart Oʻzbekiston Respublikasida tugʻilgan va yashab kelayotgan yoki Oʻzbekiston Respublikasi fuqarosi bilan nikohda boʻlgan va nikoh tuzilganidan keyin Oʻzbekiston Respublikasi hududida turmush oʻrtogʻi bilan birgalikda uzluksiz uch yil davomida yashab kelayotgan fuqaroligi boʻlmagan shaxsga nisbatan tatbiq etilmaydi.\nBunda, agar fuqaroligi boʻlmagan shaxs bir yil ichida Oʻzbekiston Respublikasidan tashqariga jami bir yuz sakson uch kundan ortiq boʻlmagan muddatga chiqqan boʻlsa, Oʻzbekiston Respublikasi hududida yashalgan muddat uzluksiz deb hisoblanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "5443899_0018_19_1",
+     "doc_id": "lex:5443899",
+     "doc_title": "Oʻzbekiston Respublikasida chet el fuqarolarining va fuqaroligi boʻlmagan shaxslarning huquqiy holati toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.6577,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Chet el fuqarolari va fuqaroligi boʻlmagan shaxslar Oʻzbekiston Respublikasi hududida nikoh tuzilganligini qayd etishga doir huquqqa ega.\nChet el fuqarolarining, fuqaroligi boʻlmagan shaxslarning Oʻzbekiston Respublikasi fuqarolari bilan nikohi tuzilganligini qayd etish hamda chet el fuqarolari, fuqaroligi boʻlmagan shaxslar oʻrtasida, shuningdek chet el fuqarolari va (yoki) fuqaroligi boʻlmagan shaxslar oʻrtasida nikoh tuzilganligini qayd etish umumiy asoslarda amalga oshiriladi.\nOʻzbekiston Respublikasi hududida doimiy yashaydigan chet el fuqarolari va fuqaroligi boʻlmagan shaxslar Oʻzbekiston Respublikasi hududida oilaviy munosabatlarda Oʻzbekiston Respublikasi fuqarolari bilan teng ravishda huquqlardan foydalanadi va ularning zimmasida majburiyatlar boʻladi.\nOʻzbekiston Respublikasi hududidan tashqarida, boshqa davlat hududida oʻsha davlatning qonunchiligiga rioya etilgan holda Oʻzbekiston Respublikasi fuqarolari hamda chet el fuqarolari yoki fuqaroligi boʻlmagan shaxslar oʻrtasida tuzilgan nikohlar, agar Oʻzbekiston Respublikasining oila toʻgʻrisidagi qonunchiligida nazarda tutilgan nikoh tuzishga monelik qiladigan holatlar mavjud boʻlmasa, Oʻzbekiston Respublikasida haqiqiy deb eʼtirof etiladi.\nOʻzbekiston Respublikasi hududida Oʻzbekiston Respublikasi fuqarolari va chet el fuqarolari yoki fuqaroligi boʻlmagan shaxslar oʻrtasidagi nikohdan, shuningdek chet el fuqarolari oʻrtasidagi nikohdan ajratish Oʻzbekiston Respublikasining qonunchiligiga muvofiq amalga oshiriladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "104720_0217_236_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "236-modda",
+     "retrieval_score": 0.6468,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi hududida Oʻzbekiston Respublikasi fuqarolari bilan chet el fuqarolari yoki fuqaroligi boʻlmagan shaxslar oʻrtasidagi, shuningdek chet el fuqarolari oʻrtasidagi nikohdan ajratish Oʻzbekiston Respublikasi qonunchiligiga muvofiq amalga oshiriladi.\nOʻzbekiston Respublikasi hududidan tashqarida yashab turgan Oʻzbekiston Respublikasining fuqarosi Oʻzbekiston Respublikasi hududidan tashqarida yashab turgan eri (xotini) bilan tuzilgan nikohdan, mazkur shaxs qaysi davlat fuqarosi ekanligidan qatʼi nazar, Oʻzbekiston Respublikasi sudida ajralishga haqlidir.\nOʻzbekiston Respublikasi qonunchiligiga binoan fuqarolik holati dalolatnomalarini yozish organlarida nikohdan ajralish mumkin boʻlgan hollarda bunday nikohdan ajralish Oʻzbekiston Respublikasining diplomatik vakolatxonalarida yoki konsullik muassasalarida amalga oshirilishi mumkin.\nOʻzbekiston Respublikasi fuqarolari bilan chet el fuqarolari yoki fuqaroligi boʻlmagan shaxslar oʻrtasidagi nikohdan ajratish Oʻzbekiston Respublikasi hududidan tashqarida tegishli chet el davlatining qonunchiligiga rioya etilgan holda amalga oshirilgan boʻlsa, Oʻzbekiston Respublikasida haqiqiy deb eʼtirof etiladi.\nOʻzbekiston Respublikasi hududidan tashqarida chet el fuqarolari oʻrtasidagi nikohdan ajratish tegishli chet el davlatining qonunchiligiga rioya etilgan holda amalga oshirilgan boʻlsa, Oʻzbekiston Respublikasida haqiqiy deb eʼtirof etiladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Chet ellik yigitga turmushga chiqsam, Oʻzbekiston fuqaroligimni yoʻqotamanmi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6744,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1179,
+    "rerank_ms": null,
+    "generation_ms": 2218,
+    "total_ms": 3398,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3446,
+    "output_tokens": 240
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q084",
+   "status": "ok",
+   "answer": "Ha, siz qoʻshningizdan oʻz yer uchastkangizga oʻtish uchun cheklangan tarzda foydalanish (servitut) huquqini berishni talab qilishga haqlisiz.\n\nFuqarolik kodeksining 173-moddasi va Yer kodeksining 30-moddasiga koʻra, koʻchmas mulk egasi oʻz ehtiyojlarini (shu jumladan, piyoda yoki transportda oʻtishni) qondirish uchun qoʻshni yer uchastkasidan cheklangan tarzda foydalanish huquqini talab qilishi mumkin [1][2].\n\nBu boradagi tartib quyidagicha:\n* Servitut belgilash masalasi avvalo siz bilan qoʻshningiz oʻrtasidagi oʻzaro bitim (shartnoma) asosida hal etiladi [1][2].\n* Kelishuvga erishilmagan taqdirda, servitut belgilash masalasi sud tomonidan hal etiladi [1][2].\n* Servitut toʻgʻrisidagi shartnoma davlat roʻyxatidan oʻtkazilishi shart [1][2].\n* Servitut belgilanishi qoʻshningizni oʻz yer uchastkasiga egalik qilish, undan foydalanish va uni tasarruf etish huquqidan mahrum etmaydi [1][2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.591,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111189",
+     "article_url": "https://lex.uz/uz/docs/-111189#-153852",
+     "article": "173-modda",
+     "article_title": "Oʻzganing yer uchastkasidan cheklangan tarzda foydalanish (servitut) huquqi",
+     "part": "2-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "111189_0167_173_1",
+     "quote": "Oʻzganing yer uchastkasidan piyoda va transportda oʻta olishni taʼminlash, elektr uzatgich, aloqa va quvur liniyalarini oʻtkazish va ulardan foydalanish, suv bilan taʼminlash uchun, shuningdek koʻchmas mulk egasining ehtiyojlarini servitut belgilamay turib taʼminlanishi mumkin boʻlmagan boshqa ehtiyojlarini qondirish uchun servitut belgilanishi mumkin."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:152653",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING YER KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-152653",
+     "article_url": "https://lex.uz/uz/docs/-152653#-153315",
+     "article": "30-modda",
+     "article_title": "Oʻzganing yer uchastkasidan cheklangan tarzda foydalanish huquqi (servitut)",
+     "part": "10-qism",
+     "edition_date": "2026-03-17",
+     "doc_status": "amalda",
+     "chunk_id": "152653_0040_30_1",
+     "quote": "Servitut, uni belgilashni talab qilgan shaxslar bilan oʻzga yer uchastkasining egalik qiluvchisi, foydalanuvchisi, ijarachisi va mulkdori oʻrtasidagi shartnomaga muvofiq, kelishuvga erishilmagan taqdirda esa, sud qaroriga binoan belgilanadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111189_0167_173_1",
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "173-modda",
+     "retrieval_score": 0.5539,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Koʻchmas mulk (yer uchastkasi, boshqa koʻchmas mulk) egasi qoʻshni yer uchastkasining egasidan, zarur hollarda esa — boshqa yer uchastkasining egasidan ham oʻzganing yer uchastkasidan cheklangan tarzda foydalanish (servitut) huquqini berishni talab qilishga haqlidir.\nOʻzganing yer uchastkasidan piyoda va transportda oʻta olishni taʼminlash, elektr uzatgich, aloqa va quvur liniyalarini oʻtkazish va ulardan foydalanish, suv bilan taʼminlash uchun, shuningdek koʻchmas mulk egasining ehtiyojlarini servitut belgilamay turib taʼminlanishi mumkin boʻlmagan boshqa ehtiyojlarini qondirish uchun servitut belgilanishi mumkin.\nYer uchastkasida servitut belgilanishi yer uchastkasi egasining ushbu uchastkaga egalik qilish, undan foydalanish va uni tasarruf etish huquqlaridan mahrum etmaydi.\nServitut belgilashni talab qilayotgan shaxs bilan oʻzga yer uchastkasining egasi oʻrtasidagi bitimga muvofiq servitut belgilanadi va u koʻchmas mulkka boʻlgan huquqlarni roʻyxatdan oʻtkazish uchun belgilangan tartibda roʻyxatdan oʻtkazilishi lozim. Servitutni belgilash xususida kelisha olinmasa yoki uning shartlarida murosaga kelinmasa, bahs servitut belgilashni talab qilayotgan shaxsning daʼvosi boʻyicha sud tomonidan hal etiladi. Jamoat ehtiyojlari uchun zarur boʻlgan hollarda servitut qonunga muvofiq tegishli davlat organi tomonidan belgilanishi mumkin (ommaviy servitut).\nUchastka meros qilib qoldiriladigan umrbod egalik qilish huquqi bilan berilgan yoki doimiy egalik qilish va foydalanish huquqi bilan berilgan shaxsning manfaatlari va talabi boʻyicha ham ushbu moddaning birinchi, ikkinchi, uchinchi va toʻrtinchi qismlarida nazarda tutilgan shartlarda va tartibda servitut belgilanishi mumkin."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "152653_0040_30_1",
+     "doc_id": "lex:152653",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING YER KODEKSI",
+     "article": "30-modda",
+     "retrieval_score": 0.5497,
+     "fusion_score": 0.01515,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzganing yer uchastkasidan cheklangan tarzda foydalanish huquqi (servitut) — koʻchmas mulk (yer uchastkasi, boshqa koʻchmas mulk) egasining qoʻshni yer uchastkasidan, zarur hollarda esa boshqa yer uchastkasidan ham cheklangan tarzda foydalanish huquqidir.\nServitut quyidagi maqsadlarda belgilanishi mumkin:\noʻzganing yer uchastkasi orqali piyoda yoki transportda oʻtish;\noʻzganing yer uchastkasida drenaj ishlari oʻtkazish;\noʻzganing yer uchastkasidan elektr uzatish, aloqa liniyalari va truboprovodlar, irrigatsiya, muhandislik va boshqa liniyalar hamda tarmoqlar oʻtkazish va ulardan foydalanish;\noʻzganing yer uchastkasidan ekinzorlarni va qishloq xoʻjaligi hayvonlarini sugʻorish uchun suv olish;\nqishloq xoʻjaligi hayvonlarini oʻzganing yer uchastkasi orqali haydab oʻtish;\noʻzganing yer uchastkasida ihota daraxtlari ekish va tabiatni muhofaza qilishga taalluqli boshqa obyektlar barpo etish.\nServitut boshqa maqsadlarda ham belgilanishi mumkin.\nServitut, uni belgilashni talab qilgan shaxslar bilan oʻzga yer uchastkasining egalik qiluvchisi, foydalanuvchisi, ijarachisi va mulkdori oʻrtasidagi shartnomaga muvofiq, kelishuvga erishilmagan taqdirda esa, sud qaroriga binoan belgilanadi.\nJamoat ehtiyojlari uchun zarur boʻlgan hollarda servitut ushbu Kodeksga muvofiq viloyat va Toshkent shahar hokimi tomonidan ham belgilanishi mumkin (ommaviy servitut).\nServitut toʻgʻrisidagi shartnoma davlat roʻyxatiga olinishi lozim va u yer uchastkasi boshqa shaxsga oʻtgan taqdirda ham saqlanib qolinadi. Servitut toʻgʻrisidagi shartnoma uni belgilashga sabab boʻlgan asoslar oʻz ahamiyatini yoʻqotgan taqdirda, bekor qilinishi mumkin.\nServitut belgilanishi yer egasini, yerdan foydalanuvchini, yer uchastkasining ijarachisi va mulkdorini ushbu yer uchastkasiga egalik qilish, undan foydalanish hamda uni tasarruf etish huquqidan mahrum etmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6605257_0049_50_1",
+     "doc_id": "lex:6605257",
+     "doc_title": "Oʻzbekiston Respublikasining Davlat chegarasi toʻgʻrisida",
+     "article": "50-modda",
+     "retrieval_score": 0.5906,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Chegara zonasiga kirish (undan chiqish), undan oʻtish, u yerda boʻlish (yashash) va harakatlanish:\nOʻzbekiston Respublikasi fuqarolari, chet el fuqarolari va fuqaroligi boʻlmagan shaxslar tomonidan — shaxsni tasdiqlovchi hujjatlarga hamda Oʻzbekiston Respublikasi Ichki ishlar vazirligi tomonidan chegara zonasiga kirish uchun beriladigan ruxsatnomalarga asosan;\nchet el fuqarolari va fuqaroligi boʻlmagan shaxslar xalqaro qatnov yoʻllari boʻyicha Oʻzbekiston Respublikasidan chiqish maqsadida oʻtkazish punkti tomonga harakatlanayotganda — shaxsni tasdiqlovchi hamda Davlat chegarasini kesib oʻtish huquqini beruvchi hujjatlarga asosan amalga oshiriladi. Mazkur toifadagi shaxslar tomonidan harakatlanish yoʻnalishini oʻzgartirish taqiqlanadi.\nChegara zonasida xoʻjalik faoliyatini hamda boshqa faoliyatni amalga oshirish chogʻida quyidagilar taqiqlanadi:\nOʻzbekiston Respublikasining milliy xavfsizligiga zarar yetkazish;\nchegara rejimi buzilishiga sabab boʻladigan holatlarni yuzaga keltirish;\nOʻzbekiston Respublikasi ichki ishlar organlarining va Davlat xavfsizlik xizmati Chegara qoʻshinlarining oʻz vazifalarini bajarishiga monelik qilish.\nJismoniy va yuridik shaxslar tomonidan chegara zonasida xoʻjalik faoliyatini hamda boshqa faoliyatni amalga oshirish tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6605257_0057_58_1",
+     "doc_id": "lex:6605257",
+     "doc_title": "Oʻzbekiston Respublikasining Davlat chegarasi toʻgʻrisida",
+     "article": "58-modda",
+     "retrieval_score": 0.5592,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xoʻjalik faoliyatini hamda boshqa faoliyatni amalga oshiruvchi shaxslarga oʻtkazish punktlariga kirish (ulardan chiqish) uchun ruxsatnomalar Oʻzbekiston Respublikasi Davlat xavfsizlik xizmatining Chegara qoʻshinlari yoki Oʻzbekiston Respublikasi Transport vazirligi tasarrufidagi tegishli tashkilot tomonidan beriladi.\nOʻtkazish punktlarida xoʻjalik faoliyatini hamda boshqa faoliyatni amalga oshirish chogʻida quyidagilar taqiqlanadi:\nOʻzbekiston Respublikasining milliy xavfsizligiga zarar yetkazish;\nodamlarning hayoti va sogʻligʻiga zarar yetkazish;\ntabiatni muhofaza qilish toʻgʻrisidagi qonunchilik talablarini buzish;\nchegaradosh davlatlarga zarar yetkazish yoki shunday zarar yetkazilishi xavfini yuzaga keltirish;\ndavlat nazorati organlariga nazorat tartib-taomillarini amalga oshirishda toʻsqinlik qilish.\nJismoniy va yuridik shaxslar tomonidan oʻtkazish punktlarida xoʻjalik faoliyatini hamda boshqa faoliyatni amalga oshirish tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6605257_0037_38_1",
+     "doc_id": "lex:6605257",
+     "doc_title": "Oʻzbekiston Respublikasining Davlat chegarasi toʻgʻrisida",
+     "article": "38-modda",
+     "retrieval_score": 0.5542,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻtkazish punktlaridan tashqarida Davlat chegarasini kesib oʻtish Oʻzbekiston Respublikasining chegaradosh davlatlar bilan kelishuvlariga muvofiq amalga oshiriladi.\nOʻtkazish punktlaridan va havo yoʻlaklaridan tashqarida Davlat chegarasini kesib oʻtishga quyidagi hollarda yoʻl qoʻyiladi:\nfavqulodda holat joriy etilganda, tabiiy va texnogen xususiyatli favqulodda vaziyatlar roʻy berganda yoki odamlarning hayotiga, sogʻligʻiga hamda xavfsizligiga, shuningdek Oʻzbekiston Respublikasining yoki chet davlatlarning havo kemalari, kemalari va harbiy kemalari xavfsizligiga tahdid soluvchi boshqa hollarda;\nOʻzbekiston Respublikasining yoki chet davlatlarning shikastlangan daryo kemalari, chet davlatlarning harbiy kemalari shatakka olinganda;\nqutqarilgan odamlarni tashishda;\nOʻzbekiston Respublikasi yoki chet davlatlar kemalarining ekipaji aʼzolariga birlamchi shoshilinch yordam koʻrsatishda.\nAlohida hollarda, xoʻjalik faoliyatini amalga oshirishda (chorva mollarini haydab oʻtishda va boshqa hollarda), shuningdek suv, transport, sanoat va qishloq xoʻjaligiga moʻljallangan chegaralararo obyektlarga, telekommunikatsiyalar tarmoqlari va elektr uzatish liniyalariga xizmat koʻrsatishda, ularni taʼmirlashda, ulardan foydalanishda Davlat chegarasini kesib oʻtish mazkur masala Oʻzbekiston Respublikasining vakolatli davlat organlari tomonidan chegaradosh davlatning vakolatli organlari bilan kelishilganidan keyin Oʻzbekiston Respublikasi Davlat xavfsizlik xizmati Chegara qoʻshinlarining ruxsati bilan oʻtkazish punktlaridan tashqarida ham amalga oshirilishi mumkin.\nOʻzbekiston Respublikasi Davlat xavfsizlik xizmatining Chegara qoʻshinlariga Davlat chegarasini qoʻriqlash va himoya qilish boʻyicha majburiyatlarini bajarish chogʻida chegaradosh davlatning vakolatli organlari bilan kelishuvga koʻra, Davlat chegarasini oʻtkazish punktlaridan tashqarida kesib oʻtish huquqi beriladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Servitut huquqi, oʻzganing yer uchastkasidan cheklangan tarzda foydalanish, Fuqarolik kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5906,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1538,
+    "rerank_ms": null,
+    "generation_ms": 2218,
+    "total_ms": 3757,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3966,
+    "output_tokens": 382
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q085",
+   "status": "ok",
+   "answer": "Jinoyat sodir etilgan kundan boshlab quyidagi muddatlar oʻtgan boʻlsa, shaxs javobgarlikdan ozod qilinadi:\n\n* ijtimoiy xavfi katta boʻlmagan jinoyat uchun — ikki yil;\n* uncha ogʻir boʻlmagan jinoyat uchun — toʻrt yil;\n* ogʻir jinoyat uchun — sakkiz yil;\n* oʻta ogʻir jinoyat uchun — oʻn toʻrt yil [1].\n\nJinoyat kodeksining 64-moddasiga koʻra, agar ijtimoiy xavfi katta boʻlmagan yoki uncha ogʻir boʻlmagan jinoyat sodir etilgan kundan boshlab oʻn yil, ogʻir yoki oʻta ogʻir jinoyat sodir etilgan kundan boshlab yigirma besh yil oʻtgan boʻlsa, shaxs javobgarlikka tortilishi mumkin emas [1].\n\nShuni taʼkidlash kerakki, Jinoyat kodeksining 64-moddasida koʻrsatilgan ayrim jinoyatlar (masalan, 150—157-moddalar, 159-moddaning uchinchi va toʻrtinchi qismlari va boshqalar) uchun ushbu muddatlar qoʻllanilmaydi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.693,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111453",
+     "article_url": "https://lex.uz/uz/docs/-111453#-195038",
+     "article": "64-modda",
+     "article_title": "Javobgarlikka tortish muddatining oʻtib ketganligi munosabati bilan jinoyat uchun javobgarlikdan ozod qilish",
+     "part": "5-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "111453_0067_64_1",
+     "quote": "Agar ijtimoiy xavfi katta boʻlmagan yoki uncha ogʻir boʻlmagan jinoyat sodir etilgan kundan boshlab oʻn yil, ogʻir yoki oʻta ogʻir jinoyat sodir etilgan kundan boshlab yigirma besh yil oʻtgan boʻlsa, shaxs javobgarlikka tortilishi mumkin emas."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "111453_0067_64_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "64-modda",
+     "retrieval_score": 0.6933,
+     "fusion_score": 0.01719,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Agar jinoyat sodir etilgan kundan boshlab quyidagi muddatlar:\na) ijtimoiy xavfi katta boʻlmagan jinoyat sodir etilgan kundan boshlab — ikki yil;\nb) uncha ogʻir boʻlmagan jinoyat sodir etilgan kundan boshlab — toʻrt yil;\nv) ogʻir jinoyat sodir etilgan kundan boshlab — sakkiz yil;\ng) oʻta ogʻir jinoyat sodir etilgan kundan boshlab — oʻn toʻrt yil oʻtgan boʻlsa, shaxs javobgarlikdan ozod qilinadi.\nJavobgarlikka tortish muddati jinoyat sodir etilgan kundan boshlab hukm qonuniy kuchga kirgan kungacha hisoblanadi.\nAgar jinoyat sodir etgan va jinoiy javobgarlikka tortilgan shaxs tergov yoki suddan yashirinsa, muddatning oʻtishi toʻxtatiladi. Aybdor ushlangan yoki aybini boʻyniga olib arz qilgan kundan boshlab muddatning oʻtishi qaytadan tiklanadi.\nAgar ogʻir yoki oʻta ogʻir jinoyat sodir etgan shaxs ushbu moddada nazarda tutilgan muddatlar oʻtmasdan qasddan yangi jinoyat sodir etsa, muddatning oʻtishi uziladi. Bunday holda javobgarlikka tortish muddatlari yangi jinoyat sodir etilgan kundan boshlab hisoblanadi. Qolgan hollarda, agar shaxs javobgarlikka tortish muddatlari oʻtmasdan yangi jinoyat sodir etsa, bu muddatlar har bir jinoyat uchun alohida hisoblanadi.\nAgar ijtimoiy xavfi katta boʻlmagan yoki uncha ogʻir boʻlmagan jinoyat sodir etilgan kundan boshlab oʻn yil, ogʻir yoki oʻta ogʻir jinoyat sodir etilgan kundan boshlab yigirma besh yil oʻtgan boʻlsa, shaxs javobgarlikka tortilishi mumkin emas.\nUshbu Kodeks Maxsus qismining moddasida umrbod ozodlikdan mahrum qilish jazosini tayinlash nazarda tutilgan jinoyatni sodir etgan shaxsga nisbatan, javobgarlikka tortish muddatlarini qoʻllash masalasi sud tomonidan hal qilinadi. Agar sud javobgarlikka tortish muddatini qoʻllashni lozim topmasa, umrbod ozodlikdan mahrum qilish jazosi oʻrniga ozodlikdan mahrum qilish tayinlanadi.\nUshbu moddada nazarda tutilgan muddatlar ushbu Kodeksning 118-moddasi uchinchi qismi “a” bandida va toʻrtinchi qismida, 119-moddasi uchinchi qismi “a” bandida va toʻrtinchi qismida, 150 — 157-moddalarida, 158-moddasining birinchi qismida, 159-moddasining uchinchi va toʻrtinchi qismlarida, 160, 161 va 244²-moddalarida nazarda tutilgan jinoyatlarni sodir etgan shaxslarga nisbatan qoʻllanilmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111453_0073_69_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "69-modda",
+     "retrieval_score": 0.648,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar hukm qonuniy kuchga kirgan kundan boshlab:\na) uch yildan ortiq boʻlmagan muddatga ozodlikdan mahrum qilingan yoki ozodlikdan mahrum qilish bilan bogʻliq boʻlmagan jazoga hukm qilinganda — uch yil;\nb) besh yildan ortiq boʻlmagan muddatga ozodlikdan mahrum etishga hukm qilinganda — besh yil;\nv) oʻn yildan ortiq boʻlmagan muddatga ozodlikdan mahrum etishga hukm qilinganda — oʻn yil;\ng) oʻn yildan ortiq muddatga ozodlikdan mahrum etishga hukm qilinganda — oʻn besh yil ichida ijro etilmagan boʻlsa, mahkum asosiy va qoʻshimcha jazolardan ozod qilinadi.\nAgar mahkum ushbu moddada nazarda tutilgan jazoni oʻtashdan boʻyin tovlasa, jazoni ijro etish muddati ikki baravar koʻpayadi va jazoni oʻtashdan boʻyin tovlagan kundan boshlab hisoblanadi, lekin yigirma besh yildan oshmasligi kerak.\nAgar shaxs ushbu moddada koʻrsatilgan muddatlar oʻtmasdan qasddan yangi jinoyat sodir etsa, muddatlarning oʻtishi uziladi. Bunday holda muddatlarning oʻtishini hisoblash yangi jinoyat sodir etilgan paytdan qaytadan boshlanadi.\nAgar jazo tayinlangan kundan boshlab yigirma besh yil oʻtgan boʻlsa, jazoni ijro etish mumkin emas.\nUmrbod ozodlikdan mahrum qilish jazosiga hukm etilgan shaxsga nisbatan muddatlar oʻtishini qoʻllash masalasi sud tomonidan hal qilinadi. Agar sud muddatlar oʻtishini qoʻllashni lozim topmasa, umrbod ozodlikdan mahrum qilish jazosi ozodlikdan mahrum qilish bilan almashtiriladi.\nUshbu moddada nazarda tutilgan muddatlar ushbu Kodeksning 118-moddasi uchinchi qismi “a” bandida va toʻrtinchi qismida, 119-moddasi uchinchi qismi “a” bandida va toʻrtinchi qismida, 150 — 157-moddalarida, 158-moddasining birinchi qismida, 159-moddasining uchinchi va toʻrtinchi qismlarida, 160, 161 va 244²-moddalarida nazarda tutilgan jinoyatlar uchun hukm qilingan shaxslarga nisbatan qoʻllanilmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "97664_0047_37_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "37-modda",
+     "retrieval_score": 0.6309,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Basharti maʼmuriy jazoga tortilgan shaxs shu jazoni oʻtash muddati tugagan kundan boshlab bir yil mobaynida yangi maʼmuriy huquqbuzarlik sodir etmagan boʻlsa, mazkur shaxs maʼmuriy jazoga tortilmagan deb hisoblanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111453_0093_87_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "87-modda",
+     "retrieval_score": 0.6245,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ijtimoiy xavfi katta boʻlmagan jinoyatni birinchi marta sodir etgan voyaga yetmagan shaxs, agar sodir etgan qilmishining xususiyatlari, aybdorning shaxsi va ishning boshqa holatlarini eʼtiborga olib, uni jazo qoʻllamasdan turib ham tuzatish mumkin degan xulosaga kelinsa, javobgarlikdan ozod qilinib, ish bolalar masalalari boʻyicha komissiyada koʻrishga topshirilishi mumkin.\nBesh yildan koʻp boʻlmagan muddatga ozodlikdan mahrum qilish jazosi tayinlash nazarda tutilgan uncha ogʻir boʻlmagan jinoyatni birinchi marta sodir etgan yoki ijtimoiy xavfi katta boʻlmagan jinoyatni takroran sodir etgan voyaga yetmagan shaxsni, mazkur moddaning birinchi qismida nazarda tutilgan asoslar mavjud boʻlsa, sud jazodan ozod qilish va unga nisbatan majburlov choralarini qoʻllash toʻgʻrisidagi masalani koʻrib chiqishi shart.\nVoyaga yetmagan shaxs rivojlanishda oʻz yoshiga nisbatan ancha orqada qolgan boʻlsa va sodir etgan qilmishining ahamiyatini toʻla ravishda anglab yetmasa, sud jazo oʻrniga majburlov chorasi qoʻllash maqsadga muvofiqligi masalasini koʻrib chiqishi shart."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111453_0071_67_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "67-modda",
+     "retrieval_score": 0.6131,
+     "fusion_score": 0.01546,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Agar jinoyat sodir etgan shaxsda hukm chiqarilguniga qadar oʻz harakatlarining ahamiyatini anglay olmaydigan yoki ularni boshqara olmaydigan tarzda ruhiy holatning buzilishi yuzaga kelgan boʻlsa, u javobgarlikdan ozod qilinadi.\nBunday shaxsga nisbatan sud tomonidan tibbiy yoʻsindagi majburlov choralari qoʻllanilishi mumkin.\nBunday shaxs ushbu Kodeksning 64-moddasida nazarda tutilgan muddatlar oʻtmasdan tuzalsa, javobgarlikka tortiladi. Bunday holda javobgarlikka tortish muddatlari sud tomonidan tibbiy yoʻsindagi majburlov chorasi qoʻllanilgan kundan hisoblanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Jinoyat sodir etilganidan keyin qancha vaqt oʻtsa, odamni endi javobgarlikka tortib boʻlmaydi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6933,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 429,
+    "rerank_ms": null,
+    "generation_ms": 2134,
+    "total_ms": 2564,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3485,
+    "output_tokens": 395
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q086",
+   "status": "ok",
+   "answer": "Ha, maishiy chiqindilarni olib chiqish xizmati uchun toʻlov qilish fuqarolarning majburiyatidir.\n\nOʻzbekiston Respublikasining Uy-joy kodeksining 133-moddasiga koʻra, kommunal xizmatlar uchun majburiy toʻlovlar qatoriga qattiq va suyuq maishiy chiqindilarni olib chiqish uchun toʻlanadigan toʻlovlar ham kiradi. Davlat va xususiy uy-joy fondlaridagi joylarning mulkdorlari, ijaraga yoki arendaga oluvchilari oʻzlariga koʻrsatiladigan kommunal xizmatlar uchun qonunchilikka hamda kommunal xizmatlar koʻrsatuvchi korxonalar bilan tuzilgan shartnomalarga muvofiq majburiy toʻlovlarni toʻlashlari shart [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.61,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-106136",
+     "article_url": "https://lex.uz/uz/docs/-106136#-1104300",
+     "article": "133-modda",
+     "article_title": "Kommunal xizmatlar uchun majburiy toʻlovlar",
+     "part": "2-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "106136_0132_133_1",
+     "quote": "Davlat va xususiy uy-joy fondlaridagi joylarning mulkdorlari, ijaraga, arendaga oluvchilari oʻzlariga koʻrsatiladigan kommunal xizmatlar uchun qonunchilikka va kommunal xizmatlar koʻrsatuvchi korxonalar (ijrochilar) bilan tuzilgan shartnomalarga muvofiq majburiy toʻlovlar toʻlaydi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "106136_0132_133_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "133-modda",
+     "retrieval_score": 0.6062,
+     "fusion_score": 0.01688,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Kommunal xizmatlar uchun majburiy toʻlovlar sovuq va issiq suv taʼminoti, oqova suvlarni chiqarib yuborish, elektr taʼminoti, gaz taʼminoti, isitish (issiqlik taʼminoti), qattiq va suyuq maishiy chiqindilarni olib chiqish uchun toʻlanadigan toʻlovlardan iboratdir.\nDavlat va xususiy uy-joy fondlaridagi joylarning mulkdorlari, ijaraga, arendaga oluvchilari oʻzlariga koʻrsatiladigan kommunal xizmatlar uchun qonunchilikka va kommunal xizmatlar koʻrsatuvchi korxonalar (ijrochilar) bilan tuzilgan shartnomalarga muvofiq majburiy toʻlovlar toʻlaydi.\nUy-joy obyektining manzili boʻyicha doimiy yashash joyi boʻyicha roʻyxatga olingan voyaga yetgan jismoniy shaxslar elektr taʼminoti, gaz taʼminoti, suv taʼminoti va oqova suvlarni chiqarib yuborish xizmatlari koʻrsatilganligi uchun haq toʻlash boʻyicha majburiyatlar yuzasidan qonunchilikka va kommunal xizmatlarni yetkazib beruvchi (bajaruvchi) korxonalar bilan tuzilgan shartnomalarga muvofiq solidar javobgar boʻladi.\nKoʻrsatiladigan kommunal xizmatlarning tariflari va mazkur xizmatlar normativlari qonunchilikka muvofiq tasdiqlanadi.\nKommunal xizmatlar koʻrsatish qoidalari Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6126864_0018_19_1",
+     "doc_id": "lex:6126864",
+     "doc_title": "Ichimlik suvi taʼminoti va oqova suvlarni chiqarib yuborish toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.6097,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Isteʼmolchilar:\nichimlik suvidan oqilona va tejamkorlik bilan foydalanishi;\nichimlik suvi taʼminoti va oqova suvlarni chiqarib yuborish boʻyicha xizmatlar uchun toʻlovni oʻz vaqtida amalga oshirishi;\nichimlik suvi taʼminoti va oqova suvlarni chiqarib yuborish boʻyicha xizmatlar koʻrsatganlik uchun tariflar oshgan taqdirda, oldindan toʻlangan toʻlovning qayta hisob-kitobini amalga oshirishi;\nichimlik suvi taʼminoti va oqova suvlarni chiqarib yuborish tarmoqlaridagi, inshootlardagi avariyalar yoki shikastlanishlar, ichimlik suvini hisobga olish asboblaridagi va ularning plombalaridagi shikastlanishlar toʻgʻrisida ichimlik suvi taʼminoti tashkilotini xabardor qilishi;\nichimlik suvi taʼminoti va oqova suvlarni chiqarib yuborish tarmoqlaridagi texnik holat uchun isteʼmolchilarning foydalanishga doir javobgarligi chegaralari doirasidagi avariyalarni oʻz vaqtida bartaraf etishi;\nsuvni hisobga olish asboblarining aniq koʻrsatkichlarini ichimlik suvi taʼminoti tashkilotlariga oʻz vaqtida taqdim etishi;\nishlab chiqarish oqova suvlaridagi ifloslantiruvchi moddalarning lokal tozalash inshootlarida belgilangan normativlarga qadar tozalanishini taʼminlashi;\nichimlik suvi taʼminoti va oqova suvlarni chiqarib yuborish boʻyicha xizmatlardan foydalanish uchun ruxsat etilgan nuqtalarga ulanishi shart.\nIsteʼmolchilarning zimmasida qonunchilikka muvofiq boshqa majburiyatlar ham boʻlishi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "97664_0152_91¹_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "91¹-modda",
+     "retrieval_score": 0.5709,
+     "fusion_score": 0.01589,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Belgilanmagan joylarga qattiq maishiy chiqindilarni va qurilish chiqindilarini tashlash, shuningdek suyuq maishiy chiqindilarni toʻkish —\nfuqarolarga bazaviy hisoblash miqdorining uch baravaridan besh baravarigacha, mansabdor shaxslarga esa — ellik baravaridan yuz baravarigacha miqdorda jarima solishga sabab boʻladi.\nXuddi shunday huquqbuzarlik maʼmuriy jazo chorasi qoʻllanilganidan keyin bir yil davomida takror sodir etilgan boʻlsa, —\nfuqarolarga bazaviy hisoblash miqdorining oʻn baravaridan oʻn besh baravarigacha, mansabdor shaxslarga esa — yuz baravaridan bir yuz ellik baravarigacha miqdorda jarima solishga sabab boʻladi.\nMaishiy va qurilish chiqindilari poligonlariga joylashtirilishi kerak boʻlgan chiqindilarni belgilanmagan joylarga tashlash, —\nfuqarolarga bazaviy hisoblash miqdorining ellik baravaridan yuz baravarigacha, mansabdor shaxslarga esa — ikki yuz baravaridan uch yuz baravarigacha miqdorda jarima solishga sabab boʻladi.\nUshbu moddaning uchinchi qismida nazarda tutilgan huquqbuzarlik maʼmuriy jazo chorasi qoʻllanilganidan keyin bir yil davomida takror sodir etilgan boʻlsa, —\nmaʼmuriy huquqbuzarlikni sodir etish quroli boʻlgan ashyoni musodara qilib, fuqarolarga bazaviy hisoblash miqdorining yuz baravaridan bir yuz ellik baravarigacha, mansabdor shaxslarga esa — bir yuz ellik baravaridan ikki yuz ellik baravarigacha miqdorda jarima solishga sabab boʻladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "42423_0004_5_1",
+     "doc_id": "lex:42423",
+     "doc_title": "CHIQINDILAR TOʻGʻRISIDA",
+     "article": "5-modda",
+     "retrieval_score": 0.7184,
+     "fusion_score": 0.01715,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi Vazirlar Mahkamasi:\nchiqindi bilan bogʻliq ishlarni amalga oshirishga oid davlat dasturlarini tasdiqlaydi va ularning bajarilishini taʼminlaydi;\nchiqindi bilan bogʻliq ishlarni amalga oshirish sohasida davlat hisobi va nazorati olib borilishi tartibini belgilaydi;\nchiqindilar koʻmib tashlanadigan va utilizatsiya qilinadigan joylarning davlat kadastrini yuritish tartibini belgilaydi;\nchiqindi bilan bogʻliq ishlarni amalga oshirish sohasida normativlar ishlab chiqish va tasdiqlash tartibini belgilaydi;\nchiqindilarni olib kirish, olib chiqish va tranzit tarzida olib oʻtish tartibini belgilaydi;\nchiqindilarni pasportlash tartibini belgilaydi;\nxavfli chiqindilarning hamda chegara osha tashilishi davlat tomonidan tartibga solinishi kerak boʻlgan chiqindilarning roʻyxatini tasdiqlaydi;\nxavfli chiqindilarni koʻmib tashlash uchun yer uchastkalari berish masalalarini hal etadi;\ndepozitsiz idishlar va taralarni ishlatish tartibini belgilaydi;\nchiqindilarni joylashtirganlik uchun kompensatsiya toʻlovlari hajmini belgilaydi;\nqonunchilikka muvofiq boshqa vakolatlarni amalga oshiradi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "42423_0022_23_1",
+     "doc_id": "lex:42423",
+     "doc_title": "CHIQINDILAR TOʻGʻRISIDA",
+     "article": "23-modda",
+     "retrieval_score": 0.7127,
+     "fusion_score": 0.01668,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Chiqindilarni maxsus ajratilgan va jihozlangan joylarga joylashtirganlik uchun kompensatsiya toʻlovlari undiriladi.\nKompensatsiya toʻlovlari miqdori belgilangan tartibda chiqindilarni joylashtirish limitlari asosida, chiqindilarning fuqarolar hayoti va sogʻligʻi hamda atrof-muhit uchun xavflilik darajasiga qarab belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Maishiy chiqindilarni toʻplash va olib chiqish xizmatlari uchun toʻlov majburiyati, \"Chiqindilar toʻgʻrisida\"gi qonun, Vazirlar Mahkamasining 95-sonli qarori.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6097,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1361,
+    "rerank_ms": null,
+    "generation_ms": 1455,
+    "total_ms": 2817,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3121,
+    "output_tokens": 271
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q087",
+   "status": "ok",
+   "answer": "Fuqarolik kodeksining 1065-moddasi va \"Mualliflik huquqi va turdosh huquqlar toʻgʻrisida\"gi Qonunning 35-moddasiga koʻra, mualliflik huquqi muallifning butun hayoti davomida va u vafot etganidan keyin yetmish yil davomida amal qiladi [1][2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.713,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:1022944",
+     "doc_title": "Mualliflik huquqi va turdosh huquqlar toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-42",
+     "url": "https://lex.uz/uz/docs/-1022944",
+     "article_url": "https://lex.uz/uz/docs/-1022944#-1023215",
+     "article": "35-modda",
+     "article_title": "Mualliflik huquqining amal qilish muddati",
+     "part": "2-qism",
+     "edition_date": "2021-08-21",
+     "doc_status": "amalda",
+     "chunk_id": "1022944_0034_35_1",
+     "quote": "Hammualliflikda yaratilgan asarga boʻlgan mualliflik huquqi hammualliflarning butun hayoti davomida va hammualliflar orasida eng uzoq umr koʻrgan oxirgi shaxs vafot etganidan keyin yetmish yil davomida amal qiladi."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-180552",
+     "article_url": "https://lex.uz/uz/docs/-180552#-1111464",
+     "article": "1065-modda",
+     "article_title": "Mualliflik huquqining amal qilish muddati",
+     "part": "2-qism",
+     "edition_date": "2026-07-19",
+     "doc_status": "amalda",
+     "chunk_id": "180552_0678_1065_1",
+     "quote": "Hammualliflikda yaratilgan asarga boʻlgan mualliflik huquqi hammualliflarning butun hayoti davomida va hammualliflar orasida eng uzoq umr koʻrgan oxirgi shaxs vafot etganidan keyin yetmish yil davomida amal qiladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "1022944_0034_35_1",
+     "doc_id": "lex:1022944",
+     "doc_title": "Mualliflik huquqi va turdosh huquqlar toʻgʻrisida",
+     "article": "35-modda",
+     "retrieval_score": 0.7132,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Mualliflik huquqi muallifning butun hayoti davomida va uning vafotidan keyin yetmish yil davomida amal qiladi, ushbu moddada va boshqa qonunlarda nazarda tutilgan hollar bundan mustasno.\nHammualliflikda yaratilgan asarga boʻlgan mualliflik huquqi hammualliflarning butun hayoti davomida va hammualliflar orasida eng uzoq umr koʻrgan oxirgi shaxs vafot etganidan keyin yetmish yil davomida amal qiladi.\nTaxallus ostida yoki imzosiz qonuniy oshkor qilingan asarga boʻlgan mualliflik huquqi asar oshkor qilinganidan keyin ellik yil davomida amal qiladi. Agar koʻrsatilgan muddat ichida taxallus ostidagi yoki imzosiz asar muallifi oʻz shaxsini maʼlum qilsa yoki bundan buyon uning shaxsi shubhaga oʻrin qoldirmasa, ushbu moddaning birinchi qismida koʻrsatilgan muddatlar qoʻllaniladi.\nMuallifning vafotidan keyin birinchi marta eʼlon qilingan asarga boʻlgan mualliflik huquqi asar eʼlon qilinganidan keyin yetmish yil davomida amal qiladi.\nMualliflik huquqi, mualliflik ismi-sharifiga boʻlgan huquq va muallif obroʻsini himoya qilish huquqi muddatsiz muhofaza qilinadi.\nAsarga Oʻzbekiston Respublikasining xalqaro shartnomalariga muvofiq muhofaza berilgan taqdirda, Oʻzbekiston Respublikasi hududida mualliflik huquqining amal qilish muddati ushbu moddaga binoan belgilanadi. Lekin bu muddat asar kelib chiqqan mamlakatda belgilangan mualliflik huquqining amal qilish muddatidan oshib ketmasligi kerak.\nUshbu moddada nazarda tutilgan muddatlarni hisoblash muddatning oʻta boshlashi uchun asos boʻladigan yuridik fakt yuz bergan yildan keyingi yilning birinchi yanvaridan eʼtiboran boshlanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "180552_0678_1065_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1065-modda",
+     "retrieval_score": 0.7101,
+     "fusion_score": 0.01694,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Mualliflik huquqi muallifning butun hayoti davomida va uning vafotidan keyin yetmish yil davomida amal qiladi, ushbu moddada va boshqa qonunlarda nazarda tutilgan hollar bundan mustasno.\nHammualliflikda yaratilgan asarga boʻlgan mualliflik huquqi hammualliflarning butun hayoti davomida va hammualliflar orasida eng uzoq umr koʻrgan oxirgi shaxs vafot etganidan keyin yetmish yil davomida amal qiladi.\nTaxallus ostida yoki imzosiz qonuniy oshkor qilingan asarga boʻlgan mualliflik huquqi asar oshkor qilinganidan keyin ellik yil davomida amal qiladi. Agar koʻrsatilgan muddat ichida taxallus ostidagi yoki imzosiz asar muallifi oʻz shaxsini maʼlum qilsa yoki bundan buyon uning shaxsi shubhaga oʻrin qoldirmasa, ushbu moddaning birinchi qismida koʻrsatilgan muddatlar qoʻllaniladi.\nMuallifning vafotidan keyin birinchi marta eʼlon qilingan asarga boʻlgan mualliflik huquqi asar eʼlon qilinganidan keyin yetmish yil davomida amal qiladi.\nMualliflik huquqi, mualliflik ismiga boʻlgan huquq va muallif obroʻsini himoya qilish huquqi muddatsiz muhofaza qilinadi.\nAsarga Oʻzbekiston Respublikasining xalqaro shartnomalariga muvofiq muhofaza berilgan taqdirda, Oʻzbekiston Respublikasi hududida mualliflik huquqining amal qilish muddati ushbu moddaga binoan belgilanadi. Lekin bu muddat asar kelib chiqqan mamlakatda belgilangan mualliflik huquqining amal qilish muddatidan oshib ketmasligi kerak.\nUshbu moddada nazarda tutilgan muddatlarni hisoblash muddatning oʻta boshlashi uchun asos boʻladigan yuridik fakt yuz bergan yildan keyingi yilning birinchi yanvaridan eʼtiboran boshlanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "180552_0681_1068_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1068-modda",
+     "retrieval_score": 0.5902,
+     "fusion_score": 0.01627,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mualliflik shartnomasida quyidagilar nazarda tutilishi kerak:\nasardan foydalanish usullari (mazkur shartnoma asosida oʻtkaziladigan aniq huquqlar);\nasardan foydalanishning har bir usuli uchun toʻlanadigan haq miqdori va (yoki) toʻlanadigan haq miqdorini belgilash tartibi, uni toʻlash tartibi hamda muddatlari.\nMualliflik shartnomasi taraflar zarur deb topgan boshqa shartlarni ham nazarda tutishi mumkin.\nMualliflik shartnomasida asardan foydalanish huquqi qancha muddatga oʻtkazilishi toʻgʻrisida shart boʻlmagan taqdirda, shartnoma tuzilgan sanadan boshlab besh yil oʻtganidan keyin, agar foydalanuvchi shartnoma bekor qilinguniga qadar kamida olti oy oldin bu haqda yozma ravishda ogohlantirilgan boʻlsa, shartnoma muallif tomonidan bekor qilinishi mumkin.\nMualliflik shartnomasida asardan foydalanish huquqi amal qiladigan hudud doirasi toʻgʻrisida shart boʻlmagan taqdirda, shartnomaga binoan boshqa shaxsga oʻtkazilayotgan huquqning amal qilishi Oʻzbekiston Respublikasi hududi bilan cheklanadi.\nBoshqa shaxsga oʻtkazilishi mualliflik shartnomasida toʻgʻridan-toʻgʻri nazarda tutilmagan asardan foydalanish huquqlari boshqa shaxsga oʻtkazilmagan deb hisoblanadi.\nShartnoma tuzilgan paytda asardan foydalanish haqida hali maʼlum boʻlmagan huquqlar mualliflik shartnomasi predmeti boʻlishi mumkin emas.\nToʻlanadigan haq mualliflik shartnomasida asardan foydalanishning tegishli usuli uchun olinadigan daromaddan foiz tarzida belgilanadi yoki agar buni asarning xususiyati yoki undan foydalanishning oʻziga xos jihatlari bilan bogʻliq holda amalga oshirish mumkin boʻlmasa, shartnomada qayd etilgan summa tarzida yoxud boshqacha tarzda belgilanadi. Mazkur haqning eng kam miqdorlari Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi.\nAgar asarni nashr etish yoki undan boshqacha tarzda foydalanish haqidagi mualliflik shartnomasida haq toʻlash qatʼiy summa tarzida belgilansa, shartnomada asarning eng koʻp adadi belgilab qoʻyilishi shart.\nMualliflik shartnomasi boʻyicha oʻtkazilgan huquqlar bunday shartnomada toʻgʻridan-toʻgʻri nazarda tutilgan taqdirdagina boshqa shaxslarga toʻliq yoki qisman oʻtkazilishi mumkin.\nMualliflik shartnomasining muallifni kelgusida mazkur mavzuda yoki mazkur sohada asarlar yaratishini cheklaydigan sharti oʻz-oʻzidan haqiqiy boʻlmaydi.\nMualliflik shartnomasining ushbu Kodeks yoki boshqa qonunlar talablariga zid boʻlgan shartlari haqiqiy emas."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0676_1062_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1062-modda",
+     "retrieval_score": 0.5868,
+     "fusion_score": 0.01615,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xizmat vazifalarini yoki xizmat topshirigʻini bajarish tartibida yaratilgan asarga (xizmat asariga) boʻlgan muallifning shaxsiy nomulkiy huquqlari asar muallifida saqlanib qoladi.\nXizmat asaridan foydalanishga boʻlgan mutlaq huquqlar, agar muallif bilan ish beruvchi oʻrtasidagi shartnomada boshqacha qoida nazarda tutilgan boʻlmasa, ish beruvchiga tegishlidir.\nXizmat asaridan foydalanishning har bir turi uchun haq miqdori va uni toʻlash tartibi muallif bilan ish beruvchi oʻrtasidagi shartnomada belgilanadi. Ish beruvchi bilan tuzilgan shartnomadan qatʼi nazar, muallif asar oshkor qilingan vaqtdan eʼtiboran oʻn yil oʻtganidan keyin, ish beruvchining roziligi bilan esa undan ham oldinroq asardan foydalanish va haq olish huquqini toʻliq hajmda qoʻlga kiritadi.\nMuallifning xizmat asaridan topshiriq maqsadi taqozo etmaydigan usulda foydalanish huquqi cheklanmaydi.\nIsh beruvchi xizmat asaridan har qanday tarzda foydalanishda oʻz nomini koʻrsatishga yoxud uni koʻrsatishni talab qilishga haqlidir.\nXizmat vazifalarini yoki ish beruvchining xizmat topshiriqlarini bajarish yoʻsinida ushbu Kodeks 1049-moddasining uchinchi qismida nazarda tutilgan ensiklopediyalar, ensiklopedik lugʻatlar, davriy va davomli ilmiy ishlar toʻplamlari, gazetalar, jurnallar hamda boshqa davriy nashrlarning yaratilishiga ushbu moddaning qoidalari tatbiq etilmaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "1022944_0053_54_1",
+     "doc_id": "lex:1022944",
+     "doc_title": "Mualliflik huquqi va turdosh huquqlar toʻgʻrisida",
+     "article": "54-modda",
+     "retrieval_score": 0.5948,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Qonunda ijrochiga nisbatan nazarda tutilgan huquqlar ijro birinchi marta ijro etilgandan keyin ellik yil mobaynida amal qiladi.\nIjrochining ismi-sharifga boʻlgan hamda ijroni ijrochining shaʼni va qadr-qimmatiga zarar yetkazishi mumkin boʻlgan har qanday tarzda buzib koʻrsatilishidan yoki har qanday boshqacha tarzda tajovuz etilishidan himoya qilish huquqlari muddatsiz muhofaza qilinadi.\nFonogrammani tayyorlovchiga nisbatan ushbu Qonunda nazarda tutilgan huquqlar fonogramma birinchi marta chop etilganidan keyin ellik yil mobaynida yoxud, agar fonogramma uning birinchi yozuvidan keyin ellik yil ichida chop etilmagan boʻlsa, shu muddat mobaynida amal qiladi.\nEfir yoki kabel orqali koʻrsatuv yoxud eshittirish beruvchi tashkilotning oʻz koʻrsatuvi yoki eshittirishiga nisbatan ushbu Qonunda nazarda tutilgan huquqlari bunday koʻrsatuv yoki eshittirish birinchi marta efirga uzatilganidan yoki birinchi marta kabel orqali yuborilganidan keyin ellik yil mobaynida amal qiladi.\nTurdosh huquqlar obyektlariga Oʻzbekiston Respublikasining xalqaro shartnomalariga muvofiq muhofaza berilganda Oʻzbekiston Respublikasi hududida turdosh huquqlarning amal qilish muddati ushbu moddaga binoan belgilanadi. Lekin bu muddat turdosh huquqlar obyektlari kelib chiqqan mamlakatda belgilangan turdosh huquqlarning amal qilish muddatidan oshib ketmasligi kerak.\nUshbu moddada nazarda tutilgan muddatlarni hisoblash muddatning oʻta boshlashi uchun asos boʻladigan yuridik fakt roʻy bergan yildan keyingi yilning birinchi yanvaridan eʼtiboran boshlanadi.\nUshbu moddada nazarda tutilgan muddatlarning qolgan qismi doirasida ijrodan, fonogrammadan, efir yoki kabel orqali koʻrsatuv yoxud eshittirish beruvchi tashkilotning koʻrsatuvi yoki eshittirishidan foydalanishni amalga oshirish yoxud foydalanishga ruxsat berish va haq olishga boʻlgan huquq ijrochining, fonogrammani tayyorlovchining, efir yoki kabel orqali koʻrsatuv yoxud eshittirish beruvchi tashkilotning merosxoʻrlariga (yuridik shaxslarga nisbatan — huquqiy vorislariga) oʻtadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Yozuvchi vafot etganidan keyin uning asarlariga mualliflik huquqi yana necha yil saqlanib qoladi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7132,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 899,
+    "rerank_ms": null,
+    "generation_ms": 2029,
+    "total_ms": 2929,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 4266,
+    "output_tokens": 155
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q088",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Soliq kodeksining 467-moddasiga koʻra, chakana savdo sohasidagi soliq toʻlovchilar uchun aylanmadan olinadigan soliq stavkasi joylashgan joyiga qarab belgilanadi [2].\n\nToshkent shahri aholisi soni yuz ming nafardan koʻp boʻlgan shahar hisoblangani uchun, sizning oziq-ovqat doʻkoningiz uchun aylanmadan olinadigan soliq stavkasi **4 foiz** miqdorida belgilanadi [2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.661,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4674902",
+     "article_url": "https://lex.uz/uz/docs/-4674902#-5203301",
+     "article": "467-modda",
+     "article_title": "Soliq stavkalari",
+     "part": "3-qism",
+     "edition_date": "2026-10-21",
+     "doc_status": "amalda",
+     "chunk_id": "4674902_0477_467_1",
+     "quote": "aholisi soni yuz ming nafar va undan koʻp kishidan iborat shaharlarda | 4"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4674902_0471_461_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "461-modda",
+     "retrieval_score": 0.6606,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Aylanmadan olinadigan soliqni toʻlovchilar (bundan buyon ushbu boʻlimda soliq toʻlovchilar deb yuritiladi) deb quyidagilar eʼtirof etiladi:\n1) soliq davrida jami daromadi bir milliard soʻmdan oshmagan Oʻzbekiston Respublikasi yuridik shaxslari (bundan buyon ushbu boʻlimda yuridik shaxslar deb yuritiladi);\n2) soliq davrida tovarlarni (xizmatlarni) realizatsiya qilishdan olingan daromadi bir milliard soʻmdan oshmagan yakka tartibdagi tadbirkorlar va oʻzini oʻzi band qilgan shaxslar.\nAylanmadan olinadigan soliq quyidagilarga nisbatan tatbiq etilmaydi:\n1) Oʻzbekiston Respublikasining bojxona chegarasi orqali tovarlarni olib kirishni (importni) amalga oshiruvchi yuridik shaxslar va yakka tartibdagi tadbirkorlarga va oʻzini oʻzi band qilgan shaxslarga;\n2) aksiz soligʻi toʻlanadigan tovarlarni (xizmatlarni) ishlab chiqaruvchi va foydali qazilmalarni kavlab olishni amalga oshiruvchi yuridik shaxslarga;\n3) yuridik shaxslar — qishloq xoʻjaligi tovar ishlab chiqaruvchilariga, basharti ularda yigirma besh gektar va undan ortiq sugʻoriladigan qishloq xoʻjaligi ekin maydoni mavjud boʻlsa;\n4) benzin, dizel yoqilgʻisi va gazni realizatsiya qilishni amalga oshiruvchi yuridik shaxslarga;\n5) lotoreyalarni tashkil etish boʻyicha faoliyatni amalga oshiruvchi yuridik shaxslarga;\n6) oddiy shirkat ishlarini yuritish oʻz zimmasiga yuklatilgan ishonchli shaxsga — oddiy shirkat shartnomasi doirasida amalga oshirilayotgan faoliyat boʻyicha, bundan islomiy moliya operatsiyalari boʻyicha banklar va mikromoliya tashkilotlari bilan tuzilgan oddiy shirkat shartnomasi doirasida amalga oshirilayotgan faoliyat mustasno;\n7) boʻsh turgan binolar, yashash uchun moʻljallanmagan inshootlar va qurilishi tugallanmagan obyektlar, shuningdek foydalanilmayotgan ishlab chiqarish maydonlarining mulkdori boʻlgan yuridik shaxslarga, ulardan samarasiz foydalanilayotganligi boʻyicha qonunda belgilangan tartibda xulosa kiritilganda;\n8) markazlashtirilgan moliyalashtirish manbalari hisobidan obyektlarni (joriy va kapital taʼmirlash bundan mustasno) qurishni bajaruvchi yuridik shaxslarga;\n9) alkogol mahsulotlari, shu jumladan pivoni chakana sotish boʻyicha turgʻun savdo shoxobchalariga;\n10) bozorlarga va savdo komplekslariga;\n11) soliq maslahatchilarining tashkilotlariga;\n12) auditorlik tashkilotlariga;\n13) notijorat tashkilotlariga, shu jumladan budjet tashkilotlariga;\n14) dori vositalari, tibbiy buyumlar savdosi bilan shugʻullanuvchi korxonalarga va (yoki) tibbiy xizmat koʻrsatuvchi tashkilotlarga;\n15) zargarlik buyumlarini ishlab chiqarish va (yoki) ularni sotish faoliyati bilan shugʻullanuvchi tadbirkorlik subyektlariga."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4674902_0477_467_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "467-modda",
+     "retrieval_score": 0.6606,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Soliq stavkalari quyidagi miqdorlarda belgilanadi:\nT/r | Soliq toʻlovchilar | Soliq stavkalari, foizlarda\n1. | Iqtisodiyotning barcha tarmoqlaridagi soliq toʻlovchilar, bundan 2 — 5-bandlarda nazarda tutilganlar mustasno | 4\n2. | Chakana savdo sohasidagi soliq toʻlovchilar\n2.1. | joylashgan joyiga qarab:\naholisi soni yuz ming nafar va undan koʻp kishidan iborat shaharlarda | 4\nboshqa aholi punktlarida | 2\nborish qiyin boʻlgan va togʻli tumanlarda | 1\n2.2. | joylashgan joyidan qatʼi nazar, tamaki mahsulotlarini realizatsiya qilishdan tovar aylanmasi boʻyicha | 4\n3. | Qishloq xoʻjaligi mahsulotlarini sotib oluvchi, saralovchi, saqlovchi va qadoqlovchi tayyorlov tashkilotlari | tovar aylanmasining 4 yoki yalpi daromadning 25\n4. | Yagona ishtirokchisi nogironligi boʻlgan shaxslarning jamoat birlashmalari, “Nuroniy” jamgʻarmasi va “Oʻzbekiston Chernobilchilari” assotsiatsiyasi boʻlgan, umumiy sonida nogironligi boʻlgan shaxslar, urush va 1941 — 1945-yillardagi mehnat fronti veteranlari 50 foizdan kam boʻlmagan va nogironligi boʻlgan shaxslar, urush va 1941 — 1945-yillardagi mehnat fronti veteranlarining mehnatiga haq toʻlash fondi umumiy mehnatga haq toʻlash fondining 50 foizidan kam boʻlmagan soliq toʻlovchilar | 0\n5. | Yakka tartibdagi tadbirkorlar va oʻzini oʻzi band qilgan shaxslar | 1\nUshbu modda ikkinchi, uchinchi va toʻrtinchi qismlarining qoidalari 2026-yil 1-yanvardan eʼtiboran oʻz kuchini yoʻqotgan deb topiladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4674902_0474_464_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "464-modda",
+     "retrieval_score": 0.6542,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Kodeksning 463-moddasiga muvofiq hisoblab chiqarilgan jami daromad soliq bazasi deb eʼtirof etiladi, bundan quyidagilar mustasno:\n1) Oʻzbekiston Respublikasining davlat obligatsiyalari va boshqa davlat qimmatli qogʻozlari boʻyicha daromadlar, shuningdek Oʻzbekiston Respublikasi rezidentlari boʻlgan yuridik shaxslarning xalqaro obligatsiyalari boʻyicha daromadlar;\n2) soliq agentida soliq solinishi lozim boʻlgan dividendlar;\n3) qaytariladigan koʻp marta aylanadigan tara qiymati, agar uning qiymati ilgari tovarlarni (xizmatlarni) sotishdan olinadigan daromadga kiritilgan boʻlsa;\n4) amortizatsiya qilinadigan aktivlarni tugatishda ularni qoʻshimcha baholashda olingan, oldingi narxni tushirishlardagi summadan ortiqcha summa hisobidan olingan daromadlar;\n5) hisobot yilida aniqlangan oʻtgan yillardagi daromadlar. Mazkur daromadlarga ular shakllangan davrdagi qonunchilikka muvofiq soliqlar boʻyicha qayta hisob-kitob oʻtkazilganligi inobatga olingan holda soliq solinadi.\nSoliq solinadigan baza ushbu moddaning birinchi qismida nazarda tutilgan chegirmalardan tashqari quyidagilar uchun kamaytiriladi:\n1) brokerlik tashkilotlari uchun — bitim summasidan birjaga oʻtkaziladigan vositachilik yigʻimi summasiga;\n2) komissiya shartnomasi boʻyicha vositachilik xizmatlarini koʻrsatuvchi yuridik shaxslar uchun — tovarlarni import qilishda toʻlangan bojxona toʻlovlari summasiga realizatsiya qilingan tovar ulushida;\n3) turizm faoliyati subyektlari uchun — turistik xizmatlarni onlayn bronlashtirish va sotish uchun yaratilgan dasturiy mahsulotlarni hamda axborot tizimlarini joriy etishga yoʻnaltirilgan mablagʻlar summasiga.\n4) tadbirkorlik subyektlari uchun — tovarlarni (xizmatlarni) realizatsiya qilishdan olingan daromadlarining 0,5 foizidan oshmagan miqdorda oʻz xodimlariga va ularning yaqin qarindoshlariga ommaviy-madaniy hamda konsert-tomosha tadbirlariga borishi uchun chiptalar xarid qilishga doir xarajatlar summasiga;"
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4674902_0473_463_2",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "463-modda",
+     "retrieval_score": 0.6446,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "1) tovarlarni (xizmatlarni) quyidagilarga:\na) ishtirokchilar tarkibidan ishtirokchi chiqqan (chiqib ketgan) taqdirda yoxud uning yuridik shaxsdagi ulushi kamaytirilganda yoki yuridik shaxs tomonidan ishtirokchidan uning ushbu yuridik shaxsda ishtirok etish ulushi (ulushning qismi) qaytarib sotib olinganda ushbu ishtirokchiga berish;\nb) yuridik shaxs boʻlgan emitent tomonidan aksiyadordan ushbu emitent chiqargan aksiyalar qaytarib sotib olinganda aksiyadorga berish;\nv) yuridik shaxs tugatilganda aksiyadorga yoki ishtirokchiga berish;\n2) tovarlarni (xizmatlarni) jismoniy shaxs mehnatiga haq toʻlash hisobidan yoki dividend toʻlash hisobidan berish;\n3) tovarlarni yoki boshqa mol-mulkni qayta ishlab berish uchun berish, agar tovarlar va (yoki) mulk qayta ishlash mahsuloti sifatida shartnomada belgilangan muddatda qaytarilmagan boʻlsa;\n4) koʻp marta aylanadigan, sotuvchiga qaytarilishi shart boʻlgan idishlarni, agar idish mahsulotni shunday idishda yetkazib berish shartnomasida belgilangan muddatda qaytarilmagan boʻlsa, berish.\nTovarlarni (xizmatlarni) olish huquqini taqdim etuvchi vaucherlarni realizatsiya qilish yoki bepul berish mazkur tovarlarni (xizmatlarni) realizatsiya qilish deb eʼtirof etiladi.\nUzoq muddatli shartnomalar boʻyicha daromadlar ushbu Kodeksning 303-moddasida nazarda tutilgan tartibda jami daromad tarkibiga kiritiladi.\nBalansning valyuta hisobvaraqlarini qayta baholash chogʻida kursdagi ijobiy va salbiy farqlar oʻrtasidagi saldo soliq solish obyekti deb eʼtirof etiladi. Kursdagi salbiy farqning summasi kursdagi ijobiy farq summasidan ortiq boʻlgan taqdirda oshib ketgan summa aylanmadan olinadigan soliqni hisoblab chiqarishda soliq bazasini kamaytirmaydi.\nSoliq toʻlovchilar tomonidan jismoniy shaxslardan olinadigan daromad soligʻi yoxud qoʻshilgan qiymat soligʻi va foyda soligʻi toʻlash davrida aylanmadan olinadigan soliqni toʻlashga oʻtguniga qadar olingan daromadlar jami daromadga kiritilmaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4674902_0472_462_2",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "462-modda",
+     "retrieval_score": 0.6438,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… toʻlovchilar, shu jumladan yangi tashkil etilgan yuridik shaxslar va yangi roʻyxatdan oʻtgan yakka tartibdagi tadbirkorlar, oʻzini oʻzi band qilgan shaxslar jami daromadi koʻrsatilgan miqdorga yetgan kundan eʼtiboran qoʻshilgan qiymat soligʻini va foyda soligʻini toʻlashga oʻtadi.\nAgar yangi tashkil etilgan yuridik shaxsning jami daromad summasi, yangi roʻyxatdan oʻtgan yakka tartibdagi tadbirkorda yoki oʻzini oʻzi band qilgan shaxsda tovarlarni (xizmatlarni) realizatsiya qilishdan olingan daromad summasi bir milliard soʻm uch yuz oltmish beshga boʻlingan va soliq toʻlovchi roʻyxatdan oʻtgan sanadan to kalendar yil tugaguniga qadar boʻlgan kunlar soniga koʻpaytirilgandagi summadan oshsa, u holda bunday shaxslar roʻyxatdan oʻtilgan yildan keyingi yildan eʼtiboran qoʻshilgan qiymat soligʻini va foyda soligʻini toʻlashga oʻtadi.\nVositachilik, topshiriq shartnomasi va vositachilik xizmatlari koʻrsatishga oid boshqa shartnomalar boʻyicha vositachilik xizmatlari koʻrsatuvchi soliq toʻlovchilar, shu jumladan telekommunikatsiyalar operatorlari va (yoki) provayderlariga vositachilik xizmatlarini koʻrsatuvchi yakka tartibdagi tadbirkorlar tovarlarni (xizmatlarni) realizatsiya qilishdan olingan daromadni realizatsiya qilish boʻyicha umumiy aylanmadan (bitim summalaridan) kelib chiqqan holda aniqlaydi.\nBoʻsh turgan binolar, yashash uchun moʻljallanmagan inshootlar va qurilishi tugallanmagan obyektlar, shuningdek foydalanilmayotgan ishlab chiqarish maydonlarining mulkdori boʻlgan yuridik shaxslar, ularni samarasiz foydalanayotganligi boʻyicha xulosa chiqarilgan oydan keyingi oyning sanasidan eʼtiboran qoʻshilgan qiymat soligʻini va foyda soligʻini toʻlashga oʻtadi.\nQurilishi tugallanmagan obyektlar va foydalanilmayotgan ishlab chiqarish maydonlarining mulkdorlari boʻlgan yuridik shaxslar, investitsion loyihaning amalga oshirilmaganligi toʻgʻrisida xulosa berishga vakolati boʻlgan vakolatli organning xulosasi chiqarilgan sanadan eʼtiboran qoʻshilgan qiymat soligʻini va foyda soligʻini toʻlashga oʻtadi.\nMoliyalashtirishning markazlashtirilgan manbalari hisobidan obyektlar qurilishini (bundan joriy va kapital taʼmirlash mustasno) bajaruvchi yuridik shaxslar bunday qurilishga doir shartnoma tuzilgan sanadan eʼtiboran qoʻshilgan qiymat soligʻi va foyda soligʻini toʻlashga oʻtadi.\nOʻzbekiston Respublikasining bojxona chegarasi orqali tovarlarni olib kirishni (importni) amalga oshiruvchi yuridik shaxslar, yakka tartibdagi tadbirkorlar va oʻzini oʻzi band qilgan shaxslar qaysi sana oldinroq kelishiga qarab import shartnomasi tuzilgan yoki tovarlar olib kirilgan (import qilingan) sanadan boshlab qoʻshilgan qiymat soligʻini hamda foyda soligʻini toʻlashga oʻtadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Toshkentda MChJ sifatida kichik oziq-ovqat doʻkonim bor. Aylanmadan olinadigan soliq menga necha foiz boʻladi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6606,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 540,
+    "rerank_ms": null,
+    "generation_ms": 2102,
+    "total_ms": 2643,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 5080,
+    "output_tokens": 209
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q089",
+   "status": "ok",
+   "answer": "Yoʻq, voyaga yetmagan ukangiz merosdan quruq qolmaydi. Oʻzbekiston Respublikasi Fuqarolik kodeksining 1142-moddasiga koʻra, meros qoldiruvchining voyaga yetmagan bolalari vasiyatnomaning mazmunidan qatʼi nazar, qonun boʻyicha voris boʻlganlarida ularga tegishi lozim boʻlgan ulushning kamida yarmini (majburiy ulush) meros qilib olish huquqiga ega.\n\nBu qoidaga koʻra:\n*   Vasiyatnoma mavjud boʻlsa ham, voyaga yetmagan farzand majburiy ulushni olish huquqini saqlab qoladi [1].\n*   Majburiy ulushni hisoblashda merosxoʻrning biron-bir asos boʻyicha merosdan oladigan hamma narsasi, shu jumladan uy jihozlari va roʻzgʻor buyumlari ham hisobga olinadi [1].\n*   Vasiyatnomada voyaga yetmagan merosxoʻrning huquqlarini cheklovchi har qanday shartlar, faqat unga tegadigan merosning majburiy ulushdan ortiqcha qismiga nisbatan haqiqiy hisoblanadi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.583,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-180552",
+     "article_url": "https://lex.uz/uz/docs/-180552#-199046",
+     "article": "1142-modda",
+     "article_title": "Merosdan majburiy ulush olish huquqi",
+     "part": "2-qism",
+     "edition_date": "2026-07-19",
+     "doc_status": "amalda",
+     "chunk_id": "180552_0753_1142_1",
+     "quote": "Majburiy ulush olish huquqiga ega boʻlgan merosxoʻr biron-bir asos boʻyicha merosdan oladigan hamma narsa, shu jumladan oddiy uy jihozlari va roʻzgʻor buyumlaridan iborat mol-mulkning qiymati ham, bunday merosxoʻr foydasiga qilingan vasiyat majburiyatining qiymati ham majburiy ulushga qoʻshiladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "180552_0753_1142_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1142-modda",
+     "retrieval_score": 0.5614,
+     "fusion_score": 0.01669,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Meros qoldiruvchining voyaga yetmagan yoki mehnatga qobiliyatsiz bolalari, shu jumladan farzandlikka olgan bolalari, shuningdek mehnatga qobiliyatsiz eri (xotini) va ota-onasi, shu jumladan uni farzandlikka olganlar, vasiyatnomaning mazmunidan qatʼi nazar, qonun boʻyicha voris boʻlganlarida ulardan har biriga tegishi lozim boʻlgan ulushning kamida yarmini (majburiy ulush) meros qilib oladilar.\nMajburiy ulush olish huquqiga ega boʻlgan merosxoʻr biron-bir asos boʻyicha merosdan oladigan hamma narsa, shu jumladan oddiy uy jihozlari va roʻzgʻor buyumlaridan iborat mol-mulkning qiymati ham, bunday merosxoʻr foydasiga qilingan vasiyat majburiyatining qiymati ham majburiy ulushga qoʻshiladi.\nMerosdan majburiy ulush olish huquqiga ega boʻlgan merosxoʻr uchun vasiyatnomada belgilangan har qanday cheklashlar va shartlar unga tegadigan merosning majburiy ulushdan ortiqcha qismiga nisbatangina haqiqiydir."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "180552_0742_1132_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1132-modda",
+     "retrieval_score": 0.5293,
+     "fusion_score": 0.01531,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Vasiyat qiluvchi vasiyat boʻyicha merosxoʻrning zimmasiga bir yoki bir necha shaxs (vasiyat majburiyati yuzasidan huquq oluvchilar) foydasiga biron-bir majburiyatni (vasiyat majburiyatini) meros hisobidan bajarishni yuklashga haqli boʻlib, vasiyat majburiyati yuzasidan huquq oluvchilar vasiyat majburiyati bajarilishini talab qilish huquqini oladilar.\nQonun boʻyicha vorislar jumlasiga kiradigan, shuningdek kirmaydigan shaxslar ham vasiyat majburiyati yuzasidan huquq oluvchilar boʻlishlari mumkin.\nVasiyat majburiyati yuzasidan huquq oluvchiga meros tarkibiga kiradigan ashyoni mulk qilib yoki boshqa ashyoviy huquq qilib berish, meros tarkibiga kirmaydigan mol-mulkni uning uchun sotib olish va unga berish, uning uchun muayyan ishni bajarish, unga muayyan xizmatlar koʻrsatish va hokazolar vasiyat majburiyati narsasi boʻlishi mumkin.\nVasiyat qiluvchi tomonidan zimmasiga vasiyat majburiyatini bajarish vazifasi yuklatilgan merosxoʻr bu vazifani oʻziga oʻtgan merosning meros qoldiruvchi qarzlarining oʻzi toʻlashi lozim boʻlgan qismini chegirib tashlagandan keyin qoladigan haqiqiy qiymati doirasidagina bajarishi lozim.\nAgar zimmasiga vasiyat majburiyati yuklatilgan merosxoʻr merosdan majburiy ulush olish huquqiga ega boʻlsa, uning vasiyat majburiyatini bajarish vazifasi oʻziga oʻtgan meros qiymatining majburiy ulush miqdoridan ortiq boʻlgan qismi bilan chegaralanadi.\nVasiyat majburiyati barcha yoki bir necha merosxoʻr zimmasiga yuklatilgan hollarda, agar vasiyatnomada boshqacha tartib nazarda tutilgan boʻlmasa, ularning har biri vasiyat majburiyatini merosdagi oʻz ulushiga mutanosib ravishda bajaradi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "180552_0743_1133_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1133-modda",
+     "retrieval_score": 0.5207,
+     "fusion_score": 0.0137,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Vasiyat qiluvchi vasiyat boʻyicha merosxoʻr zimmasiga biron-bir harakatni sodir etish yoki sodir etishdan oʻzini tiyish majburiyatini yuklab, bu majburiyatni bajarishni kreditor sifatida talab qilish huquqini hech kimga bermasligi mumkin. Umumiy foydali maqsadni amalga oshirish uchun vasiyatnomani ijro etuvchining zimmasiga xuddi shunday majburiyat yuklatilib, bu majburiyatni bajarish uchun meros qoldiruvchi tomonidan mol-mulkning bir qismi ajratilishi mumkin.\nMulkiy xususiyatga ega boʻlgan xatti-harakatni sodir etishdan iborat majburiyatga nisbatan tegishincha ushbu Kodeksning 1132-moddasida bayon etilgan qoidalar qoʻllaniladi.\nAgar ushbu Kodeksga muvofiq, majburiyatni bajarish zimmasida boʻlgan merosxoʻrga tegishi lozim boʻlgan yoki unga qarashli boʻlgan meros ulushi boshqa merosxoʻrga oʻtsa, majburiyatni bajarish bekor boʻladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "180552_0730_1120_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1120-modda",
+     "retrieval_score": 0.5833,
+     "fusion_score": 0.01715,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqaroning oʻziga tegishli mol-mulkni yoki bu mol-mulkka nisbatan huquqini vafot etgan taqdirda tasarruf etish xususidagi xohish-irodasi vasiyat deb eʼtirof qilinadi.\nVasiyatnoma shaxsan tuzilishi lozim. Vasiyatnomaning vakil orqali tuzilishiga yoʻl qoʻyilmaydi.\nFuqaro oʻzining barcha mol-mulkini yoki uning muayyan qismini qonun boʻyicha merosxoʻrlar doirasiga kiradigan, shuningdek kirmaydigan bir yoki bir necha shaxsga, shu bilan birga yuridik shaxslarga, davlatga yoki fuqarolarning oʻzini oʻzi boshqarish organlariga vasiyat qilishi mumkin.\nVasiyat qiluvchi qonun boʻyicha merosxoʻrlardan bittasini, bir nechasini yoki hammasini izoh bermagan holda merosdan mahrum qilishga haqli. Qonun boʻyicha merosxoʻrni merosdan mahrum etish, agar vasiyatnomadan boshqa hol kelib chiqmasa, bu vasiyat qiluvchining taqdim etish huquqi boʻyicha vorislik qiladigan avlodlariga nisbatan tatbiq etilmaydi.\nMeros qoldiruvchi har qanday mol-mulk toʻgʻrisidagi farmoyishni oʻz ichiga oladigan vasiyatnoma tuzishga haqli.\nMeros qoldiruvchi vasiyat qilayotgan paytida oʻziga tegishli boʻlmagan mol-mulk toʻgʻrisidagi farmoyishni oʻz ichiga oladigan vasiyatnoma tuzishga haqli. Agar meros ochilgan paytga kelib, bunday mol-mulk unga tegishli boʻlib qolsa, tegishli farmoyish haqiqiy hisoblanadi.\nMeros qoldiruvchi vasiyatnoma tuzilganidan keyin uni istagan paytda bekor qilish va oʻzgartirish borasida erkin boʻlib, bunda bekor qilish yoki oʻzgartirish sabablarini koʻrsatishga majbur emas.\nMeros qoldiruvchi oʻzi vasiyatnomada merosxoʻr etib tayinlagan shaxslarga, oʻz navbatida vafot etishlari ehtimoli bilan oʻzlariga vasiyat qilingan mol-mulkni muayyan tarzda tasarruf etish xususida koʻrsatma berish majburiyatini yuklashga haqli emas."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "180552_0723_1113_1",
+     "doc_id": "lex:180552",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "1113-modda",
+     "retrieval_score": 0.5343,
+     "fusion_score": 0.01515,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Meros ochilgan paytda meros qoldiruvchiga tegishli boʻlgan, uning oʻlimidan keyin ham bekor boʻlmaydigan barcha huquq va majburiyatlar meros tarkibiga kiradi.\nMeros qoldiruvchining shaxsi bilan chambarchas bogʻliq boʻlgan huquq va majburiyatlar:\nyuridik shaxs hisoblangan tijorat tashkilotlari va boshqa tashkilotlarga aʼzolik, ularda ishtirok etish huquqlari, agar qonun yoki shartnomada boshqa hol belgilangan boʻlmasa;\nhayotga yoki sogʻliqqa yetkazilgan zarar uchun tovon undirish huquqi;\naliment majburiyatlari tufayli yuzaga kelgan huquqlar va majburiyatlar;\nmehnat va ijtimoiy taʼminot toʻgʻrisidagi qonunchilik asosida pensiya, nafaqa va boshqa toʻlovlar olish huquqi;\nmulkiy huquqlar bilan bogʻliq boʻlmagan shaxsiy nomulkiy huquqlar meros tarkibiga kirmaydi.\nMeros qoldiruvchiga tegishli boʻlgan shaxsiy nomulkiy huquqlar va boshqa nomoddiy boyliklar merosxoʻrlar tomonidan amalga oshirilishi va himoya qilinishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Merosdan majburiy ulush, Fuqarolik kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5833,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1342,
+    "rerank_ms": null,
+    "generation_ms": 1718,
+    "total_ms": 3060,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3342,
+    "output_tokens": 353
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q090",
+   "status": "ok",
+   "answer": "Согласно «Трудовому кодексу», женщине предоставляется отпуск по беременности и родам продолжительностью семьдесят календарных дней до родов и пятьдесят шесть календарных дней после родов [1].\n\nВ случае осложненных родов или при рождении двух и более детей, послеродовой отпуск составляет семьдесят календарных дней [1]. Этот отпуск исчисляется суммарно и предоставляется женщине полностью, независимо от количества дней, фактически использованных до родов [1].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.567,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6266498",
+     "article": "404-modda",
+     "article_title": "Homiladorlik va tugʻish taʼtili",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0403_404_1",
+     "quote": "Ayolga tugʻruqqacha yetmish kalendar kun hamda tugʻruqdan keyin ellik olti kalendar kun (tugʻish qiyin kechgan yoxud ikki yoki undan ortiq bola tugʻilgan taqdirda yetmish kalendar kun) homiladorlik va tugʻish taʼtili berilib, qonunchilikda belgilangan, lekin oʻrtacha oylik ish haqining yetmish besh foizidan kam boʻlmagan miqdorda nafaqa toʻlanadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0403_404_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "404-modda",
+     "retrieval_score": 0.5505,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ayolga tugʻruqqacha yetmish kalendar kun hamda tugʻruqdan keyin ellik olti kalendar kun (tugʻish qiyin kechgan yoxud ikki yoki undan ortiq bola tugʻilgan taqdirda yetmish kalendar kun) homiladorlik va tugʻish taʼtili berilib, qonunchilikda belgilangan, lekin oʻrtacha oylik ish haqining yetmish besh foizidan kam boʻlmagan miqdorda nafaqa toʻlanadi.\nHomiladorlik va tugʻish taʼtili ayolga jamlangan holda hisoblab chiqarilib, tugʻruqqacha haqiqatda foydalanilgan kunlar sonidan qatʼi nazar, toʻliq beriladi.\nHomiladorlik va tugʻish nafaqasini tayinlash hamda toʻlash tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0236_237_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "237-modda",
+     "retrieval_score": 0.5251,
+     "fusion_score": 0.01429,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Kodeksga muvofiq xodimlar quyidagi ijtimoiy taʼtillarni olish huquqidan foydalanadi:\nhomiladorlik va tugʻish taʼtillari (ushbu Kodeksning 404-moddasi);\nbola parvarishlash taʼtili (ushbu Kodeksning 405-moddasining birinchi va ikkinchi qismlari);\noʻquv taʼtili (ushbu Kodeksning 385-moddasining birinchi qismi);\nijodiy taʼtillar (ushbu Kodeksning 387-moddasining birinchi qismi).\nXodimlarga ushbu moddaning birinchi qismida nazarda tutilgan ijtimoiy taʼtillarni berish xodimning mehnat stajiga, u bajaradigan ishning joyi va xususiyatiga, ish beruvchining tashkiliy-huquqiy shakliga bogʻliq emas.\nXodim oʻquv taʼtilida (ushbu Kodeks 385-moddasining birinchi qismi) yoki ijodiy taʼtilda (ushbu Kodeks 387-moddasining birinchi qismi) boʻlgan vaqtida uning oʻrtacha ish haqi saqlanib qoladi. Bundan oliy taʼlim tashkilotlariga oʻqishga kirganda beriladigan ish haqi saqlanmaydigan taʼtil mustasno.\nAyol tugʻishdan oldingi va tugʻishdan keyingi taʼtilda boʻlgan vaqtida (ushbu Kodeksning 404-moddasi) unga qonunchilikda belgilangan miqdorda hamda tartibda homiladorlik va tugʻish nafaqasi toʻlanadi.\nBola ikki yoshga toʻlguniga qadar uni parvarishlash taʼtilida boʻlgan davrida bolani haqiqatda parvarishlayotgan bolaning ota-onasidan biriga (vasiysiga), buvisiga, bobosiga yoki boshqa qarindoshiga qonunchilikda belgilangan miqdorda va tartibda bolani parvarishlash nafaqasi toʻlanadi.\nOʻn ikki yoshga toʻlmagan ikki va undan ortiq nafar bola yoki oʻn olti yoshga toʻlmagan nogironligi boʻlgan bolaning ota-onasidan biri (ota-onaning oʻrnini bosuvchi shaxs) davomiyligi toʻrt kalendar kun boʻlgan har yilgi ijtimoiy taʼtilda boʻlgan davrida uning ushbu taʼtil davri uchun oʻrtacha ish haqi saqlanib qoladi (ushbu Kodeksning 401-moddasi).\nUshbu moddaning birinchi qismida belgilangan ijtimoiy taʼtillar, bundan Kodeks 405-moddasining birinchi va ikkinchi qismlarida nazarda tutilgan bolani parvarishlash taʼtillari mustasno, navbatdagi har yilgi mehnat taʼtilini olish huquqini beradigan ish stajiga kiritiladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0227_228_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "228-modda",
+     "retrieval_score": 0.5343,
+     "fusion_score": 0.01493,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ikkinchi va keyingi ish yillari uchun har yilgi mehnat taʼtili ish beruvchi va xodim uchun majburiy boʻlgan taʼtillar jadvali bilan belgilanadigan har yilgi mehnat taʼtillarini berish navbatiga muvofiq beriladi.\nTaʼtillar jadvali kalendar yil boshlanguniga qadar ish beruvchi tomonidan kasaba uyushmasi qoʻmitasi bilan kelishuvga koʻra tasdiqlanadi.\nXodim har yilgi mehnat taʼtili beriladigan vaqt toʻgʻrisida taʼtil boshlanishidan kamida oʻn besh kun oldin xabardor qilinishi kerak.\nXodimning xohishiga koʻra har yilgi mehnat taʼtili unga qulay boʻlgan vaqtda quyidagilarga berilishi kerak:\nayollarga — homiladorlik va tugʻish taʼtilidan oldin yoki undan keyin;\nbolani parvarishlash taʼtilidan foydalanayotgan xodimga ushbu taʼtildan oldin yoki keyin;\noʻn toʻrt yoshga toʻlmagan bir yoki undan ortiq nafar bolani (oʻn olti yoshga toʻlmagan nogironligi boʻlgan bolani) tarbiyalayotgan shaxslarga (yolgʻiz ota-onaga, shu jumladan beva ayollarga, beva erkaklarga, nikohdan ajralganlarga, muddatli harbiy xizmatdagi harbiy xizmatchilarning xotinlariga, ota-onaning oʻrnini bosuvchi shaxslarga);\nI va II guruh nogironligi boʻlgan shaxslarga;\n1941 — 1945-yillardagi urush qatnashchilariga va imtiyozlari boʻyicha ularga tenglashtirilgan shaxslarga;\noʻn sakkiz yoshdan kichik boʻlgan shaxslarga;\nishdan ajralmagan holda taʼlim tashkilotlarida oʻqiyotganlarga, agar ular oʻzining har yilgi mehnat taʼtilini imtihonlar, sinovlar (zachyotlar) topshirish, bitiruv malakaviy ishlarini, magistrlik dissertatsiyalarini, kurs, laboratoriya ishlarini va boshqa oʻquv ishlarini bajarish vaqtiga toʻgʻrilab olishni xohlasa;\n“Oʻzbekiston Respublikasi faxriy donori” koʻkrak nishoni bilan taqdirlangan shaxslarga;\njamoa kelishuvlarida, shuningdek jamoa shartnomasida yoxud boshqa ichki hujjatlarda belgilangan hollarda boshqa xodimlarga.\nIshlaydigan erkaklarga har yilgi mehnat taʼtili ularning xohishiga koʻra xotinining homiladorlik va tugʻish taʼtili davrida beriladi.\nJadvalda belgilangan har yilgi mehnat taʼtilini berish vaqti xodim va ish beruvchi oʻrtasidagi kelishuvga binoan oʻzgartirilishi mumkin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0400_401_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "401-modda",
+     "retrieval_score": 0.542,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn ikki yoshga toʻlmagan ikki va undan ortiq bolaning yoki oʻn olti yoshga toʻlmagan nogironligi boʻlgan bolaning ota-onasidan biriga (ota-ona oʻrnini bosuvchi shaxsga) har yili davomiyligi kamida toʻrt kalendar kun boʻlgan haq toʻlanadigan qoʻshimcha taʼtil beriladi.\nUshbu moddaning birinchi qismida nazarda tutilgan taʼtil yillik mehnat taʼtiliga qoʻshib berilishi yoki ish beruvchi bilan kelishib belgilanadigan davrda ushbu taʼtildan alohida (toʻliq yoxud qismlarga boʻlib), lekin faqat tegishli ish yili davomida foydalanilishi mumkin. Ushbu taʼtilni keyingi ish yiliga koʻchirishga yoki uni pulli kompensatsiya bilan almashtirishga yoʻl qoʻyilmaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0401_402_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "402-modda",
+     "retrieval_score": 0.5286,
+     "fusion_score": 0.01449,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn ikki yoshga toʻlmagan ikki nafar va undan ortiq bolaning yoki oʻn olti yoshga toʻlmagan nogironligi boʻlgan bolaning ota-onasidan biriga (ota-ona oʻrnini bosuvchi shaxsga), ularning xohishiga koʻra, har yili ish haqi saqlanmagan holda davomiyligi oʻn toʻrt kalendar kungacha boʻlgan taʼtil beriladi.\nUshbu moddaning birinchi qismida nazarda tutilgan taʼtil yillik mehnat taʼtiliga qoʻshib berilishi yoki ish beruvchi bilan kelishib belgilanadigan davrda ushbu taʼtildan alohida (toʻliq yoxud qismlarga boʻlib), lekin faqat joriy ish yili davomida foydalanilishi mumkin. Ushbu taʼtilni keyingi ish yiliga koʻchirishga yoʻl qoʻyilmaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Homiladorlik va tugʻish taʼtili muddati, Mehnat kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5671,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1168,
+    "rerank_ms": null,
+    "generation_ms": 1436,
+    "total_ms": 2605,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3999,
+    "output_tokens": 160
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 10.5
+}

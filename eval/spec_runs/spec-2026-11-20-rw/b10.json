@@ -1,0 +1,1181 @@
+{
+ "run_id": "spec-2026-11-20-rw",
+ "batch_id": "spec-2026-11-20-rw-b10",
+ "batch_index": 10,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite, gemini-3.8-flash, gemini-3.5-flash",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite",
+   "gemini-3.8-flash",
+   "gemini-3.5-flash"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-20T10:19:44+05:00",
+  "completed_at": "2026-11-20T10:20:35+05:00",
+  "total_ms": 51020
+ },
+ "summary": {
+  "total": 10,
+  "ok": 9,
+  "no_answer": 1,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q091",
+   "status": "ok",
+   "answer": "Ha, Uy-joy kodeksining 133-moddasiga koʻra, uy-joy obyektining manzili boʻyicha doimiy yashash joyi boʻyicha roʻyxatga olingan voyaga yetgan jismoniy shaxslar elektr taʼminoti, gaz taʼminoti, suv taʼminoti va oqova suvlarni chiqarib yuborish xizmatlari uchun haq toʻlash boʻyicha solidar (birgalikda) javobgar boʻladilar [1].\n\nBu majburiyat qonunchilikka hamda kommunal xizmatlarni yetkazib beruvchi korxonalar bilan tuzilgan shartnomalarga muvofiq amalga oshiriladi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.574,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-106136",
+     "article_url": "https://lex.uz/uz/docs/-106136#-1104300",
+     "article": "133-modda",
+     "article_title": "Kommunal xizmatlar uchun majburiy toʻlovlar",
+     "part": "3-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "106136_0132_133_1",
+     "quote": "Uy-joy obyektining manzili boʻyicha doimiy yashash joyi boʻyicha roʻyxatga olingan voyaga yetgan jismoniy shaxslar elektr taʼminoti, gaz taʼminoti, suv taʼminoti va oqova suvlarni chiqarib yuborish xizmatlari koʻrsatilganligi uchun haq toʻlash boʻyicha majburiyatlar yuzasidan qonunchilikka va kommunal xizmatlarni yetkazib beruvchi (bajaruvchi) korxonalar bilan tuzilgan shartnomalarga muvofiq solidar javobgar boʻladi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "106136_0132_133_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "133-modda",
+     "retrieval_score": 0.536,
+     "fusion_score": 0.01617,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Kommunal xizmatlar uchun majburiy toʻlovlar sovuq va issiq suv taʼminoti, oqova suvlarni chiqarib yuborish, elektr taʼminoti, gaz taʼminoti, isitish (issiqlik taʼminoti), qattiq va suyuq maishiy chiqindilarni olib chiqish uchun toʻlanadigan toʻlovlardan iboratdir.\nDavlat va xususiy uy-joy fondlaridagi joylarning mulkdorlari, ijaraga, arendaga oluvchilari oʻzlariga koʻrsatiladigan kommunal xizmatlar uchun qonunchilikka va kommunal xizmatlar koʻrsatuvchi korxonalar (ijrochilar) bilan tuzilgan shartnomalarga muvofiq majburiy toʻlovlar toʻlaydi.\nUy-joy obyektining manzili boʻyicha doimiy yashash joyi boʻyicha roʻyxatga olingan voyaga yetgan jismoniy shaxslar elektr taʼminoti, gaz taʼminoti, suv taʼminoti va oqova suvlarni chiqarib yuborish xizmatlari koʻrsatilganligi uchun haq toʻlash boʻyicha majburiyatlar yuzasidan qonunchilikka va kommunal xizmatlarni yetkazib beruvchi (bajaruvchi) korxonalar bilan tuzilgan shartnomalarga muvofiq solidar javobgar boʻladi.\nKoʻrsatiladigan kommunal xizmatlarning tariflari va mazkur xizmatlar normativlari qonunchilikka muvofiq tasdiqlanadi.\nKommunal xizmatlar koʻrsatish qoidalari Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "104720_0126_126_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "126-modda",
+     "retrieval_score": 0.5736,
+     "fusion_score": 0.0171,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mehnatga layoqatsiz, yordamga muhtoj eri yoki xotini (sobiq eri yoki xotini) yoki voyaga yetgan mehnatga layoqatli bolalari boʻlmagan yoxud ulardan taʼminot uchun mablagʻ ololmaydigan, amalda ularni tarbiyalaganlarga taʼminot berish majburiyati ularning doimiy tarbiyasi va taʼminotida boʻlgan shaxslar zimmasiga yuklatilishi mumkin. Bunday majburiyat vasiylikda (homiylikda) turgan shaxslar zimmasiga yuklatilmaydi.\nSud tarbiyada boʻlganlarni, agar ular tarbiyachilarning tarbiyasi va taʼminotida besh yildan kam turgan boʻlsa, ushbu moddada koʻrsatilgan majburiyatdan ozod qilishga haqli."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "104720_0122_122_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "122-modda",
+     "retrieval_score": 0.5449,
+     "fusion_score": 0.01689,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Kodeksning 123—128-moddalarida koʻrsatilgan shartlar mavjud boʻlsa, voyaga yetmagan, shuningdek voyaga yetgan mehnatga layoqatsiz, yordamga muhtoj shaxslarga taʼminot berish majburiyati sud tomonidan ularning qarindoshlari: bobo, buvi, nevara, aka-uka, opa-singil, shuningdek oʻgay ota va oʻgay ona, oʻgay oʻgʻil va oʻgay qiz, doimiy tarbiyada boʻlgan shaxslar zimmasiga yuklatilishi mumkin."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "106136_0134_135_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "135-modda",
+     "retrieval_score": 0.7132,
+     "fusion_score": 0.01686,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqarolarning ayrim toifalariga uy-joyni saqlash va kommunal xizmatlar haqini toʻlash xarajatlari qonunchilikda belgilangan tartibda qoplanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "106136_0004_6_1",
+     "doc_id": "lex:106136",
+     "doc_title": "Oʻzbekiston Respublikasining UY-JOY KODEKSI",
+     "article": "6-modda",
+     "retrieval_score": 0.6697,
+     "fusion_score": 0.01622,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqarolarning oʻzini oʻzi boshqarish organlari uy-joy munosabatlarini tartibga solish sohasida:\nfuqarolarga uy-joy fondidan foydalanishda hamda uning saqlanishini taʼminlashda koʻmaklashadi;\nkommunal xizmat koʻrsatuvchi tashkilotlar tomonidan kommunal xizmatlar koʻrsatish sifati, imoratlar qurish hamda hovlilar va uylar atrofidagi hududlarni saqlash qoidalariga rioya etilishi ustidan jamoatchilik nazoratini amalga oshiradi;\nkam taʼminlangan oilalarning, yetim bolalarning, ota-onasi qaramogʻidan mahrum boʻlgan bolalarning, shuningdek tabiiy ofatlardan va texnogen xususiyatli favqulodda vaziyatlardan jabr koʻrgan fuqarolarning uy-joy, maishiy sharoitlarini yaxshilash toʻgʻrisida tegishli davlat organlariga takliflar kiritadi;\nqonunchilikka muvofiq boshqa vakolatlarni amalga oshiradi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kommunal xizmatlar uchun toʻlov majburiyati, Fuqarolik kodeksi, Uy-joy kodeksi, birgalikdagi javobgarlik.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5736,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 2246,
+    "rerank_ms": null,
+    "generation_ms": 2778,
+    "total_ms": 5024,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 2466,
+    "output_tokens": 225
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q092",
+   "status": "ok",
+   "answer": "Ha, ish beruvchi ish haqini toʻlash muddatini buzgan taqdirda, kechiktirilgan har bir kun uchun foizlar (pulli kompensatsiya) bilan birga toʻlashi shart [2].\n\nOʻzbekiston Respublikasi Mehnat kodeksining 333-moddasiga koʻra:\n*   Kompensatsiya toʻlov muddati oʻtgan kundan boshlab, haqiqatda hisob-kitob qilingan kungacha boʻlgan davr uchun hisoblanadi.\n*   Kompensatsiya miqdori Oʻzbekiston Respublikasi Markaziy bankining oʻsha vaqtda amalda boʻlgan qayta moliyalashtirish stavkasining oʻn foizi miqdorida belgilanadi.\n*   Ushbu kompensatsiyani toʻlash majburiyati ish beruvchining aybi bor-yoʻqligidan qatʼi nazar yuzaga keladi.\n*   Kompensatsiya miqdori jamoa shartnomasi, ichki hujjat yoki mehnat shartnomasi bilan oshirilishi mumkin.",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.672,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6265195",
+     "article": "333-modda",
+     "article_title": "Xodimga ish haqi toʻlashni va unga toʻlanishi lozim boʻlgan boshqa toʻlovlarni kechiktirganlik uchun ish beruvchining moddiy javobgarligi",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0332_333_1",
+     "quote": "Ish beruvchi ish haqini, taʼtil toʻlovlarini, mehnat shartnomasi bekor qilingandagi toʻlovlarni va (yoki) xodimga toʻlanishi lozim boʻlgan boshqa toʻlovlarni toʻlash muddatini buzgan taqdirda, ularni toʻlov muddatidan keyingi kundan eʼtiboran to haqiqatda hisob-kitob qilingan kunni oʻz ichiga olgan muddatgacha har bir kechiktirilgan kun uchun Oʻzbekiston Respublikasi Markaziy bankining oʻsha vaqtda amalda boʻlgan qayta moliyalashtirish stavkasidan kelib chiqqan holda foizlar (pulli"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4575786_0057_58_1",
+     "doc_id": "lex:4575786",
+     "doc_title": "Toʻlovlar va toʻlov tizimlari toʻgʻrisida",
+     "article": "58-modda",
+     "retrieval_score": 0.6651,
+     "fusion_score": 0.01682,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Toʻlov xizmatlarini yetkazib beruvchi tomonidan toʻlovlarni amalga oshirish muddatlari buzilgan taqdirda, u muddati oʻtkazib yuborilgan har bir kun uchun muddati oʻtgan toʻlov summasining 0,1 foizi miqdorida, biroq muddati oʻtgan toʻlov summasining 10 foizidan koʻp boʻlmagan miqdorda penya toʻlashi shart.\nToʻlov xizmatlarini yetkazib beruvchining aybi bilan toʻlov notoʻgʻri amalga oshirilgan taqdirda, u xato aniqlangan kundan keyingi ish kunidan kechiktirmay pul mablagʻlarini oluvchining hisobvaragʻiga oʻtkazishi shart. Aks holda, toʻlovchi qonunda belgilangan tartibda toʻlov xizmatlarini yetkazib beruvchidan mablagʻlarni qaytarishni, shuningdek muddati oʻtkazib yuborilgan har bir kun uchun notoʻgʻri amalga oshirilgan toʻlov summasining 0,1 foizi miqdorida, biroq notoʻgʻri amalga oshirilgan toʻlov summasining 10 foizidan koʻp boʻlmagan miqdorda penya toʻlashni talab qilish huquqiga ega."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0332_333_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "333-modda",
+     "retrieval_score": 0.6647,
+     "fusion_score": 0.01663,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ish beruvchi ish haqini, taʼtil toʻlovlarini, mehnat shartnomasi bekor qilingandagi toʻlovlarni va (yoki) xodimga toʻlanishi lozim boʻlgan boshqa toʻlovlarni toʻlash muddatini buzgan taqdirda, ularni toʻlov muddatidan keyingi kundan eʼtiboran to haqiqatda hisob-kitob qilingan kunni oʻz ichiga olgan muddatgacha har bir kechiktirilgan kun uchun Oʻzbekiston Respublikasi Markaziy bankining oʻsha vaqtda amalda boʻlgan qayta moliyalashtirish stavkasidan kelib chiqqan holda foizlar (pulli kompensatsiya) bilan birga toʻlashi shart.\nXodimga toʻlanishi lozim boʻlgan pulli kompensatsiyaning miqdori Oʻzbekiston Respublikasi Markaziy banki qayta moliyalash stavkasining oʻn foizi miqdorida belgilanadi.\nUshbu moddaning ikkinchi qismida belgilangan, xodimga toʻlanadigan pulli kompensatsiyaning miqdori jamoa shartnomasi, ichki hujjat yoki mehnat shartnomasi bilan oshirilishi mumkin. Mazkur pulli kompensatsiyani toʻlash majburiyati ish beruvchining oylik ish haqini yoki xodimga toʻlanishi lozim boʻlgan boshqa toʻlovlarni toʻlashning kechiktirilishida aybi bor-yoʻqligidan qatʼi nazar yuzaga keladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0280_281_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "281-modda",
+     "retrieval_score": 0.6721,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish beruvchi quyidagi kafolatli qoʻshimcha toʻlovlarni amalga oshirishi shart:\nish beruvchiga va xodimga bogʻliq boʻlmagan sabablarga koʻra bekor turib qolish chogʻida bunday bekor turib qolish davom etgan vaqtga mutanosib ravishda hisoblangan, tarif stavkasining (maoshning) kamida uchdan ikki qismini toʻlashi;\nish beruvchiga va xodimga bogʻliq boʻlmagan sabablarga koʻra xodim tomonidan mehnat normalari, mehnat (lavozim) majburiyatlari bajarilmaganda xodimning amalda ishlab bergan vaqtiga mutanosib ravishda hisoblangan tarif stavkasining (maoshning) kamida uchdan ikki qismini saqlab qolishi;\ntungi vaqtdagi ish uchun xodimga qoʻshimcha toʻlovni amalga oshirishi;\ndam olish, ishlanmaydigan bayram kunlaridagi va ish vaqtidan tashqari ish uchun oshirilgan miqdorda haq toʻlashi;\noʻzi uchun ish vaqtining qisqartirilgan davomiyligi belgilangan xodimlarga toʻliq ish vaqtida ishlovchi tegishli toifadagi xodimlar uchun nazarda tutilgan mehnatga haq toʻlash miqdorigacha boʻlgan qoʻshimcha toʻlovni amalga oshirishi;\nushbu Kodeksda nazarda tutilgan ayrim asoslar boʻyicha mehnat shartnomasi bekor qilinganida mazkur Kodeksning 173-moddasining uchinchi qismida belgilangan miqdorda ishdan boʻshatish nafaqasini toʻlashi;\nqonunchilikda belgilangan tartibda oʻrtacha ish haqi yoki uning bir qismi miqdorida vaqtinchalik mehnatga layoqatsizlik boʻyicha nafaqa toʻlashi.\nUshbu moddaning birinchi qismida nazarda tutilgan kafolatli qoʻshimcha toʻlovlardan tashqari ish beruvchi xodimlarga ushbu Kodeksda, qonunchilikda, jamoa kelishuvlarida, jamoa shartnomasida, shuningdek ish beruvchi tomonidan kasaba uyushmasi qoʻmitasi bilan kelishilgan holda qabul qilinadigan ichki hujjatlarda, mehnat shartnomasida belgilangan boshqa kafolatli qoʻshimcha toʻlovlarni amalga oshirishi shart."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "18942_0024_25_1",
+     "doc_id": "lex:18942",
+     "doc_title": "Xoʻjalik yurituvchi subyektlar faoliyatining shartnomaviy-huquqiy bazasi toʻgʻrisida",
+     "article": "25-modda",
+     "retrieval_score": 0.6557,
+     "fusion_score": 0.01617,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Tovarlarni yetkazib berish muddatlari kechiktirib yuborilgan, toʻliq yetkazib berilmagan, ishlar bajarilmagan yoki xizmatlar koʻrsatilmagan hollarda, tovar yetkazib beruvchi (pudratchi) sotib oluvchiga (buyurtmachiga) kechiktirilgan har bir kun uchun majburiyat bajarilmagan qismining 0,5 foizi miqdorida penya toʻlaydi, biroq bunda penyaning umumiy summasi yetkazib berilmagan tovarlar, bajarilmagan ishlar yoki koʻrsatilmagan xizmatlar bahosining 50 foizidan oshib ketmasligi lozim. Penyani toʻlash shartnoma majburiyatlarini buzgan tarafni tovarlarni yetkazib berish muddatlarini kechiktirib yuborish, toʻliq yetkazib bermaslik, ishlarni bajarmaslik yoki xizmatlarni koʻrsatmaslik oqibatida yetkazilgan zararni qoplashdan ozod etmaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "22964_0024_25_1",
+     "doc_id": "lex:22964",
+     "doc_title": "AVTOMOBIL TRANSPORTI TOʻGʻRISIDA",
+     "article": "25-modda",
+     "retrieval_score": 0.6562,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Yoʻlovchilarni tashish uchun avtotransport vositasini joʻnatish kechiktirilgan yoki u belgilangan manzilga kechikib kelgan taqdirda (shahar va shahar atrofida tashishlar bundan mustasno), tashuvchi, agar kechiktirish yoki kech yetib borish tashuvchiga bogʻliq boʻlmagan holatlar tufayli yuz berganligini isbotlay olmasa, yoʻlovchiga jarima tariqasida neustoyka toʻlaydi. Jarima miqdori va uni toʻlash tartibi qonunchilik bilan belgilanadi.\nYoʻlovchiga jarima toʻlash tashuvchini avtotransport vositasi kechiktirilishi yoki kech yetib borishi tufayli yoʻlovchi koʻrgan zararni unga toʻlashdan ozod etmaydi.\nAvtotransport vositasi kechiktirilganligi sababli yoʻlovchi unda joʻnashdan voz kechgan taqdirda, tashuvchi yoʻlovchiga kira haqini va u qilgan boshqa xarajatlarni qaytarishi shart."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ish beruvchi oyligimni bir oyga kechiktirib berdi. Kechiktirgani uchun ustiga qoʻshimcha pul toʻlashi shartmi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6721,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1767,
+    "rerank_ms": null,
+    "generation_ms": 6435,
+    "total_ms": 8203,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3231,
+    "output_tokens": 314
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q093",
+   "status": "ok",
+   "answer": "Согласно «Избирательному кодексу», сроки представления списков избирателей для ознакомления зависят от типа избирательного участка [1]:\n\n*   **За 15 дней до выборов** — списки предоставляются на обычных избирательных участках [1].\n*   **За 3 дня до выборов** — списки предоставляются на участках, образованных при дипломатических и иных представительствах Республики Узбекистан в иностранных государствах, в санаториях и домах отдыха, больницах и других стационарных лечебных учреждениях, в местах нахождения граждан в отдаленных и труднодоступных районах, а также в местах содержания под стражей и лишения свободы [1].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.711,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4386848",
+     "article_url": "https://lex.uz/uz/docs/-4386848#-4388276",
+     "article": "29-modda",
+     "article_title": "Fuqarolarni saylovchilarning roʻyxatlari bilan tanishtirish",
+     "part": "1-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "4386848_0031_29_1",
+     "quote": "Fuqarolarga uchastka saylov komissiyasi binosida saylovchilar roʻyxati bilan tanishish, shuningdek Markaziy saylov komissiyasining rasmiy veb-sayti orqali saylovchilar roʻyxatidan oʻzlariga tegishli maʼlumotlar bilan tanishish imkoniyati taʼminlanadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4386848_0031_29_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "29-modda",
+     "retrieval_score": 0.7106,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Fuqarolarga uchastka saylov komissiyasi binosida saylovchilar roʻyxati bilan tanishish, shuningdek Markaziy saylov komissiyasining rasmiy veb-sayti orqali saylovchilar roʻyxatidan oʻzlariga tegishli maʼlumotlar bilan tanishish imkoniyati taʼminlanadi. Chet davlatlarda turgan fuqarolarga saylovchilar roʻyxatidagi oʻziga tegishli maʼlumotlar bilan tanishish imkoniyati Oʻzbekiston Respublikasi Tashqi ishlar vazirligi, Oʻzbekiston Respublikasining chet davlatlardagi diplomatik va boshqa vakolatxonalari rasmiy veb-saytlari orqali ham taʼminlanadi.\nSaylovchilarning roʻyxatlari saylovga oʻn besh kun qolganida, Oʻzbekiston Respublikasining chet davlatlardagi diplomatik va boshqa vakolatxonalari huzurida, sanatoriylarda va dam olish uylarida, kasalxonalarda va boshqa statsionar davolash muassasalarida, olis va borish qiyin boʻlgan hududlardagi fuqarolar turgan joylarda, qamoqda saqlash va ozodlikdan mahrum etish joylarida tuzilgan uchastkalarda esa saylovga uch kun qolganida hamma tanishib chiqishi uchun taqdim etiladi.\nUchastka saylov komissiyasi binosida saylovchilar roʻyxati hamma tanishib chiqishi uchun qulay boʻlgan holda taqdim etiladi. Bunday roʻyxatda saylovchilarning faqat familiyasi, ismi, otasining ismi va tugʻilgan yili koʻrsatiladi.\nUchastka saylov komissiyasi roʻyxat bilan tanishish joyi va vaqti toʻgʻrisida xabardor etadi.\nSaylov komissiyalari saylovchilarning roʻyxatlari hamma tanishib chiqishi uchun taqdim etilganidan keyin ham ularga oʻzgartishlar kiritishi mumkin.\nSaylovchilarning roʻyxatlariga oʻzgartishlar kiritish saylovga besh kun qolganida toʻxtatiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4386848_0074_69_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "69-modda",
+     "retrieval_score": 0.6407,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Deputatlikka nomzodlar koʻrsatish uchun siyosiy partiya saylovga kamida yetmish kun qolganida Markaziy saylov komissiyasiga quyidagi hujjatlarni taqdim etishi kerak:\nsaylovda ishtirok etish toʻgʻrisida partiya rahbari tomonidan imzolangan ariza;\nOʻzbekiston Respublikasi Adliya vazirligining siyosiy partiya saylov kampaniyasi boshlanganligi eʼlon qilingan kundan kamida toʻrt oy oldin roʻyxatga olinganligini tasdiqlovchi maʼlumotnomasi;\nimzo varaqalari.\nUshbu moddaning birinchi qismida koʻrsatilgan hujjatlar taqdim etilgach, Markaziy saylov komissiyasi siyosiy partiyaning vakolatli vakiliga hujjat qabul qilib olingan sana va vaqt qayd etilgan maʼlumotnoma beradi. Markaziy saylov komissiyasi taqdim etilgan hujjatlar asosida besh kunlik muddat ichida siyosiy partiyaning saylovda ishtirok etishiga ijozat berish toʻgʻrisida qaror qabul qiladi. Saylovda ishtirok etuvchi partiyalar roʻyxati arizalarning kelib tushishi navbati tartibida markaziy matbuotda eʼlon qilinadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4386848_0043_40¹_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "40¹-modda",
+     "retrieval_score": 0.6352,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Partiya roʻyxati Markaziy saylov komissiyasi tomonidan roʻyxatga olinadi. Partiya roʻyxatini roʻyxatga olish uchun tegishli hujjatlar siyosiy partiyaning vakolatli vakili tomonidan roʻyxatga olish muddati tugashiga kamida yetti kun qolgunga qadar Markaziy saylov komissiyasiga taqdim etiladi.\nPartiya roʻyxatini belgilangan tartibda roʻyxatga olish saylovga oʻttiz besh kun qolganida tugallanadi.\nPartiya roʻyxatida nomzodlarning familiyasi, ismi, otasining ismi, tugʻilgan sanasi, kasbi, lavozimi (mashgʻulotining turi), ish va yashash joyi, partiyaga mansubligi, jismoniy shaxsning shaxsiy identifikatsiya raqami koʻrsatiladi.\nPartiya roʻyxati belgilangan tartibda roʻyxatga olinganidan keyin besh kunlik muddatda Markaziy saylov komissiyasi roʻyxatga olinganlik toʻgʻrisidagi xabarni siyosiy partiyaning nomi, roʻyxatga olingan nomzodlarning familiyasi, ismi, otasining ismi, tugʻilgan sanasi, egallab turgan lavozimi (mashgʻulotining turi), ish va yashash joyini koʻrsatgan holda eʼlon qiladi.\nPartiya roʻyxati belgilangan tartibda roʻyxatga olinganidan keyin, ushbu roʻyxatga kiritilganlar deputatlikka nomzod maqomini oladi va ularga guvohnoma beriladi.\nRoʻyxatga olingan partiya roʻyxatiga oʻzgartirishlar kiritishga yoʻl qoʻyilmaydi, bundan ushbu Kodeksning 42¹-moddasida nazarda tutilgan hollar mustasno."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4386848_0097_89_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "89-modda",
+     "retrieval_score": 0.6343,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Deputatlikka nomzodlar koʻrsatish uchun siyosiy partiya saylovga kamida yetmish kun qolganida tegishli hududiy, tuman, shahar saylov komissiyasiga, mahalliy Kengashlarga saylovlar Qonunchilik palatasi deputatlari saylovi bilan bir vaqtda oʻtkazilganda esa Markaziy saylov komissiyasiga quyidagi hujjatlarni taqdim etishi kerak:\nsaylovda ishtirok etish toʻgʻrisida siyosiy partiya rahbari yoki partiyaning tegishli viloyat, tuman, shahar organi rahbari tomonidan imzolangan ariza;\nsiyosiy partiya saylov kampaniyasi boshlanganligi eʼlon qilingan kundan kamida toʻrt oy oldin roʻyxatga olinganligi haqidagi maʼlumotnoma.\nUshbu moddaning birinchi qismida koʻrsatilgan hujjatlar taqdim etilgach, tegishli saylov komissiyasi siyosiy partiyaning vakolatli vakiliga hujjatlar qabul qilib olingan sana va vaqt qayd etilgan maʼlumotnoma beradi. Saylov komissiyasi taqdim etilgan hujjatlar asosida besh kunlik muddatda partiyaning saylovda ishtirok etishiga ijozat berish toʻgʻrisida uzil-kesil qaror qabul qiladi. Saylovda ishtirok etuvchi partiyalar roʻyxati arizalarning kelib tushish navbati tartibiga qarab matbuotda eʼlon qilinadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4386848_0030_28_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "28-modda",
+     "retrieval_score": 0.6331,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Saylovchilarning yagona elektron roʻyxati vakolatli davlat organlarining axborot bazalariga muvofiq saylovchi fuqarolar, ularning doimiy va vaqtincha yashash joylari manzillari haqidagi axborotni oʻz ichiga olgan davlat axborot resursidir.\nSaylovchilarning yagona elektron roʻyxati vakolatli davlat organlari tomonidan taqdim etiladigan axborot negizida shakllantiriladi va yangilab turiladi, shuningdek saylov komissiyalari tomonidan aniqlashtiriladi.\nHar bir uchastka saylov komissiyasi tuzilganidan keyin uch kun ichida Saylovchilarning yagona elektron roʻyxatida taqsimlangan mazkur uchastka saylovchilarining dastlabki roʻyxatini oladi.\nUchastka saylov komissiyasi saylovchilarning dastlabki roʻyxatini olganidan keyin uni mazkur uchastka hududida yashovchi aholini uyma-uy aylanib chiqish yoʻli bilan aniqlashtirish choralarini koʻradi.\nUchastka saylov komissiyasi saylovchilar roʻyxatini aniqlashtirish boʻyicha ishda ishtirok etish uchun jamoatchilik vakillarini jalb etishi mumkin. Tumanlar va shaharlar hokimliklari saylovchilarning roʻyxatlarini aniqlashtirish ishlariga koʻmaklashadi.\nSaylov komissiyalari aholini uyma-uy aylanib chiqish natijalari boʻyicha saylovchining Saylovchilarning yagona elektron roʻyxatidagi familiyasi, ismi, otasining ismi, tugʻilgan sanasi va yashash joyi manziliga oid tuzatishlar qilib, saylovchilar roʻyxatlariga oʻzgartishlar kiritishi mumkin.\nSaylovchilarning roʻyxati har bir saylov uchastkasi boʻyicha uchastka saylov komissiyasi tomonidan tuziladi hamda uning raisi va kotibi tomonidan imzolanadi.\nSaylov kuni saylov uchastkalarida Saylovchilarning yagona elektron roʻyxatidan olingan saylovchilar roʻyxatlaridan foydalaniladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Za skolko dney do viborov spiski izbirateley predstavlyayut dlya oznakomleniya?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7106,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1760,
+    "rerank_ms": null,
+    "generation_ms": 1607,
+    "total_ms": 3368,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3466,
+    "output_tokens": 195
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q094",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Mehnat kodeksining 130-moddasiga koʻra, dastlabki sinov muddati uch oydan oshmasligi kerak [1].\n\nBiroq, tashkilot rahbarlari va ularning oʻrinbosarlari, bosh buxgalterlar hamda tashkilotlarning alohida boʻlinmalari rahbarlari uchun bu muddat olti oygacha boʻlishi mumkin [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.726,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6260649",
+     "article": "130-modda",
+     "article_title": "Dastlabki sinov muddati",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0129_130_1",
+     "quote": "Dastlabki sinov muddati uch oydan, tashkilotlarning rahbarlari va ularning oʻrinbosarlari, bosh buxgalterlar hamda tashkilotlar alohida boʻlinmalarining rahbarlari uchun esa olti oydan oshmasligi kerak."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0129_130_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "130-modda",
+     "retrieval_score": 0.7261,
+     "fusion_score": 0.01719,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Dastlabki sinov muddati uch oydan, tashkilotlarning rahbarlari va ularning oʻrinbosarlari, bosh buxgalterlar hamda tashkilotlar alohida boʻlinmalarining rahbarlari uchun esa olti oydan oshmasligi kerak.\nVaqtincha mehnatga qobiliyatsizlik davri va xodim haqiqatda ishda boʻlmagan boshqa davrlar dastlabki sinov muddatiga qoʻshilmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0128_129_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "129-modda",
+     "retrieval_score": 0.6478,
+     "fusion_score": 0.01684,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mehnat shartnomasi quyidagi maqsadda dastlabki sinov bilan tuzilishi mumkin:\nxodimning topshirilayotgan ishga muvofiqligini tekshirish;\nmehnat shartnomasida shart qilib koʻrsatilgan ishni davom ettirish maqsadga muvofiqligi haqida xodim tomonidan qaror qabul qilish.\nDastlabki sinovdan oʻtish mehnat shartnomasida shartlashilgan boʻlishi kerak. Bunday shartlashuv mavjud boʻlmagan taqdirda, xodim dastlabki sinovsiz ishga qabul qilingan deb hisoblanadi.\nQuyidagilar ishga qabul qilinganda dastlabki sinov belgilanmaydi:\nhomilador ayol, uch yoshga toʻlmagan bolasi bor ayol yoki uch yoshga toʻlmagan bolani yolgʻiz oʻzi tarbiyalayotgan ota (vasiy);\nzaxiraga qoʻyiladigan ish oʻrinlariga ishga joylashtirish uchun yuborilgan aholining ijtimoiy ehtiyojmand toifalaridan boʻlgan shaxslar;\ndavlat grantlari asosida oʻqigan va oliy taʼlim tashkilotini tamomlagan kundan eʼtiboran uch oy ichida yoʻllanma boʻyicha olingan mutaxassisligiga doir ishga kirayotgan oliy taʼlim tashkilotlarining bitiruvchilari;\ntegishli taʼlim tashkilotini tamomlagan kundan eʼtiboran bir yil ichida birinchi bor ishga kirayotganda olingan mutaxassisligi boʻyicha mustaqil ravishda ishga joylashayotgan umumiy oʻrta, oʻrta maxsus, professional va oliy taʼlim tashkilotlarining bitiruvchilari;\noʻzi bilan olti oygacha muddatga mehnat shartnomasi tuzilayotgan xodimlar;\noʻn sakkiz yoshga toʻlmagan shaxslar;\nishga qaytadan qabul qilingan taqdirda ish beruvchi ilgari qaysi xodimlar bilan mehnat shartnomasini alohida asoslar boʻyicha bekor qilgan boʻlsa, oʻsha shaxslar;\nishlab chiqarishda oʻqitish shartnomasi boʻyicha ushbu ish beruvchida oʻqishni oʻtagan oʻquvchilar;\njamoa kelishuvlarida, shuningdek jamoa shartnomasida va ish beruvchining ichki hujjatlarida nazarda tutilgan boshqa xodimlar.\nDastlabki sinov faqat xodimni ishga qabul qilish chogʻida belgilanishi mumkin. Xodim boshqa ishga oʻtkazilayotganda va boshqa ish beruvchiga xizmat safariga yuborilganda dastlabki sinov belgilanishiga yoʻl qoʻyilmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0130_131_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "131-modda",
+     "retrieval_score": 0.6119,
+     "fusion_score": 0.01611,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Dastlabki sinov davrida xodimga nisbatan mehnat toʻgʻrisidagi qonunchilikning va mehnat haqidagi boshqa huquqiy hujjatlarning amal qilishi toʻliq tatbiq etiladi.\nDastlabki sinov davri mehnat stajiga, shu jumladan har yilgi mehnat taʼtilini olish huquqini beradigan ish stajiga ham kiritiladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0383_384_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "384-modda",
+     "retrieval_score": 0.6297,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Kirish imtihonlarida ishtirok etishga ruxsat berilgan xodimlarga oliy taʼlim tashkilotlariga kirish imtihonlarini topshirish uchun kamida oʻn besh kalendar kun muddatga ish haqi saqlanmagan holda taʼtil beriladi, taʼlim tashkilotlari joylashgan yerga borish va qaytib kelish vaqti bu hisobga kirmaydi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0307_308_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "308-modda",
+     "retrieval_score": 0.6243,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xizmat tekshiruvini oʻtkazish muddati oʻn besh ish kunidan oshmasligi kerak.\nXizmat tekshiruvini ushbu moddaning birinchi qismida belgilangan muddatda, obyektiv sabablarga koʻra tugallash mumkin boʻlmagan alohida hollarda, ish beruvchi komissiyaning asoslantirilgan vajlari asosida xizmat tekshiruvini oʻtkazish muddatini yana oʻn besh ish kunigacha uzaytirishga haqlidir."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Ishga olishda sinov muddati eng koʻpi bilan qancha boʻlishi mumkin?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7261,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 394,
+    "rerank_ms": null,
+    "generation_ms": 1435,
+    "total_ms": 1830,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 2558,
+    "output_tokens": 163
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q095",
+   "status": "ok",
+   "answer": "Ўзбекистон Республикаси Меҳнат кодексининг 182-моддасига кўра, ходим учун иш вақтининг нормал давомийлиги беш кунлик ёки олти кунлик иш ҳафтасида ҳафтасига қирқ соатдан ортиқ бўлиши мумкин эмас [1].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.688,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6262333",
+     "article": "182-modda",
+     "article_title": "Ish vaqtining normal davomiyligi",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0181_182_1",
+     "quote": "Xodim uchun ish vaqtining normal davomiyligi besh kunlik yoki olti kunlik ish haftasida haftasiga qirq soatdan ortiq boʻlishi mumkin emas."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0181_182_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "182-modda",
+     "retrieval_score": 0.688,
+     "fusion_score": 0.01716,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Xodim uchun ish vaqtining normal davomiyligi besh kunlik yoki olti kunlik ish haftasida haftasiga qirq soatdan ortiq boʻlishi mumkin emas."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0477_478_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "478-modda",
+     "retrieval_score": 0.6642,
+     "fusion_score": 0.01686,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Noqulay mehnat sharoitlaridagi ishlarda band boʻlgan xodimlarning har kungi ishi (smenasi) davomiyligi olti kunlik ish haftasida — olti soatdan, besh kunlik ish haftasida esa — yetti soatu oʻttiz daqiqadan ortiq boʻlmasligi kerak.\nNoqulay mehnat sharoitlaridagi ishlarda band boʻlgan xodimlarning har kungi ishi (smenasi) davomiyligi:\noʻttiz soatli olti kunlik ish haftasida — besh soatdan, oʻttiz soatli besh kunlik ish haftasida esa — olti soatdan ortiq boʻlmasligi kerak;\nyigirma toʻrt soatli olti kunlik ish haftasida — toʻrt soat, yigirma toʻrt soatli besh kunlik ish haftasida esa — besh soatdan ortiq boʻlmasligi kerak."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0189_190_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "190-modda",
+     "retrieval_score": 0.6506,
+     "fusion_score": 0.01658,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish vaqtidan tashqari ishning davomiyligi xodim uchun surunkasiga ikki kun davomida toʻrt soatdan (mehnat sharoitlari noqulay boʻlgan ishlarda — bir kunda ikki soatdan) oshmasligi kerak.\nIsh beruvchi xodimning ish vaqtidan tashqari ishining davomiyligi aniq hisobga olinishini taʼminlashi shart."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0184_185_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "185-modda",
+     "retrieval_score": 0.6455,
+     "fusion_score": 0.0163,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Har kungi ishning (smenaning) davomiyligi:\na) oʻziga nisbatan ish vaqtining normal davomiyligi belgilangan xodimlar uchun:\nolti kunlik ish haftasida — yetti soatdan;\nbesh kunlik ish haftasida — sakkiz soatdan;\nb) oʻn sakkiz yoshgacha boʻlgan xodimlar uchun — ushbu Kodeksning 416-moddasida belgilangan davomiylikdan;\nv) nogironligi boʻlgan xodimlar uchun — ushbu Kodeks 427-moddasining ikkinchi qismida belgilangan davomiylikdan;\ng) noqulay mehnat sharoitlaridagi ishlarda band boʻlgan xodimlar uchun — ushbu Kodeksning 478-moddasida belgilangan davomiylikdan oshishi mumkin emas.\nMadaniy-tomosha tashkilotlarining, televideniye, radioeshittirish tashkilotlarining va boshqa ommaviy axborot vositalarining ijodiy xodimlari, professional sportchilar, shuningdek asarlarni yaratishda va (yoki) ijro etishda (namoyish etishda) ishtirok etuvchi boshqa shaxslar uchun, Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan Ijtimoiy-mehnat masalalari boʻyicha respublika uch tomonlama komissiyasi bilan kelishuvga koʻra ishlar, kasblar, lavozimlarning tasdiqlanadigan roʻyxatlariga muvofiq har kungi ishning (smenaning) davomiyligi qonunchilikka, ichki hujjatlarga, jamoa shartnomasiga yoxud mehnat shartnomasiga muvofiq belgilanishi mumkin.\nTashkilotda ish vaqtini jamlab hisobga olish joriy etilgan taqdirda, ushbu Kodeksning 199-moddasida nazarda tutilgan qoidalar qoʻllaniladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0183_184_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "184-modda",
+     "retrieval_score": 0.637,
+     "fusion_score": 0.01604,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ishi yuqori darajadagi ruhiy, aqliy va asabiy zoʻriqish bilan bogʻliq boʻlgan, yaʼni alohida xususiyatga ega boʻlgan tibbiyot xodimlari, pedagoglar va boshqa toifadagi xodimlar uchun ish vaqtining davomiyligi haftasiga koʻpi bilan oʻttiz olti soat qilib belgilanadi. Bunday xodimlarning roʻyxati va ular ish vaqtining aniq davomiyligi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi, biroq ushbu moddada belgilangan ish vaqtining davomiyligidan oshmaydigan tarzda belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Bir haftada oddiy ish vaqti necha soatdan oshmasligi kerak?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.688,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 800,
+    "rerank_ms": null,
+    "generation_ms": 1350,
+    "total_ms": 2151,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 2446,
+    "output_tokens": 147
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q096",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasining fuqaroligiga umumiy tartibda qabul qilish uchun chet davlat fuqarosi fuqaroligi boʻlmagan shaxsga yashash guvohnomasi olingan kundan eʼtiboran Oʻzbekiston Respublikasi hududida uzluksiz besh yil davomida doimiy yashab kelayotgan boʻlishi kerak [1].\n\n\"Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida\"gi Qonunning 19-moddasiga koʻra, ushbu besh yillik muddat quyidagi hollarda tatbiq etilmaydi:\n* Oʻzbekiston Respublikasida tugʻilgan va yashab kelayotgan fuqaroligi boʻlmagan shaxslarga;\n* Oʻzbekiston Respublikasi fuqarosi bilan nikohda boʻlgan va nikoh tuzilganidan keyin Oʻzbekiston Respublikasi hududida turmush oʻrtogʻi bilan birgalikda uzluksiz uch yil davomida yashab kelayotgan fuqaroligi boʻlmagan shaxslarga [1].\n\nShuningdek, agar shaxs bir yil ichida Oʻzbekiston Respublikasidan tashqariga jami bir yuz sakson uch kundan ortiq boʻlmagan muddatga chiqqan boʻlsa, yashash muddati uzluksiz deb hisoblanadi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.75,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-610",
+     "url": "https://lex.uz/uz/docs/-4761984",
+     "article_url": "https://lex.uz/uz/docs/-4761984#-4762695",
+     "article": "19-modda",
+     "article_title": "Oʻzbekiston Respublikasining fuqaroligiga umumiy tartibda qabul qilish",
+     "part": "3-qism",
+     "edition_date": "2024-09-21",
+     "doc_status": "amalda",
+     "chunk_id": "4761984_0018_19_1",
+     "quote": "Bunda, agar fuqaroligi boʻlmagan shaxs bir yil ichida Oʻzbekiston Respublikasidan tashqariga jami bir yuz sakson uch kundan ortiq boʻlmagan muddatga chiqqan boʻlsa, Oʻzbekiston Respublikasi hududida yashalgan muddat uzluksiz deb hisoblanadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4761984_0018_19_1",
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "article": "19-modda",
+     "retrieval_score": 0.7496,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasining fuqaroligiga qabul qilishning umumiy tartibi chet davlat fuqarosiga yoki fuqaroligi boʻlmagan shaxsga nisbatan quyidagi hollarda amalga oshiriladi, agar u:\na) chet davlat fuqaroligidan chiqishni rasmiylashtirgan boʻlsa;\nb) fuqaroligi boʻlmagan shaxsga yashash guvohnomasi olingan kundan eʼtiboran va Oʻzbekiston Respublikasining fuqaroligiga qabul qilish toʻgʻrisidagi iltimosnoma bilan murojaat qilgan kunga qadar Oʻzbekiston Respublikasi hududida uzluksiz besh yil davomida doimiy yashab kelayotgan boʻlsa;\nv) tirikchilikning qonuniy manbaiga ega boʻlsa;\ng) Oʻzbekiston Respublikasining Konstitutsiyasiga rioya etish majburiyatini oʻz zimmasiga olsa;\nd) davlat tilini muloqot qilish uchun zarur darajada bilsa. Davlat tilini bilish darajasini aniqlash tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi.\nUshbu modda birinchi qismining “b” bandida nazarda tutilgan shart Oʻzbekiston Respublikasida tugʻilgan va yashab kelayotgan yoki Oʻzbekiston Respublikasi fuqarosi bilan nikohda boʻlgan va nikoh tuzilganidan keyin Oʻzbekiston Respublikasi hududida turmush oʻrtogʻi bilan birgalikda uzluksiz uch yil davomida yashab kelayotgan fuqaroligi boʻlmagan shaxsga nisbatan tatbiq etilmaydi.\nBunda, agar fuqaroligi boʻlmagan shaxs bir yil ichida Oʻzbekiston Respublikasidan tashqariga jami bir yuz sakson uch kundan ortiq boʻlmagan muddatga chiqqan boʻlsa, Oʻzbekiston Respublikasi hududida yashalgan muddat uzluksiz deb hisoblanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4761984_0005_6_1",
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "article": "6-modda",
+     "retrieval_score": 0.7147,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "2005-yil 1-yanvarga qadar Oʻzbekiston Respublikasida doimiy yashash joyi boʻyicha roʻyxatga olingan hamda muqaddam chet davlat fuqaroligida boʻlmagan shaxs xohish bildirgan taqdirda, Oʻzbekiston Respublikasining fuqarosi deb tan olinadi.\nOʻzini Oʻzbekiston Respublikasining fuqarosi deb tan olish toʻgʻrisidagi ariza bilan murojaat qilgan kunga qadar Oʻzbekiston Respublikasida kamida oʻn besh yil doimiy yashab kelayotgan va mazkur davr mobaynida chet davlat fuqaroligida boʻlmagan shaxs Oʻzbekiston Respublikasining fuqarosi deb tan olinadi.\nOta-onasidan biri (yolgʻiz otasi yoki onasi) Oʻzbekiston Respublikasining fuqarosi deb tan olingan, chet davlat fuqaroligini qabul qilmagan va Oʻzbekiston Respublikasida yashab kelayotgan bola xohish bildirgan taqdirda, Oʻzbekiston Respublikasining fuqarosi deb tan olinadi.\nUshbu Qonun 5-moddasining ikkinchi qismida hamda mazkur moddaning birinchi va ikkinchi qismlarida nazarda tutilgan faktlarni tasdiqlovchi hujjatlar mavjud boʻlmagan taqdirda, ariza beruvchi ushbu faktlarni sud tartibida aniqlashi mumkin."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4761984_0004_5_1",
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "article": "5-modda",
+     "retrieval_score": 0.7083,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Quyidagilar Oʻzbekiston Respublikasining fuqarosi hisoblanadi:\na) 1992-yil 28-iyul holatiga koʻra Oʻzbekiston Respublikasida doimiy yashagan, chet davlat fuqarosi boʻlmagan va Oʻzbekiston Respublikasining fuqarosi boʻlish istagini bildirgan shaxs;\nb) Oʻzbekiston hududida yashagan va 1992-yil 28-iyulga qadar oʻqish uchun Oʻzbekistondan tashqariga chiqib ketgan hamda uzluksiz ravishda taʼlim olgan yoxud harbiy xizmatni oʻtagan va oʻqish yoki harbiy xizmat tugaganidan keyin bir yil ichida Oʻzbekistonga qaytib kelgan hamda Oʻzbekiston Respublikasida doimiy yashash joyi boʻyicha roʻyxatga olingan shaxs, basharti uning chet davlat fuqaroligi mavjud boʻlmasa;\nv) ushbu Qonun kuchga kirgan kunda Oʻzbekiston Respublikasining fuqaroligiga ega boʻlgan shaxs;\ng) ushbu Qonunga muvofiq Oʻzbekiston Respublikasining fuqaroligini olgan shaxs.\nUshbu modda birinchi qismining “a” va “b” bandlarida nazarda tutilgan hollarda, Oʻzbekiston Respublikasida doimiy yashash fakti doimiy yashash joyi boʻyicha roʻyxatga olinganligi toʻgʻrisidagi belgining mavjudligi bilan tasdiqlanadi.\nOʻzbekiston Respublikasining fuqaroligiga mansublikni aniqlash chogʻida, ushbu modda birinchi qismining “a” va “b” bandlarida nazarda tutilgan hollarda, shaxsning Oʻzbekiston Respublikasi fuqaroligiga mansubligi bilan bogʻliq holatlar boshlangan paytda amalda boʻlgan Oʻzbekiston Respublikasining xalqaro shartnomalari va qonunchilik hujjatlarida qoʻllaniladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4761984_0044_45_1",
+     "doc_id": "lex:4761984",
+     "doc_title": "Oʻzbekiston Respublikasining fuqaroligi toʻgʻrisida",
+     "article": "45-modda",
+     "retrieval_score": 0.7011,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqaroligi boʻlmagan shaxsni Oʻzbekiston Respublikasining fuqarosi deb tan olish toʻgʻrisidagi ariza doimiy yashash joyidagi ichki ishlar organiga topshiriladi. Arizaga quyidagilar ilova qilinadi:\nsoʻrovnoma;\nfuqaroligi boʻlmagan shaxsga yashash guvohnomasi;\nnikoh tuzilganligi yoki nikoh bekor qilinganligi toʻgʻrisidagi guvohnoma;\narizachining familiyasi, ismi va otasining ismi oʻzgarganligi haqidagi maʼlumotnoma (oʻzgarishlar mavjud boʻlsa);\n2005-yil 1-yanvarga qadar Oʻzbekiston Respublikasiga kirib kelganligini va doimiy yashash joyi boʻyicha roʻyxatga olinganligini yoki Oʻzbekiston Respublikasi hududida oʻn besh yil va undan ortiq yil davomida doimiy yashab kelayotganligini tasdiqlovchi hujjatlar.\nFuqaroligi boʻlmagan shaxsni Oʻzbekiston Respublikasining fuqarosi deb tan olish toʻgʻrisidagi arizani ichki ishlar organlari tomonidan koʻrib chiqishning umumiy muddati ariza topshirilgan kundan eʼtiboran uch oyni tashkil etadi.\nUshbu Qonunning 6-moddasida nazarda tutilgan holatlar tasdiqlangan taqdirda, fuqaroligi boʻlmagan shaxs tegishincha Qoraqalpogʻiston Respublikasi ichki ishlar vaziri, Toshkent shahri va Toshkent viloyati ichki ishlar bosh boshqarmalari boshliqlari yoki viloyatlar ichki ishlar boshqarmalari boshliqlari tomonidan tasdiqlanib, Ichki ishlar vazirligi bilan kelishilgan xulosaga asosan Oʻzbekiston Respublikasining fuqarosi deb tan olinadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "5443899_0029_29¹_1",
+     "doc_id": "lex:5443899",
+     "doc_title": "Oʻzbekiston Respublikasida chet el fuqarolarining va fuqaroligi boʻlmagan shaxslarning huquqiy holati toʻgʻrisida",
+     "article": "29¹-modda",
+     "retrieval_score": 0.6801,
+     "fusion_score": 0.01541,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Chet el fuqarosining va fuqaroligi boʻlmagan shaxsning Oʻzbekiston Respublikasining davlat suverenitetiga, hududiy yaxlitligiga va xavfsizligiga zid boʻlgan, shuningdek davlatlararo, ijtimoiy, milliy, irqiy hamda diniy adovatni keltirib chiqaruvchi, Oʻzbekiston xalqining shaʼnini, qadr-qimmatini, tarixini tahqirlovchi ommaviy chiqishlari yoki harakatlari ularni Oʻzbekiston Respublikasida boʻlishi nomaqbul deb topilgan chet el fuqarolari va fuqaroligi boʻlmagan shaxslar roʻyxatiga (bundan buyon matnda Roʻyxat deb yuritiladi) kiritish uchun asos boʻladi.\nChet el fuqarosini yoki fuqaroligi boʻlmagan shaxsni Roʻyxatga kiritish Oʻzbekiston Respublikasi Oliy Majlisi Qonunchilik palatasi Kengashining, Senati Kengashining, maxsus vakolatli davlat organlarining taqdimiga asosan amalga oshiriladi.\nRoʻyxat Oʻzbekiston Respublikasi Tashqi ishlar vazirligi tomonidan yuritiladi.\nRoʻyxatga kiritilgan chet el fuqarosining yoki fuqaroligi boʻlmagan shaxsning Oʻzbekiston Respublikasi hududiga kirishiga yoʻl qoʻyilmaydi, shuningdek unga Oʻzbekistonda bank hisobvaraqlarini ochish, Oʻzbekiston Respublikasi hududida koʻchmas mulkni sotib olish, davlat mulkini xususiylashtirishda ishtirok etish, moliyaviy va shartnomaviy munosabatlarga kirishish taqiqlanadi, bundan unga mulk huquqi asosida tegishli boʻlgan Oʻzbekiston Respublikasi hududida joylashgan mulkni begonalashtirish mustasno.\nChet el fuqarosining yoki fuqaroligi boʻlmagan shaxsning Roʻyxatda boʻlish muddati besh yilni tashkil etadi va uni Roʻyxatga kiritishning tegishli asoslarini ushbu muddat ichida bartaraf etmagan taqdirda, Roʻyxatda boʻlish muddati besh yilga uzaytiriladi. Chet el fuqarosining yoki fuqaroligi boʻlmagan shaxsning Roʻyxatga kiritilishi uchun asoslar bartaraf etilganidan keyin shaxs Roʻyxatdan chiqarish toʻgʻrisidagi murojaatiga yoxud uni Roʻyxatga kiritish haqida taqdimnoma bergan tegishli davlat organining iltimosnomasiga asosan muddatidan ilgari Roʻyxatdan chiqarilishi mumkin.\nOʻzbekiston Respublikasida vaqtincha turgan yoki doimiy yashaydigan chet el fuqarosining yoki Oʻzbekiston Respublikasida vaqtincha turgan fuqaroligi boʻlmagan shaxsning Roʻyxatga kiritilishi uning mamlakat hududida qonuniy asoslarda yashash va boʻlish huquqi bekor qilinishiga sabab boʻladi.\nOʻzbekiston Respublikasi Tashqi ishlar vazirligi chet el fuqarosi yoki fuqaroligi boʻlmagan shaxs Roʻyxatga kiritilganligi toʻgʻrisida mazkur shaxsni (uning qonuniy vakilini) belgilangan tartibda bevosita yoki diplomatik kanallar orqali uch ish kuni ichida xabardor qiladi.\nOʻzbekiston Respublikasida boʻlishi nomaqbul deb topilgan chet el fuqarolarini va fuqaroligi boʻlmagan shaxslarni Roʻyxatga kiritish hamda uni yuritish tartibi Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Chet el fuqarosi Oʻzbekiston fuqaroligini olishi uchun bu yerda necha yil yashagan boʻlishi kerak?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.7496,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 627,
+    "rerank_ms": null,
+    "generation_ms": 1548,
+    "total_ms": 2176,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 4164,
+    "output_tokens": 393
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q097",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga mos qonun normasi topilmadi. Savolni aniqroq yozib koʻring (masalan, qaysi soha yoki hujjat haqida).",
+   "answer_language": "ru",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4680944_0033_text_29",
+     "doc_id": "lex:4680944",
+     "doc_title": "Davlat boji toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.4481,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Faoliyatning ayrim turlarini Oʻzbekiston Respublikasi Raqamli texnologiyalar vazirligi tomonidan litsenziyalaganlik uchun toʻlanadigan davlat boji: a) mahalliy telekommunikatsiya tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish va ularga xizmatlar koʻrsatish | BHMning 85 baravari b) mahalliy, shaharlararo va xalqaro telekommunikatsiya tarmoqlarini loyihalashtirish | BHMning 15 baravari v) mahalliy, shaharlararo va xalqaro telekommunikatsiya tarmoqlarini qurish | BHMning 15 baravari g) mahalliy, shaharlararo va xalqaro telekommunikatsiya tarmoqlaridan foydalanish (qishloq joylardagi kichik tadbirkorlik subyektlaridan tashqari) | BHMning 30 baravari e) mahalliy va shaharlararo telekommunikatsiya tarmoqlariga xizmatlar koʻrsatish (qishloq joylardagi kichik tadbirkorlik subyektlaridan tashqari) | BHMning 30 baravari z) shaharlararo telekommunikatsiya tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish va ularga xizmatlar koʻrsatish | BHMning 430 baravari o) xalqaro telekommunikatsiya tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish va ularga xizmatlar koʻrsatish | BHMning 1900 baravari s) xalqaro telekommunikatsiya tarmoqlaridan foydalanish faoliyatini amalga oshirish | BHMning 500 baravari t) xalqaro telekommunikatsiya tarmoqlariga xizmatlar koʻrsatish (qishloq joylardagi kichik tadbirkorlik subyektlaridan tashqari) | BHMning 800 baravari u) qishloq joylardagi kichik tadbirkorlik subyektlari tomonidan xalqaro telekommunikatsiya tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish | BHMning 10 baravari f) koʻchma radiotelefon aloqa tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish va ularga xizmatlar koʻrsatish x) koʻchma radiotelefon (uyali) aloqa tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish va ularga xizmatlar koʻrsatish | BHMning 140000 baravari s) trankli, radiotelefon, respublika hududida yoʻldosh aloqa tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish va ularga xizmatlar koʻrsatish | BHMning 135 baravari ch) koʻchma radiotelefon (uyali) aloqa tarmoqlarini loyihalashtirish faoliyatini amalga oshirish | BHMning 200 baravari sh) trankli, radiotelefon, respublika hududida yoʻldosh aloqa tarmoqlarini loyihalashtirish | BHMning 10 baravari sh ¹) koʻchma radiotelefon (uyali) aloqa tarmoqlarini qurish faoliyatini amalga oshirish | BHMning 400 baravari sh ²) trankli, radiotelefon, respublika hududida yoʻldosh aloqa tarmoqlarini qurish faoliyatini amalga oshirish | BHMning 20 baravari e) koʻchma radiotelefon (uyali) aloqa tarmoqlaridan foydalanish va ularning xizmatlarini koʻrsatish (bundan uyali aloqa virtual operatorlari (provayderlar) tomonidan koʻchma radiotelefon (uyali) aloqa tarmoqlari xizmatlarini koʻrsatish mustasno) | BHMning 140 000 baravari e ¹) uyali aloqa virtual operatorlari (provayderlar) tomonidan koʻchma radiotelefon (uyali) aloqa tarmoqlari xizmatlarini koʻrsatish | BHMning 25 000 baravari yu) trankli, radiotelefon, respublika hududida yoʻldosh aloqa tarmoqlaridan foydalanish | BHMning 30 baravari ya) trankli, radiotelefon, respublika hududida yoʻldosh aloqa tarmoqlariga xizmatlar koʻrsatish faoliyatini amalga oshirish | BHMning 80 baravari aa) maʼlumotlarni uzatish tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish va ularga xizmatlar koʻrsatish"
+    },
+    {
+     "rank": 2,
+     "chunk_id": "5511879_0069_text_9",
+     "doc_id": "lex:5511879",
+     "doc_title": "Litsenziyalash, ruxsat berish va xabardor qilish tartib-taomillari toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.4382,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… kapital va joriy taʼmirlash uchun loyiha-smeta hujjatlari; binolar va inshootlarning texnik holatini tekshirish; binolar va inshootlarni mustahkamlash uchun loyiha-smeta hujjatlarini ishlab chiqish; korroziyaga qarshi himoyani ishlab chiqish; binolar va inshootlarning muhandislik tarmoqlari hamda tizimlarini loyihalashtirish.\n32. | Telekommunikatsiyalar tarmoqlarini loyihalashtirish, qurish, ulardan foydalanish va ularning xizmatlarini koʻrsatish uchun litsenziya | Mahalliy, shaharlararo va xalqaro telekommunikatsiyalar tarmoqlarini loyihalashtirish; | Oʻzbekiston Respublikasi Raqamli texnologiyalar vazirligi\nmahalliy, shaharlararo va xalqaro telekommunikatsiyalar tarmoqlarini qurish;\nmahalliy va shaharlararo telekommunikatsiyalar tarmoqlaridan foydalanish;\nmahalliy va shaharlararo telekommunikatsiyalar tarmoqlari xizmatlarini koʻrsatish;\nxalqaro telekommunikatsiyalar tarmoqlaridan foydalanish;\nxalqaro telekommunikatsiyalar tarmoqlari xizmatlarini koʻrsatish;\nkoʻchma radiotelefon (uyali) aloqa tarmoqlarini loyihalashtirish;\nkoʻchma radiotelefon (uyali) aloqa tarmoqlarini qurish;\nkoʻchma radiotelefon (radiotelefon, trankli), respublika hududida yoʻldosh aloqa tarmoqlarini loyihalashtirish;\nkoʻchma radiotelefon (radiotelefon, trankli), respublika hududida yoʻldosh aloqa tarmoqlarini qurish;\nkoʻchma radiotelefon (radiotelefon, trankli), respublika hududida yoʻldosh aloqa tarmoqlaridan foydalanish;\nkoʻchma radiotelefon (radiotelefon, trankli), respublika hududida yoʻldosh aloqa tarmoqlari xizmatlarini koʻrsatish;\nkoʻchma radiotelefon (uyali) aloqa tarmoqlaridan foydalanish va ularning xizmatlarini koʻrsatish;\nmaʼlumotlar uzatish tarmoqlarini loyihalashtirish;\nmaʼlumotlar uzatish tarmoqlarini qurish;\nmaʼlumotlar uzatish tarmoqlaridan foydalanish;\nmaʼlumotlar uzatish tarmoqlari xizmatlarini koʻrsatish;\nteleradioeshittirishlarni tarqatish (translyatsiya qilish) tarmoqlarini loyihalashtirish;\nteleradioeshittirishlarni tarqatish (translyatsiya qilish) tarmoqlarini qurish;\nteleradioeshittirishlarni tarqatish (translyatsiya qilish) tarmoqlaridan foydalanish;\nteleradioeshittirishlarni tarqatish (translyatsiya qilish) tarmoqlari xizmatlarini koʻrsatish."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "7283071_0011_12_1",
+     "doc_id": "lex:7283071",
+     "doc_title": "Telekommunikatsiyalar toʻgʻrisida",
+     "article": "12-modda",
+     "retrieval_score": 0.4226,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Respublika ijro etuvchi hokimiyat organlari va xoʻjalik boshqaruvi organlari, mahalliy davlat hokimiyati organlari yuridik va jismoniy shaxslarga elektron davlat xizmatlari koʻrsatish maqsadida umumiy foydalanishdagi telekommunikatsiyalar tarmoqlarining samarali ishlashi hamda rivojlantirilishi uchun oʻz vakolatlari doirasida shart-sharoitlar yaratadi.\nShaharsozlik faoliyati sohasidagi maxsus vakolatli davlat organi manfaatdor respublika ijro etuvchi hokimiyat organlari, mahalliy ijro etuvchi hokimiyat organlari bilan birgalikda jamoat, maʼmuriy, uy-joy va sanoat maqsadlaridagi binolar va inshootlarni loyihalashtirish uchun topshiriqlarni hamda loyiha-smeta hujjatlarini ishlab chiqish va kelishish bosqichlarida quyidagi talablarni majburiy tartibda nazarda tutishi kerak:\nbinolarda telekommunikatsiyalar vositalarini oʻrnatish uchun tegishli maydonlar va muhandislik infratuzilmasi ularga elektr taʼminoti keltirilgan holda ajratilishini;\nbinolarning ichida telefoniya, maʼlumotlar uzatish tarmoqlari va Internet jahon axborot tarmogʻi, kabel va efir televideniyesini jamoaviy qabul qilish tizimlari, shuningdek “xavfsiz uy” tizimi hamda qoʻriqlash signalizatsiyasi kabellarini oʻtkazish uchun past tokli kabel shaxtalari mavjud boʻlishini;\njamoat, maʼmuriy, turar-joy va sanoat hududlarida aloqa liniyalarini yotqizish hamda telekommunikatsiyalar vositalarini oʻrnatish uchun tegishli yer uchastkalari ajratilishini;\nviloyatlar va tumanlar markazlaridagi mobil aloqa tarmoqlari bazaviy stansiyalarining, shuningdek telekommunikatsiyalar operatorlari va provayderlari markaziy bogʻlamalarining, teleradioeshittirish obyektlarining elektr tarmoqlaridan oʻchirilmaydigan obyektlar roʻyxatiga kiritilishini."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Kak nastroit domashniy Wi-Fi router, chtobi internet rabotal bistreye?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 3,
+    "best_cosine": 0.4481,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "low_similarity",
+    "llm_model": null,
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 766,
+    "rerank_ms": null,
+    "generation_ms": null,
+    "total_ms": 772,
+    "rewrite_ms": null
+   },
+   "usage": null,
+   "llm_model": null,
+   "error": null
+  },
+  {
+   "id": "q098",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi (quyi palata) bir yuz ellik nafar deputatdan iborat [1][2][3].\n\nOʻzbekiston Respublikasi Konstitutsiyasining 92-moddasi hamda \"Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi toʻgʻrisida\"gi qonunning 2-moddasiga koʻra, Qonunchilik palatasi qonunga muvofiq saylanadigan 150 nafar deputatdan tashkil topadi [1][2].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.686,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "doc_type": "konstitutsiya",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6445145",
+     "article_url": "https://lex.uz/uz/docs/-6445145#-6445777",
+     "article": "92-modda",
+     "article_title": null,
+     "part": "1-qism",
+     "edition_date": "2026-07-25",
+     "doc_status": "amalda",
+     "chunk_id": "6445145_0092_92_1",
+     "quote": "Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi qonunga muvofiq saylanadigan bir yuz ellik deputatdan iborat."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:51961",
+     "doc_title": "Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "434-II",
+     "url": "https://lex.uz/uz/docs/-51961",
+     "article_url": "https://lex.uz/uz/docs/-51961#-58530",
+     "article": "2-modda",
+     "article_title": "Qonunchilik palatasi",
+     "part": "1-qism",
+     "edition_date": "2025-07-31",
+     "doc_status": "amalda",
+     "chunk_id": "51961_0001_2_1",
+     "quote": "Qonunchilik palatasi (quyi palata) koʻppartiyaviylik asosida umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan saylanadigan bir yuz ellik nafar deputatdan iborat."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:51255",
+     "doc_title": "REFERENDUM YAKUNLARI HAMDA DAVLAT HOKIMIYATI TAShKIL ETILIShINING ASOSIY PRINSIPLARI TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "350-II",
+     "url": "https://lex.uz/uz/docs/-51255",
+     "article_url": "https://lex.uz/uz/docs/-51255#-4509098",
+     "article": "5-modda",
+     "article_title": "Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi",
+     "part": "1-qism",
+     "edition_date": "2024-02-19",
+     "doc_status": "amalda",
+     "chunk_id": "51255_0004_5_1",
+     "quote": "Qonunchilik palatasi koʻppartiyaviylik asosida umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan saylanadigan bir yuz ellik nafar deputatdan iborat."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6445145_0092_92_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "92-modda",
+     "retrieval_score": 0.6859,
+     "fusion_score": 0.01717,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi qonunga muvofiq saylanadigan bir yuz ellik deputatdan iborat.\nOʻzbekiston Respublikasi Oliy Majlisining Senati hududiy vakillik palatasi boʻlib, Senat aʼzolaridan (senatorlardan) iborat.\nOʻzbekiston Respublikasi Oliy Majlisining Senati aʼzolari Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesi, viloyatlar, tumanlar va shaharlar davlat hokimiyati vakillik organlari deputatlarining tegishli qoʻshma majlislarida mazkur deputatlar orasidan yashirin ovoz berish yoʻli bilan Qoraqalpogʻiston Respublikasi, viloyatlar va Toshkent shahridan teng miqdorda — toʻrt kishidan saylanadi. Oʻzbekiston Respublikasi Oliy Majlisi Senatining toʻqqiz nafar aʼzosi fan, sanʼat, adabiyot, ishlab chiqarish sohasida hamda davlat va jamiyat faoliyatining boshqa tarmoqlarida katta amaliy tajribaga ega boʻlgan hamda alohida xizmat koʻrsatgan eng obroʻli fuqarolar orasidan Oʻzbekiston Respublikasi Prezidenti tomonidan tayinlanadi.\nSaylov kuni yigirma besh yoshga toʻlgan hamda kamida besh yil Oʻzbekiston Respublikasi hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputati, shuningdek Oʻzbekiston Respublikasi Oliy Majlisining Senati aʼzosi boʻlishi mumkin. Deputatlikka nomzodlarga qoʻyiladigan talablar qonun bilan belgilanadi.\nAyni bir shaxs bir paytning oʻzida Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputati va Senati aʼzosi boʻlishi mumkin emas.\nOʻzbekiston Respublikasi Oliy Majlisi Qonunchilik palatasining deputati bir vaqtning oʻzida Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesining, viloyatlar, tumanlar, shaharlar davlat hokimiyati vakillik organlarining deputati boʻlishi mumkin emas."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "51961_0001_2_1",
+     "doc_id": "lex:51961",
+     "doc_title": "Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi toʻgʻrisida",
+     "article": "2-modda",
+     "retrieval_score": 0.6809,
+     "fusion_score": 0.01686,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Qonunchilik palatasi (quyi palata) koʻppartiyaviylik asosida umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan saylanadigan bir yuz ellik nafar deputatdan iborat.\nQonunchilik palatasining ishi palata barcha deputatlarining professional, doimiy faoliyat koʻrsatishiga asoslanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "51255_0004_5_1",
+     "doc_id": "lex:51255",
+     "doc_title": "REFERENDUM YAKUNLARI HAMDA DAVLAT HOKIMIYATI TAShKIL ETILIShINING ASOSIY PRINSIPLARI TOʻGʻRISIDA",
+     "article": "5-modda",
+     "retrieval_score": 0.6581,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Qonunchilik palatasi koʻppartiyaviylik asosida umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan saylanadigan bir yuz ellik nafar deputatdan iborat.\nSaylov kuni yigirma besh yoshga toʻlgan hamda kamida besh yil Oʻzbekiston Respublikasi hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi Qonunchilik palatasining deputati boʻlishi mumkin.\nQonunchilik palatasining vakolatlari muddati — besh yil."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6445145_0091_91_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "91-modda",
+     "retrieval_score": 0.6385,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasining Oliy Majlisi oliy davlat vakillik organi boʻlib, qonun chiqaruvchi hokimiyatni amalga oshiradi.\nOʻzbekiston Respublikasi Oliy Majlisi ikki palatadan — Qonunchilik palatasi (quyi palata) va Senatdan (yuqori palata) iborat.\nOʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi va Senati vakolat muddati — besh yil."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "51255_0003_4_1",
+     "doc_id": "lex:51255",
+     "doc_title": "REFERENDUM YAKUNLARI HAMDA DAVLAT HOKIMIYATI TAShKIL ETILIShINING ASOSIY PRINSIPLARI TOʻGʻRISIDA",
+     "article": "4-modda",
+     "retrieval_score": 0.6378,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi Oliy Majlisi — qonun chiqaruvchi hokimiyatni amalga oshiruvchi Oʻzbekiston Respublikasining oliy davlat vakillik organi boʻlib, ikki palatadan — Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi (quyi palata)dan hamda Oʻzbekiston Respublikasi Oliy Majlisining Senati (yuqori palata)dan iborat boʻladi (bundan buyon matnda tegishli ravishda Qonunchilik palatasi va Senat deb yuritiladi)."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Oliy Majlisning quyi palatasida nechta deputat boʻladi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6859,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 567,
+    "rerank_ms": null,
+    "generation_ms": 1816,
+    "total_ms": 2384,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 2257,
+    "output_tokens": 203
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q099",
+   "status": "ok",
+   "answer": "Mehnat kodeksining 253-moddasiga koʻra, xodimlarga ish haqi toʻlash muddatlari har yarim oyda bir martadan kam boʻlishi mumkin emas va oylik ish haqi, qoida tariqasida, oʻn olti kundan koʻp boʻlmagan tanaffus bilan ikki qismga boʻlingan holda (boʻnakda va qolgan qismi miqdorida) toʻlanadi [1].\n\nMazkur tartib boʻyicha qonunda quyidagi qoidalar belgilangan:\n- Ish haqi toʻlash muddatlari jamoa shartnomasida yoki ichki hujjatda, ular mavjud boʻlmaganda esa mehnat shartnomasida belgilanadi [1].\n- Faqat Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan ish haqi oyiga bir marta toʻlanadigan ayrim toifadagi xodimlar belgilanishi mumkin [1].\n- Ish haqi toʻlanadigan kun dam olish yoki ishlanmaydigan bayram kuniga toʻgʻri kelib qolsa, ish haqi ushbu kunlar arafasida toʻlanadi [1].\n- Ish beruvchi ish haqini toʻlash kechiktirilganligi uchun xodim oldida Mehnat kodeksining 333-moddasida belgilangan miqdorda moddiy javobgar boʻladi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.627,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6263813",
+     "article": "253-modda",
+     "article_title": "Ish haqini toʻlash muddatlari",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0252_253_1",
+     "quote": "Xodimlarga ish haqi toʻlash muddatlari jamoa shartnomasida yoki ichki hujjatda, ular mavjud boʻlmaganda esa mehnat shartnomasida shart qilib koʻrsatilgan muddatlarda belgilanadi va har yarim oyda bir martadan kam boʻlishi mumkin emas."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0252_253_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "253-modda",
+     "retrieval_score": 0.6273,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Xodimlarga ish haqi toʻlash muddatlari jamoa shartnomasida yoki ichki hujjatda, ular mavjud boʻlmaganda esa mehnat shartnomasida shart qilib koʻrsatilgan muddatlarda belgilanadi va har yarim oyda bir martadan kam boʻlishi mumkin emas. Xodimlarga oylik ish haqi, qoida tariqasida, oʻn olti kundan koʻp boʻlmagan tanaffus bilan ikki qismga boʻlingan holda (boʻnakda va qolgan qismi miqdorida) toʻlanadi.\nOʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan ish haqi oyiga bir marta toʻlanadigan xodimlarning ayrim toifalari belgilanishi mumkin.\nIsh haqi toʻlanadigan kun dam olish kuniga yoki ishlanmaydigan bayram kuniga toʻgʻri kelib qolganda ish haqi ushbu kunlar arafasida toʻlanadi.\nXodimga tegishli boʻlgan ish haqining oʻz vaqtida toʻlanishi va miqdori boshqa toʻlovlarni amalga oshirishga hamda ularning navbatiga bogʻliq qilib qoʻyilmasligi kerak.\nIsh beruvchi xodimning soʻroviga koʻra uni ish beruvchi tomonidan xodimning ish haqini hisob-kitob qilish chogʻida amalga oshirilgan hisoblashlar va ushlab qolishlar toʻgʻrisida xabardor qilishi shart.\nIsh beruvchi ish haqini toʻlash kechiktirilganligi uchun xodim oldida ushbu Kodeksning 333-moddasida belgilangan miqdorda moddiy javobgar boʻladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0279_280_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "280-modda",
+     "retrieval_score": 0.5685,
+     "fusion_score": 0.01282,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish beruvchi xodimga:\nxodim jamoaviy muzokaralarda, jamoa shartnomasi loyihasini tayyorlashda ishtirok etgan davr;\nxodimlarning vakillari boʻlgan va ishlab chiqarish ishlaridan ozod qilinmagan shaxslar tomonidan xodimlarning vakilligi va ularning manfaatlarini himoya qilish boʻyicha vazifalar bajarilgan davr;\nmehnat nizolari boʻyicha komissiya aʼzosi ushbu komissiya ishida ishtirok etgan davr;\nxodim mehnatni muhofaza qilish sohasida oʻquvdan hamda bilim va koʻnikmalar tekshiruvidan yoki majburiy tibbiy koʻrikdan oʻzining aybisiz oʻtmaganligi sababli ishdan chetlashtirilgan davr;\nxodim oʻziga nisbatan xizmat tekshiruvi oʻtkazilganligi tufayli ishdan chetlatilgan davr;\nxodim yillik mehnat taʼtilida boʻlgan davr;\nish beruvchining aybi bilan bekor turib qolingan va nuqsonga yoʻl qoʻyilgan davr;\nish beruvchining aybi bilan mehnat normalari bajarilmagan, mehnat (lavozim) majburiyatlari ijro etilmagan davr;\nushbu Kodeksning 364-moddasiga muvofiq sogʻligʻining holatiga koʻra yengilroq ishga yoki noqulay ishlab chiqarish omillarining taʼsiridan xoli boʻlgan ishga oʻtkazilgan davr;\nmehnatni muhofaza qilish boʻyicha vakolatli shaxs tomonidan oʻz zimmasiga yuklatilgan vazifalar bajarilgan davr;\nxodim xizmat safarida boʻlgan davr;\nxodim ish beruvchi bilan birgalikda yoki ish beruvchining taklifiga binoan oʻz roziligiga koʻra boshqa joyga koʻchganida unga yangi joyga koʻchish va joylashish uchun zarur boʻlgan, lekin olti ish kunidan koʻp boʻlmagan vaqt;\nxodim ishdan ajralgan holda oʻzi va ish beruvchi uchun majburiy boʻlgan qayta tayyorlashdan yoki majburiy malaka oshirishdan oʻtgan davr;\nxodim oʻquv taʼtillarida boʻlgan davr;\nxodim ijodiy taʼtillarda boʻlgan davr;\nalohida asoslarga koʻra mehnat shartnomasi bekor qilinganda ishga joylashtirish davri;"
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0256_257_3",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "257-modda",
+     "retrieval_score": 0.6088,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Barcha hollarda ish vaqtining oylik normasini ishlab bergan va mehnat shartnomasida belgilangan mehnat vazifasini bajargan xodimning oʻrtacha oylik ish haqi qonunchilikda belgilangan hisoblash kunidagi mehnatga haq toʻlashning eng kam miqdoridan kam boʻlishi mumkin emas.\nHisob-kitob davrida tariflarni qayta koʻrib chiqish chogʻida oʻrtacha oylik ish haqi oʻzgartirilgan tarifni hisobga olgan holda qayta hisob-kitob qilinishi lozim."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6257288_0248_249_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "249-modda",
+     "retrieval_score": 0.7325,
+     "fusion_score": 0.01666,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mehnatga haq toʻlash tizimi xodimlar ish haqi miqdorining mehnatning miqdori va sifatiga, ularning shaxsiy va jamoaviy natijalariga bogʻliqligini belgilash usulidir.\nXodimlar mehnatiga haq toʻlash tizimi ish beruvchi tomonidan kasaba uyushmasi qoʻmitasi bilan kelishuvga koʻra belgilanadi, bundan ushbu Kodeksda ayrim toifadagi xodimlarga nisbatan nazarda tutilgan hollar mustasno.\nTashkilotda ayrim toifadagi xodimlarga yoki tarkibiy boʻlinmalarga nisbatan mehnatga haq toʻlashning bir nechta tizimi qoʻllanilishi mumkin.\nXodimlar mehnatiga vaqtbay, ishbay yoki mehnatga haq toʻlash tizimida nazarda tutilgan boshqa mezonlarga koʻra haq toʻlanadi.\nFaoliyatning oʻziga xos xususiyatlariga va muayyan iqtisodiy sharoitlarga qarab mehnatga haq toʻlanishini tashkil etish uchun xodimlar mehnatiga haq toʻlashning tarifli va (yoki) tarifsiz tizimlari qoʻllanilishi mumkin.\nBudjet tashkilotlari xodimlarining mehnatiga haq toʻlash tizimlari va turlari qonunchilikda belgilanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6257288_0244_245_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "245-modda",
+     "retrieval_score": 0.5993,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mehnatga haq toʻlashning eng kam miqdori Oʻzbekiston Respublikasi Prezidenti tomonidan insonning munosib turmush darajasini taʼminlash zarurati hamda Ijtimoiy-mehnat masalalari boʻyicha respublika uch tomonlama komissiyasi tomonidan ishlab chiqilgan takliflar hisobga olingan holda Oʻzbekiston Respublikasining butun hududida bir vaqtning oʻzida belgilanadi hamda tashkiliy-huquqiy shakllaridan, mulkchilik shakllaridan va idoraviy boʻysunuvidan qatʼi nazar, barcha ish beruvchilar uchun majburiydir.\nIsh vaqtining oylik normasini ishlab bergan va mehnat shartnomasida belgilangan mehnat vazifasini bajargan xodimning mehnatiga haq toʻlashning oylik miqdori qonunchilikda belgilangan mehnatga haq toʻlashning eng kam miqdoridan kam boʻlishi mumkin emas.\nOʻz mehnat majburiyatlarini bajargan xodimning mehnatiga soatbay haq toʻlashning eng kam miqdori tegishli kalendar yilda olti kunlik ish haftasidagi ish soatlarining oʻrtacha oylik miqdoriga boʻlingan, bir oyda mehnatga haq toʻlashning qonunchilikda belgilangan eng kam miqdoridan kam boʻlishi mumkin emas.\nMehnatga haq toʻlash tizimida nazarda tutilgan mukofotlar, ish haqiga ustamalar, boshqa ragʻbatlantiruvchi toʻlovlar, shuningdek ish vaqtidan tashqari ish, dam olish kunlaridagi va ishlanmaydigan bayram kunlaridagi ish, tungi vaqtdagi ish uchun toʻlovlar, tuman koeffitsiyentlariga doir toʻlovlar hamda boshqa kompensatsiyaga oid va ijtimoiy toʻlovlar mehnatga haq toʻlashning eng kam miqdoriga kiritilmaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Mehnat kodeksi, ish haqini toʻlash muddatlari va davriyligi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6273,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.8-flash",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1713,
+    "rerank_ms": null,
+    "generation_ms": 41355,
+    "total_ms": 43069,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3423,
+    "output_tokens": 416
+   },
+   "llm_model": "gemini-3.8-flash",
+   "error": null
+  },
+  {
+   "id": "q100",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasi Prezidentligiga nomzod boʻlish uchun fuqaro kamida 35 yoshda (oʻttiz besh yoshdan kichik boʻlmagan) boʻlishi kerak [1][4].\n\nOʻzbekiston Respublikasi Konstitutsiyasining 106-moddasi va Saylov kodeksining 61-moddasiga koʻra, oʻttiz besh yoshdan kichik boʻlmagan, davlat tilini yaxshi biladigan, bevosita saylovgacha kamida oʻn yil Oʻzbekiston hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi Oʻzbekiston Respublikasi Prezidenti etib saylanishi mumkin [1][4].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.676,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4386848",
+     "article_url": "https://lex.uz/uz/docs/-4386848#-4388841",
+     "article": "61-modda",
+     "article_title": "Oʻzbekiston Respublikasi Prezidentligiga nomzodga qoʻyiladigan talablar",
+     "part": "2-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "4386848_0066_61_1",
+     "quote": "Oʻttiz besh yoshdan kichik boʻlmagan, davlat tilini yaxshi biladigan, bevosita saylovgacha kamida oʻn yil Oʻzbekiston hududida muqim yashayotgan fuqaro Oʻzbekiston Respublikasi Prezidenti etib saylanishi mumkin."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "doc_type": "konstitutsiya",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6445145",
+     "article_url": "https://lex.uz/uz/docs/-6445145#-6445942",
+     "article": "106-modda",
+     "article_title": null,
+     "part": "1-qism",
+     "edition_date": "2026-07-25",
+     "doc_status": "amalda",
+     "chunk_id": "6445145_0106_106_1",
+     "quote": "Oʻzbekiston Respublikasi Prezidenti lavozimiga oʻttiz besh yoshdan kichik boʻlmagan, davlat tilini yaxshi biladigan, bevosita saylovgacha kamida 10 yil Oʻzbekiston hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi saylanishi mumkin."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4386848_0066_61_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "61-modda",
+     "retrieval_score": 0.6759,
+     "fusion_score": 0.01719,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi Prezidenti yetti yil muddatga saylanadi. Ayni bir shaxs surunkasiga ikki muddatdan ortiq Oʻzbekiston Respublikasi Prezidenti boʻlishi mumkin emas.\nOʻttiz besh yoshdan kichik boʻlmagan, davlat tilini yaxshi biladigan, bevosita saylovgacha kamida oʻn yil Oʻzbekiston hududida muqim yashayotgan fuqaro Oʻzbekiston Respublikasi Prezidenti etib saylanishi mumkin.\nQuyidagilar:\nqasddan sodir etilgan jinoyati uchun ilgari sudlangan fuqarolar;\ndiniy tashkilotlar va birlashmalarning professional xizmatchilari Oʻzbekiston Respublikasi Prezidentligiga nomzod etib roʻyxatga olinmaydi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4386848_0069_64_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "64-modda",
+     "retrieval_score": 0.6208,
+     "fusion_score": 0.01648,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi Prezidentligiga nomzodlar koʻrsatish saylovga oltmish besh kun qolganida boshlanadi va qirq besh kun qolganida tugaydi.\nOʻzbekiston Respublikasi Prezidentligiga nomzodlar koʻrsatish siyosiy partiyalarning yuqori organlari tomonidan amalga oshiriladi.\nSiyosiy partiyaning yuqori organi Oʻzbekiston Respublikasi Prezidentligiga bitta nomzod koʻrsatishi mumkin.\nSiyosiy partiya Oʻzbekiston Respublikasi Prezidentligiga faqat oʻz partiyasi aʼzolari orasidan yoki partiyasizni nomzod etib koʻrsatishga vakolatlidir. Oʻzbekiston Respublikasi Prezidentligiga nomzod koʻrsatilganligi toʻgʻrisida bayonnoma tuziladi.\nSiyosiy partiyaning rahbari Oʻzbekiston Respublikasi Prezidentligiga koʻrsatilgan nomzodni roʻyxatga olishni iltimos qilib Markaziy saylov komissiyasiga ariza bilan murojaat etadi. Arizaga quyidagilar ilova qilinadi:\nsiyosiy partiya yuqori organining Oʻzbekiston Respublikasi Prezidentligiga nomzod koʻrsatish toʻgʻrisidagi qarori;\nsiyosiy partiya yuqori organi majlisining Oʻzbekiston Respublikasi Prezidentligiga nomzod koʻrsatish toʻgʻrisidagi bayonnomasi, unda Oʻzbekiston Respublikasi Prezidentligiga koʻrsatilgan nomzodning familiyasi, ismi, otasining ismi, tugʻilgan sanasi, kasbi, lavozimi (mashgʻulotining turi), ish va yashash joyi, partiyaviyligi koʻrsatiladi;\nOʻzbekiston Respublikasi Prezidentligiga koʻrsatilgan nomzodning oʻz nomzodi ovozga qoʻyilishiga rozi ekanligi toʻgʻrisidagi arizasi;\nOʻzbekiston Respublikasi Prezidentligiga koʻrsatilgan nomzodni qoʻllab-quvvatlovchi imzo varaqalari. Siyosiy partiya tomonidan taqdim etilgan imzo varaqalarida Oʻzbekiston Respublikasi jami saylovchilari umumiy sonining kamida bir foizining imzosi boʻlishi kerak. Bunda siyosiy partiya bitta maʼmuriy-hududiy tuzilmada (Qoraqalpogʻiston Respublikasi, viloyat, Toshkent shahri) imzolar umumiy sonining koʻpi bilan sakkiz foizini toʻplashi mumkin.\nHujjatlarni taqdim etgan shaxsga Markaziy saylov komissiyasi hujjatlar qabul qilib olingan sana va vaqt koʻrsatilgan maʼlumotnoma beradi.\nMarkaziy saylov komissiyasi taqdim etilgan hujjatlarni besh kunlik muddat ichida tekshirib chiqadi va ularning ushbu Kodeks talablariga muvofiqligi toʻgʻrisida xulosa beradi.\nMarkaziy saylov komissiyasi roʻyxatga olish uchun taqdim etilgan hujjatlarda aniqlangan nomuvofiqliklar va ushbu Kodeks talablaridan chetga chiqish hollari toʻgʻrisida tegishli siyosiy partiyalarning rahbarlariga maʼlum qiladi. Siyosiy partiya hujjatlardagi aniqlangan nomuvofiqliklar va xatolarni ikki kunlik muddatda tuzatishga hamda ularni Markaziy saylov komissiyasiga taqdim etishga haqli.\nMarkaziy saylov komissiyasi Oʻzbekiston Respublikasi Prezidentligiga nomzodlarni roʻyxatga olish uchun hujjatlarni qabul qilishni roʻyxatga olish muddati tugallanishiga yetti kun qolganida yakunlaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "5534923_0066_67_1",
+     "doc_id": "lex:5534923",
+     "doc_title": "Sudlar toʻgʻrisida",
+     "article": "67-modda",
+     "retrieval_score": 0.5954,
+     "fusion_score": 0.01643,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻttiz besh yoshga toʻlgan, oliy yuridik maʼlumotga ega boʻlgan Oʻzbekiston Respublikasi fuqarosi sudyalik lavozimiga nomzod boʻlishi mumkin.\nQuyidagilar sudyalik lavozimiga nomzod boʻlishi mumkin emas:\njinoyat sodir etganlikda ayblanayotgan shaxs;\nilgari sudlangan yoki oʻziga nisbatan jinoyat ishi reabilitatsiya qilmaydigan asoslar boʻyicha tugatilgan shaxs;\nchet davlat fuqaroligiga ega boʻlgan yoki chet davlat hududida doimiy yashash huquqini tasdiqlovchi yashash guvohnomasiga yoxud boshqa hujjatga ega boʻlgan shaxs;\nsud tomonidan muomalaga layoqatsiz yoki muomala layoqati cheklangan deb eʼtirof etilgan shaxs;\npsixiatriya yoki narkologiya muassasalarida hisobda turgan shaxs;\nsudyaning vakolatlarini amalga oshirishga toʻsqinlik qiladigan boshqa kasallikka chalingan shaxs."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6445145_0106_106_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "106-modda",
+     "retrieval_score": 0.6538,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi Prezidenti lavozimiga oʻttiz besh yoshdan kichik boʻlmagan, davlat tilini yaxshi biladigan, bevosita saylovgacha kamida 10 yil Oʻzbekiston hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi saylanishi mumkin. Ayni bir shaxs surunkasiga ikki muddatdan ortiq Oʻzbekiston Respublikasining Prezidenti boʻlishi mumkin emas.\nOʻzbekiston Respublikasining Prezidenti Oʻzbekiston Respublikasining fuqarolari tomonidan umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan yetti yil muddatga saylanadi. Oʻzbekiston Respublikasining Prezidentini saylash tartibi qonun bilan belgilanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4386848_0076_71_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "71-modda",
+     "retrieval_score": 0.5943,
+     "fusion_score": 0.01612,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qonunchilik palatasiga saylanish huquqiga saylov kuni yigirma besh yoshga toʻlgan hamda kamida besh yil Oʻzbekiston Respublikasi hududida muqim yashayotgan fuqarolar egadir.\nQuyidagilar:\nsodir etilgan ogʻir yoki oʻta ogʻir jinoyati uchun sudlanganlik holati tugallanmagan yoxud sudlanganligi olib tashlanmagan fuqarolar;\nsaylov kuniga qadar soʻnggi besh yil mobaynida Oʻzbekiston Respublikasi hududida muqim yashamagan fuqarolar;\nOʻzbekiston Respublikasi Qurolli Kuchlarining harbiy xizmatchilari, Oʻzbekiston Respublikasi Davlat xavfsizlik xizmatining, Milliy gvardiyasining, Ichki ishlar vazirligining, Davlat bojxona qoʻmitasining, boshqa harbiylashtirilgan boʻlinmalarning xodimlari;\ndiniy tashkilotlar va birlashmalarning professional xizmatchilari Qonunchilik palatasi deputatligiga nomzod etib roʻyxatga olinmaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Prezidentlikka nomzod boʻlish uchun kamida necha yosh boʻlish kerak?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6759,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.5-flash",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1040,
+    "rerank_ms": null,
+    "generation_ms": 10278,
+    "total_ms": 11319,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 3117,
+    "output_tokens": 259
+   },
+   "llm_model": "gemini-3.5-flash",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 51.0
+}

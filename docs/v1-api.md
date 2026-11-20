@@ -38,6 +38,13 @@ curl -s https://92-5-109-49.sslip.io/v1/rag/batch \
 * **Qidiruv:** gibrid. bge-m3 (dense) va BM25 natijalari RRF bilan birlashtiriladi; reranker yo'q (`rerank_score: null`).
   `contexts[].retrieval_score` — savol va bo'lak orasidagi cosine o'xshashlik (0–1), `fusion_score` — RRF bali.
   Bir necha qismli savolda har qism alohida qidiriladi, shunda `contexts` `top_k` dan ko'p (10 tagacha) bo'lishi mumkin.
+* **Query rewriting** (`lexrag/rewrite.py`): asl savolning eng yaqin moddasi uzoq bo'lsa (cosine < 0.64), LLM
+  savolni qonun atamalari bilan qisqa so'rovga aylantiradi ("qarzni sud orqali undirish muddati" → "Da'vo muddati,
+  Fuqarolik kodeksi"). Qidiruv asl savol va shu so'rov bilan alohida bajarilib, RRF bilan birlashtiriladi.
+  "Bazada yo'q" qarori asl savol bo'yicha qoladi. Natija keshlanadi (bir xil savol — bir xil so'rov).
+  `debug.rewritten_query`, `debug.rewrite_applied`, `timing.rewrite_ms`. O'chirish: `QUERY_REWRITE=0`.
+  Chegara va og'irlik faqat DEV'da tanlangan; TEST'da (sozlashda qaralmagan 80 savol, faqat qidiruv):
+  Hit@5 83.8% → 93.8%, MRR@5 0.689 → 0.774.
 * **`no_answer`:** eng yaqin bo'lak cosine < 0.48 bo'lsa, LLM chaqirilmaydi. LLM manbada javob yo'q desa ham
   `no_answer: true` qaytadi. Ikkala holatda `citations: []`. Sababi `debug.no_answer_reason` da yoziladi.
 * **`citations`:** faqat javobda `[n]` bilan keltirilgan bo'laklar (`ref` = `contexts[].rank`). `quote` — bo'lak
@@ -99,3 +106,24 @@ Faithfulness hisoblanmaydi (LLM-hakam yoki qo'lda kerak).
   to'qimasdan "topilmadi" dedi. Qidiruv xatolari asosan og'zaki "raqamlar" savollarida (Hit@5 72.7%).
 * Kechikish: qidiruv ~0.6 s, Gemini bepul tarifida generatsiya p50 4.6 s (oddiy "2+2" so'rovi ham 5–7 s).
   p95 talabini bepul tarifda bajarib bo'lmaydi. Bir run ≈ 352 ming kirish + 25 ming chiqish tokeni.
+
+### Run `spec-2026-11-20-rw` (+ query rewriting, o'sha 100 savol)
+
+| Metrika | 19.11 (rewrite'siz) | 20.11 (rewrite bilan) | Maqsad |
+|---|---|---|---|
+| Hit@5 (hujjat) | 91.1% | **98.9%** | ≥ 90% ✅ |
+| Hit@5 (modda) | 84.4% | **93.3%** | ≥ 80% ✅ |
+| MRR | 0.699 | **0.781** | ≥ 0.70 ✅ |
+| Context precision (taqribiy) | 63.6% | 72.2% | ≥ 60% ✅ |
+| Citation accuracy (taqribiy) | 93.8% | 96.6% | ≥ 90% ✅ |
+| To'qilgan manba / eskirgan norma | 0 / 0 | 0 / 0 | 0 ✅ |
+| No-answer | 10/10 | 10/10 | ≥ 9/10 ✅ |
+| Javobi bor savolga "topilmadi" | 9 | 3 | — |
+| Latency p50 / p95 | 5.3 / 27.4 s | 4.5 / 17.5 s | ≤ 5 / ≤ 12 s (p95 ❌) |
+| Xato ulushi | 0% | 0% | ≤ 2% ✅ |
+
+* Qayta yozish 49 savolda ishladi; 44 tasi DEV/TEST tajribasidan keshda edi. Yangi savollarda har biriga +1 LLM
+  so'rovi (bu run'da 0.5–9 s) qo'shiladi, shuning uchun latency raqami yangi to'plamda biroz yomonroq bo'ladi.
+  20.11 ertalab Gemini 19.11 kechqurundagidan tezroq javob berdi - latency farqining bir qismi shundan.
+* 13 javobni zaxira model yozdi (3.5-flash 11, 3.8-flash 2) - `system.llm_model` da ko'rinadi (4 xil variant).
+* To'plamdagi 10 ta DEV savoli chegarani tanlashda ishlatilgan; qolgan 90 tasi sozlashda qaralmagan.

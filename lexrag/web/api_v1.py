@@ -43,7 +43,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, ValidationError, field_validator
 
-from .. import config, llm, rag
+from .. import config, llm, rag, rewrite
 from ..retrieval import MODEL, chunk_meta, prepare_query
 
 log = logging.getLogger("lexrag.v1")
@@ -339,10 +339,11 @@ def _llm_error(e: BaseException) -> ItemError:
     return ItemError("LLM_ERROR", "LLM xato qaytardi.", True)
 
 
-def _prepare(question: str, k: int, lang_pref: str | None) -> dict:
+def _prepare_once(question: str, k: int, lang_pref: str | None, rewritten: str | None = None) -> dict:
     """rag.prepare_steps - har qadam veb-chat bilan umumiy qidiruv qulfi ostida."""
     from . import app as web
-    gen = rag.prepare_steps(question, k=k, lang_pref=lang_pref, only_active=True, no_amending=True)
+    gen = rag.prepare_steps(question, k=k, lang_pref=lang_pref, only_active=True, no_amending=True,
+                            rewritten=rewritten)
     result = None
     while True:
         with web._search_lock:
@@ -355,6 +356,21 @@ def _prepare(question: str, k: int, lang_pref: str | None) -> dict:
     if result is None:
         raise RuntimeError("qidiruv natija qaytarmadi")
     return result
+
+
+def _prepare(question: str, k: int, lang_pref: str | None) -> dict:
+    """Asl savol bilan qidiruv; eng yaqin modda uzoq bo'lsa (rewrite.needed) - savol huquqiy tilga qayta yoziladi
+    (LLM, qidiruv qulfidan tashqarida, keshlanadi) va qidiruv asl + qayta yozilgan so'rov bilan takrorlanadi."""
+    p = _prepare_once(question, k, lang_pref)
+    if rewrite.needed(p):
+        t = time.perf_counter()
+        rq = rewrite.rewrite(question)
+        p["rewrite_ms"] = int((time.perf_counter() - t) * 1000)
+        if rq:
+            ms = p["rewrite_ms"]
+            p = _prepare_once(question, k, lang_pref, rewritten=rq)
+            p["rewrite_ms"] = ms
+    return p
 
 
 def _context(card: dict, meta: dict, return_text: bool, used: bool) -> dict:
@@ -401,6 +417,7 @@ def run_item(item: Item, opt: Options) -> dict:
             raise ItemError("RETRIEVAL_FAILED", f"Qidiruv xatosi: {type(e).__name__}", True) from e
         t_ret = time.perf_counter()
         timing["retrieval_ms"] = int((t_ret - t0) * 1000)
+        timing["rewrite_ms"] = p.get("rewrite_ms")  # retrieval_ms ichida: so'rovni qayta yozish (LLM), bo'lsa
         cards = p["sources"]
         from . import app as web
         with web._search_lock:  # batch savollari parallel: ChromaDB o'qishi ham qidiruv qulfi ostida
@@ -440,7 +457,9 @@ def run_item(item: Item, opt: Options) -> dict:
                "confidence": 0.0 if no_answer else (round(float(best), 3) if best is not None else None),
                "citations": citations, "contexts": contexts}
         if opt.return_debug:
-            res["debug"] = {"rewritten_query": prepare_query(question), "sub_queries": p.get("parts") or [],
+            res["debug"] = {"rewritten_query": p.get("rewritten_query") or prepare_query(question),
+                        "rewrite_applied": bool(p.get("rewritten_query")), "rewrite_ms": p.get("rewrite_ms"),
+                        "sub_queries": p.get("parts") or [],
                             "retrieved_total": len(cards), "best_cosine": best,
                             "no_answer_threshold": rag.NO_ANSWER_COS,
                             "no_answer_reason": ("low_similarity" if p["no_answer"] else "llm_not_found" if llm_no

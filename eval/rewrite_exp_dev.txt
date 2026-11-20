@@ -1,0 +1,22 @@
+dev: n=81 gate<0.64 new LLM calls=11
+  orig      hit@5=0.840 mrr@5=0.683
+  rw_only   hit@5=0.827 mrr@5=0.676
+  fuse0.5   hit@5=0.840 mrr@5=0.712
+  fuse0.7   hit@5=0.840 mrr@5=0.713
+  fuse1.0   hit@5=0.864 mrr@5=0.733
+  fuse1.5   hit@5=0.827 mrr@5=0.702
+   ('q06', None, 2, "17 yoshli o'smir ishlasa, unga yillik dam olish necha kun be", 'Oʻn sakkiz yoshga toʻlmagan xodimlarga beriladigan yillik asosiy mehnat taʼtili muddati, M')
+   ('c06', None, 1, 'Бировнинг нарсасини яширинча олиб қўйгани учун қандай жазо б', 'Oʻgʻrilik uchun jinoiy javobgarlik, Jinoyat kodeksi.')
+   ('a10', None, 4, "Ikki oy oldin ishga kech qolganimni rahbar o'shanda ko'rgan ", 'Mehnat intizomi buzilishi uchun intizomiy jazo qoʻllash muddati, Mehnat kodeksi.')
+   ('a19', 2, 5, 'Пенсионер касалхонада ётиб даволанса, пенсияси тулик туланад', 'Pensiya tayinlash va toʻlash tartibi, pensiya toʻlovlarini toʻxtatib turish, "Fuqarolarnin')
+   ('b05', 4, 1, 'Нужно ли заверять брачный договор у нотариуса, или достаточн', 'Nikoh shartnomasini notarial tasdiqlash tartibi, Oila kodeksi.')
+   ('b09', None, 2, "Jiyanimga kvartira sovg'a qilgan edim, u esa meni do'pposlab", 'Hadyani bekor qilish, hadya shartnomasi, hadya oluvchining hadya beruvchiga nisbatan qasdd')
+   ('b17', None, 1, 'Сосед самовольно занял часть моего участка и поставил там за', 'Yer uchastkasini o‘zboshimchalik bilan egallab olish, yerga bo‘lgan huquqni himoya qilish,')
+   ('b29', 3, 2, 'Buvim kasal, notariusga ozi borolmaydi. Uning vasiyatnomasin', 'Vasiyatnomani notarial tasdiqlash tartibi, vakil orqali vasiyatnoma tuzish imkoniyati, Fuq')
+   ('c101', 2, 1, "Ko'chada menga hujum qilgan odamni o'zimni himoya qilib urib", 'zaruriy mudofaa tushunchasi va chegaralari, Jinoyat kodeksi')
+   ('c112', 3, 1, 'Сколько часов полиция может держать человека за администрати', 'Maʼmuriy ushlab turish muddati, Maʼmuriy javobgarlik toʻgʻrisidagi kodeks.')
+   ('c118', 1, None, 'Шахар автобусида билет олмасдан юрса канча жарима?', 'Jamoat transportida yo‘l haqini to‘lamasdan yo‘lovchi tashish qoidalari buzilishi uchun ma')
+   ('c119', 1, None, 'Toshkentdan Samarqandga ketadigan avtobus bir necha soat kec', 'Avtomobil transportida yo‘lovchilarni tashish qoidalari, chipta pulini qaytarish tartibi, ')
+   ('c121', 2, 1, 'Aeroportda bojxonachilar ayol yoʻlovchini kiyimini yechintir', 'Bojxona nazorati shaxsiy koʻzdan kechirish tartibi, bojxona xodimining jinsi, Bojxona kode')
+   ('d17', 3, None, "Xotinim bilan o'z kvartiramizda oilaviy korxona ochib, tikuv", 'Turar joyni noturar joy toifasiga o‘tkazish tartibi, Uy-joy kodeksi va Oila tadbirkorligi ')
+   ('d20', 5, 1, 'Raqobatchi firma mijozlarga bizning mahsulotimiz sifati haqi', 'Raqobat toʻgʻrisidagi qonun, nohalol raqobat, ishchanlik obroʻsiga putur yetkazish, raqoba')

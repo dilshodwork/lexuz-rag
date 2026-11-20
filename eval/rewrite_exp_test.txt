@@ -1,0 +1,26 @@
+test: n=80 gate<0.64 new LLM calls=40
+  orig      hit@5=0.838 mrr@5=0.689
+  rw_only   hit@5=0.812 mrr@5=0.669
+  fuse0.5   hit@5=0.900 mrr@5=0.768
+  fuse0.7   hit@5=0.900 mrr@5=0.761
+  fuse1.0   hit@5=0.938 mrr@5=0.774
+  fuse1.5   hit@5=0.912 mrr@5=0.758
+   ('q17', None, 4, "Odam necha yoshdan boshlab o'z nomidan har qanday bitim tuza", 'Fuqarolik kodeksi, fuqarolarning muomala layoqati, toʻliq muomala layoqati yoshi.')
+   ('q18', None, 1, 'Qarzni undirish uchun sudga murojaat qilishning umumiy mudda', 'Daʼvo muddati, Fuqarolik kodeksi.')
+   ('q19', 5, 1, 'Kvartiramni ijaraga bermoqchiman. Shartnomani yozma tuzish s', 'Turar joyni ijaraga berish shartnomasi yozma shakli, Fuqarolik kodeksi.')
+   ('q20', 1, 2, 'Otam vasiyatsiz vafot etdi. Merosga birinchi navbatda kimlar', 'Vasiyatnoma boʻyicha merosxoʻrlik, merosxoʻrlarning navbatliligi, Fuqarolik kodeksi.')
+   ('q21', 3, 1, 'Otam vasiyatnomada hamma narsani akamga qoldiribdi. Voyaga y', 'Merosdan majburiy ulush, Fuqarolik kodeksi.')
+   ('c07', None, 2, 'Кўчада бақириб сўкинган одамга қандай маъмурий жазо берилади', 'Maʼmuriy javobgarlik toʻgʻrisidagi kodeks, mayda bezorilik uchun maʼmuriy javobgarlik.')
+   ('r01', 2, 1, 'Сколько дней длится декретный отпуск до и после родов?', 'Homiladorlik va tugʻish taʼtili muddati, Mehnat kodeksi.')
+   ('r04', 4, 3, 'Если квартиру купили в браке, но оформили на мужа, считается', 'Er-xotinning birgalikdagi mulki, nikoh davrida orttirilgan mol-mulk, Oʻzbekiston Respublik')
+   ('a26', None, 3, "15 yoshli o'g'lim ota-onasining ruxsatisiz o'zi davolanishga", 'voyaga yetmagan shaxsning tibbiy aralashuvga roziligi, Fuqarolik kodeksi, Fuqarolar sogʻli')
+   ('b03', None, 3, 'Ogay otam meni oz farzandi qilib rasmiylashtirmoqchi, men 12', 'Farzandlikka olishda bolaning roziligi, Oila kodeksi.')
+   ('b13', 2, 3, 'Kvartira erimning nikohdan oldin olgan shaxsiy mulki, men u ', 'Er-xotinning alohida mulki, turar joydan foydalanish huquqi, nikohdan oldingi mulk, Oila k')
+   ('b14', 1, 2, 'Юқори қаватдаги қўшнимнинг квартирасидан сув оқиб тушяпти, ў', 'Turar joy daxlsizligi, favqulodda holatlarda uyga kirish tartibi, Fuqarolik kodeksi, Uy-jo')
+   ('b15', 3, 1, "Uyda doimiy propiskada turgan voyaga yetgan barcha oila a'zo", 'Kommunal xizmatlar uchun toʻlov majburiyati, Fuqarolik kodeksi, Uy-joy kodeksi, birgalikda')
+   ('b18', 4, 1, "Hovlimga faqat qo'shnining yeri orqali o'tib kirsa bo'ladi, ", 'Servitut huquqi, oʻzganing yer uchastkasidan cheklangan tarzda foydalanish, Fuqarolik kode')
+   ('b19', 1, 2, "Kafolat muddati tugamagan muzlatgichim buzildi. Do'kon uni n", 'Isteʼmolchilarning huquqlarini himoya qilish toʻgʻrisidagi qonun, nuqsonli tovarni taʼmirl')
+   ('c120', None, 3, "Qozog'istonlik qarindoshim o'z mashinasida mehmonga keldi. U", 'Vaqtinchalik olib kirilgan transport vositalarining O‘zbekiston hududida bo‘lish muddati, ')
+   ('d12', None, 1, 'Kvartiramni ikki yil oldin sotib olganman. Hozir sotsam, olg', 'Ko‘chmas mulkni sotishdan olingan daromadga soliq solish tartibi, Soliq kodeksi.')
+   ('d21', None, 2, "Kafemga yong'in xavfsizligi bo'yicha tekshiruv kelmoqchi. Bu", 'Tadbirkorlik subyektlari faoliyatini tekshirish muddati, "Tadbirkorlik faoliyati erkinligi')
+   ('d24', 5, 1, "Chet el kompaniyasining ilovasi o'zbekistonliklarning yuz va", 'Shaxsga doir maʼlumotlar subyekti, biometrik maʼlumotlar, transchegaraviy uzatish, "Shaxsg')

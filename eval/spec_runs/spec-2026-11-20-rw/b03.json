@@ -1,0 +1,1347 @@
+{
+ "run_id": "spec-2026-11-20-rw",
+ "batch_id": "spec-2026-11-20-rw-b03",
+ "batch_index": 3,
+ "total_batches": 10,
+ "status": "completed",
+ "system": {
+  "pipeline_version": "1.0.0",
+  "llm_provider": "gemini",
+  "llm_model": "gemini-3.1-flash-lite",
+  "llm_model_configured": "gemini-3.1-flash-lite",
+  "embedding_model": "BAAI/bge-m3",
+  "reranker": null,
+  "retrieval": "hybrid: bge-m3 dense + BM25, RRF",
+  "index_version": "lex-idx-2026-10-31-3f56d80b",
+  "lex_snapshot_date": "2026-10-31",
+  "llm_models_used": [
+   "gemini-3.1-flash-lite"
+  ]
+ },
+ "options": {
+  "top_k": 5,
+  "return_contexts": true,
+  "return_debug": true,
+  "temperature": 0.0,
+  "seed": 42,
+  "as_of_date": null,
+  "answer_language": "auto"
+ },
+ "timing": {
+  "received_at": "2026-11-20T10:15:40+05:00",
+  "completed_at": "2026-11-20T10:15:57+05:00",
+  "total_ms": 17305
+ },
+ "summary": {
+  "total": 10,
+  "ok": 8,
+  "no_answer": 2,
+  "error": 0,
+  "timeout": 0
+ },
+ "results": [
+  {
+   "id": "q021",
+   "status": "ok",
+   "answer": "1) Oʻzbekiston Respublikasi Mehnat kodeksining 222-moddasiga koʻra, har yilgi mehnat taʼtillarini jamlashda ularning davomiyligi bir ish yili uchun ellik olti kalendar kundan oshib ketishi mumkin emas. Shuningdek, ushbu moddada taʼtillarni jamlashda asosiy eng kam taʼtil yoki asosiy uzaytirilgan taʼtilga qoʻshimcha taʼtillar qoʻshilishi belgilangan [2].\n\n2) Ha, Mehnat kodeksining 231-moddasiga muvofiq, xodim va ish beruvchi oʻrtasidagi kelishuvga koʻra har yilgi mehnat taʼtili qismlarga boʻlinishi mumkin. Bunda taʼtilning hech boʻlmaganda bir qismi oʻn toʻrt kalendar kundan kam boʻlmasligi shart [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.671,
+   "citations": [
+    {
+     "ref": 2,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6263054",
+     "article": "222-modda",
+     "article_title": "Har yilgi asosiy va qoʻshimcha mehnat taʼtillarini jamlash tartibi",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0221_222_1",
+     "quote": "Har yilgi mehnat taʼtilining umumiy davomiyligini hisoblab chiqarishda qoʻshimcha taʼtillar har yilgi asosiy eng kam taʼtil yoki har yilgi asosiy uzaytirilgan taʼtilga qoʻshib jamlanadi."
+    },
+    {
+     "ref": 1,
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6257288",
+     "article_url": "https://lex.uz/uz/docs/-6257288#-6263190",
+     "article": "231-modda",
+     "article_title": "Har yilgi mehnat taʼtilini qismlarga boʻlish",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "6257288_0230_231_1",
+     "quote": "Bunda ushbu taʼtilning hech boʻlmaganda bir qismi oʻn toʻrt kalendar kundan kam boʻlmasligi kerak."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6257288_0230_231_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "231-modda",
+     "retrieval_score": 0.6709,
+     "fusion_score": 0.03279,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Xodim va ish beruvchi oʻrtasidagi kelishuvga koʻra har yilgi mehnat taʼtili qismlarga boʻlinishi mumkin. Bunda ushbu taʼtilning hech boʻlmaganda bir qismi oʻn toʻrt kalendar kundan kam boʻlmasligi kerak."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "6257288_0221_222_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "222-modda",
+     "retrieval_score": 0.6211,
+     "fusion_score": 0.03151,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Har yilgi mehnat taʼtilining umumiy davomiyligini hisoblab chiqarishda qoʻshimcha taʼtillar har yilgi asosiy eng kam taʼtil yoki har yilgi asosiy uzaytirilgan taʼtilga qoʻshib jamlanadi.\nBarcha hollarda qonunchilik bilan belgilangan taʼtillarni jamlashda ularning davomiyligi bir ish yili uchun ellik olti kalendar kundan oshib ketishi mumkin emas.\nUshbu moddaning ikkinchi qismida nazarda tutilgan cheklov qonunchilikda nazarda tutilmagan, jamoa kelishuvlarida, shuningdek jamoa shartnomasida, ish beruvchining kasaba uyushmasi qoʻmitasi bilan kelishuvga koʻra qabul qilingan ichki hujjatlarida yoxud mehnat shartnomasida belgilangan mehnat taʼtillariga nisbatan tatbiq etilmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "6257288_0229_230_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "230-modda",
+     "retrieval_score": 0.6201,
+     "fusion_score": 0.0315,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Har yilgi mehnat taʼtili har yili, ushbu taʼtil berilayotgan ish yili tugaguniga qadar berilishi kerak.\nIshlab chiqarish xususiyatiga ega sabablarga koʻra joriy yilda har yilgi mehnat taʼtilini toʻliq berish imkoni boʻlmagan alohida hollarda xodimning roziligi bilan taʼtilning oʻn toʻrt kalendar kundan ortiq boʻlgan qismi keyingi ish yiliga koʻchirilishi mumkin boʻlib, ushbu yil davomida undan foydalanilishi shart.\nOʻn sakkiz yoshga toʻlmagan xodimlarga, nogironligi boʻlgan xodimlarga har yilgi mehnat taʼtilini, shuningdek ushbu Kodeksning 481 va 483-moddalarida koʻrsatilgan har yilgi qoʻshimcha taʼtillarni bermaslik taqiqlanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "7949060_0019_text_5",
+     "doc_id": "lex:7949060",
+     "doc_title": "2026-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.567,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… | 60 000,0 Xorijiy turizm bozorlarida mamlakat turizm salohiyatini targʻib qilish uchun xarajatlar | 67 125,0 Turizm qoʻmitasi, shu jumladan uning hududiy boʻlinmalari va tizim tashkilotlarini saqlash bilan bogʻliq xarajatlar | 124 425,0 Subsidiyalar toʻlash | 112 450,0 shu jumladan:\nYangi mehmonxonalar qurish va jihozlash uchun investorlar xarajatlarining hamda dunyoning taniqli va nufuzli mehmonxona brendlaridan foydalanuvchi Oʻzbekiston Respublikasi rezidentlari boʻlgan tashkilotlar royalti xarajatlarining bir qismini qoplash uchun subsidiyalar toʻlash | 100 000,0\nTuroperatorlar tomonidan turistik oqim past boʻlgan xorijiy mamlakatlardan Oʻzbekiston Respublikasiga olib kelingan har bir turist uchun subsidiyalar ajratish | 3 000,0\nTuroperatorlar va aviatashuvchilarning xorijiy mamlakatlardan Samarqand, Buxoro va Urganch xalqaro aeroportlariga amalga oshirgan charter aviaqatnovlari boʻyicha har bir xorijiy turist uchun subsidiya ajratish | 3 000,0\nQoraqalpogʻiston Respublikasida, viloyatlarda va Toshkent shahrida ming nafar I va II guruh nogironligi boʻlgan shaxsga Oʻzbekiston boʻylab sayohat qilish xarajatlarining bir qismini qoplash uchun subsidiyalar toʻlash | 500,0\nEshitish qobiliyatini yoʻqotgan nogironligi boʻlgan shaxslar uchun surdogidlar tayyorlash kurslari xarajatlarining bir qismini qoplash uchun subsidiyalar toʻlash | 1 950,0\nTadbirkorlik subyektlari tomonidan mehmonxonaning kamida uchta xonasi nogironligi boʻlgan shaxslar oʻrindiqli aravachasidan foydalanishi uchun qulay tarzda jihozlanganda, shuningdek eshitishi va koʻrishi uchun displey hamda ovozli qurilmalar oʻrnatilganda ushbu tadbirkorlik subyektlariga har bir maxsus jihozlangan xona uchun subsidiyalar toʻlash | 4 000,0\nTuristik (mehmonxona) yigʻimdan kelib tushadigan mablagʻlar hisobidan Oʻzbekiston Respublikasi Ichki ishlar vazirligi huzuridagi Xavfsiz turizmni taʼminlash jamgʻarmasiga oʻtkaziladigan mablagʻlar | 30 000,0\nTeatrlashtirilgan tomosha va konsert dasturlarini tashkil etish uchun Oʻzbekiston Respublikasi Madaniyat vazirligining budjetdan tashqari jamgʻarmasiga oʻtkazmalar | 2 000,0\n“Yulduz bilan sayohat” loyihasini amalga oshirish uchun Oʻzbekiston Respublikasi Madaniyat vazirligining budjetdan tashqari jamgʻarmasiga oʻtkazmalar | 4 000,0\nOldingi yillarda jalb etilgan kreditlarni qaytarish | 20 000,0\nDavlat dasturlarini moliyalashtirish uchun budjet ssudalari va kredit liniyalari saldosi *\nYil oxiriga kutilayotgan qoldiq\n8. | Davlat qarziga xizmat koʻrsatish boʻyicha kafolat jamgʻarmasi\nYil boshiga kutilayotgan qoldiq | 1 375 439,6\nDaromadlar prognozi | 2 268 469,8\nshu jumladan:"
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6332976_0001_1_27",
+     "doc_id": "lex:6332976",
+     "doc_title": "“2022-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida”gi Oʻzbekiston Respublikasi Qonuniga oʻzgartishlar kiritish haqida",
+     "article": "1-modda",
+     "retrieval_score": 0.5661,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "qoʻmitasi | 171 266,1 shu jumladan: joriy xarajatlar | 38 362,4 shundan: rivojlantirish dasturlari uchun xarajatlar | 10 010,0 “Oila va xotin qizlar” ilmiy-tadqiqot institutiga Davlat budjetidan ajratiladigan mablagʻlar | 10 010,0 obyektlarni loyihalashtirish, qurish (rekonstruksiya qilish) va jihozlash uchun kapital qoʻyilmalar Oila va xotin-qizlarni qoʻllab-quvvatlash davlat maqsadli jamgʻarmasiga transfertlar | 25 123,0 qayta taqsimlanadigan mablagʻlar | 107 780,7 Oila va xotin-qizlar davlat qoʻmitasining hududiy boʻlinmalarini saqlash bilan bogʻliq xarajatlar | 107 780,7 60. | Oʻzbekiston Respublikasi Fanlar akademiyasi | 311 113,4 shu jumladan: joriy xarajatlar | 288 398,2 obyektlarni loyihalashtirish, qurish (rekonstruksiya qilish) va jihozlash uchun kapital qoʻyilmalar | 22 715,2 61. | Oʻzbekiston Respublikasi Turizm va madaniy meros vazirligi | 381 797,1 shu jumladan: joriy xarajatlar | 343 297,1 shundan: rivojlantirish dasturlari uchun xarajatlar | 263 406,1 madaniy meros obyektlarini restavratsiya qilish va tiklash, shuningdek arxeologik ishlar uchun xarajatlar | 199 363,4 davlat muzeylarining moddiy-texnika bazasini mustahkamlash uchun xarajatlar | 7 950,0 aviaqatnovlar chiptalariga, turoperatorlar orqali xarid qilingan temir yoʻl chiptalariga va mehmonxona xizmatlariga qoʻshimcha chegirmalar taqdim etish uchun xarajatlar | 6 092,8 Respublikaga tashrif buyuradigan xorijiy turistlar sonini 2026-yilga qadar 9 million nafarga yetkazish bilan bogʻliq xarajatlar | 50 000,0 obyektlarni loyihalashtirish, qurish (rekonstruksiya qilish) va jihozlash uchun kapital qoʻyilmalar budjetdan tashqari Turizmni qoʻllab-quvvatlash jamgʻarmasiga transfertlar | 33 500,0 qayta taqsimlanadigan mablagʻlar | 5 000,0 respublika hududlarida oʻtkaziladigan festivallarni xorijiy va mahalliy ommaviy axborot vositalarida keng targʻibot qilish xarajatlari | 5 000,0 62. | Oʻzbekiston Respublikasi Sportni rivojlantirish vazirligi | 1 211 710,5 shu jumladan: joriy xarajatlar | 733 685,1 shundan: rivojlantirish dasturlari uchun xarajatlar | 451 356,1 Olimpiya oʻyinlariga tayyorgarlik koʻrish va unda ishtirok etish uchun xarajatlar | 76 728,3 Paralimpiya oʻyinlariga tayyorgarlik koʻrish va unda ishtirok etish uchun xarajatlar | 18 438,0 “Sogʻlom turmush tarzi” platformasi vositasida bir sutka davomida oʻn ming va undan ortiq qadam yurgan shaxslarga ajratiladigan mablagʻlar | 55 000,0 Sport va ommaviy jismoniy tarbiya tadbirlarining kalendar rejasiga kiritilgan tadbirlar uchun xarajatlar | 190 116,1 yurish, yugurish, mini-futbol, velosport, badminton, stritbol va “Workout” sport turlarini ommaviylashtirish va rivojlantirish dasturlarini amalga oshirish uchun xarajatlar | 104 000,0 Kurash xalqaro assotsiatsiyasi faoliyatini"
+    },
+    {
+     "rank": 6,
+     "chunk_id": "6257288_0212_213_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "213-modda",
+     "retrieval_score": 0.6223,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Kodeksda ish beruvchi bilan tuzilgan mehnat shartnomasi asosida mehnat faoliyatini amalga oshirayotgan xodimlar uchun taʼtillarning quyidagi turlari nazarda tutilgan:\nhar yilgi mehnat taʼtili;\nijtimoiy taʼtillar;\nish haqi qisman saqlanadigan taʼtil;\nish haqi saqlanmaydigan taʼtil."
+    },
+    {
+     "rank": 7,
+     "chunk_id": "6257288_0220_221_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "221-modda",
+     "retrieval_score": 0.6169,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xodimlarning har yilgi asosiy va qoʻshimcha mehnat taʼtillarining davomiyligi kalendar kunlarda hisoblab chiqariladi.\nHar yilgi mehnat taʼtili davriga toʻgʻri keladigan ishlanmaydigan bayram kunlari mehnat taʼtillarining davomiyligini belgilashda hisobga olinmaydi.\nQonunchilikda nazarda tutilgan hollarda ayrim toifadagi xodimlarga beriladigan har yilgi asosiy va qoʻshimcha mehnat taʼtillarining davomiyligi olti kunlik ish haftasi hisobidan kalendar boʻyicha ish kunlarida hisoblab chiqariladi."
+    },
+    {
+     "rank": 8,
+     "chunk_id": "5801127_0021_text_16",
+     "doc_id": "lex:5801127",
+     "doc_title": "2022-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5656,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "uchun kapital qoʻyilmalar qayta taqsimlanadigan mablagʻlar | 77 336,0 mahallalar raislarini mehnatga haq toʻlash shartlari oʻzgarishi bilan bogʻliq xarajatlar | 77 336,0 59. | Oʻzbekiston Respublikasi Oila va xotin qizlar davlat qoʻmitasi | 171 266,1 shu jumladan: joriy xarajatlar | 38 362,4 shundan: rivojlantirish dasturlari uchun xarajatlar | 10 010,0 “Oila va xotin qizlar” ilmiy-tadqiqot institutiga Davlat budjetidan ajratiladigan mablagʻlar | 10 010,0 obyektlarni loyihalashtirish, qurish (rekonstruksiya qilish) va jihozlash uchun kapital qoʻyilmalar Oila va xotin-qizlarni qoʻllab-quvvatlash davlat maqsadli jamgʻarmasiga transfertlar | 25 123,0 qayta taqsimlanadigan mablagʻlar | 107 780,7 Oila va xotin-qizlar davlat qoʻmitasining hududiy boʻlinmalarini saqlash bilan bogʻliq xarajatlar | 107 780,7 60. | Oʻzbekiston Respublikasi Fanlar akademiyasi | 311 113,4 shu jumladan: joriy xarajatlar | 288 398,2 obyektlarni loyihalashtirish, qurish (rekonstruksiya qilish) va jihozlash uchun kapital qoʻyilmalar | 22 715,2 61. | Oʻzbekiston Respublikasi Turizm va madaniy meros vazirligi | 381 797,1 shu jumladan: joriy xarajatlar | 343 297,1 shundan: rivojlantirish dasturlari uchun xarajatlar | 263 406,1 madaniy meros obyektlarini restavratsiya qilish va tiklash, shuningdek arxeologik ishlar uchun xarajatlar | 199 363,4 davlat muzeylarining moddiy-texnika bazasini mustahkamlash uchun xarajatlar | 7 950,0 aviaqatnovlar chiptalariga, turoperatorlar orqali xarid qilingan temir yoʻl chiptalariga va mehmonxona xizmatlariga qoʻshimcha chegirmalar taqdim etish uchun xarajatlar | 6 092,8 Respublikaga tashrif buyuradigan xorijiy turistlar sonini 2026-yilga qadar 9 million nafarga yetkazish bilan bogʻliq xarajatlar | 50 000,0 obyektlarni loyihalashtirish, qurish (rekonstruksiya qilish) va jihozlash uchun kapital qoʻyilmalar budjetdan tashqari Turizmni qoʻllab-quvvatlash jamgʻarmasiga transfertlar | 33 500,0 qayta taqsimlanadigan mablagʻlar | 5 000,0 respublika hududlarida oʻtkaziladigan festivallarni xorijiy va mahalliy ommaviy axborot vositalarida keng targʻibot qilish xarajatlari | 5 000,0 62. | Oʻzbekiston Respublikasi Sportni rivojlantirish vazirligi | 1 211 710,5 shu jumladan: joriy xarajatlar | 733 685,1 shundan: rivojlantirish dasturlari uchun xarajatlar | 451 356,1 Olimpiya oʻyinlariga tayyorgarlik koʻrish va unda ishtirok etish uchun xarajatlar | 76 728,3 Paralimpiya oʻyinlariga tayyorgarlik koʻrish va unda ishtirok etish uchun xarajatlar | 18 438,0 “Sogʻlom turmush tarzi” platformasi vositasida bir sutka davomida oʻn ming va undan ortiq qadam yurgan shaxslarga ajratiladigan mablagʻlar"
+    },
+    {
+     "rank": 9,
+     "chunk_id": "6332976_0001_1_8",
+     "doc_id": "lex:6332976",
+     "doc_title": "“2022-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida”gi Oʻzbekiston Respublikasi Qonuniga oʻzgartishlar kiritish haqida",
+     "article": "1-modda",
+     "retrieval_score": 0.5625,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "… Yil oxiriga kutilayotgan qoldiq | 156 033,1 14. | Turizmni qoʻllab-quvvatlash jamgʻarmasi Yil boshiga qoldiq | 23 504,1 Daromadlar prognozi | 44 000,0 Davlat budjetidan transfertlar | 39 500,0 Xarajatlar | 107 000,0 shu jumladan:\nTurizm va madaniy meros sohasidagi maqsadli dasturlarni moliyalashtirish | 30 088,9\nMamlakatning turizm salohiyatini targʻib qilishga qaratilgan tadbirlarni tashkil etish bilan bogʻliq xarajatlar | 30 729,4\nOʻzbekiston Respublikasi Turizm va madaniy meros vazirligi, uning hududiy boshqarmalari va tarkibidagi tashkilotlarni saqlash hamda boshqa xarajatlar | 46 181,7\nYil oxiriga kutilayotgan qoldiq | 4,1\n15. | Davlat qarziga xizmat koʻrsatish boʻyicha kafolat jamgʻarmasi\nYil boshiga qoldiq | 457 836,0\nDaromadlar prognozi | 239 704,4\nshu jumladan: Jalb etiladigan kreditlar (qarzlar) boʻyicha Oʻzbekiston Respublikasi nomidan davlat kafolatlari berilganligi uchun undiriladigan taqdirlash puli | 27 673,4\nVaqtincha boʻsh mablagʻlarni tijorat banklariga depozitlarga joylashtirishdan va yuqori likvidli qimmatli qogʻozlarga investitsiya qilishdan tushumlar | 24 307,6\nXalqaro obligatsiyalarni joylashtirishdan tushgan mablagʻlarni depozitga joylashtirish, kredit liniyalari ochish va budjet ssudalarini ajratishdan foiz tarzida toʻlanadigan daromadlardan olingan foyda soligʻi miqdorida respublika budjetidan ajratma | 87 014,0\nXalqaro moliya institutlari, xorijiy davlatlar va tashkilotlardan jalb qilingan qarz mablagʻlarini Oʻzbekiston Respublikasi Markaziy banki va tijorat banklariga depozitga joylashtirishdan olinadigan daromadlar | 96 241,1\nBoshqa daromadlar | 4 468,2\nDavlat budjetidan transfertlar\nXarajatlar | 146 274,3\nshu jumladan: Qarzdor tashkilotlar davlat qarzi boʻyicha toʻlovlarni oʻz vaqtida va toʻliq amalga oshirmagan holatlarda qarzdor tashkilotlar tomonidan qayta qoplash sharti bilan qarz toʻlovlarini amalga oshirish | 119 020,9\nBoshqa xarajatlar | 27 253,4\nYil oxiriga kutilayotgan qoldiq | 551 266,1\n16. | Oila va xotin-qizlarni qoʻllab-quvvatlash davlat maqsadli jamgʻarmasi\nYil boshiga qoldiq | 75 510,8\nDaromadlar prognozi | 154 000,0\nshu jumladan: Tijorat banklariga imtiyozli asosda kreditlar ajratish uchun berilgan resurslardan hisoblangan foizdan kelib tushadigan daromadlar | 154 000,0\nDavlat budjetidan transfertlar | 66 123,0\nXarajatlar | 228 528,0\nshu jumladan:"
+    },
+    {
+     "rank": 10,
+     "chunk_id": "6257288_0401_402_1",
+     "doc_id": "lex:6257288",
+     "doc_title": "Oʻzbekiston Respublikasining Mehnat kodeksi",
+     "article": "402-modda",
+     "retrieval_score": 0.6177,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn ikki yoshga toʻlmagan ikki nafar va undan ortiq bolaning yoki oʻn olti yoshga toʻlmagan nogironligi boʻlgan bolaning ota-onasidan biriga (ota-ona oʻrnini bosuvchi shaxsga), ularning xohishiga koʻra, har yili ish haqi saqlanmagan holda davomiyligi oʻn toʻrt kalendar kungacha boʻlgan taʼtil beriladi.\nUshbu moddaning birinchi qismida nazarda tutilgan taʼtil yillik mehnat taʼtiliga qoʻshib berilishi yoki ish beruvchi bilan kelishib belgilanadigan davrda ushbu taʼtildan alohida (toʻliq yoxud qismlarga boʻlib), lekin faqat joriy ish yili davomida foydalanilishi mumkin. Ushbu taʼtilni keyingi ish yiliga koʻchirishga yoʻl qoʻyilmaydi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Yillik taʼtil necha kunlik boʻladi va uni bir necha qismga boʻlib olsa boʻladimi?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [
+     "Yillik taʼtil necha kunlik bo'ladi?",
+     "Yillik taʼtil bir necha qismga bo'lib olsa bo'ladimi?"
+    ],
+    "retrieved_total": 10,
+    "best_cosine": 0.6709,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3602,
+    "rerank_ms": null,
+    "generation_ms": 1360,
+    "total_ms": 4962,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 7508,
+    "output_tokens": 264
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q022",
+   "status": "ok",
+   "answer": "Ўзбекистон Республикаси Президентининг ваколат муддати ва сайланиш тартиби бўйича қуйидаги маълумотлар белгиланган:\n\n1) Ўзбекистон Республикаси Президенти етти йил муддатга сайланади [1][2][3].\n2) Айни бир шахс сурункасига икки муддатдан ортиқ Ўзбекистон Республикаси Президенти бўлиши мумкин эмас [1][2].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.724,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "doc_type": "konstitutsiya",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6445145",
+     "article_url": "https://lex.uz/uz/docs/-6445145#-6445942",
+     "article": "106-modda",
+     "article_title": null,
+     "part": "1-qism",
+     "edition_date": "2026-07-25",
+     "doc_status": "amalda",
+     "chunk_id": "6445145_0106_106_1",
+     "quote": "Oʻzbekiston Respublikasi Prezidenti lavozimiga oʻttiz besh yoshdan kichik boʻlmagan, davlat tilini yaxshi biladigan, bevosita saylovgacha kamida 10 yil Oʻzbekiston hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi saylanishi mumkin."
+    },
+    {
+     "ref": 2,
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-4386848",
+     "article_url": "https://lex.uz/uz/docs/-4386848#-4388841",
+     "article": "61-modda",
+     "article_title": "Oʻzbekiston Respublikasi Prezidentligiga nomzodga qoʻyiladigan talablar",
+     "part": "1-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "4386848_0066_61_1",
+     "quote": "Oʻzbekiston Respublikasi Prezidenti yetti yil muddatga saylanadi."
+    },
+    {
+     "ref": 3,
+     "doc_id": "lex:51255",
+     "doc_title": "REFERENDUM YAKUNLARI HAMDA DAVLAT HOKIMIYATI TAShKIL ETILIShINING ASOSIY PRINSIPLARI TOʻGʻRISIDA",
+     "doc_type": "qonun",
+     "doc_number": "350-II",
+     "url": "https://lex.uz/uz/docs/-51255",
+     "article_url": "https://lex.uz/uz/docs/-51255#-51316",
+     "article": "8-modda",
+     "article_title": "Oʻzbekiston Respublikasi Prezidentining vakolat muddati",
+     "part": "1-qism",
+     "edition_date": "2024-02-19",
+     "doc_status": "amalda",
+     "chunk_id": "51255_0007_8_1",
+     "quote": "Umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan saylanadigan Oʻzbekiston Respublikasi Prezidentining konstitutsiyaviy vakolat muddati yetti yil."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6445145_0106_106_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "106-modda",
+     "retrieval_score": 0.7238,
+     "fusion_score": 0.03252,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi Prezidenti lavozimiga oʻttiz besh yoshdan kichik boʻlmagan, davlat tilini yaxshi biladigan, bevosita saylovgacha kamida 10 yil Oʻzbekiston hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi saylanishi mumkin. Ayni bir shaxs surunkasiga ikki muddatdan ortiq Oʻzbekiston Respublikasining Prezidenti boʻlishi mumkin emas.\nOʻzbekiston Respublikasining Prezidenti Oʻzbekiston Respublikasining fuqarolari tomonidan umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan yetti yil muddatga saylanadi. Oʻzbekiston Respublikasining Prezidentini saylash tartibi qonun bilan belgilanadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4386848_0066_61_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "61-modda",
+     "retrieval_score": 0.7215,
+     "fusion_score": 0.03252,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Oʻzbekiston Respublikasi Prezidenti yetti yil muddatga saylanadi. Ayni bir shaxs surunkasiga ikki muddatdan ortiq Oʻzbekiston Respublikasi Prezidenti boʻlishi mumkin emas.\nOʻttiz besh yoshdan kichik boʻlmagan, davlat tilini yaxshi biladigan, bevosita saylovgacha kamida oʻn yil Oʻzbekiston hududida muqim yashayotgan fuqaro Oʻzbekiston Respublikasi Prezidenti etib saylanishi mumkin.\nQuyidagilar:\nqasddan sodir etilgan jinoyati uchun ilgari sudlangan fuqarolar;\ndiniy tashkilotlar va birlashmalarning professional xizmatchilari Oʻzbekiston Respublikasi Prezidentligiga nomzod etib roʻyxatga olinmaydi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "51255_0007_8_1",
+     "doc_id": "lex:51255",
+     "doc_title": "REFERENDUM YAKUNLARI HAMDA DAVLAT HOKIMIYATI TAShKIL ETILIShINING ASOSIY PRINSIPLARI TOʻGʻRISIDA",
+     "article": "8-modda",
+     "retrieval_score": 0.6855,
+     "fusion_score": 0.03175,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan saylanadigan Oʻzbekiston Respublikasi Prezidentining konstitutsiyaviy vakolat muddati yetti yil."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "6445145_0128_128_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "128-modda",
+     "retrieval_score": 0.6391,
+     "fusion_score": 0.03125,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasining fuqarolari davlat hokimiyati vakillik organlariga saylash va saylanish huquqiga egadirlar. Har bir saylovchi bir ovozga ega. Ovoz berish huquqi, oʻz xohish-irodasini bildirish tengligi va erkinligi qonun bilan kafolatlanadi.\nOʻzbekiston Respublikasi Prezidenti saylovi, Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasiga hamda Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesiga, viloyatlar, tumanlar, shaharlar davlat hokimiyati vakillik organlariga saylov tegishincha ularning konstitutsiyaviy vakolat muddati tugaydigan yilda — oktabr oyi uchinchi oʻn kunligining birinchi yakshanbasida oʻtkaziladi, bundan ushbu Konstitutsiyada nazarda tutilgan muddatidan ilgari saylov oʻtkazish hollari mustasno. Saylovlar umumiy, teng va toʻgʻridan-toʻgʻri saylov huquqi asosida yashirin ovoz berish yoʻli bilan oʻtkaziladi. Oʻzbekiston Respublikasining oʻn sakkiz yoshga toʻlgan fuqarolari saylash huquqiga ega.\nOʻzbekiston Respublikasi Prezidenti muddatidan ilgari Oʻzbekiston Respublikasi Prezidenti saylovini tayinlashga haqli.\nOʻzbekiston Respublikasi Oliy Majlisining Senati aʼzolari Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesi, viloyatlar, tumanlar va shaharlar davlat hokimiyati vakillik organlari deputatlarining tegishli qoʻshma majlislarida mazkur deputatlar saylanganidan soʻng bir oy ichida ular orasidan yashirin ovoz berish yoʻli bilan saylanadilar.\nSud tomonidan muomalaga layoqatsiz deb topilgan fuqarolar, shuningdek sud hukmi bilan ozodlikdan mahrum etish joylarida saqlanayotgan shaxslar saylanishi mumkin emas.\nSud tomonidan muomalaga layoqatsiz deb topilgan fuqarolar, shuningdek ogʻir va oʻta ogʻir jinoyatlar sodir etganlik uchun sudning hukmiga koʻra ozodlikdan mahrum etish joylarida saqlanayotgan shaxslar saylovda ishtirok etish huquqidan faqat qonunga muvofiq hamda sudning qarori asosida mahrum etilishi mumkin. Boshqa har qanday hollarda fuqarolarning saylov huquqlarini toʻgʻridan-toʻgʻri yoki bilvosita cheklashga yoʻl qoʻyilmaydi.\nOʻzbekiston Respublikasi fuqarosi bir vaqtning oʻzida ikkidan ortiq davlat hokimiyati vakillik organining deputati boʻlishi mumkin emas.\nSaylov oʻtkazish tartibi qonun bilan belgilanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6445145_0092_92_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "92-modda",
+     "retrieval_score": 0.5135,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi qonunga muvofiq saylanadigan bir yuz ellik deputatdan iborat.\nOʻzbekiston Respublikasi Oliy Majlisining Senati hududiy vakillik palatasi boʻlib, Senat aʼzolaridan (senatorlardan) iborat.\nOʻzbekiston Respublikasi Oliy Majlisining Senati aʼzolari Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesi, viloyatlar, tumanlar va shaharlar davlat hokimiyati vakillik organlari deputatlarining tegishli qoʻshma majlislarida mazkur deputatlar orasidan yashirin ovoz berish yoʻli bilan Qoraqalpogʻiston Respublikasi, viloyatlar va Toshkent shahridan teng miqdorda — toʻrt kishidan saylanadi. Oʻzbekiston Respublikasi Oliy Majlisi Senatining toʻqqiz nafar aʼzosi fan, sanʼat, adabiyot, ishlab chiqarish sohasida hamda davlat va jamiyat faoliyatining boshqa tarmoqlarida katta amaliy tajribaga ega boʻlgan hamda alohida xizmat koʻrsatgan eng obroʻli fuqarolar orasidan Oʻzbekiston Respublikasi Prezidenti tomonidan tayinlanadi.\nSaylov kuni yigirma besh yoshga toʻlgan hamda kamida besh yil Oʻzbekiston Respublikasi hududida muqim yashayotgan Oʻzbekiston Respublikasi fuqarosi Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputati, shuningdek Oʻzbekiston Respublikasi Oliy Majlisining Senati aʼzosi boʻlishi mumkin. Deputatlikka nomzodlarga qoʻyiladigan talablar qonun bilan belgilanadi.\nAyni bir shaxs bir paytning oʻzida Oʻzbekiston Respublikasi Oliy Majlisining Qonunchilik palatasi deputati va Senati aʼzosi boʻlishi mumkin emas.\nOʻzbekiston Respublikasi Oliy Majlisi Qonunchilik palatasining deputati bir vaqtning oʻzida Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesining, viloyatlar, tumanlar, shaharlar davlat hokimiyati vakillik organlarining deputati boʻlishi mumkin emas."
+    },
+    {
+     "rank": 6,
+     "chunk_id": "4386848_0072_67_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "67-modda",
+     "retrieval_score": 0.5132,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Qonunchilik palatasi besh yil muddatga saylanadigan bir yuz ellik deputatdan iborat boʻladi.\nQonunchilik palatasi deputatlarining:\nyetmish besh nafari bir mandatli saylov okruglari boʻyicha saylanadi;\nyetmish besh nafari yagona saylov okrugi boʻyicha siyosiy partiyalarga berilgan ovozlarga mutanosib ravishda partiya roʻyxati asosida saylanadi."
+    },
+    {
+     "rank": 7,
+     "chunk_id": "4386848_0082_75_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "75-modda",
+     "retrieval_score": 0.5112,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Senat hududiy vakillik palatasi hisoblanadi.\nSenat aʼzolari Qoraqalpogʻiston Respublikasi, viloyatlar va Toshkent shahridan teng miqdorda — toʻrt kishidan saylanadi. Senatga saylov Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesi, mahalliy Kengashlar deputatlarining tegishli qoʻshma majlislarida mazkur deputatlar orasidan yashirin ovoz berish yoʻli bilan oʻtkaziladi.\nSenatning toʻqqiz nafar aʼzosi fan, sanʼat, adabiyot, ishlab chiqarish sohasida hamda davlat va jamiyat faoliyatining boshqa tarmoqlarida katta amaliy tajribaga ega boʻlgan hamda alohida xizmat koʻrsatgan eng obroʻli fuqarolar orasidan Oʻzbekiston Respublikasi Prezidenti tomonidan tayinlanadi.\nSenatning vakolat muddati — besh yil."
+    },
+    {
+     "rank": 8,
+     "chunk_id": "4386848_0096_88_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "88-modda",
+     "retrieval_score": 0.5104,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Mahalliy Kengashlarga saylov hududiy bir mandatli saylov okruglari boʻyicha koʻppartiyaviylik asosida besh yil muddatga oʻtkaziladi.\nXalq deputatlari viloyatlar va Toshkent shahar Kengashlaridagi deputatlik oʻrinlari soni aholi sonidan kelib chiqqan holda tegishli mahalliy Kengash tomonidan quyidagicha belgilanadi:\naholi soni ikki million nafargacha boʻlgan hududlarda — oʻttiztadan qirqtagacha;\naholi soni ikki milliondan uch million nafargacha boʻlgan hududlarda — qirqtadan elliktagacha;\naholi soni uch million nafardan ortiq boʻlgan hududlarda — elliktadan oltmishtagacha.\nXalq deputatlari tuman va shahar Kengashlaridagi deputatlik oʻrinlari soni aholi sonidan kelib chiqqan holda tegishli mahalliy Kengash tomonidan quyidagicha belgilanadi:\naholi soni oʻttiz ming nafargacha boʻlgan hududlarda — oʻntadan oʻn beshtagacha;\naholi soni oʻttiz mingdan yuz ming nafargacha boʻlgan hududlarda — oʻn beshtadan yigirmatagacha;\naholi soni yuz mingdan uch yuz ming nafargacha boʻlgan hududlarda — yigirmatadan yigirma beshtagacha;\naholi soni uch yuz ming nafardan ortiq boʻlgan hududlarda — yigirma beshtadan oʻttiztagacha.\nHududiy va boshqa mahalliy sharoitlardan kelib chiqib, xalq deputatlari viloyatlar, Toshkent shahar, tuman va shahar Kengashlaridagi deputatlik oʻrinlari soniga ushbu moddaning ikkinchi va uchinchi qismlarida belgilangan norma doirasida Senat tomonidan oʻzgartirish kiritilishi mumkin.\nSaylov okrugining hududi boshqa maʼmuriy-hududiy birlik tarkibiga oʻtkazilganda yoki uning hududida yangi maʼmuriy-hududiy birlik tashkil etilgan taqdirda, ushbu saylov okrugidan saylangan deputatning vakolatlari saqlab qolinadi. Bunda deputat saylov okrugining hududi joylashgan xalq deputatlari Kengashi yoxud yangi tashkil etilgan maʼmuriy-hududiy birlikda shakllantirilgan xalq deputatlari Kengashi tarkibiga kiradi, deputatning vakolatlari muddati esa mazkur xalq deputatlari Kengashining vakolatlari muddatiga muvofiq boʻladi. Bunday hollarda deputatlik oʻrinlari soni ushbu modda ikkinchi va uchinchi qismlarida belgilangan normadan oshishi yoki kamayishiga yoʻl qoʻyilishi mumkin.\nYangidan tashkil etilgan maʼmuriy-hududiy birliklarda mahalliy Kengashlarga saylov xalq deputatlari viloyat, tuman va shahar Kengashlariga navbatdagi umumiy saylovlarga qadar qolgan davrdan oshmaydigan muddatga oʻtkaziladi."
+    },
+    {
+     "rank": 9,
+     "chunk_id": "5534923_0071_72_1",
+     "doc_id": "lex:5534923",
+     "doc_title": "Sudlar toʻgʻrisida",
+     "article": "72-modda",
+     "retrieval_score": 0.592,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Sud raisi, rais oʻrinbosarining vakolatlari muddati besh yil.\nShaxs ayni bir sudda ketma-ket ikki muddatdan ortiq rais, rais oʻrinbosari lavozimini egallab turishi mumkin emas.\nSud raisi, rais oʻrinbosari vakolatlari u saylangan yoki tayinlangan muddat oʻtgach tugaydi.\nSud raisi, rais oʻrinbosarining vakolatlari muddati oʻtganligi yoki u tomonidan egallab turgan lavozimidan ozod etish haqida ariza berganligi munosabati bilan tugagan taqdirda, uning sudyalik vakolatlari saqlanib qoladi va u shu kundan boshlab sudyalik lavozimida ishni davom ettiradi, mazkur sudda boʻsh turgan sudyalik lavozimi boʻlmagan taqdirda, oʻzining roziligi bilan sudyalik vakolatlarining qolgan muddatiga boshqa sudga sudyalik lavozimiga oʻtkaziladi."
+    },
+    {
+     "rank": 10,
+     "chunk_id": "4386848_0071_66_1",
+     "doc_id": "lex:4386848",
+     "doc_title": "Oʻzbekiston Respublikasining Saylov kodeksi",
+     "article": "66-modda",
+     "retrieval_score": 0.652,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻzbekiston Respublikasining amaldagi Prezidenti oʻz vazifalarini bajara olmaydigan holatlarda uning vazifa va vakolatlari vaqtincha Senat Raisining zimmasiga yuklatiladi, bunda uch oy muddat ichida, ushbu Kodeksga toʻliq muvofiq holda Oʻzbekiston Respublikasi Prezidenti saylovi oʻtkaziladi.\nOʻzbekiston Respublikasi Prezidenti muddatidan ilgari Oʻzbekiston Respublikasi Prezidenti saylovini tayinlagan taqdirda, saylov ushbu Kodeksga toʻliq muvofiq holda ikki oy ichida oʻtkaziladi. Bunda saylovga tayyorgarlik koʻrish hamda uni oʻtkazishga doir tadbirlarni amalga oshirish muddatlari Markaziy saylov komissiyasi tomonidan belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Prezident necha yilga saylanadi va ketma-ket necha marta saylanishi mumkin?",
+    "rewrite_applied": false,
+    "rewrite_ms": null,
+    "sub_queries": [
+     "Президент неча йилга сайланади?",
+     "Кетма-кет неча марта сайланиши мумкин?"
+    ],
+    "retrieved_total": 10,
+    "best_cosine": 0.7238,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3612,
+    "rerank_ms": null,
+    "generation_ms": 1713,
+    "total_ms": 5326,
+    "rewrite_ms": null
+   },
+   "usage": {
+    "input_tokens": 5274,
+    "output_tokens": 164
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q023",
+   "status": "ok",
+   "answer": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksining 128¹-moddasiga koʻra, transport vositasini boshqarish vaqtida telefondan foydalanish maʼmuriy ogohlantirishga yoki bazaviy hisoblash miqdorining uch baravari miqdorida jarima solishga sabab boʻladi [1].\n\nBunda telefondan quloqchinlar orqali yoki qoʻllarni ishlatmasdan turib soʻzlashuvlar olib borish imkoniyatini beradigan boshqa uskunalar orqali foydalanish taqiqlanmaydi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.601,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-97664",
+     "article_url": "https://lex.uz/uz/docs/-97664#-5754985",
+     "article": "128¹-modda",
+     "article_title": "Transport vositasini boshqarish vaqtida haydovchilarning telefondan foydalanishi",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "97664_0204_128¹_1",
+     "quote": "Transport vositasini boshqarish vaqtida haydovchilarning telefondan foydalanishi (bundan telefondan quloqchinlar orqali va qoʻllarni ishlatmasdan turib soʻzlashuvlar olib borish imkoniyatini beradigan boshqa uskunalar orqali foydalanish mustasno), —"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "97664_0204_128¹_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "128¹-modda",
+     "retrieval_score": 0.6009,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Transport vositasini boshqarish vaqtida haydovchilarning telefondan foydalanishi (bundan telefondan quloqchinlar orqali va qoʻllarni ishlatmasdan turib soʻzlashuvlar olib borish imkoniyatini beradigan boshqa uskunalar orqali foydalanish mustasno), —\nmaʼmuriy ogohlantirishga yoki bazaviy hisoblash miqdorining uch baravari miqdorida jarima solishga sabab boʻladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "97664_0244_155²_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "155²-modda",
+     "retrieval_score": 0.5604,
+     "fusion_score": 0.01515,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Telekommunikatsiya tarmogʻidan qonunga xilof ravishda (ruxsatsiz) foydalanish, jinoyat alomatlari mavjud boʻlmagan taqdirda —\nhuquqbuzarlik sodir etish qurolini musodara qilib, fuqarolarga bazaviy hisoblash miqdorining oʻn baravaridan yigirma baravarigacha, mansabdor shaxslarga esa — yigirma baravaridan ellik baravarigacha miqdorda jarima solishga sabab boʻladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "97664_0240_153_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "153-modda",
+     "retrieval_score": 0.5637,
+     "fusion_score": 0.01562,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Aloqa xizmatining sifatiga doir normalar va davlat standartlarini, davlat aloqa tarmogʻi bilan bogʻlanadigan simli elektr aloqa vositalarining, radionurlanishlarining parametrlarini buzish —\nmansabdor shaxslarga bazaviy hisoblash miqdorining bir baravaridan ikki baravarigacha miqdorda jarima solishga sabab boʻladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111453_0162_143_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "143-modda",
+     "retrieval_score": 0.5884,
+     "fusion_score": 0.01692,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xat-yozishmalar, telefonda soʻzlashuv, telegraf xabarlari yoki boshqa xabarlarning sir saqlanishi tartibini qasddan buzish, shunday harakatlar uchun maʼmuriy jazo qoʻllanilgandan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining yigirma besh baravarigacha miqdorda jarima yoki uch yilgacha muayyan huquqdan mahrum qilish yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoxud uch yilgacha axloq tuzatish ishlari bilan jazolanadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "97664_0220_134_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "134-modda",
+     "retrieval_score": 0.7096,
+     "fusion_score": 0.01688,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Transport vositalari haydovchilarining yoʻl harakati qoidalarini buzishi transport vositalari, yoʻl harakatini tartibga soluvchi vositalar yoki boshqa mol-mulk shikastlanishiga olib kelsa, lekin ancha miqdorda moddiy zarar yetkazmasa, bundan yoʻl harakatini tartibga soluvchi vositalar yoki boshqa mol-mulk shikastlanishiga olib kelmagan yoʻl-transport hodisasi sodir etilganda yoʻl-transport hodisasida ishtirok etgan haydovchilar tomonidan yoʻl-transport hodisasi toʻgʻrisida xabarnoma tuzilgan hollar mustasno —\nbazaviy hisoblash miqdorining ikki baravaridan toʻrt baravarigacha miqdorda jarima solishga yoki transport vositasini boshqarish huquqidan olti oydan bir yilgacha muddatga mahrum etishga sabab boʻladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Transport vositasi haydovchilarining telefondan foydalanishi uchun maʼmuriy javobgarlik, Maʼmuriy javobgarlik toʻgʻrisidagi kodeks.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6009,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3604,
+    "rerank_ms": null,
+    "generation_ms": 2232,
+    "total_ms": 5836,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 2158,
+    "output_tokens": 235
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q024",
+   "status": "no_answer",
+   "answer": "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Siz Oʻzbekiston Respublikasining \"Aholi bandligi toʻgʻrisida\"gi Qonuniga muvofiq, Oʻzbekiston hududida ishsizlik nafaqasini tayinlash va toʻlash tartibi boʻyicha maʼlumot olishingiz mumkin.",
+   "answer_language": "uz-Latn",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "5055690_0050_52_1",
+     "doc_id": "lex:5055690",
+     "doc_title": "Aholi bandligi toʻgʻrisida",
+     "article": "52-modda",
+     "retrieval_score": 0.6102,
+     "fusion_score": 0.01712,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ishsizlik nafaqasi ishsiz shaxsning avvalgi ish joyidagi oxirgi bir yildagi oʻrtacha oylik ish haqiga nisbatan foizda belgilanadi. Boshqa hollarda ishsizlik nafaqasi mehnatga haq toʻlashning eng kam miqdoriga nisbatan foizda belgilanadi.\nIshsizlik nafaqalari quyidagi miqdorlarda toʻlanadi:\nishdan va ish haqidan (mehnat daromadidan) soʻnggi oʻn ikki oylik davr ichida mahrum boʻlgan shaxslarga — avvalgi ish joyidagi oʻrtacha oylik ish haqining ellik foizi miqdorida, lekin mehnatga haq toʻlashning eng kam miqdoridan oz boʻlmagan va nafaqani hisoblash paytida Oʻzbekiston Respublikasida tarkib topgan oʻrtacha ish haqidan ortiq boʻlmagan miqdorda;\nishdan va ish haqidan (mehnat daromadidan) mahrum boʻlgan hamda uzoq (bir yildan ortiq) tanaffusdan keyin mehnat faoliyatini qayta boshlashga harakat qilayotgan shaxslarga — mehnatga haq toʻlash eng kam miqdorining bir baravari miqdorida;\nilgari ishlamagan va birinchi marta ish qidirayotgan shaxslarga — mehnatga haq toʻlash eng kam miqdorining kamida yetmish besh foizi miqdorida.\nHarbiy xizmatdan, ichki ishlar organlaridan, Oʻzbekiston Respublikasi Davlat xavfsizlik xizmati va Milliy gvardiyasi organlaridan va boshqa harbiy xizmat nazarda tutilgan idoralardan boʻshatilishi munosabati bilan ish haqidan mahrum boʻlgan shaxslar ushbu modda ikkinchi qismining ikkinchi xatboshisida nazarda tutilgan shartlar asosida ishsizlik nafaqasi olish huquqiga ega.\nQonunchilikka muvofiq mehnatga haq toʻlashning eng kam miqdori oshganda ishsizlik nafaqasining miqdori oshirish koeffitsiyentiga teng miqdorda koʻpayadi.\nHar oy uchun (shu jumladan ishsizlik nafaqasi toʻlanadigan toʻliqsiz oylar uchun) ishsizlik nafaqasi miqdori toʻgʻrisidagi maʼlumotlar “Bandlik xizmati” axborot tizimida aks ettiriladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "7886679_0001_2_1",
+     "doc_id": "lex:7886679",
+     "doc_title": "Davlat ijtimoiy sugʻurtasi toʻgʻrisida",
+     "article": "2-modda",
+     "retrieval_score": 0.7413,
+     "fusion_score": 0.0172,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Davlat ijtimoiy sugʻurtasi toʻgʻrisidagi qonunchilik ushbu Qonun va boshqa qonunchilik hujjatlaridan iboratdir.\nAgar Oʻzbekiston Respublikasining xalqaro shartnomasida Oʻzbekiston Respublikasining davlat ijtimoiy sugʻurtasi toʻgʻrisidagi qonunchiligida nazarda tutilganidan boshqacha qoidalar belgilangan boʻlsa, xalqaro shartnoma qoidalari qoʻllaniladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "5055690_0049_51_1",
+     "doc_id": "lex:5055690",
+     "doc_title": "Aholi bandligi toʻgʻrisida",
+     "article": "51-modda",
+     "retrieval_score": 0.6028,
+     "fusion_score": 0.01692,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Belgilangan tartibda ishsiz deb eʼtirof etilgan shaxslar ishsizlik nafaqasi olish huquqiga ega.\nIshsizlik nafaqasini toʻlash ishsiz shaxsning yashash joyi boʻyicha Oʻzbekiston Respublikasi Bandlikka koʻmaklashish davlat jamgʻarmasi mablagʻlari hisobidan amalga oshiriladi.\nIshsizlik nafaqasiga soliq solinmaydi.\nIshsizlik nafaqasi ishsiz deb tan olingan shaxsga u mahalliy mehnat organida ish qidirayotgan shaxs sifatida roʻyxatga olingan birinchi kundan eʼtiboran hisoblanadi va toʻlanadi.\nIshsizlik nafaqasi oʻn ikki oylik davr ichida koʻpi bilan yigirma olti kalendar hafta davomida toʻlanadi.\nJoriy oyda ishsizlik nafaqasini toʻlash oʻtgan oy uchun amalga oshiriladi.\nToʻliq boʻlmagan kalendar oy uchun ishsizlik nafaqasini toʻlash chogʻida ishsizlik nafaqasi mazkur nafaqa toʻlanishi kerak boʻlgan ushbu kalendar oydagi kunlar sonining toʻliq kalendar oydagi kunlar soniga mutanosib miqdorda toʻlanadi.\nIshsizlik nafaqasini olish davrida ishsiz shaxs kasal boʻlgan taqdirda ishsizlik nafaqasini ishsiz shaxsning qarindoshlari (otasi, onasi, eri (xotini), voyaga yetgan bolalari) yoki belgilangan tartibda rasmiylashtirilgan ishonchnoma asosida ishsiz shaxsning boshqa ishonchli shaxslari tomonidan olishga yoʻl qoʻyiladi.\nOʻz mehnat stajini hujjat bilan tasdiqlash imkoniyatiga ega boʻlmagan shaxslarga ishsizlik nafaqasini tayinlash chogʻida ularga ilgari ishlamaganlar va birinchi marta ish qidirayotganlar sifatida qaraladi.\nIshsizlik nafaqasini olish davrida ishsiz shaxs ish qidirishi va ishga joylashtirishga doir yoʻllanma (ishga joylashishga koʻmaklashish yuzasidan murojaatnoma) yoxud kasbga tayyorlashga, qayta tayyorlashga yoki malakasini oshirishga yoʻllanma olish uchun ikki haftada kamida bir marta mahalliy mehnat organiga murojaat qilishi shart."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "8346774_0001_2_1",
+     "doc_id": "lex:8346774",
+     "doc_title": "Ijtimoiy ish toʻgʻrisida",
+     "article": "2-modda",
+     "retrieval_score": 0.7298,
+     "fusion_score": 0.01632,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ijtimoiy ish toʻgʻrisidagi qonunchilik ushbu Qonun va boshqa qonunchilik hujjatlaridan iboratdir.\nAgar Oʻzbekiston Respublikasining xalqaro shartnomasida Oʻzbekiston Respublikasining ijtimoiy ish toʻgʻrisidagi qonunchiligida nazarda tutilganidan boshqacha qoidalar belgilangan boʻlsa, xalqaro shartnoma qoidalari qoʻllaniladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "5055690_0051_53_1",
+     "doc_id": "lex:5055690",
+     "doc_title": "Aholi bandligi toʻgʻrisida",
+     "article": "53-modda",
+     "retrieval_score": 0.5812,
+     "fusion_score": 0.01664,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ushbu Qonun 49-moddasining birinchi va ikkinchi qismlarida koʻrsatilgan asoslar boʻyicha tashkilotlardan boʻshatilgan shaxslar uchun, agar ular mehnat shartnomasi bekor qilinganidan keyin oʻttiz kalendar kun ichida ish qidirayotgan shaxslar sifatida mahalliy mehnat organlarida roʻyxatdan oʻtgan boʻlsa, belgilangan uch oylik muddat tugaganidan keyin birinchi kundan eʼtiboran ishsizlik nafaqasi hisoblanadi.\nAgar ushbu Qonun 49-moddasining birinchi va ikkinchi qismlarida koʻrsatilgan asoslar boʻyicha tashkilotdan boʻshatilgan shaxs mehnat shartnomasi bekor qilinganidan keyin oʻttiz kalendar kun ichida mahalliy mehnat organlarida roʻyxatdan oʻtmagan, lekin unga uch oylik davr tugaganidan keyin mahalliy mehnat organi tomonidan maqbul keladigan ish berilmagan boʻlsa, u ishsiz shaxs maqomiga ega boʻladi hamda unga mehnat shartnomasi bekor qilingan sanadan keyin kamida ikki oy muddat oʻtgach ishsizlik nafaqasi hisoblanadi. Ishdan boʻshatilayotgan shaxs maqbul ishga doir ikkita taklifni rad etgan taqdirda, u ishsiz shaxs maqomiga ega boʻlmaydi va oʻttiz kalendar kundan soʻng umumiy asoslarda ish qidirayotgan shaxs sifatida roʻyxatga olinadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Oʻzbekiston Respublikasi qonunchiligida xorijiy davlatlar ijtimoiy taʼminoti tartibi belgilanmagan, xalqaro shartnomalar toʻgʻrisidagi qonun hujjatlari.",
+    "rewrite_applied": true,
+    "rewrite_ms": 843,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6102,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3883,
+    "rerank_ms": null,
+    "generation_ms": 3562,
+    "total_ms": 7445,
+    "rewrite_ms": 843
+   },
+   "usage": {
+    "input_tokens": 3016,
+    "output_tokens": 141
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q025",
+   "status": "ok",
+   "answer": "Fuqaroning oʻz harakatlari bilan fuqarolik huquqlarini amalga oshirish va burchlarini bajarish layoqati (toʻla muomala layoqati) oʻn sakkiz yoshga toʻlgach vujudga keladi [4]. Fuqarolik kodeksining 22-moddasiga koʻra, fuqaro aynan shu yoshdan boshlab oʻz nomidan toʻla hajmda bitimlar tuzish huquqiga ega boʻladi [4].\n\nBundan tashqari, oʻn olti yoshga toʻlgan voyaga yetmagan shaxs sud qarori bilan toʻliq muomalaga layoqatli (emansipatsiya qilingan) deb eʼlon qilinishi mumkin [1]. Shuningdek, qonuniy asosda nikohdan oʻtgan fuqaro nikohdan oʻtgan vaqtdan eʼtiboran toʻla hajmda muomala layoqatiga ega boʻladi [4].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.58,
+   "citations": [
+    {
+     "ref": 4,
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-111189",
+     "article_url": "https://lex.uz/uz/docs/-111189#-151077",
+     "article": "22-modda",
+     "article_title": "Fuqaroning muomala layoqati",
+     "part": "1-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "111189_0021_22_1",
+     "quote": "Fuqaroning oʻz harakatlari bilan fuqarolik huquqlariga ega boʻlish va ularni amalga oshirish, oʻzi uchun fuqarolik burchlarini vujudga keltirish va ularni bajarish layoqati (muomala layoqati) u voyaga yetgach, yaʼni oʻn sakkiz yoshga toʻlgach toʻla hajmda vujudga keladi."
+    },
+    {
+     "ref": 1,
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-3517337",
+     "article_url": "https://lex.uz/uz/docs/-3517337#-3524813",
+     "article": "326-modda",
+     "article_title": "Sudning voyaga yetmagan shaxsni toʻliq muomalaga layoqatli deb eʼlon qilish toʻgʻrisidagi ariza yuzasidan hal qiluv qarori",
+     "part": "2-qism",
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "3517337_0351_326_1",
+     "quote": "Ariza qanoatlantirilgan taqdirda, oʻn olti yoshga toʻlgan voyaga yetmagan shaxs sudning hal qiluv qarori qonuniy kuchga kirgan kundan eʼtiboran toʻliq muomalaga layoqatli (emansipatsiya qilingan) deb eʼlon qilinadi."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "3517337_0351_326_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "326-modda",
+     "retrieval_score": 0.5268,
+     "fusion_score": 0.01515,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Sud voyaga yetmagan shaxsni toʻliq muomalaga layoqatli deb eʼlon qilish toʻgʻrisidagi arizani mazmunan koʻrib chiqib, uni qanoatlantirish yoki rad etish haqida hal qiluv qarori qabul qiladi.\nAriza qanoatlantirilgan taqdirda, oʻn olti yoshga toʻlgan voyaga yetmagan shaxs sudning hal qiluv qarori qonuniy kuchga kirgan kundan eʼtiboran toʻliq muomalaga layoqatli (emansipatsiya qilingan) deb eʼlon qilinadi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "3517337_0349_324_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "324-modda",
+     "retrieval_score": 0.531,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn olti yoshga toʻlgan voyaga yetmagan shaxs qonunchilikda nazarda tutilgan hollarda oʻzi yashab turgan joydagi sudga oʻzini toʻliq muomalaga layoqatli deb eʼlon qilish toʻgʻrisidagi ariza bilan murojaat qilishi mumkin.\nVasiylik va homiylik organlari voyaga yetmagan shaxsni toʻliq muomalaga layoqatli deb eʼlon qilishni rad etganligini tasdiqlovchi dalillar mavjud boʻlganda voyaga yetmagan shaxsni toʻliq muomalaga layoqatli deb eʼlon qilish toʻgʻrisidagi ariza sud tomonidan qabul qilinadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "111189_0027_27_1",
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "27-modda",
+     "retrieval_score": 0.5591,
+     "fusion_score": 0.01686,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmaganlar, ushbu moddaning ikkinchi qismida sanab oʻtilganlardan tashqari, bitimlarni oʻz ota-onalari, farzandlikka oluvchilari yoki homiylarining yozma roziligi bilan tuzadilar. Bunday voyaga yetmagan shaxs tomonidan tuzilgan bitim keyinchalik shaxsning ota-onasi, farzandlikka oluvchilari yoki homiysi yozma ravishda maʼqullaganidan soʻng, u ham haqiqiy hisoblanadi.\nOʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmaganlar ota-onalari, farzandlikka oluvchilar va homiylarining roziligisiz quyidagilarni mustaqil ravishda amalga oshirishga haqli:\n1) oʻz ish haqi, stipendiyasi va boshqa daromadlarini tasarruf etish;\n2) fan, adabiyot yoki sanʼat asarining, ixtironing yoxud oʻz intellektual faoliyatining qonun bilan qoʻriqlanadigan boshqa natijasi muallifi huquqini amalga oshirish;\n3) qonunga muvofiq kredit muassasalariga omonatlar qoʻyish va ularni tasarruf etish;\n4) ushbu Kodeks 29-moddasining ikkinchi qismida nazarda tutilgan mayda maishiy bitimlarni hamda boshqa bitimlarni tuzish.\nOʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmaganlar ushbu moddaning birinchi va ikkinchi qismlariga muvofiq oʻzlari tuzgan bitimlar boʻyicha mustaqil ravishda mulkiy javobgar boʻladilar. Bunday voyaga yetmaganlar oʻzlari yetkazgan zarar uchun ushbu Kodeksga muvofiq javobgar boʻladilar.\nYetarli asoslar mavjud boʻlganida sud ota-onalar, farzandlikka oluvchilar yoki homiyning yoxud vasiylik va homiylik organining iltimosnomasiga muvofiq oʻn toʻrt yoshdan oʻn sakkiz yoshgacha boʻlgan voyaga yetmaganning oʻz ish haqi, stipendiyasi yoki boshqa daromadlarini mustaqil tasarruf etish huquqini cheklab qoʻyishi yoki bu huquqdan mahrum qilishi mumkin, bunday voyaga yetmagan shaxs ushbu Kodeks 22-moddasining ikkinchi qismiga yoki 28-moddasiga muvofiq toʻla hajmda muomala layoqatiga ega boʻlgan hollar bundan mustasno."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111189_0021_22_1",
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "22-modda",
+     "retrieval_score": 0.507,
+     "fusion_score": 0.01316,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Fuqaroning oʻz harakatlari bilan fuqarolik huquqlariga ega boʻlish va ularni amalga oshirish, oʻzi uchun fuqarolik burchlarini vujudga keltirish va ularni bajarish layoqati (muomala layoqati) u voyaga yetgach, yaʼni oʻn sakkiz yoshga toʻlgach toʻla hajmda vujudga keladi.\nVoyaga yetgunga qadar qonuniy asosda nikohdan oʻtgan fuqaro nikohdan oʻtgan vaqtdan eʼtiboran toʻla hajmda muomala layoqatiga ega boʻladi.\nNikoh tuzish natijasida ega boʻlingan muomala layoqati oʻn sakkiz yoshga toʻlmasdan turib nikoh bekor qilingan taqdirda ham toʻla saqlanib qoladi.\nNikoh haqiqiy emas deb topilganida sud voyaga yetmagan er (xotin) sud belgilagan paytdan boshlab toʻla muomala layoqatini yoʻqotganligi haqida qaror qabul qilishi mumkin."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "111189_0029_29_1",
+     "doc_id": "lex:111189",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING FUQAROLIK KODEKSI",
+     "article": "29-modda",
+     "retrieval_score": 0.5804,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn toʻrt yoshga toʻlmagan voyaga yetmaganlar (kichik yoshdagi bolalar) uchun bitimlarni, ushbu moddaning ikkinchi qismida koʻrsatilganlardan tashqari, ularning nomidan faqat ota-onasi, farzandlikka oluvchilari yoki vasiylari tuzishi mumkin.\nOlti yoshdan oʻn toʻrt yoshgacha boʻlgan kichik yoshdagi bolalar quyidagilarni mustaqil ravishda amalga oshirishga haqlidirlar:\n1) mayda maishiy bitimlar;\n2) tekin manfaat koʻrishga qaratilgan, notarial tasdiqlashni yoki davlat roʻyxatidan oʻtkazishni talab qilmaydigan bitimlar;\n3) qonuniy vakil yoki uning roziligi bilan uchinchi shaxs tomonidan muayyan maqsad yoki erkin tasarruf etish uchun berilgan mablagʻlarni tasarruf etish borasidagi bitimlar.\nKichik yoshdagi bolaning bitimlari boʻyicha, shu jumladan oʻzi mustaqil tuzgan bitimlar boʻyicha uning ota-onasi, farzandlikka oluvchilari yoki vasiyi, agar ular majburiyatning buzilishida oʻzlarining ayblari yoʻqligini isbotlay olmasalar, mulkiy javobgar boʻladilar. Ushbu shaxslar qonunga muvofiq kichik yoshdagi bolalar yetkazgan zarar uchun ham javobgar boʻladilar."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Fuqarolik kodeksi, fuqarolarning muomala layoqati, toʻliq muomala layoqati yoshi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5804,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 2501,
+    "rerank_ms": null,
+    "generation_ms": 2150,
+    "total_ms": 4651,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 2991,
+    "output_tokens": 305
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q026",
+   "status": "ok",
+   "answer": "\"Masʼuliyati cheklangan jamiyatlar toʻgʻrisida\"gi Qonunning 8-moddasiga koʻra, jamiyat ishtirokchilarining soni ellik kishidan oshmasligi kerak [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.571,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:8151376",
+     "doc_title": "Masʼuliyati cheklangan jamiyatlar toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-1137",
+     "url": "https://lex.uz/uz/docs/-8151376",
+     "article_url": "https://lex.uz/uz/docs/-8151376#-8152266",
+     "article": "8-modda",
+     "article_title": "Jamiyat ishtirokchilari",
+     "part": "6-qism",
+     "edition_date": "2026-07-25",
+     "doc_status": "amalda",
+     "chunk_id": "8151376_0007_8_1",
+     "quote": "Jamiyat ishtirokchilarining soni ellik kishidan oshmasligi kerak."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "8151376_0007_8_1",
+     "doc_id": "lex:8151376",
+     "doc_title": "Masʼuliyati cheklangan jamiyatlar toʻgʻrisida",
+     "article": "8-modda",
+     "retrieval_score": 0.5706,
+     "fusion_score": 0.01721,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Yuridik va jismoniy shaxslar jamiyatning ishtirokchilaridir.\nQonunda ayrim toifadagi jismoniy shaxslarning jamiyatda ishtirok etishi taqiqlanishi yoki cheklanishi mumkin.\nDavlat organlari, agar qonunchilikda boshqacha qoida belgilanmagan boʻlsa, jamiyat ishtirokchilari boʻlishga haqli emas.\nJamiyat bir shaxs tomonidan taʼsis etilishi mumkin va u jamiyatning yagona ishtirokchisiga aylanadi. Jamiyat keyinchalik bir ishtirokchisi boʻlgan jamiyatga aylanishi mumkin.\nJamiyat yagona ishtirokchi sifatida bitta shaxsdan iborat boshqa jamiyatga ega boʻlishi mumkin emas, bundan bir aksiyadordan iborat aksiyadorlik jamiyati jamiyatning yagona ishtirokchisi boʻlgan hollar mustasno.\nJamiyat ishtirokchilarining soni ellik kishidan oshmasligi kerak.\nAgar jamiyat ishtirokchilarining soni ushbu moddaning oltinchi qismida belgilangan meʼyordan oshib ketsa, jamiyat bir yil ichida aksiyadorlik jamiyati yoki ishlab chiqarish kooperativi etib qayta tashkil etilishi kerak. Agar koʻrsatilgan muddat ichida jamiyat qayta tashkil etilmasa va jamiyat ishtirokchilarining soni belgilangan meʼyorga qadar kamaymasa, u yuridik shaxslarni davlat roʻyxatidan oʻtkazuvchi organning murojaatiga asosan sud tartibida tugatilishi kerak.\nJamiyat ishtirokchilari oʻrtasidagi murosasiz ziddiyatlar sababli qaror qabul qilish uchun ovozlar soni yetarli boʻlmaganligi tufayli jamiyatni boshqarish masalalari yuzasidan kelishuvga erishish imkoni boʻlmaganda nizoli vaziyat sud tomonidan yoki jamiyat taʼsis hujjatlarida nazarda tutilgan taqdirda, mediatsiya yoki hakamlik sudi tartibida hal etiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "8151376_0008_9_1",
+     "doc_id": "lex:8151376",
+     "doc_title": "Masʼuliyati cheklangan jamiyatlar toʻgʻrisida",
+     "article": "9-modda",
+     "retrieval_score": 0.5199,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jamiyat ishtirokchilari:\nushbu Qonunda va jamiyatning taʼsis hujjatlarida belgilangan tartibda jamiyat ishlarini boshqarishda ishtirok etishga;\nqonunchilikda va jamiyatning taʼsis hujjatlarida belgilangan tartibda jamiyatning faoliyati toʻgʻrisida axborot olishga hamda uning moliyaviy hisobotlari va boshqa hujjatlari bilan tanishishga;\nfoydani taqsimlashda ishtirok etishga;\njamiyatning ustav fondidagi (ustav kapitalidagi) oʻz ulushini yoki uning bir qismini ushbu Qonunda va jamiyat ustavida nazarda tutilgan tartibda mazkur jamiyatning bir yoki bir necha ishtirokchisiga yoxud uchinchi shaxslarga oʻtkazishga;\njamiyat boshqa ishtirokchilarining roziligidan qatʼi nazar, ushbu Qonunda va jamiyatning taʼsis hujjatlarida nazarda tutilgan tartibda jamiyatdan chiqishga;\njamiyat tugatilgan taqdirda, kreditorlar bilan hisob-kitob qilinganidan keyin qolgan mol-mulkning bir qismini yoki uning qiymatini olishga;\njamiyat muassislari (ishtirokchilari) oʻrtasida ularning huquqlarini amalga oshirish toʻgʻrisida Oʻzbekiston Respublikasining Fuqarolik kodeksida belgilangan tartibda korporativ shartnomalar tuzishga haqli.\nJami ulushlari jamiyat ustav fondining (ustav kapitalining) kamida oʻn foizini tashkil etadigan jamiyat ishtirokchilari ustavda belgilangan oʻz majburiyatlarini bajarmayotgan yoxud oʻz harakatlari (harakatsizligi) bilan jamiyatning kelgusi faoliyatiga toʻsqinlik qilayotgan, uni jiddiy tarzda qiyinlashtirayotgan ishtirokchining yoki ishtirokchilarning jamiyatdan sud tartibida chiqarilishini talab qilishga haqli.\nJamiyat ishtirokchilari qonunchilikda va jamiyatning taʼsis hujjatlarida nazarda tutilgan boshqa huquqlarga ham ega boʻlishi mumkin.\nIshtirokchilar tomonidan huquqlarning amalga oshirilishi boshqa ishtirokchilarning huquqlari va qonuniy manfaatlarini buzmasligi kerak."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "8151376_0034_35_1",
+     "doc_id": "lex:8151376",
+     "doc_title": "Masʼuliyati cheklangan jamiyatlar toʻgʻrisida",
+     "article": "35-modda",
+     "retrieval_score": 0.5084,
+     "fusion_score": 0.01525,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jamiyat ishtirokchilarining umumiy yigʻilishi ushbu Qonunda, jamiyatning ustavida va uning hujjatlarida belgilangan tartibda oʻtkaziladi. Jamiyat ishtirokchilarining umumiy yigʻilishini oʻtkazish tartibi ushbu Qonun, jamiyatning ustavi va hujjatlari bilan tartibga solinmagan qismida jamiyat ishtirokchilari umumiy yigʻilishining qarori bilan belgilanadi.\nJamiyat ishtirokchilarining umumiy yigʻilishi ochilishidan oldin jamiyat ishtirokchilari roʻyxatdan oʻtkaziladi.\nJamiyat ishtirokchilari umumiy yigʻilishda shaxsan yoki oʻz vakillari orqali ishtirok etishga haqli. Jamiyat ishtirokchilarining vakillari oʻz vakolatlarini tasdiqlovchi hujjatni (ishonchnomani) koʻrsatishi kerak. Jismoniy shaxs nomidan berilgan ovoz berishga doir ishonchnoma notarial tartibda tasdiqlangan boʻlishi kerak. Yuridik shaxs nomidan ovoz berishga doir ishonchnoma uning rahbarining imzosi bilan beriladi va ushbu yuridik shaxsning muhri bilan (muhr mavjud boʻlgan taqdirda) tasdiqlanadi.\nJamiyatning ishtirokchilari yoki ularning vakillari kun tartibidagi masalalarni muhokama qilishda ishtirok etish va qarorlarni qabul qilishda ovoz berish huquqiga ega. Jamiyatning jamiyat ishtirokchilarining koʻrsatib oʻtilgan huquqlarini cheklovchi taʼsis hujjatlarining qoidalari yoki jamiyat organlarining shunday qarorlari haqiqiy emas.\nJamiyatning har bir ishtirokchisi jamiyat ishtirokchilarining umumiy yigʻilishida jamiyatning ustav fondidagi (ustav kapitalidagi) oʻz ulushiga mutanosib ovozlar soniga ega boʻladi, bundan ushbu Qonunda nazarda tutilgan hollar mustasno.\nJamiyatni taʼsis etish paytida jamiyatning ustaviga binoan yoki jamiyat ishtirokchilari umumiy yigʻilishining jamiyatning barcha ishtirokchilari tomonidan bir ovozdan qabul qilingan qaroriga binoan jamiyatning ustaviga oʻzgartirishlar kiritish yoʻli bilan jamiyat ishtirokchilari ovozlarining sonini aniqlashning boshqacha tartibi belgilanishi mumkin. Jamiyat ustavining bunday tartibni belgilaydigan qoidalarini oʻzgartirish va chiqarib tashlash jamiyat ishtirokchilari umumiy yigʻilishining jamiyatning barcha ishtirokchilari tomonidan bir ovozdan qabul qilingan qarori asosida amalga oshiriladi.\nJamiyatning roʻyxatdan oʻtmagan ishtirokchisi (jamiyat ishtirokchisining vakili) ovoz berishda ishtirok etishga haqli emas."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "8151376_0047_48_1",
+     "doc_id": "lex:8151376",
+     "doc_title": "Masʼuliyati cheklangan jamiyatlar toʻgʻrisida",
+     "article": "48-modda",
+     "retrieval_score": 0.5299,
+     "fusion_score": 0.01663,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jamiyatning ustav fondidagi (ustav kapitalidagi) ellik foizdan ortiq ulushga egalik qiluvchi yoxud ulushi miqdori jamiyatning boshqa har bir ishtirokchisi ulushiga nisbatan koʻp boʻlgan hamda ovozi qaror natijasiga hal qiluvchi taʼsir koʻrsatishi mumkin boʻlgan ishtirokchi majoritar ishtirokchi hisoblanadi.\nJamiyatning majoritar ishtirokchisi jamiyat va boshqa ishtirokchilar manfaatlariga zarar yetkazilishi oʻziga ayon boʻlgan taqdirda, oʻziga tegishli ulushlar boʻyicha ustunlik mavqeyidan shaxsiy manfaatini koʻzlab foydalanmasligi va qarorlar qabul qilmasligi hamda jamiyat boshqaruv organlari yigʻilishi kun tartibiga jamiyatning va boshqa ishtirokchilarning manfaatlariga mos kelmaydigan yoki ushbu masala yuzasidan qaror qabul qilinishi natijasida jamiyat manfaatlariga zarar yetkazilishi oldindan maʼlum boʻlgan masalalarni hal etish uchun kiritmasligi kerak.\nJamiyatning majoritar ishtirokchisi ushbu moddada nazarda tutilgan majburiyatlarni bajarmaslik natijasida jamiyatga va boshqa ishtirokchilarga yetkazilgan zarar uchun javobgar boʻladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "8151376_0046_47_1",
+     "doc_id": "lex:8151376",
+     "doc_title": "Masʼuliyati cheklangan jamiyatlar toʻgʻrisida",
+     "article": "47-modda",
+     "retrieval_score": 0.5067,
+     "fusion_score": 0.01485,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Jamiyat ishtirokchilarining umumiy yigʻilishi kun tartibidagi masala boʻyicha ovoz berish natijalariga oʻz ovozi taʼsir qilmaydigan ishtirokchi minoritar ishtirokchi hisoblanadi.\nMinoritar ishtirokchilarning huquqlarini va qonuniy manfaatlarini himoya qilish maqsadida jamiyatda ularning orasidan minoritar ishtirokchilar qoʻmitasi tashkil etilishi mumkin.\nMinoritar ishtirokchilar qoʻmitasi jamiyatning moliya-xoʻjalik faoliyatiga, kuzatuv kengashi va ijro etuvchi organi esa minoritar ishtirokchilar qoʻmitasining faoliyatiga aralashishga haqli emas.\nMinoritar ishtirokchilar qoʻmitasini tashkil etish tartibi va uning vakolatlari jamiyat ustavida belgilanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Masʼuliyati cheklangan jamiyat ishtirokchilari soni, \"Masʼuliyati cheklangan hamda qoʻshimcha masʼuliyatli jamiyatlar toʻgʻrisida\"gi qonun.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5706,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 3010,
+    "rerank_ms": null,
+    "generation_ms": 848,
+    "total_ms": 3859,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3608,
+    "output_tokens": 117
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q027",
+   "status": "no_answer",
+   "answer": "В базе не найден точный ответ на этот вопрос. В предоставленных документах содержится информация о ставках налога на имущество юридических лиц, акцизного налога и общих положениях о налоговых ставках, однако сведения о ставке налога на добавленную стоимость (НДС) отсутствуют.\n\nДля поиска информации о ставке НДС рекомендуется обратиться к разделу «Налог на добавленную стоимость» (обычно это VIII раздел) в Налоговом кодексе Республики Узбекистан.",
+   "answer_language": "ru",
+   "no_answer": true,
+   "confidence": 0.0,
+   "citations": [],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "4674902_0418_415_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "415-modda",
+     "retrieval_score": 0.5463,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Soliq stavkasi, agar ushbu moddada boshqacha qoida nazarda tutilmagan boʻlsa, 1,5 foiz miqdorida belgilanadi.\nQurilishi normativ muddatda tugallanmagan obyektlarga nisbatan soliq stavkasi 3 foiz miqdorida belgilanadi.\nSoliq stavkasi quyidagilarga nisbatan 0,7 foiz miqdorida belgilanadi:\n1) umumiy foydalanishdagi temir yoʻllar, magistral quvurlar, aloqa va elektr uzatish liniyalari, shuningdek mazkur obyektlarning ajralmas texnologik qismi boʻlgan inshootlar;\n2) konservatsiya qilinishi toʻgʻrisida Oʻzbekiston Respublikasi Vazirlar Mahkamasining qarori qabul qilingan koʻchmas mulk va tugallanmagan qurilish obyektlari."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "4674902_0295_289³_3",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "289³-modda",
+     "retrieval_score": 0.5703,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "1 litr uchun 500 soʻm 5 grammdan 10 grammgacha: 1 litr uchun 515 soʻm 10 gramm va undan yuqori:\n1 litr uchun 535 soʻm\ntarkibida boshqa shirinlashtiruvchi yoki xushboʻylashtiruvchi moddalar mavjud boʻlgan ichimliklar | 1 litr uchun 500 soʻm\n6. | Energetik va tetiklashtiruvchi ichimliklar | 1 litr uchun 2 000 soʻm | 1 litr uchun 2 150 soʻm\n7. | Yupqa toʻgʻralgan yoki yupqa shaklga keltirilgan, qovurilgan yoki quritilgan, isteʼmol qadogʻiga qadoqlangan, tarkibida kartoshka yoki uning taʼmini beruvchi qoʻshimchalar boʻlgan mahsulotlar (chipslar) ** | 1 kg mahsulot uchun 15 000 soʻm\n* Mevalar va (yoki) sabzavotlardan tayyorlangan, tabiiy shirin boʻlgan hamda tarkibida qoʻshimcha shakar va boshqa shirinlashtiruvchi yoki xushboʻylashtiruvchi moddalar mavjud boʻlmagan sharbatlarga nisbatan soliq qoʻllanilmaydi.\n** Belgilangan soliq stavkasi boʻyicha soliq ishlab chiqaruvchi yuridik shaxslar va Oʻzbekiston Respublikasi hududiga tovarlarni olib kiruvchilar tomonidan toʻlanadi.\nUshbu modda birinchi qismining 3-bandida soliq stavkalari Oʻzbekiston Respublikasida ishlab chiqariladigan aksiz toʻlanadigan tovarlar, shu jumladan import qilingan aksiz toʻlanadigan tovarlar uchun belgilangan va mazkur tovarlarni olib kirishda qoʻllanilmaydi.\nUshbu modda birinchi qismining 4-bandida nazarda tutilgan olib kirilgan (import qilingan) aksiz toʻlanadigan tovarlarni oʻz extiyojlari uchun ishlatilganda, soliq toʻlovchilari boʻlib ushbu tovarlarni oʻz ehtiyojlari uchun olib kirishni amalga oshirgan shaxslar eʼtirof etiladi.\nUshbu modda birinchi qismining 5-bandida nazarda tutilgan tovarlar tarkibidagi shakar miqdori boʻyicha maʼlumot isteʼmol qadogʻida koʻrsatilmagan taqdirda, ularga nisbatan eng yuqori soliq stavkasi qoʻllaniladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "4674902_0292_289_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "289-modda",
+     "retrieval_score": 0.7131,
+     "fusion_score": 0.01717,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Soliq stavkalari tovarning yoki xizmatning qiymatiga nisbatan foizlarda (advalor), naturada ifodalangan oʻlchov birligiga nisbatan mutlaq summada (qatʼiy belgilangan), shuningdek advalor va qatʼiy belgilangan soliq stavkalarini oʻz ichiga olgan aralash stavkada belgilanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "4635016_0035_text_1",
+     "doc_id": "lex:4635016",
+     "doc_title": "2020-yil uchun Oʻzbekiston Respublikasining Davlat budjeti toʻgʻrisida",
+     "article": null,
+     "retrieval_score": 0.5562,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "T/r | Tovarlar (xizmatlar) nomi | Soliq stavkasi\n2020-yil 1-yanvardan | 2020-yil 1-apreldan | 2020-yil 1-oktabrdan\n1. | Oziq-ovqat xom ashyosidan rektifikatsiyalangan etil spirti, rektifikatsiyalangan va efiroaldegidli fraksiyadan texnik etil spirti va etil spirtining boshlangʻich fraksiyasi (1 dal uchun) | 10 800 soʻm\n2. | Vino (1 dal tayyor mahsulot uchun):\ntabiiy ravishda achitilgan tabiiy vinolar (etil spirti qoʻshilmagan holda) | 7 700 soʻm\nboshqa vinolar | 14 500 soʻm\n3. | Konyak (1 dal tayyor mahsulot uchun) | 102 000 soʻm\nhajmiy ulushda spirt 40 foizdan koʻp boʻlgan konyak | 168 100 soʻm\n4. | Aroq va boshqa alkogolli mahsulotlar (1 dal tayyor mahsulot uchun) | 98 000 soʻm\nhajmiy ulushda spirt 40 foizdan koʻp boʻlgan aroq va boshqa alkogolli mahsulotlar | 162 700 soʻm\n5. | Pivo (1 dal tayyor mahsulot uchun) | 10 600 soʻm\n6. | Filtrli, filtrsiz sigaretalar, papiroslar | 141 500 soʻm/1000 dona + 9,0 foiz * | 152 800 soʻm/1000 dona + 9,0 foiz * | 163 500 soʻm/1000 dona + 9,0 foiz *\n7. | Zargarlik buyumlari | 25%\n8. | Mobil aloqa xizmatlari | 20%\n9. | Kumushdan ishlangan oshxona anjomlari | 11%\n10. | Neft mahsulotlari:\nAi-80 benzini | 200 000 soʻm/ tonna\nAi-91, Ai-92, Ai-93, Ai-95 benzini va undan yuqori | 250 000 soʻm/ tonna\ndizel yoqilgʻisi | 200 000 soʻm/ tonna\nEKO-dizel yoqilgʻisi | 180 000 soʻm/ tonna\naviakerosin | 180 000 soʻm/ tonna\ndizel yoki karbyurator (injektor) dvigatellari uchun motor moyi | 250 000 soʻm/ tonna\n11. | Tabiiy gaz, shu jumladan, eksport | 20%\n12. | Ishlab chiqaruvchi korxonalar tomonidan sotiladigan suyultirilgan gaz (“Hududgaztaʼminot” AJ orqali aholiga sotiladigan hajmlar bundan mustasno), shu jumladan, eksport | 30%\n13. | Polietilen granulalar | 30%\n14. | Yakuniy isteʼmolchiga sotiladigan: **\nbenzin | 1 litr uchun 285 soʻm/ 1 tonna uchun 378 480 soʻm\ndizel yoqilgʻisi | 1 litr uchun 285 soʻm/ 1 tonna uchun 346 275 soʻm\nsuyultirilgan gaz | 1 litr uchun 285 soʻm/ 1 tonna uchun 540 645 soʻm\nsiqilgan gaz | 1 kub.metr uchun 435 soʻm"
+    },
+    {
+     "rank": 5,
+     "chunk_id": "4674902_0071_72_1",
+     "doc_id": "lex:4674902",
+     "doc_title": "Oʻzbekiston Respublikasining Soliq kodeksi",
+     "article": "72-modda",
+     "retrieval_score": 0.7052,
+     "fusion_score": 0.01664,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Soliq stavkasi soliq bazasining oʻlchov birligiga nisbatan hisoblanadigan soliqning foizlardagi yoki mutlaq summadagi miqdorini ifodalaydi.\nSoliq stavkalari ushbu Kodeks bilan belgilanadi. Aksiz soligʻining stavkalari, mahsulot narxi dinamikasidan va uni realizatsiya qilish, shu jumladan import qilish hajmidan kelib chiqib, Oʻzbekiston Respublikasi Prezidentining qarorlari bilan yil davomida qayta koʻrib chiqilishi mumkin."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Qoʻshilgan qiymat soligʻi stavkasi, Soliq kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.5703,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": "llm_not_found",
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 2407,
+    "rerank_ms": null,
+    "generation_ms": 1529,
+    "total_ms": 3937,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 3350,
+    "output_tokens": 158
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q028",
+   "status": "ok",
+   "answer": "Ограничение права на тайну переписки, телефонных переговоров, почтовых, электронных и иных сообщений допускается только в случаях и порядке, предусмотренных законом, и исключительно на основании решения суда [1][4].\n\nСогласно «Конституции Республики Узбекистан» (статья 31) и Закону «О телекоммуникациях» (статья 20), никто не имеет права ограничивать эти конституционные права без соответствующего судебного акта [1][4].",
+   "answer_language": "ru",
+   "no_answer": false,
+   "confidence": 0.62,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "doc_type": "konstitutsiya",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-6445145",
+     "article_url": "https://lex.uz/uz/docs/-6445145#-6445529",
+     "article": "31-modda",
+     "article_title": null,
+     "part": "1-qism",
+     "edition_date": "2026-07-25",
+     "doc_status": "amalda",
+     "chunk_id": "6445145_0031_31_1",
+     "quote": "Har bir inson shaxsiy hayotining daxlsizligi, shaxsiy va oilaviy sirga ega boʻlish, oʻz shaʼni va qadr-qimmatini himoya qilish huquqiga ega."
+    },
+    {
+     "ref": 4,
+     "doc_id": "lex:7283071",
+     "doc_title": "Telekommunikatsiyalar toʻgʻrisida",
+     "doc_type": "qonun",
+     "doc_number": "OʻRQ-1015",
+     "url": "https://lex.uz/uz/docs/-7283071",
+     "article_url": "https://lex.uz/uz/docs/-7283071#-7286461",
+     "article": "20-modda",
+     "article_title": "Telekommunikatsiyalar tarmoqlari orqali uzatiladigan telefon soʻzlashuvlarining, elektron va boshqa xabarlarning (maʼlumotlarning) sir saqlanishi",
+     "part": "1-qism",
+     "edition_date": "2025-12-30",
+     "doc_status": "amalda",
+     "chunk_id": "7283071_0019_20_1",
+     "quote": "Telekommunikatsiyalar tarmoqlari orqali uzatiladigan telefon soʻzlashuvlari, shuningdek elektron va boshqa xabarlar (maʼlumotlar) (bundan buyon matnda xabarlar deb yuritiladi) sir saqlanishi shart."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "6445145_0031_31_1",
+     "doc_id": "lex:6445145",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASI KONSTITUTSIYASI",
+     "article": "31-modda",
+     "retrieval_score": 0.6204,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Har bir inson shaxsiy hayotining daxlsizligi, shaxsiy va oilaviy sirga ega boʻlish, oʻz shaʼni va qadr-qimmatini himoya qilish huquqiga ega.\nHar kim yozishmalari, telefon orqali soʻzlashuvlari, pochta, elektron va boshqa xabarlari sir saqlanishi huquqiga ega. Ushbu huquqning cheklanishiga faqat qonunga muvofiq va sudning qaroriga asosan yoʻl qoʻyiladi.\nHar kim oʻz shaxsiga doir maʼlumotlarning himoya qilinishi huquqiga, shuningdek notoʻgʻri maʼlumotlarning tuzatilishini, oʻzi toʻgʻrisida qonunga xilof yoʻl bilan toʻplangan yoki huquqiy asoslarga ega boʻlmay qolgan maʼlumotlarning yoʻq qilinishini talab qilish huquqiga ega.\nHar kim uy-joy daxlsizligi huquqiga ega.\nHech kim uy-joyga unda yashovchi shaxslarning xohishiga qarshi kirishi mumkin emas. Uy-joyga kirishga, shuningdek unda olib qoʻyishni va koʻzdan kechirishni oʻtkazishga faqat qonunda nazarda tutilgan hollarda va tartibda yoʻl qoʻyiladi. Uy-joyda tintuv oʻtkazishga faqat qonunga muvofiq va sudning qaroriga asosan yoʻl qoʻyiladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "111453_0162_143_1",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "143-modda",
+     "retrieval_score": 0.5711,
+     "fusion_score": 0.01471,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Xat-yozishmalar, telefonda soʻzlashuv, telegraf xabarlari yoki boshqa xabarlarning sir saqlanishi tartibini qasddan buzish, shunday harakatlar uchun maʼmuriy jazo qoʻllanilgandan keyin sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining yigirma besh baravarigacha miqdorda jarima yoki uch yilgacha muayyan huquqdan mahrum qilish yoki uch yuz oltmish soatgacha majburiy jamoat ishlari yoxud uch yilgacha axloq tuzatish ishlari bilan jazolanadi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "3517337_0239_234_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "234-modda",
+     "retrieval_score": 0.5824,
+     "fusion_score": 0.01538,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Fuqarolarning yozishmalari, telegraf xabarlari va boshqa xabarlar sir saqlash maqsadida ularning shaxsiy yozishmalari, telegraf xabarlari va boshqa xabarlari shu yozishma, telegraf xabarlari va boshqa xabarlarni oʻzaro almashgan shaxslarning roziligi bilan ochiq sud majlisida oʻqib eshittirilishi mumkin. Aks holda bunday yozishma, telegraf xabarlari va boshqa xabarlar yopiq sud majlisida oʻqib eshittiriladi hamda tekshiriladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "7283071_0019_20_1",
+     "doc_id": "lex:7283071",
+     "doc_title": "Telekommunikatsiyalar toʻgʻrisida",
+     "article": "20-modda",
+     "retrieval_score": 0.5867,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Telekommunikatsiyalar tarmoqlari orqali uzatiladigan telefon soʻzlashuvlari, shuningdek elektron va boshqa xabarlar (maʼlumotlar) (bundan buyon matnda xabarlar deb yuritiladi) sir saqlanishi shart.\nTelekommunikatsiyalar tarmoqlari orqali uzatiladigan telefon soʻzlashuvlari va xabarlar toʻgʻrisidagi axborot, shuningdek xabarlar operatorlar va provayderlar tomonidan faqat abonentlarning oʻzlariga, bunday xabarlarni joʻnatuvchilarga va ularni oluvchilarga yoki ularning qonuniy vakillariga berilishi mumkin.\nTelefonlar va boshqa foydalanuvchi qurilmalari orqali olib borilayotgan soʻzlashuvlarni eshitishga, telekommunikatsiyalar tarmoqlari orqali uzatiladigan xabarlar bilan tanishishga, ular toʻgʻrisida axborot olishga, shuningdek ularning sir saqlanishini boshqacha usulda cheklashga faqat qonunda nazarda tutilgan hollarda va tartibda hamda sudning qaroriga asosan yoʻl qoʻyiladi.\nTelekommunikatsiyalar tarmogʻidan oʻrnatilgan himoya tizimlarini chetlab oʻtgan holda foydalanish va telekommunikatsiyalar tarmogʻidan xalqaro trafikni oʻtkazish maqsadida qonunga xilof ravishda (ruxsatsiz) foydalanish taqiqlanadi.\nUshbu modda talablarining buzilishiga yoʻl qoʻygan mansabdor shaxslar va boshqa shaxslar qonunga muvofiq javobgarlikka tortiladi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "6058066_0010_11_1",
+     "doc_id": "lex:6058066",
+     "doc_title": "Pochta aloqasi toʻgʻrisida",
+     "article": "11-modda",
+     "retrieval_score": 0.5951,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Foydalanuvchilarning manziliga oid maʼlumotlar, pochta va kuryerlik joʻnatmalari hamda ularning tarkibi toʻgʻrisidagi axborot, pochta aloqasi operatorlari hamda provayderlarining faoliyati sohasiga kiradigan boshqa xabarlar, shuningdek ushbu pochta va kuryerlik joʻnatmalarining oʻzi pochta aloqasining sirini tashkil etadi.\nYozishmalar siri davlat tomonidan kafolatlanadi.\nPochta aloqasi operatorlari va provayderlari pochta aloqasi siriga rioya etilishini kafolatlaydi. Pochta aloqasi operatorlari va provayderlarining barcha xodimlari pochta aloqasi sirini saqlashi shart.\nPochta aloqasi sirini taʼminlash maqsadida quyidagilar taqiqlanadi, bundan qonunchilikda nazarda tutilgan hollar mustasno:\nboshqa shaxsga pochta va kuryerlik joʻnatmalari haqidagi maʼlumotlarni, shuningdek foydalanuvchilarning manzili va shaxsiga doir maʼlumotlarni maʼlum qilish;\npochta va kuryerlik joʻnatmalarini ochish;\nfoydalanuvchi hamda (yoki) uning pochta va kuryerlik joʻnatmalari tarkibi (joylanmasi) toʻgʻrisidagi maʼlumotlarni qonunga xilof ravishda yigʻish yoki tarqatish.\nPochta aloqasi operatorlarining, provayderlarining pochta aloqasi siri buzilishiga yoʻl qoʻygan xodimlari belgilangan tartibda javobgar boʻladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "yozishmalar va telefon soʻzlashuvlari sirini cheklash tartibi, Konstitutsiya, Jinoyat-protsessual kodeksi",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6204,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 2133,
+    "rerank_ms": null,
+    "generation_ms": 2450,
+    "total_ms": 4584,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 2862,
+    "output_tokens": 144
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q029",
+   "status": "ok",
+   "answer": "Oila kodeksining 152-moddasiga koʻra, farzandlikka oluvchilar va farzandlikka olinuvchilar oʻrtasidagi yosh farqi oʻn besh yoshdan kam boʻlmasligi shart [1].\n\nUshbu qoida oʻgay ota va oʻgay ona yoxud farzandlikka olinuvchining yaqin qarindoshlari tomonidan farzandlikka olish hollariga nisbatan tatbiq etilmaydi [1].",
+   "answer_language": "uz-Latn",
+   "no_answer": false,
+   "confidence": 0.612,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-104720",
+     "article_url": "https://lex.uz/uz/docs/-104720#-159494",
+     "article": "152-modda",
+     "article_title": "Farzandlikka olishi mumkin boʻlgan shaxslar",
+     "part": null,
+     "edition_date": "2026-09-12",
+     "doc_status": "amalda",
+     "chunk_id": "104720_0152_152_3",
+     "quote": "Farzandlikka oluvchilar va farzandlikka olinuvchilar yoshidagi farq oʻn besh yoshdan kam boʻlmasligi shart, bundan oʻgay ota va oʻgay ona yoxud farzandlikka olinuvchining yaqin qarindoshlari tomonidan farzandlikka olish hollari mustasno."
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "104720_0152_152_3",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "152-modda",
+     "retrieval_score": 0.6123,
+     "fusion_score": 0.0169,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "ushbu modda birinchi qismining yettinchi xatboshisida koʻrsatilgan jinoyatlar jumlasiga kirmaydigan ogʻir va oʻta ogʻir jinoyatlarni sodir etganlik uchun ilgari hukm qilinganlar;\nushbu modda birinchi qismining yettinchi va sakkizinchi xatboshilarida koʻrsatilgan jinoyatlarni sodir etganlik uchun oʻziga nisbatan jinoyat ishi ayblilik toʻgʻrisidagi masala hal qilinmay turib tugatilganlar;\nfarzandlikka olishga monelik qiladigan kasalliklarga chalinganlar. Mazkur kasalliklarning roʻyxati Oʻzbekiston Respublikasi Vazirlar Mahkamasi tomonidan tasdiqlanadi.\nYetim bolalarni va ota-ona qaramogʻidan mahrum boʻlgan bolalarni farzandlikka olish istagini bildirgan shaxslar qonunchilik hujjatlarida belgilangan tartibda maxsus oʻquv kursini tamomlaganlik toʻgʻrisidagi sertifikatga ega boʻlishi kerak.\nFarzandlikka oluvchilar va farzandlikka olinuvchilar yoshidagi farq oʻn besh yoshdan kam boʻlmasligi shart, bundan oʻgay ota va oʻgay ona yoxud farzandlikka olinuvchining yaqin qarindoshlari tomonidan farzandlikka olish hollari mustasno."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "104720_0151_151_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "151-modda",
+     "retrieval_score": 0.6006,
+     "fusion_score": 0.01587,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Farzandlikka olishga faqat voyaga yetmagan bolalarga nisbatan va faqat ularning eng ustun manfaatlarini koʻzlab yoʻl qoʻyiladi.\nFarzandlikka olish bolani farzandlikka olishni istagan shaxslarning (shaxsning) arizasiga koʻra, vasiylik va homiylik organlarining farzandlikka olishning asosliligi va farzandlikka olinayotgan bolaning eng ustun manfaatlariga toʻgʻri kelishi haqidagi xulosasi hisobga olingan holda sud tomonidan amalga oshiriladi.\nFarzandlikka olish toʻgʻrisidagi ishlar Oʻzbekiston Respublikasi Fuqarolik protsessual kodeksida nazarda tutilgan qoidalar boʻyicha alohida ish yuritish tartibida, farzandlikka oluvchilar (oluvchi), vasiylik va homiylik organlari vakillari, shuningdek prokuror ishtirokida sud tomonidan koʻrib chiqiladi.\nAka-ukalar va opa-singillarni turli shaxslar tomonidan farzandlikka olishga yoʻl qoʻyilmaydi, farzandlikka olish bolalarning eng ustun manfaatlariga muvofiq kelgan hollar bundan mustasno."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "104720_0155_155_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "155-modda",
+     "retrieval_score": 0.6075,
+     "fusion_score": 0.01613,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Oʻn yoshga toʻlgan bolani farzandlikka olish uchun uning roziligi talab qilinadi.\nFarzandlikka olishda bolaning roziligi vasiylik va homiylik organlari yoki sud tomonidan farzandlikka olish toʻgʻrisidagi ish koʻrib chiqilayotganda aniqlanadi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "104720_0152_152_1",
+     "doc_id": "lex:104720",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING OILA KODEKSI",
+     "article": "152-modda",
+     "retrieval_score": 0.5905,
+     "fusion_score": 0.01493,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Voyaga yetgan erkak yoki ayol fuqarolar farzandlikka oluvchilar boʻlishi mumkin, quyidagi shaxslar bundan mustasno:\nota-onalik huquqidan mahrum qilingan yoki ota-onalik huquqi cheklanganlar;\nqonun bilan belgilangan tartibda muomalaga layoqatsiz yoki muomala layoqati cheklangan deb topilganlar;\nvasiylik yoki homiylik majburiyatlarini bajarishdan chetlashtirilgan shaxslar, shuningdek tutingan ota-onalar, agar bolani tutingan (foster) oilaga olish toʻgʻrisida ular bilan tuzilgan shartnoma ularning zimmasiga yuklatilgan majburiyatlarni bajarishdan boʻyin tovlaganligi, oʻz huquqlarini suiisteʼmol qilganligi, tarbiyasidagi bolalar bilan shafqatsiz munosabatda boʻlganligi, surunkali alkogolizmga yoki giyohvandlikka mubtalo boʻlganligi oqibatida bekor qilingan boʻlsa;\nasab kasalliklari yoki narkologiya muassasalarida roʻyxatda turuvchilar;\nushbu Kodeks 169-moddasining birinchi qismida koʻrsatilgan asoslar boʻyicha farzandlikka olganligi bekor qilingan sobiq farzandlikka oluvchilar;"
+    },
+    {
+     "rank": 5,
+     "chunk_id": "3517337_0324_299_1",
+     "doc_id": "lex:3517337",
+     "doc_title": "Oʻzbekiston Respublikasining Fuqarolik protsessual kodeksi",
+     "article": "299-modda",
+     "retrieval_score": 0.579,
+     "fusion_score": 0.01449,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Farzandlikka olish toʻgʻrisidagi arizada quyidagilar koʻrsatilgan boʻlishi kerak:\nfarzandlikka oluvchilarning (oluvchining) familiyasi, ismi, otasining ismi, ularning (uning) yashash joyi;\nfarzandlikka olinayotgan bolaning familiyasi, ismi, otasining ismi va tugʻilgan sanasi, uning yashash (turgan) joyi, farzandlikka olinayotgan bolaning ota-onasi toʻgʻrisidagi, aka-uka va opa-singillari borligi yoki yoʻqligi haqidagi maʼlumotlar;\nfarzandlikka oluvchilarning (oluvchining) farzandlikka olish toʻgʻrisidagi iltimosini asoslovchi holatlar va mazkur holatlarni tasdiqlovchi dalillar;\nfarzandlikka oluvchilar (oluvchi) bolaning tugʻilganlik toʻgʻrisidagi dalolatnoma yozuviga tegishli oʻzgartirishlar kiritishni istagan taqdirda — farzandlikka olinayotgan bolaning familiyasini, ismini, otasining ismini, tugʻilgan sanasini (koʻpi bilan bir yilga), farzandlikka olinayotgan bolaning tugʻilgan joyini (agar bola oʻn yoshdan oshmagan boʻlsa) oʻzgartirish haqidagi, bolaning tugʻilganlik toʻgʻrisidagi dalolatnoma yozuviga farzandlikka oluvchilarni (oluvchini) ota-ona (ota yoki ona) sifatida qayd etish haqidagi iltimos.\nFarzandlikka olish toʻgʻrisidagi ariza farzandlikka oluvchilar (oluvchi) tomonidan imzolanadi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Farzandlikka olishda yosh farqi, Oila kodeksi.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6123,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1673,
+    "rerank_ms": null,
+    "generation_ms": 2820,
+    "total_ms": 4494,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 2887,
+    "output_tokens": 179
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  },
+  {
+   "id": "q030",
+   "status": "ok",
+   "answer": "Ўзбекистон Республикасининг Маъмурий жавобгарлик тўғрисидаги кодексининг 187-моддасига кўра, кўчаларда ва истироҳат боғларида алкогол маҳсулотини (шу жумладан пиво) истеъмол қилиш базавий ҳисоблаш миқдорининг иккидан бир қисми миқдорида жарима солишга сабаб бўлади [1].\n\nАгар ушбу ҳуқуқбузарлик маъмурий жазо чораси қўлланилганидан кейин бир йил давомида такрор содир этилса, базавий ҳисоблаш миқдорининг иккидан бир қисмидан икки бараваригача миқдорда жарима солиниши ёки ўн беш суткагача муддатга маъмурий қамоққа олиниши мумкин [1].",
+   "answer_language": "uz-Cyrl",
+   "no_answer": false,
+   "confidence": 0.622,
+   "citations": [
+    {
+     "ref": 1,
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "doc_type": "kodeks",
+     "doc_number": null,
+     "url": "https://lex.uz/uz/docs/-97664",
+     "article_url": "https://lex.uz/uz/docs/-97664#-2857289",
+     "article": "187-modda",
+     "article_title": "Jamoat joylarida alkogol mahsulotini isteʼmol qilish",
+     "part": "1-qism",
+     "edition_date": "2026-10-15",
+     "doc_status": "amalda",
+     "chunk_id": "97664_0312_187_1",
+     "quote": "Ish joylarida, koʻchalarda, stadionlarda, xiyobonlarda, istirohat bogʻlarida, jamoat transportining barcha turlarida va boshqa jamoat joylarida alkogol mahsulotini isteʼmol qilish, bundan toʻylar, yubileylar hamda boshqa tantanalar va marosimlar oʻtkaziladigan joylar, shuningdek alkogol mahsulotini quyib realizatsiya qilishga ruxsat etilgan savdo va umumiy ovqatlanish obyektlari mustasno, —"
+    }
+   ],
+   "contexts": [
+    {
+     "rank": 1,
+     "chunk_id": "97664_0312_187_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "187-modda",
+     "retrieval_score": 0.6146,
+     "fusion_score": 0.01694,
+     "rerank_score": null,
+     "used_in_answer": true,
+     "text": "Ish joylarida, koʻchalarda, stadionlarda, xiyobonlarda, istirohat bogʻlarida, jamoat transportining barcha turlarida va boshqa jamoat joylarida alkogol mahsulotini isteʼmol qilish, bundan toʻylar, yubileylar hamda boshqa tantanalar va marosimlar oʻtkaziladigan joylar, shuningdek alkogol mahsulotini quyib realizatsiya qilishga ruxsat etilgan savdo va umumiy ovqatlanish obyektlari mustasno, —\nbazaviy hisoblash miqdorining ikkidan bir qismi miqdorida jarima solishga sabab boʻladi.\nXuddi shunday huquqbuzarlik maʼmuriy jazo chorasi qoʻllanilganidan keyin bir yil davomida takror sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining ikkidan bir qismidan ikki baravarigacha miqdorda jarima solishga yoki oʻn besh sutkagacha muddatga maʼmuriy qamoqqa olishga sabab boʻladi."
+    },
+    {
+     "rank": 2,
+     "chunk_id": "97664_0317_188³_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "188³-modda",
+     "retrieval_score": 0.5623,
+     "fusion_score": 0.0136,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Aeroportlarda, vokzallarda, xiyobonlarda, istirohat bogʻlarida, bozorlarda va savdo majmualari hududlarida, shuningdek ularga tutash hududlarda, avtomototransport vositalarini vaqtincha saqlash joylarida, koʻchalarda, stadionlarda, bekatlarda, yoʻllarning qatnov qismida, moddiy madaniy meros obyektlari joylashgan hududlarda, jamoat transportining barcha turlarida va boshqa jamoat joylarida pul, oziq-ovqat mahsulotlari va boshqa moddiy qimmatliklar berishni faol tarzda soʻrab, tilanchilik bilan shugʻullanish, —\nbazaviy hisoblash miqdorining uch baravaridan besh baravarigacha miqdorda jarima solishga yoki oʻn besh sutkagacha muddatga maʼmuriy qamoqqa olishga sabab boʻladi.\nVoyaga yetmagan shaxslarni, keksa yoshdagi shaxslarni, ruhiy holati buzilgan, nogironligi boʻlgan shaxslarni va boshqa shaxslarni tilanchilik qilishga jalb etish, shuningdek shaxslarga alkogolli ichimliklarni yoxud giyohvandlik moddalari yoki psixotrop moddalar boʻlmagan, lekin shaxsning aql-idrokiga taʼsir koʻrsatuvchi moddalarni majburan isteʼmol qildirgan holda ularni tilanchilik qilishga jalb etish, —\nbazaviy hisoblash miqdorining oʻn baravaridan oʻn besh baravarigacha miqdorda jarima solishga yoki oʻn besh sutkagacha muddatga maʼmuriy qamoqqa olishga sabab boʻladi."
+    },
+    {
+     "rank": 3,
+     "chunk_id": "97664_0314_188_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "188-modda",
+     "retrieval_score": 0.5796,
+     "fusion_score": 0.01429,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Voyaga yetmagan shaxsni spirtli ichimliklar isteʼmol qilishga, giyohvandlik vositalari, psixotrop moddalar yoki ularning analoglari yoxud alohida toifadagi kuchli taʼsir qiluvchi moddalar hisoblanmagan, lekin kishining aql-idrokiga, irodasiga taʼsir qiladigan moddalarni yoki vositalarni isteʼmol etishga jalb qilish, —\noʻn besh sutka muddatga maʼmuriy qamoqqa olishga yoki ushbu Kodeksga muvofiq oʻziga nisbatan maʼmuriy qamoqqa olish qoʻllanilishi mumkin boʻlmagan shaxslarga bazaviy hisoblash miqdorining yigirma baravaridan oʻttiz baravarigacha miqdorda jarima solishga sabab boʻladi."
+    },
+    {
+     "rank": 4,
+     "chunk_id": "111453_0217_186¹_2",
+     "doc_id": "lex:111453",
+     "doc_title": "OʻZBEKISTON RESPUBLIKASINING JINOYAT KODEKSI",
+     "article": "186¹-modda",
+     "retrieval_score": 0.6218,
+     "fusion_score": 0.01639,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "v) takroran yoki xavfli retsidivist tomonidan;\ng) xizmat lavozimini suiisteʼmol qilish yoʻli bilan sodir etilgan boʻlsa, —\nbazaviy hisoblash miqdorining toʻrt yuz baravaridan olti yuz baravarigacha miqdorda jarima yoki besh yildan yetti yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nUshbu moddaning birinchi, ikkinchi va uchinchi qismlarida nazarda tutilgan harakatlar:\na) juda koʻp miqdorda;\nb) uyushgan guruh tomonidan yoki uning manfaatlarini koʻzlab sodir etilgan boʻlsa, —\nyetti yildan oʻn ikki yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nUshbu moddaning birinchi, ikkinchi va uchinchi qismlarida nazarda tutilgan harakatlarni sodir etishga hokimiyat yoki mansab vakolatlarini suiisteʼmol qilish yoʻli bilan homiylik qilish, —\nyetti yildan oʻn ikki yilgacha ozodlikdan mahrum qilish bilan jazolanadi.\nAgar ushbu moddaning uchinchi qismida nazarda tutilgan harakatlarni sodir etgan shaxs oʻz ixtiyori bilan aybini boʻyniga olish toʻgʻrisida hokimiyat organlariga arz qilsa va Oʻzbekiston Respublikasi hududida muomalasi taqiqlangan tamaki mahsulotlarini, nikotin yetkazib berishning elektron tizimlarini, shu jumladan elektron sigaretalarni topshirsa, javobgarlikdan ozod qilinadi."
+    },
+    {
+     "rank": 5,
+     "chunk_id": "97664_0094_56¹_1",
+     "doc_id": "lex:97664",
+     "doc_title": "Oʻzbekiston Respublikasining Maʼmuriy javobgarlik toʻgʻrisidagi kodeksi",
+     "article": "56¹-modda",
+     "retrieval_score": 0.715,
+     "fusion_score": 0.01692,
+     "rerank_score": null,
+     "used_in_answer": false,
+     "text": "Ish joylarida, sogʻliqni saqlash, taʼlim, sport-sogʻlomlashtirish muassasalarida, yongʻin chiqish xavfi boʻlgan joylarda, avtomobillarga yoqilgʻi quyish shoxobchalarida va boshqa jamoat joylarida, shu jumladan jamoat transportida tamaki mahsulotini isteʼmol qilish, bundan tamaki mahsulotini isteʼmol qilish uchun maxsus ajratilgan joylar va (yoki) xonalar mustasno, —\nbazaviy hisoblash miqdorining uchdan bir qismi miqdorida jarima solishga sabab boʻladi.\nHavo kemalarida tamaki mahsulotini isteʼmol qilish, —\nbazaviy hisoblash miqdorining ikki baravari miqdorida jarima solishga sabab boʻladi."
+    }
+   ],
+   "debug": {
+    "rewritten_query": "Jamoat joylarida alkogolli ichimliklarni isteʼmol qilish uchun maʼmuriy javobgarlik, Maʼmuriy javobgarlik toʻgʻrisidagi kodeks.",
+    "rewrite_applied": true,
+    "rewrite_ms": 0,
+    "sub_queries": [],
+    "retrieved_total": 5,
+    "best_cosine": 0.6218,
+    "no_answer_threshold": 0.48,
+    "no_answer_reason": null,
+    "llm_model": "gemini-3.1-flash-lite",
+    "as_of_date_note": null
+   },
+   "timing": {
+    "retrieval_ms": 1373,
+    "rerank_ms": null,
+    "generation_ms": 2290,
+    "total_ms": 3663,
+    "rewrite_ms": 0
+   },
+   "usage": {
+    "input_tokens": 2919,
+    "output_tokens": 269
+   },
+   "llm_model": "gemini-3.1-flash-lite",
+   "error": null
+  }
+ ],
+ "_client_wall_s": 17.3
+}

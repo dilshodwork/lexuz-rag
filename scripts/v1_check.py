@@ -181,6 +181,9 @@ def main():
 
         def fake_stream(system, user, temperature=0.1, max_tokens=8192, seed=None, deadline_s=None):
             llm.LAST.model, llm.LAST.usage = "mock", {"input_tokens": len(user) // 4, "output_tokens": 30}
+            if "qidiruv soʻrovi" in system:  # rewrite.py: so'rovni huquqiy tilga qayta yozish
+                yield "Mehnat taʼtili muddati, Mehnat kodeksi."
+                return
             if "Mars" in user:  # haqiqiy LLM ham shunday javob beradi (promptdagi 4-qoida)
                 txt = "Bazadagi hujjatlarda bu savolga aniq javob topilmadi. Yer kodeksiga qarang [1]."
             elif "RUS" in system:
