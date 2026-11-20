@@ -45,6 +45,9 @@ curl -s https://92-5-109-49.sslip.io/v1/rag/batch \
   `debug.rewritten_query`, `debug.rewrite_applied`, `timing.rewrite_ms`. O'chirish: `QUERY_REWRITE=0`.
   Chegara va og'irlik faqat DEV'da tanlangan; TEST'da (sozlashda qaralmagan 80 savol, faqat qidiruv):
   Hit@5 83.8% → 93.8%, MRR@5 0.689 → 0.774.
+* **`pipeline_version`:** har pipeline o'zgarishida ko'tariladi. `1.0.0` — gibrid qidiruv; `1.1.0` — query
+  rewriting qo'shildi (run `spec-2026-11-19` = 1.0.0, `spec-2026-11-20-rw` = 1.1.0 kodida, versiya keyinroq
+  ko'tarilgan).
 * **`no_answer`:** eng yaqin bo'lak cosine < 0.48 bo'lsa, LLM chaqirilmaydi. LLM manbada javob yo'q desa ham
   `no_answer: true` qaytadi. Ikkala holatda `citations: []`. Sababi `debug.no_answer_reason` da yoziladi.
 * **`citations`:** faqat javobda `[n]` bilan keltirilgan bo'laklar (`ref` = `contexts[].rank`). `quote` — bo'lak

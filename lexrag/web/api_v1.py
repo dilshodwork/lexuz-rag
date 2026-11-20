@@ -49,7 +49,9 @@ from ..retrieval import MODEL, chunk_meta, prepare_query
 log = logging.getLogger("lexrag.v1")
 router = APIRouter(prefix="/v1")
 
-PIPELINE_VERSION = "1.0.0"
+# Har pipeline o'zgarishida ko'tariladi (spetsifikatsiya: run'lar versiya bo'yicha taqqoslanadi).
+# 1.0.0 - gibrid qidiruv (bge-m3 + BM25, RRF); 1.1.0 - query rewriting (rewrite.py, 81337b6)
+PIPELINE_VERSION = "1.1.0"
 TZ = timezone(timedelta(hours=5))  # Toshkent
 LANG_IN = {"uz-Latn": "uz", "uz-Cyrl": "uz_cyr", "ru": "ru", "uz": "uz", "auto": None}
 LANG_OUT = {"uz": "uz-Latn", "uz_cyr": "uz-Cyrl", "ru": "ru"}
